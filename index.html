@@ -35,7 +35,7 @@
     <!-- AOS Library (CSS) -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" integrity="sha384-o5JQq4rU6oWk3P1z98RzLp0G2hNxTTQW5mC9P3lZ+T4eZ9eHZ/jP3R9ZPp3Z5p+" crossorigin="anonymous">
     
-    <!-- Schema.org JSON-LD untuk Person -->
+    <!-- Schema.org JSON-LD untuk Person (height & weight dihapus) -->
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
@@ -63,9 +63,7 @@
                 "addressLocality": "Bogor",
                 "addressCountry": "Indonesia"
             }
-        },
-        "height": "172 cm",
-        "weight": "73 kg"
+        }
     }
     </script>
     
@@ -108,7 +106,8 @@
             background: var(--light-bg);
             color: var(--light-text);
             line-height: 1.6;
-            transition: background-color 0.4s ease, color 0.4s ease, border-color 0.3s ease;
+            /* Transisi halus untuk semua elemen saat ganti mode */
+            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
         }
 
         body.dark-mode {
@@ -367,6 +366,7 @@
         /* ===== SECTIONS ===== */
         section {
             padding: 90px 24px;
+            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
         }
 
         .section-title {
@@ -376,7 +376,9 @@
             margin-bottom: 60px;
             position: relative;
             font-weight: 700;
-            transition: color 0.4s ease;
+            transition: color 0.4s ease, transform 0.3s ease; /* Tambah transisi untuk hover */
+            display: inline-block; /* Agar transform center */
+            width: 100%;
         }
 
         .section-title::after {
@@ -387,6 +389,11 @@
             background: linear-gradient(90deg, transparent, var(--accent), transparent);
             margin: 20px auto 0;
             border-radius: 2px;
+        }
+
+        /* Animasi hover untuk section-title */
+        .section-title:hover {
+            transform: translateY(-5px);
         }
 
         body.dark-mode .section-title {
@@ -414,7 +421,8 @@
 
         .about-details {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            /* Desktop default 3 kolom (akan diatur ulang di media query >1024px) */
+            grid-template-columns: repeat(3, 1fr);
             gap: 25px;
             margin: 50px 0;
             padding: 40px;
@@ -670,6 +678,7 @@
             font-weight: 700;
             transition: var(--transition);
             margin-top: 20px;
+            margin-right: 15px; /* Jarak antar tombol */
             border: 2px solid transparent;
         }
 
@@ -677,6 +686,17 @@
             background: transparent;
             color: var(--accent);
             border-color: var(--accent);
+        }
+
+        /* Tombol Download APK */
+        .btn-download {
+            background: transparent;
+            color: var(--accent);
+            border: 2px solid var(--accent);
+        }
+        .btn-download:hover {
+            background: var(--accent);
+            color: var(--primary);
         }
 
         /* Testimonials / Quotes */
@@ -687,7 +707,7 @@
             padding: 60px 40px;
             box-shadow: var(--shadow-md);
             border: 1px solid rgba(255, 215, 0, 0.15);
-            transition: background-color 0.4s ease;
+            transition: background-color 0.4s ease, border-color 0.3s ease;
         }
 
         body.dark-mode .testimonials {
@@ -823,7 +843,12 @@
             border: 1px solid rgba(255, 215, 0, 0.2);
             transition: background-color 0.4s ease, border-color 0.3s ease;
         }
-        body.dark-mode .contact-form,
+        body.dark-mode .contact-form {
+            background: var(--dark-surface);
+            /* Efek Glassmorphism di Dark Mode */
+            backdrop-filter: blur(10px);
+            background-color: rgba(21, 31, 44, 0.7); /* --dark-surface dengan transparansi */
+        }
         body.dark-mode .contact-email-info {
             background: var(--dark-surface);
         }
@@ -1052,16 +1077,9 @@
             margin-left: 10px;
         }
 
-        /* Responsive */
-        @media (max-width: 768px) {
-            .hamburger { display: block; }
-            .nav-links { display: none; position: absolute; top: 100%; left: 0; width: 100%; background: var(--primary); flex-direction: column; padding: 25px; gap: 20px; text-align: center; box-shadow: 0 15px 25px -5px rgba(0,0,0,0.3); border-bottom: 3px solid var(--accent); }
-            .nav-links.active { display: flex; }
-            .nav-links a::after { display: none; }
-            .header-controls { gap: 12px; }
-            .clock { font-size: 0.8rem; padding: 6px 12px; }
-            .contact-container { grid-template-columns: 1fr; }
-            .showcase-content { grid-template-columns: 1fr; }
+        /* Touch action manipulation untuk semua tombol */
+        button, .hero-btn, .showcase-btn, .back-to-top, .email-item, .clickable-location, .theme-toggle, .hamburger, .submit-btn, .social-card a {
+            touch-action: manipulation;
         }
 
         /* ===== DESKTOP OPTIMIZATION (≥1024px) ===== */
@@ -1121,6 +1139,13 @@
                 margin-right: auto;
             }
 
+            /* About details menjadi 3 kolom yang lebih lebar */
+            .about-details {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 3rem;
+                padding: 3rem;
+            }
+
             /* Grid dengan jumlah kolom tetap agar lebih terstruktur */
             .about-images {
                 grid-template-columns: repeat(4, 1fr);
@@ -1148,11 +1173,6 @@
                 padding: 80px 60px;
             }
 
-            /* Penyesuaian kartu dan elemen lainnya */
-            .about-details {
-                padding: 3rem;
-                gap: 3rem;
-            }
             .testimonial-card {
                 padding: 2.5rem;
             }
@@ -1173,6 +1193,41 @@
                 height: 60px;
                 font-size: 1.8rem;
             }
+        }
+
+        /* ===== OPTIMASI MOBILE (HP) ===== */
+        @media (max-width: 767px) {
+            /* Padding section lebih kecil */
+            section {
+                padding: 60px 16px;
+            }
+
+            /* Back to Top lebih kecil */
+            .back-to-top {
+                padding: 12px 18px;
+                font-size: 0.9rem;
+                bottom: 20px;
+                right: 20px;
+            }
+
+            /* About details tetap rapi di mobile */
+            .about-details {
+                grid-template-columns: 1fr; /* Stacking di mobile */
+                gap: 15px;
+                padding: 25px;
+            }
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .hamburger { display: block; }
+            .nav-links { display: none; position: absolute; top: 100%; left: 0; width: 100%; background: var(--primary); flex-direction: column; padding: 25px; gap: 20px; text-align: center; box-shadow: 0 15px 25px -5px rgba(0,0,0,0.3); border-bottom: 3px solid var(--accent); }
+            .nav-links.active { display: flex; }
+            .nav-links a::after { display: none; }
+            .header-controls { gap: 12px; }
+            .clock { font-size: 0.8rem; padding: 6px 12px; }
+            .contact-container { grid-template-columns: 1fr; }
+            .showcase-content { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -1235,7 +1290,8 @@
                     <div class="about-details">
                         <div class="detail-item">
                             <span class="detail-label">Tempat Lahir</span>
-                            <span class="detail-value clickable-location" id="birthplace" data-href="https://maps.app.goo.gl/ud2aDdaUL7tDoXYXA">Bogor, Indonesia</span>
+                            <!-- Link ke Google Maps Bogor (pencarian) -->
+                            <span class="detail-value clickable-location" id="birthplace" data-href="https://www.google.com/maps/search/Bogor">Bogor, Indonesia</span>
                         </div>
                         <div class="detail-item">
                             <span class="detail-label">Tinggi / Berat</span>
@@ -1286,6 +1342,8 @@
                         <p>Jelajahi karya musik saya melalui player eksklusif. Dari Resonansi Dalam Diam hingga Fragmen Suara.</p>
                         <div><span class="license-badge"><i class="fas fa-balance-scale"></i> MIT License</span></div>
                         <a href="https://hajirmuhaajir.github.io/muhaajirmusicplayers/" class="showcase-btn" target="_blank" rel="noopener noreferrer"><i class="fas fa-play"></i> Buka Music Player</a>
+                        <!-- Tombol Download Android App (BARU) -->
+                        <a href="https://www.dropbox.com/scl/fi/kvonc7ed3w1zmrmxqhui/muhaajirmusic.apk?rlkey=yptm6eifuizfkokda8tg8ipiw&st=tt1funjj&dl=1" class="showcase-btn btn-download" target="_blank" rel="noopener noreferrer"><i class="fab fa-android"></i> Download Android App</a>
                     </div>
                     <div class="showcase-image">
                         <a href="https://hajirmuhaajir.github.io/muhaajirmusicplayers/" target="_blank" rel="noopener noreferrer">
@@ -1595,7 +1653,7 @@
         window.addEventListener('scroll', setActiveNav);
         setActiveNav();
 
-        // Clickable birthplace
+        // Clickable birthplace (link ke Google Maps Bogor)
         var birthplace = document.getElementById('birthplace');
         if (birthplace) {
             birthplace.addEventListener('click', function() {
@@ -1690,10 +1748,7 @@
             });
         });
 
-        // Proteksi klik kanan (opsional)
-        document.addEventListener('contextmenu', function(e) {
-            e.preventDefault();
-        });
+        // Proteksi klik kanan (DIHAPUS karena mengganggu navigasi)
 
         // Lightbox
         const lightboxModal = document.getElementById('lightboxModal');
