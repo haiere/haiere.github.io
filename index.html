@@ -1,2268 +1,1171 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
-  <meta http-equiv="X-Content-Type-Options" content="nosniff">
-  <meta http-equiv="X-Frame-Options" content="DENY">
-  <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
-  <meta name="description" content="Muhaajir Official — Portfolio fotografi dan musik dari Bogor.">
-  <meta name="author" content="Muhaajir">
-  <meta property="og:title" content="Muhaajir Official">
-  <meta property="og:image" content="https://i.postimg.cc/Kvg50f5n/IMG-20250812-164118-putih.png">
-  <link rel="icon" type="image/png" href="https://i.postimg.cc/Kvg50f5n/IMG-20250812-164118-putih.png">
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" crossorigin="anonymous">
-  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-  <title>Muhaajir Official · Foto & Musik</title>
-  <style>
-    /* ===== RESET & VARIABLES ===== */
-    *,
-    *::before,
-    *::after { 
-      margin: 0; 
-      padding: 0; 
-      box-sizing: border-box; 
-    }
-
-    html { 
-      scroll-behavior: smooth; 
-      overflow-x: hidden; 
-      width: 100%; 
-    }
-    
-    body {
-      font-family: 'Outfit', sans-serif;
-      background: #f1f5f9; 
-      color: #0f172a;
-      line-height: 1.65; 
-      overflow-x: hidden; 
-      width: 100%;
-      transition: background 0.25s, color 0.25s;
-    }
-    
-    img { 
-      display: block; 
-      max-width: 100%; 
-      height: auto; 
-    }
-    
-    a { 
-      text-decoration: none; 
-    }
-    
-    ul { 
-      list-style: none; 
-    }
-    
-    button { 
-      cursor: pointer; 
-      border: none; 
-      background: none; 
-      font-family: inherit; 
-    }
-
-    :root {
-      --night: #020617; 
-      --navy: #0a1628; 
-      --slate: #94A3B8; 
-      --slate2: #64748B;
-      --blue: #3B82F6; 
-      --blue2: #60A5FA; 
-      --white: #ffffff; 
-      --off: #f1f5f9;
-      --surface: #ffffff; 
-      --txt: #0f172a; 
-      --txt2: #475569;
-      --border: rgba(59,130,246,0.14); 
-      --glow: 0 0 28px rgba(59,130,246,0.22);
-      --sh: 0 4px 20px rgba(2,6,23,0.10); 
-      --shM: 0 8px 36px rgba(2,6,23,0.14);
-      --r: 12px; 
-      --rL: 20px; 
-      --ease: cubic-bezier(0.4,0,0.2,1);
-      --t: all 0.32s var(--ease);
-    }
-    
-    body.dark {
-      background: #020617; 
-      color: #e2e8f0;
-      --surface: #0a1628; 
-      --off: #020617; 
-      --txt: #e2e8f0; 
-      --txt2: #94A3B8;
-      --border: rgba(59,130,246,0.18);
-      --sh: 0 4px 20px rgba(0,0,0,0.35); 
-      --shM: 0 8px 36px rgba(0,0,0,0.45);
-    }
-
-    /* ===== UTILITY CLASSES ===== */
-    .wrap { 
-      width: 100%; 
-      max-width: 1160px; 
-      margin: 0 auto; 
-      padding: 0 24px; 
-    }
-    
-    .sec { 
-      padding: 88px 0; 
-      overflow: hidden; 
-    }
-    
-    .sec-dark { 
-      background: var(--night); 
-    }
-
-    /* ===== LOADER ===== */
-    #loader {
-      position: fixed; 
-      inset: 0; 
-      z-index: 9999; 
-      background: #020617;
-      display: flex; 
-      flex-direction: column; 
-      align-items: center; 
-      justify-content: center;
-      gap: 20px; 
-      transition: opacity 0.7s, visibility 0.7s;
-    }
-    
-    #loader.out { 
-      opacity: 0; 
-      visibility: hidden; 
-    }
-    
-    #loader img { 
-      width: 88px; 
-      height: 88px; 
-      animation: loaderPulse 1.5s ease-in-out infinite; 
-      filter: drop-shadow(0 0 20px rgba(59,130,246,0.5)); 
-    }
-    
-    @keyframes loaderPulse { 
-      0%,100%{ transform: scale(1) } 
-      50%{ transform: scale(1.07) } 
-    }
-    
-    .loader-ring { 
-      width: 42px; 
-      height: 42px; 
-      border: 2px solid rgba(59,130,246,0.15); 
-      border-top-color: #3B82F6; 
-      border-radius: 50%; 
-      animation: spin 0.8s linear infinite; 
-    }
-    
-    @keyframes spin { 
-      to{ transform: rotate(360deg) } 
-    }
-    
-    .loader-lbl { 
-      font-family: 'Syne', sans-serif; 
-      font-size: 0.72rem; 
-      letter-spacing: 6px; 
-      text-transform: uppercase; 
-      color: #64748B; 
-    }
-
-    /* ===== HEADER ===== */
-    #hdr {
-      position: sticky; 
-      top: 0; 
-      z-index: 900; 
-      width: 100%;
-      background: rgba(2,6,23,0.94); 
-      backdrop-filter: blur(18px); 
-      -webkit-backdrop-filter: blur(18px);
-      border-bottom: 1px solid rgba(59,130,246,0.12); 
-      overflow: hidden;
-    }
-    
-    #hdr::after {
-      content: ''; 
-      position: absolute; 
-      bottom: 0; 
-      left: 0; 
-      right: 0; 
-      height: 1px;
-      background: linear-gradient(90deg, transparent, #3B82F6, transparent); 
-      opacity: 0.4;
-    }
-    
-    .hdr-in { 
-      display: flex; 
-      align-items: center; 
-      justify-content: space-between; 
-      height: 64px; 
-      gap: 12px; 
-    }
-    
-    .logo { 
-      display: flex; 
-      align-items: center; 
-      gap: 10px; 
-      flex-shrink: 0; 
-    }
-    
-    .logo img { 
-      width: 36px; 
-      height: 36px; 
-      filter: drop-shadow(0 0 7px rgba(59,130,246,0.4)); 
-    }
-    
-    .logo-nm { 
-      font-family: 'Syne', sans-serif; 
-      font-weight: 800; 
-      font-size: 0.95rem; 
-      color: #fff; 
-      letter-spacing: 1.5px; 
-      white-space: nowrap; 
-    }
-    
-    .logo-nm em { 
-      color: #3B82F6; 
-      font-style: normal; 
-    }
-    
-    .nav { 
-      display: flex; 
-      align-items: center; 
-      gap: 2px; 
-    }
-    
-    .nav a {
-      font-family: 'Syne', sans-serif; 
-      font-size: 0.76rem; 
-      font-weight: 600; 
-      letter-spacing: 1.5px;
-      text-transform: uppercase; 
-      color: #94A3B8; 
-      padding: 6px 13px; 
-      border-radius: 6px;
-      transition: var(--t); 
-      white-space: nowrap; 
-      position: relative;
-    }
-    
-    .nav a:hover, 
-    .nav a.act { 
-      color: #fff; 
-    }
-    
-    .nav a.act::after {
-      content: ''; 
-      position: absolute; 
-      bottom: 2px; 
-      left: 13px; 
-      right: 13px; 
-      height: 2px;
-      background: #3B82F6; 
-      border-radius: 2px; 
-      box-shadow: 0 0 8px #3B82F6;
-    }
-    
-    .hdr-ctrl { 
-      display: flex; 
-      align-items: center; 
-      gap: 8px; 
-      flex-shrink: 0; 
-    }
-    
-    #clock {
-      font-family: 'Syne', sans-serif; 
-      font-size: 0.78rem; 
-      font-weight: 700; 
-      letter-spacing: 2px; 
-      color: #3B82F6;
-      background: rgba(59,130,246,0.08); 
-      border: 1px solid rgba(59,130,246,0.2);
-      padding: 5px 12px; 
-      border-radius: 40px; 
-      white-space: nowrap;
-    }
-    
-    .ico-btn {
-      width: 36px; 
-      height: 36px; 
-      border-radius: 50%; 
-      display: flex; 
-      align-items: center; 
-      justify-content: center;
-      color: #3B82F6; 
-      background: rgba(59,130,246,0.08); 
-      border: 1px solid rgba(59,130,246,0.18);
-      transition: var(--t); 
-      flex-shrink: 0;
-    }
-    
-    .ico-btn:hover { 
-      background: #3B82F6; 
-      color: #fff; 
-      transform: rotate(12deg); 
-    }
-    
-    .burger {
-      display: none; 
-      flex-direction: column; 
-      justify-content: center; 
-      gap: 5px;
-      width: 36px; 
-      height: 36px; 
-      padding: 6px; 
-      flex-shrink: 0;
-    }
-    
-    .burger span { 
-      display: block; 
-      height: 2px; 
-      border-radius: 2px; 
-      background: #94A3B8; 
-      transition: var(--t); 
-    }
-    
-    .burger.open span:nth-child(1) { 
-      transform: translateY(7px) rotate(45deg); 
-    }
-    
-    .burger.open span:nth-child(2) { 
-      opacity: 0; 
-      transform: scaleX(0); 
-    }
-    
-    .burger.open span:nth-child(3) { 
-      transform: translateY(-7px) rotate(-45deg); 
-    }
-    
-    .mnav {
-      display: none; 
-      position: absolute; 
-      top: 64px; 
-      left: 0; 
-      right: 0;
-      background: rgba(2,6,23,0.97); 
-      border-bottom: 1px solid rgba(59,130,246,0.15);
-      padding: 14px; 
-      flex-direction: column; 
-      gap: 4px; 
-      z-index: 899;
-    }
-    
-    .mnav.open { 
-      display: flex; 
-    }
-    
-    .mnav a {
-      font-family: 'Syne', sans-serif; 
-      font-size: 0.82rem; 
-      font-weight: 600; 
-      letter-spacing: 2px;
-      text-transform: uppercase; 
-      color: #94A3B8; 
-      padding: 12px 16px; 
-      border-radius: 8px;
-      transition: var(--t); 
-      border: 1px solid transparent;
-    }
-    
-    .mnav a:hover, 
-    .mnav a.act { 
-      color: #fff; 
-      background: rgba(59,130,246,0.1); 
-      border-color: rgba(59,130,246,0.2); 
-    }
-
-    /* ===== HERO SECTION ===== */
-    .hero { 
-      position: relative; 
-      overflow: hidden; 
-      background: #020617; 
-      padding: 120px 0 0; 
-      text-align: center; 
-      width: 100%; 
-    }
-    
-    .hero::before {
-      content: ''; 
-      position: absolute; 
-      inset: 0;
-      background-image: linear-gradient(rgba(59,130,246,0.04) 1px,transparent 1px),
-                        linear-gradient(90deg,rgba(59,130,246,0.04) 1px,transparent 1px);
-      background-size: 48px 48px; 
-      animation: grd 18s linear infinite; 
-      pointer-events: none;
-    }
-    
-    @keyframes grd { 
-      to { background-position: 0 48px; } 
-    }
-    
-    .hero::after {
-      content: ''; 
-      position: absolute; 
-      inset: 0;
-      background: radial-gradient(ellipse 60% 50% at 30% 40%, rgba(59,130,246,0.12) 0%, transparent 70%),
-                  radial-gradient(ellipse 50% 40% at 70% 60%, rgba(59,130,246,0.07) 0%, transparent 70%);
-      animation: orb 7s ease-in-out infinite; 
-      pointer-events: none;
-    }
-    
-    @keyframes orb { 
-      0%,100%{ opacity: 0.6 } 
-      50%{ opacity: 1 } 
-    }
-    
-    .hero-body { 
-      position: relative; 
-      z-index: 2; 
-      padding: 0 24px; 
-    }
-    
-    .hero-eye {
-      display: inline-block; 
-      font-family: 'Syne', sans-serif; 
-      font-size: 0.7rem; 
-      font-weight: 600;
-      letter-spacing: 7px; 
-      text-transform: uppercase; 
-      color: #60A5FA; 
-      margin-bottom: 16px; 
-      opacity: 0.85;
-    }
-    
-    .hero h1 {
-      font-family: 'Syne', sans-serif; 
-      font-weight: 800; 
-      font-size: clamp(3.2rem,10vw,6.2rem);
-      line-height: 1; 
-      letter-spacing: -0.03em;
-      background: linear-gradient(150deg,#fff 20%,#94A3B8 60%,#3B82F6 100%);
-      -webkit-background-clip: text; 
-      -webkit-text-fill-color: transparent; 
-      background-clip: text;
-      margin-bottom: 18px;
-    }
-    
-    .hero p { 
-      font-size: clamp(0.95rem,2.5vw,1.25rem); 
-      color: #94A3B8; 
-      margin-bottom: 40px; 
-      max-width: 460px; 
-      margin-left: auto; 
-      margin-right: auto; 
-    }
-    
-    .hero-btns { 
-      display: flex; 
-      gap: 12px; 
-      justify-content: center; 
-      flex-wrap: wrap; 
-      padding-bottom: 80px; 
-    }
-    
-    .btn-p {
-      display: inline-flex; 
-      align-items: center; 
-      gap: 8px; 
-      font-family: 'Syne', sans-serif; 
-      font-size: 0.8rem;
-      font-weight: 700; 
-      letter-spacing: 1.5px; 
-      text-transform: uppercase; 
-      background: #3B82F6; 
-      color: #fff;
-      padding: 13px 30px; 
-      border-radius: var(--r); 
-      box-shadow: 0 8px 26px rgba(59,130,246,0.4);
-      transition: var(--t); 
-      border: 1.5px solid transparent; 
-      white-space: nowrap;
-    }
-    
-    .btn-p:hover { 
-      background: #60A5FA; 
-      transform: translateY(-3px); 
-      box-shadow: 0 14px 32px rgba(59,130,246,0.5); 
-    }
-    
-    .btn-g {
-      display: inline-flex; 
-      align-items: center; 
-      gap: 8px; 
-      font-family: 'Syne', sans-serif; 
-      font-size: 0.8rem;
-      font-weight: 700; 
-      letter-spacing: 1.5px; 
-      text-transform: uppercase; 
-      background: transparent; 
-      color: #94A3B8;
-      padding: 13px 30px; 
-      border-radius: var(--r); 
-      border: 1.5px solid rgba(148,163,184,0.25);
-      transition: var(--t); 
-      white-space: nowrap;
-    }
-    
-    .btn-g:hover { 
-      color: #fff; 
-      border-color: #3B82F6; 
-      background: rgba(59,130,246,0.1); 
-      transform: translateY(-3px); 
-    }
-    
-    .mq-strip {
-      position: relative; 
-      z-index: 2; 
-      border-top: 1px solid rgba(59,130,246,0.1);
-      background: rgba(59,130,246,0.04); 
-      padding: 10px 0; 
-      overflow: hidden; 
-      width: 100%;
-    }
-    
-    .mq-track { 
-      display: flex; 
-      gap: 44px; 
-      width: max-content; 
-      animation: mq 28s linear infinite; 
-    }
-    
-    .mq-track span { 
-      font-family: 'Syne', sans-serif; 
-      font-size: 0.7rem; 
-      font-weight: 600; 
-      letter-spacing: 4px; 
-      text-transform: uppercase; 
-      color: rgba(148,163,184,0.38); 
-      white-space: nowrap; 
-    }
-    
-    .mq-track span.d { 
-      color: #3B82F6; 
-      opacity: 0.38; 
-    }
-    
-    @keyframes mq { 
-      from { transform: translateX(0); } 
-      to { transform: translateX(-50%); } 
-    }
-
-    /* ===== SECTION HEADER ===== */
-    .sh { 
-      text-align: center; 
-      margin-bottom: 52px; 
-    }
-    
-    .sh h2 { 
-      font-family: 'Syne', sans-serif; 
-      font-weight: 800; 
-      font-size: clamp(1.85rem,5vw,2.55rem); 
-      color: var(--txt); 
-      letter-spacing: -0.02em; 
-      margin-bottom: 12px; 
-    }
-    
-    .sh-ln { 
-      width: 46px; 
-      height: 3px; 
-      background: #3B82F6; 
-      border-radius: 2px; 
-      margin: 0 auto; 
-      box-shadow: 0 0 10px rgba(59,130,246,0.45); 
-    }
-    
-    .sh p { 
-      margin-top: 12px; 
-      color: var(--txt2); 
-      font-size: 0.97rem; 
-      max-width: 500px; 
-      margin-left: auto; 
-      margin-right: auto; 
-    }
-
-    /* ===== ABOUT SECTION ===== */
-    .about-grid { 
-      display: grid; 
-      grid-template-columns: 1fr 1fr; 
-      gap: 44px; 
-      align-items: start; 
-      min-width: 0; 
-    }
-    
-    .about-bio { 
-      font-size: 1.02rem; 
-      color: var(--txt2); 
-      line-height: 1.85; 
-      margin-bottom: 26px; 
-    }
-    
-    .stats-row { 
-      display: grid; 
-      grid-template-columns: repeat(3,1fr); 
-      gap: 12px; 
-      margin-bottom: 26px; 
-    }
-    
-    .stat-bx { 
-      background: var(--surface); 
-      border: 1px solid var(--border); 
-      border-radius: var(--r); 
-      padding: 18px; 
-      transition: var(--t); 
-    }
-    
-    body.dark .stat-bx { 
-      background: var(--navy); 
-    }
-    
-    .stat-bx:hover { 
-      border-color: #3B82F6; 
-      box-shadow: var(--glow); 
-    }
-    
-    .stat-lbl { 
-      font-family: 'Syne', sans-serif; 
-      font-size: 0.62rem; 
-      font-weight: 700; 
-      letter-spacing: 3px; 
-      text-transform: uppercase; 
-      color: #3B82F6; 
-      margin-bottom: 5px; 
-    }
-    
-    .stat-val { 
-      font-size: 0.9rem; 
-      font-weight: 600; 
-      color: var(--txt); 
-      word-break: break-word; 
-    }
-    
-    .loc-link { 
-      display: inline-flex; 
-      align-items: center; 
-      gap: 5px; 
-      color: #3B82F6; 
-      font-size: 0.88rem; 
-      font-weight: 600; 
-      cursor: pointer; 
-      transition: var(--t); 
-      border-bottom: 1px dashed rgba(59,130,246,0.4); 
-    }
-    
-    .loc-link:hover { 
-      color: #60A5FA; 
-    }
-    
-    .gal-grid { 
-      display: grid; 
-      grid-template-columns: 1fr 1fr; 
-      gap: 10px; 
-      min-width: 0; 
-    }
-    
-    .gal-card { 
-      position: relative; 
-      border-radius: var(--r); 
-      overflow: hidden; 
-      cursor: pointer; 
-      aspect-ratio: 4/5; 
-      border: 1px solid transparent; 
-      transition: var(--t); 
-    }
-    
-    .gal-card:first-child { 
-      grid-row: span 2; 
-      aspect-ratio: unset; 
-    }
-    
-    .gal-card:hover { 
-      border-color: #3B82F6; 
-      box-shadow: var(--glow); 
-    }
-    
-    .gal-card img { 
-      width: 100%; 
-      height: 100%; 
-      object-fit: cover; 
-      transition: transform 0.5s var(--ease); 
-    }
-    
-    .gal-card:hover img { 
-      transform: scale(1.05); 
-    }
-    
-    .gal-ov {
-      position: absolute; 
-      inset: 0; 
-      background: linear-gradient(to top, rgba(2,6,23,0.88) 0%, transparent 55%);
-      display: flex; 
-      flex-direction: column; 
-      justify-content: flex-end; 
-      padding: 16px; 
-      opacity: 0; 
-      transition: var(--t);
-    }
-    
-    .gal-card:hover .gal-ov { 
-      opacity: 1; 
-    }
-    
-    .gal-ov h4 { 
-      font-family: 'Syne', sans-serif; 
-      font-size: 0.88rem; 
-      color: #fff; 
-      margin-bottom: 3px; 
-    }
-    
-    .gal-ov p { 
-      font-size: 0.7rem; 
-      color: #94A3B8; 
-      display: flex; 
-      align-items: center; 
-      gap: 4px; 
-    }
-    
-    .gal-ov i { 
-      color: #3B82F6; 
-      font-size: 0.65rem; 
-    }
-
-    /* ===== LIGHTBOX ===== */
-    #lb {
-      display: none; 
-      position: fixed; 
-      inset: 0; 
-      z-index: 9998; 
-      background: rgba(2,6,23,0.96);
-      backdrop-filter: blur(12px); 
-      align-items: center; 
-      justify-content: center; 
-      flex-direction: column; 
-      gap: 14px; 
-      padding: 20px;
-    }
-    
-    #lb.on { 
-      display: flex; 
-    }
-    
-    #lb-img { 
-      max-width: 90vw; 
-      max-height: 78vh; 
-      border-radius: 10px; 
-      box-shadow: 0 0 50px rgba(59,130,246,0.22); 
-    }
-    
-    #lb-cap { 
-      color: #94A3B8; 
-      font-size: 0.88rem; 
-      text-align: center; 
-    }
-    
-    #lb-x { 
-      position: absolute; 
-      top: 18px; 
-      right: 22px; 
-      color: #94A3B8; 
-      font-size: 1.7rem; 
-      line-height: 1; 
-      cursor: pointer; 
-      transition: var(--t); 
-    }
-    
-    #lb-x:hover { 
-      color: #fff; 
-      transform: rotate(90deg); 
-    }
-
-    /* ===== MUSIC SECTION ===== */
-    .music-wrap { 
-      background: var(--navy); 
-      border: 1px solid rgba(59,130,246,0.2); 
-      border-radius: var(--rL); 
-      overflow: hidden; 
-      box-shadow: var(--shL); 
-      position: relative; 
-      width: 100%; 
-    }
-    
-    .music-wrap::before { 
-      content: ''; 
-      position: absolute; 
-      top: -100px; 
-      right: -100px; 
-      width: 320px; 
-      height: 320px; 
-      background: radial-gradient(circle,rgba(59,130,246,0.1),transparent 70%); 
-      pointer-events: none; 
-    }
-    
-    .music-in { 
-      display: grid; 
-      grid-template-columns: 1fr 1fr; 
-      align-items: stretch; 
-      min-width: 0; 
-    }
-    
-    .music-txt { 
-      padding: 48px 44px; 
-      position: relative; 
-      z-index: 1; 
-      display: flex; 
-      flex-direction: column; 
-      min-width: 0; 
-    }
-    
-    .m-eye { 
-      font-family: 'Syne', sans-serif; 
-      font-size: 0.68rem; 
-      font-weight: 700; 
-      letter-spacing: 5px; 
-      text-transform: uppercase; 
-      color: #3B82F6; 
-      margin-bottom: 13px; 
-    }
-    
-    .music-txt h3 { 
-      font-family: 'Syne', sans-serif; 
-      font-weight: 800; 
-      font-size: clamp(1.5rem,3vw,2.1rem); 
-      color: #fff; 
-      letter-spacing: -0.02em; 
-      margin-bottom: 13px; 
-      line-height: 1.2; 
-    }
-    
-    .music-txt > p { 
-      color: #94A3B8; 
-      font-size: 0.96rem; 
-      line-height: 1.75; 
-      margin-bottom: 18px; 
-    }
-    
-    .badge { 
-      display: inline-flex; 
-      align-items: center; 
-      gap: 6px; 
-      font-size: 0.7rem; 
-      color: #94A3B8; 
-      background: rgba(59,130,246,0.08); 
-      border: 1px solid rgba(59,130,246,0.18); 
-      padding: 5px 12px; 
-      border-radius: 40px; 
-      margin-bottom: 18px; 
-      width: fit-content; 
-    }
-    
-    .badge i { 
-      color: #3B82F6; 
-    }
-    
-    .m-btns { 
-      display: flex; 
-      flex-wrap: wrap; 
-      gap: 10px; 
-      margin-bottom: 18px; 
-    }
-    
-    .music-img { 
-      position: relative; 
-      overflow: hidden; 
-      min-height: 360px; 
-    }
-    
-    .music-img img { 
-      width: 100%; 
-      height: 100%; 
-      object-fit: cover; 
-      display: block; 
-      transition: transform 0.6s var(--ease); 
-    }
-    
-    .music-wrap:hover .music-img img { 
-      transform: scale(1.04); 
-    }
-    
-    .music-img-ov { 
-      position: absolute; 
-      inset: 0; 
-      background: linear-gradient(to right, var(--navy) 0%, transparent 45%); 
-      pointer-events: none; 
-    }
-
-    /* ===== PASSWORD CARD ===== */
-    .pw-card {
-      display: flex; 
-      align-items: center; 
-      gap: 13px; 
-      background: rgba(59,130,246,0.07);
-      border: 1px solid rgba(59,130,246,0.2); 
-      border-radius: var(--r); 
-      padding: 15px 17px;
-      color: inherit; 
-      transition: var(--t); 
-      cursor: pointer; 
-      text-decoration: none; 
-      min-width: 0;
-    }
-    
-    .pw-card:hover { 
-      background: rgba(59,130,246,0.14); 
-      border-color: #3B82F6; 
-      transform: translateY(-3px); 
-      box-shadow: var(--glow); 
-    }
-    
-    .pw-ico { 
-      width: 42px; 
-      height: 42px; 
-      flex-shrink: 0; 
-      background: rgba(59,130,246,0.12); 
-      border: 1px solid rgba(59,130,246,0.22); 
-      border-radius: 9px; 
-      display: flex; 
-      align-items: center; 
-      justify-content: center; 
-      color: #3B82F6; 
-      font-size: 1.1rem; 
-      transition: var(--t); 
-    }
-    
-    .pw-card:hover .pw-ico { 
-      background: #3B82F6; 
-      color: #fff; 
-      box-shadow: 0 0 16px rgba(59,130,246,0.4); 
-    }
-    
-    .pw-txt { 
-      min-width: 0; 
-      flex: 1; 
-      overflow: hidden; 
-    }
-    
-    .pw-txt h4 { 
-      font-family: 'Syne', sans-serif; 
-      font-size: 0.84rem; 
-      font-weight: 700; 
-      color: #fff; 
-      margin-bottom: 3px; 
-      white-space: nowrap; 
-      overflow: hidden; 
-      text-overflow: ellipsis; 
-    }
-    
-    .pw-txt p { 
-      font-size: 0.75rem; 
-      color: #94A3B8; 
-      line-height: 1.4; 
-      white-space: nowrap; 
-      overflow: hidden; 
-      text-overflow: ellipsis; 
-    }
-    
-    .pw-arr { 
-      margin-left: auto; 
-      color: #60A5FA; 
-      font-size: 0.82rem; 
-      flex-shrink: 0; 
-      transition: transform 0.3s; 
-    }
-    
-    .pw-card:hover .pw-arr { 
-      transform: translateX(5px); 
-    }
-
-    /* ===== QUOTES SECTION ===== */
-    .q-grid { 
-      display: grid; 
-      grid-template-columns: repeat(2,1fr); 
-      gap: 18px; 
-    }
-    
-    .q-card {
-      background: var(--surface); 
-      border: 1px solid var(--border); 
-      border-radius: var(--rL);
-      padding: 30px 26px; 
-      transition: var(--t); 
-      position: relative; 
-      overflow: hidden;
-    }
-    
-    body.dark .q-card { 
-      background: var(--navy); 
-    }
-    
-    .q-card::before { 
-      content: '"'; 
-      position: absolute; 
-      top: -4px; 
-      left: 14px; 
-      font-size: 4.5rem; 
-      font-family: Georgia, serif; 
-      color: #3B82F6; 
-      opacity: 0.07; 
-      line-height: 1; 
-      pointer-events: none; 
-    }
-    
-    .q-card:hover { 
-      border-color: rgba(59,130,246,0.32); 
-      transform: translateY(-5px); 
-      box-shadow: var(--shM); 
-    }
-    
-    .q-card p { 
-      font-style: italic; 
-      color: var(--txt2); 
-      font-size: 0.95rem; 
-      line-height: 1.72; 
-      margin-bottom: 14px; 
-    }
-    
-    .q-auth { 
-      font-family: 'Syne', sans-serif; 
-      font-size: 0.78rem; 
-      font-weight: 700; 
-      color: var(--txt); 
-      letter-spacing: 0.5px; 
-    }
-    
-    .q-auth a { 
-      color: inherit; 
-      border-bottom: 1px solid rgba(59,130,246,0.28); 
-      transition: color 0.25s; 
-    }
-    
-    .q-auth a:hover { 
-      color: #3B82F6; 
-    }
-
-    /* ===== TOOLS SECTION ===== */
-    .tools-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
-      margin-top: 40px;
-    }
-
-    .tool-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--rL);
-      padding: 32px 24px;
-      transition: all 0.32s var(--ease);
-      position: relative;
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      height: 100%;
-    }
-
-    body.dark .tool-card {
-      background: var(--navy);
-    }
-
-    .tool-card:hover {
-      transform: translateY(-6px);
-      border-color: #3B82F6;
-      box-shadow: var(--glow);
-    }
-
-    .tool-icon {
-      font-size: 2.5rem;
-      margin-bottom: 16px;
-      color: #3B82F6;
-    }
-
-    .tool-title {
-      font-family: 'Syne', sans-serif;
-      font-size: 1.4rem;
-      font-weight: 800;
-      color: var(--txt);
-      margin-bottom: 6px;
-    }
-
-    .tool-sub {
-      font-family: 'Syne', sans-serif;
-      font-size: 0.75rem;
-      font-weight: 600;
-      letter-spacing: 2px;
-      color: #3B82F6;
-      text-transform: uppercase;
-      margin-bottom: 16px;
-    }
-
-    .tool-desc {
-      color: var(--txt2);
-      font-size: 0.9rem;
-      line-height: 1.6;
-      margin-bottom: 20px;
-      flex-grow: 1;
-    }
-
-    .tool-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-bottom: 20px;
-    }
-
-    .tool-tag {
-      background: rgba(59,130,246,0.08);
-      color: #3B82F6;
-      font-size: 0.65rem;
-      font-weight: 600;
-      padding: 4px 10px;
-      border-radius: 30px;
-      border: 1px solid rgba(59,130,246,0.15);
-    }
-
-    .tool-btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      width: 100%;
-      padding: 12px;
-      font-size: 0.75rem;
-    }
-
-    .ecosystem-badge {
-      text-align: center;
-      margin-top: 40px;
-    }
-
-    .ecosystem-badge .ft-badge {
-      display: inline-flex;
-      margin: 0 auto;
-    }
-
-    /* ===== SOCIAL SECTION ===== */
-    .soc-grid { 
-      display: grid; 
-      grid-template-columns: repeat(5,1fr); 
-      gap: 14px; 
-    }
-    
-    .soc-card {
-      background: var(--surface); 
-      border: 1px solid var(--border); 
-      border-radius: var(--rL);
-      padding: 30px 14px 26px; 
-      text-align: center; 
-      transition: var(--t); 
-      position: relative; 
-      overflow: hidden;
-    }
-    
-    body.dark .soc-card { 
-      background: var(--navy); 
-    }
-    
-    .soc-card::after { 
-      content: ''; 
-      position: absolute; 
-      bottom: 0; 
-      left: 0; 
-      right: 0; 
-      height: 2.5px; 
-      background: #3B82F6; 
-      transform: scaleX(0); 
-      transform-origin: left; 
-      transition: transform 0.32s var(--ease); 
-      box-shadow: 0 0 8px #3B82F6; 
-    }
-    
-    .soc-card:hover::after { 
-      transform: scaleX(1); 
-    }
-    
-    .soc-card:hover { 
-      transform: translateY(-7px); 
-      box-shadow: var(--shM); 
-      border-color: rgba(59,130,246,0.25); 
-    }
-    
-    .soc-card i { 
-      font-size: 2.1rem; 
-      color: var(--txt2); 
-      margin-bottom: 11px; 
-      display: block; 
-      transition: var(--t); 
-    }
-    
-    .soc-card:hover i { 
-      color: #3B82F6; 
-      transform: scale(1.1); 
-    }
-    
-    .soc-card a { 
-      font-family: 'Syne', sans-serif; 
-      font-size: 0.8rem; 
-      font-weight: 700; 
-      letter-spacing: 0.5px; 
-      color: var(--txt); 
-      transition: var(--t); 
-      display: block; 
-    }
-    
-    .soc-card:hover a { 
-      color: #3B82F6; 
-    }
-
-    /* ===== CONTACT SECTION ===== */
-    .ct-grid { 
-      display: grid; 
-      grid-template-columns: 1fr 1fr; 
-      gap: 22px; 
-      align-items: start; 
-      min-width: 0; 
-    }
-    
-    .ct-box { 
-      background: var(--surface); 
-      border: 1px solid var(--border); 
-      border-radius: var(--rL); 
-      padding: 38px; 
-      box-shadow: var(--sh); 
-      transition: background 0.3s; 
-      min-width: 0; 
-      overflow: hidden; 
-    }
-    
-    body.dark .ct-box { 
-      background: var(--navy); 
-    }
-    
-    .ct-ttl { 
-      font-family: 'Syne', sans-serif; 
-      font-size: 0.95rem; 
-      font-weight: 800; 
-      color: #3B82F6; 
-      letter-spacing: 0.5px; 
-      margin-bottom: 20px; 
-      display: flex; 
-      align-items: center; 
-      gap: 8px; 
-    }
-    
-    .ff { 
-      margin-bottom: 17px; 
-    }
-    
-    .ff label { 
-      display: block; 
-      margin-bottom: 6px; 
-      font-family: 'Syne', sans-serif; 
-      font-size: 0.64rem; 
-      font-weight: 700; 
-      letter-spacing: 2.5px; 
-      text-transform: uppercase; 
-      color: var(--txt2); 
-    }
-    
-    .ff input, 
-    .ff textarea {
-      width: 100%; 
-      padding: 11px 14px; 
-      border: 1px solid var(--border); 
-      border-radius: 8px;
-      background: var(--off); 
-      color: var(--txt); 
-      font-family: 'Outfit', sans-serif;
-      font-size: 0.93rem; 
-      transition: var(--t); 
-      resize: vertical;
-    }
-    
-    body.dark .ff input, 
-    body.dark .ff textarea { 
-      background: var(--night); 
-      border-color: rgba(59,130,246,0.18); 
-    }
-    
-    .ff input:focus, 
-    .ff textarea:focus { 
-      outline: none; 
-      border-color: #3B82F6; 
-      box-shadow: 0 0 0 3px rgba(59,130,246,0.14); 
-    }
-    
-    .ch { 
-      font-size: 0.7rem; 
-      color: #64748B; 
-      margin-top: 4px; 
-    }
-    
-    .btn-sub {
-      width: 100%; 
-      padding: 13px; 
-      background: #3B82F6; 
-      color: #fff; 
-      font-family: 'Syne', sans-serif;
-      font-size: 0.8rem; 
-      font-weight: 700; 
-      letter-spacing: 1.5px; 
-      text-transform: uppercase;
-      border-radius: 8px; 
-      transition: var(--t); 
-      display: flex; 
-      align-items: center; 
-      justify-content: center; 
-      gap: 8px;
-    }
-    
-    .btn-sub:hover { 
-      background: #60A5FA; 
-      transform: translateY(-2px); 
-      box-shadow: 0 10px 22px rgba(59,130,246,0.38); 
-    }
-    
-    .fn { 
-      font-size: 0.72rem; 
-      color: #64748B; 
-      margin-top: 11px; 
-      display: flex; 
-      align-items: center; 
-      gap: 5px; 
-    }
-    
-    .fn i { 
-      color: #3B82F6; 
-    }
-    
-    .em-list { 
-      display: flex; 
-      flex-direction: column; 
-      gap: 9px; 
-      margin-top: 4px; 
-    }
-    
-    .em-item {
-      display: flex; 
-      align-items: center; 
-      gap: 11px; 
-      padding: 11px 14px; 
-      background: var(--off);
-      border: 1px solid var(--border); 
-      border-radius: 8px; 
-      cursor: pointer; 
-      transition: var(--t); 
-      min-width: 0;
-    }
-    
-    body.dark .em-item { 
-      background: var(--night); 
-    }
-    
-    .em-item:hover { 
-      border-color: #3B82F6; 
-      transform: translateX(5px); 
-      box-shadow: 0 4px 14px rgba(59,130,246,0.13); 
-    }
-    
-    .em-item i { 
-      color: #3B82F6; 
-      font-size: 0.9rem; 
-      width: 17px; 
-      flex-shrink: 0; 
-    }
-    
-    .em-item span { 
-      font-size: 0.82rem; 
-      font-weight: 500; 
-      color: var(--txt); 
-      overflow: hidden; 
-      text-overflow: ellipsis; 
-      white-space: nowrap; 
-      flex: 1; 
-      min-width: 0; 
-    }
-    
-    .tl-div { 
-      margin-top: 22px; 
-      padding-top: 20px; 
-      border-top: 1px solid var(--border); 
-    }
-
-    /* ===== FOOTER ===== */
-    footer {
-      background: #020617; 
-      border-top: 1px solid rgba(59,130,246,0.12);
-      padding: 60px 0 30px; 
-      text-align: center; 
-      position: relative; 
-      overflow: hidden; 
-      width: 100%;
-    }
-    
-    footer::before { 
-      content: ''; 
-      position: absolute; 
-      top: 0; 
-      left: 0; 
-      right: 0; 
-      height: 1px; 
-      background: linear-gradient(90deg,transparent,#3B82F6,transparent); 
-      opacity: 0.45; 
-      pointer-events: none; 
-    }
-    
-    .ft-logo { 
-      width: 60px; 
-      height: 60px; 
-      margin: 0 auto 13px; 
-      filter: drop-shadow(0 0 13px rgba(59,130,246,0.32)); 
-    }
-    
-    .ft-nm { 
-      font-family: 'Syne', sans-serif; 
-      font-size: 0.76rem; 
-      font-weight: 700; 
-      letter-spacing: 5px; 
-      text-transform: uppercase; 
-      color: #64748B; 
-      margin-bottom: 5px; 
-    }
-    
-    .ft-tag { 
-      font-size: 0.82rem; 
-      color: #64748B; 
-      margin-bottom: 28px; 
-      opacity: 0.7; 
-    }
-    
-    .ft-soc { 
-      display: flex; 
-      justify-content: center; 
-      gap: 10px; 
-      margin-bottom: 28px; 
-      flex-wrap: wrap; 
-    }
-    
-    .ft-soc a {
-      width: 42px; 
-      height: 42px; 
-      border-radius: 10px; 
-      display: flex; 
-      align-items: center; 
-      justify-content: center;
-      color: #94A3B8; 
-      font-size: 1.05rem; 
-      background: rgba(59,130,246,0.06);
-      border: 1px solid rgba(59,130,246,0.13); 
-      transition: var(--t);
-    }
-    
-    .ft-soc a:hover { 
-      background: #3B82F6; 
-      color: #fff; 
-      transform: translateY(-4px); 
-      box-shadow: 0 8px 18px rgba(59,130,246,0.32); 
-      border-color: transparent; 
-    }
-    
-    .ft-div { 
-      width: 100px; 
-      height: 1px; 
-      background: rgba(148,163,184,0.1); 
-      margin: 0 auto 20px; 
-    }
-    
-    .ft-lnks { 
-      display: flex; 
-      flex-wrap: wrap; 
-      justify-content: center; 
-      gap: 5px 20px; 
-      margin-bottom: 20px; 
-    }
-    
-    .ft-lnks a { 
-      font-size: 0.75rem; 
-      color: #64748B; 
-      transition: color 0.25s; 
-      opacity: 0.7; 
-    }
-    
-    .ft-lnks a:hover { 
-      color: #3B82F6; 
-      opacity: 1; 
-    }
-    
-    .ft-badge { 
-      display: inline-flex; 
-      align-items: center; 
-      gap: 6px; 
-      font-size: 0.7rem; 
-      color: #64748B; 
-      background: rgba(59,130,246,0.06); 
-      border: 1px solid rgba(59,130,246,0.12); 
-      padding: 5px 14px; 
-      border-radius: 40px; 
-      margin-bottom: 16px; 
-    }
-    
-    .ft-badge i { 
-      color: #3B82F6; 
-    }
-    
-    .ft-copy { 
-      font-size: 0.7rem; 
-      color: #64748B; 
-      opacity: 0.38; 
-    }
-
-    /* ===== BACK TO TOP ===== */
-    #btt {
-      position: fixed; 
-      bottom: 22px; 
-      right: 22px; 
-      z-index: 800; 
-      width: 42px; 
-      height: 42px;
-      border-radius: 10px; 
-      background: #3B82F6; 
-      color: #fff; 
-      font-size: 0.88rem;
-      display: flex; 
-      align-items: center; 
-      justify-content: center; 
-      box-shadow: 0 8px 22px rgba(59,130,246,0.42);
-      transition: var(--t); 
-      opacity: 0; 
-      visibility: hidden; 
-      transform: translateY(12px);
-    }
-    
-    #btt.on { 
-      opacity: 1; 
-      visibility: visible; 
-      transform: translateY(0); 
-    }
-    
-    #btt:hover { 
-      background: #60A5FA; 
-      transform: translateY(-4px); 
-      box-shadow: 0 14px 28px rgba(59,130,246,0.5); 
-    }
-
-    /* ===== TOAST ===== */
-    #toast {
-      position: fixed; 
-      bottom: 22px; 
-      left: 50%; 
-      z-index: 9997; 
-      transform: translateX(-50%) translateY(20px);
-      background: #0a1628; 
-      color: #fff; 
-      font-family: 'Syne', sans-serif; 
-      font-size: 0.76rem;
-      font-weight: 700; 
-      letter-spacing: 0.5px; 
-      padding: 10px 22px; 
-      border-radius: 8px;
-      border: 1px solid rgba(59,130,246,0.24); 
-      box-shadow: 0 8px 28px rgba(0,0,0,0.4);
-      opacity: 0; 
-      transition: all 0.3s var(--ease); 
-      white-space: nowrap; 
-      pointer-events: none;
-    }
-    
-    #toast.on { 
-      opacity: 1; 
-      transform: translateX(-50%) translateY(0); 
-    }
-
-    /* ===== RESPONSIVE ===== */
-    @media (max-width: 1023px) {
-      .soc-grid { 
-        grid-template-columns: repeat(3,1fr); 
-      }
-      .about-grid { 
-        grid-template-columns: 1fr; 
-        gap: 36px; 
-      }
-      .gal-card:first-child { 
-        grid-row: unset; 
-        aspect-ratio: 4/5; 
-      }
-      .music-in { 
-        grid-template-columns: 1fr; 
-      }
-      .music-img { 
-        min-height: 240px; 
-        max-height: 300px; 
-      }
-      .music-img-ov { 
-        background: linear-gradient(to bottom, var(--navy) 0%, transparent 50%); 
-      }
-      .ct-grid { 
-        grid-template-columns: 1fr; 
-      }
-      .q-grid { 
-        grid-template-columns: 1fr 1fr; 
-      }
-      .tools-grid {
-        grid-template-columns: repeat(2, 1fr);
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+<title>Hajir | Muhaajir — Personal Website</title>
+<meta name="description" content="Website pribadi Hajir Muhaajir — fotografer, musisi, dan developer dari Bogor.">
+<meta name="author" content="Hajir Muhaajir">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    darkMode: 'class',
+    theme: {
+      extend: {
+        fontFamily: {
+          sans: ['DM Sans', 'sans-serif'],
+          syne: ['Syne', 'sans-serif'],
+          mono: ['JetBrains Mono', 'monospace'],
+        },
+        colors: {
+          accent: '#3B82F6',
+          'accent-dim': 'rgba(59,130,246,0.18)',
+          'accent-border': 'rgba(59,130,246,0.22)',
+          dark: {
+            bg: '#020617',
+            surface: '#0F172A',
+            surface2: '#0a1122',
+          }
+        }
       }
     }
+  }
+</script>
+<style>
+  :root {
+    --accent: #3B82F6;
+    --accent-glow: rgba(59,130,246,0.25);
+    --accent-dim: rgba(59,130,246,0.10);
+    --accent-border: rgba(59,130,246,0.22);
+    --e: cubic-bezier(0.4,0,0.2,1);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; overflow-x: hidden; }
+  body { overflow-x: hidden; max-width: 100%; }
+  ::selection { background: var(--accent); color: #fff; }
 
-    @media (max-width: 767px) {
-      .sec { 
-        padding: 58px 0; 
-      }
-      .wrap { 
-        padding: 0 16px; 
-      }
-      .burger { 
-        display: flex; 
-      }
-      .nav { 
-        display: none; 
-      }
-      .hdr-ctrl #clock { 
-        display: none; 
-      }
-      .hero { 
-        padding: 80px 0 0; 
-      }
-      .hero-btns { 
-        flex-direction: column; 
-        align-items: center; 
-        gap: 10px; 
-        padding-bottom: 60px; 
-      }
-      .btn-p, 
-      .btn-g { 
-        width: 100%; 
-        max-width: 260px; 
-        justify-content: center; 
-      }
-      .stats-row { 
-        grid-template-columns: 1fr 1fr; 
-      }
-      .gal-grid { 
-        grid-template-columns: 1fr; 
-      }
-      .gal-card { 
-        aspect-ratio: 3/2; 
-      }
-      .gal-card:first-child { 
-        aspect-ratio: 3/2; 
-        grid-row: unset; 
-      }
-      .music-txt { 
-        padding: 28px 22px; 
-      }
-      .m-btns { 
-        flex-direction: column; 
-      }
-      .m-btns .btn-p, 
-      .m-btns .btn-g { 
-        width: 100%; 
-        justify-content: center; 
-      }
-      .q-grid { 
-        grid-template-columns: 1fr; 
-      }
-      .tools-grid { 
-        grid-template-columns: 1fr; 
-        gap: 18px; 
-      }
-      .soc-grid { 
-        grid-template-columns: repeat(2,1fr); 
-      }
-      .ct-box { 
-        padding: 24px 18px; 
-      }
-      .ct-grid { 
-        gap: 16px; 
-      }
-      #btt { 
-        bottom: 16px; 
-        right: 16px; 
-        width: 38px; 
-        height: 38px; 
-        font-size: 0.82rem; 
-      }
-      .pw-txt p { 
-        display: none; 
-      }
-    }
+  /* Grid pattern for hero */
+  .grid-bg {
+    background-image: linear-gradient(rgba(59,130,246,0.08) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(59,130,246,0.08) 1px, transparent 1px);
+    background-size: 52px 52px;
+    mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 100%);
+    -webkit-mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 100%);
+  }
 
-    @media (max-width: 480px) {
-      .stats-row { 
-        grid-template-columns: 1fr; 
-      }
-      .logo-nm { 
-        display: none; 
-      }
-    }
+  /* Pulse dot */
+  .pulse-dot { animation: pulse-dot 2s ease-in-out infinite; }
+  @keyframes pulse-dot { 0%,100%{opacity:1;transform:scale(1);} 50%{opacity:0.4;transform:scale(0.7);} }
 
-    /* ===== GLOBAL OVERFLOW LOCK ===== */
-    html, 
-    body { 
-      overflow-x: hidden !important; 
-      max-width: 100% !important; 
-    }
-    
-    section, 
-    header, 
-    footer, 
-    .wrap, 
-    .music-wrap, 
-    .ct-grid, 
-    .q-grid, 
-    .soc-grid, 
-    .about-grid, 
-    .gal-grid, 
-    .stats-row, 
-    .music-in, 
-    .hero, 
-    nav { 
-      max-width: 100%; 
-      min-width: 0; 
-    }
-    
-    .about-grid > *, 
-    .ct-grid > *, 
-    .music-in > * { 
-      min-width: 0; 
-    }
-  </style>
+  /* Scroll indicator */
+  .scroll-line { animation: scroll-anim 1.6s ease-in-out infinite; }
+  @keyframes scroll-anim {
+    0%{transform:scaleY(0);transform-origin:top;opacity:0;}
+    45%{transform:scaleY(1);transform-origin:top;opacity:1;}
+    55%{transform:scaleY(1);transform-origin:bottom;opacity:1;}
+    100%{transform:scaleY(0);transform-origin:bottom;opacity:0;}
+  }
+
+  /* Ticker */
+  .ticker-track { animation: ticker 28s linear infinite; display: flex; gap: 40px; width: max-content; }
+  @keyframes ticker { from{transform:translateX(0);} to{transform:translateX(-50%);} }
+
+  /* Fade up reveal */
+  .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.7s var(--e), transform 0.7s var(--e); }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  /* Language switcher active state */
+  .lang-btn.active {
+    background: var(--accent) !important;
+    color: #fff !important;
+    border-color: var(--accent) !important;
+  }
+
+  /* Music iframe container */
+  .music-iframe-wrap {
+    position: relative;
+    width: 100%;
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid rgba(59,130,246,0.2);
+  }
+  .music-iframe-wrap iframe {
+    display: block;
+    width: 100%;
+    border: none;
+  }
+
+  /* Quote card hover */
+  .quote-card {
+    transition: transform 0.3s var(--e), box-shadow 0.3s var(--e), border-color 0.3s var(--e);
+  }
+  .quote-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(59,130,246,0.35) !important;
+  }
+
+  /* Tool card hover */
+  .tool-card {
+    transition: transform 0.35s var(--e), box-shadow 0.35s var(--e), border-color 0.35s var(--e);
+  }
+  .tool-card:hover {
+    transform: translateY(-6px);
+    border-color: rgba(59,130,246,0.4) !important;
+    box-shadow: 0 0 32px rgba(59,130,246,0.15) !important;
+  }
+
+  /* Contact link hover */
+  .contact-link {
+    transition: transform 0.3s var(--e), border-color 0.3s var(--e), box-shadow 0.3s var(--e);
+  }
+  .contact-link:hover {
+    transform: translateX(5px);
+    border-color: rgba(59,130,246,0.4) !important;
+    box-shadow: 0 0 20px rgba(59,130,246,0.12) !important;
+  }
+
+  /* Nav active */
+  .nav-link.active { color: #3B82F6 !important; }
+
+  /* Mobile menu open */
+  .hbg-open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+  .hbg-open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+  .hbg-open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+  /* Smooth btn */
+  .btn-primary {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: #3B82F6; color: #fff; font-weight: 600; font-size: 0.875rem;
+    padding: 12px 24px; border-radius: 10px; border: none; cursor: pointer;
+    transition: transform 0.25s var(--e), box-shadow 0.25s var(--e), filter 0.25s;
+    box-shadow: 0 8px 24px rgba(59,130,246,0.35);
+  }
+  .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 14px 36px rgba(59,130,246,0.45); filter: brightness(1.08); }
+  .btn-secondary {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: transparent; color: #94A3B8; font-weight: 600; font-size: 0.875rem;
+    padding: 12px 24px; border-radius: 10px; border: 1.5px solid rgba(148,163,184,0.25); cursor: pointer;
+    transition: all 0.25s var(--e);
+  }
+  .btn-secondary:hover { color: #F8FAFC; border-color: #3B82F6; background: rgba(59,130,246,0.08); transform: translateY(-3px); }
+
+  /* Profile pic circle */
+  .profile-ring {
+    box-shadow: 0 0 0 3px rgba(59,130,246,0.35), 0 0 32px rgba(59,130,246,0.18);
+  }
+
+  /* Tools icon box hover */
+  .tool-icon { transition: background 0.25s, box-shadow 0.25s; }
+  .tool-card:hover .tool-icon {
+    background: #3B82F6 !important;
+    box-shadow: 0 0 20px rgba(59,130,246,0.4);
+  }
+
+  /* Section label */
+  .section-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #3B82F6;
+  }
+
+  /* Accent line */
+  .accent-line {
+    width: 36px; height: 2px; background: #3B82F6;
+    border-radius: 2px; margin: 10px auto 16px;
+    box-shadow: 0 0 8px rgba(59,130,246,0.5);
+  }
+
+  /* Stagger delays for reveal children */
+  .stagger-1 { transition-delay: 0ms !important; }
+  .stagger-2 { transition-delay: 80ms !important; }
+  .stagger-3 { transition-delay: 160ms !important; }
+  .stagger-4 { transition-delay: 240ms !important; }
+  .stagger-5 { transition-delay: 320ms !important; }
+
+  /* Cookie banner */
+  #cookie-banner {
+    transition: transform 0.5s var(--e), opacity 0.5s;
+  }
+</style>
 </head>
-<body>
+<body class="dark font-sans bg-dark-bg text-slate-100">
 
-<!-- LOADER -->
-<div id="loader">
-  <img src="https://i.postimg.cc/Kvg50f5n/IMG-20250812-164118-putih.png" alt="Logo Muhaajir">
-  <div class="loader-ring"></div>
-  <span class="loader-lbl">Loading</span>
-</div>
+<!-- ══════════════ NAVBAR ══════════════ -->
+<header id="nav" class="fixed top-0 left-0 right-0 z-50 h-16 border-b border-slate-800/60 backdrop-blur-xl bg-dark-bg/85">
+  <div class="max-w-3xl mx-auto px-5 sm:px-8 h-full flex items-center justify-between gap-4">
 
-<!-- HEADER -->
-<header id="hdr">
-  <div class="wrap hdr-in">
-    <a href="#home" class="logo">
-      <img src="https://i.postimg.cc/Kvg50f5n/IMG-20250812-164118-putih.png" alt="Muhaajir Logo">
-      <span class="logo-nm">Muha<em>ajir</em></span>
+    <!-- Logo -->
+    <a href="#hero" class="flex items-center gap-2.5 flex-shrink-0">
+      <img src="https://i.postimg.cc/Kvg50f5n/IMG-20250812-164118-putih.png"
+           alt="Logo Hajir" class="w-8 h-8 rounded-lg object-contain" style="filter:drop-shadow(0 0 8px rgba(59,130,246,0.4))" loading="lazy">
+      <span class="font-syne font-extrabold text-lg tracking-tight">HAJIR<span class="text-blue-400">.</span></span>
     </a>
-    <nav class="nav" id="deskNav">
-      <a href="#home" class="act">Home</a>
-      <a href="#about">Tentang</a>
-      <a href="#music">Musik</a>
-      <a href="#social">Sosial</a>
-      <a href="#contact">Kontak</a>
+
+    <!-- Desktop nav -->
+    <nav id="desktop-nav" class="hidden md:flex items-center gap-1">
+      <a href="#about"   class="nav-link text-sm font-medium text-slate-400 hover:text-white px-3 py-1.5 rounded-lg hover:bg-slate-800/60 transition-all duration-200" data-section="about"></a>
+      <a href="#music"   class="nav-link text-sm font-medium text-slate-400 hover:text-white px-3 py-1.5 rounded-lg hover:bg-slate-800/60 transition-all duration-200" data-section="music"></a>
+      <a href="#quotes"  class="nav-link text-sm font-medium text-slate-400 hover:text-white px-3 py-1.5 rounded-lg hover:bg-slate-800/60 transition-all duration-200" data-section="quotes"></a>
+      <a href="#tools"   class="nav-link text-sm font-medium text-slate-400 hover:text-white px-3 py-1.5 rounded-lg hover:bg-slate-800/60 transition-all duration-200" data-section="tools"></a>
+      <a href="#contact" class="nav-link text-sm font-medium text-slate-400 hover:text-white px-3 py-1.5 rounded-lg hover:bg-slate-800/60 transition-all duration-200" data-section="contact"></a>
     </nav>
-    <div class="hdr-ctrl">
-      <div id="clock">00:00</div>
-      <button class="ico-btn" id="themeBtn" aria-label="Toggle dark mode"><i class="fas fa-moon"></i></button>
-      <button class="burger" id="burger" aria-label="Menu" aria-expanded="false">
-        <span></span><span></span><span></span>
+
+    <!-- Controls -->
+    <div class="flex items-center gap-2 flex-shrink-0">
+      <!-- Language switcher -->
+      <div class="flex items-center rounded-lg border border-slate-700/60 overflow-hidden" style="height:32px;">
+        <button id="btn-id" class="lang-btn active px-3 text-xs font-mono font-bold transition-all"
+                onclick="setLang('id')" style="height:100%;border:none;cursor:pointer;background:transparent;color:#94A3B8;">ID</button>
+        <div class="w-px bg-slate-700/60 h-4"></div>
+        <button id="btn-en" class="lang-btn px-3 text-xs font-mono font-bold transition-all"
+                onclick="setLang('en')" style="height:100%;border:none;cursor:pointer;background:transparent;color:#94A3B8;">EN</button>
+      </div>
+
+      <!-- Hamburger -->
+      <button id="hbg-btn" aria-label="Menu" aria-expanded="false"
+              class="md:hidden flex flex-col justify-center gap-[5px] w-9 h-9 p-2 rounded-lg hover:bg-slate-800 transition-colors">
+        <span class="block h-[1.5px] bg-slate-400 rounded transition-all duration-300"></span>
+        <span class="block h-[1.5px] bg-slate-400 rounded transition-all duration-300"></span>
+        <span class="block h-[1.5px] bg-slate-400 rounded transition-all duration-300"></span>
       </button>
     </div>
   </div>
-  <nav class="mnav" id="mNav">
-    <a href="#home">Home</a>
-    <a href="#about">Tentang</a>
-    <a href="#music">Musik</a>
-    <a href="#social">Sosial</a>
-    <a href="#contact">Kontak</a>
+
+  <!-- Mobile nav -->
+  <nav id="mobile-nav" class="hidden md:hidden border-t border-slate-800/60 bg-dark-bg/95 backdrop-blur-xl px-5 py-3 flex-col gap-1">
+    <a href="#about"   class="mobile-nav-link text-sm font-medium text-slate-400 hover:text-white px-4 py-3 rounded-xl hover:bg-slate-800/60 transition-all border border-transparent hover:border-slate-700/50 block" data-section="about"></a>
+    <a href="#music"   class="mobile-nav-link text-sm font-medium text-slate-400 hover:text-white px-4 py-3 rounded-xl hover:bg-slate-800/60 transition-all border border-transparent hover:border-slate-700/50 block" data-section="music"></a>
+    <a href="#quotes"  class="mobile-nav-link text-sm font-medium text-slate-400 hover:text-white px-4 py-3 rounded-xl hover:bg-slate-800/60 transition-all border border-transparent hover:border-slate-700/50 block" data-section="quotes"></a>
+    <a href="#tools"   class="mobile-nav-link text-sm font-medium text-slate-400 hover:text-white px-4 py-3 rounded-xl hover:bg-slate-800/60 transition-all border border-transparent hover:border-slate-700/50 block" data-section="tools"></a>
+    <a href="#contact" class="mobile-nav-link text-sm font-medium text-slate-400 hover:text-white px-4 py-3 rounded-xl hover:bg-slate-800/60 transition-all border border-transparent hover:border-slate-700/50 block" data-section="contact"></a>
+    <a href="https://github.com/hajirmuhaajir" target="_blank" rel="noopener noreferrer"
+       class="text-sm font-medium text-slate-400 hover:text-white px-4 py-3 rounded-xl hover:bg-slate-800/60 transition-all border border-transparent hover:border-slate-700/50 flex items-center gap-2">
+      <i class="fab fa-github text-xs"></i> GitHub
+    </a>
   </nav>
 </header>
 
-<!-- HERO -->
-<section class="hero" id="home">
-  <div class="hero-body" data-aos="fade-up">
-    <span class="hero-eye">Portfolio · Fotografi · Musik</span>
-    <h1>Muhaajir</h1>
-    <p>Mengabadikan momen, menciptakan melodi — dari Bogor untuk dunia.</p>
-    <div class="hero-btns">
-      <a href="#social" class="btn-p"><i class="fas fa-compass"></i> Jelajahi Karya</a>
-      <a href="#contact" class="btn-g"><i class="fas fa-paper-plane"></i> Hubungi Saya</a>
-    </div>
-  </div>
-  <div class="mq-strip">
-    <div class="mq-track">
-      <span>Fotografi</span><span class="d">✦</span><span>Musik</span><span class="d">✦</span>
-      <span>Kreativitas</span><span class="d">✦</span><span>Seni Visual</span><span class="d">✦</span>
-      <span>Kolaborasi</span><span class="d">✦</span><span>Bogor Indonesia</span><span class="d">✦</span>
-      <span>Fotografi</span><span class="d">✦</span><span>Musik</span><span class="d">✦</span>
-      <span>Kreativitas</span><span class="d">✦</span><span>Seni Visual</span><span class="d">✦</span>
-      <span>Kolaborasi</span><span class="d">✦</span><span>Bogor Indonesia</span><span class="d">✦</span>
-    </div>
-  </div>
-</section>
+<!-- ══════════════ HERO ══════════════ -->
+<section id="hero" class="relative min-h-svh flex flex-col items-center justify-center text-center px-5 pt-24 pb-20 overflow-hidden bg-dark-bg">
+  <!-- Grid bg -->
+  <div class="grid-bg absolute inset-0 pointer-events-none"></div>
+  <!-- Orbs -->
+  <div class="absolute pointer-events-none rounded-full" style="width:500px;height:500px;left:-150px;top:-100px;background:radial-gradient(circle,rgba(59,130,246,0.10),transparent 70%);filter:blur(80px);animation:of 8s ease-in-out infinite;"></div>
+  <div class="absolute pointer-events-none rounded-full" style="width:400px;height:400px;right:-100px;bottom:80px;background:radial-gradient(circle,rgba(59,130,246,0.07),transparent 70%);filter:blur(80px);animation:of 8s ease-in-out 4s infinite;"></div>
+  <style>@keyframes of{0%,100%{transform:translateY(0) scale(1);}50%{transform:translateY(-18px) scale(1.04);}}</style>
 
-<!-- ABOUT -->
-<section class="sec" id="about">
-  <div class="wrap">
-    <div class="sh" data-aos="fade-up">
-      <h2>Tentang Saya</h2>
-      <div class="sh-ln"></div>
+  <div class="relative z-10 max-w-2xl">
+    <!-- Eyebrow -->
+    <div class="inline-flex items-center gap-2 font-mono text-xs tracking-widest text-blue-400 bg-blue-500/10 border border-blue-500/20 px-4 py-1.5 rounded-full mb-7"
+         style="animation:fadeUp 0.7s 0.3s both;">
+      <span class="w-1.5 h-1.5 rounded-full bg-blue-400 pulse-dot"></span>
+      hajirmuhaajir.github.io
     </div>
-    <div class="about-grid">
-      <div data-aos="fade-right">
-        <p class="about-bio">Saya Muhaajir, seorang pencinta fotografi dan musik dari Bogor. Setiap foto adalah cerita, setiap nada adalah emosi yang tak terucap. Melalui karya, saya ingin berbagi perspektif dan menginspirasi siapapun yang menyaksikannya.</p>
-        <div class="stats-row">
-          <div class="stat-bx">
-            <div class="stat-lbl">Tempat Lahir</div>
-            <div class="stat-val"><span class="loc-link" id="birthplace"><i class="fas fa-map-pin" style="font-size:0.68rem;"></i> Bogor, ID</span></div>
-          </div>
-          <div class="stat-bx">
-            <div class="stat-lbl">Tinggi / Berat</div>
-            <div class="stat-val">172 cm / 73 kg</div>
-          </div>
-          <div class="stat-bx">
-            <div class="stat-lbl">Ukuran Sepatu</div>
-            <div class="stat-val">EUR 43 / US 10</div>
-          </div>
-        </div>
-        <p style="font-size:0.86rem; color:var(--txt2); line-height:1.7;">Bergabunglah dalam perjalanan kreatif ini — fotografi, musik, dan seni digital menjadi bahasa sehari-hari saya.</p>
-      </div>
-      <div data-aos="fade-left">
-        <div class="gal-grid">
-          <div class="gal-card" data-src="https://i.postimg.cc/vBsDNgKc/IMG-20250216-091226.png" data-cap="Kreativitas Visual — Potret artistik Muhaajir">
-            <img src="https://i.postimg.cc/vBsDNgKc/IMG-20250216-091226.png" alt="Kreativitas Visual" loading="lazy">
-            <div class="gal-ov"><h4>Kreativitas Visual</h4><p><i class="fas fa-expand-alt"></i> Klik untuk zoom</p></div>
-          </div>
-          <div class="gal-card" data-src="https://i.postimg.cc/50BQ4qzw/20250408-145830-0000.png" data-cap="Music Session — Muhaajir dengan gitar">
-            <img src="https://i.postimg.cc/50BQ4qzw/20250408-145830-0000.png" alt="Music Session" loading="lazy">
-            <div class="gal-ov"><h4>Music Session</h4><p><i class="fas fa-expand-alt"></i> Klik untuk zoom</p></div>
-          </div>
-          <div class="gal-card" data-src="https://i.postimg.cc/wj1tydJL/IMG-20251225-161503.jpg" data-cap="Resonansi Dalam Diam — Cover album">
-            <img src="https://i.postimg.cc/wj1tydJL/IMG-20251225-161503.jpg" alt="Resonansi Dalam Diam" loading="lazy">
-            <div class="gal-ov"><h4>Resonansi Dalam Diam</h4><p><i class="fas fa-expand-alt"></i> Klik untuk zoom</p></div>
-          </div>
-          <div class="gal-card" data-src="https://i.postimg.cc/QdTLpvCk/IMG-20251225-153959.jpg" data-cap="Fragmen Suara — Cover album">
-            <img src="https://i.postimg.cc/QdTLpvCk/IMG-20251225-153959.jpg" alt="Fragmen Suara" loading="lazy">
-            <div class="gal-ov"><h4>Fragmen Suara</h4><p><i class="fas fa-expand-alt"></i> Klik untuk zoom</p></div>
-          </div>
-        </div>
-      </div>
+    <style>@keyframes fadeUp{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}</style>
+
+    <h1 class="font-syne font-extrabold leading-tight tracking-tighter mb-5"
+        style="font-size:clamp(2.6rem,9vw,5.5rem);background:linear-gradient(160deg,#F8FAFC 0%,#94A3B8 50%,#3B82F6 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:fadeUp 0.8s 0.5s both;">
+      <span data-i18n="hero_title_1">Hajir</span><br>
+      <span data-i18n="hero_title_2">Muhaajir</span>
+    </h1>
+    <p class="text-slate-400 mb-10 leading-relaxed" style="font-size:clamp(0.95rem,2vw,1.1rem);animation:fadeUp 0.8s 0.7s both;" data-i18n="hero_desc">
+      Fotografer, musisi, dan developer dari Bogor yang berkarya lewat seni digital dan tools inovatif.
+    </p>
+    <div class="flex flex-col sm:flex-row gap-3 justify-center items-center" style="animation:fadeUp 0.8s 0.9s both;">
+      <a href="#about" class="btn-primary w-full sm:w-auto justify-center">
+        <i class="fas fa-user text-xs"></i>
+        <span data-i18n="hero_cta1">Tentang Saya</span>
+      </a>
+      <a href="#contact" class="btn-secondary w-full sm:w-auto justify-center">
+        <i class="fas fa-paper-plane text-xs"></i>
+        <span data-i18n="hero_cta2">Hubungi Saya</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- Scroll indicator -->
+  <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1.5 hidden sm:flex" style="animation:fadeUp 1s 1.5s both;">
+    <div class="w-px h-12 bg-gradient-to-b from-blue-400 to-transparent scroll-line"></div>
+    <span class="font-mono text-[9px] tracking-widest text-slate-600 uppercase">scroll</span>
+  </div>
+
+  <!-- Ticker -->
+  <div class="absolute bottom-0 left-0 right-0 border-t border-slate-800/60 bg-blue-500/5 py-2.5 overflow-hidden">
+    <div class="ticker-track font-mono text-[10px] tracking-widest uppercase text-slate-600">
+      <span>Fotografer</span><span class="text-blue-400/40">✦</span>
+      <span>Musisi</span><span class="text-blue-400/40">✦</span>
+      <span>Developer</span><span class="text-blue-400/40">✦</span>
+      <span>Privacy First</span><span class="text-blue-400/40">✦</span>
+      <span>Bogor</span><span class="text-blue-400/40">✦</span>
+      <span>Open Web</span><span class="text-blue-400/40">✦</span>
+      <span>GitHub Pages</span><span class="text-blue-400/40">✦</span>
+      <span>Creative Tech</span><span class="text-blue-400/40">✦</span>
+      <span>Fotografer</span><span class="text-blue-400/40">✦</span>
+      <span>Musisi</span><span class="text-blue-400/40">✦</span>
+      <span>Developer</span><span class="text-blue-400/40">✦</span>
+      <span>Privacy First</span><span class="text-blue-400/40">✦</span>
+      <span>Bogor</span><span class="text-blue-400/40">✦</span>
+      <span>Open Web</span><span class="text-blue-400/40">✦</span>
+      <span>GitHub Pages</span><span class="text-blue-400/40">✦</span>
+      <span>Creative Tech</span><span class="text-blue-400/40">✦</span>
     </div>
   </div>
 </section>
 
-<!-- LIGHTBOX -->
-<div id="lb">
-  <span id="lb-x">&times;</span>
-  <img id="lb-img" src="" alt="">
-  <div id="lb-cap"></div>
-</div>
+<!-- ══════════════ ABOUT ══════════════ -->
+<section id="about" class="py-24 bg-slate-900/40">
+  <div class="max-w-3xl mx-auto px-5 sm:px-8">
 
-<!-- MUSIC -->
-<section class="sec sec-dark" id="music">
-  <div class="wrap">
-    <div class="sh" data-aos="fade-up">
-      <h2 style="color:#fff;">Musik &amp; Tools</h2>
-      <div class="sh-ln"></div>
-      <p style="color:#94A3B8;">Dengarkan karya musik dan gunakan tools yang tersedia</p>
+    <!-- Header -->
+    <div class="text-center mb-14 reveal">
+      <div class="section-tag mb-2" data-i18n="about_tag">// Tentang Saya</div>
+      <div class="accent-line"></div>
+      <h2 class="font-syne font-extrabold text-3xl sm:text-4xl tracking-tight text-white mb-3" data-i18n="about_title">Siapa Hajir?</h2>
+      <p class="text-slate-400 text-sm leading-relaxed max-w-md mx-auto" data-i18n="about_subtitle">Fotografer, musisi, dan developer yang berkarya lewat seni digital.</p>
     </div>
-    <div class="music-wrap" data-aos="fade-up">
-      <div class="music-in">
-        <div class="music-txt">
-          <div class="m-eye">🎵 Music Player</div>
-          <h3>Listen to<br>My Music</h3>
-          <p>Dari <em style="color:#60A5FA;font-style:normal;">Resonansi Dalam Diam</em> hingga <em style="color:#60A5FA;font-style:normal;">Fragmen Suara</em> — setiap nada bercerita tentang perasaan yang tak terucap.</p>
-          <div class="m-btns">
-            <a href="https://hajirmuhaajir.github.io/muhaajirmusicplayers/" class="btn-p" target="_blank" rel="noopener noreferrer"><i class="fas fa-play"></i> Buka Music Player</a>
+
+    <!-- Profile card — single column -->
+    <div class="reveal bg-slate-800/40 border border-slate-700/40 rounded-2xl p-8 sm:p-10">
+      <!-- Profile photo + name -->
+      <div class="flex flex-col items-center mb-8">
+        <div class="w-24 h-24 sm:w-28 sm:h-28 rounded-full overflow-hidden mb-4 profile-ring">
+          <img src="https://i.postimg.cc/vBsDNgKc/IMG-20250216-091226.png"
+               alt="Foto profil Hajir" class="w-full h-full object-cover" loading="lazy">
+        </div>
+        <h3 class="font-syne font-bold text-xl text-white mb-1">Hajir Muhaajir</h3>
+        <p class="font-mono text-xs text-blue-400 tracking-widest" data-i18n="about_role">Fotografer · Musisi · Developer</p>
+      </div>
+
+      <!-- Tags -->
+      <div class="flex flex-wrap justify-center gap-2 mb-6">
+        <span class="font-mono text-xs text-blue-400 bg-blue-500/10 border border-blue-500/20 px-3 py-1 rounded-full" data-i18n="tag_photographer">Fotografer</span>
+        <span class="font-mono text-xs text-blue-400 bg-blue-500/10 border border-blue-500/20 px-3 py-1 rounded-full" data-i18n="tag_musician">Musisi</span>
+        <span class="font-mono text-xs text-blue-400 bg-blue-500/10 border border-blue-500/20 px-3 py-1 rounded-full" data-i18n="tag_developer">Developer</span>
+        <span class="font-mono text-xs text-blue-400 bg-blue-500/10 border border-blue-500/20 px-3 py-1 rounded-full">Bogor</span>
+      </div>
+
+      <!-- Bio paragraphs -->
+      <div class="space-y-4 text-slate-400 text-sm sm:text-base leading-relaxed max-w-xl mx-auto text-center">
+        <p data-i18n="about_p1">Saya Muhaajir — seorang pencinta fotografi dan musik dari Bogor. Setiap foto adalah cerita, setiap nada adalah emosi yang tak terucap.</p>
+        <p data-i18n="about_p2">Melalui karya, saya ingin berbagi perspektif dan menginspirasi siapapun yang menyaksikannya. Bergabunglah dalam perjalanan kreatif ini.</p>
+        <p data-i18n="about_p3">Fotografi, musik, dan seni digital menjadi bahasa sehari-hari saya. Saya juga membangun tools browser-based yang ringan dan privasi-first.</p>
+      </div>
+
+      <!-- CTA -->
+      <div class="flex justify-center mt-8">
+        <a href="#music" class="btn-primary">
+          <i class="fas fa-music text-xs"></i>
+          <span data-i18n="about_cta">Dengarkan Musik</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Stats row — still single column visually, horizontal info list -->
+    <div class="reveal mt-6 grid grid-cols-1 sm:grid-cols-2 gap-3">
+      <div class="flex items-center gap-4 px-5 py-4 bg-slate-800/40 border border-slate-700/40 rounded-xl hover:border-blue-500/30 transition-colors contact-link">
+        <div class="w-9 h-9 rounded-lg bg-blue-500/10 border border-blue-500/20 flex items-center justify-center text-blue-400 text-sm flex-shrink-0">
+          <i class="fas fa-code"></i>
+        </div>
+        <div>
+          <div class="font-mono text-[10px] tracking-widest text-slate-600 uppercase mb-0.5" data-i18n="stat_approach">Pendekatan</div>
+          <div class="text-sm font-semibold text-white">Single-File HTML Apps</div>
+        </div>
+      </div>
+      <div class="flex items-center gap-4 px-5 py-4 bg-slate-800/40 border border-slate-700/40 rounded-xl hover:border-blue-500/30 transition-colors contact-link">
+        <div class="w-9 h-9 rounded-lg bg-blue-500/10 border border-blue-500/20 flex items-center justify-center text-blue-400 text-sm flex-shrink-0">
+          <i class="fas fa-shield-halved"></i>
+        </div>
+        <div>
+          <div class="font-mono text-[10px] tracking-widest text-slate-600 uppercase mb-0.5" data-i18n="stat_philosophy">Filosofi</div>
+          <div class="text-sm font-semibold text-white">Privacy First · Zero Backend</div>
+        </div>
+      </div>
+      <div class="flex items-center gap-4 px-5 py-4 bg-slate-800/40 border border-slate-700/40 rounded-xl hover:border-blue-500/30 transition-colors contact-link">
+        <div class="w-9 h-9 rounded-lg bg-blue-500/10 border border-blue-500/20 flex items-center justify-center text-blue-400 text-sm flex-shrink-0">
+          <i class="fab fa-github"></i>
+        </div>
+        <div>
+          <div class="font-mono text-[10px] tracking-widest text-slate-600 uppercase mb-0.5">GitHub</div>
+          <div class="text-sm font-semibold text-white">hajirmuhaajir</div>
+        </div>
+      </div>
+      <div class="flex items-center gap-4 px-5 py-4 bg-slate-800/40 border border-slate-700/40 rounded-xl hover:border-blue-500/30 transition-colors contact-link">
+        <div class="w-9 h-9 rounded-lg bg-blue-500/10 border border-blue-500/20 flex items-center justify-center text-blue-400 text-sm flex-shrink-0">
+          <i class="fas fa-map-marker-alt"></i>
+        </div>
+        <div>
+          <div class="font-mono text-[10px] tracking-widest text-slate-600 uppercase mb-0.5" data-i18n="stat_location">Lokasi</div>
+          <div class="text-sm font-semibold text-white">Bogor, Indonesia</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══════════════ MUSIC ══════════════ -->
+<section id="music" class="py-24 bg-dark-bg">
+  <div class="max-w-3xl mx-auto px-5 sm:px-8">
+
+    <!-- Header -->
+    <div class="text-center mb-12 reveal">
+      <div class="section-tag mb-2" data-i18n="music_tag">// Musik</div>
+      <div class="accent-line"></div>
+      <h2 class="font-syne font-extrabold text-3xl sm:text-4xl tracking-tight text-white mb-3" data-i18n="music_title">Dengarkan Musik Saya</h2>
+      <p class="text-slate-400 text-sm leading-relaxed max-w-md mx-auto" data-i18n="music_subtitle">Dari Resonansi Dalam Diam hingga Fragmen Suara — setiap nada bercerita tentang perasaan yang tak terucap.</p>
+    </div>
+
+    <!-- Description card -->
+    <div class="reveal bg-slate-800/40 border border-slate-700/40 rounded-2xl p-6 mb-6">
+      <div class="font-mono text-xs text-blue-400 tracking-widest mb-3" data-i18n="music_player_label">🎵 Music Player — Muhaajir</div>
+      <p class="text-slate-400 text-sm leading-relaxed mb-4" data-i18n="music_player_desc">
+        Player musik interaktif dengan koleksi lengkap karya Hajir Muhaajir. Nikmati album <strong class="text-blue-400">Resonansi Dalam Diam</strong> dan <strong class="text-blue-400">Fragmen Suara</strong> langsung di browser kamu.
+      </p>
+      <p class="text-slate-500 text-xs font-mono" data-i18n="music_player_note">* Player ditampilkan dalam Bahasa Indonesia.</p>
+    </div>
+
+    <!-- Iframe embed — the actual music player -->
+    <div class="reveal music-iframe-wrap shadow-2xl" style="box-shadow:0 0 60px rgba(59,130,246,0.10);">
+      <iframe
+        src="https://hajirmuhaajir.github.io/muhaajir-music"
+        title="Muhaajir Music Player"
+        loading="lazy"
+        allow="autoplay"
+        style="height:600px;"
+        class="rounded-2xl">
+      </iframe>
+    </div>
+
+    <!-- Fallback link -->
+    <div class="reveal text-center mt-5">
+      <a href="https://hajirmuhaajir.github.io/muhaajir-music" target="_blank" rel="noopener noreferrer"
+         class="inline-flex items-center gap-2 text-xs font-mono text-blue-400 hover:text-blue-300 transition-colors">
+        <i class="fas fa-external-link-alt text-[10px]"></i>
+        <span data-i18n="music_open_link">Buka di tab baru jika player tidak muncul</span>
+      </a>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══════════════ QUOTES ══════════════ -->
+<section id="quotes" class="py-24 bg-slate-900/40">
+  <div class="max-w-3xl mx-auto px-5 sm:px-8">
+
+    <!-- Header -->
+    <div class="text-center mb-12 reveal">
+      <div class="section-tag mb-2" data-i18n="quotes_tag">// Kutipan Inspiratif</div>
+      <div class="accent-line"></div>
+      <h2 class="font-syne font-extrabold text-3xl sm:text-4xl tracking-tight text-white mb-3" data-i18n="quotes_title">Kata-Kata yang Menginspirasi</h2>
+      <p class="text-slate-400 text-sm leading-relaxed max-w-md mx-auto" data-i18n="quotes_subtitle">Kumpulan kutipan dari para pemikir dan kreator yang menginspirasi perjalanan saya.</p>
+    </div>
+
+    <!-- Quote cards — vertical stack single column -->
+    <div class="space-y-4">
+
+      <div class="reveal quote-card bg-slate-800/40 border border-slate-700/40 rounded-2xl p-7 relative overflow-hidden">
+        <div class="absolute top-1 left-4 text-6xl font-serif text-blue-400/8 leading-none select-none">"</div>
+        <p class="italic text-slate-300 text-base leading-relaxed mb-4 relative z-10" data-i18n="q1_text">"Kamu tidak mengambil sebuah foto, kamu membuatnya."</p>
+        <div class="font-syne text-sm font-bold text-white" data-i18n="q1_author">— Ansel Adams, Fotografer</div>
+      </div>
+
+      <div class="reveal quote-card bg-slate-800/40 border border-slate-700/40 rounded-2xl p-7 relative overflow-hidden">
+        <div class="absolute top-1 left-4 text-6xl font-serif text-blue-400/8 leading-none select-none">"</div>
+        <p class="italic text-slate-300 text-base leading-relaxed mb-4 relative z-10" data-i18n="q2_text">"Musik adalah bahasa universal umat manusia."</p>
+        <div class="font-syne text-sm font-bold text-white" data-i18n="q2_author">— Henry Wadsworth Longfellow, Penyair</div>
+      </div>
+
+      <div class="reveal quote-card bg-slate-800/40 border border-slate-700/40 rounded-2xl p-7 relative overflow-hidden">
+        <div class="absolute top-1 left-4 text-6xl font-serif text-blue-400/8 leading-none select-none">"</div>
+        <p class="italic text-slate-300 text-base leading-relaxed mb-4 relative z-10" data-i18n="q3_text">"Desain bukan sekadar tampilan, tapi bagaimana sesuatu bekerja."</p>
+        <div class="font-syne text-sm font-bold text-white" data-i18n="q3_author">— Steve Jobs, Apple Co-Founder</div>
+      </div>
+
+      <div class="reveal quote-card bg-slate-800/40 border border-slate-700/40 rounded-2xl p-7 relative overflow-hidden">
+        <div class="absolute top-1 left-4 text-6xl font-serif text-blue-400/8 leading-none select-none">"</div>
+        <p class="italic text-slate-300 text-base leading-relaxed mb-4 relative z-10" data-i18n="q4_text">"Evolusi seringkali adalah kunci, ketika arah yang baik sudah ditetapkan."</p>
+        <div class="font-syne text-sm font-bold text-white" data-i18n="q4_author">— Adrian Newey, F1 Designer</div>
+      </div>
+
+      <div class="reveal quote-card bg-slate-800/40 border border-slate-700/40 rounded-2xl p-7 relative overflow-hidden">
+        <div class="absolute top-1 left-4 text-6xl font-serif text-blue-400/8 leading-none select-none">"</div>
+        <p class="italic text-slate-300 text-base leading-relaxed mb-4 relative z-10" data-i18n="q5_text">"Kesederhanaan adalah kemewahan tertinggi."</p>
+        <div class="font-syne text-sm font-bold text-white" data-i18n="q5_author">— Coco Chanel, Fashion Designer</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ TOOLS ══════════════ -->
+<section id="tools" class="py-24 bg-dark-bg">
+  <div class="max-w-3xl mx-auto px-5 sm:px-8">
+
+    <!-- Header -->
+    <div class="text-center mb-14 reveal">
+      <div class="section-tag mb-2" data-i18n="tools_tag">// Tools & Peralatan</div>
+      <div class="accent-line"></div>
+      <h2 class="font-syne font-extrabold text-3xl sm:text-4xl tracking-tight text-white mb-3" data-i18n="tools_title">Tools yang Saya Buat</h2>
+      <p class="text-slate-400 text-sm leading-relaxed max-w-md mx-auto" data-i18n="tools_subtitle">Setiap tool dibangun ringan, cepat, privasi-first, dan tanpa server. Semua berjalan 100% di browser.</p>
+    </div>
+
+    <!-- Tool cards — single column vertical stack -->
+    <div class="space-y-4">
+
+      <div class="reveal tool-card bg-slate-800/40 border border-slate-700/40 rounded-2xl p-7">
+        <div class="flex items-start gap-5">
+          <div class="tool-icon w-12 h-12 rounded-xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center text-2xl flex-shrink-0">🎵</div>
+          <div class="flex-1 min-w-0">
+            <div class="font-mono text-[10px] tracking-widest text-blue-400 uppercase mb-1">LRC Generator</div>
+            <h3 class="font-syne font-bold text-lg text-white mb-2">HajirSync</h3>
+            <p class="text-slate-400 text-sm leading-relaxed mb-4" data-i18n="tool1_desc">Generator lirik LRC berbasis browser dengan visualizer gelombang audio Web Audio API. Sinkronisasi lirik real-time, ekspor file LRC instan, antarmuka bilingual (ID/EN).</p>
+            <div class="flex flex-wrap gap-2 mb-5">
+              <span class="font-mono text-[10px] text-blue-400 bg-blue-500/10 border border-blue-500/20 px-2.5 py-1 rounded-full">Web Audio API</span>
+              <span class="font-mono text-[10px] text-blue-400 bg-blue-500/10 border border-blue-500/20 px-2.5 py-1 rounded-full">LRC Export</span>
+              <span class="font-mono text-[10px] text-blue-400 bg-blue-500/10 border border-blue-500/20 px-2.5 py-1 rounded-full">Bilingual UI</span>
+            </div>
+            <a href="https://hajirmuhaajir.github.io/hajirsync" target="_blank" rel="noopener noreferrer"
+               class="btn-primary text-sm py-2.5 px-5" style="font-size:0.8rem;padding:10px 18px;">
+              <span data-i18n="tool_open">Buka Tool</span>
+              <i class="fas fa-arrow-up-right-from-square text-[10px]"></i>
+            </a>
           </div>
         </div>
-        <div class="music-img">
-          <div class="music-img-ov"></div>
-          <img src="https://i.postimg.cc/Zq9rSdjc/Purple-Modern-Relaxing-Beat-Youtube-Channel-Art-20250408-144518-0000.png" alt="Music Player" loading="lazy">
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- QUOTES -->
-<section class="sec" id="quotes">
-  <div class="wrap">
-    <div class="sh" data-aos="fade-up">
-      <h2>Kutipan Inspiratif</h2>
-      <div class="sh-ln"></div>
-    </div>
-    <div class="q-grid">
-      <div class="q-card" data-aos="fade-up" data-aos-delay="50"><p>"You don't take a photograph, you make it."</p><div class="q-auth"><a href="https://en.wikipedia.org/wiki/Ansel_Adams" target="_blank" rel="noopener noreferrer">— Ansel Adams</a></div></div>
-      <div class="q-card" data-aos="fade-up" data-aos-delay="100"><p>"Music is the universal language of mankind."</p><div class="q-auth"><a href="https://en.wikipedia.org/wiki/Henry_Wadsworth_Longfellow" target="_blank" rel="noopener noreferrer">— Henry Wadsworth Longfellow</a></div></div>
-      <div class="q-card" data-aos="fade-up" data-aos-delay="150"><p>"Design is not just how it looks, but how it works."</p><div class="q-auth"><a href="https://en.wikipedia.org/wiki/Steve_Jobs" target="_blank" rel="noopener noreferrer">— Steve Jobs</a></div></div>
-      <div class="q-card" data-aos="fade-up" data-aos-delay="200"><p>"Evolution is often the key once the spark of a good direction has been set."</p><div class="q-auth"><a href="https://en.wikipedia.org/wiki/Adrian_Newey" target="_blank" rel="noopener noreferrer">— Adrian Newey</a></div></div>
-    </div>
-  </div>
-</section>
-
-<!-- TOOLS SECTION (MUHAJIR SUITE) -->
-<section class="sec" id="tools" style="background: var(--off); transition: background 0.3s;">
-  <div class="wrap">
-    <div class="sh" data-aos="fade-up">
-      <h2>🚀 Muhaajir Tools Suite</h2>
-      <div class="sh-ln"></div>
-      <p>Tiga alat digital untuk produktivitas & privasi Anda — gratis, aman, tanpa data tersimpan.</p>
-    </div>
-
-    <div class="tools-grid">
-      
-      <!-- TOOL 1: MUHAAJIR DELTA -->
-      <div class="tool-card" data-aos="fade-up" data-aos-delay="50">
-        <div class="tool-icon">📝</div>
-        <h3 class="tool-title">Muhaajir Delta</h3>
-        <div class="tool-sub">Text Diff Checker</div>
-        <p class="tool-desc">Bandingkan dua versi teks atau kode secara instan. Sorot perubahan per kata, privasi 100% lokal.</p>
-        <div class="tool-tags">
-          <span class="tool-tag">🔍 Smart Comparison</span>
-          <span class="tool-tag">🛡️ Privacy First</span>
-        </div>
-        <a href="https://hajirmuhaajir.github.io/muhaajir-delta" target="_blank" rel="noopener noreferrer" class="btn-p tool-btn">Buka Delta <i class="fas fa-external-link-alt"></i></a>
       </div>
 
-      <!-- TOOL 2: MUHAAJIR SCRUB -->
-      <div class="tool-card" data-aos="fade-up" data-aos-delay="100">
-        <div class="tool-icon">🧹</div>
-        <h3 class="tool-title">Muhaajir Scrub</h3>
-        <div class="tool-sub">Metadata Stripper</div>
-        <p class="tool-desc">Hapus data EXIF/GPS dari foto & PDF sebelum diunggah. Privasi total, semua proses di browser.</p>
-        <div class="tool-tags">
-          <span class="tool-tag">📍 Hapus GPS</span>
-          <span class="tool-tag">📷 EXIF Cleaner</span>
-          <span class="tool-tag">🆓 Gratis</span>
-        </div>
-        <a href="https://hajirmuhaajir.github.io/muhaajir-scrub" target="_blank" rel="noopener noreferrer" class="btn-p tool-btn">Buka Scrub <i class="fas fa-external-link-alt"></i></a>
-      </div>
-
-      <!-- TOOL 3: MUHAAJIR VAULT -->
-      <div class="tool-card" data-aos="fade-up" data-aos-delay="150">
-        <div class="tool-icon">🔐</div>
-        <h3 class="tool-title">Muhaajir Vault</h3>
-        <div class="tool-sub">Password Generator</div>
-        <p class="tool-desc">Buat password super kuat dengan panjang hingga 50+ karakter. Lengkap dengan indikator kekuatan.</p>
-        <div class="tool-tags">
-          <span class="tool-tag">⚡ Customizable</span>
-          <span class="tool-tag">📊 Strength Meter</span>
-          <span class="tool-tag">📋 One-Click Copy</span>
-        </div>
-        <a href="https://hajirmuhaajir.github.io/muhaajirvault" target="_blank" rel="noopener noreferrer" class="btn-p tool-btn">Buka Vault <i class="fas fa-external-link-alt"></i></a>
-      </div>
-    </div>
-
-    <!-- BADGE EKOSISTEM -->
-    <div class="ecosystem-badge" data-aos="fade-up">
-      <div class="ft-badge">
-        <i class="fas fa-check-circle"></i> 100% Client-Side · Zero Data Upload · Open Heart
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- SOCIAL -->
-<section class="sec" id="social" style="background:var(--surface); transition:background 0.3s;">
-  <div class="wrap">
-    <div class="sh" data-aos="fade-up">
-      <h2>Terhubung Dengan Saya</h2>
-      <div class="sh-ln"></div>
-      <p>Temukan saya di berbagai platform</p>
-    </div>
-    <div class="soc-grid" data-aos="fade-up">
-      <div class="soc-card"><i class="fab fa-youtube"></i><a href="https://www.youtube.com/@hajirstein" target="_blank" rel="noopener noreferrer">YouTube</a></div>
-      <div class="soc-card"><i class="fab fa-tiktok"></i><a href="https://www.tiktok.com/@muhaajir_muhaajir" target="_blank" rel="noopener noreferrer">TikTok</a></div>
-      <div class="soc-card"><i class="fab fa-instagram"></i><a href="https://www.instagram.com/muhaajirere" target="_blank" rel="noopener noreferrer">Instagram</a></div>
-      <div class="soc-card"><i class="fab fa-soundcloud"></i><a href="https://on.soundcloud.com/m65TNUx3XarndC67jO" target="_blank" rel="noopener noreferrer">SoundCloud</a></div>
-      <div class="soc-card"><i class="fab fa-github"></i><a href="https://github.com/hajirmuhaajir" target="_blank" rel="noopener noreferrer">GitHub</a></div>
-    </div>
-  </div>
-</section>
-
-<!-- CONTACT -->
-<section class="sec" id="contact">
-  <div class="wrap">
-    <div class="sh" data-aos="fade-up">
-      <h2>Kirim Pesan</h2>
-      <div class="sh-ln"></div>
-      <p>Ada proyek menarik? Mari berkolaborasi!</p>
-    </div>
-    <div class="ct-grid" data-aos="fade-up">
-      <div class="ct-box">
-        <div class="ct-ttl"><i class="fas fa-paper-plane"></i> Form Pesan</div>
-        <form id="contactForm" action="https://formspree.io/f/xgvkobyl" method="POST">
-          <div class="ff"><label for="fname">Nama</label><input type="text" id="fname" name="name" required minlength="2" maxlength="50" placeholder="Nama kamu"></div>
-          <div class="ff"><label for="femail">Email</label><input type="email" id="femail" name="email" required maxlength="100" placeholder="email@contoh.com"></div>
-          <div class="ff">
-            <label for="fmsg">Pesan</label>
-            <textarea id="fmsg" name="message" rows="5" required minlength="10" maxlength="1000" placeholder="Tulis pesanmu di sini..."></textarea>
-            <div class="ch" id="charHint">0 / 1000 karakter</div>
+      <div class="reveal tool-card bg-slate-800/40 border border-slate-700/40 rounded-2xl p-7">
+        <div class="flex items-start gap-5">
+          <div class="tool-icon w-12 h-12 rounded-xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center text-2xl flex-shrink-0">🔐</div>
+          <div class="flex-1 min-w-0">
+            <div class="font-mono text-[10px] tracking-widest text-blue-400 uppercase mb-1">Password Manager</div>
+            <h3 class="font-syne font-bold text-lg text-white mb-2">Muhaajir Vault</h3>
+            <p class="text-slate-400 text-sm leading-relaxed mb-4" data-i18n="tool2_desc">Vault password premium dengan generator karakter hingga 50+, strength meter visual, riwayat password, dan selektor bahasa 13+ bahasa. Data hanya di browser kamu.</p>
+            <div class="flex flex-wrap gap-2 mb-5">
+              <span class="font-mono text-[10px] text-blue-400 bg-blue-500/10 border border-blue-500/20 px-2.5 py-1 rounded-full">Password Gen</span>
+              <span class="font-mono text-[10px] text-blue-400 bg-blue-500/10 border border-blue-500/20 px-2.5 py-1 rounded-full">Strength Meter</span>
+              <span class="font-mono text-[10px] text-blue-400 bg-blue-500/10 border border-blue-500/20 px-2.5 py-1 rounded-full">13 Languages</span>
+            </div>
+            <a href="https://hajirmuhaajir.github.io/muhaajirvault" target="_blank" rel="noopener noreferrer"
+               class="btn-primary" style="font-size:0.8rem;padding:10px 18px;">
+              <span data-i18n="tool_open">Buka Tool</span>
+              <i class="fas fa-arrow-up-right-from-square text-[10px]"></i>
+            </a>
           </div>
-          <input type="hidden" name="_subject" value="Pesan Baru dari Portfolio Muhaajir">
-          <input type="hidden" name="_gotcha" style="display:none;">
-          <button type="submit" class="btn-sub">Kirim Pesan <i class="fas fa-paper-plane"></i></button>
-        </form>
-        <p class="fn"><i class="fas fa-lock"></i> Dikirim aman via Formspree</p>
-      </div>
-      <div class="ct-box">
-        <div class="ct-ttl"><i class="fas fa-envelope"></i> Kontak Email</div>
-        <p style="font-size:0.85rem; color:var(--txt2); margin-bottom:13px; line-height:1.6;">Klik untuk menyalin ke clipboard.</p>
-        <div class="em-list">
-          <div class="em-item" data-email="muhaajirmuhaajir9@hotmail.com"><i class="fas fa-envelope"></i><span>muhaajirmuhaajir9@hotmail.com</span></div>
-          <div class="em-item" data-email="muhaajirmuhaajir9@gmail.com"><i class="fab fa-google"></i><span>muhaajirmuhaajir9@gmail.com</span></div>
-          <div class="em-item" data-email="muhaajirmuhaajir9@proton.me"><i class="fas fa-shield-alt"></i><span>muhaajirmuhaajir9@proton.me</span></div>
         </div>
       </div>
+
+      <div class="reveal tool-card bg-slate-800/40 border border-slate-700/40 rounded-2xl p-7">
+        <div class="flex items-start gap-5">
+          <div class="tool-icon w-12 h-12 rounded-xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center text-2xl flex-shrink-0">🧹</div>
+          <div class="flex-1 min-w-0">
+            <div class="font-mono text-[10px] tracking-widest text-blue-400 uppercase mb-1">Metadata Stripper</div>
+            <h3 class="font-syne font-bold text-lg text-white mb-2">Muhaajir Scrub</h3>
+            <p class="text-slate-400 text-sm leading-relaxed mb-4" data-i18n="tool3_desc">Hapus metadata EXIF/GPS dari foto dan PDF sebelum diunggah. Privasi total — semua proses berjalan 100% di browser, tidak ada data yang dikirim ke server.</p>
+            <div class="flex flex-wrap gap-2 mb-5">
+              <span class="font-mono text-[10px] text-blue-400 bg-blue-500/10 border border-blue-500/20 px-2.5 py-1 rounded-full">EXIF Cleaner</span>
+              <span class="font-mono text-[10px] text-blue-400 bg-blue-500/10 border border-blue-500/20 px-2.5 py-1 rounded-full">GPS Remover</span>
+              <span class="font-mono text-[10px] text-blue-400 bg-blue-500/10 border border-blue-500/20 px-2.5 py-1 rounded-full">PDF Support</span>
+            </div>
+            <a href="https://hajirmuhaajir.github.io/muhaajir-scrub" target="_blank" rel="noopener noreferrer"
+               class="btn-primary" style="font-size:0.8rem;padding:10px 18px;">
+              <span data-i18n="tool_open">Buka Tool</span>
+              <i class="fas fa-arrow-up-right-from-square text-[10px]"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="reveal tool-card bg-slate-800/40 border border-slate-700/40 rounded-2xl p-7">
+        <div class="flex items-start gap-5">
+          <div class="tool-icon w-12 h-12 rounded-xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center text-2xl flex-shrink-0">📝</div>
+          <div class="flex-1 min-w-0">
+            <div class="font-mono text-[10px] tracking-widest text-blue-400 uppercase mb-1">Text Comparator</div>
+            <h3 class="font-syne font-bold text-lg text-white mb-2">Smart Diff</h3>
+            <p class="text-slate-400 text-sm leading-relaxed mb-4" data-i18n="tool4_desc">Komparator teks bergaya VS Code dengan split/unified view, deteksi perubahan per kata, mode word/line diff, dan sinkronisasi scroll otomatis.</p>
+            <div class="flex flex-wrap gap-2 mb-5">
+              <span class="font-mono text-[10px] text-blue-400 bg-blue-500/10 border border-blue-500/20 px-2.5 py-1 rounded-full">jsDiff</span>
+              <span class="font-mono text-[10px] text-blue-400 bg-blue-500/10 border border-blue-500/20 px-2.5 py-1 rounded-full">Split View</span>
+              <span class="font-mono text-[10px] text-blue-400 bg-blue-500/10 border border-blue-500/20 px-2.5 py-1 rounded-full">Sync Scroll</span>
+            </div>
+            <a href="https://hajirmuhaajir.github.io/muhaajir-delta" target="_blank" rel="noopener noreferrer"
+               class="btn-primary" style="font-size:0.8rem;padding:10px 18px;">
+              <span data-i18n="tool_open">Buka Tool</span>
+              <i class="fas fa-arrow-up-right-from-square text-[10px]"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Coming soon -->
+      <div class="reveal tool-card bg-slate-800/20 border border-slate-700/25 rounded-2xl p-7 opacity-60 pointer-events-none select-none">
+        <div class="flex items-start gap-5">
+          <div class="w-12 h-12 rounded-xl bg-slate-700/30 border border-slate-600/20 flex items-center justify-center text-2xl flex-shrink-0">⚡</div>
+          <div>
+            <div class="font-mono text-[10px] tracking-widest text-slate-500 uppercase mb-1" data-i18n="tool_coming_tag">Segera Hadir</div>
+            <h3 class="font-syne font-bold text-lg text-slate-400 mb-2" data-i18n="tool_coming_title">Tool Baru</h3>
+            <p class="text-slate-500 text-sm leading-relaxed" data-i18n="tool_coming_desc">Sesuatu yang baru sedang dalam pengembangan. Nantikan tool berikutnya dari ekosistem Muhaajir.</p>
+          </div>
+        </div>
+      </div>
+
     </div>
+
+    <!-- Tech stack section -->
+    <div class="reveal mt-12 bg-slate-800/30 border border-slate-700/30 rounded-2xl p-7">
+      <div class="font-mono text-[10px] tracking-widest text-blue-400 uppercase mb-5" data-i18n="stack_tag">// Tech Stack & Peralatan Utama</div>
+      <div class="space-y-3">
+
+        <div class="flex items-center gap-4 py-3 border-b border-slate-700/30">
+          <i class="fab fa-html5 text-orange-400 w-5 text-center"></i>
+          <div class="flex-1">
+            <div class="text-sm font-semibold text-white">HTML5 / CSS3 / JavaScript</div>
+            <div class="text-xs text-slate-500" data-i18n="stack1_desc">Fondasi web — digunakan di semua tools</div>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-4 py-3 border-b border-slate-700/30">
+          <i class="fab fa-github text-slate-300 w-5 text-center"></i>
+          <div class="flex-1">
+            <div class="text-sm font-semibold text-white">GitHub Pages</div>
+            <div class="text-xs text-slate-500" data-i18n="stack2_desc">Deploy target — gratis, cepat, CDN-only</div>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-4 py-3 border-b border-slate-700/30">
+          <i class="fas fa-waveform-lines text-blue-400 w-5 text-center"></i>
+          <div class="flex-1">
+            <div class="text-sm font-semibold text-white">Web Audio API</div>
+            <div class="text-xs text-slate-500" data-i18n="stack3_desc">Visualizer audio dan waveform di HajirSync</div>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-4 py-3 border-b border-slate-700/30">
+          <i class="fas fa-palette text-purple-400 w-5 text-center"></i>
+          <div class="flex-1">
+            <div class="text-sm font-semibold text-white">Tailwind CSS</div>
+            <div class="text-xs text-slate-500" data-i18n="stack4_desc">Utility-first CSS untuk UI modern dan responsif</div>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-4 py-3">
+          <i class="fas fa-camera text-teal-400 w-5 text-center"></i>
+          <div class="flex-1">
+            <div class="text-sm font-semibold text-white">Adobe Lightroom / Snapseed</div>
+            <div class="text-xs text-slate-500" data-i18n="stack5_desc">Editing foto dan visual untuk karya fotografi</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Badge -->
+    <div class="reveal text-center mt-8">
+      <span class="inline-flex items-center gap-2 font-mono text-xs text-slate-500 bg-blue-500/5 border border-blue-500/15 px-4 py-2 rounded-full">
+        <i class="fas fa-shield-halved text-blue-400 text-[10px]"></i>
+        <span data-i18n="tools_badge">100% Client-Side · Zero Data Upload · Open Web</span>
+      </span>
+    </div>
+
   </div>
 </section>
 
-<!-- FOOTER -->
-<footer>
-  <img src="https://i.postimg.cc/Kvg50f5n/IMG-20250812-164118-putih.png" class="ft-logo" alt="Muhaajir Logo" loading="lazy">
-  <div class="ft-nm">Muhaajir</div>
-  <div class="ft-tag">Fotografer &amp; Musisi · Bogor, Indonesia</div>
-  <div class="ft-soc">
-    <a href="https://www.youtube.com/@hajirstein" target="_blank" rel="noopener noreferrer"><i class="fab fa-youtube"></i></a>
-    <a href="https://www.tiktok.com/@muhaajir_muhaajir" target="_blank" rel="noopener noreferrer"><i class="fab fa-tiktok"></i></a>
-    <a href="https://www.instagram.com/muhaajirere" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
-    <a href="https://on.soundcloud.com/m65TNUx3XarndC67jO" target="_blank" rel="noopener noreferrer"><i class="fab fa-soundcloud"></i></a>
-    <a href="https://github.com/hajirmuhaajir" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i></a>
+<!-- ══════════════ CONTACT ══════════════ -->
+<section id="contact" class="py-24 bg-slate-900/40">
+  <div class="max-w-3xl mx-auto px-5 sm:px-8">
+
+    <!-- Header -->
+    <div class="text-center mb-12 reveal">
+      <div class="section-tag mb-2" data-i18n="contact_tag">// Kontak</div>
+      <div class="accent-line"></div>
+      <h2 class="font-syne font-extrabold text-3xl sm:text-4xl tracking-tight text-white mb-3" data-i18n="contact_title">Ada Proyek Menarik?</h2>
+      <p class="text-slate-400 text-sm leading-relaxed max-w-md mx-auto" data-i18n="contact_subtitle">Kirim pesan dan mari kita diskusikan kolaborasi atau pertanyaan kamu.</p>
+    </div>
+
+    <!-- Intro text -->
+    <div class="reveal mb-6">
+      <p class="text-slate-400 text-sm sm:text-base leading-relaxed text-center max-w-xl mx-auto" data-i18n="contact_intro">
+        Tertarik berkolaborasi, punya pertanyaan tentang tools, atau sekadar ingin menyapa? Saya selalu terbuka untuk diskusi kreatif dan kolaborasi yang bermakna.
+      </p>
+    </div>
+
+    <!-- Contact links — vertical stack -->
+    <div class="reveal space-y-3 mb-8">
+
+      <a href="https://github.com/hajirmuhaajir" target="_blank" rel="noopener noreferrer"
+         class="contact-link flex items-center gap-4 px-5 py-4 bg-slate-800/40 border border-slate-700/40 rounded-xl no-underline">
+        <div class="w-10 h-10 rounded-lg bg-blue-500/10 border border-blue-500/20 flex items-center justify-center text-blue-400 flex-shrink-0">
+          <i class="fab fa-github"></i>
+        </div>
+        <div class="flex-1">
+          <div class="font-mono text-[10px] tracking-widest text-slate-500 uppercase mb-0.5">GitHub</div>
+          <div class="text-sm font-semibold text-white">hajirmuhaajir</div>
+        </div>
+        <i class="fas fa-arrow-right text-blue-400 text-xs"></i>
+      </a>
+
+      <a href="mailto:hajirmuhaajir@yahoo.com"
+         class="contact-link flex items-center gap-4 px-5 py-4 bg-slate-800/40 border border-slate-700/40 rounded-xl no-underline">
+        <div class="w-10 h-10 rounded-lg bg-blue-500/10 border border-blue-500/20 flex items-center justify-center text-blue-400 flex-shrink-0">
+          <i class="fas fa-envelope"></i>
+        </div>
+        <div class="flex-1">
+          <div class="font-mono text-[10px] tracking-widest text-slate-500 uppercase mb-0.5">Email</div>
+          <div class="text-sm font-semibold text-white">hajirmuhaajir@yahoo.com</div>
+        </div>
+        <i class="fas fa-arrow-right text-blue-400 text-xs"></i>
+      </a>
+
+      <a href="https://hajirmuhaajir.github.io/main-showcase" target="_blank" rel="noopener noreferrer"
+         class="contact-link flex items-center gap-4 px-5 py-4 bg-slate-800/40 border border-slate-700/40 rounded-xl no-underline">
+        <div class="w-10 h-10 rounded-lg bg-blue-500/10 border border-blue-500/20 flex items-center justify-center text-blue-400 flex-shrink-0">
+          <i class="fas fa-globe"></i>
+        </div>
+        <div class="flex-1">
+          <div class="font-mono text-[10px] tracking-widest text-slate-500 uppercase mb-0.5" data-i18n="contact_portfolio">Portfolio</div>
+          <div class="text-sm font-semibold text-white">hajirmuhaajir.github.io</div>
+        </div>
+        <i class="fas fa-arrow-right text-blue-400 text-xs"></i>
+      </a>
+
+    </div>
+
+    <!-- CTA -->
+    <div class="reveal text-center">
+      <a href="https://github.com/hajirmuhaajir" target="_blank" rel="noopener noreferrer" class="btn-primary">
+        <i class="fab fa-github text-sm"></i>
+        <span data-i18n="contact_cta">Lihat Semua Proyek di GitHub</span>
+      </a>
+    </div>
+
   </div>
-  <div class="ft-div"></div>
-  <div class="ft-lnks">
-    <a href="https://hajirmuhaajir.github.io/footer-essentials" target="_blank" rel="noopener noreferrer">Kebijakan Privasi</a>
-    <a href="https://hajirmuhaajir.github.io/footer-essentials" target="_blank" rel="noopener noreferrer">Syarat & Ketentuan</a>
-    <a href="https://hajirmuhaajir.github.io/footer-essentials" target="_blank" rel="noopener noreferrer">Sitemap</a>
+</section>
+
+<!-- ══════════════ FOOTER ══════════════ -->
+<footer class="bg-slate-900/60 border-t border-slate-800/60 py-14 text-center relative overflow-hidden">
+  <div class="absolute top-0 left-0 right-0 h-px" style="background:linear-gradient(90deg,transparent,rgba(59,130,246,0.4),transparent);"></div>
+  <div class="max-w-3xl mx-auto px-5 sm:px-8">
+
+    <!-- Logo -->
+    <div class="flex items-center justify-center gap-3 mb-2">
+      <img src="https://i.postimg.cc/Kvg50f5n/IMG-20250812-164118-putih.png"
+           alt="Logo Hajir" class="w-10 h-10 rounded-lg object-contain" style="filter:drop-shadow(0 0 8px rgba(59,130,246,0.4))" loading="lazy">
+      <span class="font-syne font-extrabold text-xl tracking-tight">HAJIR<span class="text-blue-400">.</span></span>
+    </div>
+    <p class="font-mono text-[10px] tracking-widest text-slate-600 uppercase mb-8" data-i18n="footer_tagline">Personal Website · Tools Premium · hajirmuhaajir.github.io</p>
+
+    <!-- Social links -->
+    <div class="flex justify-center gap-3 flex-wrap mb-8">
+      <a href="https://github.com/hajirmuhaajir" target="_blank" rel="noopener noreferrer"
+         class="w-10 h-10 rounded-xl bg-slate-800 border border-slate-700/50 flex items-center justify-center text-slate-400 hover:text-white hover:bg-blue-500 hover:border-blue-500 transition-all duration-300 hover:-translate-y-1">
+        <i class="fab fa-github text-sm"></i>
+      </a>
+      <a href="https://hajirmuhaajir.github.io/hajirsync" target="_blank" rel="noopener noreferrer"
+         class="w-10 h-10 rounded-xl bg-slate-800 border border-slate-700/50 flex items-center justify-center text-slate-400 hover:text-white hover:bg-blue-500 hover:border-blue-500 transition-all duration-300 hover:-translate-y-1">
+        <i class="fas fa-music text-sm"></i>
+      </a>
+      <a href="https://hajirmuhaajir.github.io/muhaajir-music" target="_blank" rel="noopener noreferrer"
+         class="w-10 h-10 rounded-xl bg-slate-800 border border-slate-700/50 flex items-center justify-center text-slate-400 hover:text-white hover:bg-blue-500 hover:border-blue-500 transition-all duration-300 hover:-translate-y-1">
+        <i class="fas fa-headphones text-sm"></i>
+      </a>
+    </div>
+
+    <div class="w-16 h-px bg-slate-700/50 mx-auto mb-6"></div>
+
+    <!-- Footer links -->
+    <nav class="flex justify-center gap-6 flex-wrap mb-6">
+      <a href="#about" class="text-xs text-slate-500 hover:text-blue-400 transition-colors" data-i18n="nav_about">Tentang</a>
+      <a href="#music" class="text-xs text-slate-500 hover:text-blue-400 transition-colors" data-i18n="nav_music">Musik</a>
+      <a href="#tools" class="text-xs text-slate-500 hover:text-blue-400 transition-colors" data-i18n="nav_tools">Tools</a>
+      <a href="#contact" class="text-xs text-slate-500 hover:text-blue-400 transition-colors" data-i18n="nav_contact">Kontak</a>
+      <a href="https://hajirmuhaajir.github.io/footer-essentials" target="_blank" rel="noopener noreferrer"
+         class="text-xs text-slate-500 hover:text-blue-400 transition-colors" data-i18n="nav_privacy">Kebijakan Privasi</a>
+    </nav>
+
+    <span class="inline-flex items-center gap-2 font-mono text-xs text-slate-600 bg-blue-500/5 border border-blue-500/10 px-4 py-1.5 rounded-full mb-5">
+      <i class="fas fa-lock text-blue-400 text-[9px]"></i>
+      HTTPS Secured · Privacy First
+    </span>
+    <p class="text-xs text-slate-700" data-i18n="footer_copy">&copy; 2026 Hajir Muhaajir · All rights reserved.</p>
   </div>
-  <div class="ft-badge"><i class="fas fa-lock"></i> Koneksi Aman HTTPS</div>
-  <div class="ft-copy">&copy; 2026 Muhaajir. All rights reserved.</div>
 </footer>
 
-<button id="btt" aria-label="Kembali ke atas"><i class="fas fa-arrow-up"></i></button>
-<div id="toast"></div>
+<!-- Back to top -->
+<button id="back-top"
+        class="fixed bottom-6 right-6 z-50 w-11 h-11 rounded-xl bg-blue-500 text-white flex items-center justify-center opacity-0 pointer-events-none transition-all duration-300 hover:-translate-y-1"
+        style="box-shadow:0 8px 24px rgba(59,130,246,0.4);"
+        aria-label="Kembali ke atas" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+  <i class="fas fa-arrow-up text-sm"></i>
+</button>
 
-<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<!-- Cookie consent -->
+<div id="cookie-banner"
+     class="fixed bottom-5 left-1/2 z-50 w-[calc(100%-40px)] max-w-md bg-slate-900 border border-slate-700/60 rounded-2xl p-6 shadow-2xl"
+     style="transform:translateX(-50%) translateY(120%);opacity:0;">
+  <div class="flex items-center gap-3 mb-3">
+    <div class="w-9 h-9 rounded-lg bg-blue-500/10 border border-blue-500/20 flex items-center justify-center text-blue-400 flex-shrink-0">
+      <i class="fas fa-cookie-bite text-sm"></i>
+    </div>
+    <div class="font-syne font-bold text-white text-sm" data-i18n="cookie_title">Kebijakan Cookie</div>
+  </div>
+  <p class="text-slate-400 text-xs leading-relaxed mb-4" data-i18n="cookie_desc">Situs ini menggunakan cookies untuk meningkatkan pengalaman. Pilihan kamu akan diingat.</p>
+  <div class="flex gap-2">
+    <button id="cookie-ok" class="flex-1 py-2 bg-blue-500 text-white text-xs font-semibold rounded-lg hover:bg-blue-400 transition-colors" data-i18n="cookie_ok">Setuju</button>
+    <button id="cookie-no" class="flex-1 py-2 bg-transparent text-slate-400 text-xs font-semibold rounded-lg border border-slate-700 hover:border-slate-500 transition-colors" data-i18n="cookie_no">Tolak</button>
+  </div>
+</div>
+
+<!-- ══════════════ JAVASCRIPT ══════════════ -->
 <script>
-  (function() {
-    'use strict';
+(function(){
+'use strict';
 
-    // Initialize AOS
-    if (typeof AOS !== 'undefined') {
-      AOS.init({ 
-        duration: 800, 
-        once: true, 
-        offset: 60, 
-        easing: 'ease-out-cubic' 
+/* ─── I18N TRANSLATIONS ─── */
+const translations = {
+  id: {
+    // Nav
+    nav_about: 'Tentang',
+    nav_music: 'Musik',
+    nav_tools: 'Tools',
+    nav_contact: 'Kontak',
+    nav_privacy: 'Kebijakan Privasi',
+    // Hero
+    hero_title_1: 'Hajir',
+    hero_title_2: 'Muhaajir',
+    hero_desc: 'Fotografer, musisi, dan developer dari Bogor yang berkarya lewat seni digital dan tools inovatif.',
+    hero_cta1: 'Tentang Saya',
+    hero_cta2: 'Hubungi Saya',
+    // About
+    about_tag: '// Tentang Saya',
+    about_title: 'Siapa Hajir?',
+    about_subtitle: 'Fotografer, musisi, dan developer yang berkarya lewat seni digital.',
+    about_role: 'Fotografer · Musisi · Developer',
+    tag_photographer: 'Fotografer',
+    tag_musician: 'Musisi',
+    tag_developer: 'Developer',
+    about_p1: 'Saya Muhaajir — seorang pencinta fotografi dan musik dari Bogor. Setiap foto adalah cerita, setiap nada adalah emosi yang tak terucap.',
+    about_p2: 'Melalui karya, saya ingin berbagi perspektif dan menginspirasi siapapun yang menyaksikannya. Bergabunglah dalam perjalanan kreatif ini.',
+    about_p3: 'Fotografi, musik, dan seni digital menjadi bahasa sehari-hari saya. Saya juga membangun tools browser-based yang ringan dan privasi-first.',
+    about_cta: 'Dengarkan Musik',
+    stat_approach: 'Pendekatan',
+    stat_philosophy: 'Filosofi',
+    stat_location: 'Lokasi',
+    // Music
+    music_tag: '// Musik',
+    music_title: 'Dengarkan Musik Saya',
+    music_subtitle: 'Dari Resonansi Dalam Diam hingga Fragmen Suara — setiap nada bercerita tentang perasaan yang tak terucap.',
+    music_player_label: '🎵 Music Player — Muhaajir',
+    music_player_desc: 'Player musik interaktif dengan koleksi lengkap karya Hajir Muhaajir. Nikmati album <strong class="text-blue-400">Resonansi Dalam Diam</strong> dan <strong class="text-blue-400">Fragmen Suara</strong> langsung di browser kamu.',
+    music_player_note: '* Player ditampilkan dalam Bahasa Indonesia.',
+    music_open_link: 'Buka di tab baru jika player tidak muncul',
+    // Quotes
+    quotes_tag: '// Kutipan Inspiratif',
+    quotes_title: 'Kata-Kata yang Menginspirasi',
+    quotes_subtitle: 'Kumpulan kutipan dari para pemikir dan kreator yang menginspirasi perjalanan saya.',
+    q1_text: '"Kamu tidak mengambil sebuah foto, kamu membuatnya."',
+    q1_author: '— Ansel Adams, Fotografer',
+    q2_text: '"Musik adalah bahasa universal umat manusia."',
+    q2_author: '— Henry Wadsworth Longfellow, Penyair',
+    q3_text: '"Desain bukan sekadar tampilan, tapi bagaimana sesuatu bekerja."',
+    q3_author: '— Steve Jobs, Apple Co-Founder',
+    q4_text: '"Evolusi seringkali adalah kunci, ketika arah yang baik sudah ditetapkan."',
+    q4_author: '— Adrian Newey, F1 Designer',
+    q5_text: '"Kesederhanaan adalah kemewahan tertinggi."',
+    q5_author: '— Coco Chanel, Fashion Designer',
+    // Tools
+    tools_tag: '// Tools & Peralatan',
+    tools_title: 'Tools yang Saya Buat',
+    tools_subtitle: 'Setiap tool dibangun ringan, cepat, privasi-first, dan tanpa server. Semua berjalan 100% di browser.',
+    tool1_desc: 'Generator lirik LRC berbasis browser dengan visualizer gelombang audio Web Audio API. Sinkronisasi lirik real-time, ekspor file LRC instan, antarmuka bilingual (ID/EN).',
+    tool2_desc: 'Vault password premium dengan generator karakter hingga 50+, strength meter visual, riwayat password, dan selektor bahasa 13+ bahasa. Data hanya di browser kamu.',
+    tool3_desc: 'Hapus metadata EXIF/GPS dari foto dan PDF sebelum diunggah. Privasi total — semua proses berjalan 100% di browser, tidak ada data yang dikirim ke server.',
+    tool4_desc: 'Komparator teks bergaya VS Code dengan split/unified view, deteksi perubahan per kata, mode word/line diff, dan sinkronisasi scroll otomatis.',
+    tool_open: 'Buka Tool',
+    tool_coming_tag: 'Segera Hadir',
+    tool_coming_title: 'Tool Baru',
+    tool_coming_desc: 'Sesuatu yang baru sedang dalam pengembangan. Nantikan tool berikutnya dari ekosistem Muhaajir.',
+    tools_badge: '100% Client-Side · Zero Data Upload · Open Web',
+    stack_tag: '// Tech Stack & Peralatan Utama',
+    stack1_desc: 'Fondasi web — digunakan di semua tools',
+    stack2_desc: 'Deploy target — gratis, cepat, CDN-only',
+    stack3_desc: 'Visualizer audio dan waveform di HajirSync',
+    stack4_desc: 'Utility-first CSS untuk UI modern dan responsif',
+    stack5_desc: 'Editing foto dan visual untuk karya fotografi',
+    // Contact
+    contact_tag: '// Kontak',
+    contact_title: 'Ada Proyek Menarik?',
+    contact_subtitle: 'Kirim pesan dan mari kita diskusikan kolaborasi atau pertanyaan kamu.',
+    contact_intro: 'Tertarik berkolaborasi, punya pertanyaan tentang tools, atau sekadar ingin menyapa? Saya selalu terbuka untuk diskusi kreatif dan kolaborasi yang bermakna.',
+    contact_portfolio: 'Portfolio',
+    contact_cta: 'Lihat Semua Proyek di GitHub',
+    // Footer
+    footer_tagline: 'Personal Website · Tools Premium · hajirmuhaajir.github.io',
+    footer_copy: '© 2026 Hajir Muhaajir · All rights reserved.',
+    // Cookie
+    cookie_title: 'Kebijakan Cookie',
+    cookie_desc: 'Situs ini menggunakan cookies untuk meningkatkan pengalaman. Pilihan kamu akan diingat.',
+    cookie_ok: 'Setuju',
+    cookie_no: 'Tolak',
+  },
+
+  en: {
+    // Nav
+    nav_about: 'About',
+    nav_music: 'Music',
+    nav_tools: 'Tools',
+    nav_contact: 'Contact',
+    nav_privacy: 'Privacy Policy',
+    // Hero
+    hero_title_1: 'Hajir',
+    hero_title_2: 'Muhaajir',
+    hero_desc: 'Photographer, musician, and developer from Bogor who creates through digital art and innovative tools.',
+    hero_cta1: 'About Me',
+    hero_cta2: 'Contact Me',
+    // About
+    about_tag: '// About Me',
+    about_title: 'Who is Hajir?',
+    about_subtitle: 'Photographer, musician, and developer working through digital art.',
+    about_role: 'Photographer · Musician · Developer',
+    tag_photographer: 'Photographer',
+    tag_musician: 'Musician',
+    tag_developer: 'Developer',
+    about_p1: 'I am Muhaajir — a photography and music enthusiast from Bogor. Every photo is a story, every note is an emotion left unspoken.',
+    about_p2: 'Through my work, I want to share perspectives and inspire everyone who encounters them. Join me on this creative journey.',
+    about_p3: 'Photography, music, and digital art are my everyday languages. I also build lightweight, privacy-first browser-based tools.',
+    about_cta: 'Listen to Music',
+    stat_approach: 'Approach',
+    stat_philosophy: 'Philosophy',
+    stat_location: 'Location',
+    // Music
+    music_tag: '// Music',
+    music_title: 'Listen to My Music',
+    music_subtitle: 'From Resonansi Dalam Diam to Fragmen Suara — every note tells a story about unspoken feelings.',
+    music_player_label: '🎵 Music Player — Muhaajir',
+    music_player_desc: 'Interactive music player with the complete collection of Hajir Muhaajir\'s works. Enjoy the albums <strong class="text-blue-400">Resonansi Dalam Diam</strong> and <strong class="text-blue-400">Fragmen Suara</strong> directly in your browser.',
+    music_player_note: '* The player is displayed in Indonesian language.',
+    music_open_link: 'Open in new tab if the player does not appear',
+    // Quotes
+    quotes_tag: '// Inspirational Quotes',
+    quotes_title: 'Words That Inspire',
+    quotes_subtitle: 'A collection of quotes from thinkers and creators that inspire my journey.',
+    q1_text: '"You don\'t take a photograph, you make it."',
+    q1_author: '— Ansel Adams, Photographer',
+    q2_text: '"Music is the universal language of mankind."',
+    q2_author: '— Henry Wadsworth Longfellow, Poet',
+    q3_text: '"Design is not just what it looks like, design is how it works."',
+    q3_author: '— Steve Jobs, Apple Co-Founder',
+    q4_text: '"Evolution is often the key once the spark of a good direction has been set."',
+    q4_author: '— Adrian Newey, F1 Designer',
+    q5_text: '"Simplicity is the ultimate sophistication."',
+    q5_author: '— Coco Chanel, Fashion Designer',
+    // Tools
+    tools_tag: '// Tools & Equipment',
+    tools_title: 'Tools I Built',
+    tools_subtitle: 'Every tool is built lightweight, fast, privacy-first, and serverless. All running 100% in the browser.',
+    tool1_desc: 'Browser-based LRC lyric generator with Web Audio API waveform visualizer. Real-time lyric sync, instant LRC file export, bilingual interface (ID/EN).',
+    tool2_desc: 'Premium password vault with 50+ character generator, visual strength meter, password history, and 13+ language selector. Data stays in your browser only.',
+    tool3_desc: 'Remove EXIF/GPS metadata from photos and PDFs before uploading. Total privacy — all processing runs 100% in the browser, no data sent to any server.',
+    tool4_desc: 'VS Code-style text comparator with split/unified view, per-word change detection, word/line diff mode, and automatic scroll synchronization.',
+    tool_open: 'Open Tool',
+    tool_coming_tag: 'Coming Soon',
+    tool_coming_title: 'New Tool',
+    tool_coming_desc: 'Something new is in development. Stay tuned for the next tool from the Muhaajir ecosystem.',
+    tools_badge: '100% Client-Side · Zero Data Upload · Open Web',
+    stack_tag: '// Tech Stack & Main Tools',
+    stack1_desc: 'Web foundation — used in all tools',
+    stack2_desc: 'Deploy target — free, fast, CDN-only',
+    stack3_desc: 'Audio visualizer and waveform in HajirSync',
+    stack4_desc: 'Utility-first CSS for modern and responsive UI',
+    stack5_desc: 'Photo and visual editing for photography works',
+    // Contact
+    contact_tag: '// Contact',
+    contact_title: 'Got an Interesting Project?',
+    contact_subtitle: 'Send a message and let\'s discuss collaboration or your questions.',
+    contact_intro: 'Interested in collaborating, have questions about the tools, or just want to say hi? I\'m always open for creative discussions and meaningful collaborations.',
+    contact_portfolio: 'Portfolio',
+    contact_cta: 'View All Projects on GitHub',
+    // Footer
+    footer_tagline: 'Personal Website · Premium Tools · hajirmuhaajir.github.io',
+    footer_copy: '© 2026 Hajir Muhaajir · All rights reserved.',
+    // Cookie
+    cookie_title: 'Cookie Policy',
+    cookie_desc: 'This site uses cookies to improve your experience. Your choice will be remembered.',
+    cookie_ok: 'Accept',
+    cookie_no: 'Decline',
+  }
+};
+
+/* ─── LANGUAGE ENGINE ─── */
+let currentLang = 'id';
+
+function detectLang(){
+  try {
+    const nav = navigator.language || navigator.userLanguage || '';
+    return nav.toLowerCase().startsWith('id') ? 'id' : 'en';
+  } catch(e){ return 'en'; }
+}
+
+function applyLang(lang){
+  currentLang = lang;
+  const t = translations[lang];
+
+  // Update all [data-i18n] elements
+  document.querySelectorAll('[data-i18n]').forEach(function(el){
+    const key = el.getAttribute('data-i18n');
+    if(t[key] !== undefined){
+      // Use innerHTML for elements that have HTML content
+      if(key === 'music_player_desc'){
+        el.innerHTML = t[key];
+      } else {
+        el.textContent = t[key];
+      }
+    }
+  });
+
+  // Update nav link text
+  document.querySelectorAll('.nav-link, .mobile-nav-link').forEach(function(a){
+    const sec = a.getAttribute('data-section');
+    if(sec && t['nav_'+sec]){
+      a.textContent = t['nav_'+sec];
+    }
+  });
+
+  // Update lang buttons
+  document.getElementById('btn-id').classList.toggle('active', lang === 'id');
+  document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+
+  // Update html lang attribute
+  document.documentElement.lang = lang;
+
+  // Persist choice
+  try { localStorage.setItem('hajir-lang', lang); } catch(e){}
+}
+
+window.setLang = function(lang){
+  applyLang(lang);
+};
+
+// Init language
+(function(){
+  let savedLang;
+  try { savedLang = localStorage.getItem('hajir-lang'); } catch(e){}
+  applyLang(savedLang || detectLang());
+})();
+
+/* ─── MOBILE NAV ─── */
+const hbgBtn = document.getElementById('hbg-btn');
+const mobileNav = document.getElementById('mobile-nav');
+
+hbgBtn.addEventListener('click', function(){
+  const isOpen = mobileNav.classList.toggle('flex');
+  mobileNav.classList.toggle('hidden', !isOpen);
+  hbgBtn.setAttribute('aria-expanded', isOpen);
+  hbgBtn.classList.toggle('hbg-open', isOpen);
+});
+
+mobileNav.querySelectorAll('a').forEach(function(a){
+  a.addEventListener('click', function(){
+    mobileNav.classList.remove('flex');
+    mobileNav.classList.add('hidden');
+    hbgBtn.setAttribute('aria-expanded', 'false');
+    hbgBtn.classList.remove('hbg-open');
+  });
+});
+
+/* ─── CLOSE MOBILE NAV ON OUTSIDE CLICK ─── */
+document.addEventListener('click', function(e){
+  if(!hbgBtn.contains(e.target) && !mobileNav.contains(e.target)){
+    mobileNav.classList.remove('flex');
+    mobileNav.classList.add('hidden');
+    hbgBtn.classList.remove('hbg-open');
+  }
+});
+
+/* ─── SCROLL REVEAL ─── */
+const revealObs = new IntersectionObserver(function(entries){
+  entries.forEach(function(entry){
+    if(entry.isIntersecting){
+      entry.target.classList.add('visible');
+      revealObs.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.08 });
+
+document.querySelectorAll('.reveal').forEach(function(el){
+  revealObs.observe(el);
+});
+
+/* ─── ACTIVE NAV SECTION ─── */
+const sections = document.querySelectorAll('section[id]');
+const navLinks = document.querySelectorAll('.nav-link');
+
+const sectionObs = new IntersectionObserver(function(entries){
+  entries.forEach(function(entry){
+    if(entry.isIntersecting){
+      const id = entry.target.id;
+      navLinks.forEach(function(a){
+        const matches = a.getAttribute('href') === '#' + id;
+        a.classList.toggle('active', matches);
       });
     }
+  });
+}, { rootMargin: '-40% 0px -55% 0px' });
 
-    // Loader
-    setTimeout(function() { 
-      document.getElementById('loader').classList.add('out'); 
-    }, 2000);
+sections.forEach(function(s){ sectionObs.observe(s); });
 
-    // Clock
-    function tick() { 
-      var d = new Date(); 
-      document.getElementById('clock').textContent = 
-        String(d.getHours()).padStart(2,'0') + ':' + 
-        String(d.getMinutes()).padStart(2,'0'); 
-    }
-    tick(); 
-    setInterval(tick, 1000);
+/* ─── BACK TO TOP ─── */
+const backTop = document.getElementById('back-top');
+window.addEventListener('scroll', function(){
+  const show = window.scrollY > 400;
+  backTop.style.opacity = show ? '1' : '0';
+  backTop.style.pointerEvents = show ? 'auto' : 'none';
+}, { passive: true });
 
-    // Theme toggle
-    var body = document.body;
-    var tBtn = document.getElementById('themeBtn');
-    var tIco = tBtn.querySelector('i');
-    
-    try { 
-      if (localStorage.getItem('dark') === '1') { 
-        body.classList.add('dark'); 
-        tIco.className = 'fas fa-sun'; 
-      } 
-    } catch(e) {}
-    
-    tBtn.addEventListener('click', function() {
-      var on = body.classList.toggle('dark');
-      tIco.className = on ? 'fas fa-sun' : 'fas fa-moon';
-      try { 
-        localStorage.setItem('dark', on ? '1' : '0'); 
-      } catch(e) {}
-    });
+/* ─── COOKIE CONSENT ─── */
+const banner = document.getElementById('cookie-banner');
+const cookieOk = document.getElementById('cookie-ok');
+const cookieNo = document.getElementById('cookie-no');
 
-    // Mobile menu
-    var burger = document.getElementById('burger');
-    var mNav = document.getElementById('mNav');
-    
-    burger.addEventListener('click', function() {
-      var open = mNav.classList.toggle('open');
-      burger.classList.toggle('open', open);
-      burger.setAttribute('aria-expanded', open);
-    });
-    
-    mNav.querySelectorAll('a').forEach(function(a) {
-      a.addEventListener('click', function() {
-        mNav.classList.remove('open');
-        burger.classList.remove('open');
-        burger.setAttribute('aria-expanded', 'false');
-      });
-    });
+function hideBanner(){
+  banner.style.transform = 'translateX(-50%) translateY(120%)';
+  banner.style.opacity = '0';
+}
 
-    // Active navigation
-    var secs = document.querySelectorAll('section[id]');
-    var dLinks = document.querySelectorAll('#deskNav a');
-    var mLinks = document.querySelectorAll('#mNav a');
-    
-    function setAct() {
-      var sy = window.scrollY + 90;
-      secs.forEach(function(s) {
-        if (sy >= s.offsetTop && sy < s.offsetTop + s.offsetHeight) {
-          var id = s.id;
-          [dLinks, mLinks].forEach(function(list) {
-            list.forEach(function(a) {
-              a.classList.toggle('act', a.getAttribute('href') === '#' + id);
-            });
-          });
-        }
-      });
-    }
-    
-    window.addEventListener('scroll', setAct, { passive: true });
-    setAct();
+let cookieConsent;
+try { cookieConsent = localStorage.getItem('hajir-cookie'); } catch(e){}
 
-    // Back to top
-    var btt = document.getElementById('btt');
-    
-    window.addEventListener('scroll', function() { 
-      btt.classList.toggle('on', window.scrollY > 500); 
-    }, { passive: true });
-    
-    btt.addEventListener('click', function() { 
-      window.scrollTo({ top: 0, behavior: 'smooth' }); 
-    });
+if(!cookieConsent){
+  setTimeout(function(){
+    banner.style.transform = 'translateX(-50%) translateY(0)';
+    banner.style.opacity = '1';
+  }, 2000);
+}
 
-    // Toast notification
-    var toastEl = document.getElementById('toast');
-    
-    function showToast(msg) {
-      toastEl.textContent = msg;
-      toastEl.classList.add('on');
-      setTimeout(function() { 
-        toastEl.classList.remove('on'); 
-      }, 2200);
-    }
+cookieOk.addEventListener('click', function(){
+  try { localStorage.setItem('hajir-cookie', 'accepted'); } catch(e){}
+  hideBanner();
+});
+cookieNo.addEventListener('click', function(){
+  try { localStorage.setItem('hajir-cookie', 'declined'); } catch(e){}
+  hideBanner();
+});
 
-    // Copy email
-    document.querySelectorAll('.em-item').forEach(function(el) {
-      el.addEventListener('click', function() {
-        var email = this.dataset.email;
-        if (navigator.clipboard) {
-          navigator.clipboard.writeText(email)
-            .then(function() { showToast('Email disalin!'); })
-            .catch(function() { fallbackCopy(email); });
-        } else { 
-          fallbackCopy(email); 
-        }
-      });
-    });
-    
-    function fallbackCopy(t) {
-      var ta = document.createElement('textarea');
-      ta.value = t; 
-      ta.style.cssText = 'position:fixed;opacity:0;';
-      document.body.appendChild(ta); 
-      ta.select(); 
-      document.execCommand('copy');
-      document.body.removeChild(ta); 
-      showToast('Email disalin!');
-    }
+/* ─── ESC KEY ─── */
+document.addEventListener('keydown', function(e){
+  if(e.key === 'Escape'){
+    mobileNav.classList.remove('flex');
+    mobileNav.classList.add('hidden');
+    hbgBtn.classList.remove('hbg-open');
+    hideBanner();
+  }
+});
 
-    // Birthplace click
-    document.getElementById('birthplace').addEventListener('click', function() {
-      window.open('https://www.google.com/maps/search/Bogor', '_blank', 'noopener,noreferrer');
-    });
-
-    // Character counter
-    var fmsg = document.getElementById('fmsg');
-    var ch = document.getElementById('charHint');
-    
-    if (fmsg && ch) {
-      fmsg.addEventListener('input', function() {
-        if (this.value.length > 1000) 
-          this.value = this.value.slice(0, 1000);
-        ch.textContent = this.value.length + ' / 1000 karakter';
-      });
-    }
-
-    // Form validation
-    var form = document.getElementById('contactForm');
-    
-    if (form) {
-      form.addEventListener('submit', function(e) {
-        var n = document.getElementById('fname').value.trim();
-        var em = document.getElementById('femail').value.trim();
-        var m = document.getElementById('fmsg').value.trim();
-        
-        if (!n || !em || !m) { 
-          e.preventDefault(); 
-          showToast('Mohon isi semua field'); 
-          return; 
-        }
-        
-        if (!/^[A-Za-z\s]{2,50}$/.test(n)) { 
-          e.preventDefault(); 
-          showToast('Nama: hanya huruf, 2-50 karakter'); 
-          return; 
-        }
-        
-        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(em)) { 
-          e.preventDefault(); 
-          showToast('Format email tidak valid'); 
-          return; 
-        }
-        
-        if (m.length < 10) { 
-          e.preventDefault(); 
-          showToast('Pesan minimal 10 karakter'); 
-          return; 
-        }
-        
-        showToast('Mengirim pesan...');
-      });
-    }
-
-    // XSS prevention
-    document.querySelectorAll('input,textarea').forEach(function(el) {
-      el.addEventListener('input', function() { 
-        this.value = this.value.replace(/[<>]/g, ''); 
-      });
-    });
-
-    // Lightbox
-    var lb = document.getElementById('lb');
-    var lbImg = document.getElementById('lb-img');
-    var lbCap = document.getElementById('lb-cap');
-    
-    document.querySelectorAll('.gal-card').forEach(function(c) {
-      c.addEventListener('click', function() {
-        lbImg.src = this.dataset.src;
-        lbCap.textContent = this.dataset.cap;
-        lb.classList.add('on');
-      });
-    });
-    
-    document.getElementById('lb-x').addEventListener('click', function() { 
-      lb.classList.remove('on'); 
-    });
-    
-    lb.addEventListener('click', function(e) { 
-      if (e.target === lb) 
-        lb.classList.remove('on'); 
-    });
-    
-    document.addEventListener('keydown', function(e) { 
-      if (e.key === 'Escape') 
-        lb.classList.remove('on'); 
-    });
-  })();
+})();
 </script>
 </body>
 </html>
