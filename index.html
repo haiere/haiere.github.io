@@ -6,6 +6,15 @@
 <title>Hajir | Muhaajir — Personal Website</title>
 <meta name="description" content="Website pribadi Hajir Muhaajir — fotografer, musisi, dan developer dari Bogor.">
 <meta name="author" content="Hajir Muhaajir">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Hajir Muhaajir — Fotografer, Musisi, Developer">
+<meta name="twitter:description" content="Karya digital, tools inovatif, dan musik dari Bogor. Privacy-first, open web.">
+<meta name="twitter:image" content="https://i.postimg.cc/vBsDNgKc/IMG-20250216-091226.png">
+<meta name="twitter:site" content="@hajirmuhaajir">
+<meta name="twitter:creator" content="@hajirmuhaajir">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
@@ -457,7 +466,10 @@
             <i class="fas fa-download text-xs"></i>
             <span data-i18n="music_download_button">Download APK</span>
           </a>
-          <p class="text-slate-500 text-xs mt-2 font-mono" data-i18n="music_download_note">* Hanya untuk Android. Unduh dan instal secara manual.</p>
+          <p class="text-slate-500 text-xs mt-2 font-mono">
+            <span data-i18n="music_download_note">* Hanya untuk Android. Unduh dan instal secara manual.</span><br>
+            <span data-i18n="music_powered_by">* Powered by appsgeyser.com</span>
+          </p>
         </div>
       </div>
     </div>
@@ -714,45 +726,30 @@
       </p>
     </div>
 
-    <!-- Contact links — vertical stack -->
-    <div class="reveal space-y-3 mb-8">
-
-      <a href="https://github.com/hajirmuhaajir" target="_blank" rel="noopener noreferrer"
-         class="contact-link flex items-center gap-4 px-5 py-4 bg-slate-800/40 border border-slate-700/40 rounded-xl no-underline">
-        <div class="w-10 h-10 rounded-lg bg-blue-500/10 border border-blue-500/20 flex items-center justify-center text-blue-400 flex-shrink-0">
-          <i class="fab fa-github"></i>
+    <!-- ★ CONTACT FORM WITH FORMSPREE DUAL ENDPOINT ★ -->
+    <div class="reveal bg-slate-800/40 border border-slate-700/40 rounded-2xl p-7 mb-6">
+      <form id="contact-form" class="space-y-5">
+        <div>
+          <label for="name" class="block text-xs font-mono tracking-widest text-slate-400 uppercase mb-2" data-i18n="form_name">Nama</label>
+          <input type="text" id="name" name="name" required placeholder="Nama lengkap"
+                 class="w-full px-4 py-3 bg-slate-900/60 border border-slate-700 rounded-lg text-white text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/50 transition">
         </div>
-        <div class="flex-1">
-          <div class="font-mono text-[10px] tracking-widest text-slate-500 uppercase mb-0.5">GitHub</div>
-          <div class="text-sm font-semibold text-white">hajirmuhaajir</div>
+        <div>
+          <label for="email" class="block text-xs font-mono tracking-widest text-slate-400 uppercase mb-2" data-i18n="form_email">Email</label>
+          <input type="email" id="email" name="email" required placeholder="email@contoh.com"
+                 class="w-full px-4 py-3 bg-slate-900/60 border border-slate-700 rounded-lg text-white text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/50 transition">
         </div>
-        <i class="fas fa-arrow-right text-blue-400 text-xs"></i>
-      </a>
-
-      <a href="mailto:hajirmuhaajir@yahoo.com"
-         class="contact-link flex items-center gap-4 px-5 py-4 bg-slate-800/40 border border-slate-700/40 rounded-xl no-underline">
-        <div class="w-10 h-10 rounded-lg bg-blue-500/10 border border-blue-500/20 flex items-center justify-center text-blue-400 flex-shrink-0">
-          <i class="fas fa-envelope"></i>
+        <div>
+          <label for="message" class="block text-xs font-mono tracking-widest text-slate-400 uppercase mb-2" data-i18n="form_message">Pesan</label>
+          <textarea id="message" name="message" rows="5" required placeholder="Tulis pesan kamu..."
+                    class="w-full px-4 py-3 bg-slate-900/60 border border-slate-700 rounded-lg text-white text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/50 transition resize-none"></textarea>
         </div>
-        <div class="flex-1">
-          <div class="font-mono text-[10px] tracking-widest text-slate-500 uppercase mb-0.5">Email</div>
-          <div class="text-sm font-semibold text-white">hajirmuhaajir@yahoo.com</div>
-        </div>
-        <i class="fas fa-arrow-right text-blue-400 text-xs"></i>
-      </a>
-
-      <a href="https://hajirmuhaajir.github.io/main-showcase" target="_blank" rel="noopener noreferrer"
-         class="contact-link flex items-center gap-4 px-5 py-4 bg-slate-800/40 border border-slate-700/40 rounded-xl no-underline">
-        <div class="w-10 h-10 rounded-lg bg-blue-500/10 border border-blue-500/20 flex items-center justify-center text-blue-400 flex-shrink-0">
-          <i class="fas fa-globe"></i>
-        </div>
-        <div class="flex-1">
-          <div class="font-mono text-[10px] tracking-widest text-slate-500 uppercase mb-0.5" data-i18n="contact_portfolio">Portfolio</div>
-          <div class="text-sm font-semibold text-white">hajirmuhaajir.github.io</div>
-        </div>
-        <i class="fas fa-arrow-right text-blue-400 text-xs"></i>
-      </a>
-
+        <div id="form-status" class="text-sm font-mono text-blue-400 min-h-[24px]"></div>
+        <button type="submit" class="btn-primary w-full justify-center">
+          <i class="fas fa-paper-plane text-xs"></i>
+          <span data-i18n="form_submit">Kirim Pesan</span>
+        </button>
+      </form>
     </div>
 
     <!-- CTA -->
@@ -883,11 +880,11 @@ const translations = {
     music_player_desc: 'Player musik interaktif dengan koleksi lengkap karya Hajir Muhaajir. Nikmati album <strong class="text-blue-400">Resonansi Dalam Diam</strong> dan <strong class="text-blue-400">Fragmen Suara</strong> langsung di browser kamu.',
     music_player_note: '* Player ditampilkan dalam Bahasa Indonesia.',
     music_open_link: 'Buka di tab baru jika player tidak muncul',
-    // ★ MUSIC DOWNLOAD (ANDROID) ★
     music_download_title: 'Unduh Aplikasi Android',
     music_download_desc: 'Dengarkan musik favorit kapan saja dengan aplikasi Muhaajir Music untuk Android. Unduh langsung APK-nya.',
     music_download_button: 'Download APK',
     music_download_note: '* Hanya untuk Android. Unduh dan instal secara manual.',
+    music_powered_by: '* Powered by appsgeyser.com',
     // Quotes
     quotes_tag: '// Kutipan Inspiratif',
     quotes_title: 'Kata-Kata yang Menginspirasi',
@@ -926,8 +923,15 @@ const translations = {
     contact_title: 'Ada Proyek Menarik?',
     contact_subtitle: 'Kirim pesan dan mari kita diskusikan kolaborasi atau pertanyaan kamu.',
     contact_intro: 'Tertarik berkolaborasi, punya pertanyaan tentang tools, atau sekadar ingin menyapa? Saya selalu terbuka untuk diskusi kreatif dan kolaborasi yang bermakna.',
-    contact_portfolio: 'Portfolio',
     contact_cta: 'Lihat Semua Proyek di GitHub',
+    form_name: 'Nama',
+    form_email: 'Email',
+    form_message: 'Pesan',
+    form_submit: 'Kirim Pesan',
+    form_sending: 'Mengirim...',
+    form_success: 'Pesan terkirim! Terima kasih.',
+    form_error: 'Gagal mengirim. Silakan coba lagi.',
+    form_fallback: 'Mengirim via cadangan...',
     // Footer
     footer_tagline: 'Personal Website · Tools Premium · hajirmuhaajir.github.io',
     footer_copy: '© 2026 Hajir Muhaajir · All rights reserved.',
@@ -974,11 +978,11 @@ const translations = {
     music_player_desc: 'Interactive music player with the complete collection of Hajir Muhaajir\'s works. Enjoy the albums <strong class="text-blue-400">Resonansi Dalam Diam</strong> and <strong class="text-blue-400">Fragmen Suara</strong> directly in your browser.',
     music_player_note: '* The player is displayed in Indonesian language.',
     music_open_link: 'Open in new tab if the player does not appear',
-    // ★ MUSIC DOWNLOAD (ANDROID) ★
     music_download_title: 'Download Android App',
     music_download_desc: 'Listen to your favorite music anytime with the Muhaajir Music app for Android. Download the APK directly.',
     music_download_button: 'Download APK',
     music_download_note: '* Android only. Download and install manually.',
+    music_powered_by: '* Powered by appsgeyser.com',
     // Quotes
     quotes_tag: '// Inspirational Quotes',
     quotes_title: 'Words That Inspire',
@@ -1017,8 +1021,15 @@ const translations = {
     contact_title: 'Got an Interesting Project?',
     contact_subtitle: 'Send a message and let\'s discuss collaboration or your questions.',
     contact_intro: 'Interested in collaborating, have questions about the tools, or just want to say hi? I\'m always open for creative discussions and meaningful collaborations.',
-    contact_portfolio: 'Portfolio',
     contact_cta: 'View All Projects on GitHub',
+    form_name: 'Name',
+    form_email: 'Email',
+    form_message: 'Message',
+    form_submit: 'Send Message',
+    form_sending: 'Sending...',
+    form_success: 'Message sent! Thank you.',
+    form_error: 'Failed to send. Please try again.',
+    form_fallback: 'Sending via backup...',
     // Footer
     footer_tagline: 'Personal Website · Premium Tools · hajirmuhaajir.github.io',
     footer_copy: '© 2026 Hajir Muhaajir · All rights reserved.',
@@ -1048,7 +1059,6 @@ function applyLang(lang){
   document.querySelectorAll('[data-i18n]').forEach(function(el){
     const key = el.getAttribute('data-i18n');
     if(t[key] !== undefined){
-      // Use innerHTML for elements that have HTML content
       if(key === 'music_player_desc'){
         el.innerHTML = t[key];
       } else {
@@ -1069,10 +1079,8 @@ function applyLang(lang){
   document.getElementById('btn-id').classList.toggle('active', lang === 'id');
   document.getElementById('btn-en').classList.toggle('active', lang === 'en');
 
-  // Update html lang attribute
   document.documentElement.lang = lang;
 
-  // Persist choice
   try { localStorage.setItem('hajir-lang', lang); } catch(e){}
 }
 
@@ -1107,7 +1115,6 @@ mobileNav.querySelectorAll('a').forEach(function(a){
   });
 });
 
-/* ─── CLOSE MOBILE NAV ON OUTSIDE CLICK ─── */
 document.addEventListener('click', function(e){
   if(!hbgBtn.contains(e.target) && !mobileNav.contains(e.target)){
     mobileNav.classList.remove('flex');
@@ -1192,6 +1199,51 @@ document.addEventListener('keydown', function(e){
     mobileNav.classList.add('hidden');
     hbgBtn.classList.remove('hbg-open');
     hideBanner();
+  }
+});
+
+/* ─── FORMSPREE DUAL ENDPOINT WITH FALLBACK ─── */
+const form = document.getElementById('contact-form');
+const statusDiv = document.getElementById('form-status');
+const primaryEndpoint = 'https://formspree.io/f/mpqkqanp';
+const fallbackEndpoint = 'https://formspree.io/f/xgvkobyl';
+
+form.addEventListener('submit', async function(e) {
+  e.preventDefault();
+  
+  const formData = new FormData(form);
+  const t = translations[currentLang];
+  
+  statusDiv.textContent = t.form_sending;
+  
+  // Helper to submit
+  const submitTo = async (url) => {
+    const response = await fetch(url, {
+      method: 'POST',
+      body: formData,
+      headers: { 'Accept': 'application/json' }
+    });
+    if (!response.ok) throw new Error('Network response was not ok');
+    return response.json();
+  };
+  
+  try {
+    // Try primary
+    await submitTo(primaryEndpoint);
+    statusDiv.textContent = t.form_success;
+    form.reset();
+  } catch (primaryError) {
+    console.warn('Primary endpoint failed, trying fallback...', primaryError);
+    statusDiv.textContent = t.form_fallback;
+    
+    try {
+      await submitTo(fallbackEndpoint);
+      statusDiv.textContent = t.form_success;
+      form.reset();
+    } catch (fallbackError) {
+      console.error('Both endpoints failed', fallbackError);
+      statusDiv.textContent = t.form_error;
+    }
   }
 });
 
