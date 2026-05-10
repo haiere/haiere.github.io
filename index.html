@@ -606,46 +606,131 @@
 </section>
 
 <!-- FOOTER -->
-<footer class="bg-slate-50 dark:bg-slate-900/60 border-t border-slate-200 dark:border-slate-800/60 py-14 text-center">
-  <div class="max-w-3xl mx-auto px-5 sm:px-8">
-    <div class="flex items-center justify-center gap-3 mb-2">
-      <img id="logo-footer" src="https://i.postimg.cc/JztFxsRH/hajir-logo-putih.webp" alt="Logo Hajir" class="w-10 h-10 rounded-lg object-contain logo-img" style="filter:drop-shadow(0 0 8px rgba(59,130,246,0.4))" loading="lazy">
-      <span class="font-syne font-extrabold text-xl tracking-tight text-slate-900 dark:text-white">HAJIR<span class="text-blue-400">.</span></span>
+<footer class="bg-slate-50 dark:bg-slate-900/60 border-t border-slate-200 dark:border-slate-800/60 py-14">
+  <div class="max-w-4xl mx-auto px-5 sm:px-8">
+    <!-- Branding -->
+    <div class="text-center mb-8">
+      <div class="flex items-center justify-center gap-3 mb-2">
+        <img id="logo-footer" src="https://i.postimg.cc/JztFxsRH/hajir-logo-putih.webp" 
+             alt="Logo Hajir" 
+             class="w-10 h-10 rounded-lg object-contain drop-shadow-md hover:scale-110 transition-transform duration-300" 
+             loading="lazy">
+        <span class="font-syne font-extrabold text-xl tracking-tight text-slate-900 dark:text-white uppercase">
+          HAJIR<span class="text-blue-400">.</span>
+        </span>
+      </div>
+      <p class="font-mono text-[10px] tracking-widest text-slate-500 dark:text-slate-600 uppercase select-none">
+        Web Pribadi · Alat Gratis · Karya Muhaajir
+      </p>
     </div>
-    <p class="font-mono text-[10px] tracking-widest text-slate-500 dark:text-slate-600 uppercase mb-8" data-i18n="footer_tagline">Web Pribadi · Alat Gratis · Karya Muhaajir</p>
-    <div class="flex justify-center gap-3 flex-wrap mb-8">
-      <a href="https://github.com/hajirmuhaajir" target="_blank" class="w-10 h-10 rounded-xl bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700/50 flex items-center justify-center text-slate-500 dark:text-slate-400 hover:text-white hover:bg-blue-500 min-h-[48px] min-w-[48px]"><i class="fab fa-github text-sm"></i></a>
-      <a href="https://hajirmuhaajir.github.io/hajirsync" target="_blank" class="w-10 h-10 rounded-xl bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700/50 flex items-center justify-center text-slate-500 dark:text-slate-400 hover:text-white hover:bg-blue-500 min-h-[48px] min-w-[48px]"><i class="fas fa-music text-sm"></i></a>
-      <a href="https://hajirmuhaajir.github.io/muhaajir-music" target="_blank" class="w-10 h-10 rounded-xl bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700/50 flex items-center justify-center text-slate-500 dark:text-slate-400 hover:text-white hover:bg-blue-500 min-h-[48px] min-w-[48px]"><i class="fas fa-headphones text-sm"></i></a>
+
+    <!-- Sosial Media -->
+    <div class="flex flex-wrap justify-center gap-3 mb-10">
+      <a href="https://www.youtube.com/@hajirstein" target="_blank" aria-label="YouTube"
+         class="w-11 h-11 rounded-xl bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700/50 flex items-center justify-center text-slate-500 dark:text-slate-400 hover:text-white hover:bg-red-600 transition-all duration-300 hover:scale-110">
+         <i class="fab fa-youtube"></i>
+      </a>
+      <a href="https://www.tiktok.com/@muhaajir_muhaajir" target="_blank" aria-label="TikTok"
+         class="w-11 h-11 rounded-xl bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700/50 flex items-center justify-center text-slate-500 dark:text-slate-400 hover:text-white hover:bg-black transition-all duration-300 hover:scale-110">
+         <i class="fab fa-tiktok"></i>
+      </a>
+      <a href="https://www.instagram.com/muhaajirere" target="_blank" aria-label="Instagram"
+         class="w-11 h-11 rounded-xl bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700/50 flex items-center justify-center text-slate-500 dark:text-slate-400 hover:text-white hover:bg-pink-600 transition-all duration-300 hover:scale-110">
+         <i class="fab fa-instagram"></i>
+      </a>
+      <a href="https://on.soundcloud.com/m65TNUx3XarndC67jO" target="_blank" aria-label="SoundCloud"
+         class="w-11 h-11 rounded-xl bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700/50 flex items-center justify-center text-slate-500 dark:text-slate-400 hover:text-white hover:bg-orange-500 transition-all duration-300 hover:scale-110">
+         <i class="fab fa-soundcloud"></i>
+      </a>
+      <a href="https://github.com/hajirmuhaajir" target="_blank" aria-label="GitHub"
+         class="w-11 h-11 rounded-xl bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700/50 flex items-center justify-center text-slate-500 dark:text-slate-400 hover:text-white hover:bg-slate-900 transition-all duration-300 hover:scale-110">
+         <i class="fab fa-github"></i>
+      </a>
     </div>
-    <div class="w-16 h-px bg-slate-300 dark:bg-slate-700/50 mx-auto mb-6"></div>
-    <nav class="flex justify-center gap-6 flex-wrap mb-6">
-      <a href="#about" class="text-xs text-slate-500 hover:text-blue-400 min-h-[48px] flex items-center" data-i18n="nav_about">Cerita Saya</a>
-      <a href="#music" class="text-xs text-slate-500 hover:text-blue-400 min-h-[48px] flex items-center" data-i18n="nav_music">Musik</a>
-      <a href="#tools" class="text-xs text-slate-500 hover:text-blue-400 min-h-[48px] flex items-center" data-i18n="nav_tools">Alat Gratis</a>
-      <a href="#contact" class="text-xs text-slate-500 hover:text-blue-400 min-h-[48px] flex items-center" data-i18n="nav_contact">Sapa Saya</a>
-      <a href="https://hajirmuhaajir.github.io/footer-essentials" target="_blank" class="text-xs text-slate-500 hover:text-blue-400 min-h-[48px] flex items-center" data-i18n="nav_privacy">Privasi Aman</a>
+
+    <!-- Navigasi -->
+    <nav class="flex flex-wrap justify-center gap-4 mb-8 border-y border-slate-200/50 dark:border-slate-800/50 py-6">
+      <a href="#about" class="text-xs font-medium text-slate-500 hover:text-blue-500 hover:underline underline-offset-4 transition-colors tracking-widest uppercase">Cerita Saya</a>
+      <a href="#music" class="text-xs font-medium text-slate-500 hover:text-blue-500 hover:underline underline-offset-4 transition-colors tracking-widest uppercase">Musik</a>
+      <a href="#tools" class="text-xs font-medium text-slate-500 hover:text-blue-500 hover:underline underline-offset-4 transition-colors tracking-widest uppercase">Alat Gratis</a>
+      <a href="#contact" class="text-xs font-medium text-slate-500 hover:text-blue-500 hover:underline underline-offset-4 transition-colors tracking-widest uppercase">Sapa Saya</a>
+      <a href="https://hajirmuhaajir.github.io/footer-essentials" target="_blank" class="text-xs font-medium text-slate-500 hover:text-blue-500 hover:underline underline-offset-4 transition-colors tracking-widest uppercase">Privasi Aman</a>
     </nav>
-    <span class="inline-flex items-center gap-2 font-mono text-xs text-slate-500 dark:text-slate-600 bg-blue-500/5 border border-blue-500/10 px-4 py-1.5 rounded-full mb-5"><i class="fas fa-lock text-blue-400 text-[9px]"></i>HTTPS Secured · Privacy First</span>
-    <p class="text-xs text-slate-400 dark:text-slate-700" data-i18n="footer_copy">© 2026 Hajir Muhaajir · Dibuat dengan sepenuh hati.</p>
-  </div>
-      <div class="mt-20 pt-8 border-t border-gray-800/60 text-center text-gray-500 text-sm flex flex-col md:flex-row justify-between items-center gap-3">
-      <div class="flex gap-5">
-        <span><i class="far fa-heart text-rose-400/70"></i> crafted by Muhaajir</span>
-        <span><i class="fas fa-mobile-alt"></i> fully responsive</span>
+
+    <!-- Status -->
+    <div class="text-center">
+      <span class="inline-flex items-center gap-2 font-mono text-[10px] text-slate-500 dark:text-slate-500 bg-slate-100 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700/50 px-4 py-1.5 rounded-full mb-6 shadow-sm select-none">
+        <i class="fas fa-lock text-blue-400"></i> HTTPS SECURED · PRIVACY FIRST
+      </span>
+      <p class="text-xs text-slate-400 dark:text-slate-600">© 2026 Hajir Muhaajir · Dibuat dengan sepenuh hati.</p>
+    </div>
+
+    <!-- Sub-Footer -->
+    <div class="mt-16 pt-8 border-t border-slate-200 dark:border-slate-800/60 flex flex-col md:flex-row justify-between items-center gap-6">
+      <div class="flex gap-x-8 text-[11px] text-slate-400 uppercase tracking-widest font-medium">
+        <span><i class="far fa-heart text-rose-400 mr-1"></i> Muhaajir</span>
+        <span><i class="fas fa-mobile-alt mr-1"></i> Responsive</span>
       </div>
-      <div class="text-xs font-mono">
-        <i class="fas fa-code"></i> clean architecture · MIT style
+      <div class="text-[10px] font-mono text-slate-500 bg-slate-100 dark:bg-slate-800/30 px-3 py-1 rounded">
+        <i class="fas fa-code text-blue-400 mr-1"></i> Clean Architecture · MIT Style
       </div>
-      <div class="flex gap-2">
-        <i class="fab fa-html5"></i> <i class="fab fa-css3-alt"></i> <i class="fab fa-js"></i>
+      <div class="flex gap-4 text-slate-400">
+        <i class="fab fa-html5 hover:text-orange-500 hover:scale-110 transition-transform"></i>
+        <i class="fab fa-css3-alt hover:text-blue-500 hover:scale-110 transition-transform"></i>
+        <i class="fab fa-js hover:text-yellow-400 hover:scale-110 transition-transform"></i>
       </div>
     </div>
   </div>
 </footer>
 
+<!-- Sentinel untuk Observer -->
+<div id="sentinel"></div>
+
 <!-- BACK TO TOP -->
-<button id="back-top" class="fixed bottom-6 right-6 z-50 w-11 h-11 rounded-xl bg-blue-500 text-white flex items-center justify-center opacity-0 pointer-events-none transition-all duration-300 hover:-translate-y-1 min-h-[48px] min-w-[48px]" style="box-shadow:0 8px 24px rgba(59,130,246,0.4)" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Kembali ke atas"><i class="fas fa-arrow-up text-sm"></i></button>
+<button id="back-top" 
+  class="fixed bottom-6 right-6 z-50 w-12 h-12 rounded-2xl bg-blue-500 text-white flex items-center justify-center opacity-0 pointer-events-none transition-all duration-500 ease-in-out hover:bg-blue-600 hover:-translate-y-2 hover:rotate-12 active:scale-90 shadow-[0_8px_25px_rgba(59,130,246,0.5)] group focus:outline-none focus:ring-2 focus:ring-blue-400"
+  onclick="window.scrollTo({top:0, behavior:'smooth'})" 
+  aria-label="Kembali ke atas">
+  <i class="fas fa-arrow-up text-base transition-transform duration-300 group-hover:scale-110"></i>
+  <span class="absolute inset-0 rounded-2xl bg-blue-400 animate-pulse opacity-0 group-hover:opacity-20"></span>
+</button>
+
+<!-- Script IntersectionObserver -->
+<script>
+  const btn = document.getElementById('back-top');
+  const sentinel = document.getElementById('sentinel');
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) {
+        // Jika sentinel tidak terlihat (berarti user sudah scroll jauh)
+        btn.classList.remove('opacity-0', 'pointer-events-none');
+        btn.classList.add('opacity-100', 'pointer-events-auto');
+      } else {
+        // Jika sentinel terlihat (berarti user masih di atas)
+        btn.classList.add('opacity-0', 'pointer-events-none');
+        btn.classList.remove('opacity-100', 'pointer-events-auto');
+      }
+    });
+  });
+
+  observer.observe(sentinel);
+</script>
+
+<!-- Script Sederhana untuk Memunculkan Tombol -->
+<script>
+  window.addEventListener('scroll', () => {
+    const btn = document.getElementById('back-top');
+    if (window.scrollY > 300) {
+      btn.classList.remove('opacity-0', 'pointer-events-none');
+      btn.classList.add('opacity-100', 'pointer-events-auto');
+    } else {
+      btn.classList.add('opacity-0', 'pointer-events-none');
+      btn.classList.remove('opacity-100', 'pointer-events-auto');
+    }
+  });
+</script>
+
 
 <!-- COOKIE BANNER -->
 <div id="cookie-banner" class="fixed bottom-5 left-1/2 z-50 w-[calc(100%-40px)] max-w-md bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700/60 rounded-2xl p-6 shadow-2xl" style="transform:translateX(-50%) translateY(120%);opacity:0">
