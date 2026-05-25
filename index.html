@@ -1,4 +1,4 @@
-<!DO<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="id" class="dark">
 <head>
   <meta charset="UTF-8">
@@ -6,9 +6,8 @@
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
   <meta name="author" content="Hajir Muhaajir">
   <link rel="canonical" href="https://hajirmuhaajir.github.io/">
-  <title>Hajir Muhaajir — Developer, Photographer & Musician dari Bogor</title>
-  <meta name="title" content="Hajir Muhaajir — Developer, Photographer & Musician dari Bogor">
-  <meta name="description" content="Showcase digital Hajir Muhaajir: Web developer, photographer, dan musician profesional asal Bogor. Temukan proyek open-source, alat inovatif, dan karya musik terbaru di sini.">
+  <title>Hajir Muhaajir | Main Showcase</title>
+  <meta name="description" content="Digital showcase of Hajir Muhaajir: Professional web developer, photographer, and musician from Bogor. Discover open-source projects, innovative tools, and latest music releases here.">
   <meta name="keywords" content="Hajir Muhaajir, Muhaajir Showcase, Web Developer Bogor, Photographer Bogor, Musician Bogor, Privacy-first Web, Open Source Developer Indonesia">
   <meta property="og:type" content="profile">
   <meta property="og:profile:first_name" content="Hajir">
@@ -16,15 +15,14 @@
   <meta property="og:profile:username" content="hajirmuhaajir">
   <meta property="og:url" content="https://hajirmuhaajir.github.io/">
   <meta property="og:title" content="Hajir Muhaajir | Portfolio & Digital Showcase">
-  <meta property="og:description" content="Kumpulan karya digital, alat inovatif, fotografi, dan musik dari Hajir Muhaajir (Bogor). Berbasis privacy-first dan open web.">
+  <meta property="og:description" content="A collection of digital works, innovative tools, photography, and music by Hajir Muhaajir (Bogor). Built on privacy-first and open web principles.">
   <meta property="og:image" content="https://i.postimg.cc/LXFb3R4S/foto-profil.webp">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="Foto Profil Hajir Muhaajir - Developer & Photographer Bogor">
+  <meta property="og:image:alt" content="Hajir Muhaajir Profile Picture - Developer & Photographer Bogor">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:url" content="https://hajirmuhaajir.github.io/">
   <meta name="twitter:title" content="Hajir Muhaajir | Portfolio & Digital Showcase">
-  <meta name="twitter:description" content="Eksplorasi proyek coding, fotografi, dan musik buatan Hajir Muhaajir, kreator asal Bogor.">
+  <meta name="twitter:description" content="Explore coding projects, photography, and music created by Hajir Muhaajir, a creator based in Bogor.">
   <meta name="twitter:image" content="https://i.postimg.cc/LXFb3R4S/foto-profil.webp">
   <link rel="preload" as="image" href="https://i.postimg.cc/LXFb3R4S/foto-profil.webp" fetchpriority="high">
   <meta name="theme-color" content="#020617">
@@ -54,7 +52,6 @@
     "description": "Personal showcase of Hajir Muhaajir. Photographer, musician, and developer from Bogor. Privacy-first, open web."
   }
   </script>
-  <!-- Tailwind CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -80,7 +77,6 @@
       }
     }
   </script>
-  <!-- Theme init (anti-flash) -->
   <script>
     (function() {
       const saved = localStorage.getItem('theme');
@@ -106,11 +102,9 @@
     .dark body { background-color: #020617; color: #f8fafc; }
     ::selection { background: var(--accent); color: #fff; }
 
-    /* Logo dual-source transition */
     .logo-img { transition: opacity 0.3s ease; opacity: 1; }
     .logo-switching { opacity: 0; }
 
-    /* Grid pattern hero */
     .grid-bg {
       background-image: linear-gradient(rgba(59,130,246,0.08) 1px, transparent 1px),
         linear-gradient(90deg, rgba(59,130,246,0.08) 1px, transparent 1px);
@@ -140,10 +134,6 @@
     .music-iframe-wrap {
       border-radius: 16px; overflow: hidden; border: 1px solid rgba(59,130,246,0.2);
     }
-    .music-iframe-wrap iframe { width: 100%; border: none; }
-
-    /* Prevent download on certain images */
-    .no-download { pointer-events: none; user-select: none; }
 
     .tool-card, .quote-card {
       transition: transform 0.35s var(--e), border-color 0.35s var(--e);
@@ -197,7 +187,6 @@
     .input-invalid { border-color: #ef4444 !important; }
     .form-error { display: block; color: #ef4444; font-size: 0.75rem; margin-top: 4px; min-height: 1rem; }
 
-    /* Micro-interactions: nav link hover underline slide */
     .nav-link {
       position: relative; overflow: hidden;
     }
@@ -208,15 +197,12 @@
     }
     .nav-link:hover::after, .nav-link.active::after { left: 12px; right: 12px; }
 
-    /* Foto thumbnail active ring */
     .aspect-thumb.selected { border-color: #3B82F6 !important; box-shadow: 0 0 0 2px rgba(59,130,246,0.35); }
 
-    /* Input focus glow enhancement */
     input:focus, textarea:focus {
       outline: none; box-shadow: 0 0 0 3px rgba(59,130,246,0.18);
     }
 
-    /* Smooth section entry via CSS only (complement JS reveal) */
     @media (prefers-reduced-motion: no-preference) {
       .reveal { will-change: opacity, transform; }
     }
@@ -227,7 +213,6 @@
       .scroll-line { animation: none !important; }
     }
 
-    /* Skip to main content (a11y) */
     .skip-link {
       position: absolute; top: -100%; left: 8px; z-index: 9999;
       background: #3B82F6; color: #fff; font-weight: 700; font-size: 0.8rem;
@@ -241,7 +226,6 @@
 
 <a href="#hero" class="skip-link">Langsung ke konten utama</a>
 
-<!-- NAVBAR -->
 <header id="nav" class="fixed top-0 left-0 right-0 z-50 h-16 border-b border-slate-800/60 backdrop-blur-xl bg-white/85 dark:bg-dark-bg/85">
   <div class="max-w-3xl mx-auto px-5 sm:px-8 h-full flex items-center justify-between gap-4">
     <a href="#hero" class="flex items-center gap-2.5 flex-shrink-0">
@@ -249,20 +233,14 @@
       <span class="font-syne font-extrabold text-lg tracking-tight dark:text-white text-slate-900">HAJIR<span class="text-blue-400">.</span></span>
     </a>
 
-    <!-- Desktop nav -->
     <nav id="desktop-nav" class="hidden md:flex items-center gap-1">
       <a href="#about" class="nav-link text-sm font-medium text-slate-500 dark:text-slate-400 px-3 py-1.5 rounded-lg min-h-[48px] flex items-center" data-section="about">Tentang</a>
       <a href="#music" class="nav-link text-sm font-medium text-slate-500 dark:text-slate-400 px-3 py-1.5 rounded-lg min-h-[48px] flex items-center" data-section="music">Musik</a>
       <a href="#quotes" class="nav-link text-sm font-medium text-slate-500 dark:text-slate-400 px-3 py-1.5 rounded-lg min-h-[48px] flex items-center" data-section="quotes">Kutipan</a>
       <a href="#tools" class="nav-link text-sm font-medium text-slate-500 dark:text-slate-400 px-3 py-1.5 rounded-lg min-h-[48px] flex items-center" data-section="tools">Tools</a>
-      <a href="https://hajirmuhaajir.github.io/RAIA" target="_blank" rel="noopener noreferrer" class="nav-link text-sm font-medium text-slate-500 dark:text-slate-400 px-3 py-1.5 rounded-lg min-h-[48px] flex items-center gap-2">
-        <i class="fas fa-robot text-xs"></i>
-        RAIA-Ai
-      </a>
       <a href="#contact" class="nav-link text-sm font-medium text-slate-500 dark:text-slate-400 px-3 py-1.5 rounded-lg min-h-[48px] flex items-center" data-section="contact">Kontak</a>
     </nav>
 
-    <!-- Controls -->
     <div class="flex items-center gap-2 flex-shrink-0">
       <div class="flex items-center rounded-lg border border-slate-300 dark:border-slate-700/60 overflow-hidden h-8">
         <button id="btn-id" class="lang-btn active px-3 text-xs font-mono font-bold" onclick="setLang('id')">ID</button>
@@ -281,22 +259,19 @@
     </div>
   </div>
 
-  <!-- Mobile nav -->
   <nav id="mobile-nav" class="hidden md:hidden border-t border-slate-200 dark:border-slate-800/60 bg-white/95 dark:bg-dark-bg/95 backdrop-blur-xl px-5 py-3 flex-col gap-1">
     <a href="#about" class="mobile-nav-link text-sm font-medium text-slate-500 dark:text-slate-400 px-4 py-3 rounded-xl block min-h-[48px] flex items-center" data-section="about">Tentang</a>
     <a href="#music" class="mobile-nav-link text-sm font-medium text-slate-500 dark:text-slate-400 px-4 py-3 rounded-xl block min-h-[48px] flex items-center" data-section="music">Musik</a>
     <a href="#quotes" class="mobile-nav-link text-sm font-medium text-slate-500 dark:text-slate-400 px-4 py-3 rounded-xl block min-h-[48px] flex items-center" data-section="quotes">Kutipan</a>
     <a href="#tools" class="mobile-nav-link text-sm font-medium text-slate-500 dark:text-slate-400 px-4 py-3 rounded-xl block min-h-[48px] flex items-center" data-section="tools">Tools</a>
-    <a href="https://hajirmuhaajir.github.io/RAIA" target="_blank" rel="noopener noreferrer" class="text-sm font-medium text-slate-500 dark:text-slate-400 px-4 py-3 rounded-xl block min-h-[48px] flex items-center gap-2">
-      <i class="fas fa-robot text-xs"></i>
-      RAIA-Ai
-    </a>
     <a href="#contact" class="mobile-nav-link text-sm font-medium text-slate-500 dark:text-slate-400 px-4 py-3 rounded-xl block min-h-[48px] flex items-center" data-section="contact">Kontak</a>
     <a href="https://github.com/hajirmuhaajir" target="_blank" rel="noopener noreferrer" class="text-sm font-medium text-slate-500 dark:text-slate-400 px-4 py-3 rounded-xl block min-h-[48px] flex items-center gap-2"><i class="fab fa-github text-xs"></i> GitHub</a>
+    <a href="https://hajirmuhaajir.github.io/RAIA" target="_blank" rel="noopener noreferrer" class="text-sm font-medium text-slate-500 dark:text-slate-400 px-4 py-3 rounded-xl block min-h-[48px] flex items-center gap-2">
+      <i class="fas fa-robot text-xs"></i> RAIA-Ai
+    </a>
   </nav>
 </header>
 
-<!-- HERO -->
 <section id="hero" class="relative min-h-svh flex flex-col items-center justify-center text-center px-5 pt-24 pb-20 overflow-hidden dark:bg-dark-bg bg-white">
   <div class="grid-bg absolute inset-0 pointer-events-none"></div>
   <div class="relative z-10 max-w-2xl">
@@ -313,13 +288,13 @@
       Halo! Aku Hajir dari Bogor. Aku senang memotret, menciptakan lagu, dan membuat aplikasi sederhana yang bisa membantu kegiatanmu sehari-hari.
     </p>
     <div class="flex flex-col sm:flex-row gap-3 justify-center items-center" style="animation:fadeUp .8s .9s both">
-  <a href="#about" class="btn-primary w-full sm:w-auto justify-center"><i class="fas fa-user text-xs"></i><span data-i18n="hero_cta1">Kenalan Yuk</span></a>
-  <a href="https://hajirmuhaajir.github.io/RAIA" class="btn-secondary w-full sm:w-auto justify-center">
-    <i class="fas fa-robot text-xs"></i>
-    <span data-i18n="hero_cta2">USE RAIA-Ai</span>
-  </a>
-</div>
-</div>
+      <a href="#about" class="btn-primary w-full sm:w-auto justify-center"><i class="fas fa-user text-xs"></i><span data-i18n="hero_cta1">Kenalan Yuk</span></a>
+      <a href="https://hajirmuhaajir.github.io/RAIA" class="btn-secondary w-full sm:w-auto justify-center">
+        <i class="fas fa-robot text-xs"></i>
+        <span data-i18n="hero_cta2">USE RAIA-Ai</span>
+      </a>
+    </div>
+  </div>
   <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1.5 hidden sm:flex" style="animation:fadeUp 1s 1.5s both">
     <div class="w-px h-12 bg-gradient-to-b from-blue-400 to-transparent scroll-line"></div>
     <span class="font-mono text-[9px] tracking-widest text-slate-400 dark:text-slate-600 uppercase">scroll</span>
@@ -338,7 +313,6 @@
   </div>
 </section>
 
-<!-- ABOUT -->
 <section id="about" class="py-24 bg-slate-100 dark:bg-slate-900/40">
   <div class="max-w-3xl mx-auto px-5 sm:px-8">
     <div class="text-center mb-14 reveal">
@@ -367,50 +341,33 @@
         <p data-i18n="about_p3">Selain itu, aku juga membuat alat-alat di internet yang bisa kamu pakai gratis. Semuanya mudah digunakan, cepat, dan aman. Aku tidak menyimpan data pribadimu sama sekali.</p>
       </div>
       <div class="flex justify-center mt-8">
-    <a href="https://hajirmuhaajir.github.io/RAIA" class="btn-primary">
-    <i class="fas fa-robot text-xs"></i>
-    <span data-i18n="about_cta">Gunakan AI Saya</span>
-    </a>
+        <a href="https://hajirmuhaajir.github.io/RAIA" class="btn-primary">
+          <i class="fas fa-robot text-xs"></i>
+          <span data-i18n="about_cta">Gunakan AI Saya</span>
+        </a>
+      </div>
     </div>
-    </div>
-    <!-- Stats row -->
     <div class="reveal mt-6 grid grid-cols-1 sm:grid-cols-2 gap-3">
       <div class="flex items-center gap-4 px-5 py-4 bg-white dark:bg-slate-800/40 border border-slate-200 dark:border-slate-700/40 rounded-xl contact-link">
         <div class="w-9 h-9 rounded-lg bg-blue-500/10 border border-blue-500/20 flex items-center justify-center text-blue-400"><i class="fas fa-code"></i></div>
-        <div>
-          <div class="font-mono text-[10px] tracking-widest text-slate-500 dark:text-slate-600 uppercase mb-0.5" data-i18n="stat_approach">Cara Kerja</div>
-          <div class="text-sm font-semibold text-slate-900 dark:text-white">Single-File HTML Apps</div>
-        </div>
+        <div><div class="font-mono text-[10px] tracking-widest text-slate-500 dark:text-slate-600 uppercase mb-0.5" data-i18n="stat_approach">Cara Kerja</div><div class="text-sm font-semibold text-slate-900 dark:text-white">Single-File HTML Apps</div></div>
       </div>
       <div class="flex items-center gap-4 px-5 py-4 bg-white dark:bg-slate-800/40 border border-slate-200 dark:border-slate-700/40 rounded-xl contact-link">
         <div class="w-9 h-9 rounded-lg bg-blue-500/10 border border-blue-500/20 flex items-center justify-center text-blue-400"><i class="fas fa-shield-halved"></i></div>
-        <div>
-          <div class="font-mono text-[10px] tracking-widest text-slate-500 dark:text-slate-600 uppercase mb-0.5" data-i18n="stat_philosophy">Prinsip</div>
-          <div class="text-sm font-semibold text-slate-900 dark:text-white">Privacy First · Zero Backend</div>
-        </div>
+        <div><div class="font-mono text-[10px] tracking-widest text-slate-500 dark:text-slate-600 uppercase mb-0.5" data-i18n="stat_philosophy">Prinsip</div><div class="text-sm font-semibold text-slate-900 dark:text-white">Privacy First · Zero Backend</div></div>
       </div>
       <div class="flex items-center gap-4 px-5 py-4 bg-white dark:bg-slate-800/40 border border-slate-200 dark:border-slate-700/40 rounded-xl contact-link">
         <div class="w-9 h-9 rounded-lg bg-blue-500/10 border border-blue-500/20 flex items-center justify-center text-blue-400"><i class="fab fa-github"></i></div>
-        <div>
-          <div class="font-mono text-[10px] tracking-widest text-slate-500 dark:text-slate-600 uppercase mb-0.5">GitHub</div>
-          <div class="flex items-center gap-2">
-            <span class="text-sm font-semibold text-slate-900 dark:text-white">hajirmuhaajir</span>
-            <button class="copy-btn text-slate-400 hover:text-blue-400" data-copy="hajirmuhaajir"><i class="far fa-copy text-xs"></i></button>
-          </div>
-        </div>
+        <div><div class="font-mono text-[10px] tracking-widest text-slate-500 dark:text-slate-600 uppercase mb-0.5">GitHub</div><div class="flex items-center gap-2"><span class="text-sm font-semibold text-slate-900 dark:text-white">hajirmuhaajir</span><button class="copy-btn text-slate-400 hover:text-blue-400" data-copy="hajirmuhaajir"><i class="far fa-copy text-xs"></i></button></div></div>
       </div>
       <div class="flex items-center gap-4 px-5 py-4 bg-white dark:bg-slate-800/40 border border-slate-200 dark:border-slate-700/40 rounded-xl contact-link">
         <div class="w-9 h-9 rounded-lg bg-blue-500/10 border border-blue-500/20 flex items-center justify-center text-blue-400"><i class="fas fa-map-marker-alt"></i></div>
-        <div>
-          <div class="font-mono text-[10px] tracking-widest text-slate-500 dark:text-slate-600 uppercase mb-0.5" data-i18n="stat_location">Tempat Tinggal</div>
-          <div class="text-sm font-semibold text-slate-900 dark:text-white">Bogor, Indonesia</div>
-        </div>
+        <div><div class="font-mono text-[10px] tracking-widest text-slate-500 dark:text-slate-600 uppercase mb-0.5" data-i18n="stat_location">Tempat Tinggal</div><div class="text-sm font-semibold text-slate-900 dark:text-white">Bogor, Indonesia</div></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- RWR / AMA -->
 <section id="RWR" class="py-20 bg-slate-100 dark:bg-slate-900/40">
   <div class="max-w-3xl mx-auto px-5 sm:px-8">
     <div class="reveal flex flex-col items-center text-center">
@@ -424,10 +381,8 @@
   </div>
 </section>
 
-<!-- MUSIC -->
 <section id="music" class="py-24 bg-white dark:bg-slate-950 relative overflow-hidden">
   <div class="max-w-3xl mx-auto px-5 sm:px-8 relative z-10">
-    
     <div class="text-center mb-12 reveal">
       <div class="section-tag mb-2 font-mono text-xs tracking-widest text-blue-500 dark:text-blue-400 font-semibold uppercase" data-i18n="music_tag">// Music Releases</div>
       <div class="accent-line w-12 h-[3px] bg-blue-500 mx-auto mb-4 rounded-full"></div>
@@ -438,15 +393,10 @@
     <div class="reveal bg-white dark:bg-slate-800/40 border border-slate-200 dark:border-slate-700/40 rounded-2xl p-6 mb-6 shadow-sm group hover:border-slate-300 dark:hover:border-slate-600/50 transition-colors duration-300">
       <div class="flex items-center gap-3 mb-4">
         <img src="https://i.postimg.cc/cJmZQR6B/Muhaajir-Music-Logo.webp" alt="Muhaajir Music Logo – official music player app by Hajir Muhaajir" class="w-10 h-10 rounded-lg object-contain border border-blue-500/20 group-hover:scale-105 transition-transform duration-300" loading="lazy" decoding="async">
-        <div>
-          <div class="font-syne font-bold text-slate-900 dark:text-white">Muhaajir Music</div>
-          <div class="font-mono text-[10px] text-blue-500 dark:text-blue-400 tracking-widest font-semibold uppercase" data-i18n="music_player_label">Official Music Player</div>
-        </div>
+        <div><div class="font-syne font-bold text-slate-900 dark:text-white">Muhaajir Music</div><div class="font-mono text-[10px] text-blue-500 dark:text-blue-400 tracking-widest font-semibold uppercase" data-i18n="music_player_label">Official Music Player</div></div>
       </div>
       <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-4" data-i18n="music_player_desc">Pick your favorite track and play it instantly right here without any hassle.</p>
-      <p class="text-slate-400 dark:text-slate-500 text-[11px] font-mono flex items-center gap-1.5" data-i18n="music_player_note">
-        <i class="fas fa-info-circle text-blue-500/70 text-xs"></i> * This embedded player is entirely in Indonesian.
-      </p>
+      <p class="text-slate-400 dark:text-slate-500 text-[11px] font-mono flex items-center gap-1.5" data-i18n="music_player_note"><i class="fas fa-info-circle text-blue-500/70 text-xs"></i> * This embedded player is entirely in Indonesian.</p>
     </div>
 
     <div class="reveal music-iframe-wrap shadow-xl border border-slate-200 dark:border-slate-800 rounded-2xl overflow-hidden bg-slate-50 dark:bg-slate-900">
@@ -455,36 +405,22 @@
 
     <div class="reveal mt-6 bg-white dark:bg-slate-800/40 border border-slate-200 dark:border-slate-700/40 rounded-2xl p-6 shadow-sm hover:border-slate-300 dark:hover:border-slate-600/50 transition-colors duration-300 group">
       <div class="flex flex-col sm:flex-row items-start gap-4">
-        <div class="w-10 h-10 flex-shrink-0 rounded-lg bg-blue-500/10 border border-blue-500/20 flex items-center justify-center text-blue-500 dark:text-blue-400 group-hover:bg-blue-500 group-hover:text-white transition-all duration-300">
-          <i class="fab fa-android text-xl"></i>
-        </div>
+        <div class="w-10 h-10 flex-shrink-0 rounded-lg bg-blue-500/10 border border-blue-500/20 flex items-center justify-center text-blue-500 dark:text-blue-400 group-hover:bg-blue-500 group-hover:text-white transition-all duration-300"><i class="fab fa-android text-xl"></i></div>
         <div class="flex-1">
           <h4 class="font-syne font-bold text-slate-900 dark:text-white mb-1" data-i18n="music_download_title">Android Application</h4>
           <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-4" data-i18n="music_download_desc">Want to listen to Hajir's tracks straight from your phone? Download the app below to play them anytime, anywhere.</p>
-          
-          <a href="https://www.dropbox.com/scl/fi/y03z5e5fbgxjg6dwjxl5a/muhaajir-music-v1.0.apk?rlkey=x6vpn5o8m7xj8d343ewab849v&st=1hnog3bm&dl=1" class="inline-flex items-center gap-2 bg-blue-500 hover:bg-blue-600 text-white text-xs font-semibold uppercase tracking-wider px-5 py-3 rounded-xl shadow-sm shadow-blue-500/10 transition-all duration-300 transform active:scale-95">
-            <i class="fas fa-download text-xs group-hover:animate-bounce"></i>
-            <span data-i18n="music_download_button">Download App (APK)</span>
-          </a>
-          
-          <p class="text-slate-400 dark:text-slate-500 text-[10px] mt-3 font-mono leading-relaxed">
-            <span class="block" data-i18n="music_download_note">* Exclusive for Android devices. Manual installation required.</span>
-            <span class="block opacity-80" data-i18n="music_powered_by">* Powered by appsgeyser.com</span>
-          </p>
+          <a href="https://www.dropbox.com/scl/fi/y03z5e5fbgxjg6dwjxl5a/muhaajir-music-v1.0.apk?rlkey=x6vpn5o8m7xj8d343ewab849v&st=1hnog3bm&dl=1" class="inline-flex items-center gap-2 bg-blue-500 hover:bg-blue-600 text-white text-xs font-semibold uppercase tracking-wider px-5 py-3 rounded-xl shadow-sm shadow-blue-500/10 transition-all duration-300 transform active:scale-95"><i class="fas fa-download text-xs group-hover:animate-bounce"></i><span data-i18n="music_download_button">Download App (APK)</span></a>
+          <p class="text-slate-400 dark:text-slate-500 text-[10px] mt-3 font-mono leading-relaxed"><span class="block" data-i18n="music_download_note">* Exclusive for Android devices. Manual installation required.</span><span class="block opacity-80" data-i18n="music_powered_by">* Powered by appsgeyser.com</span></p>
         </div>
       </div>
     </div>
 
     <div class="reveal text-center mt-6">
-      <a href="https://hajirmuhaajir.github.io/muhaajir-music" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 font-mono text-[11px] text-blue-500 dark:text-blue-400 hover:text-blue-600 dark:hover:text-blue-300 group transition-colors">
-        <i class="fas fa-external-link-alt text-[10px] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform"></i>
-        <span data-i18n="music_open_link">Click here if the music player fails to load</span>
-      </a>
+      <a href="https://hajirmuhaajir.github.io/muhaajir-music" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 font-mono text-[11px] text-blue-500 dark:text-blue-400 hover:text-blue-600 dark:hover:text-blue-300 group transition-colors"><i class="fas fa-external-link-alt text-[10px] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform"></i><span data-i18n="music_open_link">Click here if the music player fails to load</span></a>
     </div>
   </div>
 </section>
 
-<!-- FOTO OF THE DAY -->
 <section id="foto-of-the-day" class="py-24 bg-slate-100 dark:bg-slate-900/40">
   <div class="max-w-3xl mx-auto px-5 sm:px-8">
     <div class="text-center mb-10 reveal">
@@ -499,21 +435,14 @@
       </div>
       <p class="mt-5 text-slate-500 dark:text-slate-400 text-sm italic text-center" data-i18n="foto_caption">"Kisah hari ini saya abadikan lewat foto ini…"</p>
       <div class="flex gap-3 mt-6">
-        <button class="aspect-thumb w-16 h-16 rounded-lg overflow-hidden border-2 border-slate-300 dark:border-slate-600 hover:border-blue-400" data-ratio="9/16">
-          <div style="aspect-ratio:9/16"><img id="thumb-9-16" src="" alt="9:16" class="w-full h-full object-cover"></div>
-        </button>
-        <button class="aspect-thumb w-16 h-16 rounded-lg overflow-hidden border-2 border-slate-300 dark:border-slate-600 hover:border-blue-400" data-ratio="16/9">
-          <div style="aspect-ratio:16/9"><img id="thumb-16-9" src="" alt="16:9" class="w-full h-full object-cover"></div>
-        </button>
-        <button class="aspect-thumb w-16 h-16 rounded-lg overflow-hidden border-2 border-slate-300 dark:border-slate-600 hover:border-blue-400" data-ratio="4/3">
-          <div style="aspect-ratio:4/3"><img id="thumb-4-3" src="" alt="4:3" class="w-full h-full object-cover"></div>
-        </button>
+        <button class="aspect-thumb w-16 h-16 rounded-lg overflow-hidden border-2 border-slate-300 dark:border-slate-600 hover:border-blue-400" data-ratio="9/16"><div style="aspect-ratio:9/16"><img id="thumb-9-16" src="" alt="9:16" class="w-full h-full object-cover"></div></button>
+        <button class="aspect-thumb w-16 h-16 rounded-lg overflow-hidden border-2 border-slate-300 dark:border-slate-600 hover:border-blue-400" data-ratio="16/9"><div style="aspect-ratio:16/9"><img id="thumb-16-9" src="" alt="16:9" class="w-full h-full object-cover"></div></button>
+        <button class="aspect-thumb w-16 h-16 rounded-lg overflow-hidden border-2 border-slate-300 dark:border-slate-600 hover:border-blue-400" data-ratio="4/3"><div style="aspect-ratio:4/3"><img id="thumb-4-3" src="" alt="4:3" class="w-full h-full object-cover"></div></button>
       </div>
     </div>
   </div>
 </section>
 
-<!-- QUOTES -->
 <section id="quotes" class="py-24 bg-white dark:bg-dark-bg">
   <div class="max-w-3xl mx-auto px-5 sm:px-8">
     <div class="text-center mb-12 reveal">
@@ -523,53 +452,15 @@
       <p class="text-slate-600 dark:text-slate-400 text-sm max-w-md mx-auto" data-i18n="quotes_subtitle">Pesan dari orang-orang hebat yang selalu membuat saya bersemangat.</p>
     </div>
     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-      <div class="reveal quote-card bg-white dark:bg-slate-800/40 border border-slate-200 dark:border-slate-700/40 rounded-2xl p-7 relative flex flex-col justify-between group">
-        <div class="absolute -top-3 left-5 text-7xl font-serif leading-none text-blue-400/15 select-none group-hover:text-blue-400/25 transition-colors" aria-hidden="true">"</div>
-        <p class="italic text-slate-700 dark:text-slate-300 text-sm leading-relaxed mb-5 relative z-10 flex-1" data-i18n="q1_text">"Memotret bukan sekadar mengambil gambar, tapi menciptakan seni."</p>
-        <div class="flex items-center gap-3">
-          <div class="w-6 h-0.5 bg-blue-400 rounded-full flex-shrink-0"></div>
-          <div class="font-syne text-xs font-bold text-slate-900 dark:text-white" data-i18n="q1_author">— Ansel Adams, Fotografer</div>
-        </div>
-      </div>
-      <div class="reveal quote-card bg-white dark:bg-slate-800/40 border border-slate-200 dark:border-slate-700/40 rounded-2xl p-7 relative flex flex-col justify-between group">
-        <div class="absolute -top-3 left-5 text-7xl font-serif leading-none text-blue-400/15 select-none group-hover:text-blue-400/25 transition-colors" aria-hidden="true">"</div>
-        <p class="italic text-slate-700 dark:text-slate-300 text-sm leading-relaxed mb-5 relative z-10 flex-1" data-i18n="q2_text">"Musik adalah bahasa yang bisa dimengerti oleh semua orang di dunia."</p>
-        <div class="flex items-center gap-3">
-          <div class="w-6 h-0.5 bg-blue-400 rounded-full flex-shrink-0"></div>
-          <div class="font-syne text-xs font-bold text-slate-900 dark:text-white" data-i18n="q2_author">— Henry Wadsworth Longfellow, Penyair</div>
-        </div>
-      </div>
-      <div class="reveal quote-card bg-white dark:bg-slate-800/40 border border-slate-200 dark:border-slate-700/40 rounded-2xl p-7 relative flex flex-col justify-between group">
-        <div class="absolute -top-3 left-5 text-7xl font-serif leading-none text-blue-400/15 select-none group-hover:text-blue-400/25 transition-colors" aria-hidden="true">"</div>
-        <p class="italic text-slate-700 dark:text-slate-300 text-sm leading-relaxed mb-5 relative z-10 flex-1" data-i18n="q3_text">"Desain bukan cuma soal terlihat bagus, tapi soal enak saat digunakan."</p>
-        <div class="flex items-center gap-3">
-          <div class="w-6 h-0.5 bg-blue-400 rounded-full flex-shrink-0"></div>
-          <div class="font-syne text-xs font-bold text-slate-900 dark:text-white" data-i18n="q3_author">— Steve Jobs, Pembuat Apple</div>
-        </div>
-      </div>
-      <div class="reveal quote-card bg-white dark:bg-slate-800/40 border border-blue-500/25 rounded-2xl p-7 relative flex flex-col justify-between group">
-        <div class="absolute -top-3 left-5 text-7xl font-serif leading-none text-blue-400/20 select-none group-hover:text-blue-400/35 transition-colors" aria-hidden="true">"</div>
-        <p class="italic text-slate-700 dark:text-slate-300 text-sm leading-relaxed mb-5 relative z-10 flex-1" data-i18n="q4_text">"Terus belajar adalah kunci utama jika kita sudah berada di jalan yang benar."</p>
-        <div class="flex items-center gap-3">
-          <div class="w-6 h-0.5 bg-blue-400 rounded-full flex-shrink-0"></div>
-          <div class="font-syne text-xs font-bold text-slate-900 dark:text-white" data-i18n="q4_author">— Adrian Newey, Perancang Mobil Balap</div>
-        </div>
-      </div>
-      <div class="reveal quote-card sm:col-span-2 bg-gradient-to-br from-blue-500/5 to-transparent border border-blue-500/20 rounded-2xl p-7 relative flex flex-col sm:flex-row sm:items-center gap-5 group">
-        <div class="text-7xl font-serif leading-none text-blue-400/20 select-none flex-shrink-0 self-start group-hover:text-blue-400/35 transition-colors" aria-hidden="true">"</div>
-        <div class="flex-1">
-          <p class="italic text-slate-700 dark:text-slate-300 text-base leading-relaxed mb-5" data-i18n="q5_text">"Kesederhanaan adalah bentuk kemewahan yang paling tinggi."</p>
-          <div class="flex items-center gap-3">
-            <div class="w-6 h-0.5 bg-blue-400 rounded-full flex-shrink-0"></div>
-            <div class="font-syne text-sm font-bold text-slate-900 dark:text-white" data-i18n="q5_author">— Coco Chanel, Perancang Busana</div>
-          </div>
-        </div>
-      </div>
+      <div class="reveal quote-card bg-white dark:bg-slate-800/40 border border-slate-200 dark:border-slate-700/40 rounded-2xl p-7 relative flex flex-col justify-between group"><div class="absolute -top-3 left-5 text-7xl font-serif leading-none text-blue-400/15 select-none group-hover:text-blue-400/25 transition-colors" aria-hidden="true">"</div><p class="italic text-slate-700 dark:text-slate-300 text-sm leading-relaxed mb-5 relative z-10 flex-1" data-i18n="q1_text">"Memotret bukan sekadar mengambil gambar, tapi menciptakan seni."</p><div class="flex items-center gap-3"><div class="w-6 h-0.5 bg-blue-400 rounded-full flex-shrink-0"></div><div class="font-syne text-xs font-bold text-slate-900 dark:text-white" data-i18n="q1_author">— Ansel Adams, Fotografer</div></div></div>
+      <div class="reveal quote-card bg-white dark:bg-slate-800/40 border border-slate-200 dark:border-slate-700/40 rounded-2xl p-7 relative flex flex-col justify-between group"><div class="absolute -top-3 left-5 text-7xl font-serif leading-none text-blue-400/15 select-none group-hover:text-blue-400/25 transition-colors" aria-hidden="true">"</div><p class="italic text-slate-700 dark:text-slate-300 text-sm leading-relaxed mb-5 relative z-10 flex-1" data-i18n="q2_text">"Musik adalah bahasa yang bisa dimengerti oleh semua orang di dunia."</p><div class="flex items-center gap-3"><div class="w-6 h-0.5 bg-blue-400 rounded-full flex-shrink-0"></div><div class="font-syne text-xs font-bold text-slate-900 dark:text-white" data-i18n="q2_author">— Henry Wadsworth Longfellow, Penyair</div></div></div>
+      <div class="reveal quote-card bg-white dark:bg-slate-800/40 border border-slate-200 dark:border-slate-700/40 rounded-2xl p-7 relative flex flex-col justify-between group"><div class="absolute -top-3 left-5 text-7xl font-serif leading-none text-blue-400/15 select-none group-hover:text-blue-400/25 transition-colors" aria-hidden="true">"</div><p class="italic text-slate-700 dark:text-slate-300 text-sm leading-relaxed mb-5 relative z-10 flex-1" data-i18n="q3_text">"Desain bukan cuma soal terlihat bagus, tapi soal enak saat digunakan."</p><div class="flex items-center gap-3"><div class="w-6 h-0.5 bg-blue-400 rounded-full flex-shrink-0"></div><div class="font-syne text-xs font-bold text-slate-900 dark:text-white" data-i18n="q3_author">— Steve Jobs, Pembuat Apple</div></div></div>
+      <div class="reveal quote-card bg-white dark:bg-slate-800/40 border border-blue-500/25 rounded-2xl p-7 relative flex flex-col justify-between group"><div class="absolute -top-3 left-5 text-7xl font-serif leading-none text-blue-400/20 select-none group-hover:text-blue-400/35 transition-colors" aria-hidden="true">"</div><p class="italic text-slate-700 dark:text-slate-300 text-sm leading-relaxed mb-5 relative z-10 flex-1" data-i18n="q4_text">"Terus belajar adalah kunci utama jika kita sudah berada di jalan yang benar."</p><div class="flex items-center gap-3"><div class="w-6 h-0.5 bg-blue-400 rounded-full flex-shrink-0"></div><div class="font-syne text-xs font-bold text-slate-900 dark:text-white" data-i18n="q4_author">— Adrian Newey, Perancang Mobil Balap</div></div></div>
+      <div class="reveal quote-card sm:col-span-2 bg-gradient-to-br from-blue-500/5 to-transparent border border-blue-500/20 rounded-2xl p-7 relative flex flex-col sm:flex-row sm:items-center gap-5 group"><div class="text-7xl font-serif leading-none text-blue-400/20 select-none flex-shrink-0 self-start group-hover:text-blue-400/35 transition-colors" aria-hidden="true">"</div><div class="flex-1"><p class="italic text-slate-700 dark:text-slate-300 text-base leading-relaxed mb-5" data-i18n="q5_text">"Kesederhanaan adalah bentuk kemewahan yang paling tinggi."</p><div class="flex items-center gap-3"><div class="w-6 h-0.5 bg-blue-400 rounded-full flex-shrink-0"></div><div class="font-syne text-sm font-bold text-slate-900 dark:text-white" data-i18n="q5_author">— Coco Chanel, Perancang Busana</div></div></div></div>
     </div>
   </div>
 </section>
 
-<!-- TOOLS (Single, Clean) -->
 <section id="tools" class="py-24 bg-slate-100 dark:bg-slate-900/40 relative overflow-hidden">
   <div class="max-w-3xl mx-auto px-5 sm:px-8 relative z-10">
     <div class="text-center mb-14 reveal">
@@ -587,269 +478,64 @@
     <div class="space-y-5" id="tools-container">
       <!-- HajirSync -->
       <div class="reveal tool-card bg-white dark:bg-slate-800/40 border border-slate-200 dark:border-slate-700/40 rounded-2xl p-6 sm:p-7 shadow-sm hover:shadow-md hover:border-slate-300 dark:hover:border-slate-600/50 transition-all duration-300 group" data-category="music">
-        <div class="flex flex-col sm:flex-row items-stretch sm:items-start gap-6">
-          <div class="w-full sm:w-40 h-32 sm:h-28 flex-shrink-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/40 bg-slate-900 flex items-center justify-center">
-            <svg class="w-9 h-9 text-slate-400 dark:text-slate-500 group-hover:text-blue-500 dark:group-hover:text-blue-400 transition-colors duration-300" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M3 12c0-4.97 4.03-9 9-9s9 4.03 9 9M3 12a3 3 0 013-3h1a3 3 0 013 3v4a3 3 0 01-3 3H6a3 3 0 01-3-3v-4zm14-3a3 3 0 013 3v4a3 3 0 01-3 3h-1a3 3 0 01-3-3v-4a3 3 0 013-3h1z"></path>
-            </svg>
-          </div>
-          <div class="flex-1 flex flex-col justify-between">
-            <div>
-              <div class="flex flex-wrap items-center gap-3 mb-2">
-                <div class="font-mono text-[10px] tracking-widest text-blue-500 dark:text-blue-400 font-semibold uppercase">LRC Generator</div>
-                <span class="text-[10px] bg-emerald-500/10 text-emerald-500 dark:text-emerald-400 border border-emerald-500/20 px-2.5 py-0.5 rounded-full font-mono font-medium" data-i18n="status_stable">Stable</span>
-              </div>
-              <h3 class="font-syne font-bold text-lg text-slate-900 dark:text-white mb-2 group-hover:text-blue-500 dark:group-hover:text-blue-400 transition-colors">HajirSync</h3>
-              <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-4" data-i18n="tool1_desc">Easily create synchronized time-coded lyrics (LRC) that scroll automatically.</p>
-              <div class="flex flex-wrap gap-2 mb-5">
-                <span class="font-mono text-[10px] text-blue-500 dark:text-blue-400 bg-blue-500/5 dark:bg-blue-500/10 border border-blue-500/10 dark:border-blue-500/20 px-2.5 py-1 rounded-md">Web Audio API</span>
-                <span class="font-mono text-[10px] text-blue-500 dark:text-blue-400 bg-blue-500/5 dark:bg-blue-500/10 border border-blue-500/10 dark:border-blue-500/20 px-2.5 py-1 rounded-md">LRC Export</span>
-                <span class="font-mono text-[10px] text-blue-500 dark:text-blue-400 bg-blue-500/5 dark:bg-blue-500/10 border border-blue-500/10 dark:border-blue-500/20 px-2.5 py-1 rounded-md">Bilingual UI</span>
-              </div>
-            </div>
-            <div>
-              <a href="https://hajirmuhaajir.github.io/hajirsync" target="_blank" rel="noopener noreferrer" class="btn-primary inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider py-2.5 px-5 bg-blue-500 hover:bg-blue-600 text-white rounded-xl shadow-sm shadow-blue-500/10 transition-all duration-300 transform active:scale-95">
-                <span data-i18n="tool_open">Open Tool</span>
-                <svg class="w-3.5 h-3.5 opacity-80 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25"></path>
-                </svg>
-              </a>
-            </div>
-          </div>
-        </div>
+        <div class="flex flex-col sm:flex-row items-stretch sm:items-start gap-6"><div class="w-full sm:w-40 h-32 sm:h-28 flex-shrink-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/40 bg-slate-900 flex items-center justify-center"><svg class="w-9 h-9 text-slate-400 dark:text-slate-500 group-hover:text-blue-500 dark:group-hover:text-blue-400 transition-colors duration-300" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 12c0-4.97 4.03-9 9-9s9 4.03 9 9M3 12a3 3 0 013-3h1a3 3 0 013 3v4a3 3 0 01-3 3H6a3 3 0 01-3-3v-4zm14-3a3 3 0 013 3v4a3 3 0 01-3 3h-1a3 3 0 01-3-3v-4a3 3 0 013-3h1z"></path></svg></div><div class="flex-1 flex flex-col justify-between"><div><div class="flex flex-wrap items-center gap-3 mb-2"><div class="font-mono text-[10px] tracking-widest text-blue-500 dark:text-blue-400 font-semibold uppercase">LRC Generator</div><span class="text-[10px] bg-emerald-500/10 text-emerald-500 dark:text-emerald-400 border border-emerald-500/20 px-2.5 py-0.5 rounded-full font-mono font-medium" data-i18n="status_stable">Stable</span></div><h3 class="font-syne font-bold text-lg text-slate-900 dark:text-white mb-2 group-hover:text-blue-500 dark:group-hover:text-blue-400 transition-colors">HajirSync</h3><p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-4" data-i18n="tool1_desc">Easily create synchronized time-coded lyrics (LRC) that scroll automatically.</p><div class="flex flex-wrap gap-2 mb-5"><span class="font-mono text-[10px] text-blue-500 dark:text-blue-400 bg-blue-500/5 dark:bg-blue-500/10 border border-blue-500/10 dark:border-blue-500/20 px-2.5 py-1 rounded-md">Web Audio API</span><span class="font-mono text-[10px] text-blue-500 dark:text-blue-400 bg-blue-500/5 dark:bg-blue-500/10 border border-blue-500/10 dark:border-blue-500/20 px-2.5 py-1 rounded-md">LRC Export</span><span class="font-mono text-[10px] text-blue-500 dark:text-blue-400 bg-blue-500/5 dark:bg-blue-500/10 border border-blue-500/10 dark:border-blue-500/20 px-2.5 py-1 rounded-md">Bilingual UI</span></div></div><div><a href="https://hajirmuhaajir.github.io/hajirsync" target="_blank" rel="noopener noreferrer" class="btn-primary inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider py-2.5 px-5 bg-blue-500 hover:bg-blue-600 text-white rounded-xl shadow-sm shadow-blue-500/10 transition-all duration-300 transform active:scale-95"><span data-i18n="tool_open">Open Tool</span><svg class="w-3.5 h-3.5 opacity-80 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25"></path></svg></a></div></div></div>
       </div>
       <!-- Muhaajir Vault -->
       <div class="reveal tool-card bg-white dark:bg-slate-800/40 border border-slate-200 dark:border-slate-700/40 rounded-2xl p-6 sm:p-7 shadow-sm hover:shadow-md hover:border-slate-300 dark:hover:border-slate-600/50 transition-all duration-300 group" data-category="security">
-        <div class="flex flex-col sm:flex-row items-stretch sm:items-start gap-6">
-          <div class="w-full sm:w-40 h-32 sm:h-28 flex-shrink-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/40 bg-slate-900 flex items-center justify-center">
-            <svg class="w-9 h-9 text-slate-400 dark:text-slate-500 group-hover:text-blue-500 dark:group-hover:text-blue-400 transition-colors duration-300" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z"></path>
-            </svg>
-          </div>
-          <div class="flex-1 flex flex-col justify-between">
-            <div>
-              <div class="flex flex-wrap items-center gap-3 mb-2">
-                <div class="font-mono text-[10px] tracking-widest text-blue-500 dark:text-blue-400 font-semibold uppercase">Password Manager</div>
-                <span class="text-[10px] bg-emerald-500/10 text-emerald-500 dark:text-emerald-400 border border-emerald-500/20 px-2.5 py-0.5 rounded-full font-mono font-medium" data-i18n="status_stable">Stable</span>
-              </div>
-              <h3 class="font-syne font-bold text-lg text-slate-900 dark:text-white mb-2 group-hover:text-blue-500 dark:group-hover:text-blue-400 transition-colors">Muhaajir Vault</h3>
-              <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-4" data-i18n="tool2_desc">Generate strong, secure passwords to keep your digital accounts safe from intruders.</p>
-              <div class="flex flex-wrap gap-2 mb-5">
-                <span class="font-mono text-[10px] text-blue-500 dark:text-blue-400 bg-blue-500/5 dark:bg-blue-500/10 border border-blue-500/10 dark:border-blue-500/20 px-2.5 py-1 rounded-md">Password Gen</span>
-                <span class="font-mono text-[10px] text-blue-500 dark:text-blue-400 bg-blue-500/5 dark:bg-blue-500/10 border border-blue-500/10 dark:border-blue-500/20 px-2.5 py-1 rounded-md">Strength Meter</span>
-                <span class="font-mono text-[10px] text-blue-500 dark:text-blue-400 bg-blue-500/5 dark:bg-blue-500/10 border border-blue-500/10 dark:border-blue-500/20 px-2.5 py-1 rounded-md">13 Languages</span>
-              </div>
-            </div>
-            <div>
-              <a href="https://hajirmuhaajir.github.io/muhaajir-vault" target="_blank" rel="noopener noreferrer" class="btn-primary inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider py-2.5 px-5 bg-blue-500 hover:bg-blue-600 text-white rounded-xl shadow-sm shadow-blue-500/10 transition-all duration-300 transform active:scale-95">
-                <span data-i18n="tool_open">Open Tool</span>
-                <svg class="w-3.5 h-3.5 opacity-80 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25"></path>
-                </svg>
-              </a>
-            </div>
-          </div>
-        </div>
+        <div class="flex flex-col sm:flex-row items-stretch sm:items-start gap-6"><div class="w-full sm:w-40 h-32 sm:h-28 flex-shrink-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/40 bg-slate-900 flex items-center justify-center"><svg class="w-9 h-9 text-slate-400 dark:text-slate-500 group-hover:text-blue-500 dark:group-hover:text-blue-400 transition-colors duration-300" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z"></path></svg></div><div class="flex-1 flex flex-col justify-between"><div><div class="flex flex-wrap items-center gap-3 mb-2"><div class="font-mono text-[10px] tracking-widest text-blue-500 dark:text-blue-400 font-semibold uppercase">Password Manager</div><span class="text-[10px] bg-emerald-500/10 text-emerald-500 dark:text-emerald-400 border border-emerald-500/20 px-2.5 py-0.5 rounded-full font-mono font-medium" data-i18n="status_stable">Stable</span></div><h3 class="font-syne font-bold text-lg text-slate-900 dark:text-white mb-2 group-hover:text-blue-500 dark:group-hover:text-blue-400 transition-colors">Muhaajir Vault</h3><p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-4" data-i18n="tool2_desc">Generate strong, secure passwords to keep your digital accounts safe from intruders.</p><div class="flex flex-wrap gap-2 mb-5"><span class="font-mono text-[10px] text-blue-500 dark:text-blue-400 bg-blue-500/5 dark:bg-blue-500/10 border border-blue-500/10 dark:border-blue-500/20 px-2.5 py-1 rounded-md">Password Gen</span><span class="font-mono text-[10px] text-blue-500 dark:text-blue-400 bg-blue-500/5 dark:bg-blue-500/10 border border-blue-500/10 dark:border-blue-500/20 px-2.5 py-1 rounded-md">Strength Meter</span><span class="font-mono text-[10px] text-blue-500 dark:text-blue-400 bg-blue-500/5 dark:bg-blue-500/10 border border-blue-500/10 dark:border-blue-500/20 px-2.5 py-1 rounded-md">13 Languages</span></div></div><div><a href="https://hajirmuhaajir.github.io/muhaajir-vault" target="_blank" rel="noopener noreferrer" class="btn-primary inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider py-2.5 px-5 bg-blue-500 hover:bg-blue-600 text-white rounded-xl shadow-sm shadow-blue-500/10 transition-all duration-300 transform active:scale-95"><span data-i18n="tool_open">Open Tool</span><svg class="w-3.5 h-3.5 opacity-80 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25"></path></svg></a></div></div></div>
       </div>
       <!-- Muhaajir Scrub -->
       <div class="reveal tool-card bg-white dark:bg-slate-800/40 border border-slate-200 dark:border-slate-700/40 rounded-2xl p-6 sm:p-7 shadow-sm hover:shadow-md hover:border-slate-300 dark:hover:border-slate-600/50 transition-all duration-300 group" data-category="security">
-        <div class="flex flex-col sm:flex-row items-stretch sm:items-start gap-6">
-          <div class="w-full sm:w-40 h-32 sm:h-28 flex-shrink-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/40 bg-slate-900 flex items-center justify-center">
-            <svg class="w-9 h-9 text-slate-400 dark:text-slate-500 group-hover:text-blue-500 dark:group-hover:text-blue-400 transition-colors duration-300" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 21l5.096-.813a2 2 0 001.077-.543l7.045-7.045a2.828 2.828 0 10-4-4l-7.045 7.045a2 2 0 00-.543 1.077zM15 7.5l3 3M3 6.75a.75.75 0 01.75-.75h.008a.75.75 0 01.75.75v.008a.75.75 0 01-.75.75H3.75a.75.75 0 01-.75-.75V6.75zm0 9a.75.75 0 01.75-.75h.008a.75.75 0 01.75.75v.008a.75.75 0 01-.75.75H3.75a.75.75 0 01-.75-.75v-.008zm3-4.5a.75.75 0 01.75-.75h.008a.75.75 0 01.75.75v.008a.75.75 0 01-.75.75H6.75a.75.75 0 01-.75-.75V11.25z"></path>
-            </svg>
-          </div>
-          <div class="flex-1 flex flex-col justify-between">
-            <div>
-              <div class="flex flex-wrap items-center gap-3 mb-2">
-                <div class="font-mono text-[10px] tracking-widest text-blue-500 dark:text-blue-400 font-semibold uppercase">Metadata Stripper</div>
-                <span class="text-[10px] bg-emerald-500/10 text-emerald-500 dark:text-emerald-400 border border-emerald-500/20 px-2.5 py-0.5 rounded-full font-mono font-medium" data-i18n="status_stable">Stable</span>
-              </div>
-              <h3 class="font-syne font-bold text-lg text-slate-900 dark:text-white mb-2 group-hover:text-blue-500 dark:group-hover:text-blue-400 transition-colors">Muhaajir Scrub</h3>
-              <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-4" data-i18n="tool3_desc">Strip hidden sensitive metadata (like GPS coordinates) from your photos before sharing.</p>
-              <div class="flex flex-wrap gap-2 mb-5">
-                <span class="font-mono text-[10px] text-blue-500 dark:text-blue-400 bg-blue-500/5 dark:bg-blue-500/10 border border-blue-500/10 dark:border-blue-500/20 px-2.5 py-1 rounded-md">EXIF Cleaner</span>
-                <span class="font-mono text-[10px] text-blue-500 dark:text-blue-400 bg-blue-500/5 dark:bg-blue-500/10 border border-blue-500/10 dark:border-blue-500/20 px-2.5 py-1 rounded-md">GPS Remover</span>
-                <span class="font-mono text-[10px] text-blue-500 dark:text-blue-400 bg-blue-500/5 dark:bg-blue-500/10 border border-blue-500/10 dark:border-blue-500/20 px-2.5 py-1 rounded-md">PDF Support</span>
-              </div>
-            </div>
-            <div>
-              <a href="https://hajirmuhaajir.github.io/muhaajir-scrub" target="_blank" rel="noopener noreferrer" class="btn-primary inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider py-2.5 px-5 bg-blue-500 hover:bg-blue-600 text-white rounded-xl shadow-sm shadow-blue-500/10 transition-all duration-300 transform active:scale-95">
-                <span data-i18n="tool_open">Open Tool</span>
-                <svg class="w-3.5 h-3.5 opacity-80 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25"></path>
-                </svg>
-              </a>
-            </div>
-          </div>
-        </div>
+        <div class="flex flex-col sm:flex-row items-stretch sm:items-start gap-6"><div class="w-full sm:w-40 h-32 sm:h-28 flex-shrink-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/40 bg-slate-900 flex items-center justify-center"><svg class="w-9 h-9 text-slate-400 dark:text-slate-500 group-hover:text-blue-500 dark:group-hover:text-blue-400 transition-colors duration-300" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 21l5.096-.813a2 2 0 001.077-.543l7.045-7.045a2.828 2.828 0 10-4-4l-7.045 7.045a2 2 0 00-.543 1.077zM15 7.5l3 3M3 6.75a.75.75 0 01.75-.75h.008a.75.75 0 01.75.75v.008a.75.75 0 01-.75.75H3.75a.75.75 0 01-.75-.75V6.75zm0 9a.75.75 0 01.75-.75h.008a.75.75 0 01.75.75v.008a.75.75 0 01-.75.75H3.75a.75.75 0 01-.75-.75v-.008zm3-4.5a.75.75 0 01.75-.75h.008a.75.75 0 01.75.75v.008a.75.75 0 01-.75.75H6.75a.75.75 0 01-.75-.75V11.25z"></path></svg></div><div class="flex-1 flex flex-col justify-between"><div><div class="flex flex-wrap items-center gap-3 mb-2"><div class="font-mono text-[10px] tracking-widest text-blue-500 dark:text-blue-400 font-semibold uppercase">Metadata Stripper</div><span class="text-[10px] bg-emerald-500/10 text-emerald-500 dark:text-emerald-400 border border-emerald-500/20 px-2.5 py-0.5 rounded-full font-mono font-medium" data-i18n="status_stable">Stable</span></div><h3 class="font-syne font-bold text-lg text-slate-900 dark:text-white mb-2 group-hover:text-blue-500 dark:group-hover:text-blue-400 transition-colors">Muhaajir Scrub</h3><p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-4" data-i18n="tool3_desc">Strip hidden sensitive metadata (like GPS coordinates) from your photos before sharing.</p><div class="flex flex-wrap gap-2 mb-5"><span class="font-mono text-[10px] text-blue-500 dark:text-blue-400 bg-blue-500/5 dark:bg-blue-500/10 border border-blue-500/10 dark:border-blue-500/20 px-2.5 py-1 rounded-md">EXIF Cleaner</span><span class="font-mono text-[10px] text-blue-500 dark:text-blue-400 bg-blue-500/5 dark:bg-blue-500/10 border border-blue-500/10 dark:border-blue-500/20 px-2.5 py-1 rounded-md">GPS Remover</span><span class="font-mono text-[10px] text-blue-500 dark:text-blue-400 bg-blue-500/5 dark:bg-blue-500/10 border border-blue-500/10 dark:border-blue-500/20 px-2.5 py-1 rounded-md">PDF Support</span></div></div><div><a href="https://hajirmuhaajir.github.io/muhaajir-scrub" target="_blank" rel="noopener noreferrer" class="btn-primary inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider py-2.5 px-5 bg-blue-500 hover:bg-blue-600 text-white rounded-xl shadow-sm shadow-blue-500/10 transition-all duration-300 transform active:scale-95"><span data-i18n="tool_open">Open Tool</span><svg class="w-3.5 h-3.5 opacity-80 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25"></path></svg></a></div></div></div>
       </div>
       <!-- Smart Diff -->
       <div class="reveal tool-card bg-white dark:bg-slate-800/40 border border-slate-200 dark:border-slate-700/40 rounded-2xl p-6 sm:p-7 shadow-sm hover:shadow-md hover:border-slate-300 dark:hover:border-slate-600/50 transition-all duration-300 group" data-category="web">
-        <div class="flex flex-col sm:flex-row items-stretch sm:items-start gap-6">
-          <div class="w-full sm:w-40 h-32 sm:h-28 flex-shrink-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/40 bg-slate-900 flex items-center justify-center">
-            <svg class="w-9 h-9 text-slate-400 dark:text-slate-500 group-hover:text-blue-500 dark:group-hover:text-blue-400 transition-colors duration-300" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15"></path>
-            </svg>
-          </div>
-          <div class="flex-1 flex flex-col justify-between">
-            <div>
-              <div class="flex flex-wrap items-center gap-3 mb-2">
-                <div class="font-mono text-[10px] tracking-widest text-blue-500 dark:text-blue-400 font-semibold uppercase">Text Comparator</div>
-                <span class="text-[10px] bg-emerald-500/10 text-emerald-500 dark:text-emerald-400 border border-emerald-500/20 px-2.5 py-0.5 rounded-full font-mono font-medium" data-i18n="status_stable">Stable</span>
-              </div>
-              <h3 class="font-syne font-bold text-lg text-slate-900 dark:text-white mb-2 group-hover:text-blue-500 dark:group-hover:text-blue-400 transition-colors">Smart Diff</h3>
-              <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-4" data-i18n="tool4_desc">Instantly compare two blocks of text and highlight differences side-by-side.</p>
-              <div class="flex flex-wrap gap-2 mb-5">
-                <span class="font-mono text-[10px] text-blue-500 dark:text-blue-400 bg-blue-500/5 dark:bg-blue-500/10 border border-blue-500/10 dark:border-blue-500/20 px-2.5 py-1 rounded-md">jsDiff</span>
-                <span class="font-mono text-[10px] text-blue-500 dark:text-blue-400 bg-blue-500/5 dark:bg-blue-500/10 border border-blue-500/10 dark:border-blue-500/20 px-2.5 py-1 rounded-md">Split View</span>
-                <span class="font-mono text-[10px] text-blue-500 dark:text-blue-400 bg-blue-500/5 dark:bg-blue-500/10 border border-blue-500/10 dark:border-blue-500/20 px-2.5 py-1 rounded-md">Sync Scroll</span>
-              </div>
-            </div>
-            <div>
-              <a href="https://hajirmuhaajir.github.io/muhaajir-delta" target="_blank" rel="noopener noreferrer" class="btn-primary inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider py-2.5 px-5 bg-blue-500 hover:bg-blue-600 text-white rounded-xl shadow-sm shadow-blue-500/10 transition-all duration-300 transform active:scale-95">
-                <span data-i18n="tool_open">Open Tool</span>
-                <svg class="w-3.5 h-3.5 opacity-80 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25"></path>
-                </svg>
-              </a>
-            </div>
-          </div>
-        </div>
+        <div class="flex flex-col sm:flex-row items-stretch sm:items-start gap-6"><div class="w-full sm:w-40 h-32 sm:h-28 flex-shrink-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/40 bg-slate-900 flex items-center justify-center"><svg class="w-9 h-9 text-slate-400 dark:text-slate-500 group-hover:text-blue-500 dark:group-hover:text-blue-400 transition-colors duration-300" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15"></path></svg></div><div class="flex-1 flex flex-col justify-between"><div><div class="flex flex-wrap items-center gap-3 mb-2"><div class="font-mono text-[10px] tracking-widest text-blue-500 dark:text-blue-400 font-semibold uppercase">Text Comparator</div><span class="text-[10px] bg-emerald-500/10 text-emerald-500 dark:text-emerald-400 border border-emerald-500/20 px-2.5 py-0.5 rounded-full font-mono font-medium" data-i18n="status_stable">Stable</span></div><h3 class="font-syne font-bold text-lg text-slate-900 dark:text-white mb-2 group-hover:text-blue-500 dark:group-hover:text-blue-400 transition-colors">Smart Diff</h3><p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-4" data-i18n="tool4_desc">Instantly compare two blocks of text and highlight differences side-by-side.</p><div class="flex flex-wrap gap-2 mb-5"><span class="font-mono text-[10px] text-blue-500 dark:text-blue-400 bg-blue-500/5 dark:bg-blue-500/10 border border-blue-500/10 dark:border-blue-500/20 px-2.5 py-1 rounded-md">jsDiff</span><span class="font-mono text-[10px] text-blue-500 dark:text-blue-400 bg-blue-500/5 dark:bg-blue-500/10 border border-blue-500/10 dark:border-blue-500/20 px-2.5 py-1 rounded-md">Split View</span><span class="font-mono text-[10px] text-blue-500 dark:text-blue-400 bg-blue-500/5 dark:bg-blue-500/10 border border-blue-500/10 dark:border-blue-500/20 px-2.5 py-1 rounded-md">Sync Scroll</span></div></div><div><a href="https://hajirmuhaajir.github.io/muhaajir-delta" target="_blank" rel="noopener noreferrer" class="btn-primary inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider py-2.5 px-5 bg-blue-500 hover:bg-blue-600 text-white rounded-xl shadow-sm shadow-blue-500/10 transition-all duration-300 transform active:scale-95"><span data-i18n="tool_open">Open Tool</span><svg class="w-3.5 h-3.5 opacity-80 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25"></path></svg></a></div></div></div>
       </div>
-      <!-- Coming Soon -->
-      <div class="reveal tool-card bg-slate-50/60 dark:bg-slate-800/10 border border-dashed border-slate-300 dark:border-slate-700/40 rounded-2xl p-6 sm:p-7 opacity-50 select-none cursor-not-allowed" data-category="all">
-        <div class="flex items-start gap-5">
-          <div class="w-12 h-12 rounded-xl bg-slate-200/60 dark:bg-slate-800/60 border border-slate-300/50 dark:border-slate-700/30 flex items-center justify-center text-xl animate-pulse">⚡</div>
-          <div>
-            <div class="font-mono text-[10px] tracking-widest text-slate-400 dark:text-slate-500 font-semibold uppercase mb-1" data-i18n="tool_coming_tag">Stay Tuned</div>
-            <h3 class="font-syne font-bold text-lg text-slate-400 dark:text-slate-500 mb-1" data-i18n="tool_coming_title">More Tools Coming Soon</h3>
-            <p class="text-slate-400 dark:text-slate-500 text-sm leading-relaxed" data-i18n="tool_coming_desc">Crafting more awesome utilities for you. Check back later!</p>
-          </div>
-        </div>
-      </div>
+      <div class="reveal tool-card bg-slate-50/60 dark:bg-slate-800/10 border border-dashed border-slate-300 dark:border-slate-700/40 rounded-2xl p-6 sm:p-7 opacity-50 select-none cursor-not-allowed" data-category="all"><div class="flex items-start gap-5"><div class="w-12 h-12 rounded-xl bg-slate-200/60 dark:bg-slate-800/60 border border-slate-300/50 dark:border-slate-700/30 flex items-center justify-center text-xl animate-pulse">⚡</div><div><div class="font-mono text-[10px] tracking-widest text-slate-400 dark:text-slate-500 font-semibold uppercase mb-1" data-i18n="tool_coming_tag">Stay Tuned</div><h3 class="font-syne font-bold text-lg text-slate-400 dark:text-slate-500 mb-1" data-i18n="tool_coming_title">More Tools Coming Soon</h3><p class="text-slate-400 dark:text-slate-500 text-sm leading-relaxed" data-i18n="tool_coming_desc">Crafting more awesome utilities for you. Check back later!</p></div></div></div>
     </div>
-    <!-- Tech stack (only once) -->
-    <div class="reveal mt-12 bg-white dark:bg-slate-800/30 border border-slate-200 dark:border-slate-700/30 rounded-2xl p-7">
-      <div class="font-mono text-[10px] tracking-widest text-blue-400 uppercase mb-5" data-i18n="stack_tag">// Alat yang Saya Pakai</div>
-      <div class="space-y-3">
-        <div class="flex items-center gap-4 py-3 border-b border-slate-200 dark:border-slate-700/30"><i class="fab fa-html5 text-orange-400 w-5 text-center"></i><div><div class="text-sm font-semibold text-slate-900 dark:text-white">HTML5 / CSS3 / JavaScript</div><div class="text-xs text-slate-500" data-i18n="stack1_desc">Dasar pembuatan web — digunakan di semua alat saya.</div></div></div>
-        <div class="flex items-center gap-4 py-3 border-b border-slate-200 dark:border-slate-700/30"><i class="fab fa-github text-slate-700 dark:text-slate-300 w-5 text-center"></i><div><div class="text-sm font-semibold text-slate-900 dark:text-white">GitHub Pages</div><div class="text-xs text-slate-500" data-i18n="stack2_desc">Tempat menyimpan web — sangat cepat dan terpercaya.</div></div></div>
-        <div class="flex items-center gap-4 py-3 border-b border-slate-200 dark:border-slate-700/30"><i class="fas fa-chart-line text-blue-400 w-5 text-center"></i><div><div class="text-sm font-semibold text-slate-900 dark:text-white">Web Audio API</div><div class="text-xs text-slate-500" data-i18n="stack3_desc">Penampil gelombang suara di aplikasi HajirSync.</div></div></div>
-        <div class="flex items-center gap-4 py-3 border-b border-slate-200 dark:border-slate-700/30"><i class="fas fa-palette text-purple-400 w-5 text-center"></i><div><div class="text-sm font-semibold text-slate-900 dark:text-white">Tailwind CSS</div><div class="text-xs text-slate-500" data-i18n="stack4_desc">Membuat tampilan web rapi dan nyaman di HP maupun Laptop.</div></div></div>
-        <div class="flex items-center gap-4 py-3"><i class="fas fa-camera text-teal-400 w-5 text-center"></i><div><div class="text-sm font-semibold text-slate-900 dark:text-white">Adobe Lightroom / Snapseed</div><div class="text-xs text-slate-500" data-i18n="stack5_desc">Mengolah foto dan gambar agar terlihat lebih menarik.</div></div></div>
-      </div>
-    </div>
-    <div class="reveal text-center mt-8">
-      <span class="inline-flex items-center gap-2 font-mono text-xs text-slate-500 bg-blue-500/5 border border-blue-500/15 px-4 py-2 rounded-full"><i class="fas fa-shield-halved text-blue-400 text-[10px]"></i><span data-i18n="tools_badge">Gratis · Aman · Langsung Pakai</span></span>
-    </div>
+    <div class="reveal mt-12 bg-white dark:bg-slate-800/30 border border-slate-200 dark:border-slate-700/30 rounded-2xl p-7"><div class="font-mono text-[10px] tracking-widest text-blue-400 uppercase mb-5" data-i18n="stack_tag">// Alat yang Saya Pakai</div><div class="space-y-3"><div class="flex items-center gap-4 py-3 border-b border-slate-200 dark:border-slate-700/30"><i class="fab fa-html5 text-orange-400 w-5 text-center"></i><div><div class="text-sm font-semibold text-slate-900 dark:text-white">HTML5 / CSS3 / JavaScript</div><div class="text-xs text-slate-500" data-i18n="stack1_desc">Dasar pembuatan web — digunakan di semua alat saya.</div></div></div><div class="flex items-center gap-4 py-3 border-b border-slate-200 dark:border-slate-700/30"><i class="fab fa-github text-slate-700 dark:text-slate-300 w-5 text-center"></i><div><div class="text-sm font-semibold text-slate-900 dark:text-white">GitHub Pages</div><div class="text-xs text-slate-500" data-i18n="stack2_desc">Tempat menyimpan web — sangat cepat dan terpercaya.</div></div></div><div class="flex items-center gap-4 py-3 border-b border-slate-200 dark:border-slate-700/30"><i class="fas fa-chart-line text-blue-400 w-5 text-center"></i><div><div class="text-sm font-semibold text-slate-900 dark:text-white">Web Audio API</div><div class="text-xs text-slate-500" data-i18n="stack3_desc">Penampil gelombang suara di aplikasi HajirSync.</div></div></div><div class="flex items-center gap-4 py-3 border-b border-slate-200 dark:border-slate-700/30"><i class="fas fa-palette text-purple-400 w-5 text-center"></i><div><div class="text-sm font-semibold text-slate-900 dark:text-white">Tailwind CSS</div><div class="text-xs text-slate-500" data-i18n="stack4_desc">Membuat tampilan web rapi dan nyaman di HP maupun Laptop.</div></div></div><div class="flex items-center gap-4 py-3"><i class="fas fa-camera text-teal-400 w-5 text-center"></i><div><div class="text-sm font-semibold text-slate-900 dark:text-white">Adobe Lightroom / Snapseed</div><div class="text-xs text-slate-500" data-i18n="stack5_desc">Mengolah foto dan gambar agar terlihat lebih menarik.</div></div></div></div></div>
+    <div class="reveal text-center mt-8"><span class="inline-flex items-center gap-2 font-mono text-xs text-slate-500 bg-blue-500/5 border border-blue-500/15 px-4 py-2 rounded-full"><i class="fas fa-shield-halved text-blue-400 text-[10px]"></i><span data-i18n="tools_badge">Gratis · Aman · Langsung Pakai</span></span></div>
   </div>
 </section>
 
-<!-- CONTACT -->
 <section id="contact" class="py-24 bg-white dark:bg-dark-bg">
   <div class="max-w-3xl mx-auto px-5 sm:px-8">
-    <div class="text-center mb-12 reveal">
-      <div class="section-tag mb-2" data-i18n="contact_tag">// Ayo Ngobrol</div>
-      <div class="accent-line"></div>
-      <h2 class="font-syne font-extrabold text-3xl sm:text-4xl tracking-tight text-slate-900 dark:text-white mb-3" data-i18n="contact_title">Mau Kerja Sama atau Sekadar Menyapa?</h2>
-      <p class="text-slate-600 dark:text-slate-400 text-sm max-w-md mx-auto" data-i18n="contact_subtitle">Kirim pesan jika ada yang ingin ditanyakan atau sekadar ingin berbincang.</p>
-    </div>
+    <div class="text-center mb-12 reveal"><div class="section-tag mb-2" data-i18n="contact_tag">// Ayo Ngobrol</div><div class="accent-line"></div><h2 class="font-syne font-extrabold text-3xl sm:text-4xl tracking-tight text-slate-900 dark:text-white mb-3" data-i18n="contact_title">Mau Kerja Sama atau Sekadar Menyapa?</h2><p class="text-slate-600 dark:text-slate-400 text-sm max-w-md mx-auto" data-i18n="contact_subtitle">Kirim pesan jika ada yang ingin ditanyakan atau sekadar ingin berbincang.</p></div>
     <div class="reveal mb-6"><p class="text-slate-600 dark:text-slate-400 text-sm sm:text-base leading-relaxed text-center max-w-xl mx-auto" data-i18n="contact_intro">Aku sangat senang bisa berkenalan dan berdiskusi proyek bareng kamu.</p></div>
     <div class="reveal bg-white dark:bg-slate-800/40 border border-slate-200 dark:border-slate-700/40 rounded-2xl p-7 mb-6">
       <form id="contact-form" class="space-y-5" novalidate>
-        <div>
-          <label for="name" class="block text-xs font-mono tracking-widest text-slate-600 dark:text-slate-400 uppercase mb-2" data-i18n="form_name">Nama Kamu</label>
-          <input type="text" id="name" name="name" required minlength="3" pattern="[A-Za-z\s]{3,}" placeholder="Tulis nama lengkapmu di sini" data-i18n-placeholder="form_name_placeholder" class="w-full px-4 py-3 bg-slate-50 dark:bg-slate-900/60 border border-slate-300 dark:border-slate-700 rounded-lg text-slate-900 dark:text-white text-sm focus:ring-2 focus:ring-blue-500/50 transition">
-          <span class="form-error" id="name-error"></span>
-        </div>
-        <div>
-          <label for="email" class="block text-xs font-mono tracking-widest text-slate-600 dark:text-slate-400 uppercase mb-2" data-i18n="form_email">Email Kamu</label>
-          <input type="email" id="email" name="email" required placeholder="contoh@email.com" data-i18n-placeholder="form_email_placeholder" class="w-full px-4 py-3 bg-slate-50 dark:bg-slate-900/60 border border-slate-300 dark:border-slate-700 rounded-lg text-slate-900 dark:text-white text-sm focus:ring-2 focus:ring-blue-500/50 transition">
-          <span class="form-error" id="email-error"></span>
-        </div>
-        <div>
-          <label for="message" class="block text-xs font-mono tracking-widest text-slate-600 dark:text-slate-400 uppercase mb-2" data-i18n="form_message">Pesan Kamu</label>
-          <textarea id="message" name="message" rows="5" required minlength="20" placeholder="Tulis apa yang ingin kamu sampaikan..." data-i18n-placeholder="form_message_placeholder" class="w-full px-4 py-3 bg-slate-50 dark:bg-slate-900/60 border border-slate-300 dark:border-slate-700 rounded-lg text-slate-900 dark:text-white text-sm focus:ring-2 focus:ring-blue-500/50 transition resize-none"></textarea>
-          <span class="form-error" id="message-error"></span>
-        </div>
+        <div><label for="name" class="block text-xs font-mono tracking-widest text-slate-600 dark:text-slate-400 uppercase mb-2" data-i18n="form_name">Nama Kamu</label><input type="text" id="name" name="name" required minlength="3" pattern="[A-Za-z\s]{3,}" placeholder="Tulis nama lengkapmu di sini" data-i18n-placeholder="form_name_placeholder" class="w-full px-4 py-3 bg-slate-50 dark:bg-slate-900/60 border border-slate-300 dark:border-slate-700 rounded-lg text-slate-900 dark:text-white text-sm focus:ring-2 focus:ring-blue-500/50 transition"><span class="form-error" id="name-error"></span></div>
+        <div><label for="email" class="block text-xs font-mono tracking-widest text-slate-600 dark:text-slate-400 uppercase mb-2" data-i18n="form_email">Email Kamu</label><input type="email" id="email" name="email" required placeholder="contoh@email.com" data-i18n-placeholder="form_email_placeholder" class="w-full px-4 py-3 bg-slate-50 dark:bg-slate-900/60 border border-slate-300 dark:border-slate-700 rounded-lg text-slate-900 dark:text-white text-sm focus:ring-2 focus:ring-blue-500/50 transition"><span class="form-error" id="email-error"></span></div>
+        <div><label for="message" class="block text-xs font-mono tracking-widest text-slate-600 dark:text-slate-400 uppercase mb-2" data-i18n="form_message">Pesan Kamu</label><textarea id="message" name="message" rows="5" required minlength="20" placeholder="Tulis apa yang ingin kamu sampaikan..." data-i18n-placeholder="form_message_placeholder" class="w-full px-4 py-3 bg-slate-50 dark:bg-slate-900/60 border border-slate-300 dark:border-slate-700 rounded-lg text-slate-900 dark:text-white text-sm focus:ring-2 focus:ring-blue-500/50 transition resize-none"></textarea><span class="form-error" id="message-error"></span></div>
         <div id="form-status" class="text-sm font-mono text-blue-400 min-h-[24px]"></div>
         <button type="submit" class="btn-primary w-full justify-center"><i class="fas fa-paper-plane text-xs"></i><span data-i18n="form_submit">Kirim Pesan</span></button>
       </form>
     </div>
-    <div class="reveal text-center">
-      <a href="https://github.com/hajirmuhaajir" target="_blank" rel="noopener noreferrer" class="btn-primary"><i class="fab fa-github text-sm"></i><span data-i18n="contact_cta">Lihat Kode Saya di GitHub</span></a>
-    </div>
+    <div class="reveal text-center"><a href="https://github.com/hajirmuhaajir" target="_blank" rel="noopener noreferrer" class="btn-primary"><i class="fab fa-github text-sm"></i><span data-i18n="contact_cta">Lihat Kode Saya di GitHub</span></a></div>
   </div>
 </section>
 
-<!-- FOOTER -->
 <footer class="bg-slate-50 dark:bg-slate-900/60 border-t border-slate-200 dark:border-slate-800/60 py-14">
   <div class="max-w-4xl mx-auto px-5 sm:px-8">
-    <div class="text-center mb-8">
-      <div class="flex items-center justify-center gap-3 mb-2">
-        <img id="logo-footer" src="https://i.postimg.cc/JztFxsRH/hajir-logo-putih.webp" alt="Logo Hajir Muhaajir" class="logo-img w-10 h-10 rounded-lg object-contain drop-shadow-md hover:scale-110 transition-all duration-200" loading="lazy" decoding="async">
-        <span class="font-syne font-extrabold text-xl tracking-tight text-slate-900 dark:text-white uppercase">HAJIR<span class="text-blue-400">.</span></span>
-      </div>
-      <p class="font-mono text-[10px] tracking-widest text-slate-500 dark:text-slate-600 uppercase select-none">Personal Website · Free Tools · Muhaajir's Creation</p>
-    </div>
-    <div class="flex flex-wrap justify-center gap-3 mb-10">
-      <a href="https://www.youtube.com/@hajirstein" target="_blank" rel="noopener noreferrer" aria-label="YouTube" class="w-11 h-11 rounded-xl bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700/50 flex items-center justify-center text-slate-500 dark:text-slate-400 hover:text-white hover:bg-red-600 transition-all duration-300 hover:scale-110"><i class="fab fa-youtube"></i></a>
-      <a href="https://www.tiktok.com/@muhaajir_muhaajir" target="_blank" rel="noopener noreferrer" aria-label="TikTok" class="w-11 h-11 rounded-xl bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700/50 flex items-center justify-center text-slate-500 dark:text-slate-400 hover:text-white hover:bg-black transition-all duration-300 hover:scale-110"><i class="fab fa-tiktok"></i></a>
-      <a href="https://www.instagram.com/muhaajirere" target="_blank" rel="noopener noreferrer" aria-label="Instagram Personal" class="w-11 h-11 rounded-xl bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700/50 flex items-center justify-center text-slate-500 dark:text-slate-400 hover:text-white hover:bg-pink-600 transition-all duration-300 hover:scale-110"><i class="fab fa-instagram"></i></a>
-      <a href="https://on.soundcloud.com/m65TNUx3XarndC67jO" target="_blank" rel="noopener noreferrer" aria-label="SoundCloud" class="w-11 h-11 rounded-xl bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700/50 flex items-center justify-center text-slate-500 dark:text-slate-400 hover:text-white hover:bg-orange-500 transition-all duration-300 hover:scale-110"><i class="fab fa-soundcloud"></i></a>
-      <a href="https://github.com/hajirmuhaajir" target="_blank" rel="noopener noreferrer" aria-label="GitHub" class="w-11 h-11 rounded-xl bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700/50 flex items-center justify-center text-slate-500 dark:text-slate-400 hover:text-white hover:bg-slate-900 transition-all duration-300 hover:scale-110"><i class="fab fa-github"></i></a>
-    </div>
-    <nav class="mb-8 border-y border-slate-200/50 dark:border-slate-800/50 py-6">
-      <div class="flex flex-wrap justify-center gap-x-6 gap-y-2 mb-4">
-        <a href="#about" class="text-xs font-medium text-slate-500 hover:text-blue-500 hover:underline underline-offset-4 transition-colors tracking-widest uppercase">My Story</a>
-        <a href="#music" class="text-xs font-medium text-slate-500 hover:text-blue-500 hover:underline underline-offset-4 transition-colors tracking-widest uppercase">Music</a>
-        <a href="#tools" class="text-xs font-medium text-slate-500 hover:text-blue-500 hover:underline underline-offset-4 transition-colors tracking-widest uppercase">Free Tools</a>
-        <a href="#contact" class="text-xs font-medium text-slate-500 hover:text-blue-500 hover:underline underline-offset-4 transition-colors tracking-widest uppercase">Say Hello</a>
-      </div>
-      <div class="flex flex-wrap justify-center gap-x-6 gap-y-2">
-        <a href="https://hajirmuhaajir.github.io/footer-essentials" class="text-[10px] font-mono text-slate-400 hover:text-blue-400 transition-colors tracking-widest uppercase"><i class="fas fa-shield-halved mr-1"></i>Secure Privacy</a>
-      </div>
-    </nav>
-    <div class="text-center">
-      <p class="text-xs text-slate-500 dark:text-slate-500 max-w-sm mx-auto leading-relaxed mb-4">Photographer, musician, and creative technologist based in Bogor. All utilities are built open-web, privacy-first, with zero backend dependency.</p>
-      <p class="footer-disclaimer text-[11px] text-slate-400 dark:text-slate-500 max-w-md mx-auto leading-relaxed mb-4 italic"><i class="fas fa-exclamation-triangle text-amber-500/80 mr-1"></i> Disclaimer: Use of these tools is entirely at your own risk. Muhaajir holds no responsibility for any data loss or damage resulting from their use.</p>
-      <span class="inline-flex items-center gap-2 font-mono text-[10px] text-slate-500 dark:text-slate-500 bg-slate-100 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700/50 px-4 py-1.5 rounded-full mb-4 shadow-sm select-none"><i class="fas fa-lock text-blue-400"></i> HTTPS SECURED · PRIVACY FIRST</span>
-      <div class="font-mono text-[10px] text-slate-500 dark:text-slate-600 mb-3"><i class="fas fa-clock mr-1 text-blue-400/60"></i> Last updated: <span id="last-updated-date">—</span></div>
-      <p class="text-xs text-slate-400 dark:text-slate-600">© 2026 Hajir Muhaajir · Crafted with heart.</p>
-    </div>
-    <div class="mt-16 pt-8 border-t border-slate-200 dark:border-slate-800/60 flex flex-col md:flex-row justify-between items-center gap-6">
-      <div class="flex gap-x-8 text-[11px] text-slate-400 uppercase tracking-widest font-medium"><span><i class="far fa-heart text-rose-400 mr-1"></i> Muhaajir</span><span><i class="fas fa-mobile-alt mr-1"></i> Responsive</span></div>
-      <div class="text-[10px] font-mono text-slate-500 bg-slate-100 dark:bg-slate-800/30 px-3 py-1 rounded"><i class="fas fa-code text-blue-400 mr-1"></i> Clean Architecture · MIT Style</div>
-      <div class="flex gap-4 text-slate-400"><i class="fab fa-html5 hover:text-orange-500 hover:scale-110 transition-transform"></i><i class="fab fa-css3-alt hover:text-blue-500 hover:scale-110 transition-transform"></i><i class="fab fa-js hover:text-yellow-400 hover:scale-110 transition-transform"></i></div>
-    </div>
-    <div class="mt-8 pt-4 border-t border-slate-200/40 dark:border-slate-800/40 text-center">
-      <p class="text-[11px] font-mono tracking-wider text-slate-400 dark:text-slate-500">This website was created by <a href="https://www.instagram.com/muhaajir.developer?igsh=YzJ3c3E4ZzJnY3hv" target="_blank" rel="noopener noreferrer" class="font-semibold text-blue-500 dark:text-blue-400 hover:text-pink-500 dark:hover:text-pink-400 transition-colors duration-300 relative inline-block group">muhaajir.developer<span class="absolute bottom-0 left-0 w-0 h-[1px] bg-gradient-to-r from-yellow-500 to-pink-500 group-hover:w-full transition-all duration-300"></span></a></p>
-    </div>
+    <div class="text-center mb-8"><div class="flex items-center justify-center gap-3 mb-2"><img id="logo-footer" src="https://i.postimg.cc/JztFxsRH/hajir-logo-putih.webp" alt="Logo Hajir Muhaajir" class="logo-img w-10 h-10 rounded-lg object-contain drop-shadow-md hover:scale-110 transition-all duration-200" loading="lazy" decoding="async"><span class="font-syne font-extrabold text-xl tracking-tight text-slate-900 dark:text-white uppercase">HAJIR<span class="text-blue-400">.</span></span></div><p class="font-mono text-[10px] tracking-widest text-slate-500 dark:text-slate-600 uppercase select-none">Personal Website · Free Tools · Muhaajir's Creation</p></div>
+    <div class="flex flex-wrap justify-center gap-3 mb-10"><a href="https://www.youtube.com/@hajirstein" target="_blank" rel="noopener noreferrer" aria-label="YouTube" class="w-11 h-11 rounded-xl bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700/50 flex items-center justify-center text-slate-500 dark:text-slate-400 hover:text-white hover:bg-red-600 transition-all duration-300 hover:scale-110"><i class="fab fa-youtube"></i></a><a href="https://www.tiktok.com/@muhaajir_muhaajir" target="_blank" rel="noopener noreferrer" aria-label="TikTok" class="w-11 h-11 rounded-xl bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700/50 flex items-center justify-center text-slate-500 dark:text-slate-400 hover:text-white hover:bg-black transition-all duration-300 hover:scale-110"><i class="fab fa-tiktok"></i></a><a href="https://www.instagram.com/muhaajirere" target="_blank" rel="noopener noreferrer" aria-label="Instagram Personal" class="w-11 h-11 rounded-xl bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700/50 flex items-center justify-center text-slate-500 dark:text-slate-400 hover:text-white hover:bg-pink-600 transition-all duration-300 hover:scale-110"><i class="fab fa-instagram"></i></a><a href="https://on.soundcloud.com/m65TNUx3XarndC67jO" target="_blank" rel="noopener noreferrer" aria-label="SoundCloud" class="w-11 h-11 rounded-xl bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700/50 flex items-center justify-center text-slate-500 dark:text-slate-400 hover:text-white hover:bg-orange-500 transition-all duration-300 hover:scale-110"><i class="fab fa-soundcloud"></i></a><a href="https://github.com/hajirmuhaajir" target="_blank" rel="noopener noreferrer" aria-label="GitHub" class="w-11 h-11 rounded-xl bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700/50 flex items-center justify-center text-slate-500 dark:text-slate-400 hover:text-white hover:bg-slate-900 transition-all duration-300 hover:scale-110"><i class="fab fa-github"></i></a></div>
+    <nav class="mb-8 border-y border-slate-200/50 dark:border-slate-800/50 py-6"><div class="flex flex-wrap justify-center gap-x-6 gap-y-2 mb-4"><a href="#about" class="text-xs font-medium text-slate-500 hover:text-blue-500 hover:underline underline-offset-4 transition-colors tracking-widest uppercase">My Story</a><a href="#music" class="text-xs font-medium text-slate-500 hover:text-blue-500 hover:underline underline-offset-4 transition-colors tracking-widest uppercase">Music</a><a href="#tools" class="text-xs font-medium text-slate-500 hover:text-blue-500 hover:underline underline-offset-4 transition-colors tracking-widest uppercase">Free Tools</a><a href="#contact" class="text-xs font-medium text-slate-500 hover:text-blue-500 hover:underline underline-offset-4 transition-colors tracking-widest uppercase">Say Hello</a></div><div class="flex flex-wrap justify-center gap-x-6 gap-y-2"><a href="https://hajirmuhaajir.github.io/footer-essentials" class="text-[10px] font-mono text-slate-400 hover:text-blue-400 transition-colors tracking-widest uppercase"><i class="fas fa-shield-halved mr-1"></i>Secure Privacy</a></div></nav>
+    <div class="text-center"><p class="text-xs text-slate-500 dark:text-slate-500 max-w-sm mx-auto leading-relaxed mb-4">Photographer, musician, and creative technologist based in Bogor. All utilities are built open-web, privacy-first, with zero backend dependency.</p><p class="footer-disclaimer text-[11px] text-slate-400 dark:text-slate-500 max-w-md mx-auto leading-relaxed mb-4 italic"><i class="fas fa-exclamation-triangle text-amber-500/80 mr-1"></i> Disclaimer: Use of these tools is entirely at your own risk. Muhaajir holds no responsibility for any data loss or damage resulting from their use.</p><span class="inline-flex items-center gap-2 font-mono text-[10px] text-slate-500 dark:text-slate-500 bg-slate-100 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700/50 px-4 py-1.5 rounded-full mb-4 shadow-sm select-none"><i class="fas fa-lock text-blue-400"></i> HTTPS SECURED · PRIVACY FIRST</span><div class="font-mono text-[10px] text-slate-500 dark:text-slate-600 mb-3"><i class="fas fa-clock mr-1 text-blue-400/60"></i> Last updated: <span id="last-updated-date">—</span></div><p class="text-xs text-slate-400 dark:text-slate-600">© 2026 Hajir Muhaajir · Crafted with heart.</p></div>
+    <div class="mt-16 pt-8 border-t border-slate-200 dark:border-slate-800/60 flex flex-col md:flex-row justify-between items-center gap-6"><div class="flex gap-x-8 text-[11px] text-slate-400 uppercase tracking-widest font-medium"><span><i class="far fa-heart text-rose-400 mr-1"></i> Muhaajir</span><span><i class="fas fa-mobile-alt mr-1"></i> Responsive</span></div><div class="text-[10px] font-mono text-slate-500 bg-slate-100 dark:bg-slate-800/30 px-3 py-1 rounded"><i class="fas fa-code text-blue-400 mr-1"></i> Clean Architecture · MIT Style</div><div class="flex gap-4 text-slate-400"><i class="fab fa-html5 hover:text-orange-500 hover:scale-110 transition-transform"></i><i class="fab fa-css3-alt hover:text-blue-500 hover:scale-110 transition-transform"></i><i class="fab fa-js hover:text-yellow-400 hover:scale-110 transition-transform"></i></div></div>
+    <div class="mt-8 pt-4 border-t border-slate-200/40 dark:border-slate-800/40 text-center"><p class="text-[11px] font-mono tracking-wider text-slate-400 dark:text-slate-500">This website was created by <a href="https://www.instagram.com/muhaajir.developer?igsh=YzJ3c3E4ZzJnY3hv" target="_blank" rel="noopener noreferrer" class="font-semibold text-blue-500 dark:text-blue-400 hover:text-pink-500 dark:hover:text-pink-400 transition-colors duration-300 relative inline-block group">muhaajir.developer<span class="absolute bottom-0 left-0 w-0 h-[1px] bg-gradient-to-r from-yellow-500 to-pink-500 group-hover:w-full transition-all duration-300"></span></a></p></div>
   </div>
 </footer>
 
 <div id="sentinel"></div>
 <button id="back-top" class="fixed bottom-6 right-6 z-50 w-12 h-12 rounded-2xl bg-blue-500 text-white flex items-center justify-center opacity-0 pointer-events-none transition-all duration-500 ease-in-out hover:bg-blue-600 hover:-translate-y-2 hover:rotate-12 active:scale-90 shadow-[0_8px_25px_rgba(59,130,246,0.5)] group focus:outline-none focus:ring-2 focus:ring-blue-400" onclick="window.scrollTo({top:0, behavior:'smooth'})" aria-label="Kembali ke atas"><i class="fas fa-arrow-up text-base transition-transform duration-300 group-hover:scale-110"></i><span class="absolute inset-0 rounded-2xl bg-blue-400 animate-pulse opacity-0 group-hover:opacity-20"></span></button>
 
-<!-- COOKIE BANNER -->
-<div id="cookie-banner" class="fixed bottom-5 left-1/2 z-50 w-[calc(100%-40px)] max-w-md bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700/60 rounded-2xl p-6 shadow-2xl" style="transform:translateX(-50%) translateY(120%);opacity:0">
-  <div class="flex items-center gap-3 mb-3">
-    <div class="w-9 h-9 rounded-lg bg-blue-500/10 border border-blue-500/20 flex items-center justify-center text-blue-400"><i class="fas fa-cookie-bite text-sm"></i></div>
-    <div class="font-syne font-bold text-slate-900 dark:text-white text-sm" data-i18n="cookie_title">Info Pengingat (Cookie)</div>
-  </div>
-  <p class="text-slate-600 dark:text-slate-400 text-xs leading-relaxed mb-4" data-i18n="cookie_desc">Web ini menggunakan pengingat kecil agar kamu merasa lebih nyaman saat berkunjung kembali.</p>
-  <div class="flex gap-2">
-    <button id="cookie-ok" class="flex-1 py-2 bg-blue-500 text-white text-xs font-semibold rounded-lg hover:bg-blue-400 min-h-[48px]" data-i18n="cookie_ok">Siap!</button>
-    <button id="cookie-no" class="flex-1 py-2 bg-transparent text-slate-600 dark:text-slate-400 text-xs font-semibold rounded-lg border border-slate-300 dark:border-slate-700 hover:border-slate-500 min-h-[48px]" data-i18n="cookie_no">Tidak Usah</button>
-  </div>
-</div>
+<div id="cookie-banner" class="fixed bottom-5 left-1/2 z-50 w-[calc(100%-40px)] max-w-md bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700/60 rounded-2xl p-6 shadow-2xl" style="transform:translateX(-50%) translateY(120%);opacity:0"><div class="flex items-center gap-3 mb-3"><div class="w-9 h-9 rounded-lg bg-blue-500/10 border border-blue-500/20 flex items-center justify-center text-blue-400"><i class="fas fa-cookie-bite text-sm"></i></div><div class="font-syne font-bold text-slate-900 dark:text-white text-sm" data-i18n="cookie_title">Info Pengingat (Cookie)</div></div><p class="text-slate-600 dark:text-slate-400 text-xs leading-relaxed mb-4" data-i18n="cookie_desc">Web ini menggunakan pengingat kecil agar kamu merasa lebih nyaman saat berkunjung kembali.</p><div class="flex gap-2"><button id="cookie-ok" class="flex-1 py-2 bg-blue-500 text-white text-xs font-semibold rounded-lg hover:bg-blue-400 min-h-[48px]" data-i18n="cookie_ok">Siap!</button><button id="cookie-no" class="flex-1 py-2 bg-transparent text-slate-600 dark:text-slate-400 text-xs font-semibold rounded-lg border border-slate-300 dark:border-slate-700 hover:border-slate-500 min-h-[48px]" data-i18n="cookie_no">Tidak Usah</button></div></div>
 
 <script>
 (function() {
   'use strict';
 
-  /* ---------- I18N TRANSLATIONS ---------- */
   const t = {
     id: {
       nav_about: 'Cerita Saya', nav_music: 'Musik', nav_tools: 'Alat Gratis', nav_contact: 'Sapa Saya', nav_privacy: 'Privasi Aman',
@@ -1002,47 +688,38 @@
     applyLang(savedLang || detectLang());
   })();
 
-/* ---------- LOGO DUAL SOURCE ---------- */
-const LOGO_DARK = 'https://i.postimg.cc/JztFxsRH/hajir-logo-putih.webp';
-const LOGO_LIGHT = 'https://i.postimg.cc/3xWq1k3v/hajir-logo-hitam.webp';
+  const LOGO_DARK = 'https://i.postimg.cc/JztFxsRH/hajir-logo-putih.webp';
+  const LOGO_LIGHT = 'https://i.postimg.cc/3xWq1k3v/hajir-logo-hitam.webp';
 
-function updateLogo() {
-  const logoImgs = document.querySelectorAll('.logo-img');
-  const isDark = document.documentElement.classList.contains('dark');
-  const newSrc = isDark ? LOGO_DARK : LOGO_LIGHT;
-  
-  logoImgs.forEach(img => {
-    if (img.src !== newSrc) {
-      img.classList.add('logo-switching');
-      setTimeout(() => {
-        img.src = newSrc;
-        requestAnimationFrame(() => img.classList.remove('logo-switching'));
-      }, 150);
-    }
-  });
-}
-
-// Jalankan saat pertama kali halaman dimuat
-updateLogo();
-
-function setTheme(theme) {
-  if (theme === 'dark') {
-    document.documentElement.classList.add('dark');
-  } else {
-    document.documentElement.classList.remove('dark');
+  function updateLogo() {
+    const logoImgs = document.querySelectorAll('.logo-img');
+    const isDark = document.documentElement.classList.contains('dark');
+    const newSrc = isDark ? LOGO_DARK : LOGO_LIGHT;
+    logoImgs.forEach(img => {
+      if (img.src !== newSrc) {
+        img.classList.add('logo-switching');
+        setTimeout(() => {
+          img.src = newSrc;
+          requestAnimationFrame(() => img.classList.remove('logo-switching'));
+        }, 150);
+      }
+    });
   }
-  try { 
-    localStorage.setItem('theme', theme); 
-  } catch(e) {}
+
   updateLogo();
-}
 
-document.getElementById('theme-toggle').addEventListener('click', () => {
-  const isDark = document.documentElement.classList.contains('dark');
-  setTheme(isDark ? 'light' : 'dark');
-});
+  function setTheme(theme) {
+    if (theme === 'dark') document.documentElement.classList.add('dark');
+    else document.documentElement.classList.remove('dark');
+    try { localStorage.setItem('theme', theme); } catch(e) {}
+    updateLogo();
+  }
 
-  /* ---------- MOBILE NAV ---------- */
+  document.getElementById('theme-toggle').addEventListener('click', () => {
+    const isDark = document.documentElement.classList.contains('dark');
+    setTheme(isDark ? 'light' : 'dark');
+  });
+
   const hbg = document.getElementById('hbg-btn');
   const mobileNav = document.getElementById('mobile-nav');
   hbg.addEventListener('click', () => {
@@ -1062,7 +739,6 @@ document.getElementById('theme-toggle').addEventListener('click', () => {
     }
   });
 
-  /* ---------- SCROLL REVEAL ---------- */
   const revealObserver = new IntersectionObserver(entries => {
     entries.forEach(entry => {
       if (entry.isIntersecting) { entry.target.classList.add('visible'); revealObserver.unobserve(entry.target); }
@@ -1070,7 +746,6 @@ document.getElementById('theme-toggle').addEventListener('click', () => {
   }, { threshold: 0.08 });
   document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
-  /* ---------- ACTIVE NAV SECTION ---------- */
   const sections = document.querySelectorAll('section[id]');
   const navLinks = document.querySelectorAll('.nav-link');
   const sectionObserver = new IntersectionObserver(entries => {
@@ -1083,7 +758,6 @@ document.getElementById('theme-toggle').addEventListener('click', () => {
   }, { rootMargin: '-40% 0px -55% 0px' });
   sections.forEach(s => sectionObserver.observe(s));
 
-  /* ---------- BACK TO TOP ---------- */
   const backTop = document.getElementById('back-top');
   window.addEventListener('scroll', () => {
     const show = window.scrollY > 400;
@@ -1091,11 +765,9 @@ document.getElementById('theme-toggle').addEventListener('click', () => {
     backTop.style.pointerEvents = show ? 'auto' : 'none';
   }, { passive: true });
 
-  /* ---------- LAST UPDATED DATE ---------- */
   (function() {
     const el = document.getElementById('last-updated-date');
     if (!el) return;
-    // Format: "Mei 2026" / "May 2026" based on currentLang
     const now = new Date();
     const months = {
       id: ['Januari','Februari','Maret','April','Mei','Juni','Juli','Agustus','September','Oktober','November','Desember'],
@@ -1106,23 +778,19 @@ document.getElementById('theme-toggle').addEventListener('click', () => {
       el.textContent = (months[lang] || months.id)[now.getMonth()] + ' ' + now.getFullYear();
     }
     updateLastUpdated();
-    // Re-render kalau bahasa ganti
     const origApplyLang = window.setLang;
     window.setLang = function(lang) { origApplyLang(lang); updateLastUpdated(); };
   })();
 
-  /* ---------- FOTO THUMB ACTIVE STATE ---------- */
   document.querySelectorAll('.aspect-thumb').forEach(btn => {
     btn.addEventListener('click', function() {
       document.querySelectorAll('.aspect-thumb').forEach(b => b.classList.remove('selected'));
       this.classList.add('selected');
     });
   });
-  // Set default selected
   const defaultThumb = document.querySelector('.aspect-thumb[data-ratio="16/9"]');
   if (defaultThumb) defaultThumb.classList.add('selected');
 
-  /* ---------- COOKIE CONSENT ---------- */
   const banner = document.getElementById('cookie-banner');
   const cookieOk = document.getElementById('cookie-ok');
   const cookieNo = document.getElementById('cookie-no');
@@ -1133,10 +801,8 @@ document.getElementById('theme-toggle').addEventListener('click', () => {
   cookieOk.addEventListener('click', () => { try { localStorage.setItem('hajir-cookie', 'accepted'); } catch(e) {} hideBanner(); });
   cookieNo.addEventListener('click', () => { try { localStorage.setItem('hajir-cookie', 'declined'); } catch(e) {} hideBanner(); });
 
-  /* ---------- ESC KEY ---------- */
   document.addEventListener('keydown', e => { if (e.key === 'Escape') { mobileNav.classList.remove('flex'); mobileNav.classList.add('hidden'); hbg.classList.remove('hbg-open'); hideBanner(); } });
 
-  /* ---------- TOOLS FILTER ---------- */
   document.querySelectorAll('.filter-btn').forEach(btn => btn.addEventListener('click', function() {
     document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
     this.classList.add('active');
@@ -1147,7 +813,6 @@ document.getElementById('theme-toggle').addEventListener('click', () => {
     });
   }));
 
-  /* ---------- COPY CLIPBOARD ---------- */
   document.querySelectorAll('.copy-btn').forEach(btn => btn.addEventListener('click', async () => {
     try {
       await navigator.clipboard.writeText(btn.dataset.copy);
@@ -1157,71 +822,76 @@ document.getElementById('theme-toggle').addEventListener('click', () => {
     } catch(e) { alert('Gagal menyalin teks'); }
   }));
 
-  /* ---------- FOTO OF THE DAY ---------- */
-  const fotoMain = document.getElementById('foto-main'), fotoCont = document.getElementById('foto-main-container');
-  const thumb9 = document.getElementById('thumb-9-16'), thumb16 = document.getElementById('thumb-16-9'), thumb43 = document.getElementById('thumb-4-3');
-      const urls = [
-      '',
-      'https://i.postimg.cc/442qk8r5/foto-of-the-day-01.webp',
-      'https://i.postimg.cc/WbDK2Gvm/foto-of-the-day-02.webp',
-      'https://i.postimg.cc/QxBPXQ3Q/foto-of-the-day-03.webp',
-      'https://i.postimg.cc/h4Z6WCH3/foto-of-the-day-04.webp',
-      'https://i.postimg.cc/3rfV5LPL/foto-of-the-day-05.webp',
-      'https://i.postimg.cc/fT3FwcNv/foto-of-the-day-06.webp',
-      'https://i.postimg.cc/7YCcx3k9/foto-of-the-day-07.webp',
-      'https://i.postimg.cc/bNGMzxh3/foto-of-the-day-08.webp',
-      'https://i.postimg.cc/28qJzQD0/foto-of-the-day-09.webp',
-      'https://i.postimg.cc/xTk70v2s/foto-of-the-day-10.webp',
-      'https://i.postimg.cc/xTk70v2x/foto-of-the-day-11.webp',
-      'https://i.postimg.cc/xTk70v2F/foto-of-the-day-12.webp',
-      'https://i.postimg.cc/fT3FwcNF/foto-of-the-day-13.webp',
-      'https://i.postimg.cc/sDB8VYrq/foto-of-the-day-14.webp',
-      'https://i.postimg.cc/hPJwSLnc/foto-of-the-day-15.webp',
-      'https://i.postimg.cc/NfyVg6tQ/foto-of-the-day-16.webp',
-      'https://i.postimg.cc/02L4rz5q/foto-of-the-day-17.webp',
-      'https://i.postimg.cc/15Ld48mk/foto-of-the-day-18.webp',
-      'https://i.postimg.cc/hPHYhX4n/foto-of-the-day-19.webp',
-      'https://i.postimg.cc/Fs261YFm/foto-of-the-day-20.webp',
-      'https://i.postimg.cc/fT6PkVWw/foto-of-the-day-21.webp',
-      'https://i.postimg.cc/L6rWhJ4h/foto-of-the-day-22.webp',
-      'https://i.postimg.cc/yYwGWD6k/foto-of-the-day-23.webp',
-      'https://i.postimg.cc/kXkHD2MV/foto-of-the-day-24.webp',
-      'https://i.postimg.cc/pXgSymV5/foto-of-the-day-25.webp',
-      'https://i.postimg.cc/CxkQ8wdC/foto-of-the-day-26.webp',
-      'https://i.postimg.cc/TYZshK2r/foto-of-the-day-27.webp',
-      'https://i.postimg.cc/L8LbPmht/foto-of-the-day-28.webp',
-      'https://i.postimg.cc/x1M4m9q3/foto-of-the-day-29.webp',
-      'https://i.postimg.cc/HkXhMTjB/foto-of-the-day-30.webp',
-      'https://i.postimg.cc/Qd1y7jVY/foto-of-the-day-31.webp',
-      'https://i.postimg.cc/4xVScXnS/foto-of-the-day-32.webp',
-      'https://i.postimg.cc/yNKrX2Sv/foto-of-the-day-33.webp',
-      'https://i.postimg.cc/HLmP4F73/foto-of-the-day-34.webp',
-      'https://i.postimg.cc/Jh8dcSBv/foto-of-the-day-35.webp',
-      'https://i.postimg.cc/yNKrX2ZB/foto-of-the-day-36.webp',
-      'https://i.postimg.cc/8CGnBx6G/foto-of-the-day-37.webp',
-      'https://i.postimg.cc/DzhYdRXm/foto-of-the-day-38.webp',
-      'https://i.postimg.cc/nL1SdT4H/foto-of-the-day-39.webp',
-      'https://i.postimg.cc/yNTpfnmY/foto-of-the-day-40.webp',
-      'https://i.postimg.cc/jjh38vHD/foto-of-the-day-41.webp',
-      'https://i.postimg.cc/R0TpPG7H/foto-of-the-day-42.webp',
-      'https://i.postimg.cc/k5yYjwQF/foto-of-the-day-43.webp',
-      'https://i.postimg.cc/FKxCPGyb/foto-of-the-day-44.webp',
-      'https://i.postimg.cc/rmFn7Wj4/foto-of-the-day-45.webp',
-      'https://i.postimg.cc/pTXG38C8/foto-of-the-day-46.webp',
-      'https://i.postimg.cc/8kYKn76d/foto-of-the-day-47.webp',
-      'https://i.postimg.cc/tRcSmsxw/foto-of-the-day-48.webp',
-      'https://i.postimg.cc/gc7SBxZv/foto-of-the-day-49.webp',
-      'https://i.postimg.cc/vT4PZspV/foto-of-the-day-50.webp',
-      'https://i.postimg.cc/mZnX6PH7/foto-of-the-day-51.webp',
-      'https://i.postimg.cc/y6GQrDZM/foto-of-the-day-52.webp',
-      'https://i.postimg.cc/L8Ky2Gv9/foto-of-the-day-53.webp'
-    ];
-  const idx = Math.floor(Date.now() / 864e5) % 53 + 1, url = urls[idx] || urls[1];
-  fotoMain.src = url; thumb9.src = url; thumb16.src = url; thumb43.src = url; fotoCont.style.aspectRatio = '16/9';
+  const fotoMain = document.getElementById('foto-main');
+  const fotoCont = document.getElementById('foto-main-container');
+  const thumb9 = document.getElementById('thumb-9-16');
+  const thumb16 = document.getElementById('thumb-16-9');
+  const thumb43 = document.getElementById('thumb-4-3');
+  const urls = [
+    '',
+    'https://i.postimg.cc/442qk8r5/foto-of-the-day-01.webp',
+    'https://i.postimg.cc/WbDK2Gvm/foto-of-the-day-02.webp',
+    'https://i.postimg.cc/QxBPXQ3Q/foto-of-the-day-03.webp',
+    'https://i.postimg.cc/h4Z6WCH3/foto-of-the-day-04.webp',
+    'https://i.postimg.cc/3rfV5LPL/foto-of-the-day-05.webp',
+    'https://i.postimg.cc/fT3FwcNv/foto-of-the-day-06.webp',
+    'https://i.postimg.cc/7YCcx3k9/foto-of-the-day-07.webp',
+    'https://i.postimg.cc/bNGMzxh3/foto-of-the-day-08.webp',
+    'https://i.postimg.cc/28qJzQD0/foto-of-the-day-09.webp',
+    'https://i.postimg.cc/xTk70v2s/foto-of-the-day-10.webp',
+    'https://i.postimg.cc/xTk70v2F/foto-of-the-day-12.webp',
+    'https://i.postimg.cc/sDB8VYrq/foto-of-the-day-14.webp',
+    'https://i.postimg.cc/hPJwSLnc/foto-of-the-day-15.webp',
+    'https://i.postimg.cc/NfyVg6tQ/foto-of-the-day-16.webp',
+    'https://i.postimg.cc/02L4rz5q/foto-of-the-day-17.webp',
+    'https://i.postimg.cc/15Ld48mk/foto-of-the-day-18.webp',
+    'https://i.postimg.cc/hPHYhX4n/foto-of-the-day-19.webp',
+    'https://i.postimg.cc/Fs261YFm/foto-of-the-day-20.webp',
+    'https://i.postimg.cc/fT6PkVWw/foto-of-the-day-21.webp',
+    'https://i.postimg.cc/L6rWhJ4h/foto-of-the-day-22.webp',
+    'https://i.postimg.cc/yYwGWD6k/foto-of-the-day-23.webp',
+    'https://i.postimg.cc/kXkHD2MV/foto-of-the-day-24.webp',
+    'https://i.postimg.cc/pXgSymV5/foto-of-the-day-25.webp',
+    'https://i.postimg.cc/CxkQ8wdC/foto-of-the-day-26.webp',
+    'https://i.postimg.cc/TYZshK2r/foto-of-the-day-27.webp',
+    'https://i.postimg.cc/L8LbPmht/foto-of-the-day-28.webp',
+    'https://i.postimg.cc/x1M4m9q3/foto-of-the-day-29.webp',
+    'https://i.postimg.cc/HkXhMTjB/foto-of-the-day-30.webp',
+    'https://i.postimg.cc/Qd1y7jVY/foto-of-the-day-31.webp',
+    'https://i.postimg.cc/4xVScXnS/foto-of-the-day-32.webp',
+    'https://i.postimg.cc/yNKrX2Sv/foto-of-the-day-33.webp',
+    'https://i.postimg.cc/HLmP4F73/foto-of-the-day-34.webp',
+    'https://i.postimg.cc/Jh8dcSBv/foto-of-the-day-35.webp',
+    'https://i.postimg.cc/yNKrX2ZB/foto-of-the-day-36.webp',
+    'https://i.postimg.cc/8CGnBx6G/foto-of-the-day-37.webp',
+    'https://i.postimg.cc/DzhYdRXm/foto-of-the-day-38.webp',
+    'https://i.postimg.cc/nL1SdT4H/foto-of-the-day-39.webp',
+    'https://i.postimg.cc/yNTpfnmY/foto-of-the-day-40.webp',
+    'https://i.postimg.cc/jjh38vHD/foto-of-the-day-41.webp',
+    'https://i.postimg.cc/R0TpPG7H/foto-of-the-day-42.webp',
+    'https://i.postimg.cc/k5yYjwQF/foto-of-the-day-43.webp',
+    'https://i.postimg.cc/FKxCPGyb/foto-of-the-day-44.webp',
+    'https://i.postimg.cc/rmFn7Wj4/foto-of-the-day-45.webp',
+    'https://i.postimg.cc/pTXG38C8/foto-of-the-day-46.webp',
+    'https://i.postimg.cc/8kYKn76d/foto-of-the-day-47.webp',
+    'https://i.postimg.cc/tRcSmsxw/foto-of-the-day-48.webp',
+    'https://i.postimg.cc/gc7SBxZv/foto-of-the-day-49.webp',
+    'https://i.postimg.cc/vT4PZspV/foto-of-the-day-50.webp',
+    'https://i.postimg.cc/mZnX6PH7/foto-of-the-day-51.webp',
+    'https://i.postimg.cc/y6GQrDZM/foto-of-the-day-52.webp',
+    'https://i.postimg.cc/L8Ky2Gv9/foto-of-the-day-53.webp'
+  ];
+  const idx = (Math.floor(Date.now() / 864e5) % 53) + 1;
+  const url = urls[idx] || urls[1];
+  if (url) {
+    fotoMain.src = url;
+    thumb9.src = url;
+    thumb16.src = url;
+    thumb43.src = url;
+  }
   fotoMain.addEventListener('contextmenu', e => e.preventDefault());
   document.querySelectorAll('.aspect-thumb').forEach(btn => btn.addEventListener('click', function() { fotoCont.style.aspectRatio = this.dataset.ratio; }));
 
-  /* ---------- FORM VALIDATION & SUBMISSION ---------- */
   const nameInp = document.getElementById('name'), emailInp = document.getElementById('email'), msgInp = document.getElementById('message');
   const nameErr = document.getElementById('name-error'), emailErr = document.getElementById('email-error'), msgErr = document.getElementById('message-error');
   function clearFieldError(input, errorEl) { input.classList.remove('input-invalid'); errorEl.textContent = ''; }
@@ -1249,7 +919,6 @@ document.getElementById('theme-toggle').addEventListener('click', () => {
     catch (err) { statusDiv.textContent = tr.form_fallback; try { await submitTo(fallbackEndpoint); statusDiv.textContent = tr.form_success; form.reset(); } catch(e) { statusDiv.textContent = tr.form_error; } }
   });
 
-  /* ---------- PWA SERVICE WORKER ---------- */
   if ('serviceWorker' in navigator) { const blob = new Blob([`self.addEventListener('install',e=>self.skipWaiting());self.addEventListener('activate',e=>e.waitUntil(clients.claim()));self.addEventListener('fetch',e=>e.respondWith(caches.open('hajir-v1').then(c=>fetch(e.request).then(res=>{c.put(e.request,res.clone());return res}).catch(()=>c.match(e.request)))));`], {type:'application/javascript'}); navigator.serviceWorker.register(URL.createObjectURL(blob)).catch(()=>{}); }
 })();
 </script>
