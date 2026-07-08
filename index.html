@@ -11,7 +11,6 @@
     <meta name="description" content="Haiere is a web developer and musician building open-source tools, privacy-first web experiences, and original music." />
     <meta name="keywords" content="Haiere, Raia Showcase, web developer, musician, open source, privacy-first Web." />
 
-    <!-- Open Graph -->
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Haiere" />
     <meta property="og:url" content="https://haiere.github.io/" />
@@ -24,7 +23,6 @@
     <meta property="og:locale" content="id_ID" />
     <meta property="og:locale:alternate" content="en_US" />
 
-    <!-- Twitter / X -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:site" content="-" />
     <meta name="twitter:creator" content="-" />
@@ -33,12 +31,10 @@
     <meta name="twitter:image" content="https://i.postimg.cc/GmWt2wch/H-blue.webp" />
     <meta name="twitter:image:alt" content="Haiere logo" />
 
-    <!-- hreflang -->
     <link rel="alternate" hreflang="id" href="https://haiere.github.io/" />
     <link rel="alternate" hreflang="en" href="https://haiere.github.io/?lang=en" />
     <link rel="alternate" hreflang="x-default" href="https://haiere.github.io/" />
 
-    <!-- PWA -->
     <meta name="theme-color" content="#020617" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
@@ -46,18 +42,15 @@
     <meta name="application-name" content="Haiere" />
     <link rel="manifest" href="/manifest.webmanifest" />
 
-    <!-- Icons -->
     <link rel="icon" href="https://i.postimg.cc/8PJ0bhb1/H-haiere.webp" type="image/webp" />
     <link rel="apple-touch-icon" href="https://i.postimg.cc/GmWt2wch/H-blue.webp" />
 
-    <!-- Performance: Fonts & Preloads -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="preload" as="image" href="https://i.postimg.cc/GmWt2wch/H-blue.webp" fetchpriority="high" />
     <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-    <!-- Tailwind + Config -->
     <script src="https://cdn.tailwindcss.com">
     </script>
     <script>
@@ -81,7 +74,6 @@
         }
     </script>
 
-    <!-- Theme Toggle Script (inline, runs early) -->
     <script>
         (function() {
             const saved = localStorage.getItem('theme');
@@ -95,324 +87,218 @@
     </script>
 
     <style>
-        /* ===== CSS Variables ===== */
-        :root {
-            --accent: #3B82F6;
-            --accent-glow: rgba(59, 130, 246, 0.25);
-            --accent-dim: rgba(59, 130, 246, 0.10);
-            --accent-border: rgba(59, 130, 246, 0.22);
-            --ease: cubic-bezier(0.4, 0, 0.2, 1);
+        /* ===== GLASS SYSTEM ===== */
+        .glass {
+            background: rgba(255, 255, 255, 0.48);
+            backdrop-filter: blur(16px) saturate(1.35);
+            -webkit-backdrop-filter: blur(16px) saturate(1.35);
+            border: 1px solid rgba(255, 255, 255, 0.35);
+            box-shadow: 0 1px 0.5px rgba(255, 255, 255, 0.5) inset, 0 4px 20px rgba(0, 0, 0, 0.04);
+            transition: background 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
+        }
+        .dark .glass {
+            background: rgba(15, 23, 42, 0.55);
+            border-color: rgba(255, 255, 255, 0.06);
+            box-shadow: 0 1px 0.5px rgba(255, 255, 255, 0.06) inset, 0 4px 24px rgba(0, 0, 0, 0.35);
+        }
+        @supports not (backdrop-filter: blur(1px)) {
+            .glass {
+                background: rgba(255, 255, 255, 0.92);
+            }
+            .dark .glass {
+                background: rgba(15, 23, 42, 0.92);
+            }
         }
 
-        /* ===== Reset & Base ===== */
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
+        .glass-pill {
+            background: rgba(255, 255, 255, 0.40);
+            backdrop-filter: blur(12px) saturate(1.3);
+            -webkit-backdrop-filter: blur(12px) saturate(1.3);
+            border: 1px solid rgba(255, 255, 255, 0.30);
+            box-shadow: 0 1px 0.5px rgba(255, 255, 255, 0.4) inset, 0 2px 8px rgba(0, 0, 0, 0.03);
+            transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
         }
-        html {
-            scroll-behavior: smooth;
-            overflow-x: hidden;
+        .dark .glass-pill {
+            background: rgba(30, 41, 59, 0.50);
+            border-color: rgba(255, 255, 255, 0.06);
+            box-shadow: 0 1px 0.5px rgba(255, 255, 255, 0.04) inset, 0 2px 12px rgba(0, 0, 0, 0.25);
         }
-        body {
-            overflow-x: hidden;
-            max-width: 100%;
-            background-color: #f8fafc;
-            color: #0f172a;
-            transition: background-color 0.3s, color 0.3s;
-            font-family: 'DM Sans', sans-serif;
-            scroll-padding-top: 4rem;
-        }
-        .dark body {
-            background-color: #020617;
-            color: #f8fafc;
-        }
-        ::selection {
-            background: var(--accent);
-            color: #fff;
+        @supports not (backdrop-filter: blur(1px)) {
+            .glass-pill {
+                background: rgba(255, 255, 255, 0.88);
+            }
+            .dark .glass-pill {
+                background: rgba(30, 41, 59, 0.88);
+            }
         }
 
-        /* ===== Logo Transition ===== */
-        .logo-img {
-            transition: opacity 0.3s ease;
-            opacity: 1;
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.55);
+            backdrop-filter: blur(24px) saturate(1.4);
+            -webkit-backdrop-filter: blur(24px) saturate(1.4);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+            box-shadow: 0 1px 0.5px rgba(255, 255, 255, 0.5) inset, 0 8px 32px rgba(0, 0, 0, 0.04);
+            transition: background 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
         }
-        .logo-switching {
-            opacity: 0;
+        .dark .glass-nav {
+            background: rgba(2, 6, 23, 0.70);
+            border-bottom-color: rgba(255, 255, 255, 0.05);
+            box-shadow: 0 1px 0.5px rgba(255, 255, 255, 0.04) inset, 0 8px 32px rgba(0, 0, 0, 0.45);
         }
-
-        /* ===== Grid Background ===== */
-        .grid-bg {
-            background-image:
-                linear-gradient(rgba(59, 130, 246, 0.08) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(59, 130, 246, 0.08) 1px, transparent 1px);
-            background-size: 52px 52px;
-            mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 100%);
-            -webkit-mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 100%);
-        }
-
-        /* ===== Animations ===== */
-        @keyframes pulse-dot {
-            0%,
-            100% { opacity: 1; transform: scale(1); }
-            50% { opacity: 0.4; transform: scale(0.7); }
-        }
-        .pulse-dot {
-            animation: pulse-dot 2s ease-in-out infinite;
+        @supports not (backdrop-filter: blur(1px)) {
+            .glass-nav {
+                background: rgba(255, 255, 255, 0.96);
+            }
+            .dark .glass-nav {
+                background: rgba(2, 6, 23, 0.96);
+            }
         }
 
-        @keyframes scroll-anim {
-            0% { transform: scaleY(0); transform-origin: top; opacity: 0; }
-            45% { transform: scaleY(1); transform-origin: top; opacity: 1; }
-            55% { transform: scaleY(1); transform-origin: bottom; opacity: 1; }
-            100% { transform: scaleY(0); transform-origin: bottom; opacity: 0; }
+        .glass-hover {
+            transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease,
+                transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
         }
-        .scroll-line {
-            animation: scroll-anim 1.6s ease-in-out infinite;
+        .glass-hover:hover,
+        .glass-hover:focus-visible {
+            background: rgba(255, 255, 255, 0.65);
+            backdrop-filter: blur(20px) saturate(1.5);
+            -webkit-backdrop-filter: blur(20px) saturate(1.5);
+            border-color: rgba(255, 255, 255, 0.50);
+            box-shadow: 0 1px 0.5px rgba(255, 255, 255, 0.6) inset, 0 8px 30px rgba(59, 130, 246, 0.08);
+            transform: translateY(-1px);
         }
-
-        @keyframes ticker {
-            from { transform: translateX(0); }
-            to { transform: translateX(-50%); }
+        .dark .glass-hover:hover,
+        .dark .glass-hover:focus-visible {
+            background: rgba(30, 41, 59, 0.65);
+            border-color: rgba(255, 255, 255, 0.10);
+            box-shadow: 0 1px 0.5px rgba(255, 255, 255, 0.06) inset, 0 8px 30px rgba(59, 130, 246, 0.06);
         }
-        .ticker-track {
-            animation: ticker 28s linear infinite;
-            display: flex;
-            gap: 40px;
-            width: max-content;
-        }
-
-        @keyframes fadeUp {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        .animate-fade-up {
-            animation: fadeUp 0.7s ease forwards;
-        }
-        .animate-fade-up-delay-1 { animation-delay: 0.3s; }
-        .animate-fade-up-delay-2 { animation-delay: 0.5s; }
-        .animate-fade-up-delay-3 { animation-delay: 0.7s; }
-        .animate-fade-up-delay-4 { animation-delay: 0.9s; }
-        .animate-fade-up-delay-5 { animation-delay: 1.1s; }
-
-        .reveal {
-            opacity: 0;
-            transform: translateY(24px);
-            transition: opacity 0.7s var(--ease), transform 0.7s var(--ease);
-        }
-        .reveal.visible {
-            opacity: 1;
-            transform: translateY(0);
+        @supports not (backdrop-filter: blur(1px)) {
+            .glass-hover:hover,
+            .glass-hover:focus-visible {
+                background: rgba(255, 255, 255, 0.94);
+            }
+            .dark .glass-hover:hover,
+            .dark .glass-hover:focus-visible {
+                background: rgba(30, 41, 59, 0.94);
+            }
         }
 
-        /* ===== Components ===== */
-        .lang-btn.active {
-            background: var(--accent) !important;
-            color: #fff !important;
+        .glass-card {
+            background: rgba(255, 255, 255, 0.42);
+            backdrop-filter: blur(16px) saturate(1.3);
+            -webkit-backdrop-filter: blur(16px) saturate(1.3);
+            border: 1px solid rgba(255, 255, 255, 0.30);
+            box-shadow: 0 1px 0.5px rgba(255, 255, 255, 0.5) inset, 0 4px 20px rgba(0, 0, 0, 0.03);
+            transition: background 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease,
+                transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        .dark .glass-card {
+            background: rgba(15, 23, 42, 0.50);
+            border-color: rgba(255, 255, 255, 0.06);
+            box-shadow: 0 1px 0.5px rgba(255, 255, 255, 0.04) inset, 0 4px 24px rgba(0, 0, 0, 0.30);
+        }
+        @supports not (backdrop-filter: blur(1px)) {
+            .glass-card {
+                background: rgba(255, 255, 255, 0.90);
+            }
+            .dark .glass-card {
+                background: rgba(15, 23, 42, 0.90);
+            }
+        }
+        .glass-card.glass-hover:hover,
+        .glass-card.glass-hover:focus-visible {
+            background: rgba(255, 255, 255, 0.60);
+            border-color: rgba(255, 255, 255, 0.45);
+            box-shadow: 0 1px 0.5px rgba(255, 255, 255, 0.6) inset, 0 8px 32px rgba(59, 130, 246, 0.07);
+            transform: translateY(-2px);
+        }
+        .dark .glass-card.glass-hover:hover,
+        .dark .glass-card.glass-hover:focus-visible {
+            background: rgba(30, 41, 59, 0.60);
+            border-color: rgba(255, 255, 255, 0.10);
+            box-shadow: 0 1px 0.5px rgba(255, 255, 255, 0.06) inset, 0 8px 32px rgba(59, 130, 246, 0.05);
+        }
+        @supports not (backdrop-filter: blur(1px)) {
+            .glass-card.glass-hover:hover,
+            .glass-card.glass-hover:focus-visible {
+                background: rgba(255, 255, 255, 0.96);
+            }
+            .dark .glass-card.glass-hover:hover,
+            .dark .glass-card.glass-hover:focus-visible {
+                background: rgba(30, 41, 59, 0.96);
+            }
         }
 
-        .tool-card,
-        .quote-card {
-            transition: transform 0.35s var(--ease), border-color 0.35s var(--ease);
+        .glass-social {
+            background: rgba(255, 255, 255, 0.35);
+            backdrop-filter: blur(8px) saturate(1.2);
+            -webkit-backdrop-filter: blur(8px) saturate(1.2);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            box-shadow: 0 1px 0.5px rgba(255, 255, 255, 0.3) inset;
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
         }
-        .tool-card:hover,
-        .quote-card:hover {
-            transform: translateY(-4px);
-            border-color: rgba(59, 130, 246, 0.4) !important;
+        .dark .glass-social {
+            background: rgba(30, 41, 59, 0.40);
+            border-color: rgba(255, 255, 255, 0.06);
+            box-shadow: 0 1px 0.5px rgba(255, 255, 255, 0.04) inset;
         }
-
-        .contact-link {
-            transition: transform 0.3s var(--ease), border-color 0.3s var(--ease);
+        .glass-social:hover {
+            background: rgba(255, 255, 255, 0.60);
+            border-color: rgba(255, 255, 255, 0.45);
+            transform: scale(1.08) translateY(-2px);
+            box-shadow: 0 8px 24px rgba(59, 130, 246, 0.10);
         }
-        .contact-link:hover {
-            transform: translateX(5px);
-            border-color: rgba(59, 130, 246, 0.4) !important;
+        .dark .glass-social:hover {
+            background: rgba(30, 41, 59, 0.65);
+            border-color: rgba(255, 255, 255, 0.12);
+            box-shadow: 0 8px 24px rgba(59, 130, 246, 0.06);
         }
-
-        .nav-link.active {
-            color: #3B82F6 !important;
-        }
-        .nav-link {
-            position: relative;
-            overflow: hidden;
-        }
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            bottom: 4px;
-            left: 50%;
-            right: 50%;
-            height: 1.5px;
-            background: #3B82F6;
-            border-radius: 2px;
-            transition: left 0.25s var(--ease), right 0.25s var(--ease);
-        }
-        .nav-link:hover::after,
-        .nav-link.active::after {
-            left: 12px;
-            right: 12px;
+        @supports not (backdrop-filter: blur(1px)) {
+            .glass-social {
+                background: rgba(255, 255, 255, 0.85);
+            }
+            .dark .glass-social {
+                background: rgba(30, 41, 59, 0.85);
+            }
         }
 
-        /* ===== Mobile Nav ===== */
-        #mobile-nav {
-            transform-origin: top center;
-            transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.25s ease;
-            opacity: 0;
-            transform: scaleY(0.92);
-            pointer-events: none;
+        .filter-btn {
+            transition: all 0.3s ease;
         }
-        #mobile-nav.mobile-open {
-            opacity: 1;
-            transform: scaleY(1);
-            pointer-events: auto;
-        }
-        #mobile-nav.hidden-nav {
-            display: none;
-        }
-
-        /* ===== Hamburger animasi ===== */
-        #hbg-btn span {
-            transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.2s ease, width 0.3s ease;
-            width: 100%;
-        }
-        #hbg-btn.hbg-open span:nth-child(1) {
-            transform: translateY(6.5px) rotate(45deg);
-            width: 100%;
-        }
-        #hbg-btn.hbg-open span:nth-child(2) {
-            opacity: 0;
-            transform: scaleX(0);
-        }
-        #hbg-btn.hbg-open span:nth-child(3) {
-            transform: translateY(-6.5px) rotate(-45deg);
-            width: 100%;
-        }
-
-        .btn-primary {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background: #3B82F6;
-            color: #fff;
-            font-weight: 600;
-            padding: 12px 24px;
-            border-radius: 10px;
-            border: none;
-            cursor: pointer;
-            transition: transform 0.25s var(--ease), box-shadow 0.25s;
-            box-shadow: 0 8px 24px rgba(59, 130, 246, 0.35);
-            min-height: 48px;
-            text-decoration: none;
-        }
-        .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 14px 36px rgba(59, 130, 246, 0.45);
-            filter: brightness(1.08);
-        }
-
-        .btn-secondary {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background: transparent;
-            color: #94A3B8;
-            font-weight: 600;
-            padding: 12px 24px;
-            border-radius: 10px;
-            border: 1.5px solid rgba(148, 163, 184, 0.25);
-            transition: all 0.25s var(--ease);
-            min-height: 48px;
-            text-decoration: none;
-        }
-        .btn-secondary:hover {
-            color: #F8FAFC;
-            border-color: #3B82F6;
-            background: rgba(59, 130, 246, 0.08);
-            transform: translateY(-3px);
-        }
-
-        .section-tag {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.65rem;
-            letter-spacing: 0.12em;
-            text-transform: uppercase;
-            color: #3B82F6;
-        }
-        .accent-line {
-            width: 36px;
-            height: 2px;
-            background: #3B82F6;
-            border-radius: 2px;
-            margin: 10px auto 16px;
-        }
-
         .filter-btn.active {
-            background: #3B82F6;
-            color: #fff;
-            border-color: #3B82F6;
+            background: rgba(59, 130, 246, 0.20) !important;
+            backdrop-filter: blur(12px) saturate(1.3);
+            -webkit-backdrop-filter: blur(12px) saturate(1.3);
+            border-color: rgba(59, 130, 246, 0.35) !important;
+            color: #3B82F6 !important;
+            box-shadow: 0 1px 0.5px rgba(59, 130, 246, 0.25) inset, 0 4px 16px rgba(59, 130, 246, 0.12);
+        }
+        .dark .filter-btn.active {
+            background: rgba(59, 130, 246, 0.18) !important;
+            border-color: rgba(59, 130, 246, 0.30) !important;
+            box-shadow: 0 1px 0.5px rgba(59, 130, 246, 0.15) inset, 0 4px 20px rgba(59, 130, 246, 0.08);
         }
 
-        .input-invalid {
-            border-color: #ef4444 !important;
-        }
-        .form-error {
-            display: block;
-            color: #ef4444;
-            font-size: 0.75rem;
-            margin-top: 4px;
-            min-height: 1rem;
-        }
-
-        input:focus,
-        textarea:focus {
-            outline: none;
-            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.18);
-        }
-
-        .skip-link {
-            position: absolute;
-            top: -100%;
-            left: 8px;
-            z-index: 9999;
-            background: #3B82F6;
-            color: #fff;
-            font-weight: 700;
-            font-size: 0.8rem;
-            padding: 8px 16px;
-            border-radius: 0 0 8px 8px;
-            transition: top 0.2s;
-        }
-        .skip-link:focus {
-            top: 0;
-        }
-
-        /* ===== RAIA Button ===== */
         #raia-button {
-            position: fixed;
-            bottom: 20px;
-            left: 35px;
-            height: 56px;
-            width: 56px;
-            border: none;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            border-radius: 50%;
-            background: #5350c4;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            z-index: 1000;
-            box-shadow: 0 8px 28px rgba(83, 80, 196, 0.45);
-            text-decoration: none;
-            color: #fff;
-            font-size: 24px;
+            background: rgba(83, 80, 196, 0.80) !important;
+            backdrop-filter: blur(12px) saturate(1.3);
+            -webkit-backdrop-filter: blur(12px) saturate(1.3);
+            border: 1px solid rgba(255, 255, 255, 0.20);
+            box-shadow: 0 1px 0.5px rgba(255, 255, 255, 0.25) inset, 0 8px 28px rgba(83, 80, 196, 0.40);
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
         }
         #raia-button:hover {
             transform: scale(1.08);
-            box-shadow: 0 12px 40px rgba(83, 80, 196, 0.6);
+            background: rgba(83, 80, 196, 0.92) !important;
+            box-shadow: 0 12px 40px rgba(83, 80, 196, 0.55);
         }
-        #raia-button:active {
-            transform: scale(0.94);
+        .dark #raia-button {
+            background: rgba(83, 80, 196, 0.70) !important;
+            border-color: rgba(255, 255, 255, 0.08);
+        }
+        .dark #raia-button:hover {
+            background: rgba(83, 80, 196, 0.85) !important;
         }
         #raia-button .tooltip {
             position: absolute;
@@ -444,7 +330,7 @@
             border: 6px solid transparent;
             border-top-color: #0f172a;
         }
-        @media (max-width: 480px) {
+        @media (max-width:480px) {
             #raia-button {
                 bottom: 20px;
                 left: 20px;
@@ -458,7 +344,29 @@
             }
         }
 
-        /* ===== Cookie Banner ===== */
+        #back-top {
+            background: rgba(59, 130, 246, 0.75);
+            backdrop-filter: blur(12px) saturate(1.3);
+            -webkit-backdrop-filter: blur(12px) saturate(1.3);
+            border: 1px solid rgba(255, 255, 255, 0.20);
+            box-shadow: 0 1px 0.5px rgba(255, 255, 255, 0.25) inset, 0 8px 28px rgba(59, 130, 246, 0.30);
+            transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        #back-top:hover {
+            background: rgba(59, 130, 246, 0.92);
+            transform: translateY(-4px) scale(1.04);
+            box-shadow: 0 12px 36px rgba(59, 130, 246, 0.45);
+        }
+        .dark #back-top {
+            background: rgba(59, 130, 246, 0.60);
+            border-color: rgba(255, 255, 255, 0.06);
+            box-shadow: 0 8px 28px rgba(59, 130, 246, 0.20);
+        }
+        .dark #back-top:hover {
+            background: rgba(59, 130, 246, 0.80);
+            box-shadow: 0 12px 36px rgba(59, 130, 246, 0.30);
+        }
+
         #cookie-banner {
             transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.5s ease;
         }
@@ -472,14 +380,300 @@
             pointer-events: none;
         }
 
-        /* ===== Music Iframe ===== */
+        /* ===== BASE ===== */
+        :root {
+            --accent: #3B82F6;
+            --accent-glow: rgba(59, 130, 246, 0.25);
+            --accent-dim: rgba(59, 130, 246, 0.10);
+            --accent-border: rgba(59, 130, 246, 0.22);
+            --ease: cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        html {
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+        body {
+            overflow-x: hidden;
+            max-width: 100%;
+            background-color: #f8fafc;
+            color: #0f172a;
+            transition: background-color 0.3s, color 0.3s;
+            font-family: 'DM Sans', sans-serif;
+            scroll-padding-top: 4rem;
+        }
+        .dark body {
+            background-color: #020617;
+            color: #f8fafc;
+        }
+        ::selection {
+            background: var(--accent);
+            color: #fff;
+        }
+        .logo-img {
+            transition: opacity 0.3s ease;
+            opacity: 1;
+        }
+        .logo-switching {
+            opacity: 0;
+        }
+        .grid-bg {
+            background-image: linear-gradient(rgba(59, 130, 246, 0.08) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(59, 130, 246, 0.08) 1px, transparent 1px);
+            background-size: 52px 52px;
+            mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 100%);
+            -webkit-mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 100%);
+        }
+        @keyframes pulse-dot {
+            0%,
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+            50% {
+                opacity: 0.4;
+                transform: scale(0.7);
+            }
+        }
+        .pulse-dot {
+            animation: pulse-dot 2s ease-in-out infinite;
+        }
+        @keyframes scroll-anim {
+            0% {
+                transform: scaleY(0);
+                transform-origin: top;
+                opacity: 0;
+            }
+            45% {
+                transform: scaleY(1);
+                transform-origin: top;
+                opacity: 1;
+            }
+            55% {
+                transform: scaleY(1);
+                transform-origin: bottom;
+                opacity: 1;
+            }
+            100% {
+                transform: scaleY(0);
+                transform-origin: bottom;
+                opacity: 0;
+            }
+        }
+        .scroll-line {
+            animation: scroll-anim 1.6s ease-in-out infinite;
+        }
+        @keyframes ticker {
+            from {
+                transform: translateX(0);
+            }
+            to {
+                transform: translateX(-50%);
+            }
+        }
+        .ticker-track {
+            animation: ticker 28s linear infinite;
+            display: flex;
+            gap: 40px;
+            width: max-content;
+        }
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .animate-fade-up {
+            animation: fadeUp 0.7s ease forwards;
+        }
+        .animate-fade-up-delay-1 {
+            animation-delay: 0.3s;
+        }
+        .animate-fade-up-delay-2 {
+            animation-delay: 0.5s;
+        }
+        .animate-fade-up-delay-3 {
+            animation-delay: 0.7s;
+        }
+        .animate-fade-up-delay-4 {
+            animation-delay: 0.9s;
+        }
+        .animate-fade-up-delay-5 {
+            animation-delay: 1.1s;
+        }
+        .reveal {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 0.7s var(--ease), transform 0.7s var(--ease);
+        }
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .lang-btn.active {
+            background: var(--accent) !important;
+            color: #fff !important;
+        }
+        .contact-link {
+            transition: transform 0.3s var(--ease), border-color 0.3s var(--ease);
+        }
+        .contact-link:hover {
+            transform: translateX(5px);
+            border-color: rgba(59, 130, 246, 0.4) !important;
+        }
+        .nav-link.active {
+            color: #3B82F6 !important;
+        }
+        .nav-link {
+            position: relative;
+            overflow: hidden;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 4px;
+            left: 50%;
+            right: 50%;
+            height: 1.5px;
+            background: #3B82F6;
+            border-radius: 2px;
+            transition: left 0.25s var(--ease), right 0.25s var(--ease);
+        }
+        .nav-link:hover::after,
+        .nav-link.active::after {
+            left: 12px;
+            right: 12px;
+        }
+        #mobile-nav {
+            transform-origin: top center;
+            transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.25s ease;
+            opacity: 0;
+            transform: scaleY(0.92);
+            pointer-events: none;
+        }
+        #mobile-nav.mobile-open {
+            opacity: 1;
+            transform: scaleY(1);
+            pointer-events: auto;
+        }
+        #mobile-nav.hidden-nav {
+            display: none;
+        }
+        #hbg-btn span {
+            transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.2s ease, width 0.3s ease;
+            width: 100%;
+        }
+        #hbg-btn.hbg-open span:nth-child(1) {
+            transform: translateY(6.5px) rotate(45deg);
+            width: 100%;
+        }
+        #hbg-btn.hbg-open span:nth-child(2) {
+            opacity: 0;
+            transform: scaleX(0);
+        }
+        #hbg-btn.hbg-open span:nth-child(3) {
+            transform: translateY(-6.5px) rotate(-45deg);
+            width: 100%;
+        }
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #3B82F6;
+            color: #fff;
+            font-weight: 600;
+            padding: 12px 24px;
+            border-radius: 10px;
+            border: none;
+            cursor: pointer;
+            transition: transform 0.25s var(--ease), box-shadow 0.25s;
+            box-shadow: 0 8px 24px rgba(59, 130, 246, 0.35);
+            min-height: 48px;
+            text-decoration: none;
+        }
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 14px 36px rgba(59, 130, 246, 0.45);
+            filter: brightness(1.08);
+        }
+        .btn-secondary {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: transparent;
+            color: #94A3B8;
+            font-weight: 600;
+            padding: 12px 24px;
+            border-radius: 10px;
+            border: 1.5px solid rgba(148, 163, 184, 0.25);
+            transition: all 0.25s var(--ease);
+            min-height: 48px;
+            text-decoration: none;
+        }
+        .btn-secondary:hover {
+            color: #F8FAFC;
+            border-color: #3B82F6;
+            background: rgba(59, 130, 246, 0.08);
+            transform: translateY(-3px);
+        }
+        .section-tag {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.65rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: #3B82F6;
+        }
+        .accent-line {
+            width: 36px;
+            height: 2px;
+            background: #3B82F6;
+            border-radius: 2px;
+            margin: 10px auto 16px;
+        }
+        .input-invalid {
+            border-color: #ef4444 !important;
+        }
+        .form-error {
+            display: block;
+            color: #ef4444;
+            font-size: 0.75rem;
+            margin-top: 4px;
+            min-height: 1rem;
+        }
+        input:focus,
+        textarea:focus {
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.18);
+        }
+        .skip-link {
+            position: absolute;
+            top: -100%;
+            left: 8px;
+            z-index: 9999;
+            background: #3B82F6;
+            color: #fff;
+            font-weight: 700;
+            font-size: 0.8rem;
+            padding: 8px 16px;
+            border-radius: 0 0 8px 8px;
+            transition: top 0.2s;
+        }
+        .skip-link:focus {
+            top: 0;
+        }
         .music-iframe-wrap {
             border-radius: 16px;
             overflow: hidden;
             border: 1px solid rgba(59, 130, 246, 0.2);
         }
-
-        /* ===== Tool Card Shared ===== */
         .tool-icon-wrap {
             width: 100%;
             height: 8rem;
@@ -504,13 +698,12 @@
         .group:hover .tool-icon-wrap svg {
             transform: scale(1.05);
         }
-        @media (min-width: 640px) {
+        @media(min-width:640px) {
             .tool-icon-wrap {
                 width: 10rem;
                 height: 7rem;
             }
         }
-
         .status-badge-stable {
             font-size: 0.625rem;
             background: rgba(16, 185, 129, 0.10);
@@ -524,7 +717,6 @@
         .dark .status-badge-stable {
             color: #34d399;
         }
-
         .tool-open-btn {
             display: inline-flex;
             align-items: center;
@@ -559,14 +751,12 @@
         .group:hover .tool-open-btn svg {
             transform: translate(0.125rem, -0.125rem);
         }
-
-        /* ===== Reduced Motion ===== */
-        @media (prefers-reduced-motion: no-preference) {
+        @media(prefers-reduced-motion:no-preference) {
             .reveal {
                 will-change: opacity, transform;
             }
         }
-        @media (prefers-reduced-motion: reduce) {
+        @media(prefers-reduced-motion:reduce) {
             .reveal {
                 opacity: 1 !important;
                 transform: none !important;
@@ -578,9 +768,42 @@
                 animation: none !important;
             }
         }
+
+        /* cookie banner button override */
+        #cookie-banner .cookie-btn {
+            padding: 7px 20px;
+            border-radius: 999px;
+            border: none;
+            font-weight: 600;
+            font-size: 12px;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            font-family: 'DM Sans', sans-serif;
+        }
+        #cookie-banner .cookie-btn-accept {
+            background: #3B82F6;
+            color: #fff;
+            box-shadow: 0 4px 16px rgba(59, 130, 246, 0.3);
+        }
+        #cookie-banner .cookie-btn-accept:hover {
+            background: #2563eb;
+            transform: scale(1.03);
+        }
+        #cookie-banner .cookie-btn-deny {
+            background: transparent;
+            color: #94a3b8;
+            border: 1px solid rgba(148, 163, 184, 0.2);
+        }
+        #cookie-banner .cookie-btn-deny:hover {
+            border-color: rgba(148, 163, 184, 0.4);
+            color: #0f172a;
+            background: rgba(148, 163, 184, 0.05);
+        }
+        .dark #cookie-banner .cookie-btn-deny:hover {
+            color: #f1f5f9;
+        }
     </style>
 
-    <!-- Schema.org (enhanced) -->
     <script type="application/ld+json">
         {
             "@context": "https://schema.org",
@@ -602,63 +825,52 @@
 </head>
 
 <body>
-    <!-- ===== SKIP LINK ===== -->
     <a href="#hero" class="skip-link">Langsung ke konten utama</a>
 
     <!-- ===== RAIA BUTTON ===== -->
-    <a id="raia-button" href="https://haiere.github.io/raia" rel="noopener noreferrer" aria-label="Buka RAIA Ai">
+    <a id="raia-button" href="https://haiere.github.io/raia" rel="noopener noreferrer" aria-label="Buka RAIA Ai" class="fixed bottom-6 left-6 z-50 h-14 w-14 rounded-2xl flex items-center justify-center text-white text-xl shadow-lg">
         <i class="fas fa-robot" aria-hidden="true"></i>
         <span class="tooltip">Coba RAIA Ai</span>
     </a>
-    
-    <!-- ===== HEADER ===== -->
-    <header id="nav" class="fixed top-0 left-0 right-0 z-50 h-16 border-b border-slate-200/60 dark:border-slate-800/60 backdrop-blur-xl bg-white/80 dark:bg-dark-bg/80 shadow-sm transition-shadow duration-300">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full flex items-center justify-between gap-3">
 
-            <!-- Logo -->
+    <!-- ===== HEADER ===== -->
+    <header id="nav" class="glass-nav fixed top-0 left-0 right-0 z-50 h-16 shadow-sm transition-shadow duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full flex items-center justify-between gap-3">
             <a href="#hero" class="flex items-center gap-2.5 flex-shrink-0 transition-transform duration-300 hover:scale-105" aria-label="Haiere - Beranda">
                 <img id="logo-header" src="https://i.postimg.cc/GmWt2wch/H-blue.webp" alt="Logo Haiere" class="w-8 h-8 rounded-lg object-contain logo-img" style="filter:drop-shadow(0 0 8px rgba(59,130,246,0.4))" loading="eager" fetchpriority="high" width="32" height="32" />
-                <span class="font-syne font-extrabold text-base sm:text-lg tracking-tight dark:text-white text-slate-900 whitespace-nowrap">
-                    HAIERE<span class="text-blue-400">.</span>
-                </span>
+                <span class="font-syne font-extrabold text-base sm:text-lg tracking-tight dark:text-white text-slate-900 whitespace-nowrap">HAIERE<span class="text-blue-400">.</span></span>
             </a>
 
-            <!-- Desktop Nav (muncul di md ke atas) -->
             <nav id="desktop-nav" class="hidden md:flex items-center gap-0.5 lg:gap-1" aria-label="Navigasi utama">
-                <a href="#about" class="nav-link text-sm font-medium text-slate-500 dark:text-slate-400 px-2.5 lg:px-3 py-2 rounded-xl min-h-[48px] flex items-center transition-all duration-200 hover:text-blue-500 hover:bg-blue-50 dark:hover:bg-slate-800" data-section="about">
+                <a href="#about" class="nav-link text-sm font-medium text-slate-500 dark:text-slate-400 px-2.5 lg:px-3 py-2 rounded-xl min-h-[48px] flex items-center transition-all duration-200 hover:text-blue-500 hover:bg-blue-50/50 dark:hover:bg-slate-800/40" data-section="about">
                     <span data-i18n="nav_about">Tentang</span>
                 </a>
-                <a href="#music" class="nav-link text-sm font-medium text-slate-500 dark:text-slate-400 px-2.5 lg:px-3 py-2 rounded-xl min-h-[48px] flex items-center transition-all duration-200 hover:text-blue-500 hover:bg-blue-50 dark:hover:bg-slate-800" data-section="music">
+                <a href="#music" class="nav-link text-sm font-medium text-slate-500 dark:text-slate-400 px-2.5 lg:px-3 py-2 rounded-xl min-h-[48px] flex items-center transition-all duration-200 hover:text-blue-500 hover:bg-blue-50/50 dark:hover:bg-slate-800/40" data-section="music">
                     <span data-i18n="nav_music">Musik</span>
                 </a>
-                <a href="#quotes" class="nav-link text-sm font-medium text-slate-500 dark:text-slate-400 px-2.5 lg:px-3 py-2 rounded-xl min-h-[48px] flex items-center transition-all duration-200 hover:text-blue-500 hover:bg-blue-50 dark:hover:bg-slate-800" data-section="quotes">
+                <a href="#quotes" class="nav-link text-sm font-medium text-slate-500 dark:text-slate-400 px-2.5 lg:px-3 py-2 rounded-xl min-h-[48px] flex items-center transition-all duration-200 hover:text-blue-500 hover:bg-blue-50/50 dark:hover:bg-slate-800/40" data-section="quotes">
                     <span data-i18n="nav_quotes">Kutipan</span>
                 </a>
-                <a href="#tools" class="nav-link text-sm font-medium text-slate-500 dark:text-slate-400 px-2.5 lg:px-3 py-2 rounded-xl min-h-[48px] flex items-center transition-all duration-200 hover:text-blue-500 hover:bg-blue-50 dark:hover:bg-slate-800" data-section="tools">
+                <a href="#tools" class="nav-link text-sm font-medium text-slate-500 dark:text-slate-400 px-2.5 lg:px-3 py-2 rounded-xl min-h-[48px] flex items-center transition-all duration-200 hover:text-blue-500 hover:bg-blue-50/50 dark:hover:bg-slate-800/40" data-section="tools">
                     <span data-i18n="nav_tools">Tools</span>
                 </a>
-                <a href="#contact" class="nav-link text-sm font-medium text-slate-500 dark:text-slate-400 px-2.5 lg:px-3 py-2 rounded-xl min-h-[48px] flex items-center transition-all duration-200 hover:text-blue-500 hover:bg-blue-50 dark:hover:bg-slate-800" data-section="contact">
+                <a href="#contact" class="nav-link text-sm font-medium text-slate-500 dark:text-slate-400 px-2.5 lg:px-3 py-2 rounded-xl min-h-[48px] flex items-center transition-all duration-200 hover:text-blue-500 hover:bg-blue-50/50 dark:hover:bg-slate-800/40" data-section="contact">
                     <span data-i18n="nav_contact">Kontak</span>
                 </a>
             </nav>
 
-            <!-- Right Controls -->
             <div class="flex items-center gap-1.5 sm:gap-2 flex-shrink-0">
-
-                <!-- Language Switcher -->
-                <div class="flex items-center rounded-full border border-slate-200/70 dark:border-slate-800/80 p-0.5 h-7 bg-slate-50/50 dark:bg-slate-900/30" role="group" aria-label="Pilih bahasa">
-                    <button id="btn-id" class="lang-btn px-2.5 h-full text-[10px] font-mono font-bold transition-all duration-200 rounded-full text-slate-900 bg-white dark:text-white dark:bg-slate-800 shadow-sm cursor-pointer" data-lang="id" aria-pressed="true">ID</button>
+                <div class="glass-pill flex items-center rounded-full p-0.5 h-7" role="group" aria-label="Pilih bahasa">
+                    <button id="btn-id" class="lang-btn px-2.5 h-full text-[10px] font-mono font-bold transition-all duration-200 rounded-full text-slate-900 bg-white/70 dark:text-white dark:bg-slate-800/60 shadow-sm cursor-pointer" data-lang="id" aria-pressed="true">ID</button>
                     <button id="btn-en" class="lang-btn px-2.5 h-full text-[10px] font-mono font-medium transition-all duration-200 rounded-full text-slate-400 hover:text-slate-700 dark:text-slate-500 dark:hover:text-slate-400 bg-transparent cursor-pointer" data-lang="en" aria-pressed="false">EN</button>
                 </div>
 
-                <!-- Theme Toggle -->
-                <button id="theme-toggle" aria-label="Ganti tema (gelap/terang)" class="w-9 h-9 flex items-center justify-center rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-500 dark:text-slate-400 transition-all duration-200 hover:scale-105 flex-shrink-0">
+                <button id="theme-toggle" aria-label="Ganti tema" class="w-9 h-9 flex items-center justify-center rounded-xl hover:bg-slate-100/60 dark:hover:bg-slate-800/40 text-slate-500 dark:text-slate-400 transition-all duration-200 hover:scale-105 flex-shrink-0">
                     <i class="fas fa-moon dark:hidden" aria-hidden="true"></i>
                     <i class="fas fa-sun hidden dark:inline-block" aria-hidden="true"></i>
                 </button>
 
-                <!-- Mobile Hamburger (muncul di < md) -->
-                <button id="hbg-btn" aria-label="Buka menu navigasi" aria-expanded="false" class="md:hidden flex flex-col justify-center gap-[5px] w-9 h-9 p-2 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 min-h-[48px] transition-all duration-200 flex-shrink-0">
+                <button id="hbg-btn" aria-label="Buka menu navigasi" aria-expanded="false" class="md:hidden flex flex-col justify-center gap-[5px] w-9 h-9 p-2 rounded-xl hover:bg-slate-100/60 dark:hover:bg-slate-800/40 min-h-[48px] transition-all duration-200 flex-shrink-0">
                     <span class="block h-[1.5px] bg-slate-500 dark:bg-slate-400 rounded transition-all duration-300 origin-center" aria-hidden="true"></span>
                     <span class="block h-[1.5px] bg-slate-500 dark:bg-slate-400 rounded transition-all duration-300 origin-center" aria-hidden="true"></span>
                     <span class="block h-[1.5px] bg-slate-500 dark:bg-slate-400 rounded transition-all duration-300 origin-center" aria-hidden="true"></span>
@@ -666,29 +878,27 @@
             </div>
         </div>
 
-        <!-- ===== MOBILE NAV PANEL ===== -->
-        <nav id="mobile-nav" class="hidden-nav md:hidden absolute left-0 right-0 top-full mt-1 mx-3 sm:mx-4 bg-white/98 dark:bg-dark-bg/98 backdrop-blur-xl border border-slate-200/80 dark:border-slate-800/60 rounded-2xl shadow-2xl px-3 py-3 overflow-y-auto max-h-[calc(100vh-5rem)]" aria-label="Navigasi mobile">
-            <a href="#about" class="mobile-nav-link text-sm font-medium text-slate-600 dark:text-slate-300 px-4 py-3.5 rounded-xl block min-h-[48px] flex items-center transition-all duration-200 hover:text-blue-500 hover:bg-blue-50 dark:hover:bg-slate-800" data-section="about">
+        <nav id="mobile-nav" class="glass-nav hidden-nav md:hidden absolute left-0 right-0 top-full mt-1 mx-3 sm:mx-4 rounded-2xl shadow-2xl px-3 py-3 overflow-y-auto max-h-[calc(100vh-5rem)]" aria-label="Navigasi mobile">
+            <a href="#about" class="mobile-nav-link text-sm font-medium text-slate-600 dark:text-slate-300 px-4 py-3.5 rounded-xl block min-h-[48px] flex items-center transition-all duration-200 hover:text-blue-500 hover:bg-blue-50/50 dark:hover:bg-slate-800/40" data-section="about">
                 <span data-i18n="nav_about">Tentang</span>
             </a>
-            <a href="#music" class="mobile-nav-link text-sm font-medium text-slate-600 dark:text-slate-300 px-4 py-3.5 rounded-xl block min-h-[48px] flex items-center transition-all duration-200 hover:text-blue-500 hover:bg-blue-50 dark:hover:bg-slate-800" data-section="music">
+            <a href="#music" class="mobile-nav-link text-sm font-medium text-slate-600 dark:text-slate-300 px-4 py-3.5 rounded-xl block min-h-[48px] flex items-center transition-all duration-200 hover:text-blue-500 hover:bg-blue-50/50 dark:hover:bg-slate-800/40" data-section="music">
                 <span data-i18n="nav_music">Musik</span>
             </a>
-            <a href="#quotes" class="mobile-nav-link text-sm font-medium text-slate-600 dark:text-slate-300 px-4 py-3.5 rounded-xl block min-h-[48px] flex items-center transition-all duration-200 hover:text-blue-500 hover:bg-blue-50 dark:hover:bg-slate-800" data-section="quotes">
+            <a href="#quotes" class="mobile-nav-link text-sm font-medium text-slate-600 dark:text-slate-300 px-4 py-3.5 rounded-xl block min-h-[48px] flex items-center transition-all duration-200 hover:text-blue-500 hover:bg-blue-50/50 dark:hover:bg-slate-800/40" data-section="quotes">
                 <span data-i18n="nav_quotes">Kutipan</span>
             </a>
-            <a href="#tools" class="mobile-nav-link text-sm font-medium text-slate-600 dark:text-slate-300 px-4 py-3.5 rounded-xl block min-h-[48px] flex items-center transition-all duration-200 hover:text-blue-500 hover:bg-blue-50 dark:hover:bg-slate-800" data-section="tools">
+            <a href="#tools" class="mobile-nav-link text-sm font-medium text-slate-600 dark:text-slate-300 px-4 py-3.5 rounded-xl block min-h-[48px] flex items-center transition-all duration-200 hover:text-blue-500 hover:bg-blue-50/50 dark:hover:bg-slate-800/40" data-section="tools">
                 <span data-i18n="nav_tools">Tools</span>
             </a>
-            <a href="#contact" class="mobile-nav-link text-sm font-medium text-slate-600 dark:text-slate-300 px-4 py-3.5 rounded-xl block min-h-[48px] flex items-center transition-all duration-200 hover:text-blue-500 hover:bg-blue-50 dark:hover:bg-slate-800" data-section="contact">
+            <a href="#contact" class="mobile-nav-link text-sm font-medium text-slate-600 dark:text-slate-300 px-4 py-3.5 rounded-xl block min-h-[48px] flex items-center transition-all duration-200 hover:text-blue-500 hover:bg-blue-50/50 dark:hover:bg-slate-800/40" data-section="contact">
                 <span data-i18n="nav_contact">Kontak</span>
             </a>
-
-            <div class="mt-2 pt-3 border-t border-slate-200/60 dark:border-slate-700/60 grid grid-cols-2 gap-2">
-                <a href="https://github.com/haiere" target="_blank" rel="noopener noreferrer" class="text-sm font-medium text-slate-500 dark:text-slate-400 px-4 py-3 rounded-xl text-center transition-all duration-200 hover:text-blue-500 hover:bg-blue-50 dark:hover:bg-slate-800 flex items-center justify-center gap-2 min-h-[48px]">
+            <div class="mt-2 pt-3 border-t border-slate-200/40 dark:border-slate-700/40 grid grid-cols-2 gap-2">
+                <a href="https://github.com/haiere" target="_blank" rel="noopener noreferrer" class="text-sm font-medium text-slate-500 dark:text-slate-400 px-4 py-3 rounded-xl text-center transition-all duration-200 hover:text-blue-500 hover:bg-blue-50/50 dark:hover:bg-slate-800/40 flex items-center justify-center gap-2 min-h-[48px]">
                     <i class="fab fa-github text-xs" aria-hidden="true"></i> GitHub
                 </a>
-                <a href="https://haiere.github.io/raia" target="_blank" rel="noopener noreferrer" class="text-sm font-medium text-slate-500 dark:text-slate-400 px-4 py-3 rounded-xl text-center transition-all duration-200 hover:text-blue-500 hover:bg-blue-50 dark:hover:bg-slate-800 flex items-center justify-center gap-2 min-h-[48px]">
+                <a href="https://haiere.github.io/raia" target="_blank" rel="noopener noreferrer" class="text-sm font-medium text-slate-500 dark:text-slate-400 px-4 py-3 rounded-xl text-center transition-all duration-200 hover:text-blue-500 hover:bg-blue-50/50 dark:hover:bg-slate-800/40 flex items-center justify-center gap-2 min-h-[48px]">
                     <i class="fas fa-robot text-xs" aria-hidden="true"></i> RAIA-Ai
                 </a>
             </div>
@@ -698,22 +908,18 @@
     <!-- ===== HERO ===== -->
     <section id="hero" class="relative min-h-svh flex flex-col items-center justify-center text-center px-5 pt-24 pb-20 overflow-hidden dark:bg-dark-bg bg-white">
         <div class="grid-bg absolute inset-0 pointer-events-none" aria-hidden="true"></div>
-
         <div class="relative z-10 max-w-2xl">
             <div class="inline-flex items-center gap-2 font-mono text-xs tracking-widest text-blue-400 bg-blue-500/10 border border-blue-500/20 px-4 py-1.5 rounded-full mb-7 animate-fade-up animate-fade-up-delay-1">
                 <span class="w-1.5 h-1.5 rounded-full bg-blue-400 pulse-dot" aria-hidden="true"></span>
                 haiere.github.io
             </div>
-
             <h1 class="font-syne font-extrabold leading-tight tracking-tighter mb-5 text-[clamp(2.6rem,9vw,5.5rem)] bg-[linear-gradient(160deg,#F8FAFC_0%,#94A3B8_50%,#3B82F6_100%)] bg-clip-text text-transparent animate-fade-up animate-fade-up-delay-2">
                 <span data-i18n="hero_title_1">Hajir</span><br />
                 <span data-i18n="hero_title_2">ST</span>
             </h1>
-
             <p class="text-slate-500 dark:text-slate-400 mb-10 leading-relaxed text-[clamp(.95rem,2vw,1.1rem)] animate-fade-up animate-fade-up-delay-3" data-i18n="hero_desc">
                 Halo, aku Hajir — musisi dan developer yang membuat karya serta tools simpel, cepat, dan privacy-first.
             </p>
-
             <div class="flex flex-col sm:flex-row gap-3 justify-center items-center animate-fade-up animate-fade-up-delay-4">
                 <a href="#about" class="btn-primary w-full sm:w-auto justify-center">
                     <i class="fas fa-user text-xs" aria-hidden="true"></i>
@@ -725,13 +931,11 @@
                 </a>
             </div>
         </div>
-
         <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1.5 hidden sm:flex animate-fade-up animate-fade-up-delay-5" aria-hidden="true">
             <div class="w-px h-12 bg-gradient-to-b from-blue-400 to-transparent scroll-line"></div>
             <span class="font-mono text-[9px] tracking-widest text-slate-400 dark:text-slate-600 uppercase">scroll</span>
         </div>
-
-        <div class="absolute bottom-0 left-0 right-0 border-t border-slate-200 dark:border-slate-800/60 bg-blue-500/5 py-2.5 overflow-hidden" aria-hidden="true">
+        <div class="absolute bottom-0 left-0 right-0 border-t border-slate-200/40 dark:border-slate-800/60 bg-blue-500/5 py-2.5 overflow-hidden" aria-hidden="true">
             <div class="ticker-track font-mono text-[10px] tracking-widest uppercase text-slate-400 dark:text-slate-600">
                 <span>Musisi</span><span class="text-blue-400/40">✦</span>
                 <span>Developer</span><span class="text-blue-400/40">✦</span>
@@ -744,7 +948,7 @@
     </section>
 
     <!-- ===== ABOUT ===== -->
-    <section id="about" class="py-24 bg-slate-100 dark:bg-slate-900/40">
+    <section id="about" class="py-24 bg-slate-100/50 dark:bg-slate-900/30">
         <div class="max-w-3xl mx-auto px-5 sm:px-8">
             <div class="text-center mb-14 reveal">
                 <div class="section-tag mb-2" data-i18n="about_tag">// Profil</div>
@@ -752,27 +956,23 @@
                 <h2 class="font-syne font-extrabold text-3xl sm:text-4xl tracking-tight text-slate-900 dark:text-white mb-3" data-i18n="about_title">Siapa Hajir?</h2>
                 <p class="text-slate-600 dark:text-slate-400 text-sm max-w-md mx-auto" data-i18n="about_subtitle">Teman berbagi cerita lewat musik dan teknologi sederhana.</p>
             </div>
-
-            <div class="reveal bg-white dark:bg-slate-800/40 border border-slate-200 dark:border-slate-700/40 rounded-2xl p-8 sm:p-10">
+            <div class="reveal glass-card glass-hover rounded-2xl p-8 sm:p-10">
                 <div class="flex flex-col items-center mb-8">
-                    <div class="w-24 h-24 sm:w-28 sm:h-28 rounded-full overflow-hidden mb-5 flex items-center justify-center bg-slate-50 dark:bg-slate-900/60 border border-slate-200/60 dark:border-slate-700/40 p-5 shadow-sm">
+                    <div class="w-24 h-24 sm:w-28 sm:h-28 rounded-full overflow-hidden mb-5 flex items-center justify-center bg-slate-50/50 dark:bg-slate-900/40 border border-slate-200/40 dark:border-slate-700/30 p-5 shadow-sm">
                         <img src="https://i.postimg.cc/GmWt2wch/H-blue.webp" alt="Logo Haiere Raia" class="w-full h-full object-contain filter dark:drop-shadow-[0_0_10px_rgba(59,130,246,0.15)]" loading="lazy" decoding="async" width="112" height="112" />
                     </div>
                     <h3 class="font-syne font-bold text-xl text-slate-900 dark:text-white mb-1.5">Hajir Stein</h3>
                     <p class="font-mono text-[10px] text-slate-400 dark:text-slate-500 tracking-widest uppercase" data-i18n="about_role">Musisi · Developer</p>
                 </div>
-
                 <div class="flex flex-wrap justify-center gap-2 mb-6">
-                    <span class="font-mono text-xs text-blue-400 bg-blue-500/10 border border-blue-500/20 px-3 py-1 rounded-full" data-i18n="tag_musician">Musisi</span>
-                    <span class="font-mono text-xs text-blue-400 bg-blue-500/10 border border-blue-500/20 px-3 py-1 rounded-full" data-i18n="tag_developer">Developer</span>
+                    <span class="glass-pill font-mono text-xs text-blue-400 px-3 py-1 rounded-full" data-i18n="tag_musician">Musisi</span>
+                    <span class="glass-pill font-mono text-xs text-blue-400 px-3 py-1 rounded-full" data-i18n="tag_developer">Developer</span>
                 </div>
-
                 <div class="space-y-4 text-slate-600 dark:text-slate-400 text-sm sm:text-base leading-relaxed max-w-xl mx-auto text-center">
                     <p data-i18n="about_p1">Hai! Aku Hajir. Musik adalah dunia tempat aku mengekspresikan diri dan membagikan perasaan hati.</p>
                     <p data-i18n="about_p2">Melalui karya-karyaku, aku ingin menyebarkan energi positif dan semangat. Ayo berteman!</p>
                     <p data-i18n="about_p3">Selain itu, aku juga bikin tools online yang bisa dipakai gratis. Cepat, simpel, dan aman tanpa menyimpan data pribadimu.</p>
                 </div>
-
                 <div class="flex justify-center mt-8">
                     <a href="https://haiere.github.io/raia" target="_blank" rel="noopener noreferrer" class="btn-primary">
                         <i class="fas fa-robot text-xs" aria-hidden="true"></i>
@@ -780,21 +980,20 @@
                     </a>
                 </div>
             </div>
-
             <div class="reveal mt-6 grid grid-cols-1 sm:grid-cols-2 gap-3">
-                <div class="flex items-center gap-4 px-5 py-4 bg-white dark:bg-slate-800/40 border border-slate-200 dark:border-slate-700/40 rounded-xl contact-link">
+                <div class="glass-card glass-hover flex items-center gap-4 px-5 py-4 rounded-xl contact-link">
                     <div class="w-9 h-9 rounded-lg bg-blue-500/10 border border-blue-500/20 flex items-center justify-center text-blue-400"><i class="fas fa-code" aria-hidden="true"></i></div>
                     <div><div class="font-mono text-[10px] tracking-widest text-slate-500 dark:text-slate-600 uppercase mb-0.5" data-i18n="stat_approach">Pendekatan</div><div class="text-sm font-semibold text-slate-900 dark:text-white">Single-File HTML Apps</div></div>
                 </div>
-                <div class="flex items-center gap-4 px-5 py-4 bg-white dark:bg-slate-800/40 border border-slate-200 dark:border-slate-700/40 rounded-xl contact-link">
+                <div class="glass-card glass-hover flex items-center gap-4 px-5 py-4 rounded-xl contact-link">
                     <div class="w-9 h-9 rounded-lg bg-blue-500/10 border border-blue-500/20 flex items-center justify-center text-blue-400"><i class="fas fa-shield-halved" aria-hidden="true"></i></div>
                     <div><div class="font-mono text-[10px] tracking-widest text-slate-500 dark:text-slate-600 uppercase mb-0.5" data-i18n="stat_philosophy">Prinsip</div><div class="text-sm font-semibold text-slate-900 dark:text-white">Privacy First · Zero Backend</div></div>
                 </div>
-                <div class="flex items-center gap-4 px-5 py-4 bg-white dark:bg-slate-800/40 border border-slate-200 dark:border-slate-700/40 rounded-xl contact-link">
+                <div class="glass-card glass-hover flex items-center gap-4 px-5 py-4 rounded-xl contact-link">
                     <div class="w-9 h-9 rounded-lg bg-blue-500/10 border border-blue-500/20 flex items-center justify-center text-blue-400"><i class="fab fa-github" aria-hidden="true"></i></div>
                     <div><div class="font-mono text-[10px] tracking-widest text-slate-500 dark:text-slate-600 uppercase">GitHub</div><div class="flex items-center gap-2"><span class="text-sm font-semibold text-slate-900 dark:text-white">haiere</span><button class="copy-btn text-slate-400 hover:text-blue-400 transition-colors" data-copy="haiere" aria-label="Salin username GitHub"><i class="far fa-copy text-xs" aria-hidden="true"></i></button></div></div>
                 </div>
-                <div class="flex items-center gap-4 px-5 py-4 bg-white dark:bg-slate-800/40 border border-slate-200 dark:border-slate-700/40 rounded-xl contact-link">
+                <div class="glass-card glass-hover flex items-center gap-4 px-5 py-4 rounded-xl contact-link">
                     <div class="w-9 h-9 rounded-lg bg-blue-500/10 border border-blue-500/20 flex items-center justify-center text-blue-400"><i class="fas fa-globe" aria-hidden="true"></i></div>
                     <div><div class="font-mono text-[10px] tracking-widest text-slate-500 dark:text-slate-600 uppercase">Platform</div><div class="text-sm font-semibold text-slate-900 dark:text-white">GitHub Pages</div></div>
                 </div>
@@ -803,7 +1002,7 @@
     </section>
 
     <!-- ===== RWR ===== -->
-    <section id="rwr" class="py-20 bg-slate-100 dark:bg-slate-900/40">
+    <section id="rwr" class="py-20 bg-slate-100/50 dark:bg-slate-900/30">
         <div class="max-w-3xl mx-auto px-5 sm:px-8">
             <div class="reveal flex flex-col items-center text-center">
                 <div class="flex items-center justify-center gap-6 mb-5">
@@ -817,7 +1016,7 @@
     </section>
 
     <!-- ===== MUSIC ===== -->
-    <section id="music" class="py-24 bg-white dark:bg-slate-950 relative overflow-hidden">
+    <section id="music" class="py-24 bg-white/50 dark:bg-slate-950/50 relative overflow-hidden">
         <div class="max-w-3xl mx-auto px-5 sm:px-8 relative z-10">
             <div class="text-center mb-12 reveal">
                 <div class="section-tag mb-2" data-i18n="music_tag">// Musik</div>
@@ -825,8 +1024,7 @@
                 <h2 class="font-syne font-extrabold text-3xl sm:text-4xl tracking-tight text-slate-900 dark:text-white mb-3" data-i18n="music_title">Dengarkan Laguku</h2>
                 <p class="text-slate-600 dark:text-slate-400 text-sm max-w-md mx-auto leading-relaxed" data-i18n="music_subtitle">Setiap nada dibuat dengan hati untuk menemani harimu.</p>
             </div>
-
-            <div class="reveal bg-white dark:bg-slate-800/40 border border-slate-200 dark:border-slate-700/40 rounded-2xl p-6 mb-6 shadow-sm group hover:border-slate-300 dark:hover:border-slate-600/50 transition-colors duration-300">
+            <div class="reveal glass-card glass-hover rounded-2xl p-6 mb-6 shadow-sm transition-colors duration-300">
                 <div class="flex items-center gap-3 mb-4">
                     <img id="music-logo" src="https://i.postimg.cc/GmWt2wch/H-blue.webp" alt="Signature Music Logo" class="w-10 h-10 rounded-lg object-contain border border-blue-500/20 group-hover:scale-105 transition-transform duration-300" loading="lazy" decoding="async" width="40" height="40" />
                     <div>
@@ -836,11 +1034,9 @@
                 </div>
                 <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-4" data-i18n="music_player_desc">Pilih lagu kesukaanmu dan putar langsung di browser tanpa ribet.</p>
             </div>
-
-            <div class="reveal music-iframe-wrap shadow-xl border border-slate-200 dark:border-slate-800 rounded-2xl overflow-hidden bg-slate-50 dark:bg-slate-900">
+            <div class="reveal music-iframe-wrap shadow-xl border border-slate-200/50 dark:border-slate-800/50 rounded-2xl overflow-hidden bg-slate-50/50 dark:bg-slate-900/50">
                 <iframe src="https://haiere.github.io/signature-music" title="Signature Music Player" allow="autoplay" style="height:600px;width:100%;border:0;display:block;" loading="lazy"></iframe>
             </div>
-
             <div class="reveal text-center mt-6">
                 <a href="https://haiere.github.io/signature-music" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 font-mono text-[11px] text-blue-500 dark:text-blue-400 hover:text-blue-600 dark:hover:text-blue-300 group transition-colors">
                     <i class="fas fa-external-link-alt text-[10px] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" aria-hidden="true"></i>
@@ -851,7 +1047,7 @@
     </section>
 
     <!-- ===== QUOTES ===== -->
-    <section id="quotes" class="py-24 bg-white dark:bg-dark-bg">
+    <section id="quotes" class="py-24 bg-white/50 dark:bg-dark-bg/50">
         <div class="max-w-4xl mx-auto px-5 sm:px-8">
             <div class="text-center mb-16 reveal">
                 <div class="section-tag mb-2 text-blue-500 font-mono tracking-wider text-xs uppercase" data-i18n="quotes_tag">// Inspirasi</div>
@@ -859,11 +1055,8 @@
                 <h2 class="font-syne font-extrabold text-3xl sm:text-4xl tracking-tight text-slate-900 dark:text-white mb-3" data-i18n="quotes_title">Kutipan Favorit</h2>
                 <p class="text-slate-600 dark:text-slate-400 text-sm max-w-md mx-auto" data-i18n="quotes_subtitle">Pesan dari orang-orang hebat yang selalu menginspirasi jalanku.</p>
             </div>
-
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-
-                <!-- Quote Card 1 -->
-                <div class="reveal flex flex-col justify-between bg-slate-50/50 dark:bg-slate-800/30 border border-slate-200/80 dark:border-slate-700/40 rounded-2xl p-8 relative overflow-hidden group hover:-translate-y-1 hover:shadow-xl hover:shadow-blue-500/5 transition-all duration-300">
+                <div class="reveal glass-card glass-hover rounded-2xl p-8 relative overflow-hidden">
                     <div class="absolute -top-4 -right-2 text-8xl font-serif leading-none text-slate-200/40 dark:text-slate-700/20 select-none group-hover:scale-110 group-hover:text-blue-500/10 transition-all duration-300" aria-hidden="true">”</div>
                     <p class="italic text-slate-700 dark:text-slate-300 text-sm leading-relaxed mb-6 relative z-10 flex-1" data-i18n="q1_text">"Waktumu terbatas, jadi jangan sia-siakan dengan menjalani hidup orang lain."</p>
                     <div class="flex items-center gap-3 relative z-10">
@@ -871,9 +1064,7 @@
                         <div class="font-syne text-xs font-bold text-slate-900 dark:text-white transition-transform duration-300 group-hover:translate-x-1" data-i18n="q1_author">— Steve Jobs</div>
                     </div>
                 </div>
-
-                <!-- Quote Card 2 -->
-                <div class="reveal flex flex-col justify-between bg-slate-50/50 dark:bg-slate-800/30 border border-slate-200/80 dark:border-slate-700/40 rounded-2xl p-8 relative overflow-hidden group hover:-translate-y-1 hover:shadow-xl hover:shadow-blue-500/5 transition-all duration-300">
+                <div class="reveal glass-card glass-hover rounded-2xl p-8 relative overflow-hidden">
                     <div class="absolute -top-4 -right-2 text-8xl font-serif leading-none text-slate-200/40 dark:text-slate-700/20 select-none group-hover:scale-110 group-hover:text-blue-500/10 transition-all duration-300" aria-hidden="true">”</div>
                     <p class="italic text-slate-700 dark:text-slate-300 text-sm leading-relaxed mb-6 relative z-10 flex-1" data-i18n="q2_text">"Tantangannya adalah melakukannya lebih cepat daripada semua orang tanpa kehilangan kendali. Itu level yang sama sekali berbeda."</p>
                     <div class="flex items-center gap-3 relative z-10">
@@ -881,9 +1072,7 @@
                         <div class="font-syne text-xs font-bold text-slate-900 dark:text-white transition-transform duration-300 group-hover:translate-x-1" data-i18n="q2_author">— Adrian Newey</div>
                     </div>
                 </div>
-
-                <!-- Quote Card 3 -->
-                <div class="reveal flex flex-col justify-between bg-slate-50/50 dark:bg-slate-800/30 border border-slate-200/80 dark:border-slate-700/40 rounded-2xl p-8 relative overflow-hidden group hover:-translate-y-1 hover:shadow-xl hover:shadow-blue-500/5 transition-all duration-300">
+                <div class="reveal glass-card glass-hover rounded-2xl p-8 relative overflow-hidden">
                     <div class="absolute -top-4 -right-2 text-8xl font-serif leading-none text-slate-200/40 dark:text-slate-700/20 select-none group-hover:scale-110 group-hover:text-blue-500/10 transition-all duration-300" aria-hidden="true">”</div>
                     <p class="italic text-slate-700 dark:text-slate-300 text-sm leading-relaxed mb-6 relative z-10 flex-1" data-i18n="q3_text">"Aku memulainya dengan orang di cermin."</p>
                     <div class="flex items-center gap-3 relative z-10">
@@ -891,9 +1080,7 @@
                         <div class="font-syne text-xs font-bold text-slate-900 dark:text-white transition-transform duration-300 group-hover:translate-x-1" data-i18n="q3_author">— Michael Jackson</div>
                     </div>
                 </div>
-
-                <!-- Quote Card 4 -->
-                <div class="reveal flex flex-col justify-between bg-slate-50/50 dark:bg-slate-800/30 border border-slate-200/80 dark:border-slate-700/40 rounded-2xl p-8 relative overflow-hidden group hover:-translate-y-1 hover:shadow-xl hover:shadow-blue-500/5 transition-all duration-300">
+                <div class="reveal glass-card glass-hover rounded-2xl p-8 relative overflow-hidden">
                     <div class="absolute -top-4 -right-2 text-8xl font-serif leading-none text-slate-200/40 dark:text-slate-700/20 select-none group-hover:scale-110 group-hover:text-blue-500/10 transition-all duration-300" aria-hidden="true">”</div>
                     <p class="italic text-slate-700 dark:text-slate-300 text-sm leading-relaxed mb-6 relative z-10 flex-1" data-i18n="q4_text">"Musik adalah perantara antara kehidupan spiritual dan kehidupan indrawi."</p>
                     <div class="flex items-center gap-3 relative z-10">
@@ -901,13 +1088,12 @@
                         <div class="font-syne text-xs font-bold text-slate-900 dark:text-white transition-transform duration-300 group-hover:translate-x-1" data-i18n="q4_author">— Ludwig van Beethoven</div>
                     </div>
                 </div>
-
             </div>
         </div>
     </section>
 
     <!-- ===== TOOLS ===== -->
-    <section id="tools" class="py-24 bg-slate-100 dark:bg-slate-900/40 relative overflow-hidden">
+    <section id="tools" class="py-24 bg-slate-100/50 dark:bg-slate-900/30 relative overflow-hidden">
         <div class="max-w-3xl mx-auto px-5 sm:px-8 relative z-10">
             <div class="text-center mb-14 reveal">
                 <div class="section-tag mb-2" data-i18n="tools_tag">// Tools Buatanku</div>
@@ -917,16 +1103,15 @@
             </div>
 
             <div class="flex flex-wrap justify-center items-center gap-2 mb-10 reveal" role="tablist" aria-label="Filter alat">
-                <button data-filter="all" class="filter-btn active font-mono text-xs font-semibold tracking-wider uppercase px-5 py-2.5 rounded-full border border-blue-500/20 bg-blue-500/10 text-blue-500 dark:text-blue-400 hover:bg-blue-500 hover:text-white transition-all duration-300 transform active:scale-95 cursor-pointer" role="tab" aria-selected="true" data-i18n="filter_all">Semua</button>
-                <button data-filter="music" class="filter-btn font-mono text-xs font-semibold tracking-wider uppercase px-5 py-2.5 rounded-full border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-800/40 text-slate-500 dark:text-slate-400 hover:border-blue-500/30 hover:bg-blue-500/5 hover:text-blue-500 transition-all duration-300 transform active:scale-95 cursor-pointer" role="tab" aria-selected="false" data-i18n="filter_music">Musik</button>
-                <button data-filter="security" class="filter-btn font-mono text-xs font-semibold tracking-wider uppercase px-5 py-2.5 rounded-full border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-800/40 text-slate-500 dark:text-slate-400 hover:border-blue-500/30 hover:bg-blue-500/5 hover:text-blue-500 transition-all duration-300 transform active:scale-95 cursor-pointer" role="tab" aria-selected="false" data-i18n="filter_security">Keamanan</button>
-                <button data-filter="web" class="filter-btn font-mono text-xs font-semibold tracking-wider uppercase px-5 py-2.5 rounded-full border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-800/40 text-slate-500 dark:text-slate-400 hover:border-blue-500/30 hover:bg-blue-500/5 hover:text-blue-500 transition-all duration-300 transform active:scale-95 cursor-pointer" role="tab" aria-selected="false" data-i18n="filter_web">Web</button>
+                <button data-filter="all" class="filter-btn active glass-pill font-mono text-xs font-semibold tracking-wider uppercase px-5 py-2.5 rounded-full cursor-pointer" role="tab" aria-selected="true" data-i18n="filter_all">Semua</button>
+                <button data-filter="music" class="filter-btn glass-pill font-mono text-xs font-semibold tracking-wider uppercase px-5 py-2.5 rounded-full cursor-pointer" role="tab" aria-selected="false" data-i18n="filter_music">Musik</button>
+                <button data-filter="security" class="filter-btn glass-pill font-mono text-xs font-semibold tracking-wider uppercase px-5 py-2.5 rounded-full cursor-pointer" role="tab" aria-selected="false" data-i18n="filter_security">Keamanan</button>
+                <button data-filter="web" class="filter-btn glass-pill font-mono text-xs font-semibold tracking-wider uppercase px-5 py-2.5 rounded-full cursor-pointer" role="tab" aria-selected="false" data-i18n="filter_web">Web</button>
             </div>
 
             <div class="space-y-5" id="tools-container">
-
-                <!-- Tool 1: HajirSync -->
-                <div class="reveal tool-card bg-white dark:bg-slate-800/40 border border-slate-200 dark:border-slate-700/40 rounded-2xl p-6 sm:p-7 shadow-sm hover:shadow-md hover:border-slate-300 dark:hover:border-slate-600/50 transition-all duration-300 group" data-category="music">
+                <!-- Tool 1 -->
+                <div class="tool-card reveal glass-card glass-hover rounded-2xl p-6 sm:p-7 shadow-sm transition-all duration-300 group" data-category="music">
                     <div class="flex flex-col sm:flex-row items-stretch sm:items-start gap-6">
                         <div class="tool-icon-wrap">
                             <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M3 12c0-4.97 4.03-9 9-9s9 4.03 9 9M3 12a3 3 0 013-3h1a3 3 0 013 3v4a3 3 0 01-3 3H6a3 3 0 01-3-3v-4zm14-3a3 3 0 013 3v4a3 3 0 01-3 3h-1a3 3 0 01-3-3v-4a3 3 0 013-3h1z"></path></svg>
@@ -940,8 +1125,8 @@
                                 <h3 class="font-syne font-bold text-lg text-slate-900 dark:text-white mb-2 group-hover:text-blue-500 dark:group-hover:text-blue-400 transition-colors">HajirSync</h3>
                                 <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-4" data-i18n="tool1_desc">Bikin file lirik lagu otomatis (LRC) dengan mudah dan cepat.</p>
                                 <div class="flex flex-wrap gap-2 mb-5">
-                                    <span class="font-mono text-[10px] text-blue-500 dark:text-blue-400 bg-blue-500/5 dark:bg-blue-500/10 border border-blue-500/10 dark:border-blue-500/20 px-2.5 py-1 rounded-md">LRC Export</span>
-                                    <span class="font-mono text-[10px] text-blue-500 dark:text-blue-400 bg-blue-500/5 dark:bg-blue-500/10 border border-blue-500/10 dark:border-blue-500/20 px-2.5 py-1 rounded-md">Bilingual UI</span>
+                                    <span class="glass-pill font-mono text-[10px] text-blue-500 dark:text-blue-400 px-2.5 py-1 rounded-md">LRC Export</span>
+                                    <span class="glass-pill font-mono text-[10px] text-blue-500 dark:text-blue-400 px-2.5 py-1 rounded-md">Bilingual UI</span>
                                 </div>
                             </div>
                             <div>
@@ -954,8 +1139,8 @@
                     </div>
                 </div>
 
-                <!-- Tool 2: Raia Vault -->
-                <div class="reveal tool-card bg-white dark:bg-slate-800/40 border border-slate-200 dark:border-slate-700/40 rounded-2xl p-6 sm:p-7 shadow-sm hover:shadow-md hover:border-slate-300 dark:hover:border-slate-600/50 transition-all duration-300 group" data-category="security">
+                <!-- Tool 2 -->
+                <div class="tool-card reveal glass-card glass-hover rounded-2xl p-6 sm:p-7 shadow-sm transition-all duration-300 group" data-category="security">
                     <div class="flex flex-col sm:flex-row items-stretch sm:items-start gap-6">
                         <div class="tool-icon-wrap">
                             <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z"></path></svg>
@@ -969,8 +1154,8 @@
                                 <h3 class="font-syne font-bold text-lg text-slate-900 dark:text-white mb-2 group-hover:text-blue-500 dark:group-hover:text-blue-400 transition-colors">Raia Vault</h3>
                                 <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-4" data-i18n="tool2_desc">Bikin password kuat acak untuk amankan akun internetmu.</p>
                                 <div class="flex flex-wrap gap-2 mb-5">
-                                    <span class="font-mono text-[10px] text-blue-500 dark:text-blue-400 bg-blue-500/5 dark:bg-blue-500/10 border border-blue-500/10 dark:border-blue-500/20 px-2.5 py-1 rounded-md">Password Gen</span>
-                                    <span class="font-mono text-[10px] text-blue-500 dark:text-blue-400 bg-blue-500/5 dark:bg-blue-500/10 border border-blue-500/10 dark:border-blue-500/20 px-2.5 py-1 rounded-md">Strength Meter</span>
+                                    <span class="glass-pill font-mono text-[10px] text-blue-500 dark:text-blue-400 px-2.5 py-1 rounded-md">Password Gen</span>
+                                    <span class="glass-pill font-mono text-[10px] text-blue-500 dark:text-blue-400 px-2.5 py-1 rounded-md">Strength Meter</span>
                                 </div>
                             </div>
                             <div>
@@ -983,8 +1168,8 @@
                     </div>
                 </div>
 
-                <!-- Tool 3: Raia Scrub -->
-                <div class="reveal tool-card bg-white dark:bg-slate-800/40 border border-slate-200 dark:border-slate-700/40 rounded-2xl p-6 sm:p-7 shadow-sm hover:shadow-md hover:border-slate-300 dark:hover:border-slate-600/50 transition-all duration-300 group" data-category="security">
+                <!-- Tool 3 -->
+                <div class="tool-card reveal glass-card glass-hover rounded-2xl p-6 sm:p-7 shadow-sm transition-all duration-300 group" data-category="security">
                     <div class="flex flex-col sm:flex-row items-stretch sm:items-start gap-6">
                         <div class="tool-icon-wrap">
                             <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 21l5.096-.813a2 2 0 001.077-.543l7.045-7.045a2.828 2.828 0 10-4-4l-7.045 7.045a2 2 0 00-.543 1.077zM15 7.5l3 3M3 6.75a.75.75 0 01.75-.75h.008a.75.75 0 01.75.75v.008a.75.75 0 01-.75.75H3.75a.75.75 0 01-.75-.75V6.75zm0 9a.75.75 0 01.75-.75h.008a.75.75 0 01.75.75v.008a.75.75 0 01-.75.75H3.75a.75.75 0 01-.75-.75v-.008zm3-4.5a.75.75 0 01.75-.75h.008a.75.75 0 01.75.75v.008a.75.75 0 01-.75.75H6.75a.75.75 0 01-.75-.75V11.25z"></path></svg>
@@ -998,9 +1183,9 @@
                                 <h3 class="font-syne font-bold text-lg text-slate-900 dark:text-white mb-2 group-hover:text-blue-500 dark:group-hover:text-blue-400 transition-colors">Raia Scrub</h3>
                                 <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-4" data-i18n="tool3_desc">Hapus metadata sensitif (seperti lokasi) dari fotomu sebelum di-share.</p>
                                 <div class="flex flex-wrap gap-2 mb-5">
-                                    <span class="font-mono text-[10px] text-blue-500 dark:text-blue-400 bg-blue-500/5 dark:bg-blue-500/10 border border-blue-500/10 dark:border-blue-500/20 px-2.5 py-1 rounded-md">EXIF Cleaner</span>
-                                    <span class="font-mono text-[10px] text-blue-500 dark:text-blue-400 bg-blue-500/5 dark:bg-blue-500/10 border border-blue-500/10 dark:border-blue-500/20 px-2.5 py-1 rounded-md">GPS Remover</span>
-                                    <span class="font-mono text-[10px] text-blue-500 dark:text-blue-400 bg-blue-500/5 dark:bg-blue-500/10 border border-blue-500/10 dark:border-blue-500/20 px-2.5 py-1 rounded-md">PDF Support</span>
+                                    <span class="glass-pill font-mono text-[10px] text-blue-500 dark:text-blue-400 px-2.5 py-1 rounded-md">EXIF Cleaner</span>
+                                    <span class="glass-pill font-mono text-[10px] text-blue-500 dark:text-blue-400 px-2.5 py-1 rounded-md">GPS Remover</span>
+                                    <span class="glass-pill font-mono text-[10px] text-blue-500 dark:text-blue-400 px-2.5 py-1 rounded-md">PDF Support</span>
                                 </div>
                             </div>
                             <div>
@@ -1013,8 +1198,8 @@
                     </div>
                 </div>
 
-                <!-- Tool 4: Raia Delta -->
-                <div class="reveal tool-card bg-white dark:bg-slate-800/40 border border-slate-200 dark:border-slate-700/40 rounded-2xl p-6 sm:p-7 shadow-sm hover:shadow-md hover:border-slate-300 dark:hover:border-slate-600/50 transition-all duration-300 group" data-category="web">
+                <!-- Tool 4 -->
+                <div class="tool-card reveal glass-card glass-hover rounded-2xl p-6 sm:p-7 shadow-sm transition-all duration-300 group" data-category="web">
                     <div class="flex flex-col sm:flex-row items-stretch sm:items-start gap-6">
                         <div class="tool-icon-wrap">
                             <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15"></path></svg>
@@ -1028,9 +1213,9 @@
                                 <h3 class="font-syne font-bold text-lg text-slate-900 dark:text-white mb-2 group-hover:text-blue-500 dark:group-hover:text-blue-400 transition-colors">Raia Delta</h3>
                                 <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-4" data-i18n="tool4_desc">Bandingkan dua teks tulisan dan temukan perbedaannya seketika.</p>
                                 <div class="flex flex-wrap gap-2 mb-5">
-                                    <span class="font-mono text-[10px] text-blue-500 dark:text-blue-400 bg-blue-500/5 dark:bg-blue-500/10 border border-blue-500/10 dark:border-blue-500/20 px-2.5 py-1 rounded-md">jsDiff</span>
-                                    <span class="font-mono text-[10px] text-blue-500 dark:text-blue-400 bg-blue-500/5 dark:bg-blue-500/10 border border-blue-500/10 dark:border-blue-500/20 px-2.5 py-1 rounded-md">Split View</span>
-                                    <span class="font-mono text-[10px] text-blue-500 dark:text-blue-400 bg-blue-500/5 dark:bg-blue-500/10 border border-blue-500/10 dark:border-blue-500/20 px-2.5 py-1 rounded-md">Sync Scroll</span>
+                                    <span class="glass-pill font-mono text-[10px] text-blue-500 dark:text-blue-400 px-2.5 py-1 rounded-md">jsDiff</span>
+                                    <span class="glass-pill font-mono text-[10px] text-blue-500 dark:text-blue-400 px-2.5 py-1 rounded-md">Split View</span>
+                                    <span class="glass-pill font-mono text-[10px] text-blue-500 dark:text-blue-400 px-2.5 py-1 rounded-md">Sync Scroll</span>
                                 </div>
                             </div>
                             <div>
@@ -1042,13 +1227,12 @@
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
     </section>
 
     <!-- ===== CONTACT ===== -->
-    <section id="contact" class="py-24 bg-white dark:bg-slate-950 relative overflow-hidden">
+    <section id="contact" class="py-24 bg-white/50 dark:bg-slate-950/50 relative overflow-hidden">
         <div class="max-w-3xl mx-auto px-5 sm:px-8 relative z-10">
             <div class="text-center mb-12 reveal">
                 <div class="section-tag mb-2" data-i18n="contact_tag">// Kontak</div>
@@ -1056,47 +1240,35 @@
                 <h2 class="font-syne font-extrabold text-3xl sm:text-4xl tracking-tight text-slate-900 dark:text-white mb-3" data-i18n="contact_title">Mau Kolaborasi atau Sekadar Menyapa?</h2>
                 <p class="text-slate-600 dark:text-slate-400 text-sm max-w-md mx-auto leading-relaxed" data-i18n="contact_subtitle">Kirim pesan jika ada pertanyaan atau ingin ngobrol santai.</p>
             </div>
-
-            <div class="reveal bg-white dark:bg-slate-800/40 border border-slate-200 dark:border-slate-700/40 rounded-2xl p-8 sm:p-10">
+            <div class="reveal glass-card glass-hover rounded-2xl p-8 sm:p-10">
                 <form id="contact-form" class="space-y-6" novalidate>
                     <div>
                         <label for="name" class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1" data-i18n="form_name">Nama</label>
-                        <input type="text" id="name" name="name" required class="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700/60 bg-slate-50 dark:bg-slate-900/50 text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-slate-500 transition-colors focus:ring-2 focus:ring-blue-500/20" placeholder="Tulis nama lengkapmu" data-i18n-placeholder="form_name_placeholder" />
+                        <input type="text" id="name" name="name" required class="glass-pill w-full px-4 py-3 rounded-xl text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-slate-500 transition-colors focus:ring-2 focus:ring-blue-500/20" placeholder="Tulis nama lengkapmu" data-i18n-placeholder="form_name_placeholder" />
                         <span id="name-error" class="form-error"></span>
                     </div>
-
                     <div>
                         <label for="email" class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1" data-i18n="form_email">Email</label>
-                        <input type="email" id="email" name="email" required class="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700/60 bg-slate-50 dark:bg-slate-900/50 text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-slate-500 transition-colors focus:ring-2 focus:ring-blue-500/20" placeholder="nama@email.com" data-i18n-placeholder="form_email_placeholder" />
+                        <input type="email" id="email" name="email" required class="glass-pill w-full px-4 py-3 rounded-xl text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-slate-500 transition-colors focus:ring-2 focus:ring-blue-500/20" placeholder="nama@email.com" data-i18n-placeholder="form_email_placeholder" />
                         <span id="email-error" class="form-error"></span>
                     </div>
-
                     <div>
                         <label for="message" class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1" data-i18n="form_message">Pesan</label>
-                        <textarea id="message" name="message" rows="4" required class="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700/60 bg-slate-50 dark:bg-slate-900/50 text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-slate-500 transition-colors focus:ring-2 focus:ring-blue-500/20 resize-y" placeholder="Tulis pesanmu di sini..." data-i18n-placeholder="form_message_placeholder"></textarea>
+                        <textarea id="message" name="message" rows="4" required class="glass-pill w-full px-4 py-3 rounded-xl text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-slate-500 transition-colors focus:ring-2 focus:ring-blue-500/20 resize-y" placeholder="Tulis pesanmu di sini..." data-i18n-placeholder="form_message_placeholder"></textarea>
                         <span id="message-error" class="form-error"></span>
                     </div>
-
                     <button type="submit" class="btn-primary w-full justify-center" data-i18n="form_submit">
                         <span>Kirim</span>
                         <i class="fas fa-paper-plane text-xs" aria-hidden="true"></i>
                     </button>
-
                     <div id="form-status" class="text-sm text-center font-medium text-slate-600 dark:text-slate-400 min-h-[1.5rem]"></div>
                 </form>
-
-                <div class="mt-8 pt-6 border-t border-slate-200 dark:border-slate-700/40 text-center">
+                <div class="mt-8 pt-6 border-t border-slate-200/40 dark:border-slate-700/40 text-center">
                     <p class="text-sm text-slate-500 dark:text-slate-400 mb-3" data-i18n="form_fallback">Atau hubungi lewat...</p>
                     <div class="flex justify-center gap-3">
-                        <a href="https://github.com/haiere" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-lg bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700/50 flex items-center justify-center text-slate-600 dark:text-slate-400 hover:text-white hover:bg-slate-900 transition-all duration-300 hover:scale-110" aria-label="GitHub">
-                            <i class="fab fa-github" aria-hidden="true"></i>
-                        </a>
-                        <a href="https://www.instagram.com/hajirstein" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-lg bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700/50 flex items-center justify-center text-slate-600 dark:text-slate-400 hover:text-white hover:bg-pink-600 transition-all duration-300 hover:scale-110" aria-label="Instagram">
-                            <i class="fab fa-instagram" aria-hidden="true"></i>
-                        </a>
-                        <a href="https://www.youtube.com/@hajirstein" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-lg bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700/50 flex items-center justify-center text-slate-600 dark:text-slate-400 hover:text-white hover:bg-red-600 transition-all duration-300 hover:scale-110" aria-label="YouTube">
-                            <i class="fab fa-youtube" aria-hidden="true"></i>
-                        </a>
+                        <a href="https://github.com/haiere" target="_blank" rel="noopener noreferrer" class="glass-social w-10 h-10 rounded-lg flex items-center justify-center text-slate-600 dark:text-slate-400 hover:text-white hover:bg-slate-900 transition-all duration-300" aria-label="GitHub"><i class="fab fa-github" aria-hidden="true"></i></a>
+                        <a href="https://www.instagram.com/hajirstein" target="_blank" rel="noopener noreferrer" class="glass-social w-10 h-10 rounded-lg flex items-center justify-center text-slate-600 dark:text-slate-400 hover:text-white hover:bg-pink-600 transition-all duration-300" aria-label="Instagram"><i class="fab fa-instagram" aria-hidden="true"></i></a>
+                        <a href="https://www.youtube.com/@hajirstein" target="_blank" rel="noopener noreferrer" class="glass-social w-10 h-10 rounded-lg flex items-center justify-center text-slate-600 dark:text-slate-400 hover:text-white hover:bg-red-600 transition-all duration-300" aria-label="YouTube"><i class="fab fa-youtube" aria-hidden="true"></i></a>
                     </div>
                 </div>
             </div>
@@ -1104,7 +1276,7 @@
     </section>
 
     <!-- ===== FOOTER ===== -->
-    <footer class="bg-slate-50 dark:bg-slate-900/60 border-t border-slate-200 dark:border-slate-800/60 py-14">
+    <footer class="glass-nav py-14 shadow-inner">
         <div class="max-w-4xl mx-auto px-5 sm:px-8">
             <div class="text-center mb-8">
                 <div class="flex items-center justify-center gap-3 mb-2">
@@ -1113,17 +1285,13 @@
                 </div>
                 <p class="font-mono text-[10px] tracking-widest text-slate-500 dark:text-slate-600 uppercase select-none" data-i18n="footer_tagline">Situs Pribadi · Alat Gratis · oleh Haiere</p>
             </div>
-
-            <!-- Social -->
             <div class="flex flex-wrap justify-center gap-3 mb-10">
-                <a href="https://www.youtube.com/@hajirstein" target="_blank" rel="noopener noreferrer" aria-label="YouTube" class="w-11 h-11 rounded-xl bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700/50 flex items-center justify-center text-slate-500 dark:text-slate-400 hover:text-white hover:bg-red-600 transition-all duration-300 hover:scale-110"><i class="fab fa-youtube" aria-hidden="true"></i></a>
-                <a href="https://www.instagram.com/hajirstein" target="_blank" rel="noopener noreferrer" aria-label="Instagram Personal" class="w-11 h-11 rounded-xl bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700/50 flex items-center justify-center text-slate-500 dark:text-slate-400 hover:text-white hover:bg-pink-600 transition-all duration-300 hover:scale-110"><i class="fab fa-instagram" aria-hidden="true"></i></a>
-                <a href="https://on.soundcloud.com/m65TNUx3XarndC67jO" target="_blank" rel="noopener noreferrer" aria-label="SoundCloud" class="w-11 h-11 rounded-xl bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700/50 flex items-center justify-center text-slate-500 dark:text-slate-400 hover:text-white hover:bg-orange-500 transition-all duration-300 hover:scale-110"><i class="fab fa-soundcloud" aria-hidden="true"></i></a>
-                <a href="https://github.com/haiere" target="_blank" rel="noopener noreferrer" aria-label="GitHub" class="w-11 h-11 rounded-xl bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700/50 flex items-center justify-center text-slate-500 dark:text-slate-400 hover:text-white hover:bg-slate-900 transition-all duration-300 hover:scale-110"><i class="fab fa-github" aria-hidden="true"></i></a>
+                <a href="https://www.youtube.com/@hajirstein" target="_blank" rel="noopener noreferrer" aria-label="YouTube" class="glass-social w-11 h-11 rounded-xl flex items-center justify-center text-slate-500 dark:text-slate-400 hover:text-white hover:bg-red-600 transition-all duration-300"><i class="fab fa-youtube" aria-hidden="true"></i></a>
+                <a href="https://www.instagram.com/hajirstein" target="_blank" rel="noopener noreferrer" aria-label="Instagram Personal" class="glass-social w-11 h-11 rounded-xl flex items-center justify-center text-slate-500 dark:text-slate-400 hover:text-white hover:bg-pink-600 transition-all duration-300"><i class="fab fa-instagram" aria-hidden="true"></i></a>
+                <a href="https://on.soundcloud.com/m65TNUx3XarndC67jO" target="_blank" rel="noopener noreferrer" aria-label="SoundCloud" class="glass-social w-11 h-11 rounded-xl flex items-center justify-center text-slate-500 dark:text-slate-400 hover:text-white hover:bg-orange-500 transition-all duration-300"><i class="fab fa-soundcloud" aria-hidden="true"></i></a>
+                <a href="https://github.com/haiere" target="_blank" rel="noopener noreferrer" aria-label="GitHub" class="glass-social w-11 h-11 rounded-xl flex items-center justify-center text-slate-500 dark:text-slate-400 hover:text-white hover:bg-slate-900 transition-all duration-300"><i class="fab fa-github" aria-hidden="true"></i></a>
             </div>
-
-            <!-- Footer Nav -->
-            <nav class="mb-8 border-y border-slate-200/50 dark:border-slate-800/50 py-6" aria-label="Footer navigasi">
+            <nav class="mb-8 border-y border-slate-200/30 dark:border-slate-800/30 py-6" aria-label="Footer navigasi">
                 <div class="flex flex-wrap justify-center gap-x-6 gap-y-2 mb-4">
                     <a href="#about" class="text-xs font-medium text-slate-500 hover:text-blue-500 hover:underline underline-offset-4 transition-colors tracking-widest uppercase"><span data-i18n="nav_about">Tentang</span></a>
                     <a href="#music" class="text-xs font-medium text-slate-500 hover:text-blue-500 hover:underline underline-offset-4 transition-colors tracking-widest uppercase"><span data-i18n="nav_music">Musik</span></a>
@@ -1135,53 +1303,48 @@
                     <a href="https://haiere.github.io/raia-footer/#privacy" rel="noopener noreferrer" class="text-[10px] font-mono text-slate-400 hover:text-blue-400 transition-colors tracking-widest uppercase"><i class="fas fa-shield-halved mr-1" aria-hidden="true"></i><span data-i18n="nav_privacy">Privasi Aman</span></a>
                 </div>
             </nav>
-
             <div class="text-center">
                 <p class="text-xs text-slate-500 dark:text-slate-500 max-w-sm mx-auto leading-relaxed mb-4">Musician and creative technologist. All tools are built on the principles of the open web and privacy without a backend.</p>
                 <p class="footer-disclaimer text-[11px] text-slate-400 dark:text-slate-500 max-w-md mx-auto leading-relaxed mb-4 italic"><i class="fas fa-exclamation-triangle text-amber-500/80 mr-1" aria-hidden="true"></i> Disclaimer: The use of this tool is entirely at your own risk. Haiere is not responsible for any data loss or damage that may occur.</p>
-                <span class="inline-flex items-center gap-2 font-mono text-[10px] text-slate-500 dark:text-slate-500 bg-slate-100 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700/50 px-4 py-1.5 rounded-full mb-4 shadow-sm select-none"><i class="fas fa-lock text-blue-400" aria-hidden="true"></i> HTTPS SECURED · PRIVACY FIRST</span>
+                <span class="glass-pill inline-flex items-center gap-2 font-mono text-[10px] text-slate-500 dark:text-slate-500 px-4 py-1.5 rounded-full mb-4 shadow-sm select-none"><i class="fas fa-lock text-blue-400" aria-hidden="true"></i> HTTPS SECURED · PRIVACY FIRST</span>
                 <div class="font-mono text-[10px] text-slate-500 dark:text-slate-600 mb-3"><i class="fas fa-clock mr-1 text-blue-400/60" aria-hidden="true"></i> Last updated: <span id="last-updated-date">—</span></div>
                 <p class="text-xs text-slate-400 dark:text-slate-600" data-i18n="footer_copy">© 2026 Haiere · Made with heart.</p>
             </div>
-
-            <div class="mt-16 pt-8 border-t border-slate-200 dark:border-slate-800/60 flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="mt-16 pt-8 border-t border-slate-200/30 dark:border-slate-800/30 flex flex-col md:flex-row justify-between items-center gap-6">
                 <div class="flex gap-x-8 text-[11px] text-slate-400 uppercase tracking-widest font-medium"><span><i class="far fa-heart text-rose-400 mr-1" aria-hidden="true"></i> Haiere</span><span><i class="fas fa-mobile-alt mr-1" aria-hidden="true"></i> Responsive</span></div>
-                <div class="text-[10px] font-mono text-slate-500 bg-slate-100 dark:bg-slate-800/30 px-3 py-1 rounded"><i class="fas fa-code text-blue-400 mr-1" aria-hidden="true"></i> Clean Architecture · MIT Style</div>
+                <div class="glass-pill text-[10px] font-mono text-slate-500 px-3 py-1 rounded"><i class="fas fa-code text-blue-400 mr-1" aria-hidden="true"></i> Clean Architecture · MIT Style</div>
                 <div class="flex gap-4 text-slate-400"><i class="fab fa-html5 hover:text-orange-500 hover:scale-110 transition-transform" aria-hidden="true"></i><i class="fab fa-css3-alt hover:text-blue-500 hover:scale-110 transition-transform" aria-hidden="true"></i><i class="fab fa-js hover:text-yellow-400 hover:scale-110 transition-transform" aria-hidden="true"></i></div>
             </div>
         </div>
     </footer>
 
     <!-- ===== BACK TO TOP ===== -->
-    <button id="back-top" class="fixed bottom-6 right-6 z-50 w-12 h-12 rounded-2xl bg-blue-500 text-white flex items-center justify-center opacity-0 pointer-events-none transition-all duration-500 ease-in-out hover:bg-blue-600 hover:-translate-y-2 hover:rotate-12 active:scale-90 shadow-[0_8px_25px_rgba(59,130,246,0.5)] group focus:outline-none focus:ring-2 focus:ring-blue-400" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Kembali ke atas">
+    <button id="back-top" class="fixed bottom-6 right-6 z-50 w-12 h-12 rounded-2xl text-white flex items-center justify-center opacity-0 pointer-events-none transition-all duration-500 ease-in-out hover:rotate-12 active:scale-90 focus:outline-none focus:ring-2 focus:ring-blue-400" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Kembali ke atas">
         <i class="fas fa-arrow-up text-base transition-transform duration-300 group-hover:scale-110" aria-hidden="true"></i>
         <span class="absolute inset-0 rounded-2xl bg-blue-400 animate-pulse opacity-0 group-hover:opacity-20" aria-hidden="true"></span>
     </button>
 
     <!-- ===== COOKIE BANNER ===== -->
-    <div id="cookie-banner" class="fixed bottom-5 left-1/2 z-50 w-[calc(100%-40px)] max-w-md bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700/60 rounded-2xl p-6 shadow-2xl" style="transform:translateX(-50%) translateY(120%);opacity:0">
+    <div id="cookie-banner" class="glass fixed bottom-5 left-1/2 z-50 w-[calc(100%-40px)] max-w-md rounded-2xl p-6 shadow-2xl" style="transform:translateX(-50%) translateY(120%);opacity:0">
         <div class="flex items-center gap-3 mb-3">
             <div class="w-9 h-9 rounded-lg bg-blue-500/10 border border-blue-500/20 flex items-center justify-center text-blue-400">
                 <i class="fas fa-cookie-bite text-sm" aria-hidden="true"></i>
             </div>
             <div class="font-syne font-bold text-slate-900 dark:text-white text-sm" data-i18n="cookie_title">Info Cookie</div>
         </div>
-        <p class="text-slate-600 dark:text-slate-400 text-xs leading-relaxed mb-4" data-i18n="cookie_desc">
-            This website uses small cookies to enhance the comfort of your visit.
-            <a href="https://haiere.github.io/raia-footer/#cookies" class="text-blue-500 underline hover:text-blue-600 transition-colors">cookie info</a>
-        </p>
-        <div class="flex gap-2">
-            <button id="cookie-ok" class="flex-1 py-2 bg-blue-500 text-white text-xs font-semibold rounded-lg hover:bg-blue-400 min-h-[48px] transition-colors" data-i18n="cookie_ok">Ok, Siap!</button>
-            <button id="cookie-no" class="flex-1 py-2 bg-transparent text-slate-600 dark:text-slate-400 text-xs font-semibold rounded-lg border border-slate-300 dark:border-slate-700 hover:border-slate-500 min-h-[48px] transition-colors" data-i18n="cookie_no">Tidak Usah</button>
+        <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed mb-4" data-i18n="cookie_desc">Web ini menggunakan cookie kecil untuk meningkatkan kenyamanan kunjunganmu.</p>
+        <div class="flex flex-wrap items-center justify-end gap-2">
+            <button id="cookie-no" class="cookie-btn cookie-btn-deny" data-i18n="cookie_no">Tidak Usah</button>
+            <button id="cookie-ok" class="cookie-btn cookie-btn-accept" data-i18n="cookie_ok">Ok, Siap!</button>
         </div>
     </div>
-    
+
     <!-- ===== MAIN SCRIPT ===== -->
     <script>
         (function() {
             'use strict';
 
-            // 1. I18N – Translations
+            // ---- I18N ----
             const i18n = {
                 id: {
                     nav_about: 'Tentang',
@@ -1347,10 +1510,8 @@
                 }
             };
 
-            // 2. State
             let currentLang = 'id';
 
-            // 3. Language Detection & Application
             function detectLang() {
                 try { return navigator.language.toLowerCase().startsWith('id') ? 'id' : 'en'; } catch (_) { return 'en'; }
             }
@@ -1370,19 +1531,15 @@
                 document.getElementById('btn-en').classList.toggle('active', lang === 'en');
                 document.documentElement.lang = lang;
                 try { localStorage.setItem('haiere-lang', lang); } catch (_) {}
-                // Update last updated date if visible
                 updateLastUpdated();
             }
             window.applyLang = applyLang;
 
-            // Init language
-            (function() {
-                let savedLang;
-                try { savedLang = localStorage.getItem('haiere-lang'); } catch (_) {}
-                applyLang(savedLang || detectLang());
-            })();
+            let savedLang;
+            try { savedLang = localStorage.getItem('haiere-lang'); } catch (_) {}
+            applyLang(savedLang || detectLang());
 
-            // 4. Theme / Logo
+            // ---- Theme & Logo ----
             const LOGO_LIGHT = 'https://i.postimg.cc/GmWt2wch/H-blue.webp';
             const LOGO_DARK = 'https://i.postimg.cc/8PJ0bhb1/H-haiere.webp';
 
@@ -1395,14 +1552,9 @@
                         img.classList.add('logo-switching');
                         setTimeout(() => {
                             img.src = newSrc;
-                            img.onload = function() {
-                                img.classList.remove('logo-switching');
-                                img.onload = null;
-                            };
-                            // fallback if onload doesn't fire
-                            setTimeout(() => {
-                                img.classList.remove('logo-switching');
-                            }, 400);
+                            img.onload = function() { img.classList.remove('logo-switching');
+                                img.onload = null; };
+                            setTimeout(() => img.classList.remove('logo-switching'), 400);
                         }, 120);
                     }
                 });
@@ -1413,13 +1565,9 @@
                         musicLogo.classList.add('logo-switching');
                         setTimeout(() => {
                             musicLogo.src = newSrc;
-                            musicLogo.onload = function() {
-                                musicLogo.classList.remove('logo-switching');
-                                musicLogo.onload = null;
-                            };
-                            setTimeout(() => {
-                                musicLogo.classList.remove('logo-switching');
-                            }, 400);
+                            musicLogo.onload = function() { musicLogo.classList.remove('logo-switching');
+                                musicLogo.onload = null; };
+                            setTimeout(() => musicLogo.classList.remove('logo-switching'), 400);
                         }, 120);
                     }
                 }
@@ -1438,11 +1586,11 @@
                 setTheme(isDark ? 'light' : 'dark');
             });
 
-            // 5. Language Switcher
+            // ---- Language switcher ----
             document.getElementById('btn-id').addEventListener('click', function() { applyLang('id'); });
             document.getElementById('btn-en').addEventListener('click', function() { applyLang('en'); });
-            
-            // 6. MOBILE NAV TOGGLE
+
+            // ---- Mobile nav ----
             const hbgBtn = document.getElementById('hbg-btn');
             const mobileNav = document.getElementById('mobile-nav');
             const header = document.getElementById('nav');
@@ -1452,7 +1600,6 @@
                     const isOpen = open !== undefined ? open : mobileNav.classList.contains('hidden-nav');
                     if (isOpen) {
                         mobileNav.classList.remove('hidden-nav');
-                        // force reflow
                         void mobileNav.offsetHeight;
                         mobileNav.classList.add('mobile-open');
                         hbgBtn.setAttribute('aria-expanded', 'true');
@@ -1461,28 +1608,21 @@
                         mobileNav.classList.remove('mobile-open');
                         hbgBtn.setAttribute('aria-expanded', 'false');
                         hbgBtn.classList.remove('hbg-open');
-                        setTimeout(() => {
-                            mobileNav.classList.add('hidden-nav');
-                        }, 260);
+                        setTimeout(() => mobileNav.classList.add('hidden-nav'), 260);
                     }
                 }
 
                 hbgBtn.addEventListener('click', function(e) {
                     e.stopPropagation();
-                    const isHidden = mobileNav.classList.contains('hidden-nav');
-                    toggleMobileMenu(isHidden);
+                    toggleMobileMenu(mobileNav.classList.contains('hidden-nav'));
                 });
 
-                // Close when clicking a link inside
                 document.querySelectorAll('.mobile-nav-link').forEach(link => {
                     link.addEventListener('click', () => {
-                        if (!mobileNav.classList.contains('hidden-nav')) {
-                            toggleMobileMenu(false);
-                        }
+                        if (!mobileNav.classList.contains('hidden-nav')) toggleMobileMenu(false);
                     });
                 });
 
-                // Close when clicking outside
                 document.addEventListener('click', function(e) {
                     if (!mobileNav.classList.contains('hidden-nav') &&
                         !hbgBtn.contains(e.target) &&
@@ -1491,24 +1631,18 @@
                     }
                 });
 
-                // Close with ESC
                 document.addEventListener('keydown', function(e) {
                     if (e.key === 'Escape' && !mobileNav.classList.contains('hidden-nav')) {
                         toggleMobileMenu(false);
                     }
                 });
 
-                // Shadow header on scroll
                 window.addEventListener('scroll', function() {
-                    if (window.scrollY > 10) {
-                        header.classList.add('shadow-md');
-                    } else {
-                        header.classList.remove('shadow-md');
-                    }
+                    header.classList.toggle('shadow-md', window.scrollY > 10);
                 }, { passive: true });
             }
 
-            // 7. Reveal on Scroll
+            // ---- Reveal on scroll ----
             const revealObserver = new IntersectionObserver(entries => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
@@ -1519,7 +1653,7 @@
             }, { threshold: 0.08 });
             document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
-            // 8. Active Nav Link on Scroll
+            // ---- Active nav link ----
             const sections = document.querySelectorAll('section[id]');
             const navLinks = document.querySelectorAll('.nav-link');
             const sectionObserver = new IntersectionObserver(entries => {
@@ -1532,7 +1666,7 @@
             }, { rootMargin: '-40% 0px -55% 0px' });
             sections.forEach(s => sectionObserver.observe(s));
 
-            // 9. Back to Top
+            // ---- Back to top ----
             const backTop = document.getElementById('back-top');
             window.addEventListener('scroll', () => {
                 const show = window.scrollY > 400;
@@ -1540,7 +1674,7 @@
                 backTop.style.pointerEvents = show ? 'auto' : 'none';
             }, { passive: true });
 
-            // 10. Last Updated Date
+            // ---- Last updated ----
             function updateLastUpdated() {
                 const el = document.getElementById('last-updated-date');
                 if (!el) return;
@@ -1558,20 +1692,20 @@
             }
             updateLastUpdated();
 
-            // 11. Tools Filter
+            // ---- Tools filter ----
             document.querySelectorAll('.filter-btn').forEach(btn => {
                 btn.addEventListener('click', function() {
                     document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
                     this.classList.add('active');
                     const filter = this.dataset.filter;
-                    document.querySelectorAll('#tools-container .tool-card').forEach(card => {
+                    document.querySelectorAll('.tool-card').forEach(card => {
                         card.style.display = (filter === 'all' || card.dataset.category === filter) ? '' :
                             'none';
                     });
                 });
             });
 
-            // 12. Copy Button
+            // ---- Copy button ----
             document.querySelectorAll('.copy-btn').forEach(btn => {
                 btn.addEventListener('click', async () => {
                     try {
@@ -1584,44 +1718,42 @@
                 });
             });
 
-            // 13. Cookie Banner
+            // ---- Cookie banner ----
+            const cookieBanner = document.getElementById('cookie-banner');
             const cookieOk = document.getElementById('cookie-ok');
             const cookieNo = document.getElementById('cookie-no');
-            const banner = document.getElementById('cookie-banner');
 
-            function hideBanner() {
-                banner.classList.remove('show');
-                banner.classList.add('hide');
+            function hideCookieBanner() {
+                cookieBanner.classList.remove('show');
+                cookieBanner.classList.add('hide');
             }
 
             let cookieConsent;
             try { cookieConsent = localStorage.getItem('haiere-cookie'); } catch (_) {}
             if (!cookieConsent) {
-                setTimeout(() => banner.classList.add('show'), 1500);
+                setTimeout(() => cookieBanner.classList.add('show'), 1500);
             } else {
-                banner.classList.add('hide');
+                cookieBanner.classList.add('hide');
             }
 
             cookieOk.addEventListener('click', () => {
                 try { localStorage.setItem('haiere-cookie', 'accepted'); } catch (_) {}
-                hideBanner();
+                hideCookieBanner();
             });
             cookieNo.addEventListener('click', () => {
                 try { localStorage.setItem('haiere-cookie', 'declined'); } catch (_) {}
-                hideBanner();
+                hideCookieBanner();
             });
 
-            // 14. Escape Key: close mobile nav & cookie banner
+            // ---- Escape: close mobile & cookie ----
             document.addEventListener('keydown', e => {
                 if (e.key === 'Escape') {
-                    if (mobileNav && !mobileNav.classList.contains('hidden-nav')) {
-                        toggleMobileMenu(false);
-                    }
-                    hideBanner();
+                    if (mobileNav && !mobileNav.classList.contains('hidden-nav')) toggleMobileMenu(false);
+                    hideCookieBanner();
                 }
             });
 
-            // 15. Contact Form
+            // ---- Contact form ----
             const nameInp = document.getElementById('name');
             const emailInp = document.getElementById('email');
             const msgInp = document.getElementById('message');
@@ -1630,6 +1762,7 @@
             const msgErr = document.getElementById('message-error');
             const form = document.getElementById('contact-form');
             const statusDiv = document.getElementById('form-status');
+
             const primaryEndpoint = 'https://formspree.io/f/mpqkqanp';
             const fallbackEndpoint = 'https://formspree.io/f/xgvkobyl';
 
@@ -1680,7 +1813,6 @@
                     setFieldError(msgInp, msgErr, tr.err_message_short);
                     valid = false;
                 }
-
                 return valid;
             }
 
@@ -1718,7 +1850,7 @@
                 }
             });
 
-            // 16. Service Worker (PWA) - Register only if supported
+            // ---- Service Worker (PWA) ----
             if ('serviceWorker' in navigator) {
                 const swCode = `
                     self.addEventListener('install', e => self.skipWaiting());
@@ -1745,7 +1877,6 @@
         })();
     </script>
 
-    <!-- Plausible Analytics (defer) -->
     <script defer data-domain="haiere.github.io" src="https://plausible.io/js/script.js">
     </script>
 </body>
