@@ -9,19 +9,16 @@
     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','GTM-PGGWCSD5');</script>
-    <!-- End Google Tag Manager -->
     <meta name="robots" content="index, follow, max-image-preview:large" />
     <meta name="author" content="Haiere" />
     <link rel="canonical" href="https://haiere.github.io/" />
-
-    <title>Haiere | Official Website &amp; Digital Showcase</title>
+    <title>Hajirstein | Official Website &amp; Digital Showcase</title>
     <meta name="description" content="Hajir is a web developer and musician building open-source tools, privacy-first web experiences, and original music." />
-    <meta name="keywords" content="Haiere, Raia Showcase, web developer, musician, open source, privacy-first Web." />
-
+    <meta name="keywords" content="Haiere, Hajirstein, Raia Showcase, web developer, musician, open source, privacy-first Web." />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Haiere" />
     <meta property="og:url" content="https://haiere.github.io/" />
-    <meta property="og:title" content="Haiere | Official Website &amp; Digital Showcase" />
+    <meta property="og:title" content="Hajirstein | Official Website &amp; Digital Showcase" />
     <meta property="og:description" content="Explore Haiere's coding projects, privacy-first tools, and music releases in one place." />
     <meta property="og:image" content="https://i.postimg.cc/GmWt2wch/H-blue.webp" />
     <meta property="og:image:width" content="1200" />
@@ -29,36 +26,27 @@
     <meta property="og:image:alt" content="Haiere logo" />
     <meta property="og:locale" content="id_ID" />
     <meta property="og:locale:alternate" content="en_US" />
-
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:site" content="-" />
-    <meta name="twitter:creator" content="-" />
-    <meta name="twitter:title" content="Haiere | Official Website &amp; Digital Showcase" />
+    <meta name="twitter:title" content="Hajirstein | Official Website &amp; Digital Showcase" />
     <meta name="twitter:description" content="Explore coding projects, privacy-first tools, and music created by Haiere." />
     <meta name="twitter:image" content="https://i.postimg.cc/GmWt2wch/H-blue.webp" />
     <meta name="twitter:image:alt" content="Haiere logo" />
-
     <link rel="alternate" hreflang="id" href="https://haiere.github.io/" />
     <link rel="alternate" hreflang="en" href="https://haiere.github.io/?lang=en" />
     <link rel="alternate" hreflang="x-default" href="https://haiere.github.io/" />
-
     <meta name="theme-color" content="#020617" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
     <meta name="apple-mobile-web-app-title" content="Haiere" />
     <meta name="application-name" content="Haiere" />
     <link rel="manifest" href="/manifest.webmanifest" />
-
     <link rel="icon" href="https://i.postimg.cc/8PJ0bhb1/H-haiere.webp" type="image/webp" />
     <link rel="apple-touch-icon" href="https://i.postimg.cc/GmWt2wch/H-blue.webp" />
-
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="preload" as="image" href="https://i.postimg.cc/GmWt2wch/H-blue.webp" fetchpriority="high" />
     <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
-    <!-- ===== CSP ===== -->
     <meta http-equiv="Content-Security-Policy" content="
         default-src 'self';
         script-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com https://cdnjs.cloudflare.com https://plausible.io https://www.googletagmanager.com https://www.google-analytics.com;
@@ -107,7 +95,7 @@
     </script>
 
     <style>
-        /* ===== VARIABLES ===== */
+        /* ===== ROOT VARIABLES ===== */
         :root {
             --accent: #3B82F6;
             --accent-glow: rgba(59, 130, 246, 0.25);
@@ -116,7 +104,10 @@
             --ease: cubic-bezier(0.4, 0, 0.2, 1);
             --radius-card: 1.25rem;
             --radius-pill: 9999px;
+            --nav-height: 64px;
         }
+
+        /* ===== RESET & BASE ===== */
         * {
             box-sizing: border-box;
             margin: 0;
@@ -133,7 +124,7 @@
             color: #0f172a;
             transition: background-color 0.3s, color 0.3s;
             font-family: 'DM Sans', sans-serif;
-            scroll-padding-top: 4rem;
+            scroll-padding-top: var(--nav-height);
             min-height: 100vh;
         }
         .dark body {
@@ -145,7 +136,7 @@
             color: #fff;
         }
 
-        /* ===== GLASS SYSTEM (ringan, tanpa duplikasi) ===== */
+        /* ===== GLASS SYSTEM ===== */
         .glass {
             background: rgba(255, 255, 255, 0.48);
             backdrop-filter: blur(16px) saturate(1.35);
@@ -304,6 +295,7 @@
             min-height: 48px;
             text-decoration: none;
             font-family: inherit;
+            font-size: 0.95rem;
         }
         .btn-primary:hover {
             transform: translateY(-3px);
@@ -328,6 +320,7 @@
             min-height: 48px;
             text-decoration: none;
             font-family: inherit;
+            font-size: 0.95rem;
         }
         .btn-secondary:hover {
             color: #F8FAFC;
@@ -429,20 +422,28 @@
             color: #3B82F6 !important;
         }
 
+        /* ===== MOBILE NAV ===== */
         #mobile-nav {
             transform-origin: top center;
-            transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.25s ease;
+            transition: transform 0.30s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.30s ease, display 0.30s ease;
             opacity: 0;
             transform: scaleY(0.92);
             pointer-events: none;
+            display: none;
+            /* default hidden via display, but we control with JS */;
         }
         #mobile-nav.mobile-open {
+            display: block !important;
             opacity: 1;
             transform: scaleY(1);
             pointer-events: auto;
         }
+        /* fallback if hidden-nav is used */
         #mobile-nav.hidden-nav {
-            display: none;
+            display: none !important;
+        }
+        #mobile-nav.mobile-open.hidden-nav {
+            display: block !important;
         }
 
         #hbg-btn span {
@@ -550,6 +551,12 @@
         .dark #back-top:hover {
             background: rgba(59, 130, 246, 0.80);
             box-shadow: 0 12px 36px rgba(59, 130, 246, 0.30);
+        }
+        #back-top i {
+            transition: transform 0.3s ease;
+        }
+        #back-top:hover i {
+            transform: scale(1.15);
         }
 
         /* ===== COOKIE BANNER ===== */
@@ -917,6 +924,18 @@
             color: #3B82F6;
             line-height: 1;
         }
+
+        /* ===== RESPONSIVE TWEAKS ===== */
+        @media (max-width:640px) {
+            .music-iframe-wrap iframe {
+                height: 480px !important;
+            }
+        }
+        @media (max-width:480px) {
+            .music-iframe-wrap iframe {
+                height: 400px !important;
+            }
+        }
     </style>
 
     <script type="application/ld+json">
@@ -984,26 +1003,28 @@
                 </a>
             </nav>
 
-            <div class="flex items-center gap-1.5 sm:gap-2 flex-shrink-0">
+            <!-- Desktop: language + theme toggle -->
+            <div class="hidden md:flex items-center gap-1.5 sm:gap-2 flex-shrink-0">
                 <div class="glass-pill flex items-center rounded-full p-0.5 h-7" role="group" aria-label="Pilih bahasa">
                     <button id="btn-id" class="lang-btn px-2.5 h-full text-[10px] font-mono font-bold transition-all duration-200 rounded-full text-slate-900 bg-white/70 dark:text-white dark:bg-slate-800/60 shadow-sm" data-lang="id" aria-pressed="true">ID</button>
                     <button id="btn-en" class="lang-btn px-2.5 h-full text-[10px] font-mono font-medium transition-all duration-200 rounded-full text-slate-400 hover:text-slate-700 dark:text-slate-500 dark:hover:text-slate-400 bg-transparent" data-lang="en" aria-pressed="false">EN</button>
                 </div>
-
                 <button id="theme-toggle" aria-label="Ganti tema" class="w-9 h-9 flex items-center justify-center rounded-xl hover:bg-slate-100/60 dark:hover:bg-slate-800/40 text-slate-500 dark:text-slate-400 transition-all duration-200 hover:scale-105 flex-shrink-0">
                     <i class="fas fa-moon dark:hidden" aria-hidden="true"></i>
                     <i class="fas fa-sun hidden dark:inline-block" aria-hidden="true"></i>
                 </button>
-
-                <button id="hbg-btn" aria-label="Buka menu navigasi" aria-expanded="false" class="md:hidden flex flex-col justify-center gap-[5px] w-9 h-9 p-2 rounded-xl hover:bg-slate-100/60 dark:hover:bg-slate-800/40 min-h-[48px] transition-all duration-200 flex-shrink-0">
-                    <span class="block h-[1.5px] bg-slate-500 dark:bg-slate-400 rounded transition-all duration-300 origin-center" aria-hidden="true"></span>
-                    <span class="block h-[1.5px] bg-slate-500 dark:bg-slate-400 rounded transition-all duration-300 origin-center" aria-hidden="true"></span>
-                    <span class="block h-[1.5px] bg-slate-500 dark:bg-slate-400 rounded transition-all duration-300 origin-center" aria-hidden="true"></span>
-                </button>
             </div>
+
+            <!-- Mobile: hamburger -->
+            <button id="hbg-btn" aria-label="Buka menu navigasi" aria-expanded="false" class="md:hidden flex flex-col justify-center gap-[5px] w-9 h-9 p-2 rounded-xl hover:bg-slate-100/60 dark:hover:bg-slate-800/40 min-h-[44px] transition-all duration-200 flex-shrink-0 touch-manipulation">
+                <span class="block h-[1.5px] bg-slate-500 dark:bg-slate-400 rounded transition-all duration-300 origin-center" aria-hidden="true"></span>
+                <span class="block h-[1.5px] bg-slate-500 dark:bg-slate-400 rounded transition-all duration-300 origin-center" aria-hidden="true"></span>
+                <span class="block h-[1.5px] bg-slate-500 dark:bg-slate-400 rounded transition-all duration-300 origin-center" aria-hidden="true"></span>
+            </button>
         </div>
 
-        <nav id="mobile-nav" class="glass-nav hidden-nav md:hidden absolute left-0 right-0 top-full mt-1 mx-3 sm:mx-4 rounded-2xl shadow-2xl px-3 py-3 overflow-y-auto max-h-[calc(100vh-5rem)]" aria-label="Navigasi mobile">
+        <!-- ===== MOBILE NAV ===== -->
+        <nav id="mobile-nav" class="md:hidden absolute left-0 right-0 top-full mt-1 mx-3 sm:mx-4 rounded-2xl shadow-2xl px-3 py-3 overflow-y-auto max-h-[calc(100vh-5rem)] glass" aria-label="Navigasi mobile">
             <a href="#about" class="mobile-nav-link text-sm font-medium text-slate-600 dark:text-slate-300 px-4 py-3.5 rounded-xl block min-h-[48px] flex items-center transition-all duration-200 hover:text-blue-500 hover:bg-blue-50/50 dark:hover:bg-slate-800/40" data-section="about">
                 <span data-i18n="nav_about">Tentang</span>
             </a>
@@ -1026,6 +1047,16 @@
                 <a href="https://haiere.github.io/raia" target="_blank" rel="noopener noreferrer" class="text-sm font-medium text-slate-500 dark:text-slate-400 px-4 py-3 rounded-xl text-center transition-all duration-200 hover:text-blue-500 hover:bg-blue-50/50 dark:hover:bg-slate-800/40 flex items-center justify-center gap-2 min-h-[48px]">
                     <i class="fas fa-robot text-xs" aria-hidden="true"></i> RAIA-Ai
                 </a>
+            </div>
+            <div class="mt-3 pt-2 border-t border-slate-200/40 dark:border-slate-700/40 flex items-center justify-between">
+                <div class="glass-pill flex items-center rounded-full p-0.5 h-7" role="group" aria-label="Pilih bahasa">
+                    <button id="btn-id-mobile" class="lang-btn px-2.5 h-full text-[10px] font-mono font-bold transition-all duration-200 rounded-full text-slate-900 bg-white/70 dark:text-white dark:bg-slate-800/60 shadow-sm" data-lang="id" aria-pressed="true">ID</button>
+                    <button id="btn-en-mobile" class="lang-btn px-2.5 h-full text-[10px] font-mono font-medium transition-all duration-200 rounded-full text-slate-400 hover:text-slate-700 dark:text-slate-500 dark:hover:text-slate-400 bg-transparent" data-lang="en" aria-pressed="false">EN</button>
+                </div>
+                <button id="theme-toggle-mobile" aria-label="Ganti tema" class="w-9 h-9 flex items-center justify-center rounded-xl hover:bg-slate-100/60 dark:hover:bg-slate-800/40 text-slate-500 dark:text-slate-400 transition-all duration-200 hover:scale-105 flex-shrink-0">
+                    <i class="fas fa-moon dark:hidden" aria-hidden="true"></i>
+                    <i class="fas fa-sun hidden dark:inline-block" aria-hidden="true"></i>
+                </button>
             </div>
         </nav>
     </header>
@@ -1063,6 +1094,12 @@
         </div>
         <div class="absolute bottom-0 left-0 right-0 border-t border-slate-200/40 dark:border-slate-800/60 bg-blue-500/5 py-2.5 overflow-hidden" aria-hidden="true">
             <div class="ticker-track font-mono text-[10px] tracking-widest uppercase text-slate-400 dark:text-slate-600">
+                <span>Musisi</span><span class="text-blue-400/40">✦</span>
+                <span>Developer</span><span class="text-blue-400/40">✦</span>
+                <span>Privacy First</span><span class="text-blue-400/40">✦</span>
+                <span>Open Web</span><span class="text-blue-400/40">✦</span>
+                <span>GitHub Pages</span><span class="text-blue-400/40">✦</span>
+                <span>Creative Tech</span><span class="text-blue-400/40">✦</span>
                 <span>Musisi</span><span class="text-blue-400/40">✦</span>
                 <span>Developer</span><span class="text-blue-400/40">✦</span>
                 <span>Privacy First</span><span class="text-blue-400/40">✦</span>
@@ -1444,7 +1481,7 @@
                     <a href="#contact" class="text-xs font-medium text-slate-500 hover:text-blue-500 hover:underline underline-offset-4 transition-colors tracking-widest uppercase"><span data-i18n="nav_contact">Kontak</span></a>
                 </div>
                 <div class="flex flex-wrap justify-center gap-x-6 gap-y-2">
-                    <a href="https://haiere.github.io/raia-footer/#privacy" rel="noopener noreferrer" class="text-[10px] font-mono text-slate-400 hover:text-blue-400 transition-colors tracking-widest uppercase"><i class="fas fa-shield-halved mr-1" aria-hidden="true"></i><span data-i18n="nav_privacy">Privasi Aman</span></a>
+                    <a href="https://haiere.github.io/raia" rel="noopener noreferrer" class="text-[10px] font-mono text-slate-400 hover:text-blue-400 transition-colors tracking-widest uppercase"><i class="fas fa-shield-halved mr-1" aria-hidden="true"></i><span data-i18n="nav_privacy">Privasi Aman</span></a>
                 </div>
             </nav>
             <div class="text-center">
@@ -1464,8 +1501,8 @@
 
     <!-- ===== BACK TO TOP ===== -->
     <button id="back-top" class="fixed bottom-6 right-6 z-50 w-12 h-12 rounded-2xl text-white flex items-center justify-center opacity-0 pointer-events-none transition-all duration-500 ease-in-out hover:rotate-12 active:scale-90 focus:outline-none focus:ring-2 focus:ring-blue-400" aria-label="Kembali ke atas">
-        <i class="fas fa-arrow-up text-base transition-transform duration-300 group-hover:scale-110" aria-hidden="true"></i>
-        <span class="absolute inset-0 rounded-2xl bg-blue-400 animate-pulse opacity-0 group-hover:opacity-20" aria-hidden="true"></span>
+        <i class="fas fa-arrow-up text-base" aria-hidden="true"></i>
+        <span class="absolute inset-0 rounded-2xl bg-blue-400 animate-pulse opacity-0 hover:opacity-20" aria-hidden="true"></span>
     </button>
 
     <!-- ===== COOKIE BANNER ===== -->
@@ -1488,15 +1525,15 @@
         (function() {
             'use strict';
 
-            // ---- I18N ----
+            // ===== I18N =====
             var i18n = {
                 id: {
                     nav_about: 'Tentang',
                     nav_music: 'Musik',
-                    nav_tools: 'Tools Gratis',
+                    nav_tools: 'Tools',
                     nav_contact: 'Kontak',
                     nav_quotes: 'Kutipan',
-                    nav_privacy: 'Privasi',
+                    nav_privacy: 'Privasi Aman',
                     hero_title_1: 'Hajir',
                     hero_title_2: 'Stein',
                     hero_desc: 'Halo! Aku Hajir. Suka bikin musik dan merancang tools simpel yang bermanfaat untuk keseharianmu.',
@@ -1567,7 +1604,7 @@
                     form_success: 'Pesan terkirim, terima kasih banyak!',
                     form_error: 'Gagal mengirim pesan. Coba sekali lagi?',
                     form_fallback: 'Atau hubungi lewat...',
-                    footer_tagline: 'Personal Website · Free Tools · by Haiere',
+                    footer_tagline: 'Situs Pribadi · Alat Gratis · oleh Haiere',
                     footer_copy: '© 2026 Haiere · Made with heart.',
                     cookie_title: 'Info Cookie',
                     cookie_desc: 'Web ini menggunakan cookie kecil untuk meningkatkan kenyamanan kunjunganmu.',
@@ -1581,7 +1618,7 @@
                 en: {
                     nav_about: 'My Story',
                     nav_music: 'Music',
-                    nav_tools: 'Free Tools',
+                    nav_tools: 'Tools',
                     nav_contact: 'Say Hello',
                     nav_quotes: 'Quotes',
                     nav_privacy: 'Privacy Safe',
@@ -1685,10 +1722,23 @@
                     var key = el.dataset.i18nPlaceholder;
                     if (tr[key] !== undefined) el.placeholder = tr[key];
                 });
-                var idBtn = document.getElementById('btn-id');
-                var enBtn = document.getElementById('btn-en');
-                if (idBtn) idBtn.classList.toggle('active', lang === 'id');
-                if (enBtn) enBtn.classList.toggle('active', lang === 'en');
+                document.querySelectorAll('.lang-btn').forEach(function(btn) {
+                    var btnLang = btn.dataset.lang;
+                    var isActive = btnLang === lang;
+                    btn.classList.toggle('active', isActive);
+                    btn.setAttribute('aria-pressed', isActive ? 'true' : 'false');
+                    if (!isActive) {
+                        btn.classList.remove('font-bold');
+                        btn.classList.add('font-medium');
+                        btn.classList.remove('text-slate-900', 'bg-white/70', 'dark:text-white',
+                            'dark:bg-slate-800/60', 'shadow-sm');
+                        btn.classList.add('text-slate-400', 'dark:text-slate-500');
+                    } else {
+                        btn.classList.add('font-bold', 'text-slate-900', 'bg-white/70', 'dark:text-white',
+                            'dark:bg-slate-800/60', 'shadow-sm');
+                        btn.classList.remove('font-medium', 'text-slate-400', 'dark:text-slate-500');
+                    }
+                });
                 document.documentElement.lang = lang;
                 try { localStorage.setItem('haiere-lang', lang); } catch (_) {}
                 updateLastUpdated();
@@ -1699,7 +1749,7 @@
             try { savedLang = localStorage.getItem('haiere-lang'); } catch (_) {}
             applyLang(savedLang || detectLang());
 
-            // ---- Theme & Logo ----
+            // ===== Theme & Logo =====
             var LOGO_LIGHT = 'https://i.postimg.cc/GmWt2wch/H-blue.webp';
             var LOGO_DARK = 'https://i.postimg.cc/8PJ0bhb1/H-haiere.webp';
 
@@ -1730,75 +1780,115 @@
                 updateLogo();
             }
 
-            var themeToggle = document.getElementById('theme-toggle');
-            if (themeToggle) {
-                themeToggle.addEventListener('click', function() {
+            document.querySelectorAll('#theme-toggle, #theme-toggle-mobile').forEach(function(btn) {
+                btn.addEventListener('click', function() {
                     var isDark = document.documentElement.classList.contains('dark');
                     setTheme(isDark ? 'light' : 'dark');
                 });
-            }
+            });
 
-            // ---- Language switcher ----
-            var btnId = document.getElementById('btn-id');
-            var btnEn = document.getElementById('btn-en');
-            if (btnId) btnId.addEventListener('click', function() { applyLang('id'); });
-            if (btnEn) btnEn.addEventListener('click', function() { applyLang('en'); });
+            // ===== Language switcher =====
+            document.querySelectorAll('.lang-btn').forEach(function(btn) {
+                btn.addEventListener('click', function() {
+                    var lang = this.dataset.lang;
+                    if (lang) applyLang(lang);
+                });
+            });
 
-            // ---- Mobile nav ----
+            // ===== MOBILE NAV TOGGLE (fixed) =====
             var hbgBtn = document.getElementById('hbg-btn');
             var mobileNav = document.getElementById('mobile-nav');
-            var header = document.getElementById('nav');
+            var navTimeout = null;
+            var isMobileOpen = false;
+
+            function openMobileNav() {
+                if (!mobileNav || !hbgBtn) return;
+                if (navTimeout) { clearTimeout(navTimeout);
+                    navTimeout = null; }
+                mobileNav.classList.remove('hidden-nav');
+                mobileNav.style.display = 'block';
+                // force reflow
+                void mobileNav.offsetHeight;
+                mobileNav.classList.add('mobile-open');
+                hbgBtn.setAttribute('aria-expanded', 'true');
+                hbgBtn.classList.add('hbg-open');
+                isMobileOpen = true;
+            }
+
+            function closeMobileNav() {
+                if (!mobileNav || !hbgBtn) return;
+                mobileNav.classList.remove('mobile-open');
+                hbgBtn.setAttribute('aria-expanded', 'false');
+                hbgBtn.classList.remove('hbg-open');
+                isMobileOpen = false;
+                if (navTimeout) { clearTimeout(navTimeout);
+                    navTimeout = null; }
+                navTimeout = setTimeout(function() {
+                    mobileNav.style.display = 'none';
+                    mobileNav.classList.add('hidden-nav');
+                    navTimeout = null;
+                }, 300);
+            }
+
+            function toggleMobileNav() {
+                if (isMobileOpen) {
+                    closeMobileNav();
+                } else {
+                    openMobileNav();
+                }
+            }
 
             if (hbgBtn && mobileNav) {
-                function toggleMobileMenu(open) {
-                    var isOpen = (open !== undefined) ? open : mobileNav.classList.contains('hidden-nav');
-                    if (isOpen) {
-                        mobileNav.classList.remove('hidden-nav');
-                        void mobileNav.offsetHeight;
-                        mobileNav.classList.add('mobile-open');
-                        hbgBtn.setAttribute('aria-expanded', 'true');
-                        hbgBtn.classList.add('hbg-open');
-                    } else {
-                        mobileNav.classList.remove('mobile-open');
-                        hbgBtn.setAttribute('aria-expanded', 'false');
-                        hbgBtn.classList.remove('hbg-open');
-                        setTimeout(function() { mobileNav.classList.add('hidden-nav'); }, 260);
-                    }
-                }
-
+                // click / touch handler
                 hbgBtn.addEventListener('click', function(e) {
                     e.stopPropagation();
-                    toggleMobileMenu(mobileNav.classList.contains('hidden-nav'));
+                    toggleMobileNav();
                 });
 
+                // close on link click inside mobile nav
                 document.querySelectorAll('.mobile-nav-link').forEach(function(link) {
                     link.addEventListener('click', function() {
-                        if (!mobileNav.classList.contains('hidden-nav')) toggleMobileMenu(false);
+                        if (isMobileOpen) closeMobileNav();
                     });
                 });
 
+                // close on outside click
                 document.addEventListener('click', function(e) {
-                    if (!mobileNav.classList.contains('hidden-nav') &&
+                    if (isMobileOpen &&
                         !hbgBtn.contains(e.target) &&
                         !mobileNav.contains(e.target)) {
-                        toggleMobileMenu(false);
+                        closeMobileNav();
                     }
                 });
 
+                // close on Escape
                 document.addEventListener('keydown', function(e) {
-                    if (e.key === 'Escape' && !mobileNav.classList.contains('hidden-nav')) {
-                        toggleMobileMenu(false);
+                    if (e.key === 'Escape' && isMobileOpen) {
+                        closeMobileNav();
                     }
+                });
+
+                // close on window resize to desktop
+                var resizeTimer;
+                window.addEventListener('resize', function() {
+                    if (resizeTimer) clearTimeout(resizeTimer);
+                    resizeTimer = setTimeout(function() {
+                        if (window.innerWidth >= 768 && isMobileOpen) {
+                            closeMobileNav();
+                        }
+                    }, 120);
                 });
             }
 
+            // ===== Header shadow =====
+            var header = document.getElementById('nav');
             if (header) {
                 window.addEventListener('scroll', function() {
                     header.classList.toggle('shadow-md', window.scrollY > 10);
                 }, { passive: true });
             }
 
-            // ---- Reveal on scroll ----
+            // ===== Reveal on scroll =====
             if ('IntersectionObserver' in window) {
                 var revealObserver = new IntersectionObserver(function(entries) {
                     entries.forEach(function(entry) {
@@ -1812,13 +1902,12 @@
                     revealObserver.observe(el);
                 });
             } else {
-                // fallback
                 document.querySelectorAll('.reveal').forEach(function(el) {
                     el.classList.add('visible');
                 });
             }
 
-            // ---- Active nav link ----
+            // ===== Active nav link =====
             var sections = document.querySelectorAll('section[id]');
             var navLinks = document.querySelectorAll('.nav-link');
             if ('IntersectionObserver' in window) {
@@ -1835,7 +1924,7 @@
                 sections.forEach(function(s) { sectionObserver.observe(s); });
             }
 
-            // ---- Back to top ----
+            // ===== Back to top =====
             var backTop = document.getElementById('back-top');
             if (backTop) {
                 window.addEventListener('scroll', function() {
@@ -1849,7 +1938,7 @@
                 });
             }
 
-            // ---- Last updated ----
+            // ===== Last updated =====
             function updateLastUpdated() {
                 var el = document.getElementById('last-updated-date');
                 if (!el) return;
@@ -1870,7 +1959,7 @@
             }
             updateLastUpdated();
 
-            // ---- Tools filter ----
+            // ===== Tools filter =====
             document.querySelectorAll('.filter-btn').forEach(function(btn) {
                 btn.addEventListener('click', function() {
                     document.querySelectorAll('.filter-btn').forEach(function(b) { b.classList.remove(
@@ -1884,7 +1973,7 @@
                 });
             });
 
-            // ---- Copy button ----
+            // ===== Copy button =====
             document.querySelectorAll('.copy-btn').forEach(function(btn) {
                 btn.addEventListener('click', function() {
                     var text = this.dataset.copy;
@@ -1928,7 +2017,7 @@
                 } catch (_) {}
             }
 
-            // ---- Cookie banner ----
+            // ===== Cookie banner =====
             var cookieBanner = document.getElementById('cookie-banner');
             var cookieOk = document.getElementById('cookie-ok');
             var cookieNo = document.getElementById('cookie-no');
@@ -1963,15 +2052,15 @@
                 });
             }
 
-            // ---- Escape: close mobile & cookie ----
+            // ===== Escape: close mobile & cookie =====
             document.addEventListener('keydown', function(e) {
                 if (e.key === 'Escape') {
-                    if (mobileNav && !mobileNav.classList.contains('hidden-nav')) toggleMobileMenu(false);
+                    if (isMobileOpen) closeMobileNav();
                     hideCookieBanner();
                 }
             });
 
-            // ---- Contact form ----
+            // ===== Contact form =====
             var nameInp = document.getElementById('name');
             var emailInp = document.getElementById('email');
             var msgInp = document.getElementById('message');
@@ -2085,8 +2174,9 @@
                 });
             }
 
-            // ---- Toast notifications ----
+            // ===== Toast notifications =====
             var toastContainer = document.getElementById('toast-container');
+
             function showToast(message, type) {
                 if (!toastContainer || !message) return;
                 var toast = document.createElement('div');
@@ -2103,10 +2193,11 @@
             }
             window.showToast = showToast;
 
-            // ---- Scroll progress bar ----
+            // ===== Scroll progress bar =====
             var scrollProgress = document.getElementById('scroll-progress');
             if (scrollProgress) {
                 var progressTicking = false;
+
                 function updateProgress() {
                     var scrollTop = window.scrollY || document.documentElement.scrollTop;
                     var docHeight = document.documentElement.scrollHeight - window.innerHeight;
@@ -2123,7 +2214,7 @@
                 updateProgress();
             }
 
-            // ---- Hero spotlight (mouse-follow glow) ----
+            // ===== Hero spotlight =====
             var heroSection = document.getElementById('hero');
             var heroSpotlight = document.getElementById('hero-spotlight');
             var prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -2142,7 +2233,7 @@
                 });
             }
 
-            // ---- Tilt effect + magnetic buttons (pointer devices only) ----
+            // ===== Tilt effect + magnetic buttons =====
             if (!prefersReducedMotion && !isCoarsePointer) {
                 var tiltTargets = document.querySelectorAll('.tool-card, #quotes .glass-hover, #about .glass-hover:not(.contact-link)');
                 tiltTargets.forEach(function(card) {
@@ -2173,7 +2264,7 @@
                 });
             }
 
-            // ---- Animated stat counters ----
+            // ===== Animated stat counters =====
             var statEls = document.querySelectorAll('.stat-number');
             if (statEls.length && 'IntersectionObserver' in window) {
                 var statObserver = new IntersectionObserver(function(entries) {
@@ -2184,6 +2275,7 @@
                         var suffix = el.dataset.suffix || '';
                         var duration = 1200;
                         var startTime = null;
+
                         function step(timestamp) {
                             if (!startTime) startTime = timestamp;
                             var progress = Math.min((timestamp - startTime) / duration, 1);
@@ -2202,7 +2294,7 @@
                 statEls.forEach(function(el) { statObserver.observe(el); });
             }
 
-            // ---- Service Worker (PWA) ----
+            // ===== Service Worker (PWA) =====
             if ('serviceWorker' in navigator) {
                 var swCode =
                     'self.addEventListener("install",function(e){self.skipWaiting()});' +
