@@ -1865,7 +1865,6 @@
     <section id="music" class="relative overflow-hidden bg-white/50 py-28 dark:bg-slate-950/40">
         <div class="relative z-10 mx-auto max-w-3xl px-5 sm:px-8">
             <div class="reveal mb-14 text-center">
-                <div class="accent-line mx-auto" aria-hidden="true"></div>
                 <h2 class="mb-3 font-display text-3xl font-extrabold tracking-tight text-slate-900 dark:text-white sm:text-4xl" data-i18n="music_title">Dengarkan Laguku</h2>
                 <p class="mx-auto max-w-md text-sm leading-relaxed text-slate-600 dark:text-slate-400" data-i18n="music_subtitle">Setiap nada dibuat dengan hati untuk menemani harimu.</p>
             </div>
@@ -1898,7 +1897,6 @@
     <section id="quotes" class="bg-slate-50 py-28 dark:bg-slate-950/40">
         <div class="mx-auto max-w-4xl px-5 sm:px-8">
             <div class="reveal mb-16 text-center">
-                <div class="accent-line mx-auto mb-4 h-1 w-12 rounded-full bg-blue-500" aria-hidden="true"></div>
                 <h2 class="mb-3 font-display text-3xl font-extrabold tracking-tight text-slate-900 dark:text-white sm:text-4xl" data-i18n="quotes_title">Kutipan Favorit</h2>
                 <p class="mx-auto max-w-md text-sm leading-relaxed text-slate-600 dark:text-slate-400" data-i18n="quotes_subtitle">Pesan dari orang-orang hebat yang selalu menginspirasi jalanku.</p>
             </div>
@@ -1941,156 +1939,216 @@
     </section>
 
     <!-- Tools -->
-    <section id="tools" class="relative overflow-hidden bg-slate-50 py-28 dark:bg-slate-950/40">
-        <div class="relative z-10 mx-auto max-w-3xl px-5 sm:px-8">
-            <div class="reveal mb-16 text-center">
-                <div class="accent-line mx-auto" aria-hidden="true"></div>
-                <h2 class="mb-4 font-display text-3xl font-extrabold tracking-tight text-slate-900 dark:text-white sm:text-4xl" data-i18n="tools_title">Tools Praktis &amp; Gratis</h2>
-                <p class="mx-auto max-w-md text-sm leading-relaxed text-slate-600 dark:text-slate-400" data-i18n="tools_subtitle">Semua tools ini gratis, cepat, dan aman. Langsung pakai tanpa perlu daftar akun.</p>
-            </div>
-
-            <div class="reveal mb-10 flex flex-wrap items-center justify-center gap-2" role="tablist" aria-label="Filter alat">
-                <button type="button" data-filter="all" class="filter-btn active" role="tab" aria-selected="true" tabindex="0" data-i18n="filter_all">Semua</button>
-                <button type="button" data-filter="music" class="filter-btn" role="tab" aria-selected="false" tabindex="-1" data-i18n="filter_music">Musik</button>
-                <button type="button" data-filter="security" class="filter-btn" role="tab" aria-selected="false" tabindex="-1" data-i18n="filter_security">Keamanan</button>
-                <button type="button" data-filter="web" class="filter-btn" role="tab" aria-selected="false" tabindex="-1" data-i18n="filter_web">Web</button>
-            </div>
-
-            <div id="tools-container" class="space-y-5">
-                <!-- Tool 1: HajirSync -->
-                <div class="tool-card reveal glass-card glass-hover group rounded-3xl border border-slate-200/60 bg-white/70 p-6 shadow-sm transition-all duration-300 dark:border-slate-800/60 dark:bg-slate-900/50 sm:p-7" data-category="music">
-                    <div class="flex flex-col gap-6 sm:flex-row sm:items-start">
-                        <div class="tool-icon-wrap shrink-0">
-                            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M3 12c0-4.97 4.03-9 9-9s9 4.03 9 9M3 12a3 3 0 013-3h1a3 3 0 013 3v4a3 3 0 01-3 3H6a3 3 0 01-3-3v-4zm14-3a3 3 0 013 3v4a3 3 0 01-3 3h-1a3 3 0 01-3-3v-4a3 3 0 013-3h1z"></path>
-                            </svg>
-                        </div>
-                        <div class="flex flex-1 flex-col justify-between">
-                            <div>
-                                <div class="mb-2 flex flex-wrap items-center gap-3">
-                                    <div class="font-mono text-[9px] font-semibold uppercase tracking-[0.15em] text-blue-600 dark:text-blue-400">LRC Generator</div>
-                                    <span class="status-badge-stable" data-i18n="status_stable">Stabil</span>
-                                </div>
-                                <h3 class="mb-2 font-display text-lg font-bold text-slate-900 transition-colors group-hover:text-blue-600 dark:text-white dark:group-hover:text-blue-400">HajirSync</h3>
-                                <p class="mb-4 text-sm leading-relaxed text-slate-600 dark:text-slate-400" data-i18n="tool1_desc">Bikin file lirik lagu otomatis (LRC) dengan mudah dan cepat.</p>
-                                <div class="mb-5 flex flex-wrap gap-2">
-                                    <span class="glass-pill rounded-md px-2.5 py-1 font-mono text-[9px] text-blue-600 dark:text-blue-400">LRC Export</span>
-                                    <span class="glass-pill rounded-md px-2.5 py-1 font-mono text-[9px] text-blue-600 dark:text-blue-400">Bilingual UI</span>
-                                </div>
-                            </div>
-                            <a href="https://hajirsync.haiere.workers.dev" target="_blank" rel="noopener noreferrer" class="tool-open-btn">
-                                <span data-i18n="tool_open">Buka Tools</span>
-                                <svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25"></path>
-                                </svg>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Tool 2: Raia Vault -->
-                <div class="tool-card reveal glass-card glass-hover group rounded-3xl border border-slate-200/60 bg-white/70 p-6 shadow-sm transition-all duration-300 dark:border-slate-800/60 dark:bg-slate-900/50 sm:p-7" data-category="security">
-                    <div class="flex flex-col gap-6 sm:flex-row sm:items-start">
-                        <div class="tool-icon-wrap shrink-0">
-                            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z"></path>
-                            </svg>
-                        </div>
-                        <div class="flex flex-1 flex-col justify-between">
-                            <div>
-                                <div class="mb-2 flex flex-wrap items-center gap-3">
-                                    <div class="font-mono text-[9px] font-semibold uppercase tracking-[0.15em] text-blue-600 dark:text-blue-400">Password Manager</div>
-                                    <span class="status-badge-stable" data-i18n="status_stable">Stabil</span>
-                                </div>
-                                <h3 class="mb-2 font-display text-lg font-bold text-slate-900 transition-colors group-hover:text-blue-600 dark:text-white dark:group-hover:text-blue-400">Raia Vault</h3>
-                                <p class="mb-4 text-sm leading-relaxed text-slate-600 dark:text-slate-400" data-i18n="tool2_desc">Bikin password kuat acak untuk amankan akun internetmu.</p>
-                                <div class="mb-5 flex flex-wrap gap-2">
-                                    <span class="glass-pill rounded-md px-2.5 py-1 font-mono text-[9px] text-blue-600 dark:text-blue-400">Password Gen</span>
-                                    <span class="glass-pill rounded-md px-2.5 py-1 font-mono text-[9px] text-blue-600 dark:text-blue-400">Strength Meter</span>
-                                </div>
-                            </div>
-                            <a href="https://raia-vault.haiere.workers.dev" target="_blank" rel="noopener noreferrer" class="tool-open-btn">
-                                <span data-i18n="tool_open">Buka Tools</span>
-                                <svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25"></path>
-                                </svg>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Tool 3: Raia Scrub -->
-                <div class="tool-card reveal glass-card glass-hover group rounded-3xl border border-slate-200/60 bg-white/70 p-6 shadow-sm transition-all duration-300 dark:border-slate-800/60 dark:bg-slate-900/50 sm:p-7" data-category="security">
-                    <div class="flex flex-col gap-6 sm:flex-row sm:items-start">
-                        <div class="tool-icon-wrap shrink-0">
-                            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 21l5.096-.813a2 2 0 001.077-.543l7.045-7.045a2.828 2.828 0 10-4-4l-7.045 7.045a2 2 0 00-.543 1.077zM15 7.5l3 3M3 6.75a.75.75 0 01.75-.75h.008a.75.75 0 01.75.75v.008a.75.75 0 01-.75.75H3.75a.75.75 0 01-.75-.75V6.75zm0 9a.75.75 0 01.75-.75h.008a.75.75 0 01.75.75v.008a.75.75 0 01-.75.75H3.75a.75.75 0 01-.75-.75v-.008zm3-4.5a.75.75 0 01.75-.75h.008a.75.75 0 01.75.75v.008a.75.75 0 01-.75.75H6.75a.75.75 0 01-.75-.75V11.25z"></path>
-                            </svg>
-                        </div>
-                        <div class="flex flex-1 flex-col justify-between">
-                            <div>
-                                <div class="mb-2 flex flex-wrap items-center gap-3">
-                                    <div class="font-mono text-[9px] font-semibold uppercase tracking-[0.15em] text-blue-600 dark:text-blue-400">Metadata Stripper</div>
-                                    <span class="status-badge-stable" data-i18n="status_stable">Stabil</span>
-                                </div>
-                                <h3 class="mb-2 font-display text-lg font-bold text-slate-900 transition-colors group-hover:text-blue-600 dark:text-white dark:group-hover:text-blue-400">Raia Scrub</h3>
-                                <p class="mb-4 text-sm leading-relaxed text-slate-600 dark:text-slate-400" data-i18n="tool3_desc">Hapus metadata sensitif (seperti lokasi) dari fotomu sebelum di-share.</p>
-                                <div class="mb-5 flex flex-wrap gap-2">
-                                    <span class="glass-pill rounded-md px-2.5 py-1 font-mono text-[9px] text-blue-600 dark:text-blue-400">EXIF Cleaner</span>
-                                    <span class="glass-pill rounded-md px-2.5 py-1 font-mono text-[9px] text-blue-600 dark:text-blue-400">GPS Remover</span>
-                                    <span class="glass-pill rounded-md px-2.5 py-1 font-mono text-[9px] text-blue-600 dark:text-blue-400">PDF Support</span>
-                                </div>
-                            </div>
-                            <a href="https://raia-scrub.haiere.workers.dev" target="_blank" rel="noopener noreferrer" class="tool-open-btn">
-                                <span data-i18n="tool_open">Buka Tools</span>
-                                <svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25"></path>
-                                </svg>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Tool 4: Raia Delta -->
-                <div class="tool-card reveal glass-card glass-hover group rounded-3xl border border-slate-200/60 bg-white/70 p-6 shadow-sm transition-all duration-300 dark:border-slate-800/60 dark:bg-slate-900/50 sm:p-7" data-category="web">
-                    <div class="flex flex-col gap-6 sm:flex-row sm:items-start">
-                        <div class="tool-icon-wrap shrink-0">
-                            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15"></path>
-                            </svg>
-                        </div>
-                        <div class="flex flex-1 flex-col justify-between">
-                            <div>
-                                <div class="mb-2 flex flex-wrap items-center gap-3">
-                                    <div class="font-mono text-[9px] font-semibold uppercase tracking-[0.15em] text-blue-600 dark:text-blue-400">Text Comparator</div>
-                                    <span class="status-badge-stable" data-i18n="status_stable">Stabil</span>
-                                </div>
-                                <h3 class="mb-2 font-display text-lg font-bold text-slate-900 transition-colors group-hover:text-blue-600 dark:text-white dark:group-hover:text-blue-400">Raia Delta</h3>
-                                <p class="mb-4 text-sm leading-relaxed text-slate-600 dark:text-slate-400" data-i18n="tool4_desc">Bandingkan dua teks tulisan dan temukan perbedaannya seketika.</p>
-                                <div class="mb-5 flex flex-wrap gap-2">
-                                    <span class="glass-pill rounded-md px-2.5 py-1 font-mono text-[9px] text-blue-600 dark:text-blue-400">jsDiff</span>
-                                    <span class="glass-pill rounded-md px-2.5 py-1 font-mono text-[9px] text-blue-600 dark:text-blue-400">Split View</span>
-                                    <span class="glass-pill rounded-md px-2.5 py-1 font-mono text-[9px] text-blue-600 dark:text-blue-400">Sync Scroll</span>
-                                </div>
-                            </div>
-                            <a href="https://raia-delta.haiere.workers.dev" target="_blank" rel="noopener noreferrer" class="tool-open-btn">
-                                <span data-i18n="tool_open">Buka Tools</span>
-                                <svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25"></path>
-                                </svg>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+<section id="tools" class="relative overflow-hidden bg-slate-50 py-28 dark:bg-slate-950/40">
+    <div class="relative z-10 mx-auto max-w-3xl px-5 sm:px-8">
+        <div class="reveal mb-16 text-center">
+            <h2 class="mb-4 font-display text-3xl font-extrabold tracking-tight text-slate-900 dark:text-white sm:text-4xl" data-i18n="tools_title">Practical &amp; Free Tools</h2>
+            <p class="mx-auto max-w-md text-sm leading-relaxed text-slate-600 dark:text-slate-400" data-i18n="tools_subtitle">All of these tools are free, fast, and secure. Use them instantly without signing up.</p>
         </div>
-    </section>
+
+        <div class="reveal mb-10 flex flex-wrap items-center justify-center gap-2" role="tablist" aria-label="Filter tools">
+            <button type="button" data-filter="all" class="filter-btn active" role="tab" aria-selected="true" tabindex="0" data-i18n="filter_all">All</button>
+            <button type="button" data-filter="music" class="filter-btn" role="tab" aria-selected="false" tabindex="-1" data-i18n="filter_music">Music</button>
+            <button type="button" data-filter="security" class="filter-btn" role="tab" aria-selected="false" tabindex="-1" data-i18n="filter_security">Security</button>
+            <button type="button" data-filter="web" class="filter-btn" role="tab" aria-selected="false" tabindex="-1" data-i18n="filter_web">Web</button>
+        </div>
+
+        <div id="tools-container" class="space-y-5">
+            <!-- Tool 1: HajirSync -->
+            <div class="tool-card reveal glass-card glass-hover group rounded-3xl border border-slate-200/60 bg-white/70 p-6 shadow-sm transition-all duration-300 dark:border-slate-800/60 dark:bg-slate-900/50 sm:p-7" data-category="music">
+                <div class="flex flex-col gap-6 sm:flex-row sm:items-start">
+                    <div class="tool-icon-wrap shrink-0">
+                        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M3 12c0-4.97 4.03-9 9-9s9 4.03 9 9M3 12a3 3 0 013-3h1a3 3 0 013 3v4a3 3 0 01-3 3H6a3 3 0 01-3-3v-4zm14-3a3 3 0 013 3v4a3 3 0 01-3 3h-1a3 3 0 01-3-3v-4a3 3 0 013-3h1z"></path>
+                        </svg>
+                    </div>
+                    <div class="flex flex-1 flex-col justify-between">
+                        <div>
+                            <div class="mb-2 flex flex-wrap items-center gap-3">
+                                <div class="font-mono text-[9px] font-semibold uppercase tracking-[0.15em] text-blue-600 dark:text-blue-400">LRC Generator</div>
+                                <span class="status-badge-stable" data-i18n="status_stable">Stable</span>
+                            </div>
+                            <h3 class="mb-2 font-display text-lg font-bold text-slate-900 transition-colors group-hover:text-blue-600 dark:text-white dark:group-hover:text-blue-400">HajirSync</h3>
+                            <p class="mb-4 text-sm leading-relaxed text-slate-600 dark:text-slate-400" data-i18n="tool1_desc">Create song lyric files (LRC) automatically, easily, and quickly.</p>
+                            <div class="mb-5 flex flex-wrap gap-2">
+                                <span class="glass-pill rounded-md px-2.5 py-1 font-mono text-[9px] text-blue-600 dark:text-blue-400">LRC Export</span>
+                                <span class="glass-pill rounded-md px-2.5 py-1 font-mono text-[9px] text-blue-600 dark:text-blue-400">Bilingual UI</span>
+                            </div>
+                        </div>
+                        <a href="https://hajirsync.haiere.workers.dev" target="_blank" rel="noopener noreferrer" class="tool-open-btn">
+                            <span data-i18n="tool_open">Open Tool</span>
+                            <svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25"></path>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tool 2: Raia Vault -->
+            <div class="tool-card reveal glass-card glass-hover group rounded-3xl border border-slate-200/60 bg-white/70 p-6 shadow-sm transition-all duration-300 dark:border-slate-800/60 dark:bg-slate-900/50 sm:p-7" data-category="security">
+                <div class="flex flex-col gap-6 sm:flex-row sm:items-start">
+                    <div class="tool-icon-wrap shrink-0">
+                        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z"></path>
+                        </svg>
+                    </div>
+                    <div class="flex flex-1 flex-col justify-between">
+                        <div>
+                            <div class="mb-2 flex flex-wrap items-center gap-3">
+                                <div class="font-mono text-[9px] font-semibold uppercase tracking-[0.15em] text-blue-600 dark:text-blue-400">Password Manager</div>
+                                <span class="status-badge-stable" data-i18n="status_stable">Stable</span>
+                            </div>
+                            <h3 class="mb-2 font-display text-lg font-bold text-slate-900 transition-colors group-hover:text-blue-600 dark:text-white dark:group-hover:text-blue-400">Raia Vault</h3>
+                            <p class="mb-4 text-sm leading-relaxed text-slate-600 dark:text-slate-400" data-i18n="tool2_desc">Generate strong random passwords to protect your online accounts.</p>
+                            <div class="mb-5 flex flex-wrap gap-2">
+                                <span class="glass-pill rounded-md px-2.5 py-1 font-mono text-[9px] text-blue-600 dark:text-blue-400">Password Gen</span>
+                                <span class="glass-pill rounded-md px-2.5 py-1 font-mono text-[9px] text-blue-600 dark:text-blue-400">Strength Meter</span>
+                            </div>
+                        </div>
+                        <a href="https://raia-vault.haiere.workers.dev" target="_blank" rel="noopener noreferrer" class="tool-open-btn">
+                            <span data-i18n="tool_open">Open Tool</span>
+                            <svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25"></path>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tool 3: Raia Scrub -->
+            <div class="tool-card reveal glass-card glass-hover group rounded-3xl border border-slate-200/60 bg-white/70 p-6 shadow-sm transition-all duration-300 dark:border-slate-800/60 dark:bg-slate-900/50 sm:p-7" data-category="security">
+                <div class="flex flex-col gap-6 sm:flex-row sm:items-start">
+                    <div class="tool-icon-wrap shrink-0">
+                        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 21l5.096-.813a2 2 0 001.077-.543l7.045-7.045a2.828 2.828 0 10-4-4l-7.045 7.045a2 2 0 00-.543 1.077zM15 7.5l3 3M3 6.75a.75.75 0 01.75-.75h.008a.75.75 0 01.75.75v.008a.75.75 0 01-.75.75H3.75a.75.75 0 01-.75-.75V6.75zm0 9a.75.75 0 01.75-.75h.008a.75.75 0 01.75.75v.008a.75.75 0 01-.75.75H3.75a.75.75 0 01-.75-.75v-.008zm3-4.5a.75.75 0 01.75-.75h.008a.75.75 0 01.75.75v.008a.75.75 0 01-.75.75H6.75a.75.75 0 01-.75-.75V11.25z"></path>
+                        </svg>
+                    </div>
+                    <div class="flex flex-1 flex-col justify-between">
+                        <div>
+                            <div class="mb-2 flex flex-wrap items-center gap-3">
+                                <div class="font-mono text-[9px] font-semibold uppercase tracking-[0.15em] text-blue-600 dark:text-blue-400">Metadata Stripper</div>
+                                <span class="status-badge-stable" data-i18n="status_stable">Stable</span>
+                            </div>
+                            <h3 class="mb-2 font-display text-lg font-bold text-slate-900 transition-colors group-hover:text-blue-600 dark:text-white dark:group-hover:text-blue-400">Raia Scrub</h3>
+                            <p class="mb-4 text-sm leading-relaxed text-slate-600 dark:text-slate-400" data-i18n="tool3_desc">Remove sensitive metadata, such as location data, from your photos before sharing them.</p>
+                            <div class="mb-5 flex flex-wrap gap-2">
+                                <span class="glass-pill rounded-md px-2.5 py-1 font-mono text-[9px] text-blue-600 dark:text-blue-400">EXIF Cleaner</span>
+                                <span class="glass-pill rounded-md px-2.5 py-1 font-mono text-[9px] text-blue-600 dark:text-blue-400">GPS Remover</span>
+                                <span class="glass-pill rounded-md px-2.5 py-1 font-mono text-[9px] text-blue-600 dark:text-blue-400">PDF Support</span>
+                            </div>
+                        </div>
+                        <a href="https://raia-scrub.haiere.workers.dev" target="_blank" rel="noopener noreferrer" class="tool-open-btn">
+                            <span data-i18n="tool_open">Open Tool</span>
+                            <svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25"></path>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tool 4: Raia Delta -->
+            <div class="tool-card reveal glass-card glass-hover group rounded-3xl border border-slate-200/60 bg-white/70 p-6 shadow-sm transition-all duration-300 dark:border-slate-800/60 dark:bg-slate-900/50 sm:p-7" data-category="web">
+                <div class="flex flex-col gap-6 sm:flex-row sm:items-start">
+                    <div class="tool-icon-wrap shrink-0">
+                        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15"></path>
+                        </svg>
+                    </div>
+                    <div class="flex flex-1 flex-col justify-between">
+                        <div>
+                            <div class="mb-2 flex flex-wrap items-center gap-3">
+                                <div class="font-mono text-[9px] font-semibold uppercase tracking-[0.15em] text-blue-600 dark:text-blue-400">Text Comparator</div>
+                                <span class="status-badge-stable" data-i18n="status_stable">Stable</span>
+                            </div>
+                            <h3 class="mb-2 font-display text-lg font-bold text-slate-900 transition-colors group-hover:text-blue-600 dark:text-white dark:group-hover:text-blue-400">Raia Delta</h3>
+                            <p class="mb-4 text-sm leading-relaxed text-slate-600 dark:text-slate-400" data-i18n="tool4_desc">Compare two blocks of text and instantly find the differences.</p>
+                            <div class="mb-5 flex flex-wrap gap-2">
+                                <span class="glass-pill rounded-md px-2.5 py-1 font-mono text-[9px] text-blue-600 dark:text-blue-400">jsDiff</span>
+                                <span class="glass-pill rounded-md px-2.5 py-1 font-mono text-[9px] text-blue-600 dark:text-blue-400">Split View</span>
+                                <span class="glass-pill rounded-md px-2.5 py-1 font-mono text-[9px] text-blue-600 dark:text-blue-400">Sync Scroll</span>
+                            </div>
+                        </div>
+                        <a href="https://raia-delta.haiere.workers.dev" target="_blank" rel="noopener noreferrer" class="tool-open-btn">
+                            <span data-i18n="tool_open">Open Tool</span>
+                            <svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25"></path>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tool 5: Raiamify -->
+<div class="tool-card reveal glass-card glass-hover group rounded-3xl border border-slate-200/60 bg-white/70 p-6 shadow-sm transition-all duration-300 dark:border-slate-800/60 dark:bg-slate-900/50 sm:p-7" data-category="web">
+    <div class="flex flex-col gap-6 sm:flex-row sm:items-start">
+        <div class="tool-icon-wrap shrink-0">
+            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 3c2.5 0 4.5 2 4.5 4.5S14.5 12 12 12 7.5 10 7.5 7.5 9.5 3 12 3zm0 9c4.418 0 8 2.239 8 5v2H4v-2c0-2.761 3.582-5 8-5z"></path>
+            </svg>
+        </div>
+        <div class="flex flex-1 flex-col justify-between">
+            <div>
+                <div class="mb-2 flex flex-wrap items-center gap-3">
+                    <div class="font-mono text-[9px] font-semibold uppercase tracking-[0.15em] text-blue-600 dark:text-blue-400">AI Tool</div>
+                    <span class="status-badge-stable" data-i18n="status_stable">Stable</span>
+                </div>
+                <h3 class="mb-2 font-display text-lg font-bold text-slate-900 transition-colors group-hover:text-blue-600 dark:text-white dark:group-hover:text-blue-400">Raiamify</h3>
+                <p class="mb-4 text-sm leading-relaxed text-slate-600 dark:text-slate-400" data-i18n="tool5_desc">A simple AI tool for fast assistance and smarter workflows.</p>
+                <div class="mb-5 flex flex-wrap gap-2">
+                    <span class="glass-pill rounded-md px-2.5 py-1 font-mono text-[9px] text-blue-600 dark:text-blue-400">Smart Cleaner</span>
+                    <span class="glass-pill rounded-md px-2.5 py-1 font-mono text-[9px] text-blue-600 dark:text-blue-400">Fast Workflow</span>
+                </div>
+            </div>
+            <a href="https://riamify.haiere.workers.dev" target="_blank" rel="noopener noreferrer" class="tool-open-btn">
+                <span data-i18n="tool_open">Open Tool</span>
+                <svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25"></path>
+                </svg>
+            </a>
+        </div>
+    </div>
+</div>
+
+<!-- Tool 6: Raia AI -->
+<div class="tool-card reveal glass-card glass-hover group rounded-3xl border border-slate-200/60 bg-white/70 p-6 shadow-sm transition-all duration-300 dark:border-slate-800/60 dark:bg-slate-900/50 sm:p-7" data-category="web">
+    <div class="flex flex-col gap-6 sm:flex-row sm:items-start">
+        <div class="tool-icon-wrap shrink-0">
+            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 2.25A9.75 9.75 0 1021.75 12 9.76 9.76 0 0012 2.25zm0 3a6.75 6.75 0 11-6.75 6.75A6.75 6.75 0 0112 5.25z"></path>
+            </svg>
+        </div>
+        <div class="flex flex-1 flex-col justify-between">
+            <div>
+                <div class="mb-2 flex flex-wrap items-center gap-3">
+                    <div class="font-mono text-[9px] font-semibold uppercase tracking-[0.15em] text-blue-600 dark:text-blue-400">AI Platform</div>
+                    <span class="status-badge-stable" data-i18n="status_stable">Stable</span>
+                </div>
+                <h3 class="mb-2 font-display text-lg font-bold text-slate-900 transition-colors group-hover:text-blue-600 dark:text-white dark:group-hover:text-blue-400">Raia AI</h3>
+                <p class="mb-4 text-sm leading-relaxed text-slate-600 dark:text-slate-400" data-i18n="tool6_desc">An AI platform for launching secure, enterprise-grade agents.</p>
+                <div class="mb-5 flex flex-wrap gap-2">
+                    <span class="glass-pill rounded-md px-2.5 py-1 font-mono text-[9px] text-blue-600 dark:text-blue-400">Zero-Code</span>
+                    <span class="glass-pill rounded-md px-2.5 py-1 font-mono text-[9px] text-blue-600 dark:text-blue-400">Enterprise AI</span>
+                </div>
+            </div>
+            <a href="https://raia-ai.netify.app" target="_blank" rel="noopener noreferrer" class="tool-open-btn">
+                <span data-i18n="tool_open">Open Tool</span>
+                <svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25"></path>
+                </svg>
+            </a>
+        </div>
+    </div>
+</div>
+        </div>
+    </div>
+</section>
 
     <!-- Contact -->
     <section id="contact" class="relative overflow-hidden bg-slate-50 py-28 dark:bg-slate-950/40">
         <div class="relative z-10 mx-auto max-w-3xl px-5 sm:px-8">
             <div class="reveal mb-14 text-center">
-                <div class="accent-line mx-auto" aria-hidden="true"></div>
                 <h2 class="mb-3 font-display text-3xl font-extrabold tracking-tight text-slate-900 dark:text-white sm:text-4xl" data-i18n="contact_title">Mau Kolaborasi atau Sekadar Menyapa?</h2>
                 <p class="mx-auto max-w-md text-sm leading-relaxed text-slate-600 dark:text-slate-400" data-i18n="contact_subtitle">Kirim pesan jika ada pertanyaan atau ingin ngobrol santai.</p>
             </div>
@@ -2129,7 +2187,7 @@
                         <a href="https://github.com/haiere" target="_blank" rel="noopener noreferrer" class="glass-social flex h-10 w-10 items-center justify-center rounded-xl text-slate-600 transition-all duration-300 hover:bg-slate-900 hover:text-white dark:text-slate-400" aria-label="GitHub">
                             <i class="fab fa-github" aria-hidden="true"></i>
                         </a>
-                        <a href="https://www.instagram.com/hajirstein" target="_blank" rel="noopener noreferrer" class="glass-social flex h-10 w-10 items-center justify-center rounded-xl text-slate-600 transition-all duration-300 hover:bg-pink-600 hover:text-white dark:text-slate-400" aria-label="Instagram">
+                        <a href="https://www.instagram.com/muhaajirere" target="_blank" rel="noopener noreferrer" class="glass-social flex h-10 w-10 items-center justify-center rounded-xl text-slate-600 transition-all duration-300 hover:bg-pink-600 hover:text-white dark:text-slate-400" aria-label="Instagram">
                             <i class="fab fa-instagram" aria-hidden="true"></i>
                         </a>
                         <a href="https://www.youtube.com/@hajirstein" target="_blank" rel="noopener noreferrer" class="glass-social flex h-10 w-10 items-center justify-center rounded-xl text-slate-600 transition-all duration-300 hover:bg-red-600 hover:text-white dark:text-slate-400" aria-label="YouTube">
@@ -2156,7 +2214,7 @@
                 <a href="https://www.youtube.com/@hajirstein" target="_blank" rel="noopener noreferrer" aria-label="YouTube" class="glass-social flex h-11 w-11 items-center justify-center rounded-xl text-slate-500 transition-all duration-300 hover:bg-red-600 hover:text-white dark:text-slate-400">
                     <i class="fab fa-youtube" aria-hidden="true"></i>
                 </a>
-                <a href="https://www.instagram.com/hajirstein" target="_blank" rel="noopener noreferrer" aria-label="Instagram Personal" class="glass-social flex h-11 w-11 items-center justify-center rounded-xl text-slate-500 transition-all duration-300 hover:bg-pink-600 hover:text-white dark:text-slate-400">
+                <a href="https://www.instagram.com/muhaajirere" target="_blank" rel="noopener noreferrer" aria-label="Instagram Personal" class="glass-social flex h-11 w-11 items-center justify-center rounded-xl text-slate-500 transition-all duration-300 hover:bg-pink-600 hover:text-white dark:text-slate-400">
                     <i class="fab fa-instagram" aria-hidden="true"></i>
                 </a>
                 <a href="https://on.soundcloud.com/m65TNUx3XarndC67jO" target="_blank" rel="noopener noreferrer" aria-label="SoundCloud" class="glass-social flex h-11 w-11 items-center justify-center rounded-xl text-slate-500 transition-all duration-300 hover:bg-orange-500 hover:text-white dark:text-slate-400">
@@ -2194,7 +2252,7 @@
             </nav>
 
             <div class="text-center">
-                <p class="mx-auto mb-4 max-w-sm text-xs leading-relaxed text-slate-500 dark:text-slate-500">Musician and creative technologist. All tools are built on the principles of the open web and privacy without a backend.</p>
+                <p class="mx-auto mb-4 max-w-sm text-xs leading-relaxed text-slate-500 dark:text-slate-500">Creative Technologist & Musican. All tools are built on the principles of the open web and privacy without a backend.</p>
                 <p class="footer-disclaimer mx-auto mb-4 max-w-md text-[11px] leading-relaxed italic text-slate-400 dark:text-slate-500">
                     <i class="fas fa-exclamation-triangle mr-1 text-amber-500/80" aria-hidden="true"></i>
                     Disclaimer: The use of this tool is entirely at your own risk. Haiere is not responsible for any data loss or damage that may occur.
@@ -2253,174 +2311,171 @@
             'use strict';
 
             // ─── 1. I18N ─────────────────────────────────────────────────────────────
-            var i18n = {
-                id: {
-                    nav_about: 'Tentang',
-                    nav_music: 'Musik',
-                    nav_tools: 'Tools',
-                    nav_contact: 'Kontak',
-                    nav_quotes: 'Kutipan',
-                    nav_privacy: 'Privasi',
-                    nav_github: 'GitHub',
-                    nav_raia: 'Raia',
-                    nav_language: 'Bahasa',
-                    nav_tagline: 'Dirancang dengan prinsip privasi terdepan',
-                    nav_privacy_policy: 'Kebijakan Privasi',
-                    nav_terms: 'Syarat & Ketentuan',
-                    hero_title_1: 'Hajir',
-                    hero_title_2: 'Studio',
-                    hero_desc: 'Halo! Aku Hajir. Seorang developer yang hobi bikin tools praktis dan efisien untuk mempermudah pekerjaan harianmu (dan sesekali bikin musik!).',
-                    hero_cta1: 'Yuk, Kenalan!',
-                    hero_cta2: 'Coba RAIA-AI',
-                    about_role: 'Developer · Musisi',
-                    tag_musician: 'Musisi',
-                    tag_developer: 'Developer',
-                    about_p1: 'Hai! Aku Hajir. Sebagai developer, fokus utamaku adalah menciptakan software dan tools web yang cepat, aman, dan mudah digunakan.',
-                    about_p2: 'Aku selalu memastikan semua tools di sini gratis dan mengutamakan privasi pengguna tanpa menyimpan data pribadimu.',
-                    about_p3: 'Di luar dunia coding, aku juga menikmati proses membuat musik sebagai media berekspresi dan berbagi cerita. Salam kenal, ya!',
-                    about_cta: 'Coba RAIA Sekarang',
-                    stat_approach: 'Pendekatan',
-                    stat_philosophy: 'Prinsip',
-                    stat_tools_label: 'Tools Rilis',
-                    stat_albums_label: 'Album Musik',
-                    stat_songs_label: 'Lagu Original',
-                    stat_privacy_label: 'Jaminan Privasi',
-                    RWR: 'RWR - AMA',
-                    RWR_closing: 'RWR adalah bagian dari perjalanan karirku, dan suatu hari nanti RWR akan terwujud.',
-                    toast_copied: 'Teks berhasil disalin!',
-                    toast_cookie_accepted: 'Preferensi cookie berhasil disimpan.',
-                    toast_cookie_declined: 'Cookie tidak diaktifkan.',
-                    music_title: 'Sisi Lain: Karya Musikku',
-                    music_subtitle: 'Ketika sedang tidak ngoding, ini beberapa nada yang kubuat untuk menemani harimu.',
-                    music_player_label: 'Pemutar Resmi',
-                    music_player_desc: 'Pilih lagu favoritmu dan langsung putar di browser tanpa ribet.',
-                    music_open_link: 'Klik di sini kalau pemutar lagu tidak muncul',
-                    quotes_title: 'Kutipan Pilihan',
-                    quotes_subtitle: 'Pesan inspiratif dari figur-figur hebat yang selalu memotivasiku.',
-                    q1_text: '"Waktumu terbatas, jadi jangan dihabiskan untuk menjalani hidup orang lain."',
-                    q1_author: 'Steve Jobs',
-                    q2_text: '"Tantangannya adalah melakukannya lebih cepat dari siapa pun tanpa kehilangan kendali."',
-                    q2_author: 'Adrian Newey',
-                    q3_text: '"Aku memulainya dari orang yang ada di dalam cermin."',
-                    q3_author: 'Michael Jackson',
-                    q4_text: '"Musik adalah jembatan antara kehidupan spiritual dan indrawi."',
-                    q4_author: 'Ludwig van Beethoven',
-                    tools_title: 'Tools Praktis & Gratis',
-                    tools_subtitle: 'Serba cepat, ringan, dan aman. Langsung pakai tanpa perlu repot mendaftar.',
-                    tool1_desc: 'Bikin file lirik lagu (LRC) secara otomatis dengan cepat dan mudah.',
-                    tool2_desc: 'Buat kata sandi acak yang kuat untuk mengamankan berbagai akunmu.',
-                    tool3_desc: 'Bersihkan data tersembunyi (seperti lokasi) dari foto sebelum kamu bagikan.',
-                    tool4_desc: 'Bandingkan dua teks berbeda dan temukan perbedaannya secara instan.',
-                    tool_open: 'Buka Tools',
-                    filter_all: 'Semua',
-                    filter_music: 'Musik',
-                    filter_security: 'Keamanan',
-                    filter_web: 'Web',
-                    status_stable: 'Stabil',
-                    contact_title: 'Ingin Diskusi Projek atau Sekadar Menyapa?',
-                    contact_subtitle: 'Punya ide menarik, butuh bantuan technical, atau sekadar ingin ngobrol santai? Pintu selalu terbuka!',
-                    form_name: 'Nama',
-                    form_email: 'Email',
-                    form_message: 'Pesan',
-                    form_submit: 'Kirim Pesan',
-                    form_name_placeholder: 'Siapa nama lengkapmu?',
-                    form_email_placeholder: 'nama@email.com',
-                    form_message_placeholder: 'Tuliskan pesan, ide, atau pertanyaanmu di sini...',
-                    form_sending: 'Mengirim pesan...',
-                    form_success: 'Pesanmu sudah terkirim. Terima kasih banyak ya!',
-                    form_error: 'Pesan gagal terkirim. Yuk, coba kirim sekali lagi!',
-                    form_fallback: 'Atau kamu juga bisa menghubungi lewat opsi lain...',
-                    footer_tagline: 'Situs Pribadi · Tools Gratis · oleh Haiere',
-                    footer_copy: '© 2026 Haiere · Dibuat dengan sepenuh hati.',
-                    err_name_short: 'Boleh isi namanya sedikit lebih panjang? (minimal 4 karakter)',
-                    err_name_pattern: 'Gunakan kombinasi huruf dan spasi saja untuk nama, ya.',
-                    err_email_invalid: 'Format email tampaknya belum pas. Coba periksa kembali, ya!',
-                    err_message_short: 'Tuliskan pesan sedikit lebih jelas, ya (minimal 20 karakter).'
-                },
-                en: {
-                    nav_about: 'About',
-                    nav_music: 'Music',
-                    nav_tools: 'Tools',
-                    nav_contact: 'Contact',
-                    nav_quotes: 'Quotes',
-                    nav_privacy: 'Privacy',
-                    nav_github: 'GitHub',
-                    nav_raia: 'Raia',
-                    nav_language: 'Language',
-                    nav_tagline: 'Built with a privacy-first mindset',
-                    nav_privacy_policy: 'Privacy Policy',
-                    nav_terms: 'Terms & Conditions',
-                    hero_title_1: 'Hajir',
-                    hero_title_2: 'Studio',
-                    hero_desc: "Hi! I'm Hajir. A developer who loves building practical, efficient tools to streamline your daily workflow (and occasionally crafts music!).",
-                    hero_cta1: "Let's Connect",
-                    hero_cta2: 'Try RAIA-AI',
-                    about_role: 'Developer · Musician',
-                    tag_musician: 'Musician',
-                    tag_developer: 'Developer',
-                    about_p1: "Hi! I'm Hajir. As a developer, my main goal is to create fast, reliable, and user-friendly web software and tools.",
-                    about_p2: 'I ensure every tool here is free, lightweight, and strictly privacy-focused without storing any personal data.',
-                    about_p3: 'Outside of coding, I also express myself by creating music to share stories and good energy. Glad to meet you!',
-                    about_cta: 'Explore RAIA',
-                    stat_approach: 'Approach',
-                    stat_philosophy: 'Principles',
-                    stat_tools_label: 'Tools Released',
-                    stat_albums_label: 'Albums',
-                    stat_songs_label: 'Original Songs',
-                    stat_privacy_label: 'Privacy Protected',
-                    RWR: 'RWR - AMA',
-                    RWR_closing: 'RWR is an essential milestone in my tech journey, and someday, it will fully come to life.',
-                    toast_copied: 'Copied to clipboard!',
-                    toast_cookie_accepted: 'Cookie preferences saved.',
-                    toast_cookie_declined: 'Cookies remain disabled.',
-                    music_title: 'Side Hobby: My Music',
-                    music_subtitle: 'When I’m away from code, here are a few tunes crafted to keep you company.',
-                    music_player_label: 'Official Player',
-                    music_player_desc: 'Pick your favorite track and stream it directly in your browser.',
-                    music_open_link: "Click here if the player doesn't load",
-                    quotes_title: 'Favorite Quotes',
-                    quotes_subtitle: 'Inspiring thoughts from great minds that keep me driven.',
-                    q1_text: '"Your time is limited, so don\'t waste it living someone else\'s life."',
-                    q1_author: 'Steve Jobs',
-                    q2_text: '"The challenge is doing it faster than anyone else without losing control."',
-                    q2_author: 'Adrian Newey',
-                    q3_text: '"I\'m starting with the man in the mirror."',
-                    q3_author: 'Michael Jackson',
-                    q4_text: '"Music is the mediator between the spiritual and sensual life."',
-                    q4_author: 'Ludwig van Beethoven',
-                    tools_title: 'Handy & Free Tools',
-                    tools_subtitle: 'Fast, lightweight, and privacy-focused. Ready to use instantly with no sign-up required.',
-                    tool1_desc: 'Generate synced song lyrics files (LRC) effortlessly.',
-                    tool2_desc: 'Create strong, random passwords to safeguard your online accounts.',
-                    tool3_desc: 'Strip hidden metadata (like GPS location) from photos before sharing them.',
-                    tool4_desc: 'Compare two text pieces and spot differences in a flash.',
-                    tool_open: 'Open Tools',
-                    filter_all: 'All',
-                    filter_music: 'Music',
-                    filter_security: 'Security',
-                    filter_web: 'Web',
-                    status_stable: 'Stable',
-                    contact_title: 'Want to Discuss a Project or Say Hi?',
-                    contact_subtitle: 'Have a cool idea, need technical insight, or just want to chat? Drop a message anytime!',
-                    form_name: 'Name',
-                    form_email: 'Email',
-                    form_message: 'Message',
-                    form_submit: 'Send Message',
-                    form_name_placeholder: 'What is your full name?',
-                    form_email_placeholder: 'name@example.com',
-                    form_message_placeholder: 'Write your ideas or message here...',
-                    form_sending: 'Sending your message...',
-                    form_success: 'Message sent! Thanks for reaching out.',
-                    form_error: 'Could not send message. Please give it another shot!',
-                    form_fallback: 'Or reach out through another channel...',
-                    footer_tagline: 'Personal Website · Free Tools · by Haiere',
-                    footer_copy: '© 2026 Haiere · Crafted with care.',
-                    err_name_short: 'Could you make your name a bit longer? (at least 4 characters)',
-                    err_name_pattern: 'Please use letters and spaces only for your name.',
-                    err_email_invalid: 'That email format looks a bit off. Mind double-checking it?',
-                    err_message_short: 'Please share a little more detail (at least 20 characters).'
-                }
-            };
+           var i18n = {
+    id: {
+        nav_about: 'Tentang',
+        nav_music: 'Musik',
+        nav_tools: 'Tools',
+        nav_contact: 'Kontak',
+        nav_quotes: 'Kutipan',
+        nav_privacy: 'Privasi',
+        nav_github: 'GitHub',
+        nav_raia: 'RAIA',
+        nav_language: 'Bahasa',
+        nav_tagline: 'Software, AI, dan tools dengan privasi sebagai prioritas',
+        nav_privacy_policy: 'Kebijakan Privasi',
+        nav_terms: 'Syarat & Ketentuan',
+        hero_title_1: 'Hajir',
+        hero_title_2: 'Studio',
+        hero_desc: 'Halo! Aku Hajir. Developer yang membangun software, tools web, dan solusi AI yang cepat, sederhana, dan mudah digunakan. Musik adalah hobi yang menemaniku saat tidak sedang ngoding.',
+        hero_cta1: 'Lihat Karyaku',
+        hero_cta2: 'Coba RAIA AI',
+        about_role: 'Developer · AI Builder',
+        tag_developer: 'Developer',
+        tag_musician: 'Musik',
+        about_p1: 'Aku fokus membuat software, aplikasi web, tools, dan solusi AI yang membantu pekerjaan menjadi lebih cepat dan efisien.',
+        about_p2: 'Setiap proyek dirancang agar ringan, aman, mudah digunakan, dan sebisa mungkin mengutamakan privasi pengguna tanpa mengumpulkan data yang tidak diperlukan.',
+        about_p3: 'Selain mengembangkan software, aku juga membuat musik sebagai hobi dan media untuk mengekspresikan ide di luar dunia teknologi.',
+        about_cta: 'Jelajahi RAIA',
+        stat_approach: 'Fokus',
+        stat_philosophy: 'Prinsip',
+        stat_tools_label: 'Tools Dirilis',
+        stat_albums_label: 'Rilis Musik',
+        stat_songs_label: 'Lagu Original',
+        stat_privacy_label: 'Privasi Diutamakan',
+        RWR: 'RWR - AMA',
+        RWR_closing: 'RWR adalah bagian dari visi jangka panjangku dalam membangun teknologi yang bermanfaat.',
+        toast_copied: 'Berhasil disalin.',
+        toast_cookie_accepted: 'Preferensi cookie disimpan.',
+        toast_cookie_declined: 'Cookie tetap dinonaktifkan.',
+        music_title: 'Musik sebagai Hobi',
+        music_subtitle: 'Beberapa karya musik yang kubuat di sela-sela waktu luang.',
+        music_player_label: 'Pemutar Musik',
+        music_player_desc: 'Pilih lagu dan dengarkan langsung.',
+        music_open_link: 'Klik di sini jika pemutar tidak muncul.',
+        quotes_title: 'Kutipan',
+        quotes_subtitle: 'Beberapa kutipan yang menginspirasiku.',
+        tools_title: 'Software & Tools',
+        tools_subtitle: 'Kumpulan tools gratis untuk developer, produktivitas, AI, dan kebutuhan sehari-hari.',
+        tool1_desc: 'Membuat file lirik LRC secara otomatis.',
+        tool2_desc: 'Membuat kata sandi acak yang kuat.',
+        tool3_desc: 'Menghapus metadata tersembunyi dari foto.',
+        tool4_desc: 'Membandingkan dua teks dengan cepat.',
+        tool5_tag: 'AI Tool',
+        tool5_desc: 'Asisten AI sederhana untuk membantu pekerjaan dan meningkatkan produktivitas.',
+        tool6_tag: 'AI Platform',
+        tool6_desc: 'Platform untuk membangun, menjalankan, dan mengelola AI agent dengan aman.',
+        tool_open: 'Buka',
+        filter_all: 'Semua',
+        filter_music: 'Musik',
+        filter_security: 'Keamanan',
+        filter_web: 'Web',
+        status_stable: 'Stabil',
+        contact_title: 'Mari Berdiskusi',
+        contact_subtitle: 'Punya ide, proyek, atau ingin bekerja sama? Jangan ragu untuk menghubungi.',
+        form_name: 'Nama',
+        form_email: 'Email',
+        form_message: 'Pesan',
+        form_submit: 'Kirim',
+        form_name_placeholder: 'Nama lengkap',
+        form_email_placeholder: 'nama@email.com',
+        form_message_placeholder: 'Tulis pesanmu di sini...',
+        form_sending: 'Mengirim...',
+        form_success: 'Pesan berhasil dikirim.',
+        form_error: 'Pesan gagal dikirim. Silakan coba lagi.',
+        form_fallback: 'Atau hubungi melalui platform lain.',
+        footer_tagline: 'Developer • Software • AI • Tools',
+        footer_copy: '© 2026 Haiere. Seluruh hak cipta dilindungi.',
+        err_name_short: 'Nama minimal 4 karakter.',
+        err_name_pattern: 'Nama hanya boleh berisi huruf dan spasi.',
+        err_email_invalid: 'Format email tidak valid.',
+        err_message_short: 'Pesan minimal 20 karakter.'
+    },
+
+    en: {
+        nav_about: 'About',
+        nav_music: 'Music',
+        nav_tools: 'Tools',
+        nav_contact: 'Contact',
+        nav_quotes: 'Quotes',
+        nav_privacy: 'Privacy',
+        nav_github: 'GitHub',
+        nav_raia: 'RAIA',
+        nav_language: 'Language',
+        nav_tagline: 'Software, AI, and tools built with privacy in mind',
+        nav_privacy_policy: 'Privacy Policy',
+        nav_terms: 'Terms & Conditions',
+        hero_title_1: 'Hajir',
+        hero_title_2: 'Studio',
+        hero_desc: "Hi, I'm Hajir. I build software, web tools, and AI solutions that are fast, simple, and practical. Music is a hobby I enjoy outside of development.",
+        hero_cta1: 'Explore My Work',
+        hero_cta2: 'Try RAIA AI',
+        about_role: 'Developer · AI Builder',
+        tag_developer: 'Developer',
+        tag_musician: 'Music', 
+        about_p1: 'I build software, web applications, developer tools, and AI solutions that help people work faster and more efficiently.',
+        about_p2: 'Every project is designed to be lightweight, secure, easy to use, and privacy-first without collecting unnecessary personal data.',
+        about_p3: 'Outside of software development, I enjoy creating music as a creative hobby.',
+        about_cta: 'Explore RAIA',
+        stat_approach: 'Focus',
+        stat_philosophy: 'Principles',
+        stat_tools_label: 'Tools Released',
+        stat_albums_label: 'Music Releases',
+        stat_songs_label: 'Original Songs',
+        stat_privacy_label: 'Privacy First',
+        RWR: 'RWR - AMA',
+        RWR_closing: 'RWR is part of my long-term vision for building useful technology.',
+        toast_copied: 'Copied successfully.',
+        toast_cookie_accepted: 'Cookie preferences saved.',
+        toast_cookie_declined: 'Cookies remain disabled.',
+        music_title: 'Music as a Hobby',
+        music_subtitle: 'A few tracks I made in my free time.',
+        music_player_label: 'Music Player',
+        music_player_desc: 'Choose a song and start listening.',
+        music_open_link: "Click here if the player doesn't appear.",
+        quotes_title: 'Quotes',
+        quotes_subtitle: 'A few quotes that inspire me.',
+        tools_title: 'Software & Tools',
+        tools_subtitle: 'Free tools for developers, AI, productivity, and everyday tasks.',
+        tool1_desc: 'Generate synchronized LRC lyric files.',
+        tool2_desc: 'Create strong random passwords.',
+        tool3_desc: 'Remove hidden metadata from photos.',
+        tool4_desc: 'Compare two text files instantly.',
+        tool5_tag: 'AI Tool',
+        tool5_desc: 'A simple AI assistant for everyday tasks and better productivity.',
+        tool5_chip1: 'AI Assistant',
+        tool5_chip2: 'Productivity',
+        tool6_tag: 'AI Platform',
+        tool6_desc: 'A platform for building and managing secure AI agents.',
+        tool6_chip1: 'No-Code',
+        tool6_chip2: 'Enterprise',
+        tool_open: 'Open',
+        filter_all: 'All',
+        filter_music: 'Music',
+        filter_security: 'Security',
+        filter_web: 'Web',
+        status_stable: 'Stable',
+        contact_title: "Let's Work Together",
+        contact_subtitle: 'Have an idea, project, or collaboration in mind? Feel free to get in touch.',
+        form_name: 'Name',
+        form_email: 'Email',
+        form_message: 'Message',
+        form_submit: 'Send',
+        form_name_placeholder: 'Full name',
+        form_email_placeholder: 'name@example.com',
+        form_message_placeholder: 'Write your message...',
+        form_sending: 'Sending...',
+        form_success: 'Message sent successfully.',
+        form_error: 'Failed to send the message. Please try again.',
+        form_fallback: 'Or contact me through another platform.',
+        footer_tagline: 'Developer • Software • AI • Tools',
+        footer_copy: '© 2026 Haiere. All rights reserved.',
+        err_name_short: 'Name must be at least 4 characters.',
+        err_name_pattern: 'Only letters and spaces are allowed.',
+        err_email_invalid: 'Please enter a valid email address.',
+        err_message_short: 'Message must be at least 20 characters.'
+    }
+};
 
             var currentLang = 'id';
 
