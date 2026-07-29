@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-
     <!-- Google Tag Manager -->
     <script>
         (function(w, d, s, l, i) {
@@ -17,15 +16,12 @@
             f.parentNode.insertBefore(j, f);
         })(window, document, 'script', 'dataLayer', 'GTM-PGGWCSD5');
     </script>
-    <!-- End Google Tag Manager -->
-
     <title>Hajir Stein (Haiere) | Web Developer &amp; Free Web Tools</title>
     <meta name="description" content="Official portfolio of Hajir (Haiere) — Web Developer building fast, free, privacy-first web tools, open-source projects, and music." />
     <meta name="keywords" content="Haiere, Hajir, Hajirstein, Web Developer Portfolio, Free Web Tools, Privacy-First Tools, RAIA AI, Open Source Developer, Indonesia Developer" />
     <meta name="author" content="Haiere" />
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
     <link rel="canonical" href="https://haiere.github.io/" />
-
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Haiere Studio" />
@@ -38,18 +34,15 @@
     <meta property="og:image:alt" content="Haiere - Web Developer & Free Tools" />
     <meta property="og:locale" content="id_ID" />
     <meta property="og:locale:alternate" content="en_US" />
-
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Hajir Stein (Haiere) | Web Developer &amp; Free Web Tools" />
     <meta name="twitter:description" content="Explore fast, privacy-focused online tools, open-source projects, and music created by Hajir." />
     <meta name="twitter:image" content="https://i.postimg.cc/GmWt2wch/H-blue.webp" />
     <meta name="twitter:image:alt" content="Haiere - Web Developer & Free Tools" />
-
     <link rel="alternate" hreflang="id" href="https://haiere.github.io/" />
     <link rel="alternate" hreflang="en" href="https://haiere.github.io/?lang=en" />
     <link rel="alternate" hreflang="x-default" href="https://haiere.github.io/" />
-
     <!-- Icons & Manifest -->
     <meta name="theme-color" content="#020617" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -59,18 +52,14 @@
     <link rel="icon" type="image/webp" href="https://i.postimg.cc/8PJ0bhb1/H-haiere.webp" />
     <link rel="apple-touch-icon" href="https://i.postimg.cc/8PJ0bhb1/H-haiere.webp" />
     <link rel="manifest" href="/manifest.webmanifest" />
-
     <!-- Preconnect & Preload -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="preload" as="image" href="https://i.postimg.cc/GmWt2wch/H-blue.webp" fetchpriority="high" />
-
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800;14..32,900&family=JetBrains+Mono:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
-
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" />
-
     <!-- JSON-LD -->
     <script type="application/ld+json">
         {
@@ -738,7 +727,7 @@
             position: relative;
             display: inline-flex;
             align-items: center;
-            justify-content: center;
+            justify-content: flex-start;
             gap: 10px;
             min-width: 150px;
             min-height: 52px;
@@ -780,7 +769,7 @@
         .btn-secondary {
             display: inline-flex;
             align-items: center;
-            justify-content: center;
+            justify-content: flex-start;
             gap: 10px;
             min-width: 150px;
             min-height: 52px;
@@ -1595,696 +1584,592 @@
 <body>
 
     <!-- Google Tag Manager (noscript) -->
-    <noscript>
-        <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PGGWCSD5" height="0" width="0" style="display:none;visibility:hidden" title="Google Tag Manager"></iframe>
-    </noscript>
+<noscript>
+  <iframe
+    src="https://www.googletagmanager.com/ns.html?id=GTM-PGGWCSD5"
+    height="0"
+    width="0"
+    style="display:none;visibility:hidden"
+    title="Google Tag Manager"
+  ></iframe>
+</noscript>
 
-    <a href="#hero" class="skip-link">Langsung ke konten utama</a>
+<a href="#hero" class="skip-link">Skip to main content</a>
 
-    <!-- Scroll progress -->
-    <div id="scroll-progress" class="fixed top-0 left-0 z-[60]" aria-hidden="true"></div>
+<div id="scroll-progress" class="fixed top-0 left-0 z-[60]" aria-hidden="true"></div>
 
-    <!-- Toasts -->
-    <div id="toast-container" class="fixed bottom-24 right-6 z-[70] flex flex-col items-end gap-2 sm:bottom-6" aria-live="polite" aria-atomic="true"></div>
+<div
+  id="toast-container"
+  class="fixed bottom-24 right-6 z-[70] flex flex-col items-end gap-2 sm:bottom-6"
+  aria-live="polite"
+  aria-atomic="true"
+></div>
 
-    <!-- RAIA button -->
-    <a id="raia-button" href="https://raia-ai.netlify.app" target="_blank" rel="noopener noreferrer" aria-label="Buka RAIA Ai" class="fixed bottom-6 left-6 z-50 flex items-center justify-center text-xl text-white shadow-lg">
-        <i class="fas fa-robot" aria-hidden="true"></i>
-        <span class="tooltip">Coba RAIA Ai</span>
+<a
+  id="raia-button"
+  href="https://raia-ai.netlify.app"
+  target="_blank"
+  rel="noopener noreferrer"
+  aria-label="Open RAIA AI"
+  class="fixed bottom-6 left-6 z-50 flex items-center justify-center text-xl text-white shadow-lg"
+>
+  <i class="fas fa-robot" aria-hidden="true"></i>
+  <span class="tooltip">Try RAIA AI</span>
+</a>
+
+<header id="nav" class="glass-nav fixed top-0 left-0 right-0 z-50 h-[68px] transition-shadow duration-300">
+  <div class="header-inner">
+    <a
+      href="#hero"
+      class="header-left transition-transform duration-300 hover:scale-105"
+      aria-label="Haiere - Home"
+    >
+      <img
+        id="logo-header"
+        src="https://i.postimg.cc/GmWt2wch/H-blue.webp"
+        alt="Haiere logo"
+        class="logo-img h-9 w-9 rounded-xl object-contain"
+        style="filter:drop-shadow(0 0 12px rgba(59,130,246,0.25))"
+        loading="eager"
+        fetchpriority="high"
+        width="36"
+        height="36"
+      />
+      <span class="brand-text whitespace-nowrap text-base tracking-tight text-slate-900 dark:text-white sm:text-lg">
+        HAIERE<span class="text-blue-400">.</span>
+      </span>
     </a>
 
-    <!-- Header -->
-    <header id="nav" class="glass-nav fixed top-0 left-0 right-0 z-50 h-[68px] transition-shadow duration-300">
-        <div class="header-inner">
-            <a href="#hero" class="header-left transition-transform duration-300 hover:scale-105" aria-label="Haiere - Beranda">
-                <img id="logo-header" src="https://i.postimg.cc/GmWt2wch/H-blue.webp" alt="Logo Haiere" class="logo-img h-9 w-9 rounded-xl object-contain" style="filter:drop-shadow(0 0 12px rgba(59,130,246,0.25))" loading="eager" fetchpriority="high" width="36" height="36" />
-                <span class="brand-text whitespace-nowrap text-base tracking-tight text-slate-900 dark:text-white sm:text-lg">
-                    HAIERE<span class="text-blue-400">.</span>
-                </span>
-            </a>
+    <div class="header-right">
+      <button
+        id="theme-toggle"
+        type="button"
+        aria-label="Toggle theme"
+        class="theme-btn"
+        title="Toggle theme"
+      >
+        <i class="fas fa-moon dark:hidden" aria-hidden="true"></i>
+        <i class="fas fa-sun hidden dark:inline-block" aria-hidden="true"></i>
+      </button>
 
-            <div class="header-right">
-                <button id="theme-toggle" type="button" aria-label="Ganti tema" class="theme-btn" title="Toggle theme">
-                    <i class="fas fa-moon dark:hidden" aria-hidden="true"></i>
-                    <i class="fas fa-sun hidden dark:inline-block" aria-hidden="true"></i>
-                </button>
-                <button id="menu-btn" type="button" aria-label="Buka menu navigasi" aria-expanded="false" class="relative" title="Menu">
-                    <span class="select-none font-mono text-[1.3rem] font-bold tracking-widest leading-none" style="transform:translateY(-1px);">⋮</span>
-                </button>
-            </div>
-        </div>
-    </header>
+      <button
+        id="menu-btn"
+        type="button"
+        aria-label="Open navigation menu"
+        aria-expanded="false"
+        aria-controls="site-menu"
+        class="relative"
+        title="Menu"
+      >
+        <span class="select-none font-mono text-[1.3rem] font-bold tracking-widest leading-none" style="transform:translateY(-1px);">⋮</span>
+      </button>
+    </div>
+  </div>
+</header>
 
     <!-- Drawer overlay -->
-    <div id="drawer-overlay" aria-hidden="true"></div>
+<div id="drawer-overlay" aria-hidden="true"></div>
 
-    <!-- Navigation drawer -->
-    <nav id="nav-drawer" aria-label="Navigasi utama">
-        <div class="drawer-inner">
-            <a href="#about" class="drawer-item nav-link" data-section="about">
-                <span class="icon"><i class="fas fa-user" aria-hidden="true"></i></span>
-                <span data-i18n="nav_about">Tentang</span>
-            </a>
-            <a href="#music" class="drawer-item nav-link" data-section="music">
-                <span class="icon"><i class="fas fa-music" aria-hidden="true"></i></span>
-                <span data-i18n="nav_music">Musik</span>
-            </a>
-            <a href="#quotes" class="drawer-item nav-link" data-section="quotes">
-                <span class="icon"><i class="fas fa-quote-left" aria-hidden="true"></i></span>
-                <span data-i18n="nav_quotes">Kutipan</span>
-            </a>
-            <a href="#tools" class="drawer-item nav-link" data-section="tools">
-                <span class="icon"><i class="fas fa-tools" aria-hidden="true"></i></span>
-                <span data-i18n="nav_tools">Tools</span>
-            </a>
-            <a href="#contact" class="drawer-item nav-link" data-section="contact">
-                <span class="icon"><i class="fas fa-envelope" aria-hidden="true"></i></span>
-                <span data-i18n="nav_contact">Kontak</span>
-            </a>
+<!-- Navigation drawer -->
+<nav id="nav-drawer" aria-label="Main navigation">
+  <div class="drawer-inner">
+    <a href="#about" class="drawer-item nav-link" data-section="about">
+      <span class="icon"><i class="fas fa-user" aria-hidden="true"></i></span>
+      <span data-i18n="nav_about">About</span>
+    </a>
 
-            <div class="drawer-divider" role="separator"></div>
+    <a href="#music" class="drawer-item nav-link" data-section="music">
+      <span class="icon"><i class="fas fa-music" aria-hidden="true"></i></span>
+      <span data-i18n="nav_music">Music</span>
+    </a>
 
-            <a href="https://github.com/haiere" target="_blank" rel="noopener noreferrer" class="drawer-item">
-                <span class="icon"><i class="fab fa-github" aria-hidden="true"></i></span>
-                <span data-i18n="nav_github">GitHub</span>
-                <span class="ml-auto text-[0.6rem] font-mono text-slate-400 dark:text-slate-500">
-                    <i class="fas fa-external-link-alt" aria-hidden="true"></i>
-                </span>
-            </a>
-            <a href="https://raia-ai.netlify.app" target="_blank" rel="noopener noreferrer" class="drawer-item">
-                <span class="icon"><i class="fas fa-robot" aria-hidden="true"></i></span>
-                <span data-i18n="nav_raia">Raia</span>
-                <span class="ml-auto text-[0.6rem] font-mono text-slate-400 dark:text-slate-500">
-                    <i class="fas fa-external-link-alt" aria-hidden="true"></i>
-                </span>
-            </a>
+    <a href="#quotes" class="drawer-item nav-link" data-section="quotes">
+      <span class="icon"><i class="fas fa-quote-left" aria-hidden="true"></i></span>
+      <span data-i18n="nav_quotes">Quotes</span>
+    </a>
 
-            <div class="drawer-divider" role="separator"></div>
+    <a href="#tools" class="drawer-item nav-link" data-section="tools">
+      <span class="icon"><i class="fas fa-tools" aria-hidden="true"></i></span>
+      <span data-i18n="nav_tools">Tools</span>
+    </a>
 
-            <div class="drawer-lang-wrap">
-                <span class="lang-label" data-i18n="nav_language">Bahasa</span>
-                <button class="lang-btn active" type="button" data-lang="id" aria-pressed="true">ID</button>
-                <button class="lang-btn" type="button" data-lang="en" aria-pressed="false">EN</button>
-            </div>
+    <a href="#contact" class="drawer-item nav-link" data-section="contact">
+      <span class="icon"><i class="fas fa-envelope" aria-hidden="true"></i></span>
+      <span data-i18n="nav_contact">Contact</span>
+    </a>
 
-            <div class="drawer-divider" role="separator"></div>
+    <hr class="drawer-divider" />
 
-            <div class="drawer-tagline">
-                <i class="fas fa-shield-halved" aria-hidden="true"></i>
-                <span data-i18n="nav_tagline">Built with privacy-first principles</span>
-            </div>
+    <a
+      href="https://github.com/haiere"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="drawer-item"
+      aria-label="Open GitHub in a new tab"
+    >
+      <span class="icon"><i class="fab fa-github" aria-hidden="true"></i></span>
+      <span data-i18n="nav_github">GitHub</span>
+      <span class="ml-auto text-[0.6rem] font-mono text-slate-400 dark:text-slate-500" aria-hidden="true">
+        <i class="fas fa-external-link-alt"></i>
+      </span>
+    </a>
 
-            <div class="drawer-footer-links">
-                <a href="https://raia-footer.netlify.app/#privacy" target="_blank" rel="noopener noreferrer" data-i18n="nav_privacy_policy">Privacy Policy</a>
-                <span class="select-none text-slate-300 dark:text-slate-600">·</span>
-                <a href="https://raia-footer.netlify.app/#terms" target="_blank" rel="noopener noreferrer" data-i18n="nav_terms">Terms &amp; Conditions</a>
-            </div>
-        </div>
-    </nav>
+    <a
+      href="https://raia-ai.netlify.app"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="drawer-item"
+      aria-label="Open RAIA AI in a new tab"
+    >
+      <span class="icon"><i class="fas fa-robot" aria-hidden="true"></i></span>
+      <span data-i18n="nav_raia">RAIA</span>
+      <span class="ml-auto text-[0.6rem] font-mono text-slate-400 dark:text-slate-500" aria-hidden="true">
+        <i class="fas fa-external-link-alt"></i>
+      </span>
+    </a>
+
+    <hr class="drawer-divider" />
+
+    <div class="drawer-lang-wrap" role="group" aria-label="Language selection">
+      <span class="lang-label" data-i18n="nav_language">Language</span>
+      <button class="lang-btn active" type="button" data-lang="id" aria-pressed="true">ID</button>
+      <button class="lang-btn" type="button" data-lang="en" aria-pressed="false">EN</button>
+    </div>
+
+    <hr class="drawer-divider" />
+
+    <div class="drawer-tagline">
+      <i class="fas fa-shield-halved" aria-hidden="true"></i>
+      <span data-i18n="nav_tagline">Software, AI, and tools built with privacy in mind</span>
+    </div>
+
+    <div class="drawer-footer-links">
+      <a
+        href="https://raia-footer.netlify.app/#privacy"
+        target="_blank"
+        rel="noopener noreferrer"
+        data-i18n="nav_privacy_policy"
+      >
+        Privacy Policy
+      </a>
+      <span class="select-none text-slate-300 dark:text-slate-600" aria-hidden="true">·</span>
+      <a
+        href="https://raia-footer.netlify.app/#terms"
+        target="_blank"
+        rel="noopener noreferrer"
+        data-i18n="nav_terms"
+      >
+        Terms &amp; Conditions
+      </a>
+    </div>
+  </div>
+</nav>
 
     <!-- Hero -->
-    <section id="hero" class="relative min-h-svh overflow-hidden bg-white px-5 pb-20 pt-24 text-center dark:bg-dark-bg flex items-center justify-center">
-        <div class="grid-bg absolute inset-0 pointer-events-none" aria-hidden="true"></div>
-        <div class="hero-spotlight" id="hero-spotlight" aria-hidden="true"></div>
+<section id="hero" class="relative min-h-svh overflow-hidden bg-white px-5 pb-12 pt-16 text-center dark:bg-dark-bg flex items-center justify-center">
+  <div class="grid-bg absolute inset-0 pointer-events-none" aria-hidden="true"></div>
+  <div class="hero-spotlight" id="hero-spotlight" aria-hidden="true"></div>
 
-        <div class="relative z-10 mx-auto max-w-2xl">
-            <div class="mb-7 inline-flex items-center gap-2 rounded-full border border-blue-500/20 bg-blue-500/10 px-4 py-1.5 font-mono text-[0.62rem] tracking-[0.18em] text-blue-600 backdrop-blur-sm animate-fade-up animate-fade-up-delay-1 dark:text-blue-400">
-                <span class="h-1.5 w-1.5 rounded-full bg-blue-500" aria-hidden="true"></span>
-                haiere.github.io
-            </div>
+  <div class="relative z-10 mx-auto max-w-2xl">
+    <div class="mb-5 inline-flex items-center gap-2 rounded-full border border-blue-500/20 bg-blue-500/10 px-4 py-1.5 font-mono text-[0.62rem] tracking-[0.18em] text-blue-600 backdrop-blur-sm animate-fade-up animate-fade-up-delay-1 dark:text-blue-400">
+      <span class="h-1.5 w-1.5 rounded-full bg-blue-500" aria-hidden="true"></span>
+      haiere.github.io
+    </div>
 
-            <h1 class="mb-5 text-[clamp(2.8rem,10vw,5.8rem)] font-display font-extrabold leading-[0.92] tracking-tighter text-balance animate-fade-up animate-fade-up-delay-2">
-                <span class="block text-slate-900 dark:text-white" data-i18n="hero_title_1">Hajir</span>
-                <span class="block text-blue-600 decoration-4 underline underline-offset-[0.18em] dark:text-blue-400 dark:decoration-white" data-i18n="hero_title_2">Stein</span>
-            </h1>
+    <h1 class="mb-4 text-[clamp(2.8rem,10vw,5.8rem)] font-display font-extrabold leading-[0.92] tracking-tighter text-balance animate-fade-up animate-fade-up-delay-2">
+      <span class="block text-slate-900 dark:text-white" data-i18n="hero_title_1">Hajir</span>
+      <span class="block text-blue-600 decoration-4 underline underline-offset-[0.18em] dark:text-blue-400 dark:decoration-white" data-i18n="hero_title_2">Studio</span>
+    </h1>
 
-            <p class="mx-auto mb-10 max-w-xl text-[clamp(1rem,2vw,1.15rem)] leading-relaxed text-slate-600 animate-fade-up animate-fade-up-delay-3 dark:text-slate-400" data-i18n="hero_desc">
-                Halo, aku Hajir — musisi dan developer yang membuat karya serta tools simpel, cepat, dan privacy-first.
-            </p>
+    <p class="mx-auto mb-8 max-w-xl text-[clamp(1rem,2vw,1.15rem)] leading-relaxed text-slate-600 animate-fade-up animate-fade-up-delay-3 dark:text-slate-400" data-i18n="hero_desc">
+      Hi, I'm Hajir — a developer and creator building simple, fast, privacy-first tools.
+    </p>
 
-            <div class="flex flex-col items-center justify-center gap-3 sm:flex-row animate-fade-up animate-fade-up-delay-4">
-                <a href="#about" class="btn-primary w-full justify-center sm:w-auto">
-                    <i class="fas fa-user text-xs" aria-hidden="true"></i>
-                    <span data-i18n="hero_cta1">Kenalan Yuk</span>
-                </a>
-                <a href="https://raia-ai.netlify.app" target="_blank" rel="noopener noreferrer" class="btn-secondary w-full justify-center sm:w-auto">
-                    <i class="fas fa-robot text-xs" aria-hidden="true"></i>
-                    <span data-i18n="hero_cta2">Coba RAIA-Ai</span>
-                </a>
-            </div>
-        </div>
+    <div class="flex flex-col items-center justify-center gap-3 sm:flex-row animate-fade-up animate-fade-up-delay-4">
+      <a href="#about" class="btn-primary w-full justify-center sm:w-auto">
+        <i class="fas fa-user text-xs" aria-hidden="true"></i>
+        <span data-i18n="hero_cta1">Get to Know Me</span>
+      </a>
+      <a href="https://raia-ai.netlify.app" target="_blank" rel="noopener noreferrer" class="btn-secondary w-full justify-center sm:w-auto">
+        <i class="fas fa-robot text-xs" aria-hidden="true"></i>
+        <span data-i18n="hero_cta2">Try RAIA AI</span>
+      </a>
+    </div>
+  </div>
 
-        <div class="absolute bottom-8 left-1/2 hidden -translate-x-1/2 flex-col items-center gap-1.5 sm:flex animate-fade-up animate-fade-up-delay-5" aria-hidden="true">
-            <div class="scroll-line h-12 w-px bg-gradient-to-b from-blue-400/60 to-transparent"></div>
-            <span class="font-mono text-[8px] tracking-[0.2em] uppercase text-slate-400 dark:text-slate-600">scroll</span>
-        </div>
+  <div class="absolute bottom-8 left-1/2 hidden -translate-x-1/2 flex-col items-center gap-1.5 sm:flex animate-fade-up animate-fade-up-delay-5" aria-hidden="true">
+    <div class="scroll-line h-12 w-px bg-gradient-to-b from-blue-400/60 to-transparent"></div>
+    <span class="font-mono text-[8px] tracking-[0.2em] uppercase text-slate-400 dark:text-slate-600">scroll</span>
+  </div>
 
-        <div class="absolute bottom-0 left-0 right-0 overflow-hidden border-t border-slate-200/40 bg-blue-500/4 py-2.5 dark:border-slate-800/60" aria-hidden="true">
-            <div class="ticker-track font-mono text-[10px] tracking-[0.15em] uppercase text-slate-400 dark:text-slate-600">
-                <span>Musisi</span><span class="text-blue-400/30">♔</span>
-                <span>Developer</span><span class="text-blue-400/30">♕</span>
-                <span>Privacy First</span><span class="text-blue-400/30">♖</span>
-                <span>Open Web</span><span class="text-blue-400/30">♗</span>
-                <span>GitHub Pages</span><span class="text-blue-400/30">♘</span>
-                <span>Creative Tech</span><span class="text-blue-400/30">♙</span>
-            </div>
-        </div>
-    </section>
-
+  <div class="absolute bottom-0 left-0 right-0 overflow-hidden border-t border-slate-200/40 bg-blue-500/4 py-2.5 dark:border-slate-800/60" aria-hidden="true">
+    <div class="ticker-track font-mono text-[10px] tracking-[0.15em] uppercase text-slate-400 dark:text-slate-600">
+      <span>Musician</span><span class="text-blue-400/30">♔</span>
+      <span>Developer</span><span class="text-blue-400/30">♕</span>
+      <span>Privacy First</span><span class="text-blue-400/30">♖</span>
+      <span>Open Web</span><span class="text-blue-400/30">♗</span>
+      <span>GitHub Pages</span><span class="text-blue-400/30">♘</span>
+      <span>Creative Tech</span><span class="text-blue-400/30">♙</span>
+    </div>
+  </div>
+</section>
     <!-- About -->
-    <section id="about" class="bg-slate-50 py-28 dark:bg-slate-950/60">
-        <div class="mx-auto max-w-3xl px-5 sm:px-8">
-            <div class="reveal glass-card glass-hover rounded-3xl border border-slate-200/60 bg-white/70 p-8 shadow-sm backdrop-blur-xl dark:border-slate-800/60 dark:bg-slate-900/50 sm:p-10">
-                <div class="mb-8 flex flex-col items-center">
-                    <div class="mb-5 flex h-24 w-24 items-center justify-center overflow-hidden rounded-full border border-slate-200/50 bg-white p-4 shadow-sm dark:border-slate-700/40 dark:bg-slate-900/60 sm:h-28 sm:w-28">
-                        <img src="https://i.postimg.cc/GmWt2wch/H-blue.webp" alt="Logo Haiere Raia" class="logo-img h-full w-full object-contain" loading="lazy" decoding="async" width="112" height="112" />
-                    </div>
-                    <h3 class="mb-1.5 font-display text-xl font-bold tracking-tight text-slate-900 dark:text-white sm:text-2xl">Hajir Stein</h3>
-                    <p class="font-mono text-[10px] uppercase tracking-[0.18em] text-slate-500 dark:text-slate-400" data-i18n="about_role">Musisi · Developer</p>
-                </div>
-
-                <div class="mb-6 flex flex-wrap justify-center gap-2">
-                    <span class="glass-pill rounded-full px-3 py-1 font-mono text-[0.65rem] text-blue-600 dark:text-blue-400" data-i18n="tag_musician">Musisi</span>
-                    <span class="glass-pill rounded-full px-3 py-1 font-mono text-[0.65rem] text-blue-600 dark:text-blue-400" data-i18n="tag_developer">Developer</span>
-                </div>
-
-                <div class="mx-auto max-w-xl space-y-4 text-center text-sm leading-relaxed text-slate-600 dark:text-slate-300 sm:text-base">
-                    <p data-i18n="about_p1">Hai! Aku Hajir. Musik adalah dunia tempat aku mengekspresikan diri dan membagikan perasaan hati.</p>
-                    <p data-i18n="about_p2">Melalui karya-karyaku, aku ingin menyebarkan energi positif dan semangat. Ayo berteman!</p>
-                    <p data-i18n="about_p3">Selain itu, aku juga bikin tools online yang bisa dipakai gratis. Cepat, simpel, dan aman tanpa menyimpan data pribadimu.</p>
-                </div>
-
-                <div class="mt-8 flex justify-center">
-                    <a href="https://raia-ai.netlify.app" target="_blank" rel="noopener noreferrer" class="btn-primary">
-                        <i class="fas fa-robot text-xs" aria-hidden="true"></i>
-                        <span data-i18n="about_cta">Gunakan Raia</span>
-                    </a>
-                </div>
-            </div>
-
-            <div class="reveal mt-6 grid grid-cols-2 gap-3 sm:grid-cols-4">
-                <div class="glass-card rounded-xl border border-slate-200/50 bg-white/60 px-4 py-5 text-center dark:border-slate-800/50 dark:bg-slate-900/40">
-                    <div class="stat-number text-slate-900 dark:text-white" data-count="4" data-suffix="+">0</div>
-                    <div class="mt-1 font-mono text-[9px] uppercase tracking-[0.12em] text-slate-500 dark:text-slate-400" data-i18n="stat_tools_label">Tools Dirilis</div>
-                </div>
-                <div class="glass-card rounded-xl border border-slate-200/50 bg-white/60 px-4 py-5 text-center dark:border-slate-800/50 dark:bg-slate-900/40">
-                    <div class="stat-number text-slate-900 dark:text-white" data-count="2" data-suffix="">0</div>
-                    <div class="mt-1 font-mono text-[9px] uppercase tracking-[0.12em] text-slate-500 dark:text-slate-400" data-i18n="stat_albums_label">Album Musik</div>
-                </div>
-                <div class="glass-card rounded-xl border border-slate-200/50 bg-white/60 px-4 py-5 text-center dark:border-slate-800/50 dark:bg-slate-900/40">
-                    <div class="stat-number text-slate-900 dark:text-white" data-count="12" data-suffix="+">0</div>
-                    <div class="mt-1 font-mono text-[9px] uppercase tracking-[0.12em] text-slate-500 dark:text-slate-400" data-i18n="stat_songs_label">Lagu Original</div>
-                </div>
-                <div class="glass-card rounded-xl border border-slate-200/50 bg-white/60 px-4 py-5 text-center dark:border-slate-800/50 dark:bg-slate-900/40">
-                    <div class="stat-number text-slate-900 dark:text-white" data-count="100" data-suffix="%">0</div>
-                    <div class="mt-1 font-mono text-[9px] uppercase tracking-[0.12em] text-slate-500 dark:text-slate-400" data-i18n="stat_privacy_label">Privasi Aman</div>
-                </div>
-            </div>
-
-            <div class="reveal mt-3 grid grid-cols-1 gap-3 sm:grid-cols-2">
-                <div class="glass-card glass-hover contact-link flex items-center gap-4 rounded-xl border border-slate-200/50 bg-white/60 px-5 py-4 dark:border-slate-800/50 dark:bg-slate-900/40">
-                    <div class="flex h-9 w-9 items-center justify-center rounded-xl border border-blue-500/20 bg-blue-500/10 text-blue-500 dark:text-blue-400">
-                        <i class="fas fa-code" aria-hidden="true"></i>
-                    </div>
-                    <div>
-                        <div class="mb-0.5 font-mono text-[9px] uppercase tracking-[0.12em] text-slate-500 dark:text-slate-400" data-i18n="stat_approach">Pendekatan</div>
-                        <div class="text-sm font-semibold text-slate-900 dark:text-white">Single-File HTML Apps</div>
-                    </div>
-                </div>
-                <div class="glass-card glass-hover contact-link flex items-center gap-4 rounded-xl border border-slate-200/50 bg-white/60 px-5 py-4 dark:border-slate-800/50 dark:bg-slate-900/40">
-                    <div class="flex h-9 w-9 items-center justify-center rounded-xl border border-blue-500/20 bg-blue-500/10 text-blue-500 dark:text-blue-400">
-                        <i class="fas fa-shield-halved" aria-hidden="true"></i>
-                    </div>
-                    <div>
-                        <div class="mb-0.5 font-mono text-[9px] uppercase tracking-[0.12em] text-slate-500 dark:text-slate-400" data-i18n="stat_philosophy">Prinsip</div>
-                        <div class="text-sm font-semibold text-slate-900 dark:text-white">Privacy First · Zero Backend</div>
-                    </div>
-                </div>
-                <div class="glass-card glass-hover contact-link flex items-center gap-4 rounded-xl border border-slate-200/50 bg-white/60 px-5 py-4 dark:border-slate-800/50 dark:bg-slate-900/40">
-                    <div class="flex h-9 w-9 items-center justify-center rounded-xl border border-blue-500/20 bg-blue-500/10 text-blue-500 dark:text-blue-400">
-                        <i class="fab fa-github" aria-hidden="true"></i>
-                    </div>
-                    <div>
-                        <div class="mb-0.5 font-mono text-[9px] uppercase tracking-[0.12em] text-slate-500 dark:text-slate-400">GitHub</div>
-                        <div class="flex items-center gap-2">
-                            <span class="text-sm font-semibold text-slate-900 dark:text-white">haiere</span>
-                            <button class="copy-btn text-slate-400 transition-colors hover:text-blue-500" data-copy="haiere" type="button" aria-label="Salin username GitHub">
-                                <i class="far fa-copy text-xs" aria-hidden="true"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                <div class="glass-card glass-hover contact-link flex items-center gap-4 rounded-xl border border-slate-200/50 bg-white/60 px-5 py-4 dark:border-slate-800/50 dark:bg-slate-900/40">
-                    <div class="flex h-9 w-9 items-center justify-center rounded-xl border border-blue-500/20 bg-blue-500/10 text-blue-500 dark:text-blue-400">
-                        <i class="fas fa-globe" aria-hidden="true"></i>
-                    </div>
-                    <div>
-                        <div class="mb-0.5 font-mono text-[9px] uppercase tracking-[0.12em] text-slate-500 dark:text-slate-400">Platform</div>
-                        <div class="text-sm font-semibold text-slate-900 dark:text-white">GitHub Pages</div>
-                    </div>
-                </div>
-            </div>
+<section id="about" class="bg-slate-50 py-16 dark:bg-slate-950/60">
+  <div class="mx-auto max-w-3xl px-5 sm:px-8">
+    <div class="reveal glass-card glass-hover rounded-3xl border border-slate-200/60 bg-white/70 p-6 shadow-sm backdrop-blur-xl dark:border-slate-800/60 dark:bg-slate-900/50 sm:p-8">
+      <div class="mb-6 flex flex-col items-center">
+        <div class="mb-4 flex h-24 w-24 items-center justify-center overflow-hidden rounded-full border border-slate-200/50 bg-white p-4 shadow-sm dark:border-slate-700/40 dark:bg-slate-900/60 sm:h-28 sm:w-28">
+          <img src="https://i.postimg.cc/GmWt2wch/H-blue.webp" alt="Haiere logo" class="logo-img h-full w-full object-contain" loading="lazy" decoding="async" width="112" height="112" />
         </div>
-    </section>
+        <h3 class="mb-1.5 font-display text-xl font-bold tracking-tight text-slate-900 dark:text-white sm:text-2xl">Hajir Stein</h3>
+        <p class="font-mono text-[10px] uppercase tracking-[0.18em] text-slate-500 dark:text-slate-400" data-i18n="about_role">Musician · Developer</p>
+      </div>
+
+      <div class="mb-5 flex flex-wrap justify-center gap-2">
+        <span class="glass-pill rounded-full px-3 py-1 font-mono text-[0.65rem] text-blue-600 dark:text-blue-400" data-i18n="tag_musician">Musician</span>
+        <span class="glass-pill rounded-full px-3 py-1 font-mono text-[0.65rem] text-blue-600 dark:text-blue-400" data-i18n="tag_developer">Developer</span>
+      </div>
+
+      <div class="mx-auto max-w-xl space-y-4 text-center text-sm leading-relaxed text-slate-600 dark:text-slate-300 sm:text-base">
+        <p data-i18n="about_p1">Hi, I'm Hajir. Music is where I express myself and share what I feel.</p>
+        <p data-i18n="about_p2">Through my work, I want to spread positive energy and encouragement.</p>
+        <p data-i18n="about_p3">I also build free online tools that are fast, simple, and safe without storing your personal data.</p>
+      </div>
+
+      <div class="mt-6 flex justify-center">
+        <a href="https://raia-ai.netlify.app" target="_blank" rel="noopener noreferrer" class="btn-primary">
+          <i class="fas fa-robot text-xs" aria-hidden="true"></i>
+          <span data-i18n="about_cta">Use RAIA</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="reveal mt-5 grid grid-cols-2 gap-3 sm:grid-cols-4">
+      <div class="glass-card rounded-xl border border-slate-200/50 bg-white/60 px-4 py-5 text-center dark:border-slate-800/50 dark:bg-slate-900/40">
+        <div class="stat-number text-slate-900 dark:text-white" data-count="4" data-suffix="+">0</div>
+        <div class="mt-1 font-mono text-[9px] uppercase tracking-[0.12em] text-slate-500 dark:text-slate-400" data-i18n="stat_tools_label">Tools Released</div>
+      </div>
+      <div class="glass-card rounded-xl border border-slate-200/50 bg-white/60 px-4 py-5 text-center dark:border-slate-800/50 dark:bg-slate-900/40">
+        <div class="stat-number text-slate-900 dark:text-white" data-count="2" data-suffix="">0</div>
+        <div class="mt-1 font-mono text-[9px] uppercase tracking-[0.12em] text-slate-500 dark:text-slate-400" data-i18n="stat_albums_label">Music Releases</div>
+      </div>
+      <div class="glass-card rounded-xl border border-slate-200/50 bg-white/60 px-4 py-5 text-center dark:border-slate-800/50 dark:bg-slate-900/40">
+        <div class="stat-number text-slate-900 dark:text-white" data-count="12" data-suffix="+">0</div>
+        <div class="mt-1 font-mono text-[9px] uppercase tracking-[0.12em] text-slate-500 dark:text-slate-400" data-i18n="stat_songs_label">Original Songs</div>
+      </div>
+      <div class="glass-card rounded-xl border border-slate-200/50 bg-white/60 px-4 py-5 text-center dark:border-slate-800/50 dark:bg-slate-900/40">
+        <div class="stat-number text-slate-900 dark:text-white" data-count="100" data-suffix="%">0</div>
+        <div class="mt-1 font-mono text-[9px] uppercase tracking-[0.12em] text-slate-500 dark:text-slate-400" data-i18n="stat_privacy_label">Privacy First</div>
+      </div>
+    </div>
+  </div>
+</section>
 
     <!-- RWR -->
-    <section id="rwr" class="bg-slate-50 py-20 dark:bg-slate-950/60">
-        <div class="mx-auto max-w-3xl px-5 sm:px-8">
-            <div class="reveal flex flex-col items-center rounded-3xl border border-slate-200/60 bg-white/70 px-6 py-10 text-center shadow-sm backdrop-blur-xl dark:border-slate-800/60 dark:bg-slate-900/50 sm:px-10">
-                <div class="mb-5 flex items-center justify-center gap-4">
-                    <img src="https://i.postimg.cc/fTGgqJHh/RWR.webp" alt="Logo RWR" class="h-16 w-16 rounded-full border-2 border-blue-500/25 object-cover shadow-md" loading="lazy" decoding="async" width="64" height="64" />
-                    <img src="https://i.postimg.cc/xTJ4PK3B/AMA.webp" alt="Logo AMA" class="h-16 w-16 rounded-full border-2 border-blue-500/25 object-cover shadow-md" loading="lazy" decoding="async" width="64" height="64" />
-                </div>
-                <h3 class="mb-3 font-display text-xl font-bold tracking-tight text-slate-900 dark:text-white sm:text-2xl" data-i18n="RWR">RWR - AMA</h3>
-                <p class="max-w-md text-sm italic leading-relaxed text-slate-600 dark:text-slate-400" data-i18n="RWR_closing">RWR adalah bagian dari hidupku, suatu hari nanti RWR.</p>
-            </div>
+<section id="rwr" class="bg-slate-50 py-12 dark:bg-slate-950/60">
+  <div class="mx-auto max-w-3xl px-5 sm:px-8">
+    <div class="reveal flex flex-col items-center rounded-3xl border border-slate-200/60 bg-white/70 px-6 py-8 text-center shadow-sm backdrop-blur-xl dark:border-slate-800/60 dark:bg-slate-900/50 sm:px-10">
+      <div class="mb-4 flex items-center justify-center gap-4">
+        <img src="https://i.postimg.cc/fTGgqJHh/RWR.webp" alt="RWR logo" class="h-16 w-16 rounded-full border-2 border-blue-500/25 object-cover shadow-md" loading="lazy" decoding="async" width="64" height="64" />
+        <img src="https://i.postimg.cc/xTJ4PK3B/AMA.webp" alt="AMA logo" class="h-16 w-16 rounded-full border-2 border-blue-500/25 object-cover shadow-md" loading="lazy" decoding="async" width="64" height="64" />
+      </div>
+      <h3 class="mb-2 font-display text-xl font-bold tracking-tight text-slate-900 dark:text-white sm:text-2xl" data-i18n="RWR">RWR - AMA</h3>
+      <p class="max-w-md text-sm italic leading-relaxed text-slate-600 dark:text-slate-400" data-i18n="RWR_closing">RWR is part of my long-term creative journey.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Music -->
+<section id="music" class="relative overflow-hidden bg-white/50 py-16 dark:bg-slate-950/40">
+  <div class="relative z-10 mx-auto max-w-3xl px-5 sm:px-8">
+    <div class="reveal mb-10 text-center">
+      <h2 class="mb-2 font-display text-3xl font-extrabold tracking-tight text-slate-900 dark:text-white sm:text-4xl" data-i18n="music_title">Music as a Hobby</h2>
+      <p class="mx-auto max-w-md text-sm leading-relaxed text-slate-600 dark:text-slate-400" data-i18n="music_subtitle">A few tracks I made in my free time.</p>
+    </div>
+
+    <div class="reveal glass-card glass-hover mb-5 rounded-3xl border border-slate-200/60 bg-white/70 p-5 shadow-sm backdrop-blur-xl transition-colors duration-300 dark:border-slate-800/60 dark:bg-slate-900/50">
+      <div class="mb-3 flex items-center gap-3">
+        <img id="music-logo" src="https://i.postimg.cc/VLrVFjF1/haieresignaturebiru.webp" alt="Signature Music logo" class="logo-img h-11 w-11 rounded-xl border border-blue-500/20 object-contain transition-transform duration-300 hover:scale-105" loading="lazy" decoding="async" width="44" height="44" />
+        <div>
+          <div class="font-display font-bold text-slate-900 dark:text-white">Signature Music</div>
+          <div class="font-mono text-[9px] font-semibold uppercase tracking-[0.15em] text-blue-600 dark:text-blue-400" data-i18n="music_player_label">Official Player</div>
         </div>
-    </section>
+      </div>
+      <p class="text-sm leading-relaxed text-slate-600 dark:text-slate-400" data-i18n="music_player_desc">Choose a song and play it directly in the browser.</p>
+    </div>
 
-    <!-- Music -->
-    <section id="music" class="relative overflow-hidden bg-white/50 py-28 dark:bg-slate-950/40">
-        <div class="relative z-10 mx-auto max-w-3xl px-5 sm:px-8">
-            <div class="reveal mb-14 text-center">
-                <h2 class="mb-3 font-display text-3xl font-extrabold tracking-tight text-slate-900 dark:text-white sm:text-4xl" data-i18n="music_title">Dengarkan Laguku</h2>
-                <p class="mx-auto max-w-md text-sm leading-relaxed text-slate-600 dark:text-slate-400" data-i18n="music_subtitle">Setiap nada dibuat dengan hati untuk menemani harimu.</p>
-            </div>
+    <div class="reveal overflow-hidden rounded-3xl border border-slate-200/60 bg-slate-50 shadow-xl dark:border-slate-800/60 dark:bg-slate-900/50">
+      <iframe src="https://haiere.github.io/signature-music" title="Signature Music player" allow="autoplay" loading="lazy" class="block h-[70vh] min-h-[520px] w-full border-0 sm:h-[600px]"></iframe>
+    </div>
 
-            <div class="reveal glass-card glass-hover mb-6 rounded-3xl border border-slate-200/60 bg-white/70 p-6 shadow-sm backdrop-blur-xl transition-colors duration-300 dark:border-slate-800/60 dark:bg-slate-900/50">
-                <div class="mb-4 flex items-center gap-3">
-                    <img id="music-logo" src="https://i.postimg.cc/VLrVFjF1/haieresignaturebiru.webp" alt="Signature Music Logo" class="logo-img h-11 w-11 rounded-xl border border-blue-500/20 object-contain transition-transform duration-300 hover:scale-105" loading="lazy" decoding="async" width="44" height="44" />
-                    <div>
-                        <div class="font-display font-bold text-slate-900 dark:text-white">Signature Music</div>
-                        <div class="font-mono text-[9px] font-semibold uppercase tracking-[0.15em] text-blue-600 dark:text-blue-400" data-i18n="music_player_label">Official Player</div>
-                    </div>
-                </div>
-                <p class="mb-4 text-sm leading-relaxed text-slate-600 dark:text-slate-400" data-i18n="music_player_desc">Pilih lagu kesukaanmu dan putar langsung di browser tanpa ribet.</p>
-            </div>
+    <div class="reveal mt-5 text-center">
+      <a href="https://signature-music.netlify.app" target="_blank" rel="noopener noreferrer" class="group inline-flex items-center gap-1.5 font-mono text-[11px] text-blue-600 transition-colors hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300">
+        <i class="fas fa-external-link-alt text-[10px] transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" aria-hidden="true"></i>
+        <span data-i18n="music_open_link">Click here if the player doesn't appear.</span>
+      </a>
+    </div>
+  </div>
+</section>
 
-            <div class="reveal overflow-hidden rounded-3xl border border-slate-200/60 bg-slate-50 shadow-xl dark:border-slate-800/60 dark:bg-slate-900/50">
-                <iframe src="https://haiere.github.io/signature-music" title="Signature Music Player" allow="autoplay" loading="lazy" class="block h-[70vh] min-h-[520px] w-full border-0 sm:h-[600px]"></iframe>
-            </div>
+<!-- Quotes -->
+<section id="quotes" class="bg-slate-50 py-16 dark:bg-slate-950/40">
+  <div class="mx-auto max-w-4xl px-5 sm:px-8">
+    <div class="reveal mb-10 text-center">
+      <h2 class="mb-2 font-display text-3xl font-extrabold tracking-tight text-slate-900 dark:text-white sm:text-4xl" data-i18n="quotes_title">Quotes</h2>
+      <p class="mx-auto max-w-md text-sm leading-relaxed text-slate-600 dark:text-slate-400" data-i18n="quotes_subtitle">A few short lines that inspire my work.</p>
+    </div>
 
-            <div class="reveal mt-6 text-center">
-                <a href="https://signature-music.netlify.app" target="_blank" rel="noopener noreferrer" class="group inline-flex items-center gap-1.5 font-mono text-[11px] text-blue-600 transition-colors hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300">
-                    <i class="fas fa-external-link-alt text-[10px] transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" aria-hidden="true"></i>
-                    <span data-i18n="music_open_link">Klik di sini jika pemutar tidak muncul</span>
-                </a>
-            </div>
+    <div class="grid grid-cols-1 gap-5 md:grid-cols-2">
+      <div class="reveal glass-card glass-hover group relative overflow-hidden rounded-3xl border border-slate-200/60 bg-white/70 p-6 shadow-sm backdrop-blur-xl dark:border-slate-800/60 dark:bg-slate-900/50 sm:p-7">
+        <div class="absolute -top-4 -right-2 select-none font-serif text-8xl leading-none text-slate-200/50 transition-all duration-300 group-hover:scale-110 group-hover:text-blue-500/10 dark:text-slate-700/20" aria-hidden="true">”</div>
+        <p class="relative z-10 mb-5 text-sm leading-relaxed italic text-slate-700 dark:text-slate-300" data-i18n="q1_text">Your time is limited, so don’t waste it living someone else’s life.</p>
+        <div class="relative z-10 flex items-center gap-3">
+          <div class="h-0.5 w-0 rounded-full bg-blue-500 transition-all duration-300 group-hover:w-6" aria-hidden="true"></div>
+          <div class="font-sans text-xs font-bold text-slate-900 transition-transform duration-300 group-hover:translate-x-1 dark:text-white" data-i18n="q1_author">Steve Jobs</div>
         </div>
-    </section>
+      </div>
 
-    <!-- Quotes -->
-    <section id="quotes" class="bg-slate-50 py-28 dark:bg-slate-950/40">
-        <div class="mx-auto max-w-4xl px-5 sm:px-8">
-            <div class="reveal mb-16 text-center">
-                <h2 class="mb-3 font-display text-3xl font-extrabold tracking-tight text-slate-900 dark:text-white sm:text-4xl" data-i18n="quotes_title">Kutipan Favorit</h2>
-                <p class="mx-auto max-w-md text-sm leading-relaxed text-slate-600 dark:text-slate-400" data-i18n="quotes_subtitle">Pesan dari orang-orang hebat yang selalu menginspirasi jalanku.</p>
-            </div>
-
-            <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
-                <div class="reveal glass-card glass-hover group relative overflow-hidden rounded-3xl border border-slate-200/60 bg-white/70 p-8 shadow-sm backdrop-blur-xl dark:border-slate-800/60 dark:bg-slate-900/50">
-                    <div class="absolute -top-4 -right-2 select-none font-serif text-8xl leading-none text-slate-200/50 transition-all duration-300 group-hover:scale-110 group-hover:text-blue-500/10 dark:text-slate-700/20" aria-hidden="true">”</div>
-                    <p class="relative z-10 mb-6 text-sm leading-relaxed italic text-slate-700 dark:text-slate-300" data-i18n="q1_text">"Waktumu terbatas, jadi jangan sia-siakan dengan menjalani hidup orang lain."</p>
-                    <div class="relative z-10 flex items-center gap-3">
-                        <div class="h-0.5 w-0 rounded-full bg-blue-500 transition-all duration-300 group-hover:w-6" aria-hidden="true"></div>
-                        <div class="font-sans text-xs font-bold text-slate-900 transition-transform duration-300 group-hover:translate-x-1 dark:text-white" data-i18n="q1_author">— Steve Jobs</div>
-                    </div>
-                </div>
-                <div class="reveal glass-card glass-hover group relative overflow-hidden rounded-3xl border border-slate-200/60 bg-white/70 p-8 shadow-sm backdrop-blur-xl dark:border-slate-800/60 dark:bg-slate-900/50">
-                    <div class="absolute -top-4 -right-2 select-none font-serif text-8xl leading-none text-slate-200/50 transition-all duration-300 group-hover:scale-110 group-hover:text-blue-500/10 dark:text-slate-700/20" aria-hidden="true">”</div>
-                    <p class="relative z-10 mb-6 text-sm leading-relaxed italic text-slate-700 dark:text-slate-300" data-i18n="q2_text">"Tantangannya adalah melakukannya lebih cepat daripada semua orang tanpa kehilangan kendali. Itu level yang sama sekali berbeda."</p>
-                    <div class="relative z-10 flex items-center gap-3">
-                        <div class="h-0.5 w-0 rounded-full bg-blue-500 transition-all duration-300 group-hover:w-6" aria-hidden="true"></div>
-                        <div class="font-sans text-xs font-bold text-slate-900 transition-transform duration-300 group-hover:translate-x-1 dark:text-white" data-i18n="q2_author">— Adrian Newey</div>
-                    </div>
-                </div>
-                <div class="reveal glass-card glass-hover group relative overflow-hidden rounded-3xl border border-slate-200/60 bg-white/70 p-8 shadow-sm backdrop-blur-xl dark:border-slate-800/60 dark:bg-slate-900/50">
-                    <div class="absolute -top-4 -right-2 select-none font-serif text-8xl leading-none text-slate-200/50 transition-all duration-300 group-hover:scale-110 group-hover:text-blue-500/10 dark:text-slate-700/20" aria-hidden="true">”</div>
-                    <p class="relative z-10 mb-6 text-sm leading-relaxed italic text-slate-700 dark:text-slate-300" data-i18n="q3_text">"Aku memulainya dengan orang di cermin."</p>
-                    <div class="relative z-10 flex items-center gap-3">
-                        <div class="h-0.5 w-0 rounded-full bg-blue-500 transition-all duration-300 group-hover:w-6" aria-hidden="true"></div>
-                        <div class="font-sans text-xs font-bold text-slate-900 transition-transform duration-300 group-hover:translate-x-1 dark:text-white" data-i18n="q3_author">— Michael Jackson</div>
-                    </div>
-                </div>
-                <div class="reveal glass-card glass-hover group relative overflow-hidden rounded-3xl border border-slate-200/60 bg-white/70 p-8 shadow-sm backdrop-blur-xl dark:border-slate-800/60 dark:bg-slate-900/50">
-                    <div class="absolute -top-4 -right-2 select-none font-serif text-8xl leading-none text-slate-200/50 transition-all duration-300 group-hover:scale-110 group-hover:text-blue-500/10 dark:text-slate-700/20" aria-hidden="true">”</div>
-                    <p class="relative z-10 mb-6 text-sm leading-relaxed italic text-slate-700 dark:text-slate-300" data-i18n="q4_text">"Musik adalah perantara antara kehidupan spiritual dan kehidupan indrawi."</p>
-                    <div class="relative z-10 flex items-center gap-3">
-                        <div class="h-0.5 w-0 rounded-full bg-blue-500 transition-all duration-300 group-hover:w-6" aria-hidden="true"></div>
-                        <div class="font-sans text-xs font-bold text-slate-900 transition-transform duration-300 group-hover:translate-x-1 dark:text-white" data-i18n="q4_author">— Ludwig van Beethoven</div>
-                    </div>
-                </div>
-            </div>
+      <div class="reveal glass-card glass-hover group relative overflow-hidden rounded-3xl border border-slate-200/60 bg-white/70 p-6 shadow-sm backdrop-blur-xl dark:border-slate-800/60 dark:bg-slate-900/50 sm:p-7">
+        <div class="absolute -top-4 -right-2 select-none font-serif text-8xl leading-none text-slate-200/50 transition-all duration-300 group-hover:scale-110 group-hover:text-blue-500/10 dark:text-slate-700/20" aria-hidden="true">”</div>
+        <p class="relative z-10 mb-5 text-sm leading-relaxed italic text-slate-700 dark:text-slate-300" data-i18n="q2_text">The challenge is doing it faster than everyone else without losing control.</p>
+        <div class="relative z-10 flex items-center gap-3">
+          <div class="h-0.5 w-0 rounded-full bg-blue-500 transition-all duration-300 group-hover:w-6" aria-hidden="true"></div>
+          <div class="font-sans text-xs font-bold text-slate-900 transition-transform duration-300 group-hover:translate-x-1 dark:text-white" data-i18n="q2_author">Adrian Newey</div>
         </div>
-    </section>
+      </div>
+
+      <div class="reveal glass-card glass-hover group relative overflow-hidden rounded-3xl border border-slate-200/60 bg-white/70 p-6 shadow-sm backdrop-blur-xl dark:border-slate-800/60 dark:bg-slate-900/50 sm:p-7">
+        <div class="absolute -top-4 -right-2 select-none font-serif text-8xl leading-none text-slate-200/50 transition-all duration-300 group-hover:scale-110 group-hover:text-blue-500/10 dark:text-slate-700/20" aria-hidden="true">”</div>
+        <p class="relative z-10 mb-5 text-sm leading-relaxed italic text-slate-700 dark:text-slate-300" data-i18n="q3_text">It starts with the person in the mirror.</p>
+        <div class="relative z-10 flex items-center gap-3">
+          <div class="h-0.5 w-0 rounded-full bg-blue-500 transition-all duration-300 group-hover:w-6" aria-hidden="true"></div>
+          <div class="font-sans text-xs font-bold text-slate-900 transition-transform duration-300 group-hover:translate-x-1 dark:text-white" data-i18n="q3_author">Michael Jackson</div>
+        </div>
+      </div>
+
+      <div class="reveal glass-card glass-hover group relative overflow-hidden rounded-3xl border border-slate-200/60 bg-white/70 p-6 shadow-sm backdrop-blur-xl dark:border-slate-800/60 dark:bg-slate-900/50 sm:p-7">
+        <div class="absolute -top-4 -right-2 select-none font-serif text-8xl leading-none text-slate-200/50 transition-all duration-300 group-hover:scale-110 group-hover:text-blue-500/10 dark:text-slate-700/20" aria-hidden="true">”</div>
+        <p class="relative z-10 mb-5 text-sm leading-relaxed italic text-slate-700 dark:text-slate-300" data-i18n="q4_text">Music is the mediator between the spiritual and the sensual life.</p>
+        <div class="relative z-10 flex items-center gap-3">
+          <div class="h-0.5 w-0 rounded-full bg-blue-500 transition-all duration-300 group-hover:w-6" aria-hidden="true"></div>
+          <div class="font-sans text-xs font-bold text-slate-900 transition-transform duration-300 group-hover:translate-x-1 dark:text-white" data-i18n="q4_author">Ludwig van Beethoven</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
     <!-- Tools -->
-<section id="tools" class="relative overflow-hidden bg-slate-50 py-28 dark:bg-slate-950/40">
-    <div class="relative z-10 mx-auto max-w-3xl px-5 sm:px-8">
-        <div class="reveal mb-16 text-center">
-            <h2 class="mb-4 font-display text-3xl font-extrabold tracking-tight text-slate-900 dark:text-white sm:text-4xl" data-i18n="tools_title">Practical &amp; Free Tools</h2>
-            <p class="mx-auto max-w-md text-sm leading-relaxed text-slate-600 dark:text-slate-400" data-i18n="tools_subtitle">All of these tools are free, fast, and secure. Use them instantly without signing up.</p>
-        </div>
-
-        <div class="reveal mb-10 flex flex-wrap items-center justify-center gap-2" role="tablist" aria-label="Filter tools">
-            <button type="button" data-filter="all" class="filter-btn active" role="tab" aria-selected="true" tabindex="0" data-i18n="filter_all">All</button>
-            <button type="button" data-filter="music" class="filter-btn" role="tab" aria-selected="false" tabindex="-1" data-i18n="filter_music">Music</button>
-            <button type="button" data-filter="security" class="filter-btn" role="tab" aria-selected="false" tabindex="-1" data-i18n="filter_security">Security</button>
-            <button type="button" data-filter="web" class="filter-btn" role="tab" aria-selected="false" tabindex="-1" data-i18n="filter_web">Web</button>
-        </div>
-
-        <div id="tools-container" class="space-y-5">
-            <!-- Tool 1: HajirSync -->
-            <div class="tool-card reveal glass-card glass-hover group rounded-3xl border border-slate-200/60 bg-white/70 p-6 shadow-sm transition-all duration-300 dark:border-slate-800/60 dark:bg-slate-900/50 sm:p-7" data-category="music">
-                <div class="flex flex-col gap-6 sm:flex-row sm:items-start">
-                    <div class="tool-icon-wrap shrink-0">
-                        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M3 12c0-4.97 4.03-9 9-9s9 4.03 9 9M3 12a3 3 0 013-3h1a3 3 0 013 3v4a3 3 0 01-3 3H6a3 3 0 01-3-3v-4zm14-3a3 3 0 013 3v4a3 3 0 01-3 3h-1a3 3 0 01-3-3v-4a3 3 0 013-3h1z"></path>
-                        </svg>
-                    </div>
-                    <div class="flex flex-1 flex-col justify-between">
-                        <div>
-                            <div class="mb-2 flex flex-wrap items-center gap-3">
-                                <div class="font-mono text-[9px] font-semibold uppercase tracking-[0.15em] text-blue-600 dark:text-blue-400">LRC Generator</div>
-                                <span class="status-badge-stable" data-i18n="status_stable">Stable</span>
-                            </div>
-                            <h3 class="mb-2 font-display text-lg font-bold text-slate-900 transition-colors group-hover:text-blue-600 dark:text-white dark:group-hover:text-blue-400">HajirSync</h3>
-                            <p class="mb-4 text-sm leading-relaxed text-slate-600 dark:text-slate-400" data-i18n="tool1_desc">Create song lyric files (LRC) automatically, easily, and quickly.</p>
-                            <div class="mb-5 flex flex-wrap gap-2">
-                                <span class="glass-pill rounded-md px-2.5 py-1 font-mono text-[9px] text-blue-600 dark:text-blue-400">LRC Export</span>
-                                <span class="glass-pill rounded-md px-2.5 py-1 font-mono text-[9px] text-blue-600 dark:text-blue-400">Bilingual UI</span>
-                            </div>
-                        </div>
-                        <a href="https://hajirsync.haiere.workers.dev" target="_blank" rel="noopener noreferrer" class="tool-open-btn">
-                            <span data-i18n="tool_open">Open Tool</span>
-                            <svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25"></path>
-                            </svg>
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Tool 2: Raia Vault -->
-            <div class="tool-card reveal glass-card glass-hover group rounded-3xl border border-slate-200/60 bg-white/70 p-6 shadow-sm transition-all duration-300 dark:border-slate-800/60 dark:bg-slate-900/50 sm:p-7" data-category="security">
-                <div class="flex flex-col gap-6 sm:flex-row sm:items-start">
-                    <div class="tool-icon-wrap shrink-0">
-                        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z"></path>
-                        </svg>
-                    </div>
-                    <div class="flex flex-1 flex-col justify-between">
-                        <div>
-                            <div class="mb-2 flex flex-wrap items-center gap-3">
-                                <div class="font-mono text-[9px] font-semibold uppercase tracking-[0.15em] text-blue-600 dark:text-blue-400">Password Manager</div>
-                                <span class="status-badge-stable" data-i18n="status_stable">Stable</span>
-                            </div>
-                            <h3 class="mb-2 font-display text-lg font-bold text-slate-900 transition-colors group-hover:text-blue-600 dark:text-white dark:group-hover:text-blue-400">Raia Vault</h3>
-                            <p class="mb-4 text-sm leading-relaxed text-slate-600 dark:text-slate-400" data-i18n="tool2_desc">Generate strong random passwords to protect your online accounts.</p>
-                            <div class="mb-5 flex flex-wrap gap-2">
-                                <span class="glass-pill rounded-md px-2.5 py-1 font-mono text-[9px] text-blue-600 dark:text-blue-400">Password Gen</span>
-                                <span class="glass-pill rounded-md px-2.5 py-1 font-mono text-[9px] text-blue-600 dark:text-blue-400">Strength Meter</span>
-                            </div>
-                        </div>
-                        <a href="https://raia-vault.haiere.workers.dev" target="_blank" rel="noopener noreferrer" class="tool-open-btn">
-                            <span data-i18n="tool_open">Open Tool</span>
-                            <svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25"></path>
-                            </svg>
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Tool 3: Raia Scrub -->
-            <div class="tool-card reveal glass-card glass-hover group rounded-3xl border border-slate-200/60 bg-white/70 p-6 shadow-sm transition-all duration-300 dark:border-slate-800/60 dark:bg-slate-900/50 sm:p-7" data-category="security">
-                <div class="flex flex-col gap-6 sm:flex-row sm:items-start">
-                    <div class="tool-icon-wrap shrink-0">
-                        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 21l5.096-.813a2 2 0 001.077-.543l7.045-7.045a2.828 2.828 0 10-4-4l-7.045 7.045a2 2 0 00-.543 1.077zM15 7.5l3 3M3 6.75a.75.75 0 01.75-.75h.008a.75.75 0 01.75.75v.008a.75.75 0 01-.75.75H3.75a.75.75 0 01-.75-.75V6.75zm0 9a.75.75 0 01.75-.75h.008a.75.75 0 01.75.75v.008a.75.75 0 01-.75.75H3.75a.75.75 0 01-.75-.75v-.008zm3-4.5a.75.75 0 01.75-.75h.008a.75.75 0 01.75.75v.008a.75.75 0 01-.75.75H6.75a.75.75 0 01-.75-.75V11.25z"></path>
-                        </svg>
-                    </div>
-                    <div class="flex flex-1 flex-col justify-between">
-                        <div>
-                            <div class="mb-2 flex flex-wrap items-center gap-3">
-                                <div class="font-mono text-[9px] font-semibold uppercase tracking-[0.15em] text-blue-600 dark:text-blue-400">Metadata Stripper</div>
-                                <span class="status-badge-stable" data-i18n="status_stable">Stable</span>
-                            </div>
-                            <h3 class="mb-2 font-display text-lg font-bold text-slate-900 transition-colors group-hover:text-blue-600 dark:text-white dark:group-hover:text-blue-400">Raia Scrub</h3>
-                            <p class="mb-4 text-sm leading-relaxed text-slate-600 dark:text-slate-400" data-i18n="tool3_desc">Remove sensitive metadata, such as location data, from your photos before sharing them.</p>
-                            <div class="mb-5 flex flex-wrap gap-2">
-                                <span class="glass-pill rounded-md px-2.5 py-1 font-mono text-[9px] text-blue-600 dark:text-blue-400">EXIF Cleaner</span>
-                                <span class="glass-pill rounded-md px-2.5 py-1 font-mono text-[9px] text-blue-600 dark:text-blue-400">GPS Remover</span>
-                                <span class="glass-pill rounded-md px-2.5 py-1 font-mono text-[9px] text-blue-600 dark:text-blue-400">PDF Support</span>
-                            </div>
-                        </div>
-                        <a href="https://raia-scrub.haiere.workers.dev" target="_blank" rel="noopener noreferrer" class="tool-open-btn">
-                            <span data-i18n="tool_open">Open Tool</span>
-                            <svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25"></path>
-                            </svg>
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Tool 4: Raia Delta -->
-            <div class="tool-card reveal glass-card glass-hover group rounded-3xl border border-slate-200/60 bg-white/70 p-6 shadow-sm transition-all duration-300 dark:border-slate-800/60 dark:bg-slate-900/50 sm:p-7" data-category="web">
-                <div class="flex flex-col gap-6 sm:flex-row sm:items-start">
-                    <div class="tool-icon-wrap shrink-0">
-                        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15"></path>
-                        </svg>
-                    </div>
-                    <div class="flex flex-1 flex-col justify-between">
-                        <div>
-                            <div class="mb-2 flex flex-wrap items-center gap-3">
-                                <div class="font-mono text-[9px] font-semibold uppercase tracking-[0.15em] text-blue-600 dark:text-blue-400">Text Comparator</div>
-                                <span class="status-badge-stable" data-i18n="status_stable">Stable</span>
-                            </div>
-                            <h3 class="mb-2 font-display text-lg font-bold text-slate-900 transition-colors group-hover:text-blue-600 dark:text-white dark:group-hover:text-blue-400">Raia Delta</h3>
-                            <p class="mb-4 text-sm leading-relaxed text-slate-600 dark:text-slate-400" data-i18n="tool4_desc">Compare two blocks of text and instantly find the differences.</p>
-                            <div class="mb-5 flex flex-wrap gap-2">
-                                <span class="glass-pill rounded-md px-2.5 py-1 font-mono text-[9px] text-blue-600 dark:text-blue-400">jsDiff</span>
-                                <span class="glass-pill rounded-md px-2.5 py-1 font-mono text-[9px] text-blue-600 dark:text-blue-400">Split View</span>
-                                <span class="glass-pill rounded-md px-2.5 py-1 font-mono text-[9px] text-blue-600 dark:text-blue-400">Sync Scroll</span>
-                            </div>
-                        </div>
-                        <a href="https://raia-delta.haiere.workers.dev" target="_blank" rel="noopener noreferrer" class="tool-open-btn">
-                            <span data-i18n="tool_open">Open Tool</span>
-                            <svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25"></path>
-                            </svg>
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Tool 5: Raiamify -->
-<div class="tool-card reveal glass-card glass-hover group rounded-3xl border border-slate-200/60 bg-white/70 p-6 shadow-sm transition-all duration-300 dark:border-slate-800/60 dark:bg-slate-900/50 sm:p-7" data-category="web">
-    <div class="flex flex-col gap-6 sm:flex-row sm:items-start">
-        <div class="tool-icon-wrap shrink-0">
-            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M12 3c2.5 0 4.5 2 4.5 4.5S14.5 12 12 12 7.5 10 7.5 7.5 9.5 3 12 3zm0 9c4.418 0 8 2.239 8 5v2H4v-2c0-2.761 3.582-5 8-5z"></path>
-            </svg>
-        </div>
-        <div class="flex flex-1 flex-col justify-between">
-            <div>
-                <div class="mb-2 flex flex-wrap items-center gap-3">
-                    <div class="font-mono text-[9px] font-semibold uppercase tracking-[0.15em] text-blue-600 dark:text-blue-400">AI Tool</div>
-                    <span class="status-badge-stable" data-i18n="status_stable">Stable</span>
-                </div>
-                <h3 class="mb-2 font-display text-lg font-bold text-slate-900 transition-colors group-hover:text-blue-600 dark:text-white dark:group-hover:text-blue-400">Raiamify</h3>
-                <p class="mb-4 text-sm leading-relaxed text-slate-600 dark:text-slate-400" data-i18n="tool5_desc">A simple AI tool for fast assistance and smarter workflows.</p>
-                <div class="mb-5 flex flex-wrap gap-2">
-                    <span class="glass-pill rounded-md px-2.5 py-1 font-mono text-[9px] text-blue-600 dark:text-blue-400">Smart Cleaner</span>
-                    <span class="glass-pill rounded-md px-2.5 py-1 font-mono text-[9px] text-blue-600 dark:text-blue-400">Fast Workflow</span>
-                </div>
-            </div>
-            <a href="https://riamify.haiere.workers.dev" target="_blank" rel="noopener noreferrer" class="tool-open-btn">
-                <span data-i18n="tool_open">Open Tool</span>
-                <svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25"></path>
-                </svg>
-            </a>
-        </div>
+<section id="tools" class="relative overflow-hidden bg-slate-50 py-16 dark:bg-slate-950/40">
+  <div class="relative z-10 mx-auto max-w-3xl px-5 sm:px-8">
+    <div class="reveal mb-10 text-center">
+      <h2 class="mb-2 font-display text-3xl font-extrabold tracking-tight text-slate-900 dark:text-white sm:text-4xl" data-i18n="tools_title">Free &amp; Practical Tools</h2>
+      <p class="mx-auto max-w-md text-sm leading-relaxed text-slate-600 dark:text-slate-400" data-i18n="tools_subtitle">Free, fast, and secure tools you can use instantly without signing up.</p>
     </div>
-</div>
 
-<!-- Tool 6: Raia AI -->
-<div class="tool-card reveal glass-card glass-hover group rounded-3xl border border-slate-200/60 bg-white/70 p-6 shadow-sm transition-all duration-300 dark:border-slate-800/60 dark:bg-slate-900/50 sm:p-7" data-category="web">
-    <div class="flex flex-col gap-6 sm:flex-row sm:items-start">
-        <div class="tool-icon-wrap shrink-0">
-            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M12 2.25A9.75 9.75 0 1021.75 12 9.76 9.76 0 0012 2.25zm0 3a6.75 6.75 0 11-6.75 6.75A6.75 6.75 0 0112 5.25z"></path>
-            </svg>
-        </div>
-        <div class="flex flex-1 flex-col justify-between">
-            <div>
-                <div class="mb-2 flex flex-wrap items-center gap-3">
-                    <div class="font-mono text-[9px] font-semibold uppercase tracking-[0.15em] text-blue-600 dark:text-blue-400">AI Platform</div>
-                    <span class="status-badge-stable" data-i18n="status_stable">Stable</span>
-                </div>
-                <h3 class="mb-2 font-display text-lg font-bold text-slate-900 transition-colors group-hover:text-blue-600 dark:text-white dark:group-hover:text-blue-400">Raia AI</h3>
-                <p class="mb-4 text-sm leading-relaxed text-slate-600 dark:text-slate-400" data-i18n="tool6_desc">An AI platform for launching secure, enterprise-grade agents.</p>
-                <div class="mb-5 flex flex-wrap gap-2">
-                    <span class="glass-pill rounded-md px-2.5 py-1 font-mono text-[9px] text-blue-600 dark:text-blue-400">Zero-Code</span>
-                    <span class="glass-pill rounded-md px-2.5 py-1 font-mono text-[9px] text-blue-600 dark:text-blue-400">Enterprise AI</span>
-                </div>
-            </div>
-            <a href="https://raia-ai.netify.app" target="_blank" rel="noopener noreferrer" class="tool-open-btn">
-                <span data-i18n="tool_open">Open Tool</span>
-                <svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25"></path>
-                </svg>
-            </a>
-        </div>
+    <div class="reveal mb-8 flex flex-wrap items-center justify-center gap-2" role="tablist" aria-label="Filter tools">
+      <button type="button" data-filter="all" class="filter-btn active" role="tab" aria-selected="true" tabindex="0" data-i18n="filter_all">All</button>
+      <button type="button" data-filter="music" class="filter-btn" role="tab" aria-selected="false" tabindex="-1" data-i18n="filter_music">Music</button>
+      <button type="button" data-filter="security" class="filter-btn" role="tab" aria-selected="false" tabindex="-1" data-i18n="filter_security">Security</button>
+      <button type="button" data-filter="web" class="filter-btn" role="tab" aria-selected="false" tabindex="-1" data-i18n="filter_web">Web</button>
     </div>
-</div>
+
+    <ol id="tools-container" class="space-y-4 list-none p-0">
+      <li class="tool-card reveal glass-card glass-hover group rounded-3xl border border-slate-200/60 bg-white/70 p-5 shadow-sm transition-all duration-300 dark:border-slate-800/60 dark:bg-slate-900/50 sm:p-6" data-category="music">
+        <div class="mb-2 flex items-center gap-3">
+          <span class="tool-number font-mono text-sm font-bold text-blue-600 dark:text-blue-400">01</span>
+          <div class="font-mono text-[9px] font-semibold uppercase tracking-[0.15em] text-blue-600 dark:text-blue-400">LRC Generator</div>
+          <span class="status-badge-stable" data-i18n="status_stable">Stable</span>
         </div>
-    </div>
+        <h3 class="mb-1.5 font-display text-lg font-bold text-slate-900 transition-colors group-hover:text-blue-600 dark:text-white dark:group-hover:text-blue-400">HajirSync</h3>
+        <p class="mb-4 text-sm leading-relaxed text-slate-600 dark:text-slate-400" data-i18n="tool1_desc">Generate synchronized LRC lyric files quickly and easily.</p>
+        <a href="https://hajirsync.haiere.workers.dev" target="_blank" rel="noopener noreferrer" class="tool-open-btn" aria-label="Open HajirSync in a new tab">
+          <span data-i18n="tool_open">Open Tool</span>
+        </a>
+      </li>
+
+      <li class="tool-card reveal glass-card glass-hover group rounded-3xl border border-slate-200/60 bg-white/70 p-5 shadow-sm transition-all duration-300 dark:border-slate-800/60 dark:bg-slate-900/50 sm:p-6" data-category="security">
+        <div class="mb-2 flex items-center gap-3">
+          <span class="tool-number font-mono text-sm font-bold text-blue-600 dark:text-blue-400">02</span>
+          <div class="font-mono text-[9px] font-semibold uppercase tracking-[0.15em] text-blue-600 dark:text-blue-400">Password Manager</div>
+          <span class="status-badge-stable" data-i18n="status_stable">Stable</span>
+        </div>
+        <h3 class="mb-1.5 font-display text-lg font-bold text-slate-900 transition-colors group-hover:text-blue-600 dark:text-white dark:group-hover:text-blue-400">Raia Vault</h3>
+        <p class="mb-4 text-sm leading-relaxed text-slate-600 dark:text-slate-400" data-i18n="tool2_desc">Generate strong random passwords to protect your accounts.</p>
+        <a href="https://raia-vault.haiere.workers.dev" target="_blank" rel="noopener noreferrer" class="tool-open-btn" aria-label="Open Raia Vault in a new tab">
+          <span data-i18n="tool_open">Open Tool</span>
+        </a>
+      </li>
+
+      <li class="tool-card reveal glass-card glass-hover group rounded-3xl border border-slate-200/60 bg-white/70 p-5 shadow-sm transition-all duration-300 dark:border-slate-800/60 dark:bg-slate-900/50 sm:p-6" data-category="security">
+        <div class="mb-2 flex items-center gap-3">
+          <span class="tool-number font-mono text-sm font-bold text-blue-600 dark:text-blue-400">03</span>
+          <div class="font-mono text-[9px] font-semibold uppercase tracking-[0.15em] text-blue-600 dark:text-blue-400">Metadata Stripper</div>
+          <span class="status-badge-stable" data-i18n="status_stable">Stable</span>
+        </div>
+        <h3 class="mb-1.5 font-display text-lg font-bold text-slate-900 transition-colors group-hover:text-blue-600 dark:text-white dark:group-hover:text-blue-400">Raia Scrub</h3>
+        <p class="mb-4 text-sm leading-relaxed text-slate-600 dark:text-slate-400" data-i18n="tool3_desc">Remove sensitive metadata, such as location data, from your photos.</p>
+        <a href="https://raia-scrub.haiere.workers.dev" target="_blank" rel="noopener noreferrer" class="tool-open-btn" aria-label="Open Raia Scrub in a new tab">
+          <span data-i18n="tool_open">Open Tool</span>
+        </a>
+      </li>
+
+      <li class="tool-card reveal glass-card glass-hover group rounded-3xl border border-slate-200/60 bg-white/70 p-5 shadow-sm transition-all duration-300 dark:border-slate-800/60 dark:bg-slate-900/50 sm:p-6" data-category="web">
+        <div class="mb-2 flex items-center gap-3">
+          <span class="tool-number font-mono text-sm font-bold text-blue-600 dark:text-blue-400">04</span>
+          <div class="font-mono text-[9px] font-semibold uppercase tracking-[0.15em] text-blue-600 dark:text-blue-400">Text Comparator</div>
+          <span class="status-badge-stable" data-i18n="status_stable">Stable</span>
+        </div>
+        <h3 class="mb-1.5 font-display text-lg font-bold text-slate-900 transition-colors group-hover:text-blue-600 dark:text-white dark:group-hover:text-blue-400">Raia Delta</h3>
+        <p class="mb-4 text-sm leading-relaxed text-slate-600 dark:text-slate-400" data-i18n="tool4_desc">Compare two blocks of text and instantly find the differences.</p>
+        <a href="https://raia-delta.haiere.workers.dev" target="_blank" rel="noopener noreferrer" class="tool-open-btn" aria-label="Open Raia Delta in a new tab">
+          <span data-i18n="tool_open">Open Tool</span>
+        </a>
+      </li>
+
+      <li class="tool-card reveal glass-card glass-hover group rounded-3xl border border-slate-200/60 bg-white/70 p-5 shadow-sm transition-all duration-300 dark:border-slate-800/60 dark:bg-slate-900/50 sm:p-6" data-category="web">
+        <div class="mb-2 flex items-center gap-3">
+          <span class="tool-number font-mono text-sm font-bold text-blue-600 dark:text-blue-400">05</span>
+          <div class="font-mono text-[9px] font-semibold uppercase tracking-[0.15em] text-blue-600 dark:text-blue-400">AI Tool</div>
+          <span class="status-badge-stable" data-i18n="status_stable">Stable</span>
+        </div>
+        <h3 class="mb-1.5 font-display text-lg font-bold text-slate-900 transition-colors group-hover:text-blue-600 dark:text-white dark:group-hover:text-blue-400">Raiamify</h3>
+        <p class="mb-4 text-sm leading-relaxed text-slate-600 dark:text-slate-400" data-i18n="tool5_desc">A simple AI tool for fast assistance and smarter workflows.</p>
+        <a href="https://raiaminify.haiere.workers.dev" target="_blank" rel="noopener noreferrer" class="tool-open-btn" aria-label="Open Raiamify in a new tab">
+          <span data-i18n="tool_open">Open Tool</span>
+        </a>
+      </li>
+
+      <li class="tool-card reveal glass-card glass-hover group rounded-3xl border border-slate-200/60 bg-white/70 p-5 shadow-sm transition-all duration-300 dark:border-slate-800/60 dark:bg-slate-900/50 sm:p-6" data-category="web">
+        <div class="mb-2 flex items-center gap-3">
+          <span class="tool-number font-mono text-sm font-bold text-blue-600 dark:text-blue-400">06</span>
+          <div class="font-mono text-[9px] font-semibold uppercase tracking-[0.15em] text-blue-600 dark:text-blue-400">AI Platform</div>
+          <span class="status-badge-stable" data-i18n="status_stable">Stable</span>
+        </div>
+        <h3 class="mb-1.5 font-display text-lg font-bold text-slate-900 transition-colors group-hover:text-blue-600 dark:text-white dark:group-hover:text-blue-400">Raia AI</h3>
+        <p class="mb-4 text-sm leading-relaxed text-slate-600 dark:text-slate-400" data-i18n="tool6_desc">An AI platform for launching secure, enterprise-grade agents.</p>
+        <a href="https://raia-ai.netlify.app" target="_blank" rel="noopener noreferrer" class="tool-open-btn" aria-label="Open Raia AI in a new tab">
+          <span data-i18n="tool_open">Open Tool</span>
+        </a>
+      </li>
+    </ol>
+  </div>
 </section>
 
     <!-- Contact -->
-    <section id="contact" class="relative overflow-hidden bg-slate-50 py-28 dark:bg-slate-950/40">
-        <div class="relative z-10 mx-auto max-w-3xl px-5 sm:px-8">
-            <div class="reveal mb-14 text-center">
-                <h2 class="mb-3 font-display text-3xl font-extrabold tracking-tight text-slate-900 dark:text-white sm:text-4xl" data-i18n="contact_title">Mau Kolaborasi atau Sekadar Menyapa?</h2>
-                <p class="mx-auto max-w-md text-sm leading-relaxed text-slate-600 dark:text-slate-400" data-i18n="contact_subtitle">Kirim pesan jika ada pertanyaan atau ingin ngobrol santai.</p>
-            </div>
+<section id="contact" class="relative overflow-hidden bg-slate-50 py-16 dark:bg-slate-950/40">
+  <div class="relative z-10 mx-auto max-w-3xl px-5 sm:px-8">
+    <div class="reveal mb-10 text-center">
+      <h2 class="mb-2 font-display text-3xl font-extrabold tracking-tight text-slate-900 dark:text-white sm:text-4xl" data-i18n="contact_title">Let’s Collaborate or Say Hello</h2>
+      <p class="mx-auto max-w-md text-sm leading-relaxed text-slate-600 dark:text-slate-400" data-i18n="contact_subtitle">Send a message if you have a question or just want to chat.</p>
+    </div>
 
-            <div class="reveal glass-card glass-hover rounded-3xl border border-slate-200/60 bg-white/70 p-8 shadow-sm backdrop-blur-xl dark:border-slate-800/60 dark:bg-slate-900/50 sm:p-10">
-                <form id="contact-form" class="space-y-6" novalidate>
-                    <div class="space-y-1">
-                        <label for="name" class="block text-sm font-medium text-slate-700 dark:text-slate-300" data-i18n="form_name">Nama</label>
-                        <input type="text" id="name" name="name" required aria-describedby="name-error" aria-invalid="false" class="glass-pill w-full rounded-xl border border-transparent px-4 py-3 text-slate-900 placeholder:text-slate-400 transition-colors focus:border-blue-500/30 focus:ring-4 focus:ring-blue-500/15 dark:text-white dark:placeholder:text-slate-500" placeholder="Tulis nama lengkapmu" data-i18n-placeholder="form_name_placeholder" />
-                        <span id="name-error" class="form-error" role="status" aria-live="polite"></span>
-                    </div>
-
-                    <div class="space-y-1">
-                        <label for="email" class="block text-sm font-medium text-slate-700 dark:text-slate-300" data-i18n="form_email">Email</label>
-                        <input type="email" id="email" name="email" required aria-describedby="email-error" aria-invalid="false" class="glass-pill w-full rounded-xl border border-transparent px-4 py-3 text-slate-900 placeholder:text-slate-400 transition-colors focus:border-blue-500/30 focus:ring-4 focus:ring-blue-500/15 dark:text-white dark:placeholder:text-slate-500" placeholder="nama@email.com" data-i18n-placeholder="form_email_placeholder" />
-                        <span id="email-error" class="form-error" role="status" aria-live="polite"></span>
-                    </div>
-
-                    <div class="space-y-1">
-                        <label for="message" class="block text-sm font-medium text-slate-700 dark:text-slate-300" data-i18n="form_message">Pesan</label>
-                        <textarea id="message" name="message" rows="4" required aria-describedby="message-error" aria-invalid="false" class="glass-pill w-full resize-y rounded-xl border border-transparent px-4 py-3 text-slate-900 placeholder:text-slate-400 transition-colors focus:border-blue-500/30 focus:ring-4 focus:ring-blue-500/15 dark:text-white dark:placeholder:text-slate-500" placeholder="Tulis pesanmu di sini..." data-i18n-placeholder="form_message_placeholder"></textarea>
-                        <span id="message-error" class="form-error" role="status" aria-live="polite"></span>
-                    </div>
-
-                    <button type="submit" class="btn-primary w-full justify-center" data-i18n="form_submit">
-                        <span>Kirim</span>
-                        <i class="fas fa-paper-plane text-xs" aria-hidden="true"></i>
-                    </button>
-
-                    <div id="form-status" class="min-h-[1.5rem] text-center text-sm font-medium text-slate-600 dark:text-slate-400" role="status" aria-live="polite"></div>
-                </form>
-
-                <div class="mt-8 border-t border-slate-200/50 pt-6 text-center dark:border-slate-800/50">
-                    <p class="mb-3 text-sm text-slate-500 dark:text-slate-400" data-i18n="form_fallback">Atau hubungi lewat...</p>
-                    <div class="flex justify-center gap-3">
-                        <a href="https://github.com/haiere" target="_blank" rel="noopener noreferrer" class="glass-social flex h-10 w-10 items-center justify-center rounded-xl text-slate-600 transition-all duration-300 hover:bg-slate-900 hover:text-white dark:text-slate-400" aria-label="GitHub">
-                            <i class="fab fa-github" aria-hidden="true"></i>
-                        </a>
-                        <a href="https://www.instagram.com/muhaajirere" target="_blank" rel="noopener noreferrer" class="glass-social flex h-10 w-10 items-center justify-center rounded-xl text-slate-600 transition-all duration-300 hover:bg-pink-600 hover:text-white dark:text-slate-400" aria-label="Instagram">
-                            <i class="fab fa-instagram" aria-hidden="true"></i>
-                        </a>
-                        <a href="https://www.youtube.com/@hajirstein" target="_blank" rel="noopener noreferrer" class="glass-social flex h-10 w-10 items-center justify-center rounded-xl text-slate-600 transition-all duration-300 hover:bg-red-600 hover:text-white dark:text-slate-400" aria-label="YouTube">
-                            <i class="fab fa-youtube" aria-hidden="true"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
+    <div class="reveal glass-card glass-hover rounded-3xl border border-slate-200/60 bg-white/70 p-6 shadow-sm backdrop-blur-xl dark:border-slate-800/60 dark:bg-slate-900/50 sm:p-8">
+      <form id="contact-form" class="space-y-5" novalidate>
+        <div class="space-y-1">
+          <label for="name" class="block text-sm font-medium text-slate-700 dark:text-slate-300" data-i18n="form_name">Name</label>
+          <input type="text" id="name" name="name" required aria-describedby="name-error" aria-invalid="false" class="glass-pill w-full rounded-xl border border-transparent px-4 py-3 text-slate-900 placeholder:text-slate-400 transition-colors focus:border-blue-500/30 focus:ring-4 focus:ring-blue-500/15 dark:text-white dark:placeholder:text-slate-500" placeholder="Enter your full name" data-i18n-placeholder="form_name_placeholder" />
+          <span id="name-error" class="form-error" role="status" aria-live="polite"></span>
         </div>
-    </section>
 
-    <!-- Footer -->
-    <footer class="glass-nav py-14 shadow-inner" role="contentinfo">
-        <div class="mx-auto max-w-4xl px-5 sm:px-8">
-            <div class="mb-8 text-center">
-                <div class="mb-2 flex items-center justify-center gap-3">
-                    <img id="logo-footer" src="https://i.postimg.cc/GmWt2wch/H-blue.webp" alt="Logo Haiere" class="logo-img h-10 w-10 rounded-xl object-contain drop-shadow-md transition-all duration-200 hover:scale-110" loading="lazy" decoding="async" width="40" height="40" />
-                    <span class="brand-text text-xl uppercase tracking-tight text-slate-900 dark:text-white">HAIERE<span class="text-blue-400">.</span></span>
-                </div>
-                <p class="select-none font-mono text-[9px] uppercase tracking-[0.18em] text-slate-500 dark:text-slate-600" data-i18n="footer_tagline">Situs Pribadi · Alat Gratis · oleh Haiere</p>
-            </div>
-
-            <div class="mb-10 flex flex-wrap justify-center gap-3">
-                <a href="https://www.youtube.com/@hajirstein" target="_blank" rel="noopener noreferrer" aria-label="YouTube" class="glass-social flex h-11 w-11 items-center justify-center rounded-xl text-slate-500 transition-all duration-300 hover:bg-red-600 hover:text-white dark:text-slate-400">
-                    <i class="fab fa-youtube" aria-hidden="true"></i>
-                </a>
-                <a href="https://www.instagram.com/muhaajirere" target="_blank" rel="noopener noreferrer" aria-label="Instagram Personal" class="glass-social flex h-11 w-11 items-center justify-center rounded-xl text-slate-500 transition-all duration-300 hover:bg-pink-600 hover:text-white dark:text-slate-400">
-                    <i class="fab fa-instagram" aria-hidden="true"></i>
-                </a>
-                <a href="https://on.soundcloud.com/m65TNUx3XarndC67jO" target="_blank" rel="noopener noreferrer" aria-label="SoundCloud" class="glass-social flex h-11 w-11 items-center justify-center rounded-xl text-slate-500 transition-all duration-300 hover:bg-orange-500 hover:text-white dark:text-slate-400">
-                    <i class="fab fa-soundcloud" aria-hidden="true"></i>
-                </a>
-                <a href="https://github.com/haiere" target="_blank" rel="noopener noreferrer" aria-label="GitHub" class="glass-social flex h-11 w-11 items-center justify-center rounded-xl text-slate-500 transition-all duration-300 hover:bg-slate-900 hover:text-white dark:text-slate-400">
-                    <i class="fab fa-github" aria-hidden="true"></i>
-                </a>
-            </div>
-
-            <nav class="mb-8 border-y border-slate-200/30 py-6 dark:border-slate-800/30" aria-label="Navigasi footer">
-                <div class="mb-4 flex flex-wrap justify-center gap-x-6 gap-y-2">
-                    <a href="#about" class="text-xs font-medium uppercase tracking-[0.12em] text-slate-500 transition-colors hover:text-blue-500 hover:underline underline-offset-4">
-                        <span data-i18n="nav_about">Tentang</span>
-                    </a>
-                    <a href="#music" class="text-xs font-medium uppercase tracking-[0.12em] text-slate-500 transition-colors hover:text-blue-500 hover:underline underline-offset-4">
-                        <span data-i18n="nav_music">Musik</span>
-                    </a>
-                    <a href="#quotes" class="text-xs font-medium uppercase tracking-[0.12em] text-slate-500 transition-colors hover:text-blue-500 hover:underline underline-offset-4">
-                        <span data-i18n="nav_quotes">Kutipan</span>
-                    </a>
-                    <a href="#tools" class="text-xs font-medium uppercase tracking-[0.12em] text-slate-500 transition-colors hover:text-blue-500 hover:underline underline-offset-4">
-                        <span data-i18n="nav_tools">Tools</span>
-                    </a>
-                    <a href="#contact" class="text-xs font-medium uppercase tracking-[0.12em] text-slate-500 transition-colors hover:text-blue-500 hover:underline underline-offset-4">
-                        <span data-i18n="nav_contact">Kontak</span>
-                    </a>
-                </div>
-                <div class="flex flex-wrap justify-center gap-x-6 gap-y-2">
-                    <a href="https://raia-footer.netlify.app/#privacy" rel="noopener noreferrer" class="text-[9px] font-mono uppercase tracking-[0.15em] text-slate-400 transition-colors hover:text-blue-400">
-                        <i class="fas fa-shield-halved mr-1" aria-hidden="true"></i>
-                        <span data-i18n="nav_privacy">Privasi Aman</span>
-                    </a>
-                </div>
-            </nav>
-
-            <div class="text-center">
-                <p class="mx-auto mb-4 max-w-sm text-xs leading-relaxed text-slate-500 dark:text-slate-500">Creative Technologist & Musican. All tools are built on the principles of the open web and privacy without a backend.</p>
-                <p class="footer-disclaimer mx-auto mb-4 max-w-md text-[11px] leading-relaxed italic text-slate-400 dark:text-slate-500">
-                    <i class="fas fa-exclamation-triangle mr-1 text-amber-500/80" aria-hidden="true"></i>
-                    Disclaimer: The use of this tool is entirely at your own risk. Haiere is not responsible for any data loss or damage that may occur.
-                </p>
-                <span class="glass-pill mb-4 inline-flex items-center gap-2 rounded-full px-4 py-1.5 font-mono text-[9px] text-slate-500 shadow-sm select-none dark:text-slate-500">
-                    <i class="fas fa-lock text-blue-400" aria-hidden="true"></i>
-                    HTTPS SECURED · PRIVACY FIRST
-                </span>
-                <div class="mb-3 font-mono text-[9px] text-slate-500 dark:text-slate-600">
-                    <i class="fas fa-clock mr-1 text-blue-400/60" aria-hidden="true"></i>
-                    Last updated: <span id="last-updated-date">—</span>
-                </div>
-                <p class="text-xs text-slate-400 dark:text-slate-600" data-i18n="footer_copy">© 2026 Haiere · Made with heart.</p>
-            </div>
-
-            <div class="mt-16 flex flex-col items-center justify-between gap-6 border-t border-slate-200/30 pt-8 dark:border-slate-800/30 md:flex-row">
-                <div class="flex gap-x-8 text-[11px] font-medium uppercase tracking-[0.12em] text-slate-400">
-                    <span><i class="far fa-heart mr-1 text-rose-400" aria-hidden="true"></i> Haiere</span>
-                    <span><i class="fas fa-mobile-alt mr-1" aria-hidden="true"></i> Responsive</span>
-                </div>
-                <div class="glass-pill rounded px-3 py-1 font-mono text-[9px] text-slate-500">
-                    <i class="fas fa-code mr-1 text-blue-400" aria-hidden="true"></i>
-                    Clean Architecture · MIT Style
-                </div>
-                <div class="flex gap-4 text-slate-400">
-                    <i class="fab fa-html5 transition-transform hover:scale-110 hover:text-orange-500" aria-hidden="true"></i>
-                    <i class="fab fa-css3-alt transition-transform hover:scale-110 hover:text-blue-500" aria-hidden="true"></i>
-                    <i class="fab fa-js transition-transform hover:scale-110 hover:text-yellow-400" aria-hidden="true"></i>
-                </div>
-            </div>
+        <div class="space-y-1">
+          <label for="email" class="block text-sm font-medium text-slate-700 dark:text-slate-300" data-i18n="form_email">Email</label>
+          <input type="email" id="email" name="email" required aria-describedby="email-error" aria-invalid="false" class="glass-pill w-full rounded-xl border border-transparent px-4 py-3 text-slate-900 placeholder:text-slate-400 transition-colors focus:border-blue-500/30 focus:ring-4 focus:ring-blue-500/15 dark:text-white dark:placeholder:text-slate-500" placeholder="name@example.com" data-i18n-placeholder="form_email_placeholder" />
+          <span id="email-error" class="form-error" role="status" aria-live="polite"></span>
         </div>
-    </footer>
+
+        <div class="space-y-1">
+          <label for="message" class="block text-sm font-medium text-slate-700 dark:text-slate-300" data-i18n="form_message">Message</label>
+          <textarea id="message" name="message" rows="4" required aria-describedby="message-error" aria-invalid="false" class="glass-pill w-full resize-y rounded-xl border border-transparent px-4 py-3 text-slate-900 placeholder:text-slate-400 transition-colors focus:border-blue-500/30 focus:ring-4 focus:ring-blue-500/15 dark:text-white dark:placeholder:text-slate-500" placeholder="Write your message here..." data-i18n-placeholder="form_message_placeholder"></textarea>
+          <span id="message-error" class="form-error" role="status" aria-live="polite"></span>
+        </div>
+
+        <button type="submit" class="btn-primary w-full justify-center" data-i18n="form_submit">
+          <span>Send</span>
+          <i class="fas fa-paper-plane text-xs" aria-hidden="true"></i>
+        </button>
+
+        <div id="form-status" class="min-h-[1.5rem] text-center text-sm font-medium text-slate-600 dark:text-slate-400" role="status" aria-live="polite"></div>
+      </form>
+
+      <div class="mt-6 border-t border-slate-200/50 pt-5 text-center dark:border-slate-800/50">
+        <p class="mb-3 text-sm text-slate-500 dark:text-slate-400" data-i18n="form_fallback">Or reach out through these platforms.</p>
+        <div class="flex justify-center gap-3">
+          <a href="https://github.com/haiere" target="_blank" rel="noopener noreferrer" class="glass-social flex h-10 w-10 items-center justify-center rounded-xl text-slate-600 transition-all duration-300 hover:bg-slate-900 hover:text-white dark:text-slate-400" aria-label="GitHub">
+            <i class="fab fa-github" aria-hidden="true"></i>
+          </a>
+          <a href="https://www.instagram.com/muhaajirere" target="_blank" rel="noopener noreferrer" class="glass-social flex h-10 w-10 items-center justify-center rounded-xl text-slate-600 transition-all duration-300 hover:bg-pink-600 hover:text-white dark:text-slate-400" aria-label="Instagram">
+            <i class="fab fa-instagram" aria-hidden="true"></i>
+          </a>
+          <a href="https://www.youtube.com/@hajirstein" target="_blank" rel="noopener noreferrer" class="glass-social flex h-10 w-10 items-center justify-center rounded-xl text-slate-600 transition-all duration-300 hover:bg-red-600 hover:text-white dark:text-slate-400" aria-label="YouTube">
+            <i class="fab fa-youtube" aria-hidden="true"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+    <footer class="glass-nav py-10 shadow-inner" role="contentinfo">
+  <div class="mx-auto max-w-4xl px-5 sm:px-8">
+    <div class="mb-6 text-center">
+      <div class="mb-2 flex items-center justify-center gap-3">
+        <img id="logo-footer" src="https://i.postimg.cc/GmWt2wch/H-blue.webp" alt="Haiere logo" class="logo-img h-10 w-10 rounded-xl object-contain drop-shadow-md transition-all duration-200 hover:scale-110" loading="lazy" decoding="async" width="40" height="40" />
+        <span class="brand-text text-xl uppercase tracking-tight text-slate-900 dark:text-white">HAIERE<span class="text-blue-400">.</span></span>
+      </div>
+      <p class="select-none font-mono text-[9px] uppercase tracking-[0.18em] text-slate-500 dark:text-slate-600" data-i18n="footer_tagline">Personal Site · Free Tools · by Haiere</p>
+    </div>
+
+    <div class="mb-8 flex flex-wrap justify-center gap-3">
+      <a href="https://www.youtube.com/@hajirstein" target="_blank" rel="noopener noreferrer" aria-label="YouTube" class="glass-social flex h-11 w-11 items-center justify-center rounded-xl text-slate-500 transition-all duration-300 hover:bg-red-600 hover:text-white dark:text-slate-400">
+        <i class="fab fa-youtube" aria-hidden="true"></i>
+      </a>
+      <a href="https://www.instagram.com/muhaajirere" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="glass-social flex h-11 w-11 items-center justify-center rounded-xl text-slate-500 transition-all duration-300 hover:bg-pink-600 hover:text-white dark:text-slate-400">
+        <i class="fab fa-instagram" aria-hidden="true"></i>
+      </a>
+      <a href="https://on.soundcloud.com/m65TNUx3XarndC67jO" target="_blank" rel="noopener noreferrer" aria-label="SoundCloud" class="glass-social flex h-11 w-11 items-center justify-center rounded-xl text-slate-500 transition-all duration-300 hover:bg-orange-500 hover:text-white dark:text-slate-400">
+        <i class="fab fa-soundcloud" aria-hidden="true"></i>
+      </a>
+      <a href="https://github.com/haiere" target="_blank" rel="noopener noreferrer" aria-label="GitHub" class="glass-social flex h-11 w-11 items-center justify-center rounded-xl text-slate-500 transition-all duration-300 hover:bg-slate-900 hover:text-white dark:text-slate-400">
+        <i class="fab fa-github" aria-hidden="true"></i>
+      </a>
+    </div>
+
+    <nav class="mb-6 border-y border-slate-200/30 py-5 dark:border-slate-800/30" aria-label="Footer navigation">
+      <div class="mb-3 flex flex-wrap justify-center gap-x-6 gap-y-2">
+        <a href="#about" class="text-xs font-medium uppercase tracking-[0.12em] text-slate-500 transition-colors hover:text-blue-500 hover:underline underline-offset-4"><span data-i18n="nav_about">About</span></a>
+        <a href="#music" class="text-xs font-medium uppercase tracking-[0.12em] text-slate-500 transition-colors hover:text-blue-500 hover:underline underline-offset-4"><span data-i18n="nav_music">Music</span></a>
+        <a href="#quotes" class="text-xs font-medium uppercase tracking-[0.12em] text-slate-500 transition-colors hover:text-blue-500 hover:underline underline-offset-4"><span data-i18n="nav_quotes">Quotes</span></a>
+        <a href="#tools" class="text-xs font-medium uppercase tracking-[0.12em] text-slate-500 transition-colors hover:text-blue-500 hover:underline underline-offset-4"><span data-i18n="nav_tools">Tools</span></a>
+        <a href="#contact" class="text-xs font-medium uppercase tracking-[0.12em] text-slate-500 transition-colors hover:text-blue-500 hover:underline underline-offset-4"><span data-i18n="nav_contact">Contact</span></a>
+      </div>
+      <div class="flex flex-wrap justify-center gap-x-6 gap-y-2">
+        <a href="https://raia-footer.netlify.app/#privacy" target="_blank" rel="noopener noreferrer" class="text-[9px] font-mono uppercase tracking-[0.15em] text-slate-400 transition-colors hover:text-blue-400">
+          <i class="fas fa-shield-halved mr-1" aria-hidden="true"></i>
+          <span data-i18n="nav_privacy">Privacy</span>
+        </a>
+      </div>
+    </nav>
+    
+    <div class="text-center">
+      <p class="mx-auto mb-3 max-w-sm text-xs leading-relaxed text-slate-500 dark:text-slate-500">Creative technologist and musician. All tools are built on the open web with privacy-first principles and no backend.</p>
+      <p class="footer-disclaimer mx-auto mb-3 max-w-md text-[11px] leading-relaxed italic text-slate-400 dark:text-slate-500">
+        <i class="fas fa-exclamation-triangle mr-1 text-amber-500/80" aria-hidden="true"></i>
+        Disclaimer: Use these tools at your own risk. Haiere is not responsible for any data loss or damage that may occur.
+      </p>
+      <span class="glass-pill mb-3 inline-flex items-center gap-2 rounded-full px-4 py-1.5 font-mono text-[9px] text-slate-500 shadow-sm select-none dark:text-slate-500">
+        <i class="fas fa-lock text-blue-400" aria-hidden="true"></i>
+        HTTPS SECURED · PRIVACY FIRST
+      </span>
+      <div class="mb-2 font-mono text-[9px] text-slate-500 dark:text-slate-600">
+        <i class="fas fa-clock mr-1 text-blue-400/60" aria-hidden="true"></i>
+        Last updated: <span id="last-updated-date">—</span>
+      </div>
+      <p class="text-xs text-slate-400 dark:text-slate-600" data-i18n="footer_copy">© 2026 Haiere · Made with heart.</p>
+    </div>
+  </div>
+</footer>
 
     <!-- Back to top -->
     <button id="back-top" type="button" class="fixed bottom-6 right-6 z-50 flex items-center justify-center rounded-2xl text-white opacity-0 pointer-events-none transition-all duration-500 ease-in-out hover:rotate-12 active:scale-90 focus:outline-none focus:ring-2 focus:ring-blue-400" aria-label="Kembali ke atas">
@@ -2294,189 +2179,213 @@
 
     <!-- Cookie banner -->
     <div id="cookieBanner" class="cookie-banner" role="alert" aria-live="polite">
-        <div class="text">
-            🍪 This site uses cookies to enhance your experience.
-            By using Haiere web, you agree
-            <a href="https://raia-footer.netlify.app/#cookie" target="_blank" rel="noopener noreferrer">Kebijakan Cookie</a> kami.
-        </div>
-        <div class="actions">
-            <button class="cbtn" id="declineCookiesBtn" type="button">Reject</button>
-            <button class="cbtn primary" id="acceptCookiesBtn" type="button">Accept</button>
-        </div>
-    </div>
+  <div class="text">
+    This site uses cookies to improve your experience. By using Haiere, you agree to our
+    <a href="https://raia-footer.netlify.app/#cookie" target="_blank" rel="noopener noreferrer">Cookie Policy</a>.
+  </div>
+  <div class="actions">
+    <button class="cbtn" id="declineCookiesBtn" type="button">Reject</button>
+    <button class="cbtn primary" id="acceptCookiesBtn" type="button">Accept</button>
+  </div>
+</div>
 
     <!-- ===== MAIN SCRIPT ===== -->
     <script>
         (function() {
             'use strict';
 
-            // ─── 1. I18N ─────────────────────────────────────────────────────────────
+            // ─── 1. I18N
            var i18n = {
-    id: {
-        nav_about: 'Tentang',
-        nav_music: 'Musik',
-        nav_tools: 'Tools',
-        nav_contact: 'Kontak',
-        nav_quotes: 'Kutipan',
-        nav_privacy: 'Privasi',
-        nav_github: 'GitHub',
-        nav_raia: 'RAIA',
-        nav_language: 'Bahasa',
-        nav_tagline: 'Software, AI, dan tools dengan privasi sebagai prioritas',
-        nav_privacy_policy: 'Kebijakan Privasi',
-        nav_terms: 'Syarat & Ketentuan',
-        hero_title_1: 'Hajir',
-        hero_title_2: 'Studio',
-        hero_desc: 'Halo! Aku Hajir. Developer yang membangun software, tools web, dan solusi AI yang cepat, sederhana, dan mudah digunakan. Musik adalah hobi yang menemaniku saat tidak sedang ngoding.',
-        hero_cta1: 'Lihat Karyaku',
-        hero_cta2: 'Coba RAIA AI',
-        about_role: 'Developer · AI Builder',
-        tag_developer: 'Developer',
-        tag_musician: 'Musik',
-        about_p1: 'Aku fokus membuat software, aplikasi web, tools, dan solusi AI yang membantu pekerjaan menjadi lebih cepat dan efisien.',
-        about_p2: 'Setiap proyek dirancang agar ringan, aman, mudah digunakan, dan sebisa mungkin mengutamakan privasi pengguna tanpa mengumpulkan data yang tidak diperlukan.',
-        about_p3: 'Selain mengembangkan software, aku juga membuat musik sebagai hobi dan media untuk mengekspresikan ide di luar dunia teknologi.',
-        about_cta: 'Jelajahi RAIA',
-        stat_approach: 'Fokus',
-        stat_philosophy: 'Prinsip',
-        stat_tools_label: 'Tools Dirilis',
-        stat_albums_label: 'Rilis Musik',
-        stat_songs_label: 'Lagu Original',
-        stat_privacy_label: 'Privasi Diutamakan',
-        RWR: 'RWR - AMA',
-        RWR_closing: 'RWR adalah bagian dari visi jangka panjangku dalam membangun teknologi yang bermanfaat.',
-        toast_copied: 'Berhasil disalin.',
-        toast_cookie_accepted: 'Preferensi cookie disimpan.',
-        toast_cookie_declined: 'Cookie tetap dinonaktifkan.',
-        music_title: 'Musik sebagai Hobi',
-        music_subtitle: 'Beberapa karya musik yang kubuat di sela-sela waktu luang.',
-        music_player_label: 'Pemutar Musik',
-        music_player_desc: 'Pilih lagu dan dengarkan langsung.',
-        music_open_link: 'Klik di sini jika pemutar tidak muncul.',
-        quotes_title: 'Kutipan',
-        quotes_subtitle: 'Beberapa kutipan yang menginspirasiku.',
-        tools_title: 'Software & Tools',
-        tools_subtitle: 'Kumpulan tools gratis untuk developer, produktivitas, AI, dan kebutuhan sehari-hari.',
-        tool1_desc: 'Membuat file lirik LRC secara otomatis.',
-        tool2_desc: 'Membuat kata sandi acak yang kuat.',
-        tool3_desc: 'Menghapus metadata tersembunyi dari foto.',
-        tool4_desc: 'Membandingkan dua teks dengan cepat.',
-        tool5_tag: 'AI Tool',
-        tool5_desc: 'Asisten AI sederhana untuk membantu pekerjaan dan meningkatkan produktivitas.',
-        tool6_tag: 'AI Platform',
-        tool6_desc: 'Platform untuk membangun, menjalankan, dan mengelola AI agent dengan aman.',
-        tool_open: 'Buka',
-        filter_all: 'Semua',
-        filter_music: 'Musik',
-        filter_security: 'Keamanan',
-        filter_web: 'Web',
-        status_stable: 'Stabil',
-        contact_title: 'Mari Berdiskusi',
-        contact_subtitle: 'Punya ide, proyek, atau ingin bekerja sama? Jangan ragu untuk menghubungi.',
-        form_name: 'Nama',
-        form_email: 'Email',
-        form_message: 'Pesan',
-        form_submit: 'Kirim',
-        form_name_placeholder: 'Nama lengkap',
-        form_email_placeholder: 'nama@email.com',
-        form_message_placeholder: 'Tulis pesanmu di sini...',
-        form_sending: 'Mengirim...',
-        form_success: 'Pesan berhasil dikirim.',
-        form_error: 'Pesan gagal dikirim. Silakan coba lagi.',
-        form_fallback: 'Atau hubungi melalui platform lain.',
-        footer_tagline: 'Developer • Software • AI • Tools',
-        footer_copy: '© 2026 Haiere. Seluruh hak cipta dilindungi.',
-        err_name_short: 'Nama minimal 4 karakter.',
-        err_name_pattern: 'Nama hanya boleh berisi huruf dan spasi.',
-        err_email_invalid: 'Format email tidak valid.',
-        err_message_short: 'Pesan minimal 20 karakter.'
-    },
+  id: {
+    skip_to_main: 'Langsung ke konten utama',
+    raia_open: 'Buka RAIA AI',
+    raia_try: 'Coba RAIA AI',
+    home_label: 'Haiere - Beranda',
+    logo_alt: 'Logo Haiere',
+    toggle_theme: 'Ganti tema',
+    open_menu: 'Buka menu navigasi',
+    menu_title: 'Menu',
+    nav_about: 'Tentang',
+    nav_tools: 'Tools',
+    nav_music: 'Musik',
+    nav_contact: 'Kontak',
+    nav_quotes: 'Kutipan',
+    nav_privacy: 'Privasi',
+    nav_github: 'GitHub',
+    nav_raia: 'RAIA',
+    nav_language: 'Bahasa',
+    nav_tagline: 'Software, AI, dan tools yang cepat, sederhana, dan mengutamakan privasi.',
+    nav_privacy_policy: 'Kebijakan Privasi',
+    nav_terms: 'Syarat & Ketentuan',
+    hero_title_1: 'Hajir',
+    hero_title_2: 'Studio',
+    hero_desc: 'Halo! Aku Hajir. Aku membuat software, aplikasi web, tools, dan solusi AI yang cepat, ringan, mudah digunakan, dan mengutamakan privasi. Musik adalah hobi yang kukerjakan di waktu luang.',
+    hero_cta1: 'Lihat Proyek',
+    hero_cta2: 'Coba RAIA AI',
+    about_role: 'Developer · Software Engineer',
+    tag_developer: 'Developer',
+    tag_musician: 'Musik',
+    about_p1: 'Aku membangun software, aplikasi web, tools, dan solusi AI untuk membantu orang bekerja lebih cepat, lebih mudah, dan lebih efisien.',
+    about_p2: 'Setiap proyek dibuat dengan fokus pada performa, keamanan, pengalaman pengguna yang nyaman, dan privasi tanpa mengumpulkan data yang tidak diperlukan.',
+    about_p3: 'Di luar dunia software, aku juga membuat musik sebagai hobi dan ruang untuk bereksperimen dengan ide-ide kreatif.',
+    about_cta: 'Jelajahi RAIA',
+    stat_approach: 'Fokus',
+    stat_philosophy: 'Prinsip',
+    stat_tools_label: 'Tools Dirilis',
+    stat_albums_label: 'Rilis Musik',
+    stat_songs_label: 'Lagu Original',
+    stat_privacy_label: 'Privasi Diutamakan',
+    RWR: 'RWR - AMA',
+    RWR_closing: 'RWR adalah bagian dari visi jangka panjangku untuk membangun software dan AI yang bermanfaat bagi banyak orang.',
+    toast_copied: 'Berhasil disalin.',
+    toast_cookie_accepted: 'Preferensi cookie disimpan.',
+    toast_cookie_declined: 'Cookie tetap dinonaktifkan.',
+    music_title: 'Musik sebagai Hobi',
+    music_subtitle: 'Beberapa karya musik yang kubuat di sela-sela waktu luang.',
+    music_player_label: 'Pemutar Musik',
+    music_player_desc: 'Pilih lagu untuk mulai mendengarkan.',
+    music_open_link: 'Klik di sini jika pemutar tidak muncul.',
+    quotes_title: 'Kutipan',
+    quotes_subtitle: 'Beberapa kutipan yang menginspirasiku.',
+    q1_text: 'Waktumu terbatas, jadi jangan habiskan untuk menjalani hidup orang lain.',
+    q1_author: 'Steve Jobs',
+    q2_text: 'Tantangannya adalah melakukannya lebih cepat tanpa kehilangan kendali.',
+    q2_author: 'Adrian Newey',
+    q3_text: 'Semua perubahan dimulai dari diri sendiri.',
+    q3_author: 'Michael Jackson',
+    q4_text: 'Musik menghubungkan perasaan dan kehidupan.',
+    q4_author: 'Ludwig van Beethoven',
+    tools_title: 'Tools Gratis',
+    tools_subtitle: 'Tools yang cepat, aman, gratis, dan bisa langsung digunakan tanpa membuat akun.',
+    filter_all: 'Semua',
+    filter_music: 'Musik',
+    filter_security: 'Keamanan',
+    filter_web: 'Web',
+    status_stable: 'Stabil',
+    tool1_desc: 'Buat file lirik LRC yang sinkron dengan cepat.',
+    tool2_desc: 'Buat password acak yang kuat untuk keamanan akun.',
+    tool3_desc: 'Hapus metadata sensitif dari foto sebelum dibagikan.',
+    tool4_desc: 'Bandingkan dua teks dan lihat perbedaannya secara instan.',
+    tool5_desc: 'Asisten AI sederhana untuk membantu pekerjaan sehari-hari.',
+    tool6_desc: 'Platform AI untuk menjalankan AI Agent yang aman dan andal.',
+    tool_open: 'Buka Tool',
+    contact_title: 'Mari Terhubung',
+    contact_subtitle: 'Punya pertanyaan, ide, atau ingin berkolaborasi? Kirim pesan kapan saja.',
+    form_name: 'Nama',
+    form_email: 'Email',
+    form_message: 'Pesan',
+    form_submit: 'Kirim',
+    form_name_placeholder: 'Masukkan nama lengkap',
+    form_email_placeholder: 'nama@contoh.com',
+    form_message_placeholder: 'Tulis pesan di sini...',
+    form_sending: 'Mengirim...',
+    form_success: 'Pesan berhasil dikirim.',
+    form_error: 'Pesan gagal dikirim. Silakan coba lagi.',
+    form_fallback: 'Atau hubungi melalui platform berikut.',
+    err_name_short: 'Nama minimal 4 karakter.',
+    err_name_pattern: 'Nama hanya boleh berisi huruf dan spasi.',
+    err_email_invalid: 'Masukkan alamat email yang valid.',
+    err_message_short: 'Pesan minimal 20 karakter.',
+    footer_tagline: 'Software • AI • Web Tools • oleh Haiere',
+    footer_copy: '© 2026 Haiere. Seluruh hak cipta dilindungi.',
+    footer_disclaimer: 'Semua tools disediakan apa adanya. Gunakan dengan bijak. Haiere tidak bertanggung jawab atas kehilangan atau kerusakan data yang terjadi saat penggunaan.'
+  },
 
-    en: {
-        nav_about: 'About',
-        nav_music: 'Music',
-        nav_tools: 'Tools',
-        nav_contact: 'Contact',
-        nav_quotes: 'Quotes',
-        nav_privacy: 'Privacy',
-        nav_github: 'GitHub',
-        nav_raia: 'RAIA',
-        nav_language: 'Language',
-        nav_tagline: 'Software, AI, and tools built with privacy in mind',
-        nav_privacy_policy: 'Privacy Policy',
-        nav_terms: 'Terms & Conditions',
-        hero_title_1: 'Hajir',
-        hero_title_2: 'Studio',
-        hero_desc: "Hi, I'm Hajir. I build software, web tools, and AI solutions that are fast, simple, and practical. Music is a hobby I enjoy outside of development.",
-        hero_cta1: 'Explore My Work',
-        hero_cta2: 'Try RAIA AI',
-        about_role: 'Developer · AI Builder',
-        tag_developer: 'Developer',
-        tag_musician: 'Music', 
-        about_p1: 'I build software, web applications, developer tools, and AI solutions that help people work faster and more efficiently.',
-        about_p2: 'Every project is designed to be lightweight, secure, easy to use, and privacy-first without collecting unnecessary personal data.',
-        about_p3: 'Outside of software development, I enjoy creating music as a creative hobby.',
-        about_cta: 'Explore RAIA',
-        stat_approach: 'Focus',
-        stat_philosophy: 'Principles',
-        stat_tools_label: 'Tools Released',
-        stat_albums_label: 'Music Releases',
-        stat_songs_label: 'Original Songs',
-        stat_privacy_label: 'Privacy First',
-        RWR: 'RWR - AMA',
-        RWR_closing: 'RWR is part of my long-term vision for building useful technology.',
-        toast_copied: 'Copied successfully.',
-        toast_cookie_accepted: 'Cookie preferences saved.',
-        toast_cookie_declined: 'Cookies remain disabled.',
-        music_title: 'Music as a Hobby',
-        music_subtitle: 'A few tracks I made in my free time.',
-        music_player_label: 'Music Player',
-        music_player_desc: 'Choose a song and start listening.',
-        music_open_link: "Click here if the player doesn't appear.",
-        quotes_title: 'Quotes',
-        quotes_subtitle: 'A few quotes that inspire me.',
-        tools_title: 'Software & Tools',
-        tools_subtitle: 'Free tools for developers, AI, productivity, and everyday tasks.',
-        tool1_desc: 'Generate synchronized LRC lyric files.',
-        tool2_desc: 'Create strong random passwords.',
-        tool3_desc: 'Remove hidden metadata from photos.',
-        tool4_desc: 'Compare two text files instantly.',
-        tool5_tag: 'AI Tool',
-        tool5_desc: 'A simple AI assistant for everyday tasks and better productivity.',
-        tool5_chip1: 'AI Assistant',
-        tool5_chip2: 'Productivity',
-        tool6_tag: 'AI Platform',
-        tool6_desc: 'A platform for building and managing secure AI agents.',
-        tool6_chip1: 'No-Code',
-        tool6_chip2: 'Enterprise',
-        tool_open: 'Open',
-        filter_all: 'All',
-        filter_music: 'Music',
-        filter_security: 'Security',
-        filter_web: 'Web',
-        status_stable: 'Stable',
-        contact_title: "Let's Work Together",
-        contact_subtitle: 'Have an idea, project, or collaboration in mind? Feel free to get in touch.',
-        form_name: 'Name',
-        form_email: 'Email',
-        form_message: 'Message',
-        form_submit: 'Send',
-        form_name_placeholder: 'Full name',
-        form_email_placeholder: 'name@example.com',
-        form_message_placeholder: 'Write your message...',
-        form_sending: 'Sending...',
-        form_success: 'Message sent successfully.',
-        form_error: 'Failed to send the message. Please try again.',
-        form_fallback: 'Or contact me through another platform.',
-        footer_tagline: 'Developer • Software • AI • Tools',
-        footer_copy: '© 2026 Haiere. All rights reserved.',
-        err_name_short: 'Name must be at least 4 characters.',
-        err_name_pattern: 'Only letters and spaces are allowed.',
-        err_email_invalid: 'Please enter a valid email address.',
-        err_message_short: 'Message must be at least 20 characters.'
-    }
+  en: {
+    skip_to_main: 'Skip to main content',
+    raia_open: 'Open RAIA AI',
+    raia_try: 'Try RAIA AI',
+    home_label: 'Haiere - Home',
+    logo_alt: 'Haiere logo',
+    toggle_theme: 'Toggle theme',
+    open_menu: 'Open navigation menu',
+    menu_title: 'Menu',
+    nav_about: 'About',
+    nav_tools: 'Tools',
+    nav_music: 'Music',
+    nav_contact: 'Contact',
+    nav_quotes: 'Quotes',
+    nav_privacy: 'Privacy',
+    nav_github: 'GitHub',
+    nav_raia: 'RAIA',
+    nav_language: 'Language',
+    nav_tagline: 'Fast, simple, privacy-first software, AI, and web tools.',
+    nav_privacy_policy: 'Privacy Policy',
+    nav_terms: 'Terms & Conditions',
+    hero_title_1: 'Hajir',
+    hero_title_2: 'Studio',
+    hero_desc: "Hi, I'm Hajir. I build software, web applications, developer tools, and AI solutions that are fast, lightweight, easy to use, and privacy-first. Music is simply a hobby I enjoy outside of coding.",
+    hero_cta1: 'Explore Projects',
+    hero_cta2: 'Try RAIA AI',
+    about_role: 'Developer · Software Engineer',
+    tag_developer: 'Developer',
+    tag_musician: 'Music',
+    about_p1: 'I build software, web applications, developer tools, and AI solutions that help people work faster and more efficiently.',
+    about_p2: 'Every project focuses on performance, security, ease of use, and privacy without collecting unnecessary data.',
+    about_p3: 'Outside software development, I create music as a hobby and a way to explore creative ideas.',
+    about_cta: 'Explore RAIA',
+    stat_approach: 'Focus',
+    stat_philosophy: 'Principles',
+    stat_tools_label: 'Tools Released',
+    stat_albums_label: 'Music Releases',
+    stat_songs_label: 'Original Songs',
+    stat_privacy_label: 'Privacy First',
+    RWR: 'RWR - AMA',
+    RWR_closing: 'RWR is part of my long-term vision to build useful software and AI for everyone.',
+    toast_copied: 'Copied successfully.',
+    toast_cookie_accepted: 'Cookie preferences saved.',
+    toast_cookie_declined: 'Cookies remain disabled.',
+    music_title: 'Music as a Hobby',
+    music_subtitle: 'A few tracks created during my free time.',
+    music_player_label: 'Music Player',
+    music_player_desc: 'Choose a track and start listening.',
+    music_open_link: "Click here if the player doesn't appear.",
+    quotes_title: 'Quotes',
+    quotes_subtitle: 'A few quotes that inspire me.',
+    q1_text: 'Your time is limited, so do not waste it living someone else’s life.',
+    q1_author: 'Steve Jobs',
+    q2_text: 'The challenge is to move faster without losing control.',
+    q2_author: 'Adrian Newey',
+    q3_text: 'Change begins with yourself.',
+    q3_author: 'Michael Jackson',
+    q4_text: 'Music connects emotion and life.',
+    q4_author: 'Ludwig van Beethoven',
+    tools_title: 'Free Tools',
+    tools_subtitle: 'Fast, secure, and free tools you can use instantly without creating an account.',
+    filter_all: 'All',
+    filter_music: 'Music',
+    filter_security: 'Security',
+    filter_web: 'Web',
+    status_stable: 'Stable',
+    tool1_desc: 'Generate synchronized LRC lyric files in seconds.',
+    tool2_desc: 'Generate strong random passwords for better security.',
+    tool3_desc: 'Remove sensitive metadata from photos before sharing.',
+    tool4_desc: 'Compare two text files and instantly find the differences.',
+    tool5_desc: 'A simple AI assistant for everyday tasks.',
+    tool6_desc: 'An AI platform for running secure and reliable AI agents.',
+    tool_open: 'Open Tool',
+    contact_title: 'Get in Touch',
+    contact_subtitle: 'Have a question, an idea, or want to collaborate? Feel free to send a message.',
+    form_name: 'Name',
+    form_email: 'Email',
+    form_message: 'Message',
+    form_submit: 'Send',
+    form_name_placeholder: 'Enter your full name',
+    form_email_placeholder: 'name@example.com',
+    form_message_placeholder: 'Write your message...',
+    form_sending: 'Sending...',
+    form_success: 'Message sent successfully.',
+    form_error: 'Failed to send your message. Please try again.',
+    form_fallback: 'Or connect through these platforms.',
+    err_name_short: 'Name must be at least 4 characters.',
+    err_name_pattern: 'Only letters and spaces are allowed.',
+    err_email_invalid: 'Please enter a valid email address.',
+    err_message_short: 'Message must be at least 20 characters.',
+    footer_tagline: 'Software • AI • Web Tools • by Haiere',
+    footer_copy: '© 2026 Haiere. All rights reserved.',
+    footer_disclaimer: 'All tools are provided as-is. Use them responsibly. Haiere is not liable for any data loss or damage resulting from their use.'
+  }
 };
-
             var currentLang = 'id';
 
             function detectLang() {
@@ -2524,7 +2433,7 @@
             } catch (_) {}
             applyLang(savedLang || detectLang());
 
-            // ─── 2. THEME & LOGO ──────────────────────────────────────────────────
+            // ─── 2. THEME & LOGO
             var LOGO_LIGHT = 'https://i.postimg.cc/GmWt2wch/H-blue.webp';
             var LOGO_DARK = 'https://i.postimg.cc/8PJ0bhb1/H-haiere.webp';
 
@@ -2573,7 +2482,7 @@
                 });
             });
 
-            // ─── 3. DRAWER ────────────────────────────────────────────────────────
+            // ─── 3. DRAWER
             var menuBtn = document.getElementById('menu-btn');
             var drawer = document.getElementById('nav-drawer');
             var overlay = document.getElementById('drawer-overlay');
@@ -2639,7 +2548,7 @@
                 });
             }
 
-            // ─── 4. SCROLL PROGRESS ─────────────────────────────────────────────
+            // ─── 4. SCROLL PROGRESS
             var scrollProgress = document.getElementById('scroll-progress');
             if (scrollProgress) {
                 var progressTicking = false;
@@ -2661,7 +2570,7 @@
                 updateProgress();
             }
 
-            // ─── 5. NAV EFFECTS ──────────────────────────────────────────────────
+            // ─── 5. NAV EFFECTS
             var header = document.getElementById('nav');
             if (header) {
                 window.addEventListener('scroll', function() {
@@ -2669,7 +2578,7 @@
                 }, { passive: true });
             }
 
-            // ─── 6. REVEAL ON SCROLL ────────────────────────────────────────────
+            // ─── 6. REVEAL ON SCROLL
             if ('IntersectionObserver' in window) {
                 var revealObserver = new IntersectionObserver(function(entries) {
                     entries.forEach(function(entry) {
@@ -2688,7 +2597,7 @@
                 });
             }
 
-            // ─── 7. SECTION HIGHLIGHTING ────────────────────────────────────────
+            // ─── 7. SECTION HIGHLIGHTING
             var sections = document.querySelectorAll('section[id]');
             var navLinks = document.querySelectorAll('.nav-link');
 
@@ -2715,7 +2624,7 @@
                 });
             }
 
-            // ─── 8. BACK TO TOP ──────────────────────────────────────────────────
+            // ─── 8. BACK TO TOP
             var backTop = document.getElementById('back-top');
             if (backTop) {
                 window.addEventListener('scroll', function() {
@@ -2728,7 +2637,7 @@
                 });
             }
 
-            // ─── 9. LAST UPDATED ─────────────────────────────────────────────────
+            // ─── 9. LAST UPDATED
             function updateLastUpdated() {
                 var el = document.getElementById('last-updated-date');
                 if (!el) return;
@@ -2780,7 +2689,7 @@
                 return fallback || '';
             }
 
-            // ─── 11. COPY BUTTON ─────────────────────────────────────────────────
+            // ─── 11. COPY BUTTON
             function handleCopySuccess(btn) {
                 var icon = btn ? btn.querySelector('i') : null;
                 if (icon) {
@@ -2827,7 +2736,7 @@
                 });
             });
 
-            // ─── 12. COOKIE BANNER ──────────────────────────────────────────────
+            // ─── 12. COOKIE BANNER
             var cookieBanner = document.getElementById('cookieBanner');
             var acceptBtn = document.getElementById('acceptCookiesBtn');
             var declineBtn = document.getElementById('declineCookiesBtn');
@@ -2986,7 +2895,7 @@
                 });
             }
 
-            // ─── 14. HERO SPOTLIGHT ─────────────────────────────────────────────
+            // ─── 14. HERO SPOTLIGHT
             var heroSection = document.getElementById('hero');
             var heroSpotlight = document.getElementById('hero-spotlight');
             var prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -3006,7 +2915,7 @@
                 });
             }
 
-            // ─── 15. TILT & MAGNETIC ─────────────────────────────────────────────
+            // ─── 15. TILT & MAGNETIC
             if (!prefersReducedMotion && !isCoarsePointer) {
                 var tiltTargets = document.querySelectorAll('.tool-card, #quotes .glass-hover, #about .glass-hover:not(.contact-link)');
                 tiltTargets.forEach(function(card) {
@@ -3038,7 +2947,7 @@
                 });
             }
 
-            // ─── 16. STAT COUNTER ────────────────────────────────────────────────
+            // ─── 16. STAT COUNTER
             var statEls = document.querySelectorAll('.stat-number');
             if (statEls.length && 'IntersectionObserver' in window) {
                 var statObserver = new IntersectionObserver(function(entries) {
@@ -3070,7 +2979,7 @@
                 });
             }
 
-            // ─── 17. TOOL FILTER ─────────────────────────────────────────────────
+            // ─── 17. TOOL FILTER
             var filterButtons = document.querySelectorAll('.filter-btn');
             var toolCards = document.querySelectorAll('.tool-card');
 
