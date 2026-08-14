@@ -99,20 +99,43 @@
             transition: background 0.5s ease, border-color 0.5s ease, box-shadow 0.5s ease, transform 0.5s var(--ease-spring);
         }
 
-        /* Fallback for browsers without backdrop-filter */
         @supports not (backdrop-filter: blur(1px)) {
-            .glass { background: rgba(255, 255, 255, 0.92); }
-            .dark .glass { background: rgba(15, 23, 42, 0.92); }
-            .glass-card { background: rgba(255, 255, 255, 0.9); }
-            .dark .glass-card { background: rgba(15, 23, 42, 0.9); }
-            .glass-pill { background: rgba(255, 255, 255, 0.88); }
-            .dark .glass-pill { background: rgba(30, 41, 59, 0.88); }
-            .glass-nav { background: rgba(255, 255, 255, 0.96); }
-            .dark .glass-nav { background: rgba(2, 6, 23, 0.96); }
-            .glass-social { background: rgba(255, 255, 255, 0.85); }
-            .dark .glass-social { background: rgba(30, 41, 59, 0.85); }
-            .drawer-glass { background: rgba(255, 255, 255, 0.96); }
-            .dark .drawer-glass { background: rgba(15, 23, 42, 0.96); }
+            .glass {
+                background: rgba(255, 255, 255, 0.92);
+            }
+            .dark .glass {
+                background: rgba(15, 23, 42, 0.92);
+            }
+            .glass-card {
+                background: rgba(255, 255, 255, 0.9);
+            }
+            .dark .glass-card {
+                background: rgba(15, 23, 42, 0.9);
+            }
+            .glass-pill {
+                background: rgba(255, 255, 255, 0.88);
+            }
+            .dark .glass-pill {
+                background: rgba(30, 41, 59, 0.88);
+            }
+            .glass-nav {
+                background: rgba(255, 255, 255, 0.96);
+            }
+            .dark .glass-nav {
+                background: rgba(2, 6, 23, 0.96);
+            }
+            .glass-social {
+                background: rgba(255, 255, 255, 0.85);
+            }
+            .dark .glass-social {
+                background: rgba(30, 41, 59, 0.85);
+            }
+            .drawer-glass {
+                background: rgba(255, 255, 255, 0.96);
+            }
+            .dark .drawer-glass {
+                background: rgba(15, 23, 42, 0.96);
+            }
         }
 
         .glass {
@@ -547,21 +570,41 @@
             animation: ticker 30s linear infinite;
         }
         @keyframes ticker {
-            from { transform: translateX(0); }
-            to { transform: translateX(-50%); }
+            from {
+                transform: translateX(0);
+            }
+            to {
+                transform: translateX(-50%);
+            }
         }
         @keyframes fadeUp {
-            from { opacity: 0; transform: translateY(28px) scale(0.98); }
-            to { opacity: 1; transform: translateY(0) scale(1); }
+            from {
+                opacity: 0;
+                transform: translateY(28px) scale(0.98);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
         }
         .animate-fade-up {
             animation: fadeUp 0.8s var(--ease-out) forwards;
         }
-        .animate-fade-up-delay-1 { animation-delay: 0.05s; }
-        .animate-fade-up-delay-2 { animation-delay: 0.15s; }
-        .animate-fade-up-delay-3 { animation-delay: 0.3s; }
-        .animate-fade-up-delay-4 { animation-delay: 0.45s; }
-        .animate-fade-up-delay-5 { animation-delay: 0.6s; }
+        .animate-fade-up-delay-1 {
+            animation-delay: 0.05s;
+        }
+        .animate-fade-up-delay-2 {
+            animation-delay: 0.15s;
+        }
+        .animate-fade-up-delay-3 {
+            animation-delay: 0.3s;
+        }
+        .animate-fade-up-delay-4 {
+            animation-delay: 0.45s;
+        }
+        .animate-fade-up-delay-5 {
+            animation-delay: 0.6s;
+        }
 
         .reveal {
             opacity: 0;
@@ -577,18 +620,41 @@
             animation: pulse-dot 2.4s ease-in-out infinite;
         }
         @keyframes pulse-dot {
-            0%, 100% { opacity: 1; transform: scale(1); }
-            50% { opacity: 0.3; transform: scale(0.6); }
+            0%,
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+            50% {
+                opacity: 0.3;
+                transform: scale(0.6);
+            }
         }
 
         .scroll-line {
             animation: scroll-anim 1.8s ease-in-out infinite;
         }
         @keyframes scroll-anim {
-            0% { opacity: 0; transform: scaleY(0); transform-origin: top; }
-            40% { opacity: 1; transform: scaleY(1); transform-origin: top; }
-            60% { opacity: 1; transform: scaleY(1); transform-origin: bottom; }
-            100% { opacity: 0; transform: scaleY(0); transform-origin: bottom; }
+            0% {
+                opacity: 0;
+                transform: scaleY(0);
+                transform-origin: top;
+            }
+            40% {
+                opacity: 1;
+                transform: scaleY(1);
+                transform-origin: top;
+            }
+            60% {
+                opacity: 1;
+                transform: scaleY(1);
+                transform-origin: bottom;
+            }
+            100% {
+                opacity: 0;
+                transform: scaleY(0);
+                transform-origin: bottom;
+            }
         }
 
         /* ===== SKIP LINK ===== */

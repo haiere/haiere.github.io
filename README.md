@@ -41,7 +41,7 @@ Requirements
 
 Installation
 
-Haiere Studio is a single HTML file. To use it:
+HajirStudio is a single HTML file. To use it:
 
 1. Open the hosted URL in your browser.
 2. Alternatively, download the index.html file and open it locally.
@@ -153,7 +153,7 @@ Adding a new translation
 
 Author
 
-Developed by Hajir (Haiere) – a web developer, AI builder, and musician.
+Developed by Hajir (Haiere) & HajirStudio – a web developer, AI builder, and musician.
 
 ---
 
@@ -197,7 +197,7 @@ A personal portfolio and tool hub for **Hajir Stein**, showcasing web developmen
 
 ## Overview
 
-**Haiere Studio** is a single-page portfolio website that acts as the personal hub for **Hajir Stein**, a web developer, AI builder, and musician.
+**HajirStudio** is a single-page portfolio website that acts as the personal hub for **Hajir Stein**, a web developer, AI builder, and musician.
 
 The website presents:
 
@@ -250,8 +250,9 @@ No backend, database, package manager, or build process is required.
 Clone the repository:
 
 ```bash
-git clone <REPOSITORY-URL>
-cd <PROJECT-DIRECTORY>
+git clone https://github.com/haiere/haiere.github.io
+cd haiere.github.io
+open index.html
 ```
 
 Start a local web server using Python:
