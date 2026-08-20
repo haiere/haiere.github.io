@@ -393,6 +393,29 @@
             }, { passive: true });
         }
 
+        // ===== AMBIENT BACKGROUND PARALLAX (very light, respects reduced motion) =====
+        (function() {
+            var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            var blobs = document.querySelectorAll('.aurora-blob');
+            if (!blobs.length || reduceMotion) return;
+
+            var parallaxTicking = false;
+            function updateParallax() {
+                var y = window.scrollY || document.documentElement.scrollTop;
+                blobs.forEach(function(blob, i) {
+                    var depth = 0.015 + i * 0.008;
+                    blob.style.marginTop = (y * depth * -1) + 'px';
+                });
+                parallaxTicking = false;
+            }
+            window.addEventListener('scroll', function() {
+                if (!parallaxTicking) {
+                    requestAnimationFrame(updateParallax);
+                    parallaxTicking = true;
+                }
+            }, { passive: true });
+        })();
+
         // ===== REVEAL ON SCROLL =====
         if ('IntersectionObserver' in window) {
             var revealObserver = new IntersectionObserver(function(entries) {
