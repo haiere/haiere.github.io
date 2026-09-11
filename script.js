@@ -5,215 +5,8 @@
         if (typeof renderIcons === 'function') renderIcons();
 
         // ===== I18N =====
-        var i18n = {
-            id: {
-                skip_to_main: 'Langsung ke konten utama',
-                raia_open: 'Buka RAIA AI',
-                raia_try: 'Coba RAIA AI',
-                home_label: 'Haiere - Beranda',
-                logo_alt: 'Logo Haiere',
-                toggle_theme: 'Ubah tema',
-                open_menu: 'Buka menu',
-                menu_title: 'Menu',
-                nav_about: 'Tentang',
-                nav_music: 'Musik',
-                nav_tools: 'Tools',
-                nav_contact: 'Kontak',
-                nav_quotes: 'Kutipan',
-                nav_privacy: 'Privasi',
-                nav_github: 'GitHub',
-                nav_raia: 'RAIA',
-                nav_language: 'Bahasa',
-                nav_tagline: 'Software, AI, dan tools yang dibuat dengan privasi sebagai prioritas',
-                nav_privacy_policy: 'Kebijakan Privasi',
-                nav_terms: 'Syarat & Ketentuan',
-                hero_title_1: 'Hajir',
-                hero_title_2: 'Studio',
-                hero_desc: 'Halo! Aku Hajir. Aku bikin software, web tools, dan AI yang cepat, simpel, dan mudah dipakai.',
-                hero_cta1: 'Lihat Karyaku',
-                hero_cta2: 'Coba RAIA AI',
-                about_role: 'Developer · AI Builder',
-                about_role_musician: 'Musisi',
-                about_role_developer: 'Developer',
-                tag_developer: 'Developer',
-                tag_musician: 'Musik',
-                about_p1: 'Aku fokus bikin software, aplikasi web, tools, dan AI yang benar-benar membantu kerja jadi lebih cepat.',
-                about_p2: 'Semua proyek kubuat tetap ringan, aman, mudah dipakai, dan hanya memakai data yang memang dibutuhkan.',
-                about_p3: 'Kalau lagi nggak ngoding, aku biasanya bikin musik untuk menyalurkan ide di luar dunia teknologi.',
-                about_cta: 'Lihat RAIA',
-                stat_approach: 'Fokus',
-                stat_philosophy: 'Prinsip',
-                stat_tools_label: 'Tools Rilis',
-                stat_albums_label: 'Rilis Musik',
-                stat_songs_label: 'Lagu Original',
-                stat_privacy_label: 'Privasi Diutamakan',
-                RWR: 'RWR - AMA',
-                RWR_closing: 'RWR adalah bagian dari rencana jangka panjangku untuk membangun teknologi yang benar-benar berguna.',
-                toast_copied: 'Berhasil disalin!',
-                toast_cookie_accepted: 'Pengaturan cookie berhasil disimpan.',
-                toast_cookie_declined: 'Cookie tetap dimatikan.',
-                toast_copy_failed: 'Gagal menyalin, coba lagi.',
-                music_title: 'Musik Andalan',
-                music_subtitle: 'Beberapa lagu yang kubuat saat ada waktu luang.',
-                music_player_label: 'Pemutar Musik',
-                music_player_desc: 'Pilih lagu lalu langsung dengarkan.',
-                music_open_link: 'Kalau pemutar tidak muncul, klik di sini.',
-                quotes_title: 'Kutipan',
-                quotes_subtitle: 'Beberapa kutipan yang jadi inspirasi buatku.',
-                q1_text: 'Waktumu terbatas, jadi jangan habiskan untuk menjalani hidup orang lain.',
-                q1_author: 'Steve Jobs',
-                q2_text: 'Tantangannya adalah melakukannya lebih cepat daripada orang lain tanpa kehilangan kendali.',
-                q2_author: 'Adrian Newey',
-                q3_text: 'Semuanya dimulai dari orang yang ada di depan cermin.',
-                q3_author: 'Michael Jackson',
-                q4_text: 'Musik adalah penghubung antara kehidupan spiritual dan kehidupan indrawi.',
-                q4_author: 'Ludwig van Beethoven',
-                tools_title: 'Tools Gratis yang Siap Dipakai',
-                tools_subtitle: 'Gratis, cepat, aman, dan bisa langsung dipakai tanpa perlu daftar.',
-                filter_all: 'Semua',
-                filter_music: 'Musik',
-                filter_security: 'Keamanan',
-                filter_web: 'Web',
-                status_stable: 'Stabil',
-                tool1_desc: 'Buat file lirik LRC yang sinkron dengan lagu dalam hitungan detik.',
-                tool2_desc: 'Buat password acak yang kuat untuk menjaga akun tetap aman.',
-                tool3_desc: 'Hapus metadata sensitif, seperti lokasi, sebelum foto dibagikan.',
-                tool4_desc: 'Bandingkan dua teks dan lihat perbedaannya secara langsung.',
-                tool5_desc: 'AI ringan yang membantu kerja jadi lebih cepat tanpa ribet.',
-                tool6_desc: 'Chat AI yang bisa dipakai dengan berbagai provider sesuai kebutuhan.',
-                tool_open: 'Buka Tools',
-                tool_docs: 'Cara Penggunaan',
-                docs_loading: 'Memuat dokumentasi...',
-                docs_error: 'Dokumentasi belum tersedia untuk tool ini.',
-                docs_view_repo: 'Lihat Repository',
-                docs_modal_close: 'Tutup',
-                contact_title: 'Yuk Ngobrol atau Kolaborasi',
-                contact_subtitle: 'Punya pertanyaan, ide, atau cuma ingin menyapa? Kirim pesan saja.',
-                form_name: 'Nama',
-                form_email: 'Email',
-                form_message: 'Pesan',
-                form_submit: 'Kirim',
-                form_name_placeholder: 'Masukkan nama lengkapmu',
-                form_email_placeholder: 'nama@contoh.com',
-                form_message_placeholder: 'Tulis pesanmu di sini...',
-                form_sending: 'Mengirim...',
-                form_success: 'Pesan berhasil dikirim!',
-                form_error: 'Pesan gagal dikirim. Coba lagi, ya.',
-                form_fallback: 'Atau hubungi aku lewat platform berikut.',
-                err_name_short: 'Nama minimal 4 karakter.',
-                err_name_pattern: 'Nama hanya boleh berisi huruf dan spasi.',
-                err_email_invalid: 'Masukkan alamat email yang valid.',
-                err_message_short: 'Pesan minimal 20 karakter.',
-                footer_tagline: 'Website Pribadi · Tools Gratis · by Haiere',
-                footer_copy: '© 2026 Haiere · Dibuat dengan sepenuh hati.',
-                footer_disclaimer: 'Disclaimer: Semua tools digunakan atas tanggung jawab masing-masing. Haiere tidak bertanggung jawab atas kehilangan atau kerusakan data.'
-            },
-            en: {
-                skip_to_main: 'Skip to main content',
-                raia_open: 'Open RAIA AI',
-                raia_try: 'Try RAIA AI',
-                home_label: 'Haiere - Home',
-                logo_alt: 'Haiere logo',
-                toggle_theme: 'Change theme',
-                open_menu: 'Open menu',
-                menu_title: 'Menu',
-                nav_about: 'About',
-                nav_music: 'Music',
-                nav_tools: 'Tools',
-                nav_contact: 'Contact',
-                nav_quotes: 'Quotes',
-                nav_privacy: 'Privacy',
-                nav_github: 'GitHub',
-                nav_raia: 'RAIA',
-                nav_language: 'Language',
-                nav_tagline: 'Software, AI, and tools built with privacy as a priority',
-                nav_privacy_policy: 'Privacy Policy',
-                nav_terms: 'Terms & Conditions',
-                hero_title_1: 'Hajir',
-                hero_title_2: 'Studio',
-                hero_desc: "Hi! I'm Hajir. I build software, web tools, and AI that are fast, simple, and easy to use.",
-                hero_cta1: 'See My Work',
-                hero_cta2: 'Try RAIA AI',
-                about_role: 'Developer · AI Builder',
-                about_role_musician: 'Musician',
-                about_role_developer: 'Developer',
-                tag_developer: 'Developer',
-                tag_musician: 'Music',
-                about_p1: 'I focus on building software, web apps, tools, and AI that really help people work faster.',
-                about_p2: 'I make everything lightweight, secure, easy to use, and limited to the data that is actually needed.',
-                about_p3: 'When I am not coding, I usually make music to express ideas outside the tech world.',
-                about_cta: 'Explore RAIA',
-                stat_approach: 'Focus',
-                stat_philosophy: 'Principles',
-                stat_tools_label: 'Tools Released',
-                stat_albums_label: 'Music Releases',
-                stat_songs_label: 'Original Songs',
-                stat_privacy_label: 'Privacy First',
-                RWR: 'RWR - AMA',
-                RWR_closing: 'RWR is part of my long-term plan to build technology that is genuinely useful.',
-                toast_copied: 'Copied successfully!',
-                toast_cookie_accepted: 'Cookie settings saved.',
-                toast_cookie_declined: 'Cookies remain disabled.',
-                toast_copy_failed: 'Failed to copy, try again.',
-                music_title: 'Signature Music',
-                music_subtitle: 'A few songs I made in my spare time.',
-                music_player_label: 'Music Player',
-                music_player_desc: 'Choose a song and listen right away.',
-                music_open_link: "Click here if the player doesn't appear.",
-                quotes_title: 'Quotes',
-                quotes_subtitle: 'A few quotes that inspire me.',
-                q1_text: "Your time is limited, so don't waste it living someone else's life.",
-                q1_author: 'Steve Jobs',
-                q2_text: 'The challenge is to do it faster than others without losing control.',
-                q2_author: 'Adrian Newey',
-                q3_text: 'It all starts with the person in the mirror.',
-                q3_author: 'Michael Jackson',
-                q4_text: 'Music is the bridge between spiritual life and sensory life.',
-                q4_author: 'Ludwig van Beethoven',
-                tools_title: 'Free Tools Ready to Use',
-                tools_subtitle: 'Free, fast, secure, and ready to use without sign-up.',
-                filter_all: 'All',
-                filter_music: 'Music',
-                filter_security: 'Security',
-                filter_web: 'Web',
-                status_stable: 'Stable',
-                tool1_desc: 'Create synchronized LRC lyric files in seconds.',
-                tool2_desc: 'Generate strong random passwords to keep your accounts secure.',
-                tool3_desc: 'Remove sensitive metadata, such as location, before sharing your photos.',
-                tool4_desc: 'Compare two texts and see the differences instantly.',
-                tool5_desc: 'A lightweight AI tool that helps you work faster without hassle.',
-                tool6_desc: 'An AI chat that can be used with different providers based on your needs.',
-                tool_open: 'Open Tool',
-                tool_docs: 'How to Use',
-                docs_loading: 'Loading documentation...',
-                docs_error: 'Documentation is not available yet for this tool.',
-                docs_view_repo: 'View Repository',
-                docs_modal_close: 'Close',
-                contact_title: "Let's Chat or Collaborate",
-                contact_subtitle: 'Got a question, idea, or just want to say hi? Send a message.',
-                form_name: 'Name',
-                form_email: 'Email',
-                form_message: 'Message',
-                form_submit: 'Send',
-                form_name_placeholder: 'Enter your full name',
-                form_email_placeholder: 'name@example.com',
-                form_message_placeholder: 'Write your message here...',
-                form_sending: 'Sending...',
-                form_success: 'Message sent successfully!',
-                form_error: 'Message failed to send. Please try again.',
-                form_fallback: 'Or reach me through the following platforms.',
-                err_name_short: 'Name must be at least 4 characters.',
-                err_name_pattern: 'Name may only contain letters and spaces.',
-                err_email_invalid: 'Please enter a valid email address.',
-                err_message_short: 'Message must be at least 20 characters.',
-                footer_tagline: 'Personal Website · Free Tools · by Haiere',
-                footer_copy: '© 2026 Haiere · Made with care.',
-                footer_disclaimer: 'Disclaimer: Use all tools at your own risk. Haiere is not responsible for any data loss or damage.'
-            }
-        };
-
-        // Expose i18n globally so getI18nText can access it
-        window.i18n = i18n;
+        // Strings live in i18n.js (loaded before this file) as window.i18n.
+        var i18n = window.i18n || {};
 
         var currentLang = 'id';
 
@@ -322,27 +115,61 @@
         var overlay = document.getElementById('drawer-overlay');
         var drawerClose = document.getElementById('drawer-close');
         var isDrawerOpen = false;
+        var drawerLastFocused = null;
 
         function setBodyScrollLock(locked) {
             document.body.style.overflow = locked ? 'hidden' : '';
         }
 
+        function getDrawerFocusable() {
+            if (!drawer) return [];
+            return Array.prototype.slice.call(
+                drawer.querySelectorAll('a[href], button:not([disabled]), input, select, textarea, [tabindex]:not([tabindex="-1"])')
+            );
+        }
+
+        function trapDrawerFocus(e) {
+            if (e.key !== 'Tab' || !isDrawerOpen) return;
+            var focusable = getDrawerFocusable();
+            if (!focusable.length) return;
+            var first = focusable[0];
+            var last = focusable[focusable.length - 1];
+            if (e.shiftKey && document.activeElement === first) {
+                e.preventDefault();
+                last.focus();
+            } else if (!e.shiftKey && document.activeElement === last) {
+                e.preventDefault();
+                first.focus();
+            }
+        }
+
         function openDrawer() {
             if (!drawer || !menuBtn || !overlay) return;
+            drawerLastFocused = document.activeElement;
             drawer.classList.add('open');
+            drawer.setAttribute('aria-hidden', 'false');
             menuBtn.setAttribute('aria-expanded', 'true');
             overlay.classList.add('active');
             isDrawerOpen = true;
             setBodyScrollLock(true);
+            var focusable = getDrawerFocusable();
+            if (focusable.length) focusable[0].focus();
         }
 
         function closeDrawer() {
             if (!drawer || !menuBtn || !overlay) return;
             drawer.classList.remove('open');
+            drawer.setAttribute('aria-hidden', 'true');
             menuBtn.setAttribute('aria-expanded', 'false');
             overlay.classList.remove('active');
             isDrawerOpen = false;
             setBodyScrollLock(false);
+            if (drawerLastFocused && typeof drawerLastFocused.focus === 'function') {
+                drawerLastFocused.focus();
+            } else {
+                menuBtn.focus();
+            }
+            drawerLastFocused = null;
         }
 
         function toggleDrawer() {
@@ -350,6 +177,7 @@
         }
 
         if (menuBtn && drawer && overlay) {
+            drawer.setAttribute('aria-hidden', 'true');
             menuBtn.addEventListener('click', function(e) {
                 e.stopPropagation();
                 toggleDrawer();
@@ -359,7 +187,11 @@
             }
             overlay.addEventListener('click', closeDrawer);
             document.addEventListener('keydown', function(e) {
-                if (e.key === 'Escape' && isDrawerOpen) closeDrawer();
+                if (e.key === 'Escape' && isDrawerOpen) {
+                    closeDrawer();
+                    return;
+                }
+                trapDrawerFocus(e);
             });
             document.querySelectorAll('#nav-drawer .drawer-item').forEach(function(link) {
                 link.addEventListener('click', function() {
@@ -370,6 +202,10 @@
                 if (isDrawerOpen && !drawer.contains(e.target) && !menuBtn.contains(e.target)) {
                     closeDrawer();
                 }
+            });
+            // Close on route change (hash navigation)
+            window.addEventListener('hashchange', function() {
+                if (isDrawerOpen) closeDrawer();
             });
 
             var resizeTimerDrawer;
@@ -849,64 +685,14 @@
         var docsCache = {};
         var docsLastFocused = null;
 
+        // Markdown rendering via the `marked` library (loaded in index.html
+        // before this file). Falls back to plain text if the CDN failed.
         function mdToHtml(md) {
-            // Minimal, dependency-free Markdown -> HTML converter.
-            var escaped = md
-                .replace(/&/g, '&amp;')
-                .replace(/</g, '&lt;')
-                .replace(/>/g, '&gt;');
-
-            var lines = escaped.split(/\r?\n/);
-            var html = '';
-            var inCode = false;
-            var inList = false;
-
-            lines.forEach(function(line) {
-                if (/^```/.test(line)) {
-                    if (!inCode) {
-                        html += '<pre><code>';
-                        inCode = true;
-                    } else {
-                        html += '</code></pre>';
-                        inCode = false;
-                    }
-                    return;
-                }
-                if (inCode) {
-                    html += line + '\n';
-                    return;
-                }
-
-                var heading = line.match(/^(#{1,6})\s+(.*)$/);
-                var listItem = line.match(/^[-*]\s+(.*)$/);
-
-                if (heading) {
-                    if (inList) { html += '</ul>'; inList = false; }
-                    var level = heading[1].length;
-                    html += '<h' + level + '>' + inlineMd(heading[2]) + '</h' + level + '>';
-                    return;
-                }
-                if (listItem) {
-                    if (!inList) { html += '<ul>'; inList = true; }
-                    html += '<li>' + inlineMd(listItem[1]) + '</li>';
-                    return;
-                }
-                if (inList) { html += '</ul>'; inList = false; }
-
-                if (line.trim() === '') return;
-                html += '<p>' + inlineMd(line) + '</p>';
-            });
-            if (inList) html += '</ul>';
-            if (inCode) html += '</code></pre>';
-            return html;
-        }
-
-        function inlineMd(text) {
-            return text
-                .replace(/`([^`]+)`/g, '<code>$1</code>')
-                .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
-                .replace(/\*([^*]+)\*/g, '<em>$1</em>')
-                .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank" rel="noopener noreferrer">$1</a>');
+            if (typeof marked !== 'undefined' && marked && typeof marked.parse === 'function') {
+                marked.setOptions({ gfm: true, breaks: true, headerIds: false, mangle: false });
+                return marked.parse(md);
+            }
+            return null;
         }
 
         function fetchReadme(repo) {
@@ -946,7 +732,18 @@
 
             fetchReadme(repo)
                 .then(function(md) {
-                    docsModalBody.innerHTML = '<div class="docs-markdown">' + mdToHtml(md) + '</div>';
+                    var rendered = mdToHtml(md);
+                    if (rendered !== null) {
+                        docsModalBody.innerHTML = '<div class="docs-markdown">' + rendered + '</div>';
+                    } else {
+                        // marked failed to load from the CDN — show the raw
+                        // README as plain text rather than nothing.
+                        docsModalBody.innerHTML = '';
+                        var fallbackPre = document.createElement('pre');
+                        fallbackPre.className = 'docs-markdown-fallback';
+                        fallbackPre.textContent = md;
+                        docsModalBody.appendChild(fallbackPre);
+                    }
                 })
                 .catch(function() {
                     docsModalBody.innerHTML = '<div class="docs-modal-error">' +

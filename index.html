@@ -26,12 +26,12 @@
     content="Haiere, Hajir, Hajir Stein, Hajir Muhaajir, web developer portfolio, free web tools, privacy-first tools, RAIA AI, open source developer, Indonesia developer" />
     <meta name="author" content="Haiere" />
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
-    <link rel="canonical" href="https://haiere.github.io/" />
+    <link rel="canonical" href="https://hajir.is-a.dev/" />
 
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Haiere" />
-    <meta property="og:url" content="https://haiere.github.io/" />
+    <meta property="og:url" content="https://hajir.is-a.dev/" />
     <meta property="og:title" content="Hajir Stein (Haiere) | Web Developer &amp; Free Web Tools" />
     <meta property="og:description"
     content="Explore fast, privacy-focused online tools, open-source projects, and music created by Hajir." />
@@ -51,9 +51,9 @@
     <meta name="twitter:image:alt" content="Haiere web developer and free tools preview" />
 
     <!-- Hreflang -->
-    <link rel="alternate" hreflang="id" href="https://haiere.github.io/" />
-    <link rel="alternate" hreflang="en" href="https://haiere.github.io/?lang=en" />
-    <link rel="alternate" hreflang="x-default" href="https://haiere.github.io/" />
+    <link rel="alternate" hreflang="id" href="https://hajir.is-a.dev/" />
+    <link rel="alternate" hreflang="en" href="https://hajir.is-a.dev/?lang=en" />
+    <link rel="alternate" hreflang="x-default" href="https://hajir.is-a.dev/" />
 
     <!-- Theme & Icons -->
     <meta name="theme-color" content="#020617" />
@@ -88,7 +88,7 @@
             "@type": "Person",
             "name": "Hajir Stein",
             "alternateName": ["Haiere", "Hajir Muhaajir"],
-            "url": "https://haiere.github.io/",
+            "url": "https://hajir.is-a.dev/",
             "image": "https://i.postimg.cc/GmWt2wch/H-blue.webp",
             "jobTitle": ["Web Developer", "Musician"],
             "description": "Personal showcase of Haiere — musician and developer building privacy-first tools and original music for the open web.",
@@ -163,7 +163,7 @@
     aria-live="polite" aria-atomic="true"></div>
 
     <!-- ===== RAIA BUTTON ===== -->
-    <a id="raia-button" href="https://raia-ai.netlify.app" target="_blank" rel="noopener noreferrer"
+    <a id="raia-button" href="https://raia-ai.vercel.app" target="_blank" rel="noopener noreferrer"
     aria-label="Open RAIA AI"
     class="group/raia fixed bottom-6 left-6 z-50 flex h-12 w-12 items-center justify-center rounded-2xl bg-blue-600 text-white shadow-lg shadow-blue-600/30 transition-all duration-300 hover:rotate-12 hover:bg-blue-700 hover:shadow-xl hover:shadow-blue-700/40 active:scale-90 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2 dark:focus:ring-offset-slate-900">
     <svg class="h-5 w-5 transition-transform group-hover/raia:scale-110" data-icon="ic01" aria-hidden="true"></svg>
@@ -191,10 +191,24 @@ aria-hidden="true">Try RAIA AI</span>
             </span>
         </a>
 
+        <!-- Search -->
+        <div id="header-search" class="header-search" role="search">
+            <svg class="header-search-icon" data-icon="ic14" aria-hidden="true"></svg>
+            <input id="header-search-input" type="text" class="header-search-field" autocomplete="off"
+            data-i18n-placeholder="search_placeholder" placeholder="Search sections and tools…"
+            aria-label="Search sections and tools" aria-expanded="false" aria-controls="header-search-results"
+            role="combobox" aria-autocomplete="list" />
+            <span class="header-search-hint" aria-hidden="true"><span id="header-search-key">Ctrl</span>K</span>
+            <button type="button" id="header-search-clear" class="header-search-clear" aria-label="Clear search">
+                <svg data-icon="ic05" aria-hidden="true"></svg>
+            </button>
+            <div id="header-search-results" class="header-search-results" role="listbox"></div>
+        </div>
+
         <!-- Right: theme toggle + menu -->
         <div class="flex items-center gap-2">
             <button id="theme-toggle" type="button" aria-label="Toggle theme"
-            class="theme-btn group/theme relative flex h-10 w-10 items-center justify-center rounded-xl transition-all hover:bg-slate-100 dark:hover:bg-slate-800"
+            class="theme-btn group/theme relative flex h-11 w-11 items-center justify-center rounded-xl transition-all hover:bg-slate-100 dark:hover:bg-slate-800"
             title="Toggle theme">
             <svg class="h-5 w-5 text-slate-700 transition-all dark:hidden dark:text-slate-300" data-icon="ic02" aria-hidden="true"></svg>
         <svg class="h-5 w-5 text-amber-500 hidden transition-all dark:inline-block" data-icon="ic03" aria-hidden="true"></svg>
@@ -202,9 +216,9 @@ aria-hidden="true">Try RAIA AI</span>
 
 <button id="menu-btn" type="button" aria-label="Open navigation menu" aria-expanded="false"
 aria-controls="nav-drawer"
-class="group/menu relative flex h-10 w-10 items-center justify-center rounded-xl transition-all hover:bg-slate-100 dark:hover:bg-slate-800"
+class="group/menu relative flex h-11 w-11 items-center justify-center rounded-xl text-slate-700 transition-colors hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-800"
 title="Menu">
-<svg class="h-5 w-5 text-slate-700 transition-transform group-hover/menu:rotate-90 dark:text-slate-300" data-icon="ic04" aria-hidden="true"></svg>
+<span class="hamburger" aria-hidden="true"><span></span><span></span><span></span></span>
 </button>
 </div>
 </div>
@@ -232,6 +246,19 @@ title="Menu">
             class="group/close flex h-9 w-9 items-center justify-center rounded-xl transition-all hover:bg-slate-100 dark:hover:bg-slate-800">
             <svg class="h-5 w-5 text-slate-700 transition-transform group-hover/close:rotate-90 dark:text-slate-300" data-icon="ic05" aria-hidden="true"></svg>
     </button>
+</div>
+
+<!-- Donate button -->
+<div class="px-4 pt-4">
+    <a href="https://sociabuzz.com/HajirStudio"
+       target="_blank"
+       rel="noopener noreferrer"
+       class="flex w-full items-center justify-center gap-2 rounded-2xl bg-blue-600 px-4 py-3.5 text-sm font-semibold text-white shadow-lg shadow-blue-600/20 transition-all duration-200 hover:bg-blue-700 hover:shadow-xl active:scale-[0.98]">
+        <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+        </svg>
+        Donate via Sociabuzz
+    </a>
 </div>
 
 <!-- Nav links -->
@@ -299,7 +326,7 @@ class="icon flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-lg bg
     <svg class="h-3 w-3" data-icon="ic12" aria-hidden="true"></svg>
 </span>
 </a>
-<a href="https://raia-ai.netlify.app" target="_blank" rel="noopener noreferrer"
+<a href="https://raia-ai.vercel.app" target="_blank" rel="noopener noreferrer"
 class="drawer-item group/drawer flex items-center gap-3 rounded-xl px-4 py-3 text-sm font-medium text-slate-700 transition-all hover:bg-blue-50 hover:text-blue-600 dark:text-slate-300 dark:hover:bg-blue-900/20 dark:hover:text-blue-400"
 aria-label="Open RAIA AI in a new tab">
 <span
@@ -343,11 +370,11 @@ class="icon flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-lg bg
 <!-- Footer links -->
 <div class="border-t border-slate-200/60 p-4 dark:border-slate-800/60">
     <div class="drawer-footer-links flex flex-wrap items-center justify-center gap-2 text-xs">
-        <a href="https://raia-footer.netlify.app/#privacy" target="_blank" rel="noopener noreferrer"
+        <a href="https://raia-footer.vercel.app/#privacy" target="_blank" rel="noopener noreferrer"
         class="font-medium text-slate-600 transition-colors hover:text-blue-600 dark:text-slate-400 dark:hover:text-blue-400"
         data-i18n="nav_privacy_policy">Privacy Policy</a>
         <span class="select-none text-slate-300 dark:text-slate-600" aria-hidden="true">·</span>
-        <a href="https://raia-footer.netlify.app/#terms" target="_blank" rel="noopener noreferrer"
+        <a href="https://raia-footer.vercel.app/#terms" target="_blank" rel="noopener noreferrer"
         class="font-medium text-slate-600 transition-colors hover:text-blue-600 dark:text-slate-400 dark:hover:text-blue-400"
         data-i18n="nav_terms">Terms &amp; Conditions</a>
     </div>
@@ -369,7 +396,7 @@ class="icon flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-lg bg
     <div class="hero-spotlight" id="hero-spotlight" aria-hidden="true"></div>
 
     <div class="relative z-10 mx-auto max-w-2xl">
-        <a href="https://haiere.github.io/raiaspace"
+        <a href="https://hajir.is-a.dev/raiaspace"
         class="mb-5 inline-flex items-center gap-2 rounded-full border border-blue-500/20 bg-blue-500/10 px-4 py-1.5 font-mono text-[0.62rem] tracking-[0.18em] text-blue-600 backdrop-blur-sm transition-all hover:bg-blue-500/20 animate-fade-up animate-fade-up-delay-1 dark:text-blue-400">
         <span class="h-1.5 w-1.5 rounded-full bg-blue-500 animate-pulse" aria-hidden="true"></span>
         <svg class="h-3.5 w-3.5 text-blue-500" data-icon="ic14" aria-hidden="true"></svg>
@@ -392,7 +419,7 @@ small hobby on the side.
         <svg class="h-4 w-4 transition-transform group-hover:-translate-y-0.5" data-icon="ic06" aria-hidden="true"></svg>
     <span data-i18n="hero_cta1">Get to Know Me</span>
 </a>
-<a href="https://raia-ai.netlify.app" target="_blank" rel="noopener noreferrer"
+<a href="https://raia-ai.vercel.app" target="_blank" rel="noopener noreferrer"
 class="btn-secondary w-full justify-center sm:w-auto group">
 <svg class="h-4 w-4 transition-transform group-hover:-translate-y-0.5" data-icon="ic01" aria-hidden="true"></svg>
 <span data-i18n="hero_cta2">Try RAIA AI</span>
@@ -491,7 +518,7 @@ Creative Tech
     </div>
 
     <div class="mt-6 flex justify-center">
-        <a href="https://raia-ai.netlify.app" target="_blank" rel="noopener noreferrer"
+        <a href="https://raia-ai.vercel.app" target="_blank" rel="noopener noreferrer"
         class="btn-primary group">
         <svg class="h-4 w-4 transition-transform group-hover:-translate-y-0.5" data-icon="ic01" aria-hidden="true"></svg>
     <span data-i18n="about_cta">Use RAIA</span>
@@ -549,7 +576,7 @@ data-i18n="stat_privacy_label">Privacy First</div>
     <!-- ===== RWR ===== -->
     <section id="rwr" class="bg-slate-50 py-12 dark:bg-slate-950/60">
         <div class="mx-auto max-w-3xl px-5 sm:px-8">
-            <a href="https://haiere.github.io/loveyou" target="_blank" rel="noopener noreferrer"
+            <a href="https://hajir.is-a.dev/loveyou" target="_blank" rel="noopener noreferrer"
             class="reveal group block flex flex-col items-center rounded-3xl border border-slate-200/60 bg-white/70 px-6 py-8 text-center shadow-sm backdrop-blur-xl transition-all hover:scale-[1.01] hover:shadow-md dark:border-slate-800/60 dark:bg-slate-900/50 sm:px-10">
             <div class="mb-4 flex items-center justify-center gap-4">
                 <div
@@ -632,12 +659,12 @@ data-i18n="stat_privacy_label">Privacy First</div>
 
 <div
 class="reveal overflow-hidden rounded-3xl border border-slate-200/60 bg-slate-50 shadow-xl transition-shadow hover:shadow-2xl dark:border-slate-800/60 dark:bg-slate-900/50">
-<iframe src="https://haiere.github.io/signature-music" title="Signature Music player" allow="autoplay"
+<iframe src="https://signature-music.vercel.app" title="Signature Music player" allow="autoplay"
 loading="lazy" class="block h-[70vh] min-h-[520px] w-full border-0 sm:h-[600px]"></iframe>
 </div>
 
 <div class="reveal mt-5 text-center">
-    <a href="https://signature-music.netlify.app" target="_blank" rel="noopener noreferrer"
+    <a href="https://signature-music.vercel.app" target="_blank" rel="noopener noreferrer"
     class="group inline-flex items-center gap-1.5 font-mono text-[11px] text-blue-600 transition-colors hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300">
     <svg class="h-3.5 w-3.5 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" data-icon="ic12" aria-hidden="true"></svg>
 <span data-i18n="music_open_link">Click here if the player doesn't appear.</span>
@@ -1010,7 +1037,7 @@ data-category="web" data-repo="raia-ai">
 </span>
 </p>
 <div class="tool-actions">
-<a href="https://raia-ai.netlify.app" target="_blank" rel="noopener noreferrer" class="tool-open-btn group/btn" aria-label="Open Raia AI in a new tab">
+<a href="https://raia-ai.vercel.app" target="_blank" rel="noopener noreferrer" class="tool-open-btn group/btn" aria-label="Open Raia AI in a new tab">
 <span data-i18n="tool_open">Open Tool</span>
 <svg class="h-3.5 w-3.5 transition-transform group-hover/btn:translate-x-0.5" data-icon="ic12" aria-hidden="true"></svg>
 </a>
@@ -1044,7 +1071,7 @@ data-category="web" data-repo="calc">
 </span>
 </p>
 <div class="tool-actions">
-<a href="https://haiere.github.io/calc" target="_blank" rel="noopener noreferrer" class="tool-open-btn group/btn" aria-label="Open Calc in a new tab">
+<a href="https://hajir.is-a.dev/calc" target="_blank" rel="noopener noreferrer" class="tool-open-btn group/btn" aria-label="Open Calc in a new tab">
 <span>Open Tool</span>
 <svg class="h-3.5 w-3.5 transition-transform group-hover/btn:translate-x-0.5" data-icon="ic12" aria-hidden="true"></svg>
 </a>
@@ -1078,7 +1105,7 @@ data-category="web" data-repo="chess">
 </span>
 </p>
 <div class="tool-actions">
-<a href="https://haiere.github.io/chess" target="_blank" rel="noopener noreferrer" class="tool-open-btn group/btn" aria-label="Open Chess in a new tab">
+<a href="https://hajir.is-a.dev/chess" target="_blank" rel="noopener noreferrer" class="tool-open-btn group/btn" aria-label="Open Chess in a new tab">
 <span>Open Tool</span>
 <svg class="h-3.5 w-3.5 transition-transform group-hover/btn:translate-x-0.5" data-icon="ic12" aria-hidden="true"></svg>
 </a>
@@ -1199,28 +1226,44 @@ aria-label="Discord">
 </section>
 
     <!-- ===== FOOTER ===== -->
-    <footer class="glass-nav py-10 shadow-inner" role="contentinfo">
-        <div class="mx-auto max-w-4xl px-5 sm:px-8">
-            <div class="mb-6 text-center">
-                <div class="mb-2 flex items-center justify-center gap-3">
-                    <div class="group/logo relative flex h-10 w-10 items-center justify-center overflow-hidden rounded-xl transition-all hover:scale-110">
-                        <img id="logo-footer" src="https://i.postimg.cc/GmWt2wch/H-blue.webp" alt="Haiere logo"
-                        class="logo-img h-full w-full object-contain drop-shadow-md transition-transform duration-200"
-                        loading="lazy" decoding="async" width="40" height="40" />
-                        <div class="absolute inset-0 rounded-xl bg-gradient-to-tr from-blue-500/0 to-blue-500/10 opacity-0 transition-opacity group-hover/logo:opacity-100"
-                        aria-hidden="true"></div>
-                    </div>
-                    <span class="brand-text text-xl uppercase tracking-tight text-slate-900 dark:text-white">
-                        HAIERE<span class="text-blue-400">.</span>
-                    </span>
+<footer class="glass-nav py-10 shadow-inner" role="contentinfo">
+    <div class="mx-auto max-w-4xl px-5 sm:px-8">
+        <div class="mb-6 text-center">
+
+            <!-- Donate Button -->
+            <div class="mb-5 flex justify-center">
+                <a href="https://sociabuzz.com/HajirStudio"
+                   target="_blank"
+                   rel="noopener noreferrer"
+                   class="inline-flex items-center gap-2 rounded-2xl bg-blue-500 px-6 py-3 text-sm font-semibold text-white shadow-lg transition-all duration-200 hover:bg-blue-600 hover:shadow-xl hover:scale-105 active:scale-95">
+                    <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                        <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                    </svg>
+                    Donate via Sociabuzz
+                </a>
+            </div>
+
+            <div class="mb-2 flex items-center justify-center gap-3">
+                <div class="group/logo relative flex h-10 w-10 items-center justify-center overflow-hidden rounded-xl transition-all hover:scale-110">
+                    <img id="logo-footer" src="https://i.postimg.cc/GmWt2wch/H-blue.webp" alt="Haiere logo"
+                    class="logo-img h-full w-full object-contain drop-shadow-md transition-transform duration-200"
+                    loading="lazy" decoding="async" width="40" height="40" />
+                    <div class="absolute inset-0 rounded-xl bg-gradient-to-tr from-blue-500/0 to-blue-500/10 opacity-0 transition-opacity group-hover/logo:opacity-100"
+                    aria-hidden="true"></div>
                 </div>
-                <p class="select-none font-mono text-[9px] uppercase tracking-[0.18em] text-slate-500 dark:text-slate-600"
-                data-i18n="footer_tagline">
+                <span class="brand-text text-xl uppercase tracking-tight text-slate-900 dark:text-white">
+                    HAIERE<span class="text-blue-400">.</span>
+                </span>
+            </div>
+
+            <p class="select-none font-mono text-[9px] uppercase tracking-[0.18em] text-slate-500 dark:text-slate-600"
+               data-i18n="footer_tagline">
                 <span class="inline-flex items-center gap-1.5">
                     <svg class="h-2.5 w-2.5" data-icon="ic08" aria-hidden="true"></svg>
-                Personal Site · Free Tools · by Haiere
-            </span>
-        </p>
+                    Personal Site · Free Tools · by Haiere
+                </span>
+            </p>
+        </div>
     </div>
 
     <!-- Social links -->
@@ -1290,7 +1333,7 @@ class="text-xs font-medium uppercase tracking-[0.12em] text-slate-500 transition
 </a>
 </div>
 <div class="flex flex-wrap justify-center gap-x-6 gap-y-2">
-    <a href="https://raia-footer.netlify.app/#privacy" target="_blank" rel="noopener noreferrer"
+    <a href="https://raia-footer.vercel.app/#privacy" target="_blank" rel="noopener noreferrer"
     class="text-[9px] font-mono uppercase tracking-[0.15em] text-slate-400 transition-colors hover:text-blue-400">
     <span class="inline-flex items-center gap-1">
         <svg class="h-3 w-3" data-icon="ic25" aria-hidden="true"></svg>
@@ -1303,15 +1346,13 @@ class="text-xs font-medium uppercase tracking-[0.12em] text-slate-500 transition
 <div class="text-center">
     <p class="mx-auto mb-3 max-w-sm text-xs leading-relaxed text-slate-500 dark:text-slate-500">
         <span class="inline-flex items-center gap-1.5">
-            <svg class="h-3 w-3 text-blue-400/60" data-icon="ic18" aria-hidden="true"></svg>
-        Creative technologist and musician. All tools are built on the open web with privacy-first
+        🌐 Creative technologist and musician. All tools are built on the open web with privacy-first
         principles and no backend.
     </span>
 </p>
 <p class="footer-disclaimer mx-auto mb-3 max-w-md text-[11px] leading-relaxed italic text-slate-400 dark:text-slate-500">
     <span class="inline-flex items-center gap-1.5">
-        <svg class="h-3 w-3 text-amber-500/80" data-icon="ic34" aria-hidden="true"></svg>
-    <span data-i18n="footer_disclaimer">Disclaimer: Use these tools at your own risk. Haiere is not responsible for any data loss or damage that may occur.</span>
+    <span data-i18n="footer_disclaimer"> ⚠️ Disclaimer: Use these tools at your own risk. Haiere is not responsible for any data loss or damage that may occur.</span>
 </span>
 </p>
 <span
@@ -1359,7 +1400,7 @@ aria-hidden="true"></span>
             <span class="inline-flex items-start gap-1.5">
                 <svg class="mt-0.5 h-3.5 w-3.5 flex-shrink-0 text-blue-400/60" data-icon="ic37" aria-hidden="true"></svg>
             This site uses cookies to improve your experience. By using Haiere, you agree to our
-            <a href="https://raia-footer.netlify.app/#cookie" target="_blank" rel="noopener noreferrer"
+            <a href="https://raia-footer.vercel.app/#cookie" target="_blank" rel="noopener noreferrer"
             class="font-medium text-blue-600 underline-offset-2 transition-colors hover:text-blue-700 hover:underline dark:text-blue-400 dark:hover:text-blue-300">
             <span class="inline-flex items-center gap-1">
                 Cookie Policy
@@ -1412,8 +1453,10 @@ Accept
             </a>
         </div>
     </div>
-
+    
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <script src="icons.js"></script>
+    <script src="i18n.js"></script>
     <script src="script.js"></script>
 
 </body>
