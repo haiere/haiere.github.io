@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="id" class="dark">
+<html lang="en" class="dark">
 
 <head>
     <meta charset="UTF-8" />
@@ -99,7 +99,8 @@
                 "https://www.youtube.com/@hajirstein",
                 "https://on.soundcloud.com/m65TNUx3XarndC67jO",
                 "https://x.com/haierehere",
-                "https://discord.com/users/1276865849231413299"
+                "https://discord.com/users/1276865849231413299",
+                "https://t.me/reregera"
             ]
         }
     </script>
@@ -144,1315 +145,1441 @@
     <link rel="stylesheet" href="style.css">
     
 </head>
-<body>
+<body class="overflow-x-hidden">
 
-    <!-- Google Tag Manager (noscript) -->
-    <noscript>
-        <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PGGWCSD5" height="0" width="0"
-        style="display:none;visibility:hidden" title="Google Tag Manager"></iframe>
-    </noscript>
+<!-- Google Tag Manager (noscript) -->
+<noscript>
+  <iframe
+    src="https://www.googletagmanager.com/ns.html?id=GTM-PGGWCSD5"
+    height="0"
+    width="0"
+    style="display:none;visibility:hidden"
+    title="Google Tag Manager"></iframe>
+</noscript>
 
-    <!-- Skip link -->
-    <a href="#hero" class="skip-link">Skip to main content</a>
+<!-- Skip link -->
+<a href="#hero" class="skip-link" data-i18n="skip_to_main">Skip to main content</a>
 
-    <!-- Scroll progress -->
-    <div id="scroll-progress" class="fixed top-0 left-0 z-[60]" aria-hidden="true"></div>
+<!-- Scroll progress -->
+<div
+  id="scroll-progress"
+  class="fixed top-0 left-0 z-[60]"
+  aria-hidden="true"></div>
 
-    <!-- Toast container -->
-    <div id="toast-container" class="fixed bottom-24 right-6 z-[70] flex flex-col items-end gap-2 sm:bottom-6"
-    aria-live="polite" aria-atomic="true"></div>
+<!-- Toast container -->
+<div
+  id="toast-container"
+  class="fixed bottom-24 right-6 z-[70] flex flex-col items-end gap-2 sm:bottom-6"
+  aria-live="polite"
+  aria-atomic="true"></div>
 
-    <!-- ===== RAIA BUTTON ===== -->
-    <a id="raia-button" href="https://raia-ai.vercel.app" target="_blank" rel="noopener noreferrer"
-    aria-label="Open RAIA AI"
-    class="group/raia fixed bottom-6 left-6 z-50 flex h-12 w-12 items-center justify-center rounded-2xl bg-blue-600 text-white shadow-lg shadow-blue-600/30 transition-all duration-300 hover:rotate-12 hover:bg-blue-700 hover:shadow-xl hover:shadow-blue-700/40 active:scale-90 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2 dark:focus:ring-offset-slate-900">
-    <svg class="h-5 w-5 transition-transform group-hover/raia:scale-110" data-icon="ic01" aria-hidden="true"></svg>
-<span
-class="tooltip absolute -top-10 left-1/2 -translate-x-1/2 rounded-lg bg-slate-900 px-2.5 py-1.5 text-xs font-medium text-white opacity-0 pointer-events-none transition-all duration-200 group-hover/raia:opacity-100 group-hover/raia:translate-y-0.5 dark:bg-slate-800"
-aria-hidden="true">Try RAIA AI</span>
+<!-- ===== RAIA BUTTON ===== -->
+<a
+  id="raia-button"
+  href="https://raia-ai.vercel.app"
+  target="_blank"
+  rel="noopener noreferrer"
+  aria-label="Open RAIA AI"
+  data-i18n-label="raia_open"
+  class="group/raia fixed bottom-6 left-6 z-50 flex h-12 w-12 items-center justify-center rounded-2xl bg-blue-600 text-white shadow-lg shadow-blue-600/30 transition-all duration-300 hover:rotate-12 hover:bg-blue-700 hover:shadow-xl hover:shadow-blue-700/40 active:scale-90 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2 dark:focus:ring-offset-slate-900">
+  <svg
+    class="h-5 w-5 transition-transform group-hover/raia:scale-110"
+    data-icon="ic01"
+    aria-hidden="true"></svg>
+  <span
+    class="tooltip absolute -top-10 left-1/2 -translate-x-1/2 rounded-lg bg-slate-900 px-2.5 py-1.5 text-xs font-medium text-white opacity-0 pointer-events-none transition-all duration-200 group-hover/raia:opacity-100 group-hover/raia:translate-y-0.5 dark:bg-slate-800"
+    data-i18n="raia_try"
+    aria-hidden="true">
+    Try RAIA AI
+  </span>
 </a>
 
-    <!-- ===== HEADER ===== -->
-    <header id="nav" class="glass-nav fixed top-0 left-0 right-0 z-50 h-[68px] transition-shadow duration-300">
-        <div class="header-inner flex h-full items-center justify-between px-4 sm:px-6">
-            <!-- Left: brand -->
-            <a href="#hero" class="group/header flex items-center gap-2.5 transition-transform duration-300 hover:scale-105"
-            aria-label="Haiere - Home">
-            <div class="relative flex h-9 w-9 items-center justify-center overflow-hidden rounded-xl transition-all group-hover/header:shadow-md">
-                <img id="logo-header" src="https://i.postimg.cc/GmWt2wch/H-blue.webp" alt="Haiere logo"
-                class="logo-img h-full w-full object-contain"
-                style="filter:drop-shadow(0 0 12px rgba(59,130,246,0.25))" loading="eager" fetchpriority="high"
-                width="36" height="36" />
-                <div class="absolute inset-0 rounded-xl bg-gradient-to-tr from-blue-500/0 to-blue-500/10 opacity-0 transition-opacity group-hover/header:opacity-100"
-                aria-hidden="true"></div>
-            </div>
-            <span class="brand-text whitespace-nowrap text-base tracking-tight text-slate-900 dark:text-white sm:text-lg">
-                HajirStudio<span class="text-blue-400">.</span>
-            </span>
-        </a>
+<!-- ===== HEADER ===== -->
+<header
+  id="nav"
+  class="glass-nav fixed top-0 left-0 right-0 z-50 h-[68px] transition-shadow duration-300">
+  <div class="header-inner flex h-full items-center justify-between px-4 sm:px-6">
+    <!-- Left: brand -->
+    <a
+      href="#hero"
+      class="group/header flex items-center gap-2.5 transition-transform duration-300 hover:scale-105"
+      aria-label="Haiere - Home"
+      data-i18n-label="home_label">
+      <div class="relative flex h-9 w-9 items-center justify-center overflow-hidden rounded-xl transition-all group-hover/header:shadow-md">
+        <img
+          id="logo-header"
+          src="https://i.postimg.cc/GmWt2wch/H-blue.webp"
+          alt="Haiere logo"
+          data-i18n-alt="logo_alt"
+          class="logo-img h-full w-full object-contain"
+          style="filter:drop-shadow(0 0 12px rgba(59,130,246,0.25))"
+          loading="eager"
+          fetchpriority="high"
+          width="36"
+          height="36" />
+        <div
+          class="absolute inset-0 rounded-xl bg-gradient-to-tr from-blue-500/0 to-blue-500/10 opacity-0 transition-opacity group-hover/header:opacity-100"
+          aria-hidden="true"></div>
+      </div>
+      <span class="brand-text whitespace-nowrap text-base tracking-tight text-slate-900 dark:text-white sm:text-lg">
+        HajirStudio<span class="text-blue-400">.</span>
+      </span>
+    </a>
 
-        <!-- Search -->
-        <div id="header-search" class="header-search" role="search">
-            <svg class="header-search-icon" data-icon="ic14" aria-hidden="true"></svg>
-            <input id="header-search-input" type="text" class="header-search-field" autocomplete="off"
-            data-i18n-placeholder="search_placeholder" placeholder="Search sections and tools…"
-            aria-label="Search sections and tools" aria-expanded="false" aria-controls="header-search-results"
-            role="combobox" aria-autocomplete="list" />
-            <span class="header-search-hint" aria-hidden="true"><span id="header-search-key">Ctrl</span>K</span>
-            <button type="button" id="header-search-clear" class="header-search-clear" aria-label="Clear search">
-                <svg data-icon="ic05" aria-hidden="true"></svg>
-            </button>
-            <div id="header-search-results" class="header-search-results" role="listbox"></div>
-        </div>
+    <!-- Search -->
+    <div id="header-search" class="header-search" role="search">
+      <svg class="header-search-icon" data-icon="ic14" aria-hidden="true"></svg>
+      <input
+        id="header-search-input"
+        type="text"
+        class="header-search-field"
+        autocomplete="off"
+        data-i18n-placeholder="search_placeholder"
+        placeholder="Search sections or tools..."
+        aria-label="Search sections and tools"
+        aria-expanded="false"
+        aria-controls="header-search-results"
+        role="combobox"
+        aria-autocomplete="list" />
+      <span class="header-search-hint" aria-hidden="true">
+        <span id="header-search-key">Ctrl</span>K
+      </span>
+      <button
+        type="button"
+        id="header-search-clear"
+        class="header-search-clear"
+        aria-label="Clear search"
+        data-i18n-label="search_clear">
+        <svg data-icon="ic05" aria-hidden="true"></svg>
+      </button>
+      <div id="header-search-results" class="header-search-results" role="listbox"></div>
+    </div>
 
-        <!-- Right: theme toggle + menu -->
-        <div class="flex items-center gap-2">
-            <button id="theme-toggle" type="button" aria-label="Toggle theme"
-            class="theme-btn group/theme relative flex h-11 w-11 items-center justify-center rounded-xl transition-all hover:bg-slate-100 dark:hover:bg-slate-800"
-            title="Toggle theme">
-            <svg class="h-5 w-5 text-slate-700 transition-all dark:hidden dark:text-slate-300" data-icon="ic02" aria-hidden="true"></svg>
-        <svg class="h-5 w-5 text-amber-500 hidden transition-all dark:inline-block" data-icon="ic03" aria-hidden="true"></svg>
-</button>
+    <!-- Right: RaiaSpace + theme toggle + menu -->
+    <div class="flex items-center gap-1 sm:gap-2">
+      <a
+        id="raiaspace-nav-btn"
+        href="https://hajir.is-a.dev/raiaspace"
+        target="_blank"
+        rel="noopener"
+        aria-label="Search on RaiaSpace"
+        title="RaiaSpace"
+        class="group/raiaspace flex h-11 min-h-[44px] min-w-[44px] items-center justify-center gap-1.5 rounded-xl px-3 text-slate-700 transition-all hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-800 sm:px-4 sm:py-2">
+        <svg class="h-5 w-5 flex-shrink-0 transition-transform group-hover/raiaspace:scale-110" data-icon="ic14" aria-hidden="true"></svg>
+        <span class="hidden text-sm font-medium sm:inline">RaiaSpace</span>
+      </a>
 
-<button id="menu-btn" type="button" aria-label="Open navigation menu" aria-expanded="false"
-aria-controls="nav-drawer"
-class="group/menu relative flex h-11 w-11 items-center justify-center rounded-xl text-slate-700 transition-colors hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-800"
-title="Menu">
-<span class="hamburger" aria-hidden="true"><span></span><span></span><span></span></span>
-</button>
-</div>
-</div>
+      <button
+        id="theme-toggle"
+        type="button"
+        aria-label="Change theme"
+        data-i18n-label="toggle_theme"
+        class="theme-btn group/theme relative flex h-11 w-11 items-center justify-center rounded-xl transition-all hover:bg-slate-100 dark:hover:bg-slate-800"
+        title="Change theme">
+        <svg class="h-5 w-5 text-slate-700 transition-all dark:hidden dark:text-slate-300" data-icon="ic02" aria-hidden="true"></svg>
+        <svg class="hidden h-5 w-5 text-amber-500 transition-all dark:inline-block" data-icon="ic03" aria-hidden="true"></svg>
+      </button>
+
+      <button
+        id="menu-btn"
+        type="button"
+        aria-label="Open menu"
+        data-i18n-label="open_menu"
+        aria-expanded="false"
+        aria-controls="nav-drawer"
+        class="group/menu relative flex h-11 w-11 items-center justify-center rounded-xl text-slate-700 transition-colors hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-800"
+        title="Menu">
+        <span class="hamburger" aria-hidden="true"><span></span><span></span><span></span></span>
+      </button>
+    </div>
+  </div>
 </header>
 
-    <!-- ===== DRAWER ===== -->
-    <div id="drawer-overlay" class="fixed inset-0 z-[55] bg-slate-900/60 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300"
-    aria-hidden="true"></div>
+<!-- ===== DRAWER ===== -->
+<div
+  id="drawer-overlay"
+  class="fixed inset-0 z-[55] bg-slate-900/60 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300"
+  aria-hidden="true"></div>
 
-    <nav id="nav-drawer" class="fixed top-0 right-0 z-[60] h-full w-[280px] max-w-[85vw] translate-x-full bg-white shadow-2xl transition-transform duration-300 dark:bg-slate-900"
-    aria-label="Main navigation">
-    <div class="drawer-inner flex h-full flex-col overflow-y-auto">
-        <!-- Header -->
-        <div class="flex items-center justify-between border-b border-slate-200/60 p-5 dark:border-slate-800/60">
-            <div class="flex items-center gap-2.5">
-                <div class="relative flex h-9 w-9 items-center justify-center overflow-hidden rounded-xl">
-                    <img src="https://i.postimg.cc/GmWt2wch/H-blue.webp" alt="Haiere logo"
-                    class="logo-img h-full w-full object-contain" loading="eager" width="36" height="36" />
-                </div>
-                <span class="brand-text text-base font-bold tracking-tight text-slate-900 dark:text-white">
-                    HAIERE<span class="text-blue-400">.</span>
-                </span>
-            </div>
-            <button id="drawer-close" type="button" aria-label="Close menu"
-            class="group/close flex h-9 w-9 items-center justify-center rounded-xl transition-all hover:bg-slate-100 dark:hover:bg-slate-800">
-            <svg class="h-5 w-5 text-slate-700 transition-transform group-hover/close:rotate-90 dark:text-slate-300" data-icon="ic05" aria-hidden="true"></svg>
-    </button>
-</div>
+<nav
+  id="nav-drawer"
+  class="fixed top-0 right-0 z-[60] h-full w-[280px] max-w-[85vw] translate-x-full bg-white shadow-2xl transition-transform duration-300 dark:bg-slate-900"
+  aria-label="Main navigation">
+  <div class="drawer-inner flex h-full flex-col overflow-y-auto">
+    <!-- Header -->
+    <div class="flex items-center justify-between border-b border-slate-200/60 p-5 dark:border-slate-800/60">
+      <div class="flex items-center gap-2.5">
+        <div class="relative flex h-9 w-9 items-center justify-center overflow-hidden rounded-xl">
+          <img
+            src="https://i.postimg.cc/GmWt2wch/H-blue.webp"
+            alt="Haiere logo"
+            data-i18n-alt="logo_alt"
+            class="logo-img h-full w-full object-contain"
+            loading="eager"
+            width="36"
+            height="36" />
+        </div>
+        <span class="brand-text text-base font-bold tracking-tight text-slate-900 dark:text-white">
+          HajirStudio<span class="text-blue-400">.</span>
+        </span>
+      </div>
 
-<!-- Donate button -->
-<div class="px-4 pt-4">
-    <a href="https://sociabuzz.com/HajirStudio"
-       target="_blank"
-       rel="noopener noreferrer"
-       class="flex w-full items-center justify-center gap-2 rounded-2xl bg-blue-600 px-4 py-3.5 text-sm font-semibold text-white shadow-lg shadow-blue-600/20 transition-all duration-200 hover:bg-blue-700 hover:shadow-xl active:scale-[0.98]">
-        <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-            <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
-        </svg>
-        Donate via Sociabuzz
-    </a>
-</div>
-
-<!-- Nav links -->
-<div class="flex-1 space-y-1 p-4">
-    <a href="#about"
-    class="drawer-item group/drawer nav-link flex items-center gap-3 rounded-xl px-4 py-3 text-sm font-medium text-slate-700 transition-all hover:bg-blue-50 hover:text-blue-600 dark:text-slate-300 dark:hover:bg-blue-900/20 dark:hover:text-blue-400"
-    data-section="about">
-    <span
-    class="icon flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-lg bg-blue-500/10 transition-colors group-hover/drawer:bg-blue-500/20">
-    <svg class="h-4 w-4 text-blue-600 dark:text-blue-400" data-icon="ic06" aria-hidden="true"></svg>
-</span>
-<span data-i18n="nav_about">About</span>
-</a>
-<a href="#music"
-class="drawer-item group/drawer nav-link flex items-center gap-3 rounded-xl px-4 py-3 text-sm font-medium text-slate-700 transition-all hover:bg-blue-50 hover:text-blue-600 dark:text-slate-300 dark:hover:bg-blue-900/20 dark:hover:text-blue-400"
-data-section="music">
-<span
-class="icon flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-lg bg-blue-500/10 transition-colors group-hover/drawer:bg-blue-500/20">
-<svg class="h-4 w-4 text-blue-600 dark:text-blue-400" data-icon="ic07" aria-hidden="true"></svg>
-</span>
-<span data-i18n="nav_music">Music</span>
-</a>
-<a href="#quotes"
-class="drawer-item group/drawer nav-link flex items-center gap-3 rounded-xl px-4 py-3 text-sm font-medium text-slate-700 transition-all hover:bg-blue-50 hover:text-blue-600 dark:text-slate-300 dark:hover:bg-blue-900/20 dark:hover:text-blue-400"
-data-section="quotes">
-<span
-class="icon flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-lg bg-blue-500/10 transition-colors group-hover/drawer:bg-blue-500/20">
-<svg class="h-4 w-4 text-blue-600 dark:text-blue-400" data-icon="ic08" aria-hidden="true"></svg>
-</span>
-<span data-i18n="nav_quotes">Quotes</span>
-</a>
-<a href="#tools"
-class="drawer-item group/drawer nav-link flex items-center gap-3 rounded-xl px-4 py-3 text-sm font-medium text-slate-700 transition-all hover:bg-blue-50 hover:text-blue-600 dark:text-slate-300 dark:hover:bg-blue-900/20 dark:hover:text-blue-400"
-data-section="tools">
-<span
-class="icon flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-lg bg-blue-500/10 transition-colors group-hover/drawer:bg-blue-500/20">
-<svg class="h-4 w-4 text-blue-600 dark:text-blue-400" data-icon="ic09" aria-hidden="true"></svg>
-</span>
-<span data-i18n="nav_tools">Tools</span>
-</a>
-<a href="#contact"
-class="drawer-item group/drawer nav-link flex items-center gap-3 rounded-xl px-4 py-3 text-sm font-medium text-slate-700 transition-all hover:bg-blue-50 hover:text-blue-600 dark:text-slate-300 dark:hover:bg-blue-900/20 dark:hover:text-blue-400"
-data-section="contact">
-<span
-class="icon flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-lg bg-blue-500/10 transition-colors group-hover/drawer:bg-blue-500/20">
-<svg class="h-4 w-4 text-blue-600 dark:text-blue-400" data-icon="ic10" aria-hidden="true"></svg>
-</span>
-<span data-i18n="nav_contact">Contact</span>
-</a>
-</div>
-
-<hr class="drawer-divider mx-4 border-slate-200/60 dark:border-slate-800/60" />
-
-<!-- External links -->
-<div class="space-y-1 p-4">
-    <a href="https://github.com/haiere" target="_blank" rel="noopener noreferrer"
-    class="drawer-item group/drawer flex items-center gap-3 rounded-xl px-4 py-3 text-sm font-medium text-slate-700 transition-all hover:bg-blue-50 hover:text-blue-600 dark:text-slate-300 dark:hover:bg-blue-900/20 dark:hover:text-blue-400"
-    aria-label="Open GitHub in a new tab">
-    <span
-    class="icon flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-lg bg-blue-500/10 transition-colors group-hover/drawer:bg-blue-500/20">
-    <svg class="h-4 w-4 text-blue-600 dark:text-blue-400" data-icon="ic11" aria-hidden="true"></svg>
-</span>
-<span data-i18n="nav_github">GitHub</span>
-<span class="ml-auto text-[0.6rem] font-mono text-slate-400 dark:text-slate-500" aria-hidden="true">
-    <svg class="h-3 w-3" data-icon="ic12" aria-hidden="true"></svg>
-</span>
-</a>
-<a href="https://raia-ai.vercel.app" target="_blank" rel="noopener noreferrer"
-class="drawer-item group/drawer flex items-center gap-3 rounded-xl px-4 py-3 text-sm font-medium text-slate-700 transition-all hover:bg-blue-50 hover:text-blue-600 dark:text-slate-300 dark:hover:bg-blue-900/20 dark:hover:text-blue-400"
-aria-label="Open RAIA AI in a new tab">
-<span
-class="icon flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-lg bg-blue-500/10 transition-colors group-hover/drawer:bg-blue-500/20">
-<svg class="h-4 w-4 text-blue-600 dark:text-blue-400" data-icon="ic01" aria-hidden="true"></svg>
-</span>
-<span data-i18n="nav_raia">RAIA</span>
-<span class="ml-auto text-[0.6rem] font-mono text-slate-400 dark:text-slate-500" aria-hidden="true">
-    <svg class="h-3 w-3" data-icon="ic12" aria-hidden="true"></svg>
-</span>
-</a>
-</div>
-
-<hr class="drawer-divider mx-4 border-slate-200/60 dark:border-slate-800/60" />
-
-<!-- Language selector -->
-<div class="drawer-lang-wrap px-4 py-3" role="group" aria-label="Language selection">
-    <span class="lang-label mb-2 block text-xs font-medium uppercase tracking-[0.12em] text-slate-500 dark:text-slate-400"
-    data-i18n="nav_language">Language</span>
-    <div class="flex gap-2">
-        <button
-        class="lang-btn active flex-1 rounded-xl bg-blue-600 px-4 py-2.5 text-sm font-medium text-white shadow-md shadow-blue-600/20 transition-all hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2 dark:focus:ring-offset-slate-900"
-        type="button" data-lang="id" aria-pressed="true">ID</button>
-        <button
-        class="lang-btn flex-1 rounded-xl border border-slate-200 bg-transparent px-4 py-2.5 text-sm font-medium text-slate-700 transition-all hover:bg-slate-100 hover:text-slate-900 focus:outline-none focus:ring-2 focus:ring-slate-400 dark:border-slate-700 dark:text-slate-300 dark:hover:bg-slate-800"
-        type="button" data-lang="en" aria-pressed="false">EN</button>
+      <button
+        id="drawer-close"
+        type="button"
+        aria-label="Close menu"
+        class="group/close flex h-9 w-9 items-center justify-center rounded-xl transition-all hover:bg-slate-100 dark:hover:bg-slate-800">
+        <svg class="h-5 w-5 text-slate-700 transition-transform group-hover/close:rotate-90 dark:text-slate-300" data-icon="ic05" aria-hidden="true"></svg>
+      </button>
     </div>
-</div>
 
-<hr class="drawer-divider mx-4 border-slate-200/60 dark:border-slate-800/60" />
+    <!-- Donate buttons -->
+    <div class="px-4 pt-4">
+      <p class="mb-2 text-center text-[11px] font-semibold uppercase tracking-[0.16em] text-slate-500 dark:text-slate-400" data-i18n="support_title">
+        Support My Work
+      </p>
 
-<!-- Tagline -->
-<div class="p-4">
-    <div class="drawer-tagline flex items-start gap-3 rounded-xl bg-blue-500/10 p-4">
+      <div class="flex gap-2">
+        <a
+          href="https://buymeacoffee.com/hajirstudio"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="flex flex-1 items-center justify-center gap-1.5 rounded-xl bg-yellow-400 px-3 py-2.5 text-[13px] font-semibold text-slate-900 shadow-md shadow-yellow-400/20 transition-all duration-200 hover:bg-yellow-500 active:scale-[0.98]">
+          <svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+          </svg>
+          <span data-i18n="donate_coffee">Coffee</span>
+        </a>
+
+        <a
+          href="https://sociabuzz.com/HajirStudio"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="flex flex-1 items-center justify-center gap-1.5 rounded-xl bg-blue-600 px-3 py-2.5 text-[13px] font-semibold text-white shadow-md shadow-blue-600/20 transition-all duration-200 hover:bg-blue-700 active:scale-[0.98]">
+          <svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+          </svg>
+          <span data-i18n="donate_buzz">Buzz</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Nav links -->
+    <div class="flex-1 space-y-1 p-4">
+      <a href="#about" class="drawer-item group/drawer nav-link flex items-center gap-3 rounded-xl px-4 py-3 text-sm font-medium text-slate-700 transition-all hover:bg-blue-50 hover:text-blue-600 dark:text-slate-300 dark:hover:bg-blue-900/20 dark:hover:text-blue-400" data-section="about">
+        <span class="icon flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-lg bg-blue-500/10 transition-colors group-hover/drawer:bg-blue-500/20">
+          <svg class="h-4 w-4 text-blue-600 dark:text-blue-400" data-icon="ic06" aria-hidden="true"></svg>
+        </span>
+        <span data-i18n="nav_about">About</span>
+      </a>
+
+      <a href="#music" class="drawer-item group/drawer nav-link flex items-center gap-3 rounded-xl px-4 py-3 text-sm font-medium text-slate-700 transition-all hover:bg-blue-50 hover:text-blue-600 dark:text-slate-300 dark:hover:bg-blue-900/20 dark:hover:text-blue-400" data-section="music">
+        <span class="icon flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-lg bg-blue-500/10 transition-colors group-hover/drawer:bg-blue-500/20">
+          <svg class="h-4 w-4 text-blue-600 dark:text-blue-400" data-icon="ic07" aria-hidden="true"></svg>
+        </span>
+        <span data-i18n="nav_music">Music</span>
+      </a>
+
+      <a href="#quotes" class="drawer-item group/drawer nav-link flex items-center gap-3 rounded-xl px-4 py-3 text-sm font-medium text-slate-700 transition-all hover:bg-blue-50 hover:text-blue-600 dark:text-slate-300 dark:hover:bg-blue-900/20 dark:hover:text-blue-400" data-section="quotes">
+        <span class="icon flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-lg bg-blue-500/10 transition-colors group-hover/drawer:bg-blue-500/20">
+          <svg class="h-4 w-4 text-blue-600 dark:text-blue-400" data-icon="ic08" aria-hidden="true"></svg>
+        </span>
+        <span data-i18n="nav_quotes">Quotes</span>
+      </a>
+
+      <a href="#tools" class="drawer-item group/drawer nav-link flex items-center gap-3 rounded-xl px-4 py-3 text-sm font-medium text-slate-700 transition-all hover:bg-blue-50 hover:text-blue-600 dark:text-slate-300 dark:hover:bg-blue-900/20 dark:hover:text-blue-400" data-section="tools">
+        <span class="icon flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-lg bg-blue-500/10 transition-colors group-hover/drawer:bg-blue-500/20">
+          <svg class="h-4 w-4 text-blue-600 dark:text-blue-400" data-icon="ic09" aria-hidden="true"></svg>
+        </span>
+        <span data-i18n="nav_tools">Tools</span>
+      </a>
+
+      <a href="#contact" class="drawer-item group/drawer nav-link flex items-center gap-3 rounded-xl px-4 py-3 text-sm font-medium text-slate-700 transition-all hover:bg-blue-50 hover:text-blue-600 dark:text-slate-300 dark:hover:bg-blue-900/20 dark:hover:text-blue-400" data-section="contact">
+        <span class="icon flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-lg bg-blue-500/10 transition-colors group-hover/drawer:bg-blue-500/20">
+          <svg class="h-4 w-4 text-blue-600 dark:text-blue-400" data-icon="ic10" aria-hidden="true"></svg>
+        </span>
+        <span data-i18n="nav_contact">Contact</span>
+      </a>
+    </div>
+
+    <hr class="drawer-divider mx-4 border-slate-200/60 dark:border-slate-800/60" />
+
+    <!-- External links -->
+    <div class="space-y-1 p-4">
+      <a href="https://github.com/haiere" target="_blank" rel="noopener noreferrer" class="drawer-item group/drawer flex items-center gap-3 rounded-xl px-4 py-3 text-sm font-medium text-slate-700 transition-all hover:bg-blue-50 hover:text-blue-600 dark:text-slate-300 dark:hover:bg-blue-900/20 dark:hover:text-blue-400" aria-label="Open GitHub in a new tab">
+        <span class="icon flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-lg bg-blue-500/10 transition-colors group-hover/drawer:bg-blue-500/20">
+          <svg class="h-4 w-4 text-blue-600 dark:text-blue-400" data-icon="ic11" aria-hidden="true"></svg>
+        </span>
+        <span data-i18n="nav_github">GitHub</span>
+        <span class="ml-auto text-[0.6rem] font-mono text-slate-400 dark:text-slate-500" aria-hidden="true">
+          <svg class="h-3 w-3" data-icon="ic12" aria-hidden="true"></svg>
+        </span>
+      </a>
+
+      <a href="https://raia-ai.vercel.app" target="_blank" rel="noopener noreferrer" class="drawer-item group/drawer flex items-center gap-3 rounded-xl px-4 py-3 text-sm font-medium text-slate-700 transition-all hover:bg-blue-50 hover:text-blue-600 dark:text-slate-300 dark:hover:bg-blue-900/20 dark:hover:text-blue-400" aria-label="Open RAIA AI in a new tab">
+        <span class="icon flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-lg bg-blue-500/10 transition-colors group-hover/drawer:bg-blue-500/20">
+          <svg class="h-4 w-4 text-blue-600 dark:text-blue-400" data-icon="ic01" aria-hidden="true"></svg>
+        </span>
+        <span data-i18n="nav_raia">RAIA</span>
+        <span class="ml-auto text-[0.6rem] font-mono text-slate-400 dark:text-slate-500" aria-hidden="true">
+          <svg class="h-3 w-3" data-icon="ic12" aria-hidden="true"></svg>
+        </span>
+      </a>
+    </div>
+
+    <hr class="drawer-divider mx-4 border-slate-200/60 dark:border-slate-800/60" />
+
+    <!-- Language selector -->
+    <div class="drawer-lang-wrap px-4 py-3" role="group" aria-label="Language selection">
+      <span class="lang-label mb-2 block text-xs font-medium uppercase tracking-[0.12em] text-slate-500 dark:text-slate-400" data-i18n="nav_language">
+        Language
+      </span>
+      <div class="flex gap-2">
+        <button class="lang-btn active flex-1 rounded-xl bg-blue-600 px-4 py-2.5 text-sm font-medium text-white shadow-md shadow-blue-600/20 transition-all hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2 dark:focus:ring-offset-slate-900" type="button" data-lang="id" aria-pressed="true">ID</button>
+        <button class="lang-btn flex-1 rounded-xl border border-slate-200 bg-transparent px-4 py-2.5 text-sm font-medium text-slate-700 transition-all hover:bg-slate-100 hover:text-slate-900 focus:outline-none focus:ring-2 focus:ring-slate-400 dark:border-slate-700 dark:text-slate-300 dark:hover:bg-slate-800" type="button" data-lang="en" aria-pressed="false">EN</button>
+      </div>
+    </div>
+
+    <hr class="drawer-divider mx-4 border-slate-200/60 dark:border-slate-800/60" />
+
+    <!-- Tagline -->
+    <div class="p-4">
+      <div class="drawer-tagline flex items-start gap-3 rounded-xl bg-blue-500/10 p-4">
         <svg class="mt-0.5 h-5 w-5 flex-shrink-0 text-blue-600 dark:text-blue-400" data-icon="ic13" aria-hidden="true"></svg>
-    <span class="text-sm leading-relaxed text-slate-700 dark:text-slate-300"
-    data-i18n="nav_tagline">Software, AI, and tools built with privacy in mind</span>
-</div>
-</div>
-
-<!-- Footer links -->
-<div class="border-t border-slate-200/60 p-4 dark:border-slate-800/60">
-    <div class="drawer-footer-links flex flex-wrap items-center justify-center gap-2 text-xs">
-        <a href="https://raia-footer.vercel.app/#privacy" target="_blank" rel="noopener noreferrer"
-        class="font-medium text-slate-600 transition-colors hover:text-blue-600 dark:text-slate-400 dark:hover:text-blue-400"
-        data-i18n="nav_privacy_policy">Privacy Policy</a>
-        <span class="select-none text-slate-300 dark:text-slate-600" aria-hidden="true">·</span>
-        <a href="https://raia-footer.vercel.app/#terms" target="_blank" rel="noopener noreferrer"
-        class="font-medium text-slate-600 transition-colors hover:text-blue-600 dark:text-slate-400 dark:hover:text-blue-400"
-        data-i18n="nav_terms">Terms &amp; Conditions</a>
+        <span class="text-sm leading-relaxed text-slate-700 dark:text-slate-300" data-i18n="nav_tagline">
+          Tools, AI, and software for learning and everyday work
+        </span>
+      </div>
     </div>
-</div>
 
-<!-- Badge -->
-<div class="border-t border-slate-200/60 p-4 dark:border-slate-800/60">
-    <img class="written-by-human mx-auto h-auto w-full max-w-[224px]"
-    src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20224%2036%22%20width%3D%22224%22%20height%3D%2236%22%3E%0A%20%20%3Crect%20x%3D%220.5%22%20y%3D%220.5%22%20width%3D%22223%22%20height%3D%2235%22%20rx%3D%2217.5%22%20fill%3D%22%23038dff%22%20stroke%3D%22%23ffffff%22%2F%3E%0A%20%20%3Cg%20fill%3D%22%23ffffff%22%20transform%3D%22translate(10%2C%2010)%22%3E%0A%20%20%20%20%3Ccircle%20cx%3D%228%22%20cy%3D%224%22%20r%3D%223%22%2F%3E%0A%20%20%20%20%3Cpath%20d%3D%22M2.5%2015c0-3%202.5-4.8%205.5-4.8s5.5%201.8%205.5%204.8v1h-11z%22%2F%3E%0A%20%20%3C%2Fg%3E%0A%20%20%3Ctext%20x%3D%2234%22%20y%3D%2222.5%22%20font-family%3D%22Inter%2C%20system-ui%2C%20-apple-system%2C%20'Segoe%20UI'%2C%20Roboto%2C%20Helvetica%2C%20Arial%2C%20sans-serif%22%20font-size%3D%2211.5%22%20letter-spacing%3D%220.3%22%20fill%3D%22%23ffffff%22%3E%0A%20%20%20%20%3Ctspan%3Ewritten%20by%20human%20%3C%2Ftspan%3E%3Ctspan%20font-weight%3D%22700%22%20fill%3D%22%23ffffff%22%3Enot%20ai%3C%2Ftspan%3E%0A%20%20%3C%2Ftext%3E%0A%3C%2Fsvg%3E"
-    alt="Written by human, not by AI" loading="lazy" width="224" height="36" />
-</div>
-</div>
+    <!-- Footer links -->
+    <div class="border-t border-slate-200/60 p-4 dark:border-slate-800/60">
+      <div class="drawer-footer-links flex flex-wrap items-center justify-center gap-2 text-xs">
+        <a href="https://raia-footer.vercel.app/#privacy" target="_blank" rel="noopener noreferrer" class="font-medium text-slate-600 transition-colors hover:text-blue-600 dark:text-slate-400 dark:hover:text-blue-400" data-i18n="nav_privacy_policy">
+          Privacy Policy
+        </a>
+        <span class="select-none text-slate-300 dark:text-slate-600" aria-hidden="true">·</span>
+        <a href="https://raia-footer.vercel.app/#terms" target="_blank" rel="noopener noreferrer" class="font-medium text-slate-600 transition-colors hover:text-blue-600 dark:text-slate-400 dark:hover:text-blue-400" data-i18n="nav_terms">
+          Terms &amp; Conditions
+        </a>
+      </div>
+    </div>
+
+    <!-- Badge -->
+    <div class="border-t border-slate-200/60 p-4 dark:border-slate-800/60">
+      <img
+        class="written-by-human mx-auto h-auto w-full max-w-[224px]"
+        src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20224%2036%22%20width%3D%22224%22%20height%3D%2236%22%3E%0A%20%20%3Crect%20x%3D%220.5%22%20y%3D%220.5%22%20width%3D%22223%22%20height%3D%2235%22%20rx%3D%2217.5%22%20fill%3D%22%23038dff%22%20stroke%3D%22%23ffffff%22%2F%3E%0A%20%20%3Cg%20fill%3D%22%23ffffff%22%20transform%3D%22translate(10%2C%2010)%22%3E%0A%20%20%20%20%3Ccircle%20cx%3D%228%22%20cy%3D%224%22%20r%3D%223%22%2F%3E%0A%20%20%20%20%3Cpath%20d%3D%22M2.5%2015c0-3%202.5-4.8%205.5-4.8s5.5%201.8%205.5%204.8v1h-11z%22%2F%3E%0A%20%20%3C%2Fg%3E%0A%20%20%3Ctext%20x%3D%2234%22%20y%3D%2222.5%22%20font-family%3D%22Inter%2C%20system-ui%2C%20-apple-system%2C%20'Segoe%20UI'%2C%20Roboto%2C%20Helvetica%2C%20Arial%2C%20sans-serif%22%20font-size%3D%2211.5%22%20letter-spacing%3D%220.3%22%20fill%3D%22%23ffffff%22%3E%0A%20%20%20%20%3Ctspan%3Ewritten%20by%20human%20%3C%2Ftspan%3E%3Ctspan%20font-weight%3D%22700%22%20fill%3D%22%23ffffff%22%3Enot%20ai%3C%2Ftspan%3E%0A%20%20%3C%2Ftext%3E%0A%3C%2Fsvg%3E"
+        alt="Written by human, not by AI"
+        data-i18n-alt="written_by_human_alt"
+        loading="lazy"
+        width="224"
+        height="36" />
+    </div>
+  </div>
 </nav>
 
-    <!-- ===== HERO ===== -->
-    <section id="hero"
-    class="relative min-h-svh overflow-hidden bg-white px-5 pb-12 pt-16 text-center dark:bg-dark-bg flex items-center justify-center">
-    <div class="grid-bg absolute inset-0 pointer-events-none" aria-hidden="true"></div>
-    <div class="hero-spotlight" id="hero-spotlight" aria-hidden="true"></div>
+<!-- ===== HERO ===== -->
+<section id="hero" class="relative min-h-svh overflow-hidden bg-white px-5 pb-12 pt-16 text-center dark:bg-dark-bg flex items-center justify-center">
+  <div class="grid-bg absolute inset-0 pointer-events-none" aria-hidden="true"></div>
+  <div class="hero-spotlight" id="hero-spotlight" aria-hidden="true"></div>
 
-    <div class="relative z-10 mx-auto max-w-2xl">
-        <a href="https://hajir.is-a.dev/raiaspace"
-        class="mb-5 inline-flex items-center gap-2 rounded-full border border-blue-500/20 bg-blue-500/10 px-4 py-1.5 font-mono text-[0.62rem] tracking-[0.18em] text-blue-600 backdrop-blur-sm transition-all hover:bg-blue-500/20 animate-fade-up animate-fade-up-delay-1 dark:text-blue-400">
-        <span class="h-1.5 w-1.5 rounded-full bg-blue-500 animate-pulse" aria-hidden="true"></span>
-        <svg class="h-3.5 w-3.5 text-blue-500" data-icon="ic14" aria-hidden="true"></svg>
-    <span>search</span>
-</a>
+  <div class="relative z-10 mx-auto max-w-2xl">
+    <a
+      href="https://hajir.is-a.dev/raiaspace"
+      target="_blank"
+      rel="noopener"
+      aria-label="Search on RaiaSpace"
+      class="mb-5 inline-flex min-h-[44px] items-center gap-2 rounded-full border border-blue-500/20 bg-blue-500/10 px-4 py-2 font-mono text-[0.62rem] tracking-[0.18em] text-blue-600 backdrop-blur-sm transition-all hover:bg-blue-500/20 animate-fade-up animate-fade-up-delay-1 dark:text-blue-400">
+      <span class="h-1.5 w-1.5 rounded-full bg-blue-500 animate-pulse" aria-hidden="true"></span>
+      <svg class="h-3.5 w-3.5 text-blue-500" data-icon="ic14" aria-hidden="true"></svg>
+      <span>RaiaSpace</span>
+    </a>
 
-<h1 class="text-[clamp(2.35rem,10vw,5.8rem)] font-display font-extrabold leading-[0.92] tracking-tighter text-nowrap animate-fade-up animate-fade-up-delay-2">
-    <span class="align-baseline text-slate-900 dark:text-white" data-i18n="hero_title_1">Hajir</span>
-    <span class="align-baseline ml-1 text-blue-600 dark:text-blue-400" data-i18n="hero_title_2">Studio</span>
-</h1>
+    <h1 class="text-[clamp(2.35rem,10vw,5.8rem)] font-display font-extrabold leading-[0.92] tracking-tighter text-nowrap animate-fade-up animate-fade-up-delay-2">
+      <span class="align-baseline text-slate-900 dark:text-white" data-i18n="hero_title_1">Hajir</span>
+      <span class="align-baseline ml-1 text-blue-600 dark:text-blue-400" data-i18n="hero_title_2">Studio</span>
+    </h1>
 
-<p class="mx-auto mb-8 max-w-xl text-[clamp(1rem,2vw,1.15rem)] leading-relaxed text-slate-600 animate-fade-up animate-fade-up-delay-3 dark:text-slate-400"
-data-i18n="hero_desc">
-Hi, I'm Hajir. I build software, web tools, and AI that are fast, simple, and easy to use. Music is just a
-small hobby on the side.
-</p>
-
-<div class="flex flex-col items-center justify-center gap-3 sm:flex-row animate-fade-up animate-fade-up-delay-4">
-    <a href="#about" class="btn-primary w-full justify-center sm:w-auto group">
-        <svg class="h-4 w-4 transition-transform group-hover:-translate-y-0.5" data-icon="ic06" aria-hidden="true"></svg>
-    <span data-i18n="hero_cta1">Get to Know Me</span>
-</a>
-<a href="https://raia-ai.vercel.app" target="_blank" rel="noopener noreferrer"
-class="btn-secondary w-full justify-center sm:w-auto group">
-<svg class="h-4 w-4 transition-transform group-hover:-translate-y-0.5" data-icon="ic01" aria-hidden="true"></svg>
-<span data-i18n="hero_cta2">Try RAIA AI</span>
-<svg class="h-3 w-3 ml-1 opacity-60" data-icon="ic12" aria-hidden="true"></svg>
-</a>
-</div>
-</div>
-
-<!-- Scroll indicator -->
-<div class="absolute bottom-8 left-1/2 hidden -translate-x-1/2 flex-col items-center gap-1.5 sm:flex animate-fade-up animate-fade-up-delay-5"
-aria-hidden="true">
-<div class="scroll-line h-12 w-px bg-gradient-to-b from-blue-400/60 to-transparent"></div>
-<span class="font-mono text-[8px] tracking-[0.2em] uppercase text-slate-400 dark:text-slate-600">scroll</span>
-</div>
-
-<!-- Ticker -->
-<div class="absolute bottom-0 left-0 right-0 overflow-hidden border-t border-slate-200/40 bg-blue-500/4 py-2.5 dark:border-slate-800/60"
-aria-hidden="true">
-<div class="ticker-track font-mono text-[10px] tracking-[0.15em] uppercase text-slate-400 dark:text-slate-600">
-    <span class="inline-flex items-center gap-1.5">
-        <svg class="h-2.5 w-2.5" data-icon="ic07" aria-hidden="true"></svg>
-    Musician
-</span>
-<span class="text-blue-400/30 mx-2">•</span>
-<span class="inline-flex items-center gap-1.5">
-    <svg class="h-2.5 w-2.5" data-icon="ic15" aria-hidden="true"></svg>
-Developer
-</span>
-<span class="text-blue-400/30 mx-2">•</span>
-<span class="inline-flex items-center gap-1.5">
-    <svg class="h-2.5 w-2.5" data-icon="ic13" aria-hidden="true"></svg>
-Privacy First
-</span>
-<span class="text-blue-400/30 mx-2">•</span>
-<span class="inline-flex items-center gap-1.5">
-    <svg class="h-2.5 w-2.5" data-icon="ic16" aria-hidden="true"></svg>
-Open Web
-</span>
-<span class="text-blue-400/30 mx-2">•</span>
-<span class="inline-flex items-center gap-1.5">
-    <svg class="h-2.5 w-2.5" data-icon="ic17" aria-hidden="true"></svg>
-GitHub Pages
-</span>
-<span class="text-blue-400/30 mx-2">•</span>
-<span class="inline-flex items-center gap-1.5">
-    <svg class="h-2.5 w-2.5" data-icon="ic18" aria-hidden="true"></svg>
-Creative Tech
-</span>
-</div>
-</div>
-</section>
-
-    <!-- ===== ABOUT ===== -->
-    <section id="about" class="bg-slate-50 py-16 dark:bg-slate-950/60">
-        <div class="mx-auto max-w-3xl px-5 sm:px-8">
-            <div
-            class="reveal glass-card glass-hover rounded-3xl border border-slate-200/60 bg-white/70 p-6 shadow-sm backdrop-blur-xl dark:border-slate-800/60 dark:bg-slate-900/50 sm:p-8">
-            <div class="mb-6 flex flex-col items-center">
-                <div
-                class="group mb-4 flex h-24 w-24 items-center justify-center overflow-hidden rounded-full border border-slate-200/50 bg-white p-4 shadow-sm transition-all hover:shadow-md hover:scale-105 dark:border-slate-700/40 dark:bg-slate-900/60 sm:h-28 sm:w-28">
-                <img src="https://i.postimg.cc/GmWt2wch/H-blue.webp" alt="Haiere logo"
-                class="logo-img h-full w-full object-contain transition-transform duration-300 group-hover:scale-110"
-                loading="lazy" decoding="async" width="112" height="112" />
-            </div>
-            <h3 class="mb-1.5 font-display text-xl font-bold tracking-tight text-slate-900 dark:text-white sm:text-2xl">
-                Hajir Stein</h3>
-            <p class="font-mono text-[10px] uppercase tracking-[0.18em] text-slate-500 dark:text-slate-400">
-                <span class="inline-flex items-center gap-1.5">
-                    <svg class="h-2.5 w-2.5" data-icon="ic07" aria-hidden="true"></svg>
-                <span data-i18n="about_role_musician">Musician</span>
-            </span>
-            <span class="text-slate-300 dark:text-slate-600">·</span>
-            <span class="inline-flex items-center gap-1.5">
-                <svg class="h-2.5 w-2.5" data-icon="ic15" aria-hidden="true"></svg>
-            <span data-i18n="about_role_developer">Developer</span>
-        </span>
+    <p class="mx-auto mb-8 max-w-xl text-[clamp(1rem,2vw,1.15rem)] leading-relaxed text-slate-600 animate-fade-up animate-fade-up-delay-3 dark:text-slate-400" data-i18n="hero_desc">
+      Hi! I'm Hajir. I build tools, web apps, and AI to support learning, coding, and everyday work.
     </p>
-</div>
 
-<div class="mb-5 flex flex-wrap justify-center gap-2">
-    <span class="glass-pill inline-flex items-center gap-1.5 rounded-full px-3 py-1 font-mono text-[0.65rem] text-blue-600 dark:text-blue-400">
-        <svg class="h-2.5 w-2.5" data-icon="ic07" aria-hidden="true"></svg>
-    <span data-i18n="tag_musician">Musician</span>
-</span>
-<span class="glass-pill inline-flex items-center gap-1.5 rounded-full px-3 py-1 font-mono text-[0.65rem] text-blue-600 dark:text-blue-400">
-    <svg class="h-2.5 w-2.5" data-icon="ic15" aria-hidden="true"></svg>
-<span data-i18n="tag_developer">Developer</span>
-</span>
-</div>
+    <div class="flex flex-col items-center justify-center gap-3 sm:flex-row animate-fade-up animate-fade-up-delay-4">
+      <a href="#about" class="btn-primary w-full justify-center sm:w-auto group">
+        <svg class="h-4 w-4 transition-transform group-hover:-translate-y-0.5" data-icon="ic06" aria-hidden="true"></svg>
+        <span data-i18n="hero_cta1">View Projects</span>
+      </a>
 
-<div class="mx-auto max-w-xl space-y-4 text-center text-sm leading-relaxed text-slate-600 dark:text-slate-300 sm:text-base">
-    <p data-i18n="about_p1">Hi, I'm Hajir. Music is where I express myself and share what I feel.</p>
-    <p data-i18n="about_p2">Through my work, I want to spread positive energy and encouragement.</p>
-    <p data-i18n="about_p3">I also build free online tools that are fast, simple, and safe without storing your
-        personal data.</p>
-    </div>
-
-    <div class="mt-6 flex justify-center">
-        <a href="https://raia-ai.vercel.app" target="_blank" rel="noopener noreferrer"
-        class="btn-primary group">
+      <a href="https://raia-ai.vercel.app" target="_blank" rel="noopener noreferrer" class="btn-secondary w-full justify-center sm:w-auto group">
         <svg class="h-4 w-4 transition-transform group-hover:-translate-y-0.5" data-icon="ic01" aria-hidden="true"></svg>
-    <span data-i18n="about_cta">Use RAIA</span>
-    <svg class="h-3 w-3 ml-1 opacity-60 transition-transform group-hover:translate-x-0.5" data-icon="ic12" aria-hidden="true"></svg>
-</a>
-</div>
-</div>
-
-<!-- Stats -->
-<div class="reveal mt-5 grid grid-cols-2 gap-3 sm:grid-cols-4">
-    <div
-    class="glass-card group rounded-xl border border-slate-200/50 bg-white/60 px-4 py-5 text-center transition-all hover:shadow-md hover:-translate-y-1 dark:border-slate-800/50 dark:bg-slate-900/40">
-    <div
-    class="mx-auto mb-2 flex h-10 w-10 items-center justify-center rounded-full bg-blue-500/10 transition-colors group-hover:bg-blue-500/20">
-    <svg class="h-5 w-5 text-blue-600 dark:text-blue-400" data-icon="ic15" aria-hidden="true"></svg>
-</div>
-<div class="stat-number text-slate-900 dark:text-white" data-count="4" data-suffix="+">0</div>
-<div class="mt-1 font-mono text-[9px] uppercase tracking-[0.12em] text-slate-500 dark:text-slate-400"
-data-i18n="stat_tools_label">Tools Released</div>
-</div>
-<div
-class="glass-card group rounded-xl border border-slate-200/50 bg-white/60 px-4 py-5 text-center transition-all hover:shadow-md hover:-translate-y-1 dark:border-slate-800/50 dark:bg-slate-900/40">
-<div
-class="mx-auto mb-2 flex h-10 w-10 items-center justify-center rounded-full bg-blue-500/10 transition-colors group-hover:bg-blue-500/20">
-<svg class="h-5 w-5 text-blue-600 dark:text-blue-400" data-icon="ic07" aria-hidden="true"></svg>
-</div>
-<div class="stat-number text-slate-900 dark:text-white" data-count="2" data-suffix="">0</div>
-<div class="mt-1 font-mono text-[9px] uppercase tracking-[0.12em] text-slate-500 dark:text-slate-400"
-data-i18n="stat_albums_label">Music Releases</div>
-</div>
-<div
-class="glass-card group rounded-xl border border-slate-200/50 bg-white/60 px-4 py-5 text-center transition-all hover:shadow-md hover:-translate-y-1 dark:border-slate-800/50 dark:bg-slate-900/40">
-<div
-class="mx-auto mb-2 flex h-10 w-10 items-center justify-center rounded-full bg-blue-500/10 transition-colors group-hover:bg-blue-500/20">
-<svg class="h-5 w-5 text-blue-600 dark:text-blue-400" data-icon="ic07" aria-hidden="true"></svg>
-</div>
-<div class="stat-number text-slate-900 dark:text-white" data-count="12" data-suffix="+">0</div>
-<div class="mt-1 font-mono text-[9px] uppercase tracking-[0.12em] text-slate-500 dark:text-slate-400"
-data-i18n="stat_songs_label">Original Songs</div>
-</div>
-<div
-class="glass-card group rounded-xl border border-slate-200/50 bg-white/60 px-4 py-5 text-center transition-all hover:shadow-md hover:-translate-y-1 dark:border-slate-800/50 dark:bg-slate-900/40">
-<div
-class="mx-auto mb-2 flex h-10 w-10 items-center justify-center rounded-full bg-blue-500/10 transition-colors group-hover:bg-blue-500/20">
-<svg class="h-5 w-5 text-blue-600 dark:text-blue-400" data-icon="ic13" aria-hidden="true"></svg>
-</div>
-<div class="stat-number text-slate-900 dark:text-white" data-count="100" data-suffix="%">0</div>
-<div class="mt-1 font-mono text-[9px] uppercase tracking-[0.12em] text-slate-500 dark:text-slate-400"
-data-i18n="stat_privacy_label">Privacy First</div>
-</div>
-</div>
-</div>
-</section>
-
-    <!-- ===== RWR ===== -->
-    <section id="rwr" class="bg-slate-50 py-12 dark:bg-slate-950/60">
-        <div class="mx-auto max-w-3xl px-5 sm:px-8">
-            <a href="https://hajir.is-a.dev/loveyou" target="_blank" rel="noopener noreferrer"
-            class="reveal group block flex flex-col items-center rounded-3xl border border-slate-200/60 bg-white/70 px-6 py-8 text-center shadow-sm backdrop-blur-xl transition-all hover:scale-[1.01] hover:shadow-md dark:border-slate-800/60 dark:bg-slate-900/50 sm:px-10">
-            <div class="mb-4 flex items-center justify-center gap-4">
-                <div
-                class="group/logo relative flex h-16 w-16 items-center justify-center overflow-hidden rounded-full border-2 border-blue-500/25 shadow-md transition-all hover:scale-105 hover:shadow-lg hover:border-blue-500/40">
-                <img src="https://i.postimg.cc/fTGgqJHh/RWR.webp" alt="RWR logo"
-                class="h-full w-full object-cover transition-transform duration-300 group-hover/logo:scale-110"
-                loading="lazy" decoding="async" width="64" height="64" />
-                <div class="absolute inset-0 rounded-full bg-gradient-to-tr from-blue-500/0 to-blue-500/10 opacity-0 transition-opacity group-hover/logo:opacity-100"
-                aria-hidden="true"></div>
-            </div>
-            <div
-            class="group/logo relative flex h-16 w-16 items-center justify-center overflow-hidden rounded-full border-2 border-blue-500/25 shadow-md transition-all hover:scale-105 hover:shadow-lg hover:border-blue-500/40">
-            <img src="https://i.postimg.cc/xTJ4PK3B/AMA.webp" alt="AMA logo"
-            class="h-full w-full object-cover transition-transform duration-300 group-hover/logo:scale-110"
-            loading="lazy" decoding="async" width="64" height="64" />
-            <div class="absolute inset-0 rounded-full bg-gradient-to-tr from-blue-500/0 to-blue-500/10 opacity-0 transition-opacity group-hover/logo:opacity-100"
-            aria-hidden="true"></div>
-        </div>
+        <span data-i18n="hero_cta2">Try RAIA AI</span>
+        <svg class="h-3 w-3 ml-1 opacity-60" data-icon="ic12" aria-hidden="true"></svg>
+      </a>
     </div>
-    <h3 class="mb-2 font-display text-xl font-bold tracking-tight text-slate-900 dark:text-white sm:text-2xl"
-    data-i18n="RWR">
-    <span class="inline-flex items-center gap-2">
-        <svg class="h-5 w-5 text-blue-500" data-icon="ic18" aria-hidden="true"></svg>
-    RWR - AMA
-</span>
-</h3>
-<p class="max-w-md text-sm italic leading-relaxed text-slate-600 dark:text-slate-400" data-i18n="RWR_closing">
-    <span class="inline-flex items-center gap-1.5">
-        <svg class="h-3 w-3 text-blue-400/60" data-icon="ic19" aria-hidden="true"></svg>
-    RWR is part of my long-term creative journey.
-</span>
-</p>
-</a>
-</div>
+  </div>
+
+  <!-- Ticker -->
+  <div class="absolute bottom-0 left-0 right-0 overflow-hidden border-t border-slate-200/40 bg-blue-500/4 py-2.5 dark:border-slate-800/60" aria-hidden="true">
+    <div class="ticker-track font-mono text-[10px] tracking-[0.15em] uppercase text-slate-400 dark:text-slate-600">
+      <span class="inline-flex items-center gap-1.5">
+        <svg class="h-2.5 w-2.5" data-icon="ic07" aria-hidden="true"></svg>
+        <span data-i18n="ticker_musician">Musician</span>
+      </span>
+      <span class="text-blue-400/30 mx-2">•</span>
+      <span class="inline-flex items-center gap-1.5">
+        <svg class="h-2.5 w-2.5" data-icon="ic15" aria-hidden="true"></svg>
+        <span data-i18n="ticker_developer">Developer</span>
+      </span>
+      <span class="text-blue-400/30 mx-2">•</span>
+      <span class="inline-flex items-center gap-1.5">
+        <svg class="h-2.5 w-2.5" data-icon="ic13" aria-hidden="true"></svg>
+        <span data-i18n="ticker_privacy">Privacy First</span>
+      </span>
+      <span class="text-blue-400/30 mx-2">•</span>
+      <span class="inline-flex items-center gap-1.5">
+        <svg class="h-2.5 w-2.5" data-icon="ic16" aria-hidden="true"></svg>
+        <span data-i18n="ticker_openweb">Open Web</span>
+      </span>
+      <span class="text-blue-400/30 mx-2">•</span>
+      <span class="inline-flex items-center gap-1.5">
+        <svg class="h-2.5 w-2.5" data-icon="ic17" aria-hidden="true"></svg>
+        <span data-i18n="ticker_github">GitHub Pages</span>
+      </span>
+      <span class="text-blue-400/30 mx-2">•</span>
+      <span class="inline-flex items-center gap-1.5">
+        <svg class="h-2.5 w-2.5" data-icon="ic18" aria-hidden="true"></svg>
+        <span data-i18n="ticker_creative">Creative Tech</span>
+      </span>
+    </div>
+  </div>
 </section>
 
-    <!-- ===== MUSIC ===== -->
-    <section id="music" class="relative overflow-hidden bg-white/50 py-16 dark:bg-slate-950/40">
-        <div class="relative z-10 mx-auto max-w-3xl px-5 sm:px-8">
-            <div class="reveal mb-10 text-center">
-                <h2 class="mb-2 font-display text-3xl font-extrabold tracking-tight text-slate-900 dark:text-white sm:text-4xl">
-                    <span class="inline-flex items-center gap-2.5">
-                        <svg class="h-7 w-7 text-blue-500" data-icon="ic07" aria-hidden="true"></svg>
-                    <span data-i18n="music_title">Music as a Hobby</span>
-                </span>
-            </h2>
-            <p class="mx-auto max-w-md text-sm leading-relaxed text-slate-600 dark:text-slate-400"
-            data-i18n="music_subtitle">A few tracks I made in my free time.</p>
+<!-- ===== ABOUT ===== -->
+<section id="about" class="bg-slate-50 py-16 dark:bg-slate-950/60">
+  <div class="mx-auto max-w-3xl px-5 sm:px-8">
+    <div class="reveal glass-card glass-hover rounded-3xl border border-slate-200/60 bg-white/70 p-6 shadow-sm backdrop-blur-xl dark:border-slate-800/60 dark:bg-slate-900/50 sm:p-8">
+      <div class="mb-6 flex flex-col items-center">
+        <div class="group mb-4 flex h-24 w-24 items-center justify-center overflow-hidden rounded-full border border-slate-200/50 bg-white p-4 shadow-sm transition-all hover:shadow-md hover:scale-105 dark:border-slate-700/40 dark:bg-slate-900/60 sm:h-28 sm:w-28">
+          <img
+            src="https://i.postimg.cc/GmWt2wch/H-blue.webp"
+            alt="Haiere logo"
+            data-i18n-alt="logo_alt"
+            class="logo-img h-full w-full object-contain transition-transform duration-300 group-hover:scale-110"
+            loading="lazy"
+            decoding="async"
+            width="112"
+            height="112" />
         </div>
 
-        <div
-        class="reveal glass-card glass-hover mb-5 group rounded-3xl border border-slate-200/60 bg-white/70 p-5 shadow-sm backdrop-blur-xl transition-all duration-300 hover:shadow-md dark:border-slate-800/60 dark:bg-slate-900/50">
-        <div class="mb-3 flex items-center gap-3">
-            <div
-            class="relative flex h-11 w-11 items-center justify-center overflow-hidden rounded-xl border border-blue-500/20 transition-all group-hover:scale-105 group-hover:border-blue-500/30 group-hover:shadow-md">
-            <img id="music-logo" src="https://i.postimg.cc/VLrVFjF1/haieresignaturebiru.webp"
-            alt="Signature Music logo" class="logo-img h-full w-full object-contain transition-transform duration-300"
-            loading="lazy" decoding="async" width="44" height="44" />
-            <div class="absolute inset-0 rounded-xl bg-gradient-to-tr from-blue-500/0 to-blue-500/10 opacity-0 transition-opacity group-hover:opacity-100"
-            aria-hidden="true"></div>
+        <h3 class="mb-1.5 font-display text-xl font-bold tracking-tight text-slate-900 dark:text-white sm:text-2xl">
+          Hajir Muhaajir
+        </h3>
+
+        <p class="font-mono text-[10px] uppercase tracking-[0.18em] text-slate-500 dark:text-slate-400">
+          <span class="inline-flex items-center gap-1.5">
+            <svg class="h-2.5 w-2.5" data-icon="ic07" aria-hidden="true"></svg>
+            <span data-i18n="about_role_musician">Musician</span>
+          </span>
+          <span class="text-slate-300 dark:text-slate-600">·</span>
+          <span class="inline-flex items-center gap-1.5">
+            <svg class="h-2.5 w-2.5" data-icon="ic15" aria-hidden="true"></svg>
+            <span data-i18n="about_role_developer">Developer</span>
+          </span>
+        </p>
+      </div>
+
+      <div class="mb-5 flex flex-wrap justify-center gap-2">
+        <span class="glass-pill inline-flex items-center gap-1.5 rounded-full px-3 py-1 font-mono text-[0.65rem] text-blue-600 dark:text-blue-400">
+          <svg class="h-2.5 w-2.5" data-icon="ic07" aria-hidden="true"></svg>
+          <span data-i18n="tag_musician">Music</span>
+        </span>
+        <span class="glass-pill inline-flex items-center gap-1.5 rounded-full px-3 py-1 font-mono text-[0.65rem] text-blue-600 dark:text-blue-400">
+          <svg class="h-2.5 w-2.5" data-icon="ic15" aria-hidden="true"></svg>
+          <span data-i18n="tag_developer">Developer</span>
+        </span>
+      </div>
+
+      <div class="mx-auto max-w-xl space-y-4 text-center text-sm leading-relaxed text-slate-600 dark:text-slate-300 sm:text-base">
+        <p data-i18n="about_p1">I focus on building tools, web apps, and AI that help developers work faster and more efficiently.</p>
+        <p data-i18n="about_p2">My projects are designed to be lightweight, easy to understand, and respectful of user privacy whenever possible.</p>
+        <p data-i18n="about_p3">I often use HTML, CSS, JavaScript, and other web technologies to turn ideas into useful applications.</p>
+        <p data-i18n="about_p4">Outside of coding, music helps me find inspiration and keeps the process enjoyable.</p>
+      </div>
+
+      <div class="mt-6 flex justify-center">
+        <a href="https://raia-ai.vercel.app" target="_blank" rel="noopener noreferrer" class="btn-primary group">
+          <svg class="h-4 w-4 transition-transform group-hover:-translate-y-0.5" data-icon="ic01" aria-hidden="true"></svg>
+          <span data-i18n="about_cta">Explore RAIA</span>
+          <svg class="h-3 w-3 ml-1 opacity-60 transition-transform group-hover:translate-x-0.5" data-icon="ic12" aria-hidden="true"></svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- Stats -->
+    <div class="reveal mt-5 grid grid-cols-2 gap-3 sm:grid-cols-4">
+      <div class="glass-card group rounded-xl border border-slate-200/50 bg-white/60 px-4 py-5 text-center transition-all hover:shadow-md hover:-translate-y-1 dark:border-slate-800/50 dark:bg-slate-900/40">
+        <div class="mx-auto mb-2 flex h-10 w-10 items-center justify-center rounded-full bg-blue-500/10 transition-colors group-hover:bg-blue-500/20">
+          <svg class="h-5 w-5 text-blue-600 dark:text-blue-400" data-icon="ic15" aria-hidden="true"></svg>
+        </div>
+        <div class="stat-number text-slate-900 dark:text-white" data-count="4" data-suffix="+">0</div>
+        <div class="mt-1 font-mono text-[9px] uppercase tracking-[0.12em] text-slate-500 dark:text-slate-400" data-i18n="stat_tools_label">Tools Released</div>
+      </div>
+
+      <div class="glass-card group rounded-xl border border-slate-200/50 bg-white/60 px-4 py-5 text-center transition-all hover:shadow-md hover:-translate-y-1 dark:border-slate-800/50 dark:bg-slate-900/40">
+        <div class="mx-auto mb-2 flex h-10 w-10 items-center justify-center rounded-full bg-blue-500/10 transition-colors group-hover:bg-blue-500/20">
+          <svg class="h-5 w-5 text-blue-600 dark:text-blue-400" data-icon="ic07" aria-hidden="true"></svg>
+        </div>
+        <div class="stat-number text-slate-900 dark:text-white" data-count="2">0</div>
+        <div class="mt-1 font-mono text-[9px] uppercase tracking-[0.12em] text-slate-500 dark:text-slate-400" data-i18n="stat_albums_label">Music Albums</div>
+      </div>
+
+      <div class="glass-card group rounded-xl border border-slate-200/50 bg-white/60 px-4 py-5 text-center transition-all hover:shadow-md hover:-translate-y-1 dark:border-slate-800/50 dark:bg-slate-900/40">
+        <div class="mx-auto mb-2 flex h-10 w-10 items-center justify-center rounded-full bg-blue-500/10 transition-colors group-hover:bg-blue-500/20">
+          <svg class="h-5 w-5 text-blue-600 dark:text-blue-400" data-icon="ic07" aria-hidden="true"></svg>
+        </div>
+        <div class="stat-number text-slate-900 dark:text-white" data-count="12" data-suffix="+">0</div>
+        <div class="mt-1 font-mono text-[9px] uppercase tracking-[0.12em] text-slate-500 dark:text-slate-400" data-i18n="stat_songs_label">Original Songs</div>
+      </div>
+
+      <div class="glass-card group rounded-xl border border-slate-200/50 bg-white/60 px-4 py-5 text-center transition-all hover:shadow-md hover:-translate-y-1 dark:border-slate-800/50 dark:bg-slate-900/40">
+        <div class="mx-auto mb-2 flex h-10 w-10 items-center justify-center rounded-full bg-blue-500/10 transition-colors group-hover:bg-blue-500/20">
+          <svg class="h-5 w-5 text-blue-600 dark:text-blue-400" data-icon="ic13" aria-hidden="true"></svg>
+        </div>
+        <div class="stat-number text-slate-900 dark:text-white" data-count="100" data-suffix="%">0</div>
+        <div class="mt-1 font-mono text-[9px] uppercase tracking-[0.12em] text-slate-500 dark:text-slate-400" data-i18n="stat_privacy_label">Privacy First</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== RWR ===== -->
+<section id="rwr" class="bg-slate-50 py-12 dark:bg-slate-950/60">
+  <div class="mx-auto max-w-3xl px-5 sm:px-8">
+    <a href="https://hajir.is-a.dev/loveyou" target="_blank" rel="noopener noreferrer" class="reveal group block flex flex-col items-center rounded-3xl border border-slate-200/60 bg-white/70 px-6 py-8 text-center shadow-sm backdrop-blur-xl transition-all hover:scale-[1.01] hover:shadow-md dark:border-slate-800/60 dark:bg-slate-900/50 sm:px-10">
+      <div class="mb-4 flex items-center justify-center gap-4">
+        <div class="group/logo relative flex h-16 w-16 items-center justify-center overflow-hidden rounded-full border-2 border-blue-500/25 shadow-md transition-all hover:scale-105 hover:shadow-lg hover:border-blue-500/40">
+          <img src="https://i.postimg.cc/fTGgqJHh/RWR.webp" alt="RWR logo" data-i18n-alt="logo_rwr_alt" class="h-full w-full object-cover transition-transform duration-300 group-hover/logo:scale-110" loading="lazy" decoding="async" width="64" height="64" />
+          <div class="absolute inset-0 rounded-full bg-gradient-to-tr from-blue-500/0 to-blue-500/10 opacity-0 transition-opacity group-hover/logo:opacity-100" aria-hidden="true"></div>
+        </div>
+
+        <div class="group/logo relative flex h-16 w-16 items-center justify-center overflow-hidden rounded-full border-2 border-blue-500/25 shadow-md transition-all hover:scale-105 hover:shadow-lg hover:border-blue-500/40">
+          <img src="https://i.postimg.cc/xTJ4PK3B/AMA.webp" alt="AMA logo" data-i18n-alt="logo_ama_alt" class="h-full w-full object-cover transition-transform duration-300 group-hover/logo:scale-110" loading="lazy" decoding="async" width="64" height="64" />
+          <div class="absolute inset-0 rounded-full bg-gradient-to-tr from-blue-500/0 to-blue-500/10 opacity-0 transition-opacity group-hover/logo:opacity-100" aria-hidden="true"></div>
+        </div>
+      </div>
+
+      <h3 class="mb-2 font-display text-xl font-bold tracking-tight text-slate-900 dark:text-white sm:text-2xl" data-i18n="RWR">
+        <span class="inline-flex items-center gap-2">
+          <svg class="h-5 w-5 text-blue-500" data-icon="ic18" aria-hidden="true"></svg>
+          RWR - RAIA
+        </span>
+      </h3>
+
+      <p class="max-w-md text-sm italic leading-relaxed text-slate-600 dark:text-slate-400" data-i18n="RWR_closing">
+        <span class="inline-flex items-center gap-1.5">
+          <svg class="h-3 w-3 text-blue-400/60" data-icon="ic19" aria-hidden="true"></svg>
+          RWR is a part of my life, someday RWR
+        </span>
+      </p>
+    </a>
+  </div>
+</section>
+
+<!-- ===== MUSIC ===== -->
+<section id="music" class="relative overflow-hidden bg-white/50 py-16 dark:bg-slate-950/40">
+  <div class="relative z-10 mx-auto max-w-3xl px-5 sm:px-8">
+    <div class="reveal mb-10 text-center">
+      <h2 class="mb-2 font-display text-3xl font-extrabold tracking-tight text-slate-900 dark:text-white sm:text-4xl">
+        <span class="inline-flex items-center gap-2.5">
+          <svg class="h-7 w-7 text-blue-500" data-icon="ic07" aria-hidden="true"></svg>
+          <span data-i18n="music_title">Signature Music</span>
+        </span>
+      </h2>
+      <p class="mx-auto max-w-md text-sm leading-relaxed text-slate-600 dark:text-slate-400" data-i18n="music_subtitle">
+        A few songs I made to accompany learning, coding, and free time.
+      </p>
+    </div>
+
+    <div class="reveal glass-card glass-hover mb-5 group rounded-3xl border border-slate-200/60 bg-white/70 p-5 shadow-sm backdrop-blur-xl transition-all duration-300 hover:shadow-md dark:border-slate-800/60 dark:bg-slate-900/50">
+      <div class="mb-3 flex items-center gap-3">
+        <div class="relative flex h-11 w-11 items-center justify-center overflow-hidden rounded-xl border border-blue-500/20 transition-all group-hover:scale-105 group-hover:border-blue-500/30 group-hover:shadow-md">
+          <img id="music-logo" src="https://i.postimg.cc/VLrVFjF1/haieresignaturebiru.webp" alt="Signature Music logo" data-i18n-alt="logo_music_alt" class="logo-img h-full w-full object-contain transition-transform duration-300" loading="lazy" decoding="async" width="44" height="44" />
+          <div class="absolute inset-0 rounded-xl bg-gradient-to-tr from-blue-500/0 to-blue-500/10 opacity-0 transition-opacity group-hover:opacity-100" aria-hidden="true"></div>
         </div>
         <div>
-            <div class="font-display font-bold text-slate-900 dark:text-white">Signature Music</div>
-            <div class="font-mono text-[9px] font-semibold uppercase tracking-[0.15em] text-blue-600 dark:text-blue-400"
-            data-i18n="music_player_label">
+          <div class="font-display font-bold text-slate-900 dark:text-white">Signature Music</div>
+          <div class="font-mono text-[9px] font-semibold uppercase tracking-[0.15em] text-blue-600 dark:text-blue-400" data-i18n="music_player_label">
             <span class="inline-flex items-center gap-1">
-                <svg class="h-2.5 w-2.5" data-icon="ic20" aria-hidden="true"></svg>
-            Official Player
+              <svg class="h-2.5 w-2.5" data-icon="ic20" aria-hidden="true"></svg>
+              Music Player
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <p class="text-sm leading-relaxed text-slate-600 dark:text-slate-400" data-i18n="music_player_desc">
+        <span class="inline-flex items-center gap-1.5">
+          <svg class="h-3.5 w-3.5 text-blue-400/60" data-icon="ic21" aria-hidden="true"></svg>
+          Choose a song and start listening.
         </span>
+      </p>
     </div>
-</div>
-</div>
-<p class="text-sm leading-relaxed text-slate-600 dark:text-slate-400" data-i18n="music_player_desc">
-    <span class="inline-flex items-center gap-1.5">
-        <svg class="h-3.5 w-3.5 text-blue-400/60" data-icon="ic21" aria-hidden="true"></svg>
-    Choose a song and play it directly in the browser.
-</span>
-</p>
-</div>
 
-<div
-class="reveal overflow-hidden rounded-3xl border border-slate-200/60 bg-slate-50 shadow-xl transition-shadow hover:shadow-2xl dark:border-slate-800/60 dark:bg-slate-900/50">
-<iframe src="https://signature-music.vercel.app" title="Signature Music player" allow="autoplay"
-loading="lazy" class="block h-[70vh] min-h-[520px] w-full border-0 sm:h-[600px]"></iframe>
-</div>
+    <div class="music-iframe-wrap reveal overflow-hidden rounded-3xl border border-slate-200/60 bg-slate-50 shadow-xl transition-shadow hover:shadow-2xl dark:border-slate-800/60 dark:bg-slate-900/50">
+      <iframe
+        src="https://signature-music.vercel.app"
+        title="Signature Music player"
+        data-i18n-title="music_iframe_title"
+        allow="autoplay"
+        loading="lazy"
+        class="block h-[70vh] min-h-[520px] w-full border-0 sm:h-[600px]"></iframe>
+    </div>
 
-<div class="reveal mt-5 text-center">
-    <a href="https://signature-music.vercel.app" target="_blank" rel="noopener noreferrer"
-    class="group inline-flex items-center gap-1.5 font-mono text-[11px] text-blue-600 transition-colors hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300">
-    <svg class="h-3.5 w-3.5 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" data-icon="ic12" aria-hidden="true"></svg>
-<span data-i18n="music_open_link">Click here if the player doesn't appear.</span>
-</a>
-</div>
-</div>
+    <div class="reveal mt-5 text-center">
+      <a href="https://signature-music.vercel.app" target="_blank" rel="noopener noreferrer" class="group inline-flex items-center gap-1.5 font-mono text-[11px] text-blue-600 transition-colors hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300">
+        <svg class="h-3.5 w-3.5 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" data-icon="ic12" aria-hidden="true"></svg>
+        <span data-i18n="music_open_link">Player not showing? Open it through this link.</span>
+      </a>
+    </div>
+  </div>
 </section>
 
-    <!-- ===== QUOTES ===== -->
-    <section id="quotes" class="bg-slate-50 py-16 dark:bg-slate-950/40">
-        <div class="mx-auto max-w-4xl px-5 sm:px-8">
-            <div class="reveal mb-10 text-center">
-                <h2 class="mb-2 font-display text-3xl font-extrabold tracking-tight text-slate-900 dark:text-white sm:text-4xl">
-                    <span class="inline-flex items-center gap-2.5">
-                        <svg class="h-7 w-7 text-blue-500" data-icon="ic08" aria-hidden="true"></svg>
-                    <span data-i18n="quotes_title">Quotes</span>
-                </span>
-            </h2>
-            <p class="mx-auto max-w-md text-sm leading-relaxed text-slate-600 dark:text-slate-400"
-            data-i18n="quotes_subtitle">A few short lines that inspire my work.</p>
-        </div>
+<!-- ===== QUOTES ===== -->
+<section id="quotes" class="bg-slate-50 py-16 dark:bg-slate-950/40">
+  <div class="mx-auto max-w-4xl px-5 sm:px-8">
+    <div class="reveal mb-10 text-center">
+      <h2 class="mb-2 font-display text-3xl font-extrabold tracking-tight text-slate-900 dark:text-white sm:text-4xl">
+        <span class="inline-flex items-center gap-2.5">
+          <svg class="h-7 w-7 text-blue-500" data-icon="ic08" aria-hidden="true"></svg>
+          <span data-i18n="quotes_title">Favorite Quotes</span>
+        </span>
+      </h2>
+      <p class="mx-auto max-w-md text-sm leading-relaxed text-slate-600 dark:text-slate-400" data-i18n="quotes_subtitle">
+        A few quotes that inspire me while learning and building things.
+      </p>
+    </div>
 
-        <div class="grid grid-cols-1 gap-5 md:grid-cols-2">
-            <div
-            class="reveal glass-card glass-hover group relative overflow-hidden rounded-3xl border border-slate-200/60 bg-white/70 p-6 shadow-sm backdrop-blur-xl transition-all duration-300 hover:shadow-md dark:border-slate-800/60 dark:bg-slate-900/50 sm:p-7">
-            <div class="absolute -top-4 -right-2 select-none font-serif text-8xl leading-none text-slate-200/50 transition-all duration-300 group-hover:scale-110 group-hover:text-blue-500/10 dark:text-slate-700/20"
-            aria-hidden="true">"</div>
-            <p class="relative z-10 mb-5 text-sm leading-relaxed italic text-slate-700 dark:text-slate-300"
-            data-i18n="q1_text">
-            <span class="inline-flex items-start gap-1.5">
-                <svg class="mt-0.5 h-3.5 w-3.5 flex-shrink-0 text-blue-400/60" data-icon="ic08" aria-hidden="true"></svg>
+    <div class="grid grid-cols-1 gap-5 md:grid-cols-2">
+      <div class="reveal glass-card glass-hover group relative overflow-hidden rounded-3xl border border-slate-200/60 bg-white/70 p-6 shadow-sm backdrop-blur-xl transition-all duration-300 hover:shadow-md dark:border-slate-800/60 dark:bg-slate-900/50 sm:p-7">
+        <div class="absolute -top-4 -right-2 select-none font-serif text-8xl leading-none text-slate-200/50 transition-all duration-300 group-hover:scale-110 group-hover:text-blue-500/10 dark:text-slate-700/20" aria-hidden="true">
+          "
+        </div>
+        <p class="relative z-10 mb-5 max-h-32 overflow-y-auto text-sm leading-relaxed italic text-slate-700 dark:text-slate-300 sm:max-h-none sm:overflow-visible" data-i18n="q1_text">
+          <span class="inline-flex items-start gap-1.5">
+            <svg class="mt-0.5 h-3.5 w-3.5 flex-shrink-0 text-blue-400/60" data-icon="ic08" aria-hidden="true"></svg>
             Your time is limited, so don't waste it living someone else's life.
-        </span>
-    </p>
-    <div class="relative z-10 flex items-center gap-3">
-        <div class="h-0.5 w-0 rounded-full bg-blue-500 transition-all duration-300 group-hover:w-6"
-        aria-hidden="true"></div>
-        <div class="font-sans text-xs font-bold text-slate-900 transition-transform duration-300 group-hover:translate-x-1 dark:text-white"
-        data-i18n="q1_author">
-        <span class="inline-flex items-center gap-1.5">
-            <svg class="h-3 w-3 text-blue-400/60" data-icon="ic06" aria-hidden="true"></svg>
-        Steve Jobs
-    </span>
-</div>
-</div>
-</div>
-
-<div
-class="reveal glass-card glass-hover group relative overflow-hidden rounded-3xl border border-slate-200/60 bg-white/70 p-6 shadow-sm backdrop-blur-xl transition-all duration-300 hover:shadow-md dark:border-slate-800/60 dark:bg-slate-900/50 sm:p-7">
-<div class="absolute -top-4 -right-2 select-none font-serif text-8xl leading-none text-slate-200/50 transition-all duration-300 group-hover:scale-110 group-hover:text-blue-500/10 dark:text-slate-700/20"
-aria-hidden="true">"</div>
-<p class="relative z-10 mb-5 text-sm leading-relaxed italic text-slate-700 dark:text-slate-300"
-data-i18n="q2_text">
-<span class="inline-flex items-start gap-1.5">
-    <svg class="mt-0.5 h-3.5 w-3.5 flex-shrink-0 text-blue-400/60" data-icon="ic08" aria-hidden="true"></svg>
-The challenge is doing it faster than everyone else without losing control.
-</span>
-</p>
-<div class="relative z-10 flex items-center gap-3">
-    <div class="h-0.5 w-0 rounded-full bg-blue-500 transition-all duration-300 group-hover:w-6"
-    aria-hidden="true"></div>
-    <div class="font-sans text-xs font-bold text-slate-900 transition-transform duration-300 group-hover:translate-x-1 dark:text-white"
-    data-i18n="q2_author">
-    <span class="inline-flex items-center gap-1.5">
-        <svg class="h-3 w-3 text-blue-400/60" data-icon="ic22" aria-hidden="true"></svg>
-    Adrian Newey
-</span>
-</div>
-</div>
-</div>
-
-<div
-class="reveal glass-card glass-hover group relative overflow-hidden rounded-3xl border border-slate-200/60 bg-white/70 p-6 shadow-sm backdrop-blur-xl transition-all duration-300 hover:shadow-md dark:border-slate-800/60 dark:bg-slate-900/50 sm:p-7">
-<div class="absolute -top-4 -right-2 select-none font-serif text-8xl leading-none text-slate-200/50 transition-all duration-300 group-hover:scale-110 group-hover:text-blue-500/10 dark:text-slate-700/20"
-aria-hidden="true">"</div>
-<p class="relative z-10 mb-5 text-sm leading-relaxed italic text-slate-700 dark:text-slate-300"
-data-i18n="q3_text">
-<span class="inline-flex items-start gap-1.5">
-    <svg class="mt-0.5 h-3.5 w-3.5 flex-shrink-0 text-blue-400/60" data-icon="ic08" aria-hidden="true"></svg>
-It starts with the person in the mirror.
-</span>
-</p>
-<div class="relative z-10 flex items-center gap-3">
-    <div class="h-0.5 w-0 rounded-full bg-blue-500 transition-all duration-300 group-hover:w-6"
-    aria-hidden="true"></div>
-    <div class="font-sans text-xs font-bold text-slate-900 transition-transform duration-300 group-hover:translate-x-1 dark:text-white"
-    data-i18n="q3_author">
-    <span class="inline-flex items-center gap-1.5">
-        <svg class="h-3 w-3 text-blue-400/60" data-icon="ic07" aria-hidden="true"></svg>
-    Michael Jackson
-</span>
-</div>
-</div>
-</div>
-
-<div
-class="reveal glass-card glass-hover group relative overflow-hidden rounded-3xl border border-slate-200/60 bg-white/70 p-6 shadow-sm backdrop-blur-xl transition-all duration-300 hover:shadow-md dark:border-slate-800/60 dark:bg-slate-900/50 sm:p-7">
-<div class="absolute -top-4 -right-2 select-none font-serif text-8xl leading-none text-slate-200/50 transition-all duration-300 group-hover:scale-110 group-hover:text-blue-500/10 dark:text-slate-700/20"
-aria-hidden="true">"</div>
-<p class="relative z-10 mb-5 text-sm leading-relaxed italic text-slate-700 dark:text-slate-300"
-data-i18n="q4_text">
-<span class="inline-flex items-start gap-1.5">
-    <svg class="mt-0.5 h-3.5 w-3.5 flex-shrink-0 text-blue-400/60" data-icon="ic08" aria-hidden="true"></svg>
-Music is the mediator between the spiritual and the sensual life.
-</span>
-</p>
-<div class="relative z-10 flex items-center gap-3">
-    <div class="h-0.5 w-0 rounded-full bg-blue-500 transition-all duration-300 group-hover:w-6"
-    aria-hidden="true"></div>
-    <div class="font-sans text-xs font-bold text-slate-900 transition-transform duration-300 group-hover:translate-x-1 dark:text-white"
-    data-i18n="q4_author">
-    <span class="inline-flex items-center gap-1.5">
-        <svg class="h-3 w-3 text-blue-400/60" data-icon="ic07" aria-hidden="true"></svg>
-    Ludwig van Beethoven
-</span>
-</div>
-</div>
-</div>
-</div>
-</div>
-</section>
-
-    <!-- ===== TOOLS ===== -->
-    <section id="tools" class="relative overflow-hidden bg-slate-50 py-16 dark:bg-slate-950/40">
-        <div class="relative z-10 mx-auto max-w-3xl px-5 sm:px-8">
-            <div class="reveal mb-10 text-center">
-                <h2 class="mb-2 font-display text-3xl font-extrabold tracking-tight text-slate-900 dark:text-white sm:text-4xl">
-                    <span class="inline-flex items-center gap-2.5">
-                        <svg class="h-7 w-7 text-blue-500" data-icon="ic09" aria-hidden="true"></svg>
-                    <span data-i18n="tools_title">Free &amp; Practical Tools</span>
-                </span>
-            </h2>
-            <p class="mx-auto max-w-md text-sm leading-relaxed text-slate-600 dark:text-slate-400"
-            data-i18n="tools_subtitle">
+          </span>
+        </p>
+        <div class="relative z-10 flex items-center gap-3">
+          <div class="h-0.5 w-0 rounded-full bg-blue-500 transition-all duration-300 group-hover:w-6" aria-hidden="true"></div>
+          <div class="font-sans text-xs font-bold text-slate-900 transition-transform duration-300 group-hover:translate-x-1 dark:text-white" data-i18n="q1_author">
             <span class="inline-flex items-center gap-1.5">
-                <svg class="h-3.5 w-3.5 text-blue-400/60" data-icon="ic13" aria-hidden="true"></svg>
-            Free, fast, and secure tools you can use instantly without signing up.
-        </span>
-    </p>
-</div>
-
-<!-- Filter buttons -->
-<div class="reveal mb-8 flex flex-wrap items-center justify-center gap-2" role="tablist"
-aria-label="Filter tools">
-    <button type="button" data-filter="all" class="filter-btn active" role="tab" aria-selected="true"
-    tabindex="0">
-    <span class="inline-flex items-center gap-1.5">
-        <svg class="h-3.5 w-3.5" data-icon="ic23" aria-hidden="true"></svg>
-    <span data-i18n="filter_all">All</span>
-</span>
-</button>
-<button type="button" data-filter="music" class="filter-btn" role="tab" aria-selected="false"
-tabindex="-1">
-<span class="inline-flex items-center gap-1.5">
-    <svg class="h-3.5 w-3.5" data-icon="ic07" aria-hidden="true"></svg>
-<span data-i18n="filter_music">Music</span>
-</span>
-</button>
-<button type="button" data-filter="security" class="filter-btn" role="tab" aria-selected="false"
-tabindex="-1">
-<span class="inline-flex items-center gap-1.5">
-    <svg class="h-3.5 w-3.5" data-icon="ic13" aria-hidden="true"></svg>
-<span data-i18n="filter_security">Security</span>
-</span>
-</button>
-<button type="button" data-filter="web" class="filter-btn" role="tab" aria-selected="false"
-tabindex="-1">
-<span class="inline-flex items-center gap-1.5">
-    <svg class="h-3.5 w-3.5" data-icon="ic16" aria-hidden="true"></svg>
-<span data-i18n="filter_web">Web</span>
-</span>
-</button>
-</div>
-
-<!-- Tools list -->
-<ol id="tools-container" class="space-y-4 list-none p-0">
-    <!-- 1. HajirSync -->
-    <li class="tool-card reveal glass-card glass-hover group rounded-3xl border border-slate-200/60 bg-white/70 p-5 shadow-sm transition-all duration-300 dark:border-slate-800/60 dark:bg-slate-900/50 sm:p-6"
-    data-category="music" data-repo="hajirsync">
-    <div class="mb-2 flex items-center gap-3">
-        <span class="tool-number font-mono text-sm font-bold text-blue-600 dark:text-blue-400">01</span>
-        <div class="font-mono text-[9px] font-semibold uppercase tracking-[0.15em] text-blue-600 dark:text-blue-400">
-            <span class="inline-flex items-center gap-1.5">
-                <svg class="h-2.5 w-2.5" data-icon="ic24" aria-hidden="true"></svg>
-            LRC Generator
-        </span>
-    </div>
-    <span class="status-badge-stable" data-i18n="status_stable">Stable</span>
-</div>
-<h3 class="mb-1.5 font-display text-lg font-bold text-slate-900 transition-colors group-hover:text-blue-600 dark:text-white dark:group-hover:text-blue-400">
-    <span class="inline-flex items-center gap-2">
-        <svg class="h-4 w-4 text-blue-500" data-icon="ic07" aria-hidden="true"></svg>
-    HajirSync
-</span>
-</h3>
-<p class="mb-4 text-sm leading-relaxed text-slate-600 dark:text-slate-400" data-i18n="tool1_desc">
-    <span class="inline-flex items-start gap-1.5">
-        <svg class="mt-0.5 h-3.5 w-3.5 flex-shrink-0 text-blue-400/60" data-icon="ic21" aria-hidden="true"></svg>
-    Generate synchronized LRC lyric files quickly and easily.
-</span>
-</p>
-<div class="tool-actions">
-<a href="https://hajirsync.haiere.workers.dev" target="_blank" rel="noopener noreferrer" class="tool-open-btn group/btn" aria-label="Open HajirSync in a new tab">
-<span data-i18n="tool_open">Open Tool</span>
-<svg class="h-3.5 w-3.5 transition-transform group-hover/btn:translate-x-0.5" data-icon="ic12" aria-hidden="true"></svg>
-</a>
-<button type="button" class="tool-docs-btn group/btn" data-repo="hajirsync" data-tool-name="HajirSync" aria-label="View HajirSync documentation"><span data-i18n="tool_docs">Cara Penggunaan</span><svg class="h-3.5 w-3.5" data-icon="ic33" aria-hidden="true"></svg></button>
-</div>
-</li>
-
-<!-- 2. Raia Vault -->
-<li class="tool-card reveal glass-card glass-hover group rounded-3xl border border-slate-200/60 bg-white/70 p-5 shadow-sm transition-all duration-300 dark:border-slate-800/60 dark:bg-slate-900/50 sm:p-6"
-data-category="security" data-repo="raia-vault">
-<div class="mb-2 flex items-center gap-3">
-    <span class="tool-number font-mono text-sm font-bold text-blue-600 dark:text-blue-400">02</span>
-    <div class="font-mono text-[9px] font-semibold uppercase tracking-[0.15em] text-blue-600 dark:text-blue-400">
-        <span class="inline-flex items-center gap-1.5">
-            <svg class="h-2.5 w-2.5" data-icon="ic13" aria-hidden="true"></svg>
-        Password Manager
-    </span>
-</div>
-<span class="status-badge-stable" data-i18n="status_stable">Stable</span>
-</div>
-<h3 class="mb-1.5 font-display text-lg font-bold text-slate-900 transition-colors group-hover:text-blue-600 dark:text-white dark:group-hover:text-blue-400">
-    <span class="inline-flex items-center gap-2">
-        <svg class="h-4 w-4 text-blue-500" data-icon="ic13" aria-hidden="true"></svg>
-    Raia Vault
-</span>
-</h3>
-<p class="mb-4 text-sm leading-relaxed text-slate-600 dark:text-slate-400" data-i18n="tool2_desc">
-    <span class="inline-flex items-start gap-1.5">
-        <svg class="mt-0.5 h-3.5 w-3.5 flex-shrink-0 text-blue-400/60" data-icon="ic25" aria-hidden="true"></svg>
-    Generate strong random passwords to protect your accounts.
-</span>
-</p>
-<div class="tool-actions">
-<a href="https://raia-vault.haiere.workers.dev" target="_blank" rel="noopener noreferrer" class="tool-open-btn group/btn" aria-label="Open Raia Vault in a new tab">
-<span data-i18n="tool_open">Open Tool</span>
-<svg class="h-3.5 w-3.5 transition-transform group-hover/btn:translate-x-0.5" data-icon="ic12" aria-hidden="true"></svg>
-</a>
-<button type="button" class="tool-docs-btn group/btn" data-repo="raia-vault" data-tool-name="Raia Vault" aria-label="View Raia Vault documentation"><span data-i18n="tool_docs">Cara Penggunaan</span><svg class="h-3.5 w-3.5" data-icon="ic33" aria-hidden="true"></svg></button>
-</div>
-</li>
-
-<!-- 3. Raia Scrub -->
-<li class="tool-card reveal glass-card glass-hover group rounded-3xl border border-slate-200/60 bg-white/70 p-5 shadow-sm transition-all duration-300 dark:border-slate-800/60 dark:bg-slate-900/50 sm:p-6"
-data-category="security" data-repo="raia-scrub">
-<div class="mb-2 flex items-center gap-3">
-    <span class="tool-number font-mono text-sm font-bold text-blue-600 dark:text-blue-400">03</span>
-    <div class="font-mono text-[9px] font-semibold uppercase tracking-[0.15em] text-blue-600 dark:text-blue-400">
-        <span class="inline-flex items-center gap-1.5">
-            <svg class="h-2.5 w-2.5" data-icon="ic25" aria-hidden="true"></svg>
-        Metadata Stripper
-    </span>
-</div>
-<span class="status-badge-stable" data-i18n="status_stable">Stable</span>
-</div>
-<h3 class="mb-1.5 font-display text-lg font-bold text-slate-900 transition-colors group-hover:text-blue-600 dark:text-white dark:group-hover:text-blue-400">
-    <span class="inline-flex items-center gap-2">
-        <svg class="h-4 w-4 text-blue-500" data-icon="ic25" aria-hidden="true"></svg>
-    Raia Scrub
-</span>
-</h3>
-<p class="mb-4 text-sm leading-relaxed text-slate-600 dark:text-slate-400" data-i18n="tool3_desc">
-    <span class="inline-flex items-start gap-1.5">
-        <svg class="mt-0.5 h-3.5 w-3.5 flex-shrink-0 text-blue-400/60" data-icon="ic25" aria-hidden="true"></svg>
-    Remove sensitive metadata, such as location data, from your photos.
-</span>
-</p>
-<div class="tool-actions">
-<a href="https://raia-scrub.haiere.workers.dev" target="_blank" rel="noopener noreferrer" class="tool-open-btn group/btn" aria-label="Open Raia Scrub in a new tab">
-<span data-i18n="tool_open">Open Tool</span>
-<svg class="h-3.5 w-3.5 transition-transform group-hover/btn:translate-x-0.5" data-icon="ic12" aria-hidden="true"></svg>
-</a>
-<button type="button" class="tool-docs-btn group/btn" data-repo="raia-scrub" data-tool-name="Raia Scrub" aria-label="View Raia Scrub documentation"><span data-i18n="tool_docs">Cara Penggunaan</span><svg class="h-3.5 w-3.5" data-icon="ic33" aria-hidden="true"></svg></button>
-</div>
-</li>
-
-<!-- 4. Raia Delta -->
-<li class="tool-card reveal glass-card glass-hover group rounded-3xl border border-slate-200/60 bg-white/70 p-5 shadow-sm transition-all duration-300 dark:border-slate-800/60 dark:bg-slate-900/50 sm:p-6"
-data-category="web" data-repo="raia-delta">
-<div class="mb-2 flex items-center gap-3">
-    <span class="tool-number font-mono text-sm font-bold text-blue-600 dark:text-blue-400">04</span>
-    <div class="font-mono text-[9px] font-semibold uppercase tracking-[0.15em] text-blue-600 dark:text-blue-400">
-        <span class="inline-flex items-center gap-1.5">
-            <svg class="h-2.5 w-2.5" data-icon="ic15" aria-hidden="true"></svg>
-        Text Comparator
-    </span>
-</div>
-<span class="status-badge-stable" data-i18n="status_stable">Stable</span>
-</div>
-<h3 class="mb-1.5 font-display text-lg font-bold text-slate-900 transition-colors group-hover:text-blue-600 dark:text-white dark:group-hover:text-blue-400">
-    <span class="inline-flex items-center gap-2">
-        <svg class="h-4 w-4 text-blue-500" data-icon="ic15" aria-hidden="true"></svg>
-    Raia Delta
-</span>
-</h3>
-<p class="mb-4 text-sm leading-relaxed text-slate-600 dark:text-slate-400" data-i18n="tool4_desc">
-    <span class="inline-flex items-start gap-1.5">
-        <svg class="mt-0.5 h-3.5 w-3.5 flex-shrink-0 text-blue-400/60" data-icon="ic16" aria-hidden="true"></svg>
-    Compare two blocks of text and instantly find the differences.
-</span>
-</p>
-<div class="tool-actions">
-<a href="https://raia-delta.haiere.workers.dev" target="_blank" rel="noopener noreferrer" class="tool-open-btn group/btn" aria-label="Open Raia Delta in a new tab">
-<span data-i18n="tool_open">Open Tool</span>
-<svg class="h-3.5 w-3.5 transition-transform group-hover/btn:translate-x-0.5" data-icon="ic12" aria-hidden="true"></svg>
-</a>
-<button type="button" class="tool-docs-btn group/btn" data-repo="raia-delta" data-tool-name="Raia Delta" aria-label="View Raia Delta documentation"><span data-i18n="tool_docs">Cara Penggunaan</span><svg class="h-3.5 w-3.5" data-icon="ic33" aria-hidden="true"></svg></button>
-</div>
-</li>
-
-<!-- 5. Raiamify -->
-<li class="tool-card reveal glass-card glass-hover group rounded-3xl border border-slate-200/60 bg-white/70 p-5 shadow-sm transition-all duration-300 dark:border-slate-800/60 dark:bg-slate-900/50 sm:p-6"
-data-category="web" data-repo="raiaminify">
-<div class="mb-2 flex items-center gap-3">
-    <span class="tool-number font-mono text-sm font-bold text-blue-600 dark:text-blue-400">05</span>
-    <div class="font-mono text-[9px] font-semibold uppercase tracking-[0.15em] text-blue-600 dark:text-blue-400">
-        <span class="inline-flex items-center gap-1.5">
-            <svg class="h-2.5 w-2.5" data-icon="ic01" aria-hidden="true"></svg>
-        AI Tool
-    </span>
-</div>
-<span class="status-badge-stable" data-i18n="status_stable">Stable</span>
-</div>
-<h3 class="mb-1.5 font-display text-lg font-bold text-slate-900 transition-colors group-hover:text-blue-600 dark:text-white dark:group-hover:text-blue-400">
-    <span class="inline-flex items-center gap-2">
-        <svg class="h-4 w-4 text-blue-500" data-icon="ic01" aria-hidden="true"></svg>
-    Raiamify
-</span>
-</h3>
-<p class="mb-4 text-sm leading-relaxed text-slate-600 dark:text-slate-400" data-i18n="tool5_desc">
-    <span class="inline-flex items-start gap-1.5">
-        <svg class="mt-0.5 h-3.5 w-3.5 flex-shrink-0 text-blue-400/60" data-icon="ic26" aria-hidden="true"></svg>
-    A simple AI tool for fast assistance and smarter workflows.
-</span>
-</p>
-<div class="tool-actions">
-<a href="https://raiaminify.haiere.workers.dev" target="_blank" rel="noopener noreferrer" class="tool-open-btn group/btn" aria-label="Open Raiamify in a new tab">
-<span data-i18n="tool_open">Open Tool</span>
-<svg class="h-3.5 w-3.5 transition-transform group-hover/btn:translate-x-0.5" data-icon="ic12" aria-hidden="true"></svg>
-</a>
-<button type="button" class="tool-docs-btn group/btn" data-repo="raiaminify" data-tool-name="Raiamify" aria-label="View Raiamify documentation"><span data-i18n="tool_docs">Cara Penggunaan</span><svg class="h-3.5 w-3.5" data-icon="ic33" aria-hidden="true"></svg></button>
-</div>
-</li>
-
-<!-- 6. Raia AI -->
-<li class="tool-card reveal glass-card glass-hover group rounded-3xl border border-slate-200/60 bg-white/70 p-5 shadow-sm transition-all duration-300 dark:border-slate-800/60 dark:bg-slate-900/50 sm:p-6"
-data-category="web" data-repo="raia-ai">
-<div class="mb-2 flex items-center gap-3">
-    <span class="tool-number font-mono text-sm font-bold text-blue-600 dark:text-blue-400">06</span>
-    <div class="font-mono text-[9px] font-semibold uppercase tracking-[0.15em] text-blue-600 dark:text-blue-400">
-        <span class="inline-flex items-center gap-1.5">
-            <svg class="h-2.5 w-2.5" data-icon="ic01" aria-hidden="true"></svg>
-        AI Platform
-    </span>
-</div>
-<span class="status-badge-stable" data-i18n="status_stable">Stable</span>
-</div>
-<h3 class="mb-1.5 font-display text-lg font-bold text-slate-900 transition-colors group-hover:text-blue-600 dark:text-white dark:group-hover:text-blue-400">
-    <span class="inline-flex items-center gap-2">
-        <svg class="h-4 w-4 text-blue-500" data-icon="ic01" aria-hidden="true"></svg>
-    Raia AI
-</span>
-</h3>
-<p class="mb-4 text-sm leading-relaxed text-slate-600 dark:text-slate-400" data-i18n="tool6_desc">
-    <span class="inline-flex items-start gap-1.5">
-        <svg class="mt-0.5 h-3.5 w-3.5 flex-shrink-0 text-blue-400/60" data-icon="ic01" aria-hidden="true"></svg>
-    An AI platform for launching secure, enterprise-grade agents.
-</span>
-</p>
-<div class="tool-actions">
-<a href="https://raia-ai.vercel.app" target="_blank" rel="noopener noreferrer" class="tool-open-btn group/btn" aria-label="Open Raia AI in a new tab">
-<span data-i18n="tool_open">Open Tool</span>
-<svg class="h-3.5 w-3.5 transition-transform group-hover/btn:translate-x-0.5" data-icon="ic12" aria-hidden="true"></svg>
-</a>
-<button type="button" class="tool-docs-btn group/btn" data-repo="raia-ai" data-tool-name="Raia AI" aria-label="View Raia AI documentation"><span data-i18n="tool_docs">Cara Penggunaan</span><svg class="h-3.5 w-3.5" data-icon="ic33" aria-hidden="true"></svg></button>
-</div>
-</li>
-
-<!-- 7. Calc -->
-<li class="tool-card reveal glass-card glass-hover group rounded-3xl border border-slate-200/60 bg-white/70 p-5 shadow-sm transition-all duration-300 dark:border-slate-800/60 dark:bg-slate-900/50 sm:p-6"
-data-category="web" data-repo="calc">
-<div class="mb-2 flex items-center gap-3">
-    <span class="tool-number font-mono text-sm font-bold text-blue-600 dark:text-blue-400">07</span>
-    <div class="font-mono text-[9px] font-semibold uppercase tracking-[0.15em] text-blue-600 dark:text-blue-400">
-        <span class="inline-flex items-center gap-1.5">
-            <svg class="h-2.5 w-2.5" data-icon="ic27" aria-hidden="true"></svg>
-        Calculator App
-    </span>
-</div>
-<span class="status-badge-stable" data-i18n="status_stable">Stable</span>
-</div>
-<h3 class="mb-1.5 font-display text-lg font-bold text-slate-900 transition-colors group-hover:text-blue-600 dark:text-white dark:group-hover:text-blue-400">
-    <span class="inline-flex items-center gap-2">
-        <svg class="h-4 w-4 text-blue-500" data-icon="ic28" aria-hidden="true"></svg>
-    Calc
-</span>
-</h3>
-<p class="mb-4 text-sm leading-relaxed text-slate-600 dark:text-slate-400">
-    <span class="inline-flex items-start gap-1.5">
-        <svg class="mt-0.5 h-3.5 w-3.5 flex-shrink-0 text-blue-400/60" data-icon="ic29" aria-hidden="true"></svg>
-    Simple and fast calculator for everyday calculations.
-</span>
-</p>
-<div class="tool-actions">
-<a href="https://hajir.is-a.dev/calc" target="_blank" rel="noopener noreferrer" class="tool-open-btn group/btn" aria-label="Open Calc in a new tab">
-<span>Open Tool</span>
-<svg class="h-3.5 w-3.5 transition-transform group-hover/btn:translate-x-0.5" data-icon="ic12" aria-hidden="true"></svg>
-</a>
-<button type="button" class="tool-docs-btn group/btn" data-repo="calc" data-tool-name="Calc" aria-label="View Calc documentation"><span data-i18n="tool_docs">Cara Penggunaan</span><svg class="h-3.5 w-3.5" data-icon="ic33" aria-hidden="true"></svg></button>
-</div>
-</li>
-
-<!-- 8. Chess -->
-<li class="tool-card reveal glass-card glass-hover group rounded-3xl border border-slate-200/60 bg-white/70 p-5 shadow-sm transition-all duration-300 dark:border-slate-800/60 dark:bg-slate-900/50 sm:p-6"
-data-category="web" data-repo="chess">
-<div class="mb-2 flex items-center gap-3">
-    <span class="tool-number font-mono text-sm font-bold text-blue-600 dark:text-blue-400">08</span>
-    <div class="font-mono text-[9px] font-semibold uppercase tracking-[0.15em] text-blue-600 dark:text-blue-400">
-        <span class="inline-flex items-center gap-1.5">
-            <svg class="h-2.5 w-2.5" data-icon="ic16" aria-hidden="true"></svg>
-        Chess App
-    </span>
-</div>
-<span class="status-badge-stable" data-i18n="status_stable">Stable</span>
-</div>
-<h3 class="mb-1.5 font-display text-lg font-bold text-slate-900 transition-colors group-hover:text-blue-600 dark:text-white dark:group-hover:text-blue-400">
-    <span class="inline-flex items-center gap-2">
-        <svg class="h-4 w-4 text-blue-500" data-icon="ic30" aria-hidden="true"></svg>
-    Chess
-</span>
-</h3>
-<p class="mb-4 text-sm leading-relaxed text-slate-600 dark:text-slate-400">
-    <span class="inline-flex items-start gap-1.5">
-        <svg class="mt-0.5 h-3.5 w-3.5 flex-shrink-0 text-blue-400/60" data-icon="ic18" aria-hidden="true"></svg>
-    Classic chess game.
-</span>
-</p>
-<div class="tool-actions">
-<a href="https://hajir.is-a.dev/chess" target="_blank" rel="noopener noreferrer" class="tool-open-btn group/btn" aria-label="Open Chess in a new tab">
-<span>Open Tool</span>
-<svg class="h-3.5 w-3.5 transition-transform group-hover/btn:translate-x-0.5" data-icon="ic12" aria-hidden="true"></svg>
-</a>
-<button type="button" class="tool-docs-btn group/btn" data-repo="chess" data-tool-name="Chess" aria-label="View Chess documentation"><span data-i18n="tool_docs">Cara Penggunaan</span><svg class="h-3.5 w-3.5" data-icon="ic33" aria-hidden="true"></svg></button>
-</div>
-</li>
-</ol>
-</div>
-</section>
-
-    <!-- ===== CONTACT ===== -->
-    <section id="contact" class="relative overflow-hidden bg-slate-50 py-16 dark:bg-slate-950/40">
-        <div class="relative z-10 mx-auto max-w-3xl px-5 sm:px-8">
-            <div class="reveal mb-10 text-center">
-                <h2 class="mb-2 font-display text-3xl font-extrabold tracking-tight text-slate-900 dark:text-white sm:text-4xl">
-                    <span class="inline-flex items-center gap-2.5">
-                        <svg class="h-7 w-7 text-blue-500" data-icon="ic31" aria-hidden="true"></svg>
-                    <span data-i18n="contact_title">Let's Collaborate or Say Hello</span>
-                </span>
-            </h2>
-            <p class="mx-auto max-w-md text-sm leading-relaxed text-slate-600 dark:text-slate-400"
-            data-i18n="contact_subtitle">
-            <span class="inline-flex items-center gap-1.5">
-                <svg class="h-3.5 w-3.5 text-blue-400/60" data-icon="ic32" aria-hidden="true"></svg>
-            Send a message if you have a question or just want to chat.
-        </span>
-    </p>
-</div>
-
-<div
-class="reveal glass-card glass-hover rounded-3xl border border-slate-200/60 bg-white/70 p-6 shadow-sm backdrop-blur-xl dark:border-slate-800/60 dark:bg-slate-900/50 sm:p-8">
-<form id="contact-form" class="space-y-5" novalidate>
-    <div class="space-y-1">
-        <label for="name" class="block text-sm font-medium text-slate-700 dark:text-slate-300"
-        data-i18n="form_name">
-        <span class="inline-flex items-center gap-1.5">
-            <svg class="h-3.5 w-3.5 text-blue-400/60" data-icon="ic06" aria-hidden="true"></svg>
-        Name
-    </span>
-</label>
-<input type="text" id="name" name="name" required aria-describedby="name-error" aria-invalid="false"
-class="glass-pill w-full rounded-xl border border-transparent px-4 py-3 text-slate-900 placeholder:text-slate-400 transition-colors focus:border-blue-500/30 focus:ring-4 focus:ring-blue-500/15 dark:text-white dark:placeholder:text-slate-500"
-placeholder="Enter your full name" data-i18n-placeholder="form_name_placeholder" />
-<span id="name-error" class="form-error" role="status" aria-live="polite"></span>
-</div>
-
-<div class="space-y-1">
-    <label for="email" class="block text-sm font-medium text-slate-700 dark:text-slate-300"
-    data-i18n="form_email">
-    <span class="inline-flex items-center gap-1.5">
-        <svg class="h-3.5 w-3.5 text-blue-400/60" data-icon="ic10" aria-hidden="true"></svg>
-    Email
-</span>
-</label>
-<input type="email" id="email" name="email" required aria-describedby="email-error"
-aria-invalid="false"
-class="glass-pill w-full rounded-xl border border-transparent px-4 py-3 text-slate-900 placeholder:text-slate-400 transition-colors focus:border-blue-500/30 focus:ring-4 focus:ring-blue-500/15 dark:text-white dark:placeholder:text-slate-500"
-placeholder="name@example.com" data-i18n-placeholder="form_email_placeholder" />
-<span id="email-error" class="form-error" role="status" aria-live="polite"></span>
-</div>
-
-<div class="space-y-1">
-    <label for="message" class="block text-sm font-medium text-slate-700 dark:text-slate-300"
-    data-i18n="form_message">
-    <span class="inline-flex items-center gap-1.5">
-        <svg class="h-3.5 w-3.5 text-blue-400/60" data-icon="ic33" aria-hidden="true"></svg>
-    Message
-</span>
-</label>
-<textarea id="message" name="message" rows="4" required aria-describedby="message-error"
-aria-invalid="false"
-class="glass-pill w-full resize-y rounded-xl border border-transparent px-4 py-3 text-slate-900 placeholder:text-slate-400 transition-colors focus:border-blue-500/30 focus:ring-4 focus:ring-blue-500/15 dark:text-white dark:placeholder:text-slate-500"
-placeholder="Write your message here..." data-i18n-placeholder="form_message_placeholder"></textarea>
-<span id="message-error" class="form-error" role="status" aria-live="polite"></span>
-</div>
-
-<button type="submit" class="btn-primary w-full justify-center group/btn" data-i18n="form_submit">
-    <span>Send</span>
-    <svg class="h-4 w-4 transition-transform group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5" data-icon="ic32" aria-hidden="true"></svg>
-</button>
-
-<div id="form-status" class="min-h-[1.5rem] text-center text-sm font-medium text-slate-600 dark:text-slate-400"
-role="status" aria-live="polite"></div>
-</form>
-
-<div class="mt-6 border-t border-slate-200/50 pt-5 text-center dark:border-slate-800/50">
-    <p class="mb-3 text-sm text-slate-500 dark:text-slate-400" data-i18n="form_fallback">
-        <span class="inline-flex items-center gap-1.5">
-            <svg class="h-3.5 w-3.5 text-blue-400/60" data-icon="ic16" aria-hidden="true"></svg>
-        Or reach out through these platforms.
-    </span>
-</p>
-<div class="flex justify-center gap-3 flex-wrap">
-    <a href="https://github.com/haiere" target="_blank" rel="noopener noreferrer"
-    class="group/social glass-social flex h-11 w-11 items-center justify-center rounded-xl text-slate-500 transition-all duration-300 hover:bg-slate-900 hover:text-white dark:text-slate-400"
-    aria-label="GitHub">
-    <i class="fa-brands fa-github text-xl transition-transform group-hover/social:scale-110"></i>
-</a>
-<a href="https://x.com/haierehere" target="_blank" rel="noopener noreferrer"
-class="group/social glass-social flex h-11 w-11 items-center justify-center rounded-xl text-slate-500 transition-all duration-300 hover:bg-black hover:text-white dark:text-slate-400"
-aria-label="X">
-<i class="fa-brands fa-x-twitter text-xl transition-transform group-hover/social:scale-110"></i>
-</a>
-<a href="https://www.instagram.com/muhaajirere" target="_blank" rel="noopener noreferrer"
-class="group/social glass-social flex h-11 w-11 items-center justify-center rounded-xl text-slate-500 transition-all duration-300 hover:bg-gradient-to-tr hover:from-yellow-400 hover:via-red-500 hover:to-purple-500 hover:text-white dark:text-slate-400"
-aria-label="Instagram">
-<i class="fa-brands fa-instagram text-xl transition-transform group-hover/social:scale-110"></i>
-</a>
-<a href="https://discord.com/users/1276865849231413299" target="_blank" rel="noopener noreferrer"
-class="group/social glass-social flex h-11 w-11 items-center justify-center rounded-xl text-slate-500 transition-all duration-300 hover:bg-[#5865F2] hover:text-white dark:text-slate-400"
-aria-label="Discord">
-<i class="fa-brands fa-discord text-xl transition-transform group-hover/social:scale-110"></i>
-</a>
-</div>
-</div>
-</div>
-</div>
-</section>
-
-    <!-- ===== FOOTER ===== -->
-<footer class="glass-nav py-10 shadow-inner" role="contentinfo">
-    <div class="mx-auto max-w-4xl px-5 sm:px-8">
-        <div class="mb-6 text-center">
-
-            <!-- Donate Button -->
-            <div class="mb-5 flex justify-center">
-                <a href="https://sociabuzz.com/HajirStudio"
-                   target="_blank"
-                   rel="noopener noreferrer"
-                   class="inline-flex items-center gap-2 rounded-2xl bg-blue-500 px-6 py-3 text-sm font-semibold text-white shadow-lg transition-all duration-200 hover:bg-blue-600 hover:shadow-xl hover:scale-105 active:scale-95">
-                    <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                        <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
-                    </svg>
-                    Donate via Sociabuzz
-                </a>
-            </div>
-
-            <div class="mb-2 flex items-center justify-center gap-3">
-                <div class="group/logo relative flex h-10 w-10 items-center justify-center overflow-hidden rounded-xl transition-all hover:scale-110">
-                    <img id="logo-footer" src="https://i.postimg.cc/GmWt2wch/H-blue.webp" alt="Haiere logo"
-                    class="logo-img h-full w-full object-contain drop-shadow-md transition-transform duration-200"
-                    loading="lazy" decoding="async" width="40" height="40" />
-                    <div class="absolute inset-0 rounded-xl bg-gradient-to-tr from-blue-500/0 to-blue-500/10 opacity-0 transition-opacity group-hover/logo:opacity-100"
-                    aria-hidden="true"></div>
-                </div>
-                <span class="brand-text text-xl uppercase tracking-tight text-slate-900 dark:text-white">
-                    HAIERE<span class="text-blue-400">.</span>
-                </span>
-            </div>
-
-            <p class="select-none font-mono text-[9px] uppercase tracking-[0.18em] text-slate-500 dark:text-slate-600"
-               data-i18n="footer_tagline">
-                <span class="inline-flex items-center gap-1.5">
-                    <svg class="h-2.5 w-2.5" data-icon="ic08" aria-hidden="true"></svg>
-                    Personal Site · Free Tools · by Haiere
-                </span>
-            </p>
+              <svg class="h-3 w-3 text-blue-400/60" data-icon="ic06" aria-hidden="true"></svg>
+              Steve Jobs
+            </span>
+          </div>
         </div>
+      </div>
+
+      <div class="reveal glass-card glass-hover group relative overflow-hidden rounded-3xl border border-slate-200/60 bg-white/70 p-6 shadow-sm backdrop-blur-xl transition-all duration-300 hover:shadow-md dark:border-slate-800/60 dark:bg-slate-900/50 sm:p-7">
+        <div class="absolute -top-4 -right-2 select-none font-serif text-8xl leading-none text-slate-200/50 transition-all duration-300 group-hover:scale-110 group-hover:text-blue-500/10 dark:text-slate-700/20" aria-hidden="true">
+          "
+        </div>
+        <p class="relative z-10 mb-5 max-h-32 overflow-y-auto text-sm leading-relaxed italic text-slate-700 dark:text-slate-300 sm:max-h-none sm:overflow-visible" data-i18n="q2_text">
+          <span class="inline-flex items-start gap-1.5">
+            <svg class="mt-0.5 h-3.5 w-3.5 flex-shrink-0 text-blue-400/60" data-icon="ic08" aria-hidden="true"></svg>
+            The challenge is to go faster than others without losing control.
+          </span>
+        </p>
+        <div class="relative z-10 flex items-center gap-3">
+          <div class="h-0.5 w-0 rounded-full bg-blue-500 transition-all duration-300 group-hover:w-6" aria-hidden="true"></div>
+          <div class="font-sans text-xs font-bold text-slate-900 transition-transform duration-300 group-hover:translate-x-1 dark:text-white" data-i18n="q2_author">
+            <span class="inline-flex items-center gap-1.5">
+              <svg class="h-3 w-3 text-blue-400/60" data-icon="ic22" aria-hidden="true"></svg>
+              Adrian Newey
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="reveal glass-card glass-hover group relative overflow-hidden rounded-3xl border border-slate-200/60 bg-white/70 p-6 shadow-sm backdrop-blur-xl transition-all duration-300 hover:shadow-md dark:border-slate-800/60 dark:bg-slate-900/50 sm:p-7">
+        <div class="absolute -top-4 -right-2 select-none font-serif text-8xl leading-none text-slate-200/50 transition-all duration-300 group-hover:scale-110 group-hover:text-blue-500/10 dark:text-slate-700/20" aria-hidden="true">
+          "
+        </div>
+        <p class="relative z-10 mb-5 max-h-32 overflow-y-auto text-sm leading-relaxed italic text-slate-700 dark:text-slate-300 sm:max-h-none sm:overflow-visible" data-i18n="q3_text">
+          <span class="inline-flex items-start gap-1.5">
+            <svg class="mt-0.5 h-3.5 w-3.5 flex-shrink-0 text-blue-400/60" data-icon="ic08" aria-hidden="true"></svg>
+            It all starts with the person in the mirror.
+          </span>
+        </p>
+        <div class="relative z-10 flex items-center gap-3">
+          <div class="h-0.5 w-0 rounded-full bg-blue-500 transition-all duration-300 group-hover:w-6" aria-hidden="true"></div>
+          <div class="font-sans text-xs font-bold text-slate-900 transition-transform duration-300 group-hover:translate-x-1 dark:text-white" data-i18n="q3_author">
+            <span class="inline-flex items-center gap-1.5">
+              <svg class="h-3 w-3 text-blue-400/60" data-icon="ic07" aria-hidden="true"></svg>
+              Michael Jackson
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="reveal glass-card glass-hover group relative overflow-hidden rounded-3xl border border-slate-200/60 bg-white/70 p-6 shadow-sm backdrop-blur-xl transition-all duration-300 hover:shadow-md dark:border-slate-800/60 dark:bg-slate-900/50 sm:p-7">
+        <div class="absolute -top-4 -right-2 select-none font-serif text-8xl leading-none text-slate-200/50 transition-all duration-300 group-hover:scale-110 group-hover:text-blue-500/10 dark:text-slate-700/20" aria-hidden="true">
+          "
+        </div>
+        <p class="relative z-10 mb-5 max-h-32 overflow-y-auto text-sm leading-relaxed italic text-slate-700 dark:text-slate-300 sm:max-h-none sm:overflow-visible" data-i18n="q4_text">
+          <span class="inline-flex items-start gap-1.5">
+            <svg class="mt-0.5 h-3.5 w-3.5 flex-shrink-0 text-blue-400/60" data-icon="ic08" aria-hidden="true"></svg>
+            Music is the bridge between spiritual life and sensory life.
+          </span>
+        </p>
+        <div class="relative z-10 flex items-center gap-3">
+          <div class="h-0.5 w-0 rounded-full bg-blue-500 transition-all duration-300 group-hover:w-6" aria-hidden="true"></div>
+          <div class="font-sans text-xs font-bold text-slate-900 transition-transform duration-300 group-hover:translate-x-1 dark:text-white" data-i18n="q4_author">
+            <span class="inline-flex items-center gap-1.5">
+              <svg class="h-3 w-3 text-blue-400/60" data-icon="ic07" aria-hidden="true"></svg>
+              Ludwig van Beethoven
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== TOOLS ===== -->
+<section id="tools" class="relative overflow-hidden bg-slate-50 py-16 dark:bg-slate-950/40">
+  <div class="relative z-10 mx-auto max-w-6xl px-5 sm:px-8">
+    <div class="reveal mb-10 text-center">
+      <h2 class="mb-2 font-display text-3xl font-extrabold tracking-tight text-slate-900 dark:text-white sm:text-4xl">
+        <span class="inline-flex items-center gap-2.5">
+          <svg class="h-7 w-7 text-blue-500" data-icon="ic09" aria-hidden="true"></svg>
+          <span data-i18n="tools_title">Developer Tools</span>
+        </span>
+      </h2>
+      <p class="mx-auto max-w-md text-sm leading-relaxed text-slate-600 dark:text-slate-400" data-i18n="tools_subtitle">
+        <span class="inline-flex items-center gap-1.5">
+          <svg class="h-3.5 w-3.5 text-blue-400/60" data-icon="ic13" aria-hidden="true"></svg>
+          Free tools for coding, managing data, exploring AI, and handling everyday tasks.
+        </span>
+      </p>
     </div>
 
-    <!-- Social links -->
-    <div class="mb-8 flex flex-wrap justify-center gap-3">
-        <a href="https://www.youtube.com/@hajirstein" target="_blank" rel="noopener noreferrer"
-        aria-label="YouTube"
-        class="group/social glass-social flex h-11 w-11 items-center justify-center rounded-xl text-slate-500 transition-all duration-300 hover:bg-[#FF0000] hover:text-white dark:text-slate-400">
-        <i class="fa-brands fa-youtube text-xl transition-transform group-hover/social:scale-110"></i>
-    </a>
-    <a href="https://www.instagram.com/muhaajirere" target="_blank" rel="noopener noreferrer"
-    aria-label="Instagram"
-    class="group/social glass-social flex h-11 w-11 items-center justify-center rounded-xl text-slate-500 transition-all duration-300 hover:bg-gradient-to-tr hover:from-yellow-400 hover:via-red-500 hover:to-purple-500 hover:text-white dark:text-slate-400">
-    <i class="fa-brands fa-instagram text-xl transition-transform group-hover/social:scale-110"></i>
-</a>
-<a href="https://on.soundcloud.com/m65TNUx3XarndC67jO" target="_blank" rel="noopener noreferrer"
-aria-label="SoundCloud"
-class="group/social glass-social flex h-11 w-11 items-center justify-center rounded-xl text-slate-500 transition-all duration-300 hover:bg-[#FF5500] hover:text-white dark:text-slate-400">
-<i class="fa-brands fa-soundcloud text-xl transition-transform group-hover/social:scale-110"></i>
-</a>
-<a href="https://github.com/haiere" target="_blank" rel="noopener noreferrer" aria-label="GitHub"
-class="group/social glass-social flex h-11 w-11 items-center justify-center rounded-xl text-slate-500 transition-all duration-300 hover:bg-[#181717] hover:text-white dark:text-slate-400">
-<i class="fa-brands fa-github text-xl transition-transform group-hover/social:scale-110"></i>
-</a>
-<a href="https://www.reddit.com/u/Muhaajire/s/fgwcyhbTa1" target="_blank" rel="noopener noreferrer"
-aria-label="Reddit"
-class="group/social glass-social flex h-11 w-11 items-center justify-center rounded-xl text-slate-500 transition-all duration-300 hover:bg-[#FF4500] hover:text-white dark:text-slate-400">
-<i class="fa-brands fa-reddit-alien text-xl transition-transform group-hover/social:scale-110"></i>
-</a>
-<a href="https://x.com/haierehere" target="_blank" rel="noopener noreferrer" aria-label="X"
-class="group/social glass-social flex h-11 w-11 items-center justify-center rounded-xl text-slate-500 transition-all duration-300 hover:bg-[#000000] hover:text-white dark:text-slate-400">
-<i class="fa-brands fa-x-twitter text-xl transition-transform group-hover/social:scale-110"></i>
-</a>
-<a href="https://id.quora.com/profile/Hajir-Muhaajir?ch=10&oid=2990639960&share=cae1fb93&srid=5XvqAs&target_type=user"
-target="_blank" rel="noopener noreferrer" aria-label="Quora"
-class="group/social glass-social flex h-11 w-11 items-center justify-center rounded-xl text-slate-500 transition-all duration-300 hover:bg-[#B92B27] hover:text-white dark:text-slate-400">
-<i class="fa-brands fa-quora text-xl transition-transform group-hover/social:scale-110"></i>
-</a>
-<a href="https://discord.com/users/1276865849231413299" target="_blank" rel="noopener noreferrer"
-aria-label="Discord"
-class="group/social glass-social flex h-11 w-11 items-center justify-center rounded-xl text-slate-500 transition-all duration-300 hover:bg-[#5865F2] hover:text-white dark:text-slate-400">
-<i class="fa-brands fa-discord text-xl transition-transform group-hover/social:scale-110"></i>
-</a>
-</div>
-
-<!-- Footer navigation -->
-<nav class="mb-6 border-y border-slate-200/30 py-5 dark:border-slate-800/30" aria-label="Footer navigation">
-    <div class="mb-3 flex flex-wrap justify-center gap-x-6 gap-y-2">
-        <a href="#about"
-        class="text-xs font-medium uppercase tracking-[0.12em] text-slate-500 transition-colors hover:text-blue-500 hover:underline underline-offset-4">
-        <span data-i18n="nav_about">About</span>
-    </a>
-    <a href="#music"
-    class="text-xs font-medium uppercase tracking-[0.12em] text-slate-500 transition-colors hover:text-blue-500 hover:underline underline-offset-4">
-    <span data-i18n="nav_music">Music</span>
-</a>
-<a href="#quotes"
-class="text-xs font-medium uppercase tracking-[0.12em] text-slate-500 transition-colors hover:text-blue-500 hover:underline underline-offset-4">
-<span data-i18n="nav_quotes">Quotes</span>
-</a>
-<a href="#tools"
-class="text-xs font-medium uppercase tracking-[0.12em] text-slate-500 transition-colors hover:text-blue-500 hover:underline underline-offset-4">
-<span data-i18n="nav_tools">Tools</span>
-</a>
-<a href="#contact"
-class="text-xs font-medium uppercase tracking-[0.12em] text-slate-500 transition-colors hover:text-blue-500 hover:underline underline-offset-4">
-<span data-i18n="nav_contact">Contact</span>
-</a>
-</div>
-<div class="flex flex-wrap justify-center gap-x-6 gap-y-2">
-    <a href="https://raia-footer.vercel.app/#privacy" target="_blank" rel="noopener noreferrer"
-    class="text-[9px] font-mono uppercase tracking-[0.15em] text-slate-400 transition-colors hover:text-blue-400">
-    <span class="inline-flex items-center gap-1">
-        <svg class="h-3 w-3" data-icon="ic25" aria-hidden="true"></svg>
-    <span data-i18n="nav_privacy">Privacy</span>
-</span>
-</a>
-</div>
-</nav>
-
-<div class="text-center">
-    <p class="mx-auto mb-3 max-w-sm text-xs leading-relaxed text-slate-500 dark:text-slate-500">
+    <!-- Filter buttons -->
+    <div class="reveal mb-8 flex flex-wrap items-center justify-center gap-2" role="tablist" aria-label="Filter tools">
+      <button type="button" data-filter="all" class="filter-btn active" role="tab" aria-selected="true" tabindex="0">
         <span class="inline-flex items-center gap-1.5">
-        🌐 Creative technologist and musician. All tools are built on the open web with privacy-first
-        principles and no backend.
+          <svg class="h-3.5 w-3.5" data-icon="ic23" aria-hidden="true"></svg>
+          <span data-i18n="filter_all">All</span>
+        </span>
+      </button>
+      <button type="button" data-filter="music" class="filter-btn" role="tab" aria-selected="false" tabindex="-1">
+        <span class="inline-flex items-center gap-1.5">
+          <svg class="h-3.5 w-3.5" data-icon="ic07" aria-hidden="true"></svg>
+          <span data-i18n="filter_music">Music</span>
+        </span>
+      </button>
+      <button type="button" data-filter="security" class="filter-btn" role="tab" aria-selected="false" tabindex="-1">
+        <span class="inline-flex items-center gap-1.5">
+          <svg class="h-3.5 w-3.5" data-icon="ic13" aria-hidden="true"></svg>
+          <span data-i18n="filter_security">Security</span>
+        </span>
+      </button>
+      <button type="button" data-filter="web" class="filter-btn" role="tab" aria-selected="false" tabindex="-1">
+        <span class="inline-flex items-center gap-1.5">
+          <svg class="h-3.5 w-3.5" data-icon="ic16" aria-hidden="true"></svg>
+          <span data-i18n="filter_web">Web</span>
+        </span>
+      </button>
+    </div>
+
+    <!-- Tools list -->
+    <ol id="tools-container" class="grid grid-cols-1 gap-4 list-none p-0 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3">
+      <li class="tool-card reveal glass-card glass-hover group flex h-full flex-col rounded-3xl border border-slate-200/60 bg-white/70 p-5 shadow-sm transition-all duration-300 dark:border-slate-800/60 dark:bg-slate-900/50 sm:p-6" data-category="music" data-repo="hajirsync">
+        <div class="mb-2 flex items-center gap-3">
+          <span class="tool-number font-mono text-sm font-bold text-blue-600 dark:text-blue-400">01</span>
+          <div class="font-mono text-[9px] font-semibold uppercase tracking-[0.15em] text-blue-600 dark:text-blue-400">
+            <span class="inline-flex items-center gap-1.5">
+              <svg class="h-2.5 w-2.5" data-icon="ic24" aria-hidden="true"></svg>
+              <span data-i18n="cat_lrc">LRC Generator</span>
+            </span>
+          </div>
+          <span class="status-badge-stable" data-i18n="status_stable">Stable</span>
+        </div>
+
+        <h3 class="mb-1.5 font-display text-lg font-bold text-slate-900 transition-colors group-hover:text-blue-600 dark:text-white dark:group-hover:text-blue-400">
+          <span class="inline-flex items-center gap-2">
+            <svg class="h-4 w-4 text-blue-500" data-icon="ic07" aria-hidden="true"></svg>
+            HajirSync
+          </span>
+        </h3>
+
+        <p class="mb-4 flex-1 text-sm leading-relaxed text-slate-600 dark:text-slate-400" data-i18n="tool1_desc">
+          <span class="inline-flex items-start gap-1.5">
+            <svg class="mt-0.5 h-3.5 w-3.5 flex-shrink-0 text-blue-400/60" data-icon="ic21" aria-hidden="true"></svg>
+            Create synchronized LRC lyric files in a short amount of time.
+          </span>
+        </p>
+
+        <div class="tool-actions mt-auto">
+          <a href="https://hajirsync.haiere.workers.dev" target="_blank" rel="noopener noreferrer" class="tool-open-btn group/btn" aria-label="Open HajirSync in a new tab">
+            <span data-i18n="tool_open">Open Tool</span>
+            <svg class="h-3.5 w-3.5 transition-transform group-hover/btn:translate-x-0.5" data-icon="ic12" aria-hidden="true"></svg>
+          </a>
+          <button type="button" class="tool-docs-btn group/btn" data-repo="hajirsync" data-tool-name="HajirSync" aria-label="View HajirSync documentation">
+            <span data-i18n="tool_docs">How to Use</span>
+            <svg class="h-3.5 w-3.5" data-icon="ic33" aria-hidden="true"></svg>
+          </button>
+        </div>
+      </li>
+
+      <li class="tool-card reveal glass-card glass-hover group flex h-full flex-col rounded-3xl border border-slate-200/60 bg-white/70 p-5 shadow-sm transition-all duration-300 dark:border-slate-800/60 dark:bg-slate-900/50 sm:p-6" data-category="security" data-repo="raia-vault">
+        <div class="mb-2 flex items-center gap-3">
+          <span class="tool-number font-mono text-sm font-bold text-blue-600 dark:text-blue-400">02</span>
+          <div class="font-mono text-[9px] font-semibold uppercase tracking-[0.15em] text-blue-600 dark:text-blue-400">
+            <span class="inline-flex items-center gap-1.5">
+              <svg class="h-2.5 w-2.5" data-icon="ic13" aria-hidden="true"></svg>
+              <span data-i18n="cat_password">Password Manager</span>
+            </span>
+          </div>
+          <span class="status-badge-stable" data-i18n="status_stable">Stable</span>
+        </div>
+
+        <h3 class="mb-1.5 font-display text-lg font-bold text-slate-900 transition-colors group-hover:text-blue-600 dark:text-white dark:group-hover:text-blue-400">
+          <span class="inline-flex items-center gap-2">
+            <svg class="h-4 w-4 text-blue-500" data-icon="ic13" aria-hidden="true"></svg>
+            Raia Vault
+          </span>
+        </h3>
+
+        <p class="mb-4 flex-1 text-sm leading-relaxed text-slate-600 dark:text-slate-400" data-i18n="tool2_desc">
+          <span class="inline-flex items-start gap-1.5">
+            <svg class="mt-0.5 h-3.5 w-3.5 flex-shrink-0 text-blue-400/60" data-icon="ic25" aria-hidden="true"></svg>
+            Generate strong random passwords to help protect your accounts.
+          </span>
+        </p>
+
+        <div class="tool-actions mt-auto">
+          <a href="https://raia-vault.haiere.workers.dev" target="_blank" rel="noopener noreferrer" class="tool-open-btn group/btn" aria-label="Open Raia Vault in a new tab">
+            <span data-i18n="tool_open">Open Tool</span>
+            <svg class="h-3.5 w-3.5 transition-transform group-hover/btn:translate-x-0.5" data-icon="ic12" aria-hidden="true"></svg>
+          </a>
+          <button type="button" class="tool-docs-btn group/btn" data-repo="raia-vault" data-tool-name="Raia Vault" aria-label="View Raia Vault documentation">
+            <span data-i18n="tool_docs">How to Use</span>
+            <svg class="h-3.5 w-3.5" data-icon="ic33" aria-hidden="true"></svg>
+          </button>
+        </div>
+      </li>
+
+      <li class="tool-card reveal glass-card glass-hover group flex h-full flex-col rounded-3xl border border-slate-200/60 bg-white/70 p-5 shadow-sm transition-all duration-300 dark:border-slate-800/60 dark:bg-slate-900/50 sm:p-6" data-category="security" data-repo="raia-scrub">
+        <div class="mb-2 flex items-center gap-3">
+          <span class="tool-number font-mono text-sm font-bold text-blue-600 dark:text-blue-400">03</span>
+          <div class="font-mono text-[9px] font-semibold uppercase tracking-[0.15em] text-blue-600 dark:text-blue-400">
+            <span class="inline-flex items-center gap-1.5">
+              <svg class="h-2.5 w-2.5" data-icon="ic25" aria-hidden="true"></svg>
+              <span data-i18n="cat_metadata">Metadata Stripper</span>
+            </span>
+          </div>
+          <span class="status-badge-stable" data-i18n="status_stable">Stable</span>
+        </div>
+
+        <h3 class="mb-1.5 font-display text-lg font-bold text-slate-900 transition-colors group-hover:text-blue-600 dark:text-white dark:group-hover:text-blue-400">
+          <span class="inline-flex items-center gap-2">
+            <svg class="h-4 w-4 text-blue-500" data-icon="ic25" aria-hidden="true"></svg>
+            Raia Scrub
+          </span>
+        </h3>
+
+        <p class="mb-4 flex-1 text-sm leading-relaxed text-slate-600 dark:text-slate-400" data-i18n="tool3_desc">
+          <span class="inline-flex items-start gap-1.5">
+            <svg class="mt-0.5 h-3.5 w-3.5 flex-shrink-0 text-blue-400/60" data-icon="ic25" aria-hidden="true"></svg>
+            Remove sensitive metadata, such as location, before sharing photos.
+          </span>
+        </p>
+
+        <div class="tool-actions mt-auto">
+          <a href="https://raia-scrub.haiere.workers.dev" target="_blank" rel="noopener noreferrer" class="tool-open-btn group/btn" aria-label="Open Raia Scrub in a new tab">
+            <span data-i18n="tool_open">Open Tool</span>
+            <svg class="h-3.5 w-3.5 transition-transform group-hover/btn:translate-x-0.5" data-icon="ic12" aria-hidden="true"></svg>
+          </a>
+          <button type="button" class="tool-docs-btn group/btn" data-repo="raia-scrub" data-tool-name="Raia Scrub" aria-label="View Raia Scrub documentation">
+            <span data-i18n="tool_docs">How to Use</span>
+            <svg class="h-3.5 w-3.5" data-icon="ic33" aria-hidden="true"></svg>
+          </button>
+        </div>
+      </li>
+
+      <li class="tool-card reveal glass-card glass-hover group flex h-full flex-col rounded-3xl border border-slate-200/60 bg-white/70 p-5 shadow-sm transition-all duration-300 dark:border-slate-800/60 dark:bg-slate-900/50 sm:p-6" data-category="web" data-repo="raia-delta">
+        <div class="mb-2 flex items-center gap-3">
+          <span class="tool-number font-mono text-sm font-bold text-blue-600 dark:text-blue-400">04</span>
+          <div class="font-mono text-[9px] font-semibold uppercase tracking-[0.15em] text-blue-600 dark:text-blue-400">
+            <span class="inline-flex items-center gap-1.5">
+              <svg class="h-2.5 w-2.5" data-icon="ic15" aria-hidden="true"></svg>
+              <span data-i18n="cat_text">Text Comparator</span>
+            </span>
+          </div>
+          <span class="status-badge-stable" data-i18n="status_stable">Stable</span>
+        </div>
+
+        <h3 class="mb-1.5 font-display text-lg font-bold text-slate-900 transition-colors group-hover:text-blue-600 dark:text-white dark:group-hover:text-blue-400">
+          <span class="inline-flex items-center gap-2">
+            <svg class="h-4 w-4 text-blue-500" data-icon="ic15" aria-hidden="true"></svg>
+            Raia Delta
+          </span>
+        </h3>
+
+        <p class="mb-4 flex-1 text-sm leading-relaxed text-slate-600 dark:text-slate-400" data-i18n="tool4_desc">
+          <span class="inline-flex items-start gap-1.5">
+            <svg class="mt-0.5 h-3.5 w-3.5 flex-shrink-0 text-blue-400/60" data-icon="ic16" aria-hidden="true"></svg>
+            Compare two texts and see their differences more clearly.
+          </span>
+        </p>
+
+        <div class="tool-actions mt-auto">
+          <a href="https://raia-delta.haiere.workers.dev" target="_blank" rel="noopener noreferrer" class="tool-open-btn group/btn" aria-label="Open Raia Delta in a new tab">
+            <span data-i18n="tool_open">Open Tool</span>
+            <svg class="h-3.5 w-3.5 transition-transform group-hover/btn:translate-x-0.5" data-icon="ic12" aria-hidden="true"></svg>
+          </a>
+          <button type="button" class="tool-docs-btn group/btn" data-repo="raia-delta" data-tool-name="Raia Delta" aria-label="View Raia Delta documentation">
+            <span data-i18n="tool_docs">How to Use</span>
+            <svg class="h-3.5 w-3.5" data-icon="ic33" aria-hidden="true"></svg>
+          </button>
+        </div>
+      </li>
+
+      <li class="tool-card reveal glass-card glass-hover group flex h-full flex-col rounded-3xl border border-slate-200/60 bg-white/70 p-5 shadow-sm transition-all duration-300 dark:border-slate-800/60 dark:bg-slate-900/50 sm:p-6" data-category="web" data-repo="raiaminify">
+        <div class="mb-2 flex items-center gap-3">
+          <span class="tool-number font-mono text-sm font-bold text-blue-600 dark:text-blue-400">05</span>
+          <div class="font-mono text-[9px] font-semibold uppercase tracking-[0.15em] text-blue-600 dark:text-blue-400">
+            <span class="inline-flex items-center gap-1.5">
+              <svg class="h-2.5 w-2.5" data-icon="ic01" aria-hidden="true"></svg>
+              <span data-i18n="cat_ai_tool">AI Tool</span>
+            </span>
+          </div>
+          <span class="status-badge-stable" data-i18n="status_stable">Stable</span>
+        </div>
+
+        <h3 class="mb-1.5 font-display text-lg font-bold text-slate-900 transition-colors group-hover:text-blue-600 dark:text-white dark:group-hover:text-blue-400">
+          <span class="inline-flex items-center gap-2">
+            <svg class="h-4 w-4 text-blue-500" data-icon="ic01" aria-hidden="true"></svg>
+            Raiamify
+          </span>
+        </h3>
+
+        <p class="mb-4 flex-1 text-sm leading-relaxed text-slate-600 dark:text-slate-400" data-i18n="tool5_desc">
+          <span class="inline-flex items-start gap-1.5">
+            <svg class="mt-0.5 h-3.5 w-3.5 flex-shrink-0 text-blue-400/60" data-icon="ic26" aria-hidden="true"></svg>
+            A lightweight AI tool for ideas, writing, and everyday tasks.
+          </span>
+        </p>
+
+        <div class="tool-actions mt-auto">
+          <a href="https://raiaminify.haiere.workers.dev" target="_blank" rel="noopener noreferrer" class="tool-open-btn group/btn" aria-label="Open Raiamify in a new tab">
+            <span data-i18n="tool_open">Open Tool</span>
+            <svg class="h-3.5 w-3.5 transition-transform group-hover/btn:translate-x-0.5" data-icon="ic12" aria-hidden="true"></svg>
+          </a>
+          <button type="button" class="tool-docs-btn group/btn" data-repo="raiaminify" data-tool-name="Raiamify" aria-label="View Raiamify documentation">
+            <span data-i18n="tool_docs">How to Use</span>
+            <svg class="h-3.5 w-3.5" data-icon="ic33" aria-hidden="true"></svg>
+          </button>
+        </div>
+      </li>
+
+      <li class="tool-card reveal glass-card glass-hover group flex h-full flex-col rounded-3xl border border-slate-200/60 bg-white/70 p-5 shadow-sm transition-all duration-300 dark:border-slate-800/60 dark:bg-slate-900/50 sm:p-6" data-category="web" data-repo="raia-ai">
+        <div class="mb-2 flex items-center gap-3">
+          <span class="tool-number font-mono text-sm font-bold text-blue-600 dark:text-blue-400">06</span>
+          <div class="font-mono text-[9px] font-semibold uppercase tracking-[0.15em] text-blue-600 dark:text-blue-400">
+            <span class="inline-flex items-center gap-1.5">
+              <svg class="h-2.5 w-2.5" data-icon="ic01" aria-hidden="true"></svg>
+              <span data-i18n="cat_ai_platform">AI Platform</span>
+            </span>
+          </div>
+          <span class="status-badge-stable" data-i18n="status_stable">Stable</span>
+        </div>
+
+        <h3 class="mb-1.5 font-display text-lg font-bold text-slate-900 transition-colors group-hover:text-blue-600 dark:text-white dark:group-hover:text-blue-400">
+          <span class="inline-flex items-center gap-2">
+            <svg class="h-4 w-4 text-blue-500" data-icon="ic01" aria-hidden="true"></svg>
+            Raia AI
+          </span>
+        </h3>
+
+        <p class="mb-4 flex-1 text-sm leading-relaxed text-slate-600 dark:text-slate-400" data-i18n="tool6_desc">
+          <span class="inline-flex items-start gap-1.5">
+            <svg class="mt-0.5 h-3.5 w-3.5 flex-shrink-0 text-blue-400/60" data-icon="ic01" aria-hidden="true"></svg>
+            An AI chat that supports different providers based on your needs.
+          </span>
+        </p>
+
+        <div class="tool-actions mt-auto">
+          <a href="https://raia-ai.vercel.app" target="_blank" rel="noopener noreferrer" class="tool-open-btn group/btn" aria-label="Open Raia AI in a new tab">
+            <span data-i18n="tool_open">Open Tool</span>
+            <svg class="h-3.5 w-3.5 transition-transform group-hover/btn:translate-x-0.5" data-icon="ic12" aria-hidden="true"></svg>
+          </a>
+          <button type="button" class="tool-docs-btn group/btn" data-repo="raia-ai" data-tool-name="Raia AI" aria-label="View Raia AI documentation">
+            <span data-i18n="tool_docs">How to Use</span>
+            <svg class="h-3.5 w-3.5" data-icon="ic33" aria-hidden="true"></svg>
+          </button>
+        </div>
+      </li>
+
+      <li class="tool-card reveal glass-card glass-hover group flex h-full flex-col rounded-3xl border border-slate-200/60 bg-white/70 p-5 shadow-sm transition-all duration-300 dark:border-slate-800/60 dark:bg-slate-900/50 sm:p-6" data-category="web" data-repo="calc">
+        <div class="mb-2 flex items-center gap-3">
+          <span class="tool-number font-mono text-sm font-bold text-blue-600 dark:text-blue-400">07</span>
+          <div class="font-mono text-[9px] font-semibold uppercase tracking-[0.15em] text-blue-600 dark:text-blue-400">
+            <span class="inline-flex items-center gap-1.5">
+              <svg class="h-2.5 w-2.5" data-icon="ic27" aria-hidden="true"></svg>
+              <span data-i18n="cat_calc">Calculator App</span>
+            </span>
+          </div>
+          <span class="status-badge-stable" data-i18n="status_stable">Stable</span>
+        </div>
+
+        <h3 class="mb-1.5 font-display text-lg font-bold text-slate-900 transition-colors group-hover:text-blue-600 dark:text-white dark:group-hover:text-blue-400">
+          <span class="inline-flex items-center gap-2">
+            <svg class="h-4 w-4 text-blue-500" data-icon="ic28" aria-hidden="true"></svg>
+            Calc
+          </span>
+        </h3>
+
+        <p class="mb-4 flex-1 text-sm leading-relaxed text-slate-600 dark:text-slate-400" data-i18n="tool_calc_desc">
+          <span class="inline-flex items-start gap-1.5">
+            <svg class="mt-0.5 h-3.5 w-3.5 flex-shrink-0 text-blue-400/60" data-icon="ic29" aria-hidden="true"></svg>
+            A simple and fast calculator for everyday calculations.
+          </span>
+        </p>
+
+        <div class="tool-actions mt-auto">
+          <a href="https://hajir.is-a.dev/calc" target="_blank" rel="noopener noreferrer" class="tool-open-btn group/btn" aria-label="Open Calc in a new tab">
+            <span data-i18n="tool_open">Open Tool</span>
+            <svg class="h-3.5 w-3.5 transition-transform group-hover/btn:translate-x-0.5" data-icon="ic12" aria-hidden="true"></svg>
+          </a>
+          <button type="button" class="tool-docs-btn group/btn" data-repo="calc" data-tool-name="Calc" aria-label="View Calc documentation">
+            <span data-i18n="tool_docs">How to Use</span>
+            <svg class="h-3.5 w-3.5" data-icon="ic33" aria-hidden="true"></svg>
+          </button>
+        </div>
+      </li>
+
+      <li class="tool-card reveal glass-card glass-hover group flex h-full flex-col rounded-3xl border border-slate-200/60 bg-white/70 p-5 shadow-sm transition-all duration-300 dark:border-slate-800/60 dark:bg-slate-900/50 sm:p-6" data-category="web" data-repo="chess">
+        <div class="mb-2 flex items-center gap-3">
+          <span class="tool-number font-mono text-sm font-bold text-blue-600 dark:text-blue-400">08</span>
+          <div class="font-mono text-[9px] font-semibold uppercase tracking-[0.15em] text-blue-600 dark:text-blue-400">
+            <span class="inline-flex items-center gap-1.5">
+              <svg class="h-2.5 w-2.5" data-icon="ic16" aria-hidden="true"></svg>
+              <span data-i18n="cat_chess">Chess App</span>
+            </span>
+          </div>
+          <span class="status-badge-stable" data-i18n="status_stable">Stable</span>
+        </div>
+
+        <h3 class="mb-1.5 font-display text-lg font-bold text-slate-900 transition-colors group-hover:text-blue-600 dark:text-white dark:group-hover:text-blue-400">
+          <span class="inline-flex items-center gap-2">
+            <svg class="h-4 w-4 text-blue-500" data-icon="ic30" aria-hidden="true"></svg>
+            Chess
+          </span>
+        </h3>
+
+        <p class="mb-4 flex-1 text-sm leading-relaxed text-slate-600 dark:text-slate-400" data-i18n="tool_chess_desc">
+          <span class="inline-flex items-start gap-1.5">
+            <svg class="mt-0.5 h-3.5 w-3.5 flex-shrink-0 text-blue-400/60" data-icon="ic18" aria-hidden="true"></svg>
+            A classic chess game you can play right in the browser.
+          </span>
+        </p>
+
+        <div class="tool-actions mt-auto">
+          <a href="https://hajir.is-a.dev/chess" target="_blank" rel="noopener noreferrer" class="tool-open-btn group/btn" aria-label="Open Chess in a new tab">
+            <span data-i18n="tool_open">Open Tool</span>
+            <svg class="h-3.5 w-3.5 transition-transform group-hover/btn:translate-x-0.5" data-icon="ic12" aria-hidden="true"></svg>
+          </a>
+          <button type="button" class="tool-docs-btn group/btn" data-repo="chess" data-tool-name="Chess" aria-label="View Chess documentation">
+            <span data-i18n="tool_docs">How to Use</span>
+            <svg class="h-3.5 w-3.5" data-icon="ic33" aria-hidden="true"></svg>
+          </button>
+        </div>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<!-- ===== CONTACT ===== -->
+<section id="contact" class="relative overflow-hidden bg-slate-50 py-16 dark:bg-slate-950/40">
+  <div class="relative z-10 mx-auto max-w-3xl px-5 sm:px-8">
+    <div class="reveal mb-10 text-center">
+      <h2 class="mb-2 font-display text-3xl font-extrabold tracking-tight text-slate-900 dark:text-white sm:text-4xl">
+        <span class="inline-flex items-center gap-2.5">
+          <svg class="h-7 w-7 text-blue-500" data-icon="ic31" aria-hidden="true"></svg>
+          <span data-i18n="contact_title">Let's Talk!</span>
+        </span>
+      </h2>
+      <p class="mx-auto max-w-md text-sm leading-relaxed text-slate-600 dark:text-slate-400" data-i18n="contact_subtitle">
+        <span class="inline-flex items-center gap-1.5">
+          <svg class="h-3.5 w-3.5 text-blue-400/60" data-icon="ic32" aria-hidden="true"></svg>
+          Have a question, an idea, or want to discuss a project? Send a message below.
+        </span>
+      </p>
+    </div>
+
+    <div class="reveal glass-card glass-hover rounded-3xl border border-slate-200/60 bg-white/70 p-6 shadow-sm backdrop-blur-xl dark:border-slate-800/60 dark:bg-slate-900/50 sm:p-8">
+      <form id="contact-form" class="space-y-5" novalidate>
+        <div class="space-y-1">
+          <label for="name" class="block text-sm font-medium text-slate-700 dark:text-slate-300" data-i18n="form_name">
+            <span class="inline-flex items-center gap-1.5">
+              <svg class="h-3.5 w-3.5 text-blue-400/60" data-icon="ic06" aria-hidden="true"></svg>
+              Name
+            </span>
+          </label>
+          <input type="text" id="name" name="name" required aria-describedby="name-error" aria-invalid="false" class="glass-pill w-full rounded-xl border border-transparent px-4 py-3 text-slate-900 placeholder:text-slate-400 transition-colors focus:border-blue-500/30 focus:ring-4 focus:ring-blue-500/15 dark:text-white dark:placeholder:text-slate-500" placeholder="Enter your name" data-i18n-placeholder="form_name_placeholder" />
+          <span id="name-error" class="form-error" role="status" aria-live="polite"></span>
+        </div>
+
+        <div class="space-y-1">
+          <label for="email" class="block text-sm font-medium text-slate-700 dark:text-slate-300" data-i18n="form_email">
+            <span class="inline-flex items-center gap-1.5">
+              <svg class="h-3.5 w-3.5 text-blue-400/60" data-icon="ic10" aria-hidden="true"></svg>
+              Email
+            </span>
+          </label>
+          <input type="email" id="email" name="email" required aria-describedby="email-error" aria-invalid="false" class="glass-pill w-full rounded-xl border border-transparent px-4 py-3 text-slate-900 placeholder:text-slate-400 transition-colors focus:border-blue-500/30 focus:ring-4 focus:ring-blue-500/15 dark:text-white dark:placeholder:text-slate-500" placeholder="name@example.com" data-i18n-placeholder="form_email_placeholder" />
+          <span id="email-error" class="form-error" role="status" aria-live="polite"></span>
+        </div>
+
+        <div class="space-y-1">
+          <label for="message" class="block text-sm font-medium text-slate-700 dark:text-slate-300" data-i18n="form_message">
+            <span class="inline-flex items-center gap-1.5">
+              <svg class="h-3.5 w-3.5 text-blue-400/60" data-icon="ic33" aria-hidden="true"></svg>
+              Message
+            </span>
+          </label>
+          <textarea id="message" name="message" rows="4" required aria-describedby="message-error" aria-invalid="false" class="glass-pill w-full resize-y rounded-xl border border-transparent px-4 py-3 text-slate-900 placeholder:text-slate-400 transition-colors focus:border-blue-500/30 focus:ring-4 focus:ring-blue-500/15 dark:text-white dark:placeholder:text-slate-500" placeholder="Write your message or question here..." data-i18n-placeholder="form_message_placeholder"></textarea>
+          <span id="message-error" class="form-error" role="status" aria-live="polite"></span>
+        </div>
+
+        <button type="submit" class="btn-primary w-full justify-center group/btn" data-i18n="form_submit">
+          <span>Send</span>
+          <svg class="h-4 w-4 transition-transform group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5" data-icon="ic32" aria-hidden="true"></svg>
+        </button>
+
+        <div id="form-status" class="min-h-[1.5rem] text-center text-sm font-medium text-slate-600 dark:text-slate-400" role="status" aria-live="polite"></div>
+      </form>
+
+      <div class="mt-6 border-t border-slate-200/50 pt-5 text-center dark:border-slate-800/50">
+        <p class="mb-3 text-sm text-slate-500 dark:text-slate-400" data-i18n="form_fallback">
+          <span class="inline-flex items-center gap-1.5">
+            <svg class="h-3.5 w-3.5 text-blue-400/60" data-icon="ic16" aria-hidden="true"></svg>
+            Or contact me through social media:
+          </span>
+        </p>
+
+        <div class="flex flex-wrap justify-center gap-3">
+          <a href="https://x.com/haierehere" target="_blank" rel="noopener noreferrer" class="group/social glass-social flex h-11 w-11 items-center justify-center rounded-xl text-slate-500 transition-all duration-300 hover:bg-black hover:text-white dark:text-slate-400" aria-label="X">
+            <i class="fa-brands fa-x-twitter text-xl transition-transform group-hover/social:scale-110"></i>
+          </a>
+          <a href="https://www.instagram.com/muhaajirere" target="_blank" rel="noopener noreferrer" class="group/social glass-social flex h-11 w-11 items-center justify-center rounded-xl text-slate-500 transition-all duration-300 hover:bg-gradient-to-tr hover:from-yellow-400 hover:via-red-500 hover:to-purple-500 hover:text-white dark:text-slate-400" aria-label="Instagram">
+            <i class="fa-brands fa-instagram text-xl transition-transform group-hover/social:scale-110"></i>
+          </a>
+          <a href="https://discord.com/users/1276865849231413299" target="_blank" rel="noopener noreferrer" class="group/social glass-social flex h-11 w-11 items-center justify-center rounded-xl text-slate-500 transition-all duration-300 hover:bg-[#5865F2] hover:text-white dark:text-slate-400" aria-label="Discord">
+            <i class="fa-brands fa-discord text-xl transition-transform group-hover/social:scale-110"></i>
+          </a>
+          <a href="https://t.me/reregera" target="_blank" rel="noopener noreferrer" class="group/social glass-social flex h-11 w-11 items-center justify-center rounded-xl text-slate-500 transition-all duration-300 hover:bg-[#229ED9] hover:text-white dark:text-slate-400" aria-label="Telegram">
+            <i class="fa-brands fa-telegram text-xl transition-transform group-hover/social:scale-110"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Donate buttons -->
+<div class="px-4 pt-4">
+  <div class="mb-3 text-center">
+    <p class="text-xs font-semibold uppercase tracking-[0.16em] text-slate-500 dark:text-slate-400" data-i18n="support_title">
+      Support My Work
+    </p>
+  </div>
+
+  <div class="grid grid-cols-1 gap-3 sm:grid-cols-2">
+    <a
+      href="https://buymeacoffee.com/hajirstudio"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="group flex w-full items-center justify-center gap-2 rounded-2xl bg-gradient-to-r from-amber-300 to-yellow-400 px-4 py-3.5 text-sm font-semibold text-slate-950 shadow-lg shadow-yellow-400/25 transition-all duration-200 hover:from-amber-400 hover:to-yellow-500 hover:shadow-xl active:scale-[0.98]">
+      <svg class="h-5 w-5 transition-transform group-hover:scale-110" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+      </svg>
+      Buy Me a Coffee
+    </a>
+
+    <a
+      href="https://sociabuzz.com/HajirStudio"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="group flex w-full items-center justify-center gap-2 rounded-2xl bg-blue-600 px-4 py-3.5 text-sm font-semibold text-white shadow-lg shadow-blue-600/20 transition-all duration-200 hover:bg-blue-700 hover:shadow-xl active:scale-[0.98]">
+      <svg class="h-5 w-5 transition-transform group-hover:scale-110" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+      </svg>
+      Sociabuzz
+    </a>
+  </div>
+
+  <p class="mt-3 text-center text-[11px] leading-relaxed text-slate-500 dark:text-slate-400" data-i18n="support_note">
+    Donations help me keep building free, fast, and privacy-first tools.
+  </p>
+</div>
+
+<!-- ===== FOOTER ===== -->
+<footer class="glass-nav py-10 shadow-inner" role="contentinfo">
+  <div class="mx-auto max-w-4xl px-5 sm:px-8">
+    <div class="mb-6 text-center">
+      <div class="mb-2 flex items-center justify-center gap-3">
+        <div class="group/logo relative flex h-10 w-10 items-center justify-center overflow-hidden rounded-xl transition-all hover:scale-110">
+          <img
+            id="logo-footer"
+            src="https://i.postimg.cc/GmWt2wch/H-blue.webp"
+            alt="Haiere logo"
+            data-i18n-alt="logo_alt"
+            class="logo-img h-full w-full object-contain drop-shadow-md transition-transform duration-200"
+            loading="lazy"
+            decoding="async"
+            width="40"
+            height="40" />
+          <div
+            class="absolute inset-0 rounded-xl bg-gradient-to-tr from-blue-500/0 to-blue-500/10 opacity-0 transition-opacity group-hover/logo:opacity-100"
+            aria-hidden="true"></div>
+        </div>
+
+        <span class="brand-text text-xl uppercase tracking-tight text-slate-900 dark:text-white">
+          HAIERE<span class="text-blue-400">.</span>
+        </span>
+      </div>
+
+      <p class="select-none font-mono text-[9px] uppercase tracking-[0.18em] text-slate-500 dark:text-slate-600" data-i18n="footer_tagline">
+        <span class="inline-flex items-center gap-1.5">
+          <svg class="h-2.5 w-2.5" data-icon="ic08" aria-hidden="true"></svg>
+          Developer Tools · AI · Web Apps · by Haiere
+        </span>
+      </p>
+    </div>
+  </div>
+
+  <!-- Social links -->
+<div class="mb-8 flex flex-wrap justify-center gap-3">
+  <a href="https://www.youtube.com/@hajirstein" target="_blank" rel="noopener noreferrer" aria-label="YouTube" class="group/social glass-social flex h-11 w-11 items-center justify-center rounded-xl text-slate-500 transition-all duration-300 hover:bg-[#FF0000] hover:text-white dark:text-slate-400">
+    <i class="fa-brands fa-youtube text-xl transition-transform group-hover/social:scale-110"></i>
+  </a>
+  
+  <a href="https://www.instagram.com/muhaajirere" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="group/social glass-social flex h-11 w-11 items-center justify-center rounded-xl text-slate-500 transition-all duration-300 hover:bg-gradient-to-tr hover:from-yellow-400 hover:via-red-500 hover:to-purple-500 hover:text-white dark:text-slate-400">
+    <i class="fa-brands fa-instagram text-xl transition-transform group-hover/social:scale-110"></i>
+  </a>
+  
+  <a href="https://github.com/haiere" target="_blank" rel="noopener noreferrer" aria-label="GitHub" class="group/social glass-social flex h-11 w-11 items-center justify-center rounded-xl text-slate-500 transition-all duration-300 hover:bg-[#181717] hover:text-white dark:text-slate-400">
+    <i class="fa-brands fa-github text-xl transition-transform group-hover/social:scale-110"></i>
+  </a>
+  
+  <a href="https://x.com/haierehere" target="_blank" rel="noopener noreferrer" aria-label="X" class="group/social glass-social flex h-11 w-11 items-center justify-center rounded-xl text-slate-500 transition-all duration-300 hover:bg-[#000000] hover:text-white dark:text-slate-400">
+    <i class="fa-brands fa-x-twitter text-xl transition-transform group-hover/social:scale-110"></i>
+  </a>
+  
+  <a href="https://on.soundcloud.com/m65TNUx3XarndC67jO" target="_blank" rel="noopener noreferrer" aria-label="SoundCloud" class="group/social glass-social flex h-11 w-11 items-center justify-center rounded-xl text-slate-500 transition-all duration-300 hover:bg-[#FF5500] hover:text-white dark:text-slate-400">
+    <i class="fa-brands fa-soundcloud text-xl transition-transform group-hover/social:scale-110"></i>
+  </a>
+  
+  <a href="https://www.reddit.com/u/Muhaajire/s/fgwcyhbTa1" target="_blank" rel="noopener noreferrer" aria-label="Reddit" class="group/social glass-social flex h-11 w-11 items-center justify-center rounded-xl text-slate-500 transition-all duration-300 hover:bg-[#FF4500] hover:text-white dark:text-slate-400">
+    <i class="fa-brands fa-reddit-alien text-xl transition-transform group-hover/social:scale-110"></i>
+  </a>
+  
+  <a href="https://id.quora.com/profile/Hajir-Muhaajir?ch=10&oid=2990639960&share=cae1fb93&srid=5XvqAs&target_type=user" target="_blank" rel="noopener noreferrer" aria-label="Quora" class="group/social glass-social flex h-11 w-11 items-center justify-center rounded-xl text-slate-500 transition-all duration-300 hover:bg-[#B92B27] hover:text-white dark:text-slate-400">
+    <i class="fa-brands fa-quora text-xl transition-transform group-hover/social:scale-110"></i>
+  </a>
+  
+  <a href="https://discord.com/users/1276865849231413299" target="_blank" rel="noopener noreferrer" aria-label="Discord" class="group/social glass-social flex h-11 w-11 items-center justify-center rounded-xl text-slate-500 transition-all duration-300 hover:bg-[#5865F2] hover:text-white dark:text-slate-400">
+    <i class="fa-brands fa-discord text-xl transition-transform group-hover/social:scale-110"></i>
+  </a>
+  
+  <a href="https://t.me/reregera" target="_blank" rel="noopener noreferrer" aria-label="Telegram" class="group/social glass-social flex h-11 w-11 items-center justify-center rounded-xl text-slate-500 transition-all duration-300 hover:bg-[#229ED9] hover:text-white dark:text-slate-400">
+    <i class="fa-brands fa-telegram text-xl transition-transform group-hover/social:scale-110"></i>
+  </a>
+</div>
+
+  <!-- Footer navigation -->
+  <nav class="mb-6 border-y border-slate-200/30 py-5 dark:border-slate-800/30" aria-label="Footer navigation">
+    <div class="mb-3 flex flex-wrap justify-center gap-x-6 gap-y-2">
+      <a href="#about" class="text-xs font-medium uppercase tracking-[0.12em] text-slate-500 transition-colors hover:text-blue-500 hover:underline underline-offset-4">
+        <span data-i18n="nav_about">About</span>
+      </a>
+      <a href="#music" class="text-xs font-medium uppercase tracking-[0.12em] text-slate-500 transition-colors hover:text-blue-500 hover:underline underline-offset-4">
+        <span data-i18n="nav_music">Music</span>
+      </a>
+      <a href="#quotes" class="text-xs font-medium uppercase tracking-[0.12em] text-slate-500 transition-colors hover:text-blue-500 hover:underline underline-offset-4">
+        <span data-i18n="nav_quotes">Quotes</span>
+      </a>
+      <a href="#tools" class="text-xs font-medium uppercase tracking-[0.12em] text-slate-500 transition-colors hover:text-blue-500 hover:underline underline-offset-4">
+        <span data-i18n="nav_tools">Tools</span>
+      </a>
+      <a href="#contact" class="text-xs font-medium uppercase tracking-[0.12em] text-slate-500 transition-colors hover:text-blue-500 hover:underline underline-offset-4">
+        <span data-i18n="nav_contact">Contact</span>
+      </a>
+    </div>
+
+    <div class="flex flex-wrap justify-center gap-x-6 gap-y-2">
+      <a href="https://raia-footer.vercel.app/#privacy" target="_blank" rel="noopener noreferrer" class="text-[9px] font-mono uppercase tracking-[0.15em] text-slate-400 transition-colors hover:text-blue-400">
+        <span class="inline-flex items-center gap-1">
+          <svg class="h-3 w-3" data-icon="ic25" aria-hidden="true"></svg>
+          <span data-i18n="nav_privacy">Privacy</span>
+        </span>
+      </a>
+    </div>
+  </nav>
+
+  <div class="text-center">
+    <p class="mx-auto mb-3 max-w-sm text-xs leading-relaxed text-slate-500 dark:text-slate-500" data-i18n="footer_about">
+      <span class="inline-flex items-center gap-1.5">
+        🌐 Creative technologist and musician. All tools are built on the open web with privacy-first principles and no backend.
+      </span>
+    </p>
+
+    <p class="footer-disclaimer mx-auto mb-3 max-w-md text-[11px] leading-relaxed italic text-slate-400 dark:text-slate-500">
+      <span class="inline-flex items-center gap-1.5">
+        <span data-i18n="footer_disclaimer">
+          ⚠️ Note: Use the tools responsibly. Haiere is not liable for data loss.
+        </span>
+      </span>
+    </p>
+
+    <span class="glass-pill mb-3 inline-flex items-center gap-2 rounded-full px-4 py-1.5 font-mono text-[9px] text-slate-500 shadow-sm select-none dark:text-slate-500">
+      <svg class="h-3 w-3 text-blue-400" data-icon="ic13" aria-hidden="true"></svg>
+      <span data-i18n="footer_secure">HTTPS SECURED · PRIVACY FIRST</span>
     </span>
-</p>
-<p class="footer-disclaimer mx-auto mb-3 max-w-md text-[11px] leading-relaxed italic text-slate-400 dark:text-slate-500">
-    <span class="inline-flex items-center gap-1.5">
-    <span data-i18n="footer_disclaimer"> ⚠️ Disclaimer: Use these tools at your own risk. Haiere is not responsible for any data loss or damage that may occur.</span>
-</span>
-</p>
-<span
-class="glass-pill mb-3 inline-flex items-center gap-2 rounded-full px-4 py-1.5 font-mono text-[9px] text-slate-500 shadow-sm select-none dark:text-slate-500">
-<svg class="h-3 w-3 text-blue-400" data-icon="ic13" aria-hidden="true"></svg>
-HTTPS SECURED · PRIVACY FIRST
-</span>
-<div class="mb-2 font-mono text-[9px] text-slate-500 dark:text-slate-600">
-    <span class="inline-flex items-center gap-1.5">
+
+    <div class="mb-2 font-mono text-[9px] text-slate-500 dark:text-slate-600">
+      <span class="inline-flex items-center gap-1.5">
         <svg class="h-3 w-3 text-blue-400/60" data-icon="ic19" aria-hidden="true"></svg>
-    Last updated: <span id="last-updated-date">—</span>
-</span>
-</div>
-<p class="text-xs text-slate-400 dark:text-slate-600" data-i18n="footer_copy">
-    <span class="inline-flex items-center gap-1.5">
+        <span data-i18n="footer_last_updated">Last updated:</span> <span id="last-updated-date">—</span>
+      </span>
+    </div>
+
+    <p class="text-xs text-slate-400 dark:text-slate-600" data-i18n="footer_copy">
+      <span class="inline-flex items-center gap-1.5">
         <svg class="h-2.5 w-2.5 text-blue-400/60" data-icon="ic35" aria-hidden="true"></svg>
-    © 2026 Haiere · Made with heart.
-</span>
-</p>
-</div>
-</div>
-<img class="written-by-human" src="https://i.postimg.cc/tTJz00v9/Developed-By-a-Human-Not-By-AI-Badge-black-2x.png"
-alt="Developed by a Human, Not by AI" loading="lazy" />
+        © 2026 Haiere · Made with simplicity and care.
+      </span>
+    </p>
+  </div>
+
+  <img
+    class="written-by-human"
+    src="https://i.postimg.cc/tTJz00v9/Developed-By-a-Human-Not-By-AI-Badge-black-2x.png"
+    alt="Developed by a Human, Not by AI"
+    data-i18n-alt="written_by_human_alt"
+    loading="lazy" />
 </footer>
 
-    <!-- ===== BACK TO TOP ===== -->
-    <button id="back-top" type="button"
-    class="group/backtop fixed bottom-6 right-6 z-50 flex h-12 w-12 items-center justify-center rounded-2xl bg-blue-600 text-white shadow-lg shadow-blue-600/30 opacity-0 pointer-events-none transition-all duration-500 ease-in-out hover:rotate-12 hover:bg-blue-700 hover:shadow-xl hover:shadow-blue-700/40 active:scale-90 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2 dark:focus:ring-offset-slate-900"
-    aria-label="Kembali ke atas">
-    <svg class="h-5 w-5 transition-transform group-hover/backtop:-translate-y-0.5" data-icon="ic36" aria-hidden="true"></svg>
-<span class="absolute inset-0 rounded-2xl bg-blue-400 opacity-0 animate-pulse hover:opacity-20"
-aria-hidden="true"></span>
-</button>
-
-    <!-- ===== COOKIE BANNER ===== -->
-    <div id="cookieBanner"
-    class="cookie-banner fixed bottom-6 left-1/2 z-50 w-full max-w-md -translate-x-1/2 translate-y-full rounded-2xl border border-slate-200/60 bg-white/95 p-5 shadow-2xl backdrop-blur-xl opacity-0 pointer-events-none transition-all duration-500 ease-in-out dark:border-slate-800/60 dark:bg-slate-900/95 sm:bottom-6 sm:left-auto sm:right-6 sm:translate-x-0"
-    role="alert" aria-live="polite">
-    <div class="flex items-start gap-4">
-        <div class="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-xl bg-blue-500/10">
-            <svg class="h-5 w-5 text-blue-600 dark:text-blue-400" data-icon="ic37" aria-hidden="true"></svg>
-    </div>
-    <div class="flex-1 space-y-3">
-        <div class="text-sm leading-relaxed text-slate-700 dark:text-slate-300">
-            <span class="inline-flex items-start gap-1.5">
-                <svg class="mt-0.5 h-3.5 w-3.5 flex-shrink-0 text-blue-400/60" data-icon="ic37" aria-hidden="true"></svg>
-            This site uses cookies to improve your experience. By using Haiere, you agree to our
-            <a href="https://raia-footer.vercel.app/#cookie" target="_blank" rel="noopener noreferrer"
-            class="font-medium text-blue-600 underline-offset-2 transition-colors hover:text-blue-700 hover:underline dark:text-blue-400 dark:hover:text-blue-300">
-            <span class="inline-flex items-center gap-1">
-                Cookie Policy
-                <svg class="h-3 w-3" data-icon="ic12" aria-hidden="true"></svg>
-        </span>
-    </a>.
-</span>
-</div>
-<div class="flex items-center gap-2">
-    <button
-    class="cbtn flex-1 rounded-xl border border-slate-200 bg-transparent px-4 py-2.5 text-sm font-medium text-slate-700 transition-all hover:bg-slate-100 hover:text-slate-900 focus:outline-none focus:ring-2 focus:ring-slate-400 dark:border-slate-700 dark:text-slate-300 dark:hover:bg-slate-800"
-    id="declineCookiesBtn" type="button">
-    <span class="inline-flex items-center justify-center gap-1.5">
-        <svg class="h-4 w-4" data-icon="ic38" aria-hidden="true"></svg>
-    Reject
-</span>
-</button>
+<!-- ===== BACK TO TOP ===== -->
 <button
-class="cbtn primary flex-1 rounded-xl bg-blue-600 px-4 py-2.5 text-sm font-medium text-white shadow-md shadow-blue-600/20 transition-all hover:bg-blue-700 hover:shadow-lg hover:shadow-blue-700/30 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2 dark:focus:ring-offset-slate-900"
-id="acceptCookiesBtn" type="button">
-<span class="inline-flex items-center justify-center gap-1.5">
-    <svg class="h-4 w-4" data-icon="ic39" aria-hidden="true"></svg>
-Accept
-</span>
+  id="back-top"
+  type="button"
+  class="group/backtop fixed bottom-6 right-6 z-50 flex h-12 w-12 items-center justify-center rounded-2xl bg-blue-600 text-white shadow-lg shadow-blue-600/30 opacity-0 pointer-events-none transition-all duration-500 ease-in-out hover:rotate-12 hover:bg-blue-700 hover:shadow-xl hover:shadow-blue-700/40 active:scale-90 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2 dark:focus:ring-offset-slate-900"
+  aria-label="Back to top"
+  data-i18n-label="back_to_top">
+  <svg class="h-5 w-5 transition-transform group-hover/backtop:-translate-y-0.5" data-icon="ic36" aria-hidden="true"></svg>
+  <span class="absolute inset-0 rounded-2xl bg-blue-400 opacity-0 animate-pulse hover:opacity-20" aria-hidden="true"></span>
 </button>
-</div>
-</div>
-</div>
+
+<!-- ===== COOKIE BANNER ===== -->
+<div
+  id="cookieBanner"
+  class="cookie-banner fixed bottom-6 left-1/2 z-50 w-full max-w-md -translate-x-1/2 translate-y-full rounded-2xl border border-slate-200/60 bg-white/95 p-5 shadow-2xl backdrop-blur-xl opacity-0 pointer-events-none transition-all duration-500 ease-in-out dark:border-slate-800/60 dark:bg-slate-900/95 sm:bottom-6 sm:left-auto sm:right-6 sm:translate-x-0"
+  role="alert"
+  aria-live="polite">
+  <div class="flex items-start gap-4">
+    <div class="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-xl bg-blue-500/10">
+      <svg class="h-5 w-5 text-blue-600 dark:text-blue-400" data-icon="ic37" aria-hidden="true"></svg>
+    </div>
+
+    <div class="flex-1 space-y-3">
+      <div class="text-sm leading-relaxed text-slate-700 dark:text-slate-300">
+        <span class="inline-flex items-start gap-1.5">
+          <svg class="mt-0.5 h-3.5 w-3.5 flex-shrink-0 text-blue-400/60" data-icon="ic37" aria-hidden="true"></svg>
+          <span data-i18n="cookie_text">
+            This site uses cookies to improve your experience. By using Haiere, you agree to our
+          </span>
+          <a href="https://raia-footer.vercel.app/#cookie" target="_blank" rel="noopener noreferrer" class="font-medium text-blue-600 underline-offset-2 transition-colors hover:text-blue-700 hover:underline dark:text-blue-400 dark:hover:text-blue-300">
+            <span class="inline-flex items-center gap-1">
+              <span data-i18n="cookie_policy">Cookie Policy</span>
+              <svg class="h-3 w-3" data-icon="ic12" aria-hidden="true"></svg>
+            </span>
+          </a>.
+        </span>
+      </div>
+
+      <div class="flex items-center gap-2">
+        <button
+          class="cbtn flex-1 rounded-xl border border-slate-200 bg-transparent px-4 py-2.5 text-sm font-medium text-slate-700 transition-all hover:bg-slate-100 hover:text-slate-900 focus:outline-none focus:ring-2 focus:ring-slate-400 dark:border-slate-700 dark:text-slate-300 dark:hover:bg-slate-800"
+          id="declineCookiesBtn"
+          type="button">
+          <span class="inline-flex items-center justify-center gap-1.5">
+            <svg class="h-4 w-4" data-icon="ic38" aria-hidden="true"></svg>
+            <span data-i18n="cookie_reject">Reject</span>
+          </span>
+        </button>
+
+        <button
+          class="cbtn primary flex-1 rounded-xl bg-blue-600 px-4 py-2.5 text-sm font-medium text-white shadow-md shadow-blue-600/20 transition-all hover:bg-blue-700 hover:shadow-lg hover:shadow-blue-700/30 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2 dark:focus:ring-offset-slate-900"
+          id="acceptCookiesBtn"
+          type="button">
+          <span class="inline-flex items-center justify-center gap-1.5">
+            <svg class="h-4 w-4" data-icon="ic39" aria-hidden="true"></svg>
+            <span data-i18n="cookie_accept">Accept</span>
+          </span>
+        </button>
+      </div>
+    </div>
+  </div>
 </div>
 
-    <!-- ===== DOCS MODAL ===== -->
-    <div id="docsOverlay" class="docs-overlay" aria-hidden="true"></div>
-    <div id="docsModal" class="docs-modal" role="dialog" aria-modal="true" aria-labelledby="docsModalTitle" aria-hidden="true">
-        <div class="docs-modal-header">
-            <div class="docs-modal-heading">
-                <svg class="h-4 w-4 text-blue-500" data-icon="ic33" aria-hidden="true"></svg>
-                <h3 id="docsModalTitle">Cara Penggunaan</h3>
-            </div>
-            <button type="button" id="docsModalClose" class="docs-modal-close" data-i18n-label="docs_modal_close" aria-label="Tutup">
-                <svg class="h-4 w-4" data-icon="ic05" aria-hidden="true"></svg>
-            </button>
-        </div>
-        <div id="docsModalBody" class="docs-modal-body">
-            <div class="docs-modal-loading" data-i18n="docs_loading">Memuat dokumentasi...</div>
-        </div>
-        <div class="docs-modal-footer">
-            <a id="docsModalRepoLink" href="#" target="_blank" rel="noopener noreferrer" class="tool-open-btn group/btn">
-                <span data-i18n="docs_view_repo">Lihat Repository</span>
-                <svg class="h-3.5 w-3.5" data-icon="ic12" aria-hidden="true"></svg>
-            </a>
-        </div>
+<!-- ===== DOCS MODAL ===== -->
+<div id="docsOverlay" class="docs-overlay" aria-hidden="true"></div>
+
+<div
+  id="docsModal"
+  class="docs-modal"
+  role="dialog"
+  aria-modal="true"
+  aria-labelledby="docsModalTitle"
+  aria-hidden="true">
+  <div class="docs-modal-header">
+    <div class="docs-modal-heading">
+      <svg class="h-4 w-4 text-blue-500" data-icon="ic33" aria-hidden="true"></svg>
+      <h3 id="docsModalTitle" data-i18n="tool_docs">How to Use</h3>
     </div>
+
+    <button
+      type="button"
+      id="docsModalClose"
+      class="docs-modal-close"
+      data-i18n-label="docs_modal_close"
+      aria-label="Close">
+      <svg class="h-4 w-4" data-icon="ic05" aria-hidden="true"></svg>
+    </button>
+  </div>
+
+  <div id="docsModalBody" class="docs-modal-body">
+    <div class="docs-modal-loading" data-i18n="docs_loading">Loading guide...</div>
+  </div>
+
+  <div class="docs-modal-footer">
+    <a
+      id="docsModalRepoLink"
+      href="#"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="tool-open-btn group/btn">
+      <span data-i18n="docs_view_repo">View Repository</span>
+      <svg class="h-3.5 w-3.5" data-icon="ic12" aria-hidden="true"></svg>
+    </a>
+  </div>
+</div>
     
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <script src="icons.js"></script>

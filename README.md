@@ -10,6 +10,7 @@
 [![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=flat-square&logo=css3&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/CSS)
 [![JavaScript](https://img.shields.io/badge/JavaScript-ES6%2B-F7DF1E?style=flat-square&logo=javascript&logoColor=black)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=flat-square&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
+[![Responsive](https://img.shields.io/badge/Responsive-Mobile--First-3B82F6?style=flat-square)](#responsive-design)
 [![PWA](https://img.shields.io/badge/PWA-supported-5A0FC8?style=flat-square)](manifest.webmanifest)
 [![Plausible](https://img.shields.io/badge/Analytics-Plausible-5D9CEC?style=flat-square&logo=plausible&logoColor=white)](https://plausible.io/)
 [![Sociabuzz](https://img.shields.io/badge/Support-Sociabuzz-FF5722?style=flat-square)](https://sociabuzz.com/hajirstudio)
@@ -18,22 +19,25 @@ A personal portfolio and tool hub for Hajir Stein (Haiere), showcasing web devel
 
 Hajir Studio is a single-page portfolio website that serves as the personal hub for Hajir Stein, a web developer and musician. It presents a curated collection of free, privacy-first web tools, original music releases, and a contact channel.
 
-The website is fully client-side, with no backend dependencies. It features a glass-morphism design, dark/light theme support, bilingual content (Indonesian and English), a global search interface, and integrated documentation modals for each tool.
+The website is fully client-side, with no backend dependencies. It features a glass-morphism design, dark/light theme support, bilingual content (Indonesian and English), a global search interface, integrated documentation modals for each tool, and a **mobile-first responsive layout** optimized for mobile, tablet, and desktop.
 
 ---
 
 ## Overview
 
-Hajir Studio combines a professional portfolio with a practical tool directory. The site is designed to be fast, lightweight, and privacy-respecting while offering a polished user experience.
+Hajir Studio combines a professional portfolio with a practical tool directory. The site is designed to be fast, lightweight, and privacy-respecting while offering a polished user experience across all device sizes.
 
 Key characteristics:
 
 - Single-page application with modular JavaScript architecture.
+- **Mobile-first responsive layout** — 1 column on mobile, 2 on tablet, 3 on desktop for tool grids.
 - Glass-morphism UI inspired by modern design trends.
 - Bilingual support (Indonesian and English) with persistent language preference.
 - Dark and light themes with automatic system preference detection.
 - Privacy-first analytics using Plausible (cookieless).
 - Progressive Web App (PWA) support via `manifest.webmanifest`.
+- **Accessible touch targets** — all interactive elements are ≥48×48px on mobile.
+- **Dedicated RaiaSpace search button** on mobile and tablet in the header.
 
 ---
 
@@ -50,18 +54,67 @@ Key characteristics:
   - Raia AI (chat platform)
   - Calc (calculator)
   - Chess (chess game)
-- **Global search** – Header search bar with `Ctrl + K` shortcut. Results are keyboard-navigable and span all sections and tools.
+- **Global search** – Two access points:
+  - **Mobile & tablet:** Compact `RaiaSpace` button in the header (link to `https://haiere.github.io/raiaspace`).
+  - **Desktop (≥1024px):** Inline search bar with `Ctrl + K` shortcut. Results are keyboard-navigable and span all sections and tools.
 - **Documentation modal** – Each tool includes a documentation button that fetches and renders its `README.md` from GitHub using the `marked` parser.
-- **Music showcase** – Embedded Signature Music player for streaming original tracks.
-- **Quote collection** – A selection of inspirational quotes reflecting the creator's philosophy.
+- **Music showcase** – Embedded Signature Music player for streaming original tracks (responsive height: `55vh` → `560px` → `600px`).
+- **Quote collection** – A grid of inspirational quotes with mobile line-clamp to prevent overly tall cards.
 - **Contact form** – Integrated with Formspree for message submissions.
-- **Donate button** – Direct link to support the project via Sociabuzz, available in the side drawer and footer.
+- **Donate section** – Direct link to support the project via Buy Me a Coffee and Sociabuzz, available in the side drawer and as a dedicated section before the footer.
 - **Language toggle** – Switch between Indonesian and English across all text content.
 - **Dark/light theme** – Manual toggle with system preference detection and `localStorage` persistence.
 - **Glass-morphism UI** – Apple-inspired design with backdrop blur, subtle shadows, and smooth hover animations.
-- **Interactive visual effects** – Spotlight cursor effect on the hero section, tilt cards, and magnetic button animations (non-touch devices).
-- **Accessibility support** – Skip link, ARIA attributes, keyboard navigation, and reduced-motion preferences.
+- **Interactive visual effects** – Spotlight cursor effect on the hero section, tilt cards, and magnetic button animations (non-touch devices only).
+- **Accessibility support** – Skip link, ARIA attributes, keyboard navigation, focus trapping in drawer/modal, and `prefers-reduced-motion` support.
 - **Privacy-first analytics** – Plausible Analytics for lightweight, cookieless traffic measurement.
+
+---
+
+## Responsive Design
+
+The layout is **mobile-first**, built with these breakpoints:
+
+| Breakpoint | Range | Tailwind Prefix |
+|---|---|---|
+| **Mobile** | `< 640px` | *(base)* |
+| **Tablet** | `640px – 1023px` | `sm:` `md:` |
+| **Desktop** | `≥ 1024px` | `lg:` `xl:` |
+
+### Key Responsive Behaviors
+
+| Element | Mobile | Tablet | Desktop |
+|---|---|---|---|
+| **Header search** | `RaiaSpace` button (icon only) | `RaiaSpace` button (icon + label) | Inline search bar + `RaiaSpace` button hidden |
+| **Tools grid** | 1 column | 2 columns | 3 columns |
+| **Quotes grid** | 1 column, line-clamped | 2 columns | 2 columns |
+| **Stats grid** | 2 columns | 4 columns | 4 columns |
+| **Music iframe** | `55vh` (min 420px) | `560px` | `600px` |
+| **Tool action buttons** | Stacked, full-width | Inline | Inline |
+| **Donate buttons** | 1 column (stacked) | 2 columns | 2 columns |
+| **Footer social icons** | 48×48px | 44×44px | 44×44px |
+| **Drawer items** | ≥48px min-height | ≥48px | ≥48px |
+| **Section headings** | `text-2xl` | `text-3xl` | `text-4xl` |
+
+### Touch Targets
+
+All interactive elements meet the **48×48px minimum** on mobile:
+
+- Header buttons (`#menu-btn`, `#theme-toggle`, `.header-search-btn`)
+- Drawer navigation items
+- Language toggle buttons
+- Filter buttons (All / Music / Security / Web)
+- Form inputs (`min-h-[48px]`)
+- Footer navigation links (`min-h-[44px]`)
+- Social media icons
+- Cookie consent buttons
+- Donate buttons (`min-h-[52px]`)
+
+### Anti-Overflow
+
+- `html, body { overflow-x: hidden; max-width: 100%; }`
+- Hero `<h1>` uses `word-break: break-word` (previously `text-nowrap` which caused overflow).
+- Tool cards use `min-width: 0` in grid cells.
 
 ---
 
@@ -85,7 +138,8 @@ Hajir Studio is a static website composed of an HTML entry point and several Jav
 
 ### Hosted Version
 
-1. Open the hosted URL in your browser.
+1. Open the hosted URL in your browser:
+   - Production: `https://hajirstudio.vercel.app` (or `https://hajir.is-a.dev`)
 
 ### Local Version
 
@@ -93,7 +147,7 @@ Hajir Studio is a static website composed of an HTML entry point and several Jav
 2. Open `index.html` directly in a modern web browser.
 
 ```bash
-git clone [https://github.com/haiere/haiere.github.io.git](https://github.com/haiere/haiere.github.io.git)
+git clone https://github.com/haiere/haiere.github.io.git
 cd haiere.github.io
 ```
 
@@ -113,7 +167,7 @@ Upload all files to any static web server, such as:
 
 ### Navigation
 
-- The header provides a logo, global search bar, theme toggle, and menu button.
+- The header provides a logo, a `RaiaSpace` search button (mobile/tablet), an inline search bar (desktop), a theme toggle, and a menu button.
 - The menu button opens a side drawer with navigation links to:
   - About
   - Music
@@ -121,30 +175,30 @@ Upload all files to any static web server, such as:
   - Tools
   - Contact
 - The drawer also includes:
-  - Donate button
+  - Donate buttons (Buy Me a Coffee / Sociabuzz)
   - Language selection (ID/EN)
   - External links (GitHub, RAIA)
   - Legal footer links
 
-### Global Search
+### Search: RaiaSpace
 
-- Press `Ctrl + K` (or `Cmd + K` on macOS) to focus the search input from anywhere.
-- Type to filter across sections and tools.
-- Use arrow keys to navigate results and `Enter` to open the selected item.
-- Press `Escape` to close the search results.
+**Desktop (≥1024px):** Press `Ctrl + K` (or `Cmd + K` on macOS) to focus the inline search input. Type to filter across sections and tools. Use arrow keys to navigate and `Enter` to open. Press `Escape` to close.
+
+**Mobile & Tablet (<1024px):** Tap the `RaiaSpace` button in the header. It opens `https://haiere.github.io/raiaspace` in a new tab (`target="_blank" rel="noopener"`).
 
 ### Sections
 
 | Section | Description |
 |---|---|
-| **Hero** | Introduces Hajir with a tagline, call-to-action buttons, and a scrolling ticker of keywords. |
+| **Hero** | Introduces Hajir with a tagline, `RaiaSpace` badge, call-to-action buttons, and a scrolling ticker of keywords. |
 | **About** | Biographical information, role tags, and statistics (tools released, music releases, original songs, privacy commitment). |
 | **RWR-AMA** | A dedicated promotional card linking to a related project. |
-| **Music** | Embedded Signature Music player for streaming original tracks. |
-| **Quotes** | A grid of four inspirational quotes with author attribution. |
-| **Tools** | A filterable list of free web tools with descriptions, "Open Tool" buttons, and "Cara Penggunaan" buttons that open a documentation modal. |
+| **Music** | Embedded Signature Music player for streaming original tracks with responsive height. |
+| **Quotes** | A 1-column (mobile) / 2-column (tablet+) grid of four inspirational quotes with mobile line-clamping. |
+| **Tools** | A filterable grid (1 / 2 / 3 columns) of free web tools with descriptions, "Open Tool" buttons, and "Cara Penggunaan" buttons that open a documentation modal. |
 | **Contact** | A contact form with validation, submission status, and a fallback message with social media links. |
-| **Footer** | Logo, donate button, social media links, footer navigation, and legal disclaimers. |
+| **Support** | A dedicated section with Buy Me a Coffee and Sociabuzz donation buttons (stacked on mobile, side-by-side on tablet+). |
+| **Footer** | Logo, social media links, footer navigation, and legal disclaimers. |
 
 ### Tool Listing
 
@@ -181,6 +235,17 @@ Upload all files to any static web server, such as:
 - Acceptance stores a cookie consent flag in `localStorage`.
 - The banner uses functional cookies only. No tracking cookies are set by the site itself; Plausible Analytics is cookieless.
 
+### RaiaSpace Search Button
+
+- **Mobile & Tablet:** Configurable via the `.header-search-btn` anchor in `index.html`.
+- **Desktop:** The inline search (`#header-search`) is hidden below `1024px` via CSS.
+- To change the destination, update the `href` attribute:
+
+  ```html
+  <a href="https://haiere.github.io/raiaspace" target="_blank" rel="noopener"
+     aria-label="Cari di RaiaSpace" class="header-search-btn ...">
+  ```
+
 ### Documentation Modal
 
 - Each tool card includes a documentation button with a `data-repo` attribute (e.g., `hajirsync`, `raia-vault`).
@@ -199,7 +264,7 @@ Upload all files to any static web server, such as:
 ```text
 /
 ├── index.html            # Main HTML file
-├── style.css             # Custom CSS (glass-morphism, animations, utilities)
+├── style.css             # Custom CSS (glass-morphism, animations, responsive utilities)
 ├── script.js             # Main JavaScript (navigation, theme, form, animations, search, docs modal)
 ├── i18n.js               # Internationalisation strings (Indonesian and English)
 ├── icons.js              # SVG icon definitions (loaded via `data-icon` attributes)
@@ -214,12 +279,14 @@ Upload all files to any static web server, such as:
 
 To add a new tool to the directory:
 
-1. Add a new `<li>` element to the `#tools-container` with the `tool-card` class.
+1. Add a new `<li class="tool-card" data-category="..." data-repo="...">` element inside `#tools-container`.
 2. Set the `data-category` attribute to an existing category (`music`, `security`, `web`).
 3. Add `data-repo` with the GitHub repository slug for documentation fetching.
 4. Add `data-i18n` attributes for title and description.
 5. Add translations for the new keys in `i18n.js`.
-6. Add a `<button class="tool-docs-btn">` with `data-repo` and `data-tool-name` attributes.
+6. Add a `<button class="tool-docs-btn" data-repo="..." data-tool-name="...">` for the docs modal.
+
+The tool card automatically adapts to the responsive grid (1 / 2 / 3 columns) and inherits mobile full-width buttons.
 
 ### Adding a New Translation
 
@@ -234,6 +301,27 @@ To add a new tool to the directory:
 2. Reference it in HTML using `<svg data-icon="icXX">`.
 3. The `icons.js` script replaces the `<svg>` element with the full SVG markup at runtime.
 
+### Adjusting Breakpoints
+
+The site uses Tailwind's default breakpoints via CSS media queries in `style.css`:
+
+```css
+/* Mobile default */
+#tools-container { grid-template-columns: 1fr; }
+
+/* Tablet */
+@media (min-width: 640px) {
+    #tools-container { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* Desktop */
+@media (min-width: 1024px) {
+    #tools-container { grid-template-columns: repeat(3, 1fr); }
+}
+```
+
+To change the tablet breakpoint, update the `min-width` value in `style.css` and the corresponding Tailwind prefix (`sm:`) in `index.html`.
+
 ---
 
 ## Troubleshooting
@@ -243,10 +331,10 @@ To add a new tool to the directory:
 Ensure the Formspree endpoint is valid. The form uses:
 
 ```text
-[https://formspree.io/f/mpqkqanp](https://formspree.io/f/mpqkqanp)
+https://formspree.io/f/mpqkqanp
 ```
 
-If it fails, check the browser console for errors.
+If it fails, a fallback endpoint `https://formspree.io/f/xgvkobyl` is used automatically. Check the browser console for errors.
 
 ### Theme not persisting
 
@@ -261,7 +349,7 @@ Ensure JavaScript is enabled and that `i18n.js` is loaded before `script.js`.
 The player is embedded via an iframe pointing to:
 
 ```text
-[https://hajir.is-a.dev/signature-music](https://hajir.is-a.dev/signature-music)
+https://signature-music.vercel.app
 ```
 
 If the page fails to load, use the fallback link below the player.
@@ -271,18 +359,33 @@ If the page fails to load, use the fallback link below the player.
 Ensure the `data-repo` attribute on the tool card matches a valid repository path. The modal attempts to fetch:
 
 ```text
-[https://raw.githubusercontent.com/haiere/](https://raw.githubusercontent.com/haiere/)<repo>/main/README.md
+https://raw.githubusercontent.com/haiere/<repo>/main/README.md
 ```
 
-Repositories must be public for this to work.
+Repositories must be public for this to work. The fetch also falls back to the `master` branch if `main` is not found.
 
 ### Search does not return results
 
 Ensure the search input is properly initialised and that the search index is populated. Results are derived from existing sections and tool cards on the page.
 
+### RaiaSpace button not appearing on mobile
+
+- Verify the `.header-search-btn` class is present on the anchor element.
+- Check that the element is not hidden by `@media (min-width: 1024px) { display: none !important; }` (this rule is intentional — the button is desktop-hidden in favor of the inline search).
+
 ### Icons do not appear
 
 Ensure `icons.js` is loaded before `script.js` and that each `data-icon` attribute references a defined icon identifier.
+
+### Layout overflows horizontally on mobile
+
+The site is designed to prevent horizontal overflow via:
+
+- `html, body { overflow-x: hidden; max-width: 100%; }`
+- `#hero h1 { word-break: break-word; }`
+- `#tools-container .tool-card { min-width: 0; }`
+
+If overflow persists, inspect the offending element with DevTools and ensure it does not use `w-screen`, `min-w-*` without `min-w-0`, or `text-nowrap`.
 
 ---
 
@@ -302,7 +405,7 @@ The application is a static site with an HTML entry point and modular JavaScript
 To modify or extend it:
 
 - Edit `index.html` for structure.
-- Edit `style.css` for styles.
+- Edit `style.css` for styles and responsive rules.
 - Edit `script.js` for functionality.
 - Edit `i18n.js` for translations.
 - Edit `icons.js` for SVG icon definitions.
@@ -321,6 +424,24 @@ or
 npx serve
 ```
 
+### Testing Responsiveness
+
+Use Chrome DevTools device toolbar to test at these widths:
+
+| Device | Width |
+|---|---|
+| iPhone SE | 375px |
+| iPhone 12/13/14 | 390px |
+| iPad Mini | 768px |
+| iPad Pro | 1024px |
+| Desktop | 1280px+ |
+
+Verify:
+- Tools grid columns (1 / 2 / 3).
+- Touch target sizes (≥48px on mobile).
+- No horizontal scroll.
+- Header `RaiaSpace` button visibility (mobile: visible, desktop: hidden).
+
 ---
 
 ## License
@@ -337,7 +458,7 @@ For questions, feedback, or support:
 
 - Open an issue on [GitHub](https://github.com/haiere/haiere.github.io/issues).
 - Reach out via the [contact form](https://hajir.is-a.dev/#contact) on the website.
-- Support the project via [Sociabuzz](https://sociabuzz.com/hajirstudio).
+- Support the project via [Sociabuzz](https://sociabuzz.com/hajirstudio) or [Buy Me a Coffee](https://buymeacoffee.com/hajirstudio).
 
 ---
 

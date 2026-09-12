@@ -1,4 +1,4 @@
-    (function() {
+(function() {
         'use strict';
 
         // ===== ICONS (rendered from icons.js registry) =====
@@ -35,6 +35,18 @@
             document.querySelectorAll('[data-i18n-label]').forEach(function(el) {
                 var key = el.dataset.i18nLabel;
                 if (tr[key] !== undefined) el.setAttribute('aria-label', tr[key]);
+            });
+
+            // NEW: translate alt attributes on <img> elements
+            document.querySelectorAll('[data-i18n-alt]').forEach(function(el) {
+                var key = el.dataset.i18nAlt;
+                if (tr[key] !== undefined) el.setAttribute('alt', tr[key]);
+            });
+
+            // NEW: translate title attributes (e.g. iframe title, tooltips)
+            document.querySelectorAll('[data-i18n-title]').forEach(function(el) {
+                var key = el.dataset.i18nTitle;
+                if (tr[key] !== undefined) el.setAttribute('title', tr[key]);
             });
 
             document.querySelectorAll('.lang-btn').forEach(function(btn) {
