@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>404 — Page Not Found</title>
+<style>
+  /* ---------- Design tokens ---------- */
+  :root {
+    --navy-950: #04090F;
+    --navy-900: #060D1A;
+    --navy-800: #0A1428;
+    --navy-700: #0F1D38;
+    --navy-600: #16294B;
+
+    --blue-500: #2C7BE5;
+    --blue-400: #4D9BFF;
+    --blue-300: #7CB8FF;
+    --blue-200: #A9CEFF;
+
+    --text:      #E9F0FB;
+    --text-soft: #9FB1CC;
+    --text-dim:  #6C7F9C;
+
+    --radius-card: 28px;
+    --radius-btn: 14px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body { min-height: 100%; }
+
+  body {
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI",
+                 Roboto, Helvetica, Arial, sans-serif;
+    background: var(--navy-900);
+    color: var(--text);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 48px 24px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+    position: relative;
+  }
+
+  /* ---------- Ambient background glows ---------- */
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background:
+      radial-gradient(900px 620px at 50% -12%, rgba(77, 155, 255, 0.17), transparent 70%),
+      radial-gradient(720px 520px at 88% 104%, rgba(44, 123, 229, 0.11), transparent 72%),
+      radial-gradient(620px 420px at 8% 92%,  rgba(77, 155, 255, 0.07), transparent 72%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* ---------- Faint blueprint grid ---------- */
+  body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(124, 184, 255, 0.055) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(124, 184, 255, 0.055) 1px, transparent 1px);
+    background-size: 64px 64px;
+    -webkit-mask-image: radial-gradient(circle at 50% 42%, #000 0%, transparent 68%);
+    mask-image: radial-gradient(circle at 50% 42%, #000 0%, transparent 68%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* ---------- Card ---------- */
+  .card {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 660px;
+    padding: 64px 56px 56px;
+    text-align: center;
+    border-radius: var(--radius-card);
+    background:
+      linear-gradient(180deg, rgba(22, 41, 75, 0.60) 0%, rgba(10, 20, 40, 0.82) 100%);
+    border: 1px solid rgba(124, 184, 255, 0.13);
+    box-shadow:
+      0 44px 90px -28px rgba(0, 0, 0, 0.80),
+      0 10px 32px -14px rgba(0, 0, 0, 0.55),
+      inset 0 1px 0 rgba(255, 255, 255, 0.055);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+  }
+
+  /* Soft inner highlight at the top edge of the card */
+  .card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 12%;
+    right: 12%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(124, 184, 255, 0.55), transparent);
+    pointer-events: none;
+  }
+
+  /* ---------- Badge ---------- */
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    padding: 7px 15px 7px 12px;
+    margin-bottom: 34px;
+    border-radius: 999px;
+    background: rgba(77, 155, 255, 0.09);
+    border: 1px solid rgba(124, 184, 255, 0.20);
+    box-shadow: 0 6px 20px -10px rgba(77, 155, 255, 0.55);
+    font-size: 11.5px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--blue-200);
+  }
+
+  .dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--blue-400);
+    box-shadow: 0 0 0 0 rgba(77, 155, 255, 0.55);
+    animation: pulse 2.4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  @keyframes pulse {
+    0%   { box-shadow: 0 0 0 0 rgba(77, 155, 255, 0.50); }
+    70%  { box-shadow: 0 0 0 8px rgba(77, 155, 255, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(77, 155, 255, 0); }
+  }
+
+  /* ---------- 404 headline ---------- */
+  .code-wrap {
+    position: relative;
+    display: inline-block;
+    margin-bottom: 4px;
+  }
+
+  .code-wrap::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 52%;
+    transform: translate(-50%, -50%);
+    width: 118%;
+    height: 130%;
+    background: radial-gradient(closest-side, rgba(77, 155, 255, 0.22), transparent 72%);
+    filter: blur(22px);
+    z-index: -1;
+    pointer-events: none;
+  }
+
+  .code {
+    font-size: clamp(96px, 19vw, 168px);
+    font-weight: 800;
+    line-height: 0.9;
+    letter-spacing: -0.055em;
+    background: linear-gradient(175deg, #FFFFFF 4%, var(--blue-200) 46%, var(--blue-400) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    filter: drop-shadow(0 14px 44px rgba(77, 155, 255, 0.30));
+    user-select: none;
+  }
+
+  /* ---------- Copy ---------- */
+  .title {
+    font-size: clamp(22px, 3.4vw, 28px);
+    font-weight: 650;
+    letter-spacing: -0.015em;
+    color: var(--text);
+    margin-bottom: 14px;
+  }
+
+  .message {
+    max-width: 430px;
+    margin: 0 auto;
+    font-size: 15.5px;
+    line-height: 1.68;
+    font-weight: 400;
+    color: var(--text-soft);
+  }
+
+  /* ---------- Button ---------- */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 38px;
+    padding: 16px 34px;
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 0.005em;
+    font-family: inherit;
+    color: #FFFFFF;
+    text-decoration: none;
+    border-radius: var(--radius-btn);
+    background: linear-gradient(180deg, var(--blue-400) 0%, var(--blue-500) 100%);
+    box-shadow:
+      0 14px 34px -12px rgba(77, 155, 255, 0.70),
+      0 3px 10px -4px rgba(0, 0, 0, 0.45),
+      inset 0 1px 0 rgba(255, 255, 255, 0.30);
+    transition: transform 0.22s cubic-bezier(0.22, 1, 0.36, 1),
+                box-shadow 0.22s ease,
+                filter 0.22s ease;
+  }
+
+  .btn svg {
+    transition: transform 0.22s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .btn:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.07);
+    box-shadow:
+      0 20px 44px -12px rgba(77, 155, 255, 0.82),
+      0 4px 12px -4px rgba(0, 0, 0, 0.45),
+      inset 0 1px 0 rgba(255, 255, 255, 0.35);
+  }
+
+  .btn:hover svg { transform: translateX(3px); }
+
+  .btn:active { transform: translateY(0); }
+
+  .btn:focus-visible {
+    outline: 2px solid var(--blue-200);
+    outline-offset: 4px;
+  }
+
+  /* ---------- Secondary hint ---------- */
+  .hint {
+    margin-top: 24px;
+    font-size: 13.5px;
+    color: var(--text-dim);
+  }
+
+  .hint a {
+    color: var(--blue-300);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(124, 184, 255, 0.30);
+    padding-bottom: 1px;
+    transition: color 0.2s ease, border-color 0.2s ease;
+  }
+
+  .hint a:hover {
+    color: var(--blue-200);
+    border-color: rgba(169, 206, 255, 0.75);
+  }
+
+  /* ---------- Entrance animation ---------- */
+  @keyframes rise {
+    from { opacity: 0; transform: translateY(18px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .card > * {
+    animation: rise 0.85s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+  .card > *:nth-child(1) { animation-delay: 0.05s; }
+  .card > *:nth-child(2) { animation-delay: 0.13s; }
+  .card > *:nth-child(3) { animation-delay: 0.21s; }
+  .card > *:nth-child(4) { animation-delay: 0.29s; }
+  .card > *:nth-child(5) { animation-delay: 0.37s; }
+  .card > *:nth-child(6) { animation-delay: 0.45s; }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.001ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.001ms !important;
+    }
+  }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width: 560px) {
+    body { padding: 28px 18px; }
+    .card { padding: 48px 26px 42px; border-radius: 22px; }
+    .badge { margin-bottom: 26px; }
+    .message { font-size: 15px; }
+    .btn { width: 100%; padding: 16px 24px; margin-top: 32px; }
+    .hint { margin-top: 20px; }
+  }
+</style>
+</head>
+<body>
+
+  <main class="card" role="main">
+    <span class="badge"><span class="dot"></span> Error 404</span>
+
+    <div class="code-wrap">
+      <h1 class="code">404</h1>
+    </div>
+
+    <h2 class="title">Page Not Found</h2>
+
+    <p class="message">
+      The page you're looking for doesn't exist or has been moved.
+      Don't worry everything is still right where you left it.
+    </p>
+
+    <a class="btn" href="/">
+      Back to Homepage
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
+           stroke="currentColor" stroke-width="2.2"
+           stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <line x1="5" y1="12" x2="19" y2="12"></line>
+        <polyline points="12 5 19 12 12 19"></polyline>
+      </svg>
+    </a>
+
+    <p class="hint">Still stuck? <a href="/support">Contact support</a></p>
+  </main>
+
+</body>
+</html>
