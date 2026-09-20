@@ -10,6 +10,7 @@ window.i18n = {
         menu_title: 'Menu',
         back_to_top: 'Kembali ke atas',
 
+        nav_home: 'Beranda',
         nav_about: 'Tentang',
         nav_music: 'Musik',
         nav_tools: 'Tools',
@@ -176,7 +177,32 @@ window.i18n = {
         cookie_text: 'Situs ini menggunakan cookie untuk meningkatkan pengalamanmu. Dengan menggunakan Haiere, kamu setuju dengan',
         cookie_policy: 'Kebijakan Cookie',
         cookie_reject: 'Tolak',
-        cookie_accept: 'Terima'
+        cookie_accept: 'Terima',
+        cookie_customize: 'Atur',
+        cookie_settings_title: 'Pengaturan Cookie',
+        cookie_settings_desc: 'Pilih cookie yang boleh berjalan di situs ini. Kamu bisa ubah pilihan ini kapan saja lewat ikon cookie di footer.',
+        cookie_necessary: 'Perlu',
+        cookie_necessary_desc: 'Dibutuhkan agar situs berfungsi dengan baik. Selalu aktif.',
+        cookie_analytics: 'Analitik',
+        cookie_analytics_desc: 'Membantu memahami bagian mana yang paling sering dikunjungi.',
+        cookie_marketing: 'Marketing',
+        cookie_marketing_desc: 'Dipakai untuk mengukur efektivitas promosi tools dan musik.',
+        cookie_preferences: 'Preferensi',
+        cookie_preferences_desc: 'Mengingat tema dan bahasa pilihanmu di kunjungan berikutnya.',
+        cookie_always_on: 'Selalu aktif',
+        cookie_save: 'Simpan Pengaturan',
+        cookie_settings_reopen_label: 'Buka pengaturan cookie',
+        toast_cookie_saved: 'Pengaturan cookie disimpan.',
+
+        footer_newsletter_title: 'Kabar Terbaru [BETA]',
+        footer_newsletter_desc: 'Info rilis tools dan lagu baru, jarang-jarang dan tanpa spam.',
+        footer_newsletter_placeholder: 'Alamat email kamu',
+        footer_newsletter_submit: 'Ikut',
+        footer_newsletter_sending: 'Mengirim...',
+        footer_newsletter_success: 'Terima kasih! Kamu terdaftar.',
+        footer_newsletter_error: 'Gagal mendaftar, coba lagi nanti.',
+        footer_sitemap_title: 'Jelajah',
+        footer_connect_title: 'Terhubung'
     },
 
     en: {
@@ -190,6 +216,7 @@ window.i18n = {
         menu_title: 'Menu',
         back_to_top: 'Back to top',
 
+        nav_home: 'Home',
         nav_about: 'About',
         nav_music: 'Music',
         nav_tools: 'Tools',
@@ -356,6 +383,31 @@ window.i18n = {
         cookie_text: 'This site uses cookies to improve your experience. By using Haiere, you agree to our',
         cookie_policy: 'Cookie Policy',
         cookie_reject: 'Reject',
-        cookie_accept: 'Accept'
+        cookie_accept: 'Accept',
+        cookie_customize: 'Customize',
+        cookie_settings_title: 'Cookie Settings',
+        cookie_settings_desc: 'Choose which cookies can run on this site. You can change this anytime from the cookie icon in the footer.',
+        cookie_necessary: 'Necessary',
+        cookie_necessary_desc: 'Required for the site to function properly. Always on.',
+        cookie_analytics: 'Analytics',
+        cookie_analytics_desc: 'Helps understand which sections get visited most.',
+        cookie_marketing: 'Marketing',
+        cookie_marketing_desc: 'Used to measure how well tools and music reach people.',
+        cookie_preferences: 'Preferences',
+        cookie_preferences_desc: 'Remembers your theme and language choice for next time.',
+        cookie_always_on: 'Always on',
+        cookie_save: 'Save Settings',
+        cookie_settings_reopen_label: 'Open cookie settings',
+        toast_cookie_saved: 'Cookie settings saved.',
+
+        footer_newsletter_title: 'Stay in the Loop [BETA]',
+        footer_newsletter_desc: 'New tool and song releases, rarely and never spammy.',
+        footer_newsletter_placeholder: 'Your email address',
+        footer_newsletter_submit: 'Join',
+        footer_newsletter_sending: 'Sending...',
+        footer_newsletter_success: 'Thanks! You\'re on the list.',
+        footer_newsletter_error: 'Could not sign up, try again later.',
+        footer_sitemap_title: 'Explore',
+        footer_connect_title: 'Connect'
     }
 };

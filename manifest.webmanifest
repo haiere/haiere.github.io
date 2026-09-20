@@ -1,18 +1,33 @@
 {
+  "//": "HajirStudio — PWA manifest. Reference: https://www.w3.org/TR/appmanifest/",
+  "//id": "PWA identity — do NOT change once installed. Changing resets install.",
   "id": "/",
+
+  "//name": "Install prompt & app switcher label",
   "name": "Hajir Studio | Haiere",
   "short_name": "Haiere",
+
   "description": "Fast, privacy-first web tools, open-source projects, and music by Hajir (Haiere).",
+
   "start_url": "/?source=pwa",
   "scope": "/",
+
+  "//display": "display_override tries richest first, falls back to standalone, then browser",
   "display": "standalone",
   "display_override": ["window-controls-overlay", "standalone", "browser"],
+
   "orientation": "portrait-primary",
   "lang": "id",
   "dir": "ltr",
-  "background_color": "#020617",
-  "theme_color": "#020617",
+
+  "//colors": "Match <meta name=\"theme-color\"> and dark bg in index.html / style.css",
+  "theme_color": "#0A192F",
+  "background_color": "#0A192F",
+
   "categories": ["productivity", "utilities", "developer"],
+  "prefer_related_applications": false,
+
+  "//icons": "WebP works on Chromium. For Safari/Firefox add PNG equivalents later.",
   "icons": [
     {
       "src": "https://i.postimg.cc/8PJ0bhb1/H-haiere.webp",
@@ -33,32 +48,35 @@
       "purpose": "maskable"
     }
   ],
+
+  "//screenshots": "Form factor must use lowercase 'x' in sizes (not ×). 'jpeg' not 'jpg'. Add a 'narrow' screenshot to unlock the rich mobile install prompt.",
   "screenshots": [
     {
-      "src": "https://i.postimg.cc/0NPPDtVr/Screenshot-20260911-135652.jpg",
-      "sizes": "1080×656",
-      "type": "image/jpg",
+      "src": "https://i.postimg.cc/nzpCzkk1/Screenshot-20260920-142421.jpg",
+      "sizes": "792x492",
+      "type": "image/jpeg",
       "form_factor": "wide",
-      "label": "Hajir Studio homepage"
+      "label": "Hajir Studio — homepage with hero, tools grid, and music player"
     }
   ],
+
   "shortcuts": [
     {
       "name": "Tools",
       "short_name": "Tools",
-      "description": "Browse free tools",
+      "description": "Browse free, privacy-first web tools",
       "url": "/?source=pwa#tools"
     },
     {
       "name": "Music",
       "short_name": "Music",
-      "description": "Listen to Haiere's music",
+      "description": "Listen to Haiere's signature music",
       "url": "/?source=pwa#music"
     },
     {
       "name": "Contact",
       "short_name": "Contact",
-      "description": "Send a message",
+      "description": "Send a message to Hajir",
       "url": "/?source=pwa#contact"
     }
   ]
