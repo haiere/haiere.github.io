@@ -1,4 +1,4 @@
-# Hajir Studio
+# Haiere — Hajir Studio
 
 [![GitHub](https://img.shields.io/badge/GitHub-Repository-181717?style=flat-square&logo=github&logoColor=white)](https://github.com/haiere/haiere.github.io)
 [![Stars](https://img.shields.io/github/stars/haiere/haiere.github.io?style=flat-square&logo=github)](https://github.com/haiere/haiere.github.io/stargazers)
@@ -6,174 +6,210 @@
 [![Issues](https://img.shields.io/github/issues/haiere/haiere.github.io?style=flat-square&logo=github)](https://github.com/haiere/haiere.github.io/issues)
 [![License](https://img.shields.io/github/license/haiere/haiere.github.io?style=flat-square)](LICENSE)
 [![Last Commit](https://img.shields.io/github/last-commit/haiere/haiere.github.io?style=flat-square)](https://github.com/haiere/haiere.github.io/commits/main)
+[![Version](https://img.shields.io/badge/version-v20260927.0-B4788C?style=flat-square)](#)
 [![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=flat-square&logo=html5&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/HTML)
 [![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=flat-square&logo=css3&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/CSS)
-[![JavaScript](https://img.shields.io/badge/JavaScript-ES6%2B-F7DF1E?style=flat-square&logo=javascript&logoColor=black)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
+[![JavaScript](https://img.shields.io/badge/JavaScript-ES2022-F7DF1E?style=flat-square&logo=javascript&logoColor=black)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=flat-square&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
 [![Responsive](https://img.shields.io/badge/Responsive-Mobile--First-3B82F6?style=flat-square)](#responsive-design)
-[![PWA](https://img.shields.io/badge/PWA-supported-5A0FC8?style=flat-square)](manifest.webmanifest)
-[![Plausible](https://img.shields.io/badge/Analytics-Plausible-5D9CEC?style=flat-square&logo=plausible&logoColor=white)](https://plausible.io/)
-[![Sociabuzz](https://img.shields.io/badge/Support-Sociabuzz-FF5722?style=flat-square)](https://sociabuzz.com/hajirstudio)
+[![a11y](https://img.shields.io/badge/a11y-WCAG_2.1_AA-4B0082?style=flat-square)](#accessibility)
+[![PWA](https://img.shields.io/badge/PWA-ready-5A0FC8?style=flat-square)](manifest.webmanifest)
+[![Support](https://img.shields.io/badge/Support-Buy_Me_a_Coffee-FFDD00?style=flat-square&logo=buymeacoffee&logoColor=black)](https://buymeacoffee.com/hajirstudio)
 
 A personal portfolio and tool hub for **Hajir Muhaajir**, known online as **Haiere**.
 
-Hajir Studio showcases web development projects, privacy-first digital tools, original music, experiments, and ways to get in touch.
+Haiere showcases web development projects, privacy-first digital tools, original music, AI chatbots, and a curated quote collection — all built on the open web with no backend.
+
+**Live:** [hajir.is-a.dev](https://hajir.is-a.dev)
+
+---
 
 ## Overview
 
-Hajir Studio is a client-side portfolio website for a web developer, AI builder, and musician based in Indonesia.
+Haiere is a client-side portfolio for a web developer, AI builder, and musician based in Indonesia. The site is a single page (`index.html`) plus a design-system reference (`styleguide.html`), styled with a glass-morphism aesthetic and driven by four small vanilla-JS modules.
 
 The site brings together:
 
-- Free privacy-first web tools
-- Original music releases
-- A personal quote collection
-- Project documentation
-- Contact and support links
-- External social and developer profiles
+- **Beat Tools** — a filterable directory of 12 free web tools and apps
+- **AI chatbots** — Raia AI and Kirana, both provider-based
+- Original music (`signature-music.vercel.app` embedded player)
+- A curated quote collection
+- Contact form (Formspree-backed) and social links
+- Support links (Buy Me a Coffee, Sociabuzz)
+- Full dark/light theming, bilingual content (ID/EN), global search, README-powered documentation modals, and persistent local preferences
 
-The website uses a glass-morphism visual style with dark/light themes, bilingual content, global search, documentation modals, and persistent local preferences.
+The site has **no custom backend**. Selected features rely on external services: Formspree, GitHub raw content, Google Fonts, Font Awesome, Tailwind CDN, Marked.js, and the embedded Signature Music player.
 
-The main website does not require a custom backend. However, selected features rely on external services such as Formspree, GitHub, Google Fonts, Font Awesome, Marked.js, Plausible Analytics, and the embedded music player.
+---
+
+## Version — v20260927.0
+
+**Release focus:**
+
+- Stronger SEO foundation (schema.org `@graph`, `ItemList`, `SearchAction`, per-theme `theme-color`, hreflang)
+- **Beat Tools** expanded to include **every** tool the author ships, including **Kirana**, **Raia AI**, **RaiaSpace**, **MyDev**, and **LoveYou**
+- Kirana and Raia AI are documented as **provider-based chatbots** (`cat_ai_chatbot`)
+- Music section now exposes a **README-driven "How to Use"** guidance modal sourced from `haiere/signature-music`
+- **SVG-only icon policy** — every interface icon is a `<svg data-icon="icXX">`; zero emoji-as-icon
+- Full **i18n coverage** — every visible string resolves through `data-i18n*`
+- **Critical CSS fallback** in `index.html` renders the layout correctly on first paint, before Tailwind CDN arrives
+- New self-contained `styleguide.html` (design-system reference)
+- Fixed a Tailwind cold-start bug where unsized SVGs blew up to container width on slow mobile connections
+
+---
 
 ## Features
 
-### Tool directory
+### Beat Tools
 
-A collection of free web tools, including:
+A filterable directory of every tool the author ships.
 
-- **HajirSync** — Generate synchronized LRC lyric files.
-- **Raia Vault** — Generate and manage strong passwords locally.
-- **Raia Scrub** — Remove sensitive metadata from files and images.
-- **Raia Delta** — Compare two blocks of text and highlight differences.
-- **Raiamify** — Lightweight AI assistance.
-- **Raia AI** — AI chat platform supporting multiple providers.
-- **Calc** — Simple browser-based calculator.
-- **Chess** — Classic chess game.
+| #  | Tool         | Category    | Description                                                |
+|----|--------------|-------------|------------------------------------------------------------|
+| 01 | **HajirSync**    | Music       | Generate synchronized LRC lyric files.                     |
+| 02 | **Raia Vault**   | Security    | Generate strong random passwords locally.                  |
+| 03 | **Raia Scrub**   | Security    | Remove sensitive metadata (GPS, EXIF) from files.          |
+| 04 | **Raia Delta**   | Developer   | Compare two blocks of text and highlight differences.      |
+| 05 | **Raiamify**     | AI          | Lightweight AI assistance for ideas and writing.           |
+| 06 | **Raia AI**      | AI Chatbot  | Provider-based AI chatbot.                                 |
+| 07 | **Kirana**       | AI Chatbot  | Provider-based AI chatbot for warm, creative conversations.|
+| 08 | **RaiaSpace**    | Web         | Privacy-friendly search experience.                        |
+| 09 | **Calc**         | Web         | Simple browser-based calculator.                           |
+| 10 | **Chess**        | Web         | Classic chess game.                                        |
+| 11 | **MyDev**        | Developer   | Compact developer utility bundle.                          |
+| 12 | **LoveYou**      | Web         | Small interactive gift page.                               |
+
+**Filters:** All, AI, Music, Security, Web, Developer. Arrow keys cycle through filter chips (`role="tablist"`), and the active state is exposed via `aria-selected`.
+
+> **Chatbot rule.** `Raia AI` and `Kirana` both use a **provider-based architecture** — the front-end talks to a provider abstraction, so the underlying model is swappable without any UI change. Both carry the `AI Chatbot` category label.
 
 ### Global search
 
-The header includes a global search interface that:
+Header search with:
 
-- Searches across sections and tool cards.
-- Opens with `Ctrl + K` on Windows/Linux.
-- Opens with `Cmd + K` on macOS.
-- Supports keyboard navigation.
-- Allows arrow-key selection and Enter to open a result.
-- Closes with the Escape key.
+- Cross-section and per-tool indexing
+- `Ctrl + K` (Win/Linux) and `⌘ + K` (macOS) shortcut; hint auto-detects platform
+- Live filtering as you type
+- `Escape` to close, `Enter`/click to navigate
+- Rebuilt automatically when the language changes
 
 ### Documentation modal
 
-Tool documentation is loaded from public GitHub repositories.
-
-When a tool documentation button is clicked, the website requests:
+Tool documentation loads from public GitHub repositories at runtime:
 
 ```text
-[https://raw.githubusercontent.com/haiere/](https://raw.githubusercontent.com/haiere/)<repository>/main/README.md
+[https://raw.githubusercontent.com/haiere/](https://raw.githubusercontent.com/haiere/)<repository>/<branch>/README.md
 ```
 
-The returned Markdown is rendered inside a modal using Marked.js.
+The modal tries `main` first, then `master`. Rendered Markdown goes through Marked.js; if that library fails to load, the raw README is shown as `<pre>` so content is never lost.
 
-The target repository must:
+Target repositories must:
 
-- Be public.
-- Use the `main` branch.
-- Contain a readable `README.md`.
-- Allow access to raw GitHub content.
+- Be public
+- Contain a readable `README.md`
+- Allow `raw.githubusercontent.com` fetches
 
-### Music showcase
+The Music section uses this same mechanism to display the Signature Music README via `data-repo="signature-music"`.
 
-The music section embeds the Signature Music player for streaming original tracks.
+### Music
 
-If the embedded player cannot load, the page provides a fallback link to the music service.
+Embeds the Signature Music player (`signature-music.vercel.app`) with:
+
+- README-based **How to Use** guidance (fetched from `haiere/signature-music`)
+- Fallback link if the iframe fails
+- Direct link to the GitHub repository
 
 ### Contact form
 
-The contact section provides a client-side form connected to Formspree.
+Client-side form backed by Formspree with:
 
-Formspree processes the submission and forwards the message according to the configured Formspree endpoint. The static website itself does not operate a custom mail backend.[web:94][web:96]
+- Field-level validation (name, email, message)
+- Live error clearing on input
+- Automatic fallback endpoint if the primary fails
+- Full i18n for validation and status messages
 
-### Support section
+### Cookie banner & settings
 
-Visitors can support the project through:
-
-- Buy Me a Coffee
-- Sociabuzz
-
-Support links are available in the drawer, footer, and dedicated support section.
+- Accept / Reject / Customize on first visit
+- Modal with toggles for Analytics, Marketing, and Preferences (Necessary is always on)
+- Persistent preference state in `localStorage`
+- Reopenable from two entry points (drawer + footer), each with a unique id
+- Focus trap and focus-restore on close
 
 ### Language switcher
 
-The interface supports Indonesian and English.
+Indonesian and English, driven by `i18n.js`.
 
-The selected language is stored locally in the browser and is restored during the next visit.
+- Auto-detected from `navigator.language`
+- Persisted in `localStorage['haiere-lang']`
+- Rebuilds the search index on switch
 
 ### Theme switcher
 
-The site supports:
+Dark / light with system-preference detection:
 
-- Dark mode
-- Light mode
-- System preference detection
-- Persistent theme selection
+```text
+User-selected theme  →  localStorage['theme']
+       ↓
+System preference (prefers-color-scheme)
+```
 
-The initial theme follows the browser or operating system preference unless the visitor has already selected a theme manually.
+Applied by a tiny inline script in `<head>` — before CSS — so there is no first-paint flash.
 
 ### Accessibility
 
-The interface includes:
+- Skip-to-content link
+- Semantic landmarks (`header`, `nav`, `main`, `section`, `footer`)
+- ARIA labels, `aria-live` regions, `role="dialog"`, `aria-modal`
+- Keyboard navigation for drawer, modals, filter chips, and search
+- Visible focus rings (3px accent outline, 3px offset)
+- Focus traps and focus-restore for every modal
+- Escape dismissal everywhere
+- Minimum 44×44px touch targets
+- Full `prefers-reduced-motion` support
+- Decorative visuals (aurora mesh, grain overlay, cursor halo, hairline grid) are `aria-hidden`
 
-- Skip navigation support
-- Semantic HTML landmarks
-- ARIA labels and live regions
-- Keyboard navigation
-- Visible focus states
-- Modal focus handling
-- Escape-key dismissal
-- Reduced-motion support
-- Minimum touch targets for interactive controls
+### Privacy-first design
 
-Decorative elements such as the aurora mesh, grain overlay, cursor effects, and visual grids are hidden from assistive technologies.
+- No analytics scripts
+- No tracking pixels
+- No cookies set by the site itself (only `localStorage` for theme, language, and consent)
+- Contact submissions handled by Formspree, not stored by Haiere
+- All tools run client-side where possible
 
-### Privacy-first analytics
-
-The site uses Plausible Analytics for aggregate traffic measurement.
-
-Plausible states that it does not use cookies or persistent identifiers and does not build personal profiles from visitors.[web:93][web:95][web:98]
+---
 
 ## Requirements
 
-A modern browser with JavaScript enabled is required.
+A modern browser with JavaScript enabled.
 
-Supported browsers include:
-
-- Chrome
-- Firefox
-- Edge
-- Safari
-- Other current Chromium- or WebKit-based browsers
+- Chrome / Edge (Chromium 90+)
+- Firefox 88+
+- Safari 14+
+- Any current Chromium- or WebKit-based browser
 
 An internet connection is required to load:
 
-- Google Fonts: Inter, Sora, and JetBrains Mono
+- Google Fonts (Inter, Sora, JetBrains Mono)
 - Font Awesome
 - Tailwind CSS via CDN
 - Marked.js
-- Plausible Analytics
-- The embedded Signature Music player
-- README files fetched from GitHub
+- Signature Music player iframe
+- README files from GitHub
 
-The contact form also requires a valid Formspree endpoint.
+The contact form also requires reachable Formspree endpoints.
+
+---
 
 ## Installation
 
-Hajir Studio is a static website.
+Haiere is a static website.
 
 ### Hosted version
 
-Open the hosted website in a modern browser.
+Open [hajir.is-a.dev](https://hajir.is-a.dev) in any modern browser.
 
-### Clone the repository
+### Clone
 
 ```bash
 git clone [https://github.com/haiere/haiere.github.io.git](https://github.com/haiere/haiere.github.io.git)
@@ -182,10 +218,10 @@ cd haiere.github.io
 
 ### Run locally
 
-You can open `index.html` directly, but using a local server is recommended:
+Opening `index.html` directly works, but a local server is recommended for module loading and iframe embedding:
 
 ```bash
-python -m http.server
+python -m http.server 8000
 ```
 
 Or:
@@ -194,418 +230,313 @@ Or:
 npx serve
 ```
 
-Then open the local URL shown by the server.
+Open the printed URL (usually `http://localhost:8000`).
 
 ### Deploy
 
-The project can be deployed to any static hosting provider, including:
+Any static host works. No build step is required:
 
-- GitHub Pages
+- GitHub Pages (already configured)
 - Cloudflare Pages
 - Netlify
 - Vercel
 - Any standard static web server
 
-No build command is required.
+---
 
 ## Usage
 
-### Navigation
+### Header
 
-The header contains:
-
-- Brand logo
-- Global search
+- Brand logo → `#hero`
+- Global search (visible at ≥ 860px)
 - RaiaSpace link
 - Theme toggle
-- Menu button
-- Side drawer trigger
+- Hamburger → side drawer
 
-The side drawer contains:
+### Side drawer
 
-- About
-- Music
-- Quotes
-- Tools
-- Contact
-- Support links
-- Language selector
-- External links
-- Cookie settings
-- Legal and privacy links
+About · Music · Quotes · Tools · Contact · GitHub · RAIA · Kirana · Support (Coffee / Buzz) · Language selector · Cookie settings · Privacy / Terms · Human-made badge.
 
 ### Sections
 
-| Section | Description |
-| --- | --- |
-| Hero | Introduction, tagline, RaiaSpace badge, calls to action, and keyword ticker. |
-| About | Biography, portrait, role tags, focus areas, and project statistics. |
-| RWR | Promotional card for a related project. |
-| Music | Embedded Signature Music player and original releases. |
-| Quotes | Inspirational quotes with author attribution. |
-| Tools | Filterable directory of free web tools. |
-| Contact | Validated contact form and social-media fallback links. |
-| Support | Buy Me a Coffee and Sociabuzz links. |
-| Footer | Logo, navigation, social links, legal information, and cookie settings shortcut. |
+| Section      | Description                                                                 |
+|--------------|-----------------------------------------------------------------------------|
+| Hero         | Intro, tagline, RaiaSpace badge, CTAs, keyword ticker.                      |
+| About        | Bio, portrait orbit, role tags, focus pills, project stats.                 |
+| RWR          | Promotional card for a related project.                                     |
+| Music        | Signature Music player, README guide button, fallback link.                 |
+| Quotes       | Curated quotes with attribution.                                            |
+| Beat Tools   | Filterable directory of 12 tools, docs modals, external links.              |
+| Contact      | Validated form + social-media fallback links.                               |
+| Support      | Buy Me a Coffee and Sociabuzz.                                              |
+| Footer       | Brand, sitemap, Beat Tools links, social links, cookie settings, legal.     |
 
-## Tool listing
-
-| Tool | Category | Description |
-| --- | --- | --- |
-| HajirSync | Music | Generate synchronized LRC lyric files. |
-| Raia Vault | Security | Generate strong random passwords. |
-| Raia Scrub | Security | Remove sensitive metadata such as GPS data. |
-| Raia Delta | Web | Compare two blocks of text and highlight differences. |
-| Raiamify | Web | Lightweight AI assistance. |
-| Raia AI | Web | AI chat platform supporting multiple providers. |
-| Calc | Web | Simple browser-based calculator. |
-| Chess | Web | Classic chess game. |
+---
 
 ## Configuration
 
 ### Language
 
-The language system is defined in `i18n.js`.
+Defined in `i18n.js`. Current language persisted under `localStorage['haiere-lang']`.
 
-The current language is stored in `localStorage` and restored on later visits.
+Default resolution:
 
-The default language is selected from `navigator.language`:
-
-- Indonesian browser settings use Indonesian.
-- Other languages default to English unless explicitly supported.
+1. `localStorage['haiere-lang']` if present
+2. `navigator.language` if it starts with `id` → Indonesian
+3. Otherwise → English
 
 ### Theme
 
-The theme system stores the selected value in `localStorage`.
-
-The initial theme follows:
-
-```text
-User-selected theme
-↓
-Saved local preference
-↓
-System preference
-```
-
-The system preference is detected using:
-
-```js
-window.matchMedia('(prefers-color-scheme: dark)')
-```
+Defined in `script.js` and applied pre-paint by an inline `<head>` script. Persisted under `localStorage['theme']` (values: `'dark'` | `'light'`).
 
 ### Cookie preferences
 
-The cookie interface provides:
+- `localStorage['haiere-cookie-prefs']` — JSON `{ analytics, marketing, preferences }`.
+- `localStorage['haiere-cookie']` — consent state (`accepted` | `declined` | `customized`).
 
-- Accept
-- Reject
-- Customize
+### Adding a tool card
 
-The settings modal includes:
-
-- Necessary cookies
-- Analytics
-- Marketing
-- Preferences
-
-Necessary functionality is always enabled.
-
-Cookie preference state is stored locally in the browser. The application uses local storage for interface preferences such as theme, language, and consent state.
-
-Plausible Analytics is designed to operate without cookies or persistent identifiers, so it should not be described as a conventional tracking-cookie service.[web:93][web:98]
-
-### Documentation modal
-
-Each tool card should include:
+Tool cards require a `data-repo` (for the docs modal) and a `data-category` (for filters).
 
 ```html
-<li
-  class="tool-card"
-  data-category="security"
-  data-repo="raia-vault">
+<li class="tool-card reveal glass-card glass-hover group flex h-full flex-col overflow-hidden rounded-[2rem] border border-slate-200/60 bg-white/70 p-5 backdrop-blur-xl transition-all duration-300 hover:-translate-y-1 dark:border-slate-800/60 dark:bg-slate-900/55 sm:p-6"
+    data-category="security"
+    data-repo="raia-vault">
 
-  <h3 data-i18n="tool_raia_vault_title">
-    Raia Vault
+  <div class="mb-2 flex items-center gap-3">
+    <span class="tool-number font-mono text-sm font-bold text-blue-600 dark:text-blue-400">02</span>
+    <div class="font-mono text-[9px] font-semibold uppercase tracking-[0.15em] text-blue-600 dark:text-blue-400">
+      <span class="inline-flex items-center gap-1.5">
+        <svg class="h-2.5 w-2.5" data-icon="ic13" aria-hidden="true"></svg>
+        <span data-i18n="cat_password">Password Manager</span>
+      </span>
+    </div>
+    <span class="status-badge-stable" data-i18n="status_stable">Stable</span>
+  </div>
+
+  <h3 class="mb-1.5 font-display text-lg font-bold text-slate-900 dark:text-white">
+    <span class="inline-flex items-center gap-2">
+      <svg class="h-4 w-4 text-blue-500" data-icon="ic13" aria-hidden="true"></svg>
+      Raia Vault
+    </span>
   </h3>
 
-  <p data-i18n="tool_raia_vault_description">
-    Generate strong passwords locally.
+  <p class="mb-4 flex-1 text-sm leading-relaxed text-slate-600 dark:text-slate-400"
+     data-i18n="tool2_desc">
+    Generate strong random passwords to help protect your accounts.
   </p>
 
-  <button
-    type="button"
-    class="tool-docs-btn"
-    data-repo="raia-vault"
-    data-tool-name="Raia Vault">
-
-    How to Use
-  </button>
+  <div class="tool-actions mt-auto">
+    <a href="[https://raia-vault.haiere.workers.dev](https://raia-vault.haiere.workers.dev)"
+       target="_blank" rel="noopener noreferrer"
+       class="tool-open-btn group/btn">
+      <span data-i18n="tool_open">Open Tool</span>
+      <svg class="h-3.5 w-3.5" data-icon="ic12" aria-hidden="true"></svg>
+    </a>
+    <button type="button"
+            class="tool-docs-btn group/btn"
+            data-repo="raia-vault"
+            data-tool-name="Raia Vault">
+      <span data-i18n="tool_docs">How to Use</span>
+      <svg class="h-3.5 w-3.5" data-icon="ic33" aria-hidden="true"></svg>
+    </button>
+  </div>
 </li>
 ```
 
-The repository slug must match the GitHub repository name.
+The `data-repo` slug must exactly match the GitHub repository name.
+
+### Adding a translation
+
+Add the key to both language objects in `i18n.js`, then reference it in HTML:
+
+```js
+window.i18n = {
+  id: {
+    tool_new_title: 'Alat Baru',
+    tool_new_desc:  'Deskripsi singkat tentang alat baru.',
+  },
+  en: {
+    tool_new_title: 'New Tool',
+    tool_new_desc:  'A short description of the new tool.',
+  },
+};
+```
+
+```html
+<h3 data-i18n="tool_new_title">New Tool</h3>
+<p  data-i18n="tool_new_desc">A short description.</p>
+```
+
+Available attributes: `data-i18n`, `data-i18n-placeholder`, `data-i18n-label`, `data-i18n-alt`, `data-i18n-title`.
+
+### Adding an icon
+
+1. Add an entry to `ICONS` in `icons.js`:
+   ```js
+   ic40: `<path d="…"/>`,
+   ```
+2. Reference it anywhere in `index.html`:
+   ```html
+   <svg class="h-5 w-5" data-icon="ic40" aria-hidden="true"></svg>
+   ```
+3. `renderIcons()` (called at boot) fills in `viewBox`, `stroke`, `fill`, and a `1em` fallback width/height.
+
+**Rule:** every interface icon must be an SVG from `icons.js`. Emoji are never used as UI icons.
+
+---
 
 ## Project structure
 
 ```text
 /
-├── index.html
-├── style.css
-├── script.js
-├── i18n.js
-├── icons.js
-└── manifest.webmanifest
+├── index.html              Main page
+├── styleguide.html         Design-system reference (noindex)
+├── style.css               Tokens, layout, components, motion
+├── script.js               Theme, i18n driver, drawer, search,
+│                           filters, docs modal, forms, cookies
+├── i18n.js                 ID / EN string table (all UI text)
+├── icons.js                SVG registry + renderIcons()
+├── manifest.webmanifest    PWA metadata
+└── README.md               This file
 ```
 
 ### Main files
 
-| File | Purpose |
-| --- | --- |
-| `index.html` | Main page structure and content. |
-| `style.css` | Design tokens, layout, responsive styles, animations, and utilities. |
-| `script.js` | Navigation, theme, search, forms, tools, modals, cookies, and animations. |
-| `i18n.js` | Indonesian and English translations. |
-| `icons.js` | SVG icon definitions and icon replacement logic. |
-| `manifest.webmanifest` | PWA metadata and install configuration. |
+| File               | Purpose                                                                 |
+|--------------------|-------------------------------------------------------------------------|
+| `index.html`       | Structure, SEO meta, schema.org `@graph`, critical CSS fallback, all markup |
+| `styleguide.html`  | Self-contained design-system reference (also serves as a token cheatsheet) |
+| `style.css`        | Design tokens, glass family, layout, component styles, animations       |
+| `script.js`        | All behavior — theme, i18n, drawer, search, filters, README docs modal, forms, cookie system, counters, tilt |
+| `i18n.js`          | Complete ID/EN dictionary — no visible string is hardcoded in HTML      |
+| `icons.js`         | Lucide-style SVG registry; `renderIcons()` sets sizing failsafes        |
+| `manifest.webmanifest` | Name, icons, theme color, display mode                              |
 
-## Adding a new tool
-
-1. Add a new tool card to `#tools-container`.
-2. Add a valid `data-category`.
-3. Add the GitHub repository slug using `data-repo`.
-4. Add translated title and description keys.
-5. Add a documentation button.
-6. Ensure the repository contains a public `README.md` on the `main` branch.
-
-Example:
-
-```html
-<li
-  class="tool-card"
-  data-category="web"
-  data-repo="new-tool">
-
-  <div class="tool-card-content">
-    <span class="tool-category">
-      Web
-    </span>
-
-    <h3 data-i18n="tool_new_title">
-      New Tool
-    </h3>
-
-    <p data-i18n="tool_new_description">
-      A short description of the new tool.
-    </p>
-
-    <div class="tool-card-actions">
-      <a
-        href="[https://example.com](https://example.com)"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="tool-open-btn">
-
-        Open Tool
-      </a>
-
-      <button
-        type="button"
-        class="tool-docs-btn"
-        data-repo="new-tool"
-        data-tool-name="New Tool">
-
-        How to Use
-      </button>
-    </div>
-  </div>
-</li>
-```
-
-## Adding a translation
-
-1. Open `i18n.js`.
-2. Add the new key to the English object.
-3. Add the same key to the Indonesian object.
-4. Add `data-i18n` to the relevant HTML element.
-5. Add `data-i18n-placeholder` or `data-i18n-label` where appropriate.
-
-Example:
-
-```js
-const i18n = {
-  en: {
-    tool_new_title: 'New Tool',
-    tool_new_description: 'A short description of the new tool.'
-  },
-
-  id: {
-    tool_new_title: 'Alat Baru',
-    tool_new_description: 'Deskripsi singkat tentang alat baru.'
-  }
-};
-```
-
-## Adding an icon
-
-1. Add the SVG definition to `icons.js`.
-2. Assign a unique identifier such as `ic40`.
-3. Reference it in HTML:
-
-```html
-<svg
-  data-icon="ic40"
-  aria-hidden="true">
-</svg>
-```
-
-4. Ensure `icons.js` is loaded before `script.js`.
+---
 
 ## Troubleshooting
 
+### Icons render huge / layout is broken on first load
+
+**Cause:** the Tailwind CDN hasn't generated its utilities yet and unsized SVGs fall back to their intrinsic aspect.
+
+**Fix already shipped in v20260927.0:**
+
+- `icons.js` sets `width="1em"` and `height="1em"` as presentation attributes, which lose to any CSS rule (e.g. `.h-5 { height: 1.25rem }`).
+- `index.html` includes a critical CSS block in `<head>` that locks the header, hero, grids, and floating UI in place before Tailwind lands.
+
+If the issue persists: hard-reload with cache disabled, or move to a pre-built Tailwind CSS file (see **Development** below).
+
 ### The contact form does not submit
 
-Check the following:
+Check:
 
-- The Formspree endpoint is valid.
-- The form includes an `action` attribute.
-- Input elements have `name` attributes.
-- JavaScript is enabled.
-- The browser console does not show a network error.
-
-Formspree's HTML form integration requires a configured endpoint and named form fields.[web:94][web:96]
+- Formspree endpoints reachable (`https://formspree.io/f/mpqkqanp`, fallback `.../xgvkobyl`)
+- Inputs have `name` attributes
+- JS is enabled and no console errors
+- Field errors are surfaced via `#name-error`, `#email-error`, `#message-error`
 
 ### The theme does not persist
 
-Check whether:
-
-- Browser storage is enabled.
-- The page is not running in a restricted private mode.
-- Another script overwrites the theme key.
-- The theme key is consistent across all modules.
+- Confirm `localStorage` is enabled
+- Confirm the page isn't running in a restricted private mode
+- Confirm the storage key is `theme` (same as `styleguide.html`)
 
 ### The language does not switch
 
-Check whether:
-
-- `i18n.js` loads before `script.js`.
-- Translation keys exist in both languages.
-- The HTML element contains the correct `data-i18n` attribute.
-- No JavaScript error interrupts initialization.
-
-### The music player does not load
-
-The player uses an iframe pointing to:
-
-```text
-[https://signature-music.vercel.app](https://signature-music.vercel.app)
-```
-
-If the iframe fails, use the fallback link below the player.
+- `i18n.js` must load before `script.js`
+- The key must exist in both `id` and `en` objects
+- The element must carry the right `data-i18n*` attribute
 
 ### The documentation modal does not open
 
-Check whether:
+Check:
 
-- The card has a `data-repo` attribute.
-- The GitHub repository is public.
-- The repository uses the `main` branch.
-- `README.md` exists.
-- Raw GitHub content is reachable.
-- `marked.js` has loaded.
-- `script.js` is loaded after the required dependencies.
+- The tool card has `data-repo`
+- The GitHub repository is public
+- `README.md` exists on `main` or `master`
+- `raw.githubusercontent.com` is reachable
+- Marked.js loaded (otherwise, raw text fallback is used)
 
-### Search results do not appear
+### Search returns no results
 
-Check whether:
-
-- The search input has the expected ID.
-- The search index is initialized.
-- Tool cards contain searchable text.
-- JavaScript errors are present in the console.
-
-### Icons do not appear
-
-Check whether:
-
-- `icons.js` loads before `script.js`.
-- The icon identifier exists.
-- The element uses `data-icon`.
-- The SVG markup is valid.
+- `#header-search-input`, `#header-search-results` exist
+- No JS error prevented `buildSearchIndex()` from running
+- Try a broader query — tool names and categories are indexed
 
 ### Cookie settings do not open
 
-Check whether these elements exist:
+Required elements:
 
 ```text
+acceptCookiesBtn
+declineCookiesBtn
 customizeCookiesBtn
-reopenCookieSettingsBtn
+reopenCookieSettingsBtn          (footer)
+reopenCookieSettingsBtnDrawer    (drawer)
 cookieSettingsModal
 cookieSettingsOverlay
+cookieSettingsSave
 ```
 
-Also verify that the event listeners are registered after the DOM has loaded.
+Note the two distinct reopen IDs — the drawer button carries the `-Drawer` suffix so IDs stay unique.
+
+### The music player does not load
+
+The iframe targets `https://signature-music.vercel.app`. If it fails, the fallback link below the player opens the same URL in a new tab.
+
+---
 
 ## Privacy and security
 
-### Application storage
+### Storage
 
-The website stores interface preferences locally in the visitor's browser, such as:
+`localStorage` only. Keys used:
 
-- Theme selection
-- Language selection
-- Cookie preference state
+| Key                  | Purpose                                                  |
+|----------------------|----------------------------------------------------------|
+| `theme`              | `'dark'` or `'light'`                                    |
+| `haiere-lang`        | `'id'` or `'en'`                                         |
+| `haiere-cookie`      | `'accepted'` / `'declined'` / `'customized'`             |
+| `haiere-cookie-prefs`| JSON `{ analytics, marketing, preferences }`             |
 
-The website does not operate a custom application database for these preferences.
+No cookies are set by the site itself. No server-side database exists for interface preferences.
 
 ### Contact submissions
 
-Contact messages are processed by Formspree using the configured endpoint. They are not stored on a custom Haiere backend.[web:94][web:96]
-
-### Analytics
-
-Plausible Analytics is used for aggregate website measurement.
-
-Plausible states that it does not use cookies, persistent identifiers, or personal profiles for its standard analytics service.[web:93][web:98]
+Messages are processed by Formspree at the configured endpoints and are not stored by Haiere.
 
 ### External services
 
-The website links to or embeds third-party services, including:
+The site links to or embeds:
 
-- GitHub
-- Instagram
-- SoundCloud
-- Reddit
-- X
-- Quora
-- Discord
-- Telegram
-- Buy Me a Coffee
-- Sociabuzz
+- GitHub · Instagram · SoundCloud · Reddit · X · Quora · Discord · Telegram · YouTube
+- Buy Me a Coffee · Sociabuzz
 - Formspree
-- Plausible Analytics
-- Google Fonts
-- Font Awesome
-- Signature Music
+- Google Fonts · Font Awesome · Tailwind CDN · Marked.js
+- Signature Music · Raia AI · HajirSync · Raia Vault · Raia Scrub · Raia Delta · Raiamify
 
-Each third-party service operates under its own privacy policy and terms.
+Each operates under its own privacy policy and terms.
+
+---
 
 ## Development
 
-Hajir Studio is a static website with an HTML entry point and modular JavaScript files.
+Haiere is a static site — edit the file that matches the change:
 
-Edit:
+| Change                    | File                |
+|---------------------------|---------------------|
+| Structure, SEO meta, schema | `index.html`       |
+| Visual tokens, layout, motion | `style.css`      |
+| Behavior, interactions    | `script.js`         |
+| Any visible string        | `i18n.js`           |
+| Icons                     | `icons.js`          |
+| Design-system reference   | `styleguide.html`   |
+| PWA metadata              | `manifest.webmanifest` |
 
-- `index.html` for structure and content.
-- `style.css` for tokens, layout, and visual styles.
-- `script.js` for behavior and interactions.
-- `i18n.js` for translations.
-- `icons.js` for SVG icons.
-- `manifest.webmanifest` for PWA metadata.
-
-Tailwind CSS is loaded through a CDN. There is currently no required build step.
-
-For local development:
+### Local server
 
 ```bash
 python -m http.server
@@ -617,29 +548,65 @@ Or:
 npx serve
 ```
 
+### Optional: pre-built Tailwind
+
+To eliminate the CDN delay entirely (recommended for production):
+
+```bash
+npx tailwindcss -i ./src/input.css -o ./tailwind.css --minify
+```
+
+Then in `index.html`:
+
+```html
+<!-- remove -->
+<script src="[https://cdn.tailwindcss.com](https://cdn.tailwindcss.com)"></script>
+
+<!-- replace with -->
+<link rel="stylesheet" href="tailwind.css" />
+```
+
+Keep `style.css` as-is — it holds the design tokens and component layer. The critical-CSS block in `index.html` can be trimmed once Tailwind ships as a static file.
+
+### Non-negotiable rules
+
+1. **SVG icons only.** Every UI icon is a `<svg data-icon="icXX">`.
+2. **Every visible string goes through i18n.** No hardcoded copy inside `data-i18n` elements.
+3. **No non-tool content inside `#tools`.** The section is a directory, not a promo block.
+4. **Chatbots stay provider-based.** Raia AI and Kirana both document the provider abstraction.
+5. **No emoji as icons.** Emoji are allowed in copy only (e.g. toast strings).
+6. **Respect `prefers-reduced-motion`.** New animation must collapse to instant.
+
+---
+
 ## License
 
-The website design, original content, branding, and original music are the property of Haiere unless otherwise stated.
+Website design, original content, branding, and original music are the property of Haiere unless otherwise stated.
 
-All rights reserved.
+**All rights reserved.**
 
-For licensing or reuse inquiries, contact Haiere through the website.
+For licensing or reuse inquiries, use the contact form on [hajir.is-a.dev](https://hajir.is-a.dev).
 
-Third-party libraries, services, fonts, and icons remain subject to their respective licenses and terms.
+Third-party libraries, fonts, services, and icons remain subject to their respective licenses and terms.
 
-## Author and support
+---
 
-Developed by **Hajir Muhaajir**, known online as **Haiere**.
+## Author & support
 
-Hajir is a web developer, AI builder, musician, and creator of privacy-first web tools.
+Developed by **Hajir Muhaajir** — a web developer, AI builder, musician, and creator of privacy-first web tools.
 
-For questions, feedback, or support:
+- Site: [hajir.is-a.dev](https://hajir.is-a.dev)
+- GitHub: [@haiere](https://github.com/haiere)
+- X / Twitter: [@haierehere](https://x.com/haierehere)
+- Instagram: [@muhaajirere](https://instagram.com/muhaajirere)
+- SoundCloud: [Hajir Stein](https://soundcloud.com/hajir-stein)
+- Contact: use the form on the site
 
-- Open an issue on GitHub.
-- Use the contact form.
-- Visit the social links in the footer.
-- Support the project through Buy Me a Coffee or Sociabuzz.
+**Support the work:**
 
-## Last updated
+- [Buy Me a Coffee](https://buymeacoffee.com/hajirstudio)
+- [Sociabuzz](https://sociabuzz.com/hajirstudio)
 
-2026
+---
+
+**Last updated:** 2026 · v20260927.0

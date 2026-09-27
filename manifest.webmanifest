@@ -1,33 +1,40 @@
 {
-  "//": "HajirStudio — PWA manifest. Reference: https://www.w3.org/TR/appmanifest/",
-  "//id": "PWA identity — do NOT change once installed. Changing resets install.",
+  "$schema": "https://json.schemastore.org/web-manifest-combined.json",
+  "//": "Haiere — PWA manifest. v20260927.0. Spec: https://www.w3.org/TR/appmanifest/",
+  "//id": "PWA identity — do NOT change once installed. Changing it resets the install for every user.",
   "id": "/",
 
-  "//name": "Install prompt & app switcher label",
-  "name": "Hajir Studio | Haiere",
+  "//name": "Install prompt & OS app-switcher label",
+  "name": "Haiere — Hajir Studio",
   "short_name": "Haiere",
 
-  "description": "Fast, privacy-first web tools, open-source projects, and music by Hajir (Haiere).",
+  "description": "Free, privacy-first web tools, provider-based AI chatbots (Raia AI & Kirana), open-source projects, and original music by Hajir Muhaajir.",
 
   "start_url": "/?source=pwa",
   "scope": "/",
 
-  "//display": "display_override tries richest first, falls back to standalone, then browser",
+  "//display": "display_override tries richest first, then standalone, then browser. launch_handler keeps the installed app in the same window when a shortcut or a link is opened.",
   "display": "standalone",
   "display_override": ["window-controls-overlay", "standalone", "browser"],
+  "launch_handler": {
+    "client_mode": ["navigate-existing", "auto"]
+  },
 
-  "orientation": "portrait-primary",
+  "//orientation": "Not locked — the layout is fully responsive in portrait and landscape. Only lock when the design requires it.",
+  "orientation": "any",
+
   "lang": "id",
   "dir": "ltr",
 
-  "//colors": "Match <meta name=\"theme-color\"> and dark bg in index.html / style.css",
+  "//colors": "theme_color matches <meta name=\"theme-color\"> (dark) in index.html and --bg-page in style.css. background_color is the splash-screen fill — same value for no flash.",
   "theme_color": "#0A192F",
   "background_color": "#0A192F",
 
-  "categories": ["productivity", "utilities", "developer"],
+  "//categories": "Chrome groups these in the install dialog. music & entertainment cover Signature Music; productivity/utilities/developer cover Beat Tools.",
+  "categories": ["productivity", "utilities", "developer", "music", "entertainment"],
   "prefer_related_applications": false,
 
-  "//icons": "WebP works on Chromium. For Safari/Firefox add PNG equivalents later.",
+  "//icons": "WebP renders on all current Chromium builds. Add PNG (192, 512, maskable-512) when Safari/Firefox icon support is prioritised.",
   "icons": [
     {
       "src": "https://i.postimg.cc/8PJ0bhb1/H-haiere.webp",
@@ -49,35 +56,70 @@
     }
   ],
 
-  "//screenshots": "Form factor must use lowercase 'x' in sizes (not ×). 'jpeg' not 'jpg'. Add a 'narrow' screenshot to unlock the rich mobile install prompt.",
+  "//screenshots": "sizes must use a lowercase 'x' (not ×). type must be 'image/jpeg' (not 'image/jpg'). Add at least one 'narrow' screenshot to unlock the rich mobile install prompt on Android — recommended size 1080x1920 or 720x1280.",
   "screenshots": [
     {
       "src": "https://i.postimg.cc/nzpCzkk1/Screenshot-20260920-142421.jpg",
       "sizes": "792x492",
       "type": "image/jpeg",
       "form_factor": "wide",
-      "label": "Hajir Studio — homepage with hero, tools grid, and music player"
+      "label": "Hero, Beat Tools grid, and Signature Music player"
     }
   ],
 
+  "//shortcuts": "Manifest shortcuts surface on long-press of the installed app icon. URLs must be same-scope. All four entries point to sections of index.html — the app opens them in the same window thanks to launch_handler.",
   "shortcuts": [
     {
-      "name": "Tools",
+      "name": "Beat Tools",
       "short_name": "Tools",
-      "description": "Browse free, privacy-first web tools",
-      "url": "/?source=pwa#tools"
+      "description": "Browse every free privacy-first web tool",
+      "url": "/?source=pwa#tools",
+      "icons": [
+        {
+          "src": "https://i.postimg.cc/8PJ0bhb1/H-haiere.webp",
+          "sizes": "96x96",
+          "type": "image/webp"
+        }
+      ]
     },
     {
       "name": "Music",
       "short_name": "Music",
-      "description": "Listen to Haiere's signature music",
-      "url": "/?source=pwa#music"
+      "description": "Listen to Signature Music by Haiere",
+      "url": "/?source=pwa#music",
+      "icons": [
+        {
+          "src": "https://i.postimg.cc/8PJ0bhb1/H-haiere.webp",
+          "sizes": "96x96",
+          "type": "image/webp"
+        }
+      ]
+    },
+    {
+      "name": "About",
+      "short_name": "About",
+      "description": "About Hajir — developer, AI builder, musician",
+      "url": "/?source=pwa#about",
+      "icons": [
+        {
+          "src": "https://i.postimg.cc/8PJ0bhb1/H-haiere.webp",
+          "sizes": "96x96",
+          "type": "image/webp"
+        }
+      ]
     },
     {
       "name": "Contact",
       "short_name": "Contact",
       "description": "Send a message to Hajir",
-      "url": "/?source=pwa#contact"
+      "url": "/?source=pwa#contact",
+      "icons": [
+        {
+          "src": "https://i.postimg.cc/8PJ0bhb1/H-haiere.webp",
+          "sizes": "96x96",
+          "type": "image/webp"
+        }
+      ]
     }
   ]
 }
