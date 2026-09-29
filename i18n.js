@@ -1,10 +1,13 @@
 /* ============================================================
-   i18n.js — Haiere v20260927.0
+   i18n.js — Haiere v20260927.2
    Complete bilingual string table. Every data-i18n* attribute in
    index.html resolves here. Keys are shared across id/en.
    ============================================================ */
 window.i18n = {
   id: {
+    /* --- Page title --- */
+    page_title: 'Hajir Muhaajir — Web Developer, AI Builder & Tools Web Gratis | Haiere',
+
     /* --- Accessibility / global --- */
     skip_to_main: 'Lanjut ke isi utama',
     raia_open: 'Buka RAIA AI',
@@ -258,6 +261,9 @@ window.i18n = {
   },
 
   en: {
+    /* --- Page title --- */
+    page_title: 'Hajir Muhaajir — Web Developer, AI Builder & Free Web Tools | Haiere',
+
     /* --- Accessibility / global --- */
     skip_to_main: 'Skip to main content',
     raia_open: 'Open RAIA AI',

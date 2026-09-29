@@ -1,10 +1,10 @@
 {
   "$schema": "https://json.schemastore.org/web-manifest-combined.json",
-  "//": "Haiere — PWA manifest. v20260927.0. Spec: https://www.w3.org/TR/appmanifest/",
+  "//": "Haiere — PWA manifest. v20260927.2. Spec: https://www.w3.org/TR/appmanifest/",
   "//id": "PWA identity — do NOT change once installed. Changing it resets the install for every user.",
   "id": "/",
 
-  "//name": "Install prompt & OS app-switcher label",
+  "//name": "Install prompt & OS app-switcher label.",
   "name": "Haiere — Hajir Studio",
   "short_name": "Haiere",
 
@@ -23,10 +23,11 @@
   "//orientation": "Not locked — the layout is fully responsive in portrait and landscape. Only lock when the design requires it.",
   "orientation": "any",
 
-  "lang": "id",
+  "//lang": "Primary language of the manifest strings themselves (name, description, shortcuts). Matches site default (English). Runtime locale switching is handled by i18n.js, not the manifest.",
+  "lang": "en",
   "dir": "ltr",
 
-  "//colors": "theme_color matches <meta name=\"theme-color\"> (dark) in index.html and --bg-page in style.css. background_color is the splash-screen fill — same value for no flash.",
+  "//colors": "theme_color matches <meta name=\"theme-color\"> (dark) in index.html and --bg-page (night) in aurora.css. background_color is the splash-screen fill — same value for no flash on cold start.",
   "theme_color": "#0A192F",
   "background_color": "#0A192F",
 
@@ -34,7 +35,7 @@
   "categories": ["productivity", "utilities", "developer", "music", "entertainment"],
   "prefer_related_applications": false,
 
-  "//icons": "WebP renders on all current Chromium builds. Add PNG (192, 512, maskable-512) when Safari/Firefox icon support is prioritised.",
+  "//icons": "WebP renders on all current Chromium builds. The same file is declared at 192 and 512 — the browser scales it; this keeps the install prompt happy without shipping duplicate assets. Add PNG (192, 512, maskable-512) when Safari/Firefox icon support is prioritised.",
   "icons": [
     {
       "src": "https://i.postimg.cc/8PJ0bhb1/H-haiere.webp",
@@ -56,11 +57,11 @@
     }
   ],
 
-  "//screenshots": "sizes must use a lowercase 'x' (not ×). type must be 'image/jpeg' (not 'image/jpg'). Add at least one 'narrow' screenshot to unlock the rich mobile install prompt on Android — recommended size 1080x1920 or 720x1280.",
+  "//screenshots": "sizes must use a lowercase 'x' (not ×). type must be 'image/jpeg' (not 'image/jpg'). Only a 'wide' screenshot is shipped today — adding at least one 'narrow' screenshot (recommended 1080x1920 or 720x1280) will unlock the richer mobile install prompt on Android.",
   "screenshots": [
     {
-      "src": "https://i.postimg.cc/nzpCzkk1/Screenshot-20260920-142421.jpg",
-      "sizes": "792x492",
+      "src": "https://i.postimg.cc/tRD8WgM3/Screenshot-20260929-143201.jpg",
+      "sizes": "1080x660",
       "type": "image/jpeg",
       "form_factor": "wide",
       "label": "Hero, Beat Tools grid, and Signature Music player"
@@ -89,7 +90,7 @@
       "url": "/?source=pwa#music",
       "icons": [
         {
-          "src": "https://i.postimg.cc/8PJ0bhb1/H-haiere.webp",
+          "src": "https://i.postimg.cc/VLrVFjF1/haieresignaturebiru.webp",
           "sizes": "96x96",
           "type": "image/webp"
         }

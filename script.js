@@ -1,5 +1,5 @@
 /* ============================================================
-   script.js — Haiere v20260927.1
+   script.js — Haiere v20260927.2
    Everything UI: theme, i18n, drawer, search, filters,
    docs modal (README via GitHub raw), contact form, cookies,
    scroll animations, counters, hero spotlight, tilt/magnetic.
@@ -10,7 +10,9 @@
    ============================================================ */
 
 function whenTailwindReady(cb) {
-  if (window.tailwind && document.querySelector('style[data-tailwind]')) return cb();
+  // Tailwind Play CDN mengekspos window.tailwind sebelum DOMContentLoaded.
+  // Tidak ada style[data-tailwind] yang diset oleh Play CDN.
+  if (window.tailwind) return cb();
   requestAnimationFrame(() => requestAnimationFrame(cb));
 }
 
@@ -31,7 +33,13 @@ function whenTailwindReady(cb) {
     if (!container) return [];
     return Array.from(container.querySelectorAll(
       'a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])'
-    )).filter((el) => el.offsetParent !== null);
+    )).filter((el) => {
+      if (el.hasAttribute('hidden')) return false;
+      if (el.getAttribute('aria-hidden') === 'true') return false;
+      // offsetParent === null untuk display:none AND position:fixed.
+      // Kita cek juga apakah elemen visible via getClientRects.
+      return el.offsetParent !== null || el.getClientRects().length > 0;
+    });
   }
 
   /**
@@ -52,8 +60,19 @@ function whenTailwindReady(cb) {
   }
   window.getI18nText = getI18nText;
 
-  function setBodyScrollLock(locked) {
-    document.body.style.overflow = locked ? 'hidden' : '';
+  /* ---------- Body scroll lock (reference-counted) ----------
+     Beberapa komponen (drawer, docs modal, cookie modal) bisa
+     meminta lock bersamaan. Kita track per-ID supaya lock tidak
+     dilepas prematur saat satu komponen ditutup sementara
+     komponen lain masih terbuka. */
+  const bodyLocks = new Set();
+  function setBodyScrollLock(locked, id) {
+    id = id || 'global';
+    if (locked) bodyLocks.add(id);
+    else bodyLocks.delete(id);
+    const on = bodyLocks.size > 0;
+    document.body.style.overflow = on ? 'hidden' : '';
+    document.body.classList.toggle('modal-open', on);
   }
 
   function renderAllIcons(scope) {
@@ -122,6 +141,16 @@ function whenTailwindReady(cb) {
     });
 
     document.documentElement.lang = lang;
+
+    // Update <title> sesuai bahasa
+    const tTitle = tr.page_title || fallback.page_title;
+    if (tTitle) document.title = tTitle;
+
+    // Update menu-btn aria-label kalau drawer sedang tertutup
+    if (menuBtn && !isDrawerOpen) {
+      menuBtn.setAttribute('aria-label', getI18nText('open_menu', 'Open menu'));
+    }
+
     try { localStorage.setItem('haiere-lang', lang); } catch (_) {}
 
     updateLastUpdated();
@@ -216,11 +245,19 @@ function whenTailwindReady(cb) {
   function trapDrawerFocus(e) {
     if (e.key !== 'Tab' || !isDrawerOpen) return;
     const focusable = getFocusable(drawer);
-    if (!focusable.length) return;
+    if (!focusable.length) { e.preventDefault(); drawer.focus(); return; }
     const first = focusable[0];
     const last  = focusable[focusable.length - 1];
-    if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
-    else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+    const active = document.activeElement;
+
+    // Kalau fokus keluar dari drawer, tarik kembali ke elemen pertama
+    if (!drawer.contains(active)) {
+      e.preventDefault();
+      (e.shiftKey ? last : first).focus();
+      return;
+    }
+    if (e.shiftKey && active === first) { e.preventDefault(); last.focus(); }
+    else if (!e.shiftKey && active === last) { e.preventDefault(); first.focus(); }
   }
 
   function openDrawer() {
@@ -228,10 +265,12 @@ function whenTailwindReady(cb) {
     drawerLastFocused = document.activeElement;
     drawer.classList.add('open');
     drawer.setAttribute('aria-hidden', 'false');
+    drawer.removeAttribute('inert');
     menuBtn.setAttribute('aria-expanded', 'true');
+    menuBtn.setAttribute('aria-label', getI18nText('close_menu', 'Close menu'));
     drawerOverlay.classList.add('active');
     isDrawerOpen = true;
-    setBodyScrollLock(true);
+    setBodyScrollLock(true, 'drawer');
     const f = getFocusable(drawer);
     if (f.length) f[0].focus();
   }
@@ -240,10 +279,12 @@ function whenTailwindReady(cb) {
     if (!drawer || !menuBtn || !drawerOverlay) return;
     drawer.classList.remove('open');
     drawer.setAttribute('aria-hidden', 'true');
+    drawer.setAttribute('inert', '');
     menuBtn.setAttribute('aria-expanded', 'false');
+    menuBtn.setAttribute('aria-label', getI18nText('open_menu', 'Open menu'));
     drawerOverlay.classList.remove('active');
     isDrawerOpen = false;
-    setBodyScrollLock(false);
+    setBodyScrollLock(false, 'drawer');
     if (drawerLastFocused && typeof drawerLastFocused.focus === 'function') drawerLastFocused.focus();
     else if (menuBtn) menuBtn.focus();
     drawerLastFocused = null;
@@ -251,6 +292,9 @@ function whenTailwindReady(cb) {
 
   if (menuBtn && drawer && drawerOverlay) {
     drawer.setAttribute('aria-hidden', 'true');
+    // Set inert supaya fokusable items di drawer tertutup tidak bisa di-tab.
+    // (Fallback: aria-hidden + pointer-events off.)
+    if ('inert' in HTMLElement.prototype) drawer.setAttribute('inert', '');
     menuBtn.addEventListener('click', (e) => {
       e.stopPropagation();
       isDrawerOpen ? closeDrawer() : openDrawer();
@@ -419,6 +463,8 @@ function whenTailwindReady(cb) {
       const a = document.createElement('a');
       a.className = 'header-search-result';
       a.href = m.href;
+      a.setAttribute('role', 'option');
+      a.tabIndex = 0;
       const titleEl = document.createElement('span');
       titleEl.className = 'header-search-result-title';
       titleEl.textContent = m.title;
@@ -430,6 +476,12 @@ function whenTailwindReady(cb) {
       a.addEventListener('click', () => {
         if (searchInput) searchInput.value = '';
         closeSearchResults();
+      });
+      a.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') {
+          if (searchInput) searchInput.value = '';
+          closeSearchResults();
+        }
       });
       searchResults.appendChild(a);
     });
@@ -458,8 +510,31 @@ function whenTailwindReady(cb) {
         searchInput.value = '';
         closeSearchResults();
         searchInput.blur();
+        return;
+      }
+      if ((e.key === 'ArrowDown' || e.key === 'ArrowUp') && searchResults) {
+        const items = searchResults.querySelectorAll('.header-search-result');
+        if (!items.length) return;
+        e.preventDefault();
+        const idx = Array.from(items).indexOf(document.activeElement);
+        const next = e.key === 'ArrowDown'
+          ? (idx + 1) % items.length
+          : (idx <= 0 ? items.length - 1 : idx - 1);
+        items[next].focus();
       }
     });
+
+    // Escape dari dalam listbox → kembali ke input
+    if (searchResults) {
+      searchResults.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+          e.preventDefault();
+          searchInput.focus();
+          searchInput.value = '';
+          closeSearchResults();
+        }
+      });
+    }
 
     if (searchClear) {
       searchClear.addEventListener('click', () => {
@@ -544,9 +619,9 @@ function whenTailwindReady(cb) {
     filterButtons.forEach((btn) => {
       const on = btn.dataset.filter === active;
       btn.classList.toggle('active', on);
-      btn.setAttribute('aria-selected', String(on));
+      // Pakai aria-pressed (role toolbar) — bukan aria-selected (role tab).
       btn.setAttribute('aria-pressed', String(on));
-      btn.tabIndex = on ? 0 : -1;
+      btn.tabIndex = 0;
     });
     toolCards.forEach((card) => {
       const show = active === 'all' || card.dataset.category === active;
@@ -575,7 +650,6 @@ function whenTailwindReady(cb) {
   function sanitizeMarkdown(container) {
     if (!container) return;
 
-    // 1. Prevent overflow — allow wrapping everywhere
     container.querySelectorAll('*').forEach((el) => {
       el.style.maxWidth = '100%';
       el.style.minWidth = '0';
@@ -595,7 +669,6 @@ function whenTailwindReady(cb) {
       }
     });
 
-    // 2. Images (badges) scale down
     container.querySelectorAll('img').forEach((img) => {
       img.style.maxWidth = '100%';
       img.style.height   = 'auto';
@@ -603,7 +676,6 @@ function whenTailwindReady(cb) {
       img.style.verticalAlign = 'middle';
     });
 
-    // 3. Badge rows (multiple <img> inside one <p>) → flex wrap
     container.querySelectorAll('p').forEach((p) => {
       const imgs = p.querySelectorAll('img');
       if (imgs.length >= 2) {
@@ -620,7 +692,6 @@ function whenTailwindReady(cb) {
       }
     });
 
-    // 4. Tables scroll horizontally
     container.querySelectorAll('table').forEach((t) => {
       t.style.display   = 'block';
       t.style.maxWidth  = '100%';
@@ -628,7 +699,6 @@ function whenTailwindReady(cb) {
       t.style.width     = '100%';
     });
 
-    // 5. Code blocks scroll, no wrap
     container.querySelectorAll('pre').forEach((pre) => {
       pre.style.maxWidth   = '100%';
       pre.style.overflowX  = 'auto';
@@ -640,7 +710,6 @@ function whenTailwindReady(cb) {
       code.style.wordBreak    = 'normal';
     });
 
-    // 6. Wrapper
     const wrapper = container.querySelector('.docs-markdown');
     if (wrapper) {
       wrapper.style.maxWidth     = '100%';
@@ -697,7 +766,7 @@ function whenTailwindReady(cb) {
     docsModal.classList.add('active');
     docsOverlay.setAttribute('aria-hidden', 'false');
     docsModal.setAttribute('aria-hidden', 'false');
-    setBodyScrollLock(true);
+    setBodyScrollLock(true, 'docs');
     if (docsModalClose) docsModalClose.focus();
 
     fetchReadme(repo)
@@ -732,7 +801,7 @@ function whenTailwindReady(cb) {
     docsModal.classList.remove('active');
     docsOverlay.setAttribute('aria-hidden', 'true');
     docsModal.setAttribute('aria-hidden', 'true');
-    setBodyScrollLock(false);
+    setBodyScrollLock(false, 'docs');
     if (docsLastFocused && typeof docsLastFocused.focus === 'function') docsLastFocused.focus();
   }
 
@@ -764,7 +833,7 @@ function whenTailwindReady(cb) {
   const statusDiv= document.getElementById('form-status');
 
   const primaryEndpoint  = 'https://formspree.io/f/mpqkqanp';
-  const fallbackEndpoint = 'https://formspree.io/f/xgvkobyl';
+  const fallbackEndpoint = 'https://formspree.io/xgvkobyl';
 
   function clearFieldError(input, errorEl) {
     if (!input || !errorEl) return;
@@ -778,7 +847,24 @@ function whenTailwindReady(cb) {
     input.setAttribute('aria-invalid', 'true');
     errorEl.textContent = msg;
   }
-  function clearStatus() { if (statusDiv) statusDiv.textContent = ''; }
+
+  /* ---------- Form status: color-coded + auto-clear ---------- */
+  let formStatusTimer = 0;
+  function setFormStatus(kind, msg) {
+    if (!statusDiv) return;
+    statusDiv.textContent = msg;
+    statusDiv.dataset.state = kind || '';
+    statusDiv.style.color =
+      kind === 'success' ? '#10b981' :
+      kind === 'error'   ? '#ef4444' :
+      kind === 'pending' ? 'var(--text-soft)' : '';
+  }
+  function flashFormStatus(kind, msg, ms) {
+    clearTimeout(formStatusTimer);
+    setFormStatus(kind, msg);
+    if (ms) formStatusTimer = setTimeout(() => setFormStatus('', ''), ms);
+  }
+  function clearStatus() { flashFormStatus('', ''); }
 
   [nameInp, emailInp, msgInp].forEach((input) => {
     if (!input) return;
@@ -815,7 +901,7 @@ function whenTailwindReady(cb) {
       valid = false;
     }
     if (text.length < 20) {
-      setFieldError(msgInp, msgErr, msg('err_message_short'));
+      setFieldError(msgInp, msgErr, msgErr && msg('err_message_short'));
       valid = false;
     }
     return valid;
@@ -839,25 +925,25 @@ function whenTailwindReady(cb) {
       const fb = i18n[DEFAULT_LANG] || {};
       const t  = (k) => tr[k] || fb[k] || '';
       if (!validateForm()) {
-        if (statusDiv) statusDiv.textContent = t('form_error');
+        flashFormStatus('error', t('form_error'), 6000);
         return;
       }
-      if (statusDiv) statusDiv.textContent = t('form_sending');
+      setFormStatus('pending', t('form_sending'));
       const formData = new FormData(form);
 
       submitTo(primaryEndpoint, formData)
         .then(() => {
-          if (statusDiv) statusDiv.textContent = t('form_success');
+          flashFormStatus('success', t('form_success'), 5000);
           form.reset();
         })
         .catch(() => {
           submitTo(fallbackEndpoint, formData)
             .then(() => {
-              if (statusDiv) statusDiv.textContent = t('form_success');
+              flashFormStatus('success', t('form_success'), 5000);
               form.reset();
             })
             .catch(() => {
-              if (statusDiv) statusDiv.textContent = t('form_error');
+              flashFormStatus('error', t('form_error'), 6000);
             });
         });
     });
@@ -968,8 +1054,14 @@ function whenTailwindReady(cb) {
       const f = getFocusable(settingsModal);
       if (!f.length) { e.preventDefault(); settingsModal.focus(); return; }
       const first = f[0], last = f[f.length - 1];
-      if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); return; }
-      if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+      const active = document.activeElement;
+      if (!settingsModal.contains(active)) {
+        e.preventDefault();
+        (e.shiftKey ? last : first).focus();
+        return;
+      }
+      if (e.shiftKey && active === first) { e.preventDefault(); last.focus(); return; }
+      if (!e.shiftKey && active === last) { e.preventDefault(); first.focus(); }
     }
 
     function openSettings(trigger) {
@@ -982,7 +1074,7 @@ function whenTailwindReady(cb) {
       }
       settingsModal.classList.add('active');
       settingsModal.setAttribute('aria-hidden', 'false');
-      setBodyScrollLock(true);
+      setBodyScrollLock(true, 'cookie');
       requestAnimationFrame(focusFirstModalEl);
     }
 
@@ -995,7 +1087,7 @@ function whenTailwindReady(cb) {
         settingsModal.classList.remove('active');
         settingsModal.setAttribute('aria-hidden', 'true');
       }
-      setBodyScrollLock(false);
+      setBodyScrollLock(false, 'cookie');
       if (restore !== false && returnFocusEl && document.contains(returnFocusEl)) {
         returnFocusEl.focus();
       }
@@ -1162,5 +1254,5 @@ function whenTailwindReady(cb) {
   whenTailwindReady(() => renderAllIcons());
   renderAllIcons();
 
-  console.log('Haiere v20260927.1 — ready (default lang: en)');
+  console.log('Haiere v20260927.2 — ready (default lang: en)');
 })();

@@ -1,0 +1,251 @@
+/* ============================================================
+   aurora.css — "Aurora" space theme (additive layer)
+   Loads AFTER style.css. Every rule is scoped to html[data-theme]
+   so if the theme script fails, the site renders exactly as before.
+   data-theme is derived from the existing `.dark` class:
+   .dark -> "night", otherwise "day".
+   ============================================================ */
+
+/* ---------- Animatable theme colours (smooth day/night crossfade) ---------- */
+@property --aurora-color-1 { syntax: '<color>'; inherits: true; initial-value: transparent; }
+@property --aurora-color-2 { syntax: '<color>'; inherits: true; initial-value: transparent; }
+@property --aurora-color-3 { syntax: '<color>'; inherits: true; initial-value: transparent; }
+@property --grid-color { syntax: '<color>'; inherits: true; initial-value: transparent; }
+@property --spotlight-color-start { syntax: '<color>'; inherits: true; initial-value: transparent; }
+@property --spotlight-color-mid { syntax: '<color>'; inherits: true; initial-value: transparent; }
+@property --star-color { syntax: '<color>'; inherits: true; initial-value: transparent; }
+@property --meteor-color { syntax: '<color>'; inherits: true; initial-value: transparent; }
+
+/* ---------- Palette ---------- */
+:root {
+  /* Night */
+  --bg-night: #0b1021;
+  --aurora-color-1-night: rgba(77, 155, 255, 0.22);
+  --aurora-color-2-night: rgba(139, 92, 246, 0.15);
+  --aurora-color-3-night: rgba(44, 123, 229, 0.16);
+  --grid-color-night: rgba(124, 184, 255, 0.05);
+  --spotlight-color-start-night: rgba(77, 155, 255, 0.13);
+  --spotlight-color-mid-night: rgba(77, 155, 255, 0.05);
+  --star-color-night: rgba(255, 255, 255, 0.9);
+  --meteor-color-night: rgba(200, 225, 255, 0.95);
+  --fx-rgb-1-night: 120, 180, 255;
+  --fx-rgb-2-night: 167, 139, 250;
+
+  /* Day */
+  --bg-day: #fff0f5;
+  --aurora-color-1-day: rgba(255, 105, 180, 0.18);
+  --aurora-color-2-day: rgba(255, 182, 193, 0.14);
+  --aurora-color-3-day: rgba(255, 192, 203, 0.12);
+  --grid-color-day: rgba(255, 105, 180, 0.04);
+  --spotlight-color-start-day: rgba(255, 105, 180, 0.10);
+  --spotlight-color-mid-day: rgba(255, 182, 193, 0.04);
+  /* slightly deeper than lightpink so stars stay visible on #fff0f5 */
+  --star-color-day: rgba(232, 121, 160, 0.85);
+  --meteor-color-day: rgba(226, 92, 145, 0.9);
+  --fx-rgb-1-day: 255, 105, 180;
+  --fx-rgb-2-day: 236, 130, 190;
+}
+
+html[data-theme="night"] {
+  --bg-current: var(--bg-night);
+  --aurora-color-1: var(--aurora-color-1-night);
+  --aurora-color-2: var(--aurora-color-2-night);
+  --aurora-color-3: var(--aurora-color-3-night);
+  --grid-color: var(--grid-color-night);
+  --spotlight-color-start: var(--spotlight-color-start-night);
+  --spotlight-color-mid: var(--spotlight-color-mid-night);
+  --star-color: var(--star-color-night);
+  --meteor-color: var(--meteor-color-night);
+  --fx-rgb-1: var(--fx-rgb-1-night);
+  --fx-rgb-2: var(--fx-rgb-2-night);
+}
+
+html[data-theme="day"] {
+  --bg-current: var(--bg-day);
+  --aurora-color-1: var(--aurora-color-1-day);
+  --aurora-color-2: var(--aurora-color-2-day);
+  --aurora-color-3: var(--aurora-color-3-day);
+  --grid-color: var(--grid-color-day);
+  --spotlight-color-start: var(--spotlight-color-start-day);
+  --spotlight-color-mid: var(--spotlight-color-mid-day);
+  --star-color: var(--star-color-day);
+  --meteor-color: var(--meteor-color-day);
+  --fx-rgb-1: var(--fx-rgb-1-day);
+  --fx-rgb-2: var(--fx-rgb-2-day);
+}
+
+html[data-theme] {
+  transition:
+    --aurora-color-1 0.6s ease, --aurora-color-2 0.6s ease, --aurora-color-3 0.6s ease,
+    --grid-color 0.6s ease, --spotlight-color-start 0.6s ease, --spotlight-color-mid 0.6s ease,
+    --star-color 0.6s ease, --meteor-color 0.6s ease;
+}
+
+/* ---------- Page-level background only ---------- */
+html[data-theme] body { background: var(--bg-current); }
+
+/* The existing sections paint their own opaque page-coloured gradients,
+   which would hide every fixed layer behind them. Make just those
+   page-level fills transparent; cards, glass, borders stay untouched. */
+html[data-theme] #hero,
+html[data-theme] .section--soft,
+html[data-theme] .section--gradient,
+html[data-theme] .section--narrow { background: transparent; }
+
+/* Hero's bottom fade blended into the old opaque section colour; not needed now. */
+html[data-theme] .hero-fade { display: none; }
+
+/* Content sits above the space layers (z-index 0). z-index creates the
+   stacking context that keeps all in-flow content over the fixed layers. */
+html[data-theme] body > section,
+html[data-theme] body > footer { position: relative; z-index: 1; }
+
+/* Keep the existing grain overlay above content, as before. */
+html[data-theme] .grain-overlay { z-index: 2; }
+
+/* ---------- Space layers ---------- */
+#aurora-bg, .spotlight, #fx { pointer-events: none; }
+html:not([data-theme]) #aurora-bg,
+html:not([data-theme]) .spotlight,
+html:not([data-theme]) #fx { display: none; }
+
+#aurora-bg { position: fixed; inset: 0; z-index: 0; }
+
+/* Aurora */
+.aurora {
+  position: fixed;
+  inset: -22%;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(38% 32% at 22% 26%, var(--aurora-color-1), transparent 66%),
+    radial-gradient(34% 30% at 80% 20%, var(--aurora-color-2), transparent 66%),
+    radial-gradient(44% 38% at 62% 84%, var(--aurora-color-3), transparent 68%);
+  filter: blur(34px);
+  animation: aurora-drift 28s ease-in-out infinite alternate;
+  will-change: transform;
+}
+@keyframes aurora-drift {
+  0%   { transform: translate3d(-2%, -1.5%, 0) scale(1.02); }
+  100% { transform: translate3d(2.5%, 2%, 0) scale(1.09); }
+}
+
+/* Faint grid */
+html[data-theme] body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(var(--grid-color) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
+  background-size: 64px 64px;
+  -webkit-mask-image: radial-gradient(circle at 50% 42%, #000 0%, transparent 68%);
+  mask-image: radial-gradient(circle at 50% 42%, #000 0%, transparent 68%);
+}
+
+/* Stars — dots are box-shadows generated by aurora.js (--sa / --sb) */
+.stars { position: fixed; inset: 0; z-index: 0; pointer-events: none; will-change: transform; }
+.stars::before,
+.stars::after {
+  content: "";
+  position: absolute;
+  top: 0; left: 0;
+  width: var(--star-size, 1px);
+  height: var(--star-size, 1px);
+  border-radius: 50%;
+  opacity: 0.9;
+  will-change: opacity, transform;
+}
+.stars::before { box-shadow: var(--sa, none); animation: star-twinkle var(--tw-a, 4s) ease-in-out infinite, star-drift var(--dr, 80s) ease-in-out infinite alternate; }
+.stars::after  { box-shadow: var(--sb, none); animation: star-twinkle var(--tw-b, 5.5s) ease-in-out -2.2s infinite, star-drift var(--dr, 80s) ease-in-out infinite alternate; }
+.stars-back  { --star-size: 1px;   --tw-a: 5.5s; --tw-b: 7s;   --dr: 120s; --drift: 10px; }
+.stars-mid   { --star-size: 1.5px; --tw-a: 4s;   --tw-b: 5.2s; --dr: 80s;  --drift: 22px; }
+.stars-front { --star-size: 2px;   --tw-a: 3.2s; --tw-b: 4.4s; --dr: 50s;  --drift: 38px; }
+
+@keyframes star-twinkle {
+  0%, 100% { opacity: 0.25; }
+  50%      { opacity: 1; }
+}
+@keyframes star-drift {
+  from { transform: translate3d(0, 0, 0); }
+  to   { transform: translate3d(calc(var(--drift, 10px) * -0.6), var(--drift, 10px), 0); }
+}
+
+/* Meteors */
+.meteors { position: fixed; inset: 0; z-index: 0; pointer-events: none; overflow: hidden; }
+.meteor {
+  position: absolute;
+  width: 140px;
+  height: 2px;
+  border-radius: 2px;
+  opacity: 0;
+  background: linear-gradient(90deg, var(--meteor-color), transparent);
+  transform: translate3d(0, 0, 0) rotate(-45deg);
+  transform-origin: left center;
+  animation: meteor-fall var(--dur, 1.4s) cubic-bezier(0.3, 0.1, 0.6, 1) forwards;
+  will-change: transform, opacity;
+}
+.meteor::before {
+  content: "";
+  position: absolute;
+  left: -1px; top: 50%;
+  width: 4px; height: 4px;
+  margin-top: -2px;
+  border-radius: 50%;
+  background: var(--meteor-color);
+  box-shadow: 0 0 8px 2px var(--meteor-color);
+}
+@keyframes meteor-fall {
+  0%   { opacity: 0; transform: translate3d(0, 0, 0) rotate(-45deg); }
+  12%  { opacity: 1; }
+  70%  { opacity: 1; }
+  100% { opacity: 0; transform: translate3d(calc(var(--dist, 600px) * -1), var(--dist, 600px), 0) rotate(-45deg); }
+}
+
+/* Spotlight */
+.spotlight {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 900px;
+  height: 900px;
+  margin: -450px 0 0 -450px;
+  border-radius: 50%;
+  z-index: 0;
+  pointer-events: none;
+  background: radial-gradient(circle,
+    var(--spotlight-color-start) 0%,
+    var(--spotlight-color-mid) 38%,
+    transparent 68%);
+  will-change: transform;
+}
+@media (max-width: 768px) {
+  .spotlight { width: 560px; height: 560px; margin: -280px 0 0 -280px; }
+}
+
+/* FX canvas */
+#fx {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+/* ---------- Low-end devices (class set by aurora.js) ---------- */
+html.aurora-lite .aurora { animation: none; filter: blur(22px); }
+html.aurora-lite .stars::before,
+html.aurora-lite .stars::after { will-change: auto; }
+
+/* ---------- Reduced motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .aurora,
+  .stars::before,
+  .stars::after { animation: none; }
+  .meteors { display: none; }
+  html[data-theme] { transition: none; }
+}

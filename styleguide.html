@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-<title>Style Guide — Haiere v20260927.1</title>
+<title>Style Guide — Haiere v20260927.2</title>
 <meta name="description" content="The Haiere design system: tokens, typography, components, Beat Tools pattern, motion, and accessibility rules." />
 <meta name="robots" content="noindex, nofollow" />
 <meta name="color-scheme" content="dark light" />
@@ -32,7 +32,7 @@
 
 <style>
 /* ============================================================
-   Self-contained tokens — mirrors style.css v20260927.1.
+   Self-contained tokens — mirrors style.css v20260927.2.
    The style guide works offline / before style.css lands.
    ============================================================ */
 :root {
@@ -451,6 +451,12 @@ section.block:last-of-type { border-bottom: 0; padding-bottom: 5rem; }
 }
 .btn-ghost-inline:hover { color: var(--accent); background: var(--accent-dim); }
 
+/* FIX: dark-mode contrast — accent terang → teks gelap (mirror style.css v2) */
+.dark .btn-primary,
+.dark .tool-card .actions .btn-open {
+  color: #0A192F;
+}
+
 /* ============================================================
    Pills / badges / chips
    ============================================================ */
@@ -528,7 +534,8 @@ section.block:last-of-type { border-bottom: 0; padding-bottom: 5rem; }
 }
 .filter-chip svg { width: 13px; height: 13px; }
 .filter-chip:hover { color: var(--accent); border-color: var(--accent-border); }
-.filter-chip.is-active {
+.filter-chip.is-active,
+.filter-chip[aria-pressed="true"] {
   background: var(--accent-dim);
   border-color: var(--accent-border);
   color: var(--accent);
@@ -667,6 +674,7 @@ section.block:last-of-type { border-bottom: 0; padding-bottom: 5rem; }
 .field input::placeholder { color: var(--text-faint); }
 .field input:focus { border-color: var(--accent); box-shadow: 0 0 0 4px var(--accent-dim); }
 .field .err { font-size: 0.7rem; color: #ef4444; min-height: 1rem; }
+.field .err.ok { color: #10b981; }
 
 /* ============================================================
    Rules list
@@ -756,6 +764,9 @@ pre code {
    Reduced motion
    ============================================================ */
 @media (prefers-reduced-motion: reduce) {
+  /* FIX: matikan smooth scroll saat reduced motion (mirror style.css v2) */
+  html { scroll-behavior: auto; }
+
   *, *::before, *::after {
     animation-duration: 0.001ms !important;
     transition-duration: 0.001ms !important;
@@ -832,7 +843,7 @@ pre code {
         <circle cx="27" cy="11" r="2.6" fill="currentColor"/>
       </svg>
       <span>
-        Haiere<small>Style guide · v20260927.1</small>
+        Haiere<small>Style guide · v20260927.2</small>
       </span>
     </a>
     <div class="sg-actions">
@@ -855,7 +866,7 @@ pre code {
      ============================================================ -->
 <section class="sg-hero">
   <div class="shell">
-    <span class="eyebrow">Design system · v20260927.1</span>
+    <span class="eyebrow">Design system · v20260927.2</span>
     <h1>Aurora Navy <em>/</em> Petal Rose</h1>
     <p>
       One system, two moods. Dark mode is midnight navy with soft cyan, muted gold, and pale lavender.
@@ -898,6 +909,9 @@ pre code {
       <b style="color:var(--text-main)">Light:</b>
       <code>#FBE9EF</code> bg · <code>#FCF1F5</code> band · <code>#B4788C</code> rose accent ·
       <code>#3A2430</code> plum text.
+      <br>
+      <b style="color:var(--text-main)">On-accent text:</b> light mode uses <code>#fff</code>;
+      dark mode uses <code>#0A192F</code> on cyan, because <code>#7FD8CB</code> is too bright for white text.
     </p>
   </div>
 </section>
@@ -1049,6 +1063,11 @@ pre code {
           <svg style="width:22px;height:22px"><use href="#i-code"/></svg>
         </div>
       </div>
+      <div class="glass-card">
+        <span class="card-eyebrow">Brand marks</span>
+        <h3>Filled, single-color</h3>
+        <p>Brand logos (GitHub, X, Instagram, Discord, Telegram, YouTube, SoundCloud, Reddit) render with <code>fill: currentColor</code> and <code>stroke: none</code>. Any multi-segment marks that need outline segments must declare <code>fill="none" stroke="currentColor"</code> per-path — see <code>brand-soundcloud</code>.</p>
+      </div>
     </div>
   </div>
 </section>
@@ -1109,12 +1128,16 @@ pre code {
           <input id="sg-email" type="email" placeholder="you@email.com" />
           <span class="err"></span>
         </div>
+        <p class="mt-md muted" style="font-size: var(--fs-micro); font-family: var(--font-mono);">
+          Error: <code style="color:#ef4444">#ef4444</code> ·
+          Success: <code style="color:#10b981">#10b981</code>
+        </p>
       </div>
 
       <div class="glass-card">
         <span class="card-eyebrow">Toggle</span>
         <h3>Preference switch</h3>
-        <p style="margin-bottom: 0.9rem;">Used in Cookie Settings for analytics, marketing, and preferences.</p>
+        <p style="margin-bottom: 0.9rem;">Used in Cookie Settings for analytics, marketing, and preferences. State lives on <code>aria-checked</code>, mirrored by an <code>.is-on</code> class.</p>
         <label class="flow-inline" style="gap: 0.6rem; cursor: pointer;">
           <input type="checkbox" checked style="accent-color: var(--accent); width: 18px; height: 18px;">
           <span style="font-family: var(--font-mono); font-size: var(--fs-mini); color: var(--text-soft);">Preferences</span>
@@ -1137,13 +1160,14 @@ pre code {
       <p>Every tool uses the same skeleton: index + category + status badge, title with icon, description, then Open Tool / How to Use actions.</p>
     </div>
 
-    <div class="filter-row" role="tablist" aria-label="Tool filter demo">
-      <button class="filter-chip is-active" role="tab" aria-selected="true"><svg><use href="#i-tool"/></svg>All</button>
-      <button class="filter-chip" role="tab" aria-selected="false"><svg><use href="#i-ai"/></svg>AI</button>
-      <button class="filter-chip" role="tab" aria-selected="false"><svg><use href="#i-music"/></svg>Music</button>
-      <button class="filter-chip" role="tab" aria-selected="false"><svg><use href="#i-lock"/></svg>Security</button>
-      <button class="filter-chip" role="tab" aria-selected="false"><svg><use href="#i-globe"/></svg>Web</button>
-      <button class="filter-chip" role="tab" aria-selected="false"><svg><use href="#i-code"/></svg>Developer</button>
+    <!-- FIX: role=toolbar (bukan tablist), aria-pressed (bukan aria-selected) — konsisten dengan index.html -->
+    <div class="filter-row" role="toolbar" aria-label="Tool filter demo">
+      <button class="filter-chip is-active" type="button" aria-pressed="true"><svg aria-hidden="true"><use href="#i-tool"/></svg>All</button>
+      <button class="filter-chip" type="button" aria-pressed="false"><svg aria-hidden="true"><use href="#i-ai"/></svg>AI</button>
+      <button class="filter-chip" type="button" aria-pressed="false"><svg aria-hidden="true"><use href="#i-music"/></svg>Music</button>
+      <button class="filter-chip" type="button" aria-pressed="false"><svg aria-hidden="true"><use href="#i-lock"/></svg>Security</button>
+      <button class="filter-chip" type="button" aria-pressed="false"><svg aria-hidden="true"><use href="#i-globe"/></svg>Web</button>
+      <button class="filter-chip" type="button" aria-pressed="false"><svg aria-hidden="true"><use href="#i-code"/></svg>Developer</button>
     </div>
 
     <ol class="tools-grid" style="list-style:none; padding:0; margin:0;">
@@ -1151,13 +1175,13 @@ pre code {
       <li class="tool-card">
         <div class="meta">
           <span class="num">01</span>
-          <span class="cat"><svg><use href="#i-music"/></svg>LRC Generator</span>
+          <span class="cat"><svg aria-hidden="true"><use href="#i-music"/></svg>LRC Generator</span>
           <span class="status-badge" style="margin-left:auto">Stable</span>
         </div>
-        <h3><svg><use href="#i-music"/></svg>HajirSync</h3>
+        <h3><svg aria-hidden="true"><use href="#i-music"/></svg>HajirSync</h3>
         <p>Create synchronized LRC lyric files in a short amount of time.</p>
         <div class="actions">
-          <a class="btn-open" href="#" aria-label="Open HajirSync">Open Tool <svg><use href="#i-arrow"/></svg></a>
+          <a class="btn-open" href="#" aria-label="Open HajirSync">Open Tool <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
           <a class="btn-docs" href="#" aria-label="HajirSync docs">How to Use</a>
         </div>
       </li>
@@ -1165,13 +1189,13 @@ pre code {
       <li class="tool-card">
         <div class="meta">
           <span class="num">02</span>
-          <span class="cat"><svg><use href="#i-lock"/></svg>Password Manager</span>
+          <span class="cat"><svg aria-hidden="true"><use href="#i-lock"/></svg>Password Manager</span>
           <span class="status-badge" style="margin-left:auto">Stable</span>
         </div>
-        <h3><svg><use href="#i-lock"/></svg>Raia Vault</h3>
+        <h3><svg aria-hidden="true"><use href="#i-lock"/></svg>Raia Vault</h3>
         <p>Generate strong random passwords to help protect your accounts.</p>
         <div class="actions">
-          <a class="btn-open" href="#" aria-label="Open Raia Vault">Open Tool <svg><use href="#i-arrow"/></svg></a>
+          <a class="btn-open" href="#" aria-label="Open Raia Vault">Open Tool <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
           <a class="btn-docs" href="#" aria-label="Raia Vault docs">How to Use</a>
         </div>
       </li>
@@ -1179,13 +1203,13 @@ pre code {
       <li class="tool-card">
         <div class="meta">
           <span class="num">06</span>
-          <span class="cat"><svg><use href="#i-ai"/></svg>AI Chatbot</span>
+          <span class="cat"><svg aria-hidden="true"><use href="#i-ai"/></svg>AI Chatbot</span>
           <span class="status-badge" style="margin-left:auto">Stable</span>
         </div>
-        <h3><svg><use href="#i-ai"/></svg>Raia AI</h3>
+        <h3><svg aria-hidden="true"><use href="#i-ai"/></svg>Raia AI</h3>
         <p>Provider-based AI chatbot that adapts to your preferred model and workflow.</p>
         <div class="actions">
-          <a class="btn-open" href="#" aria-label="Open Raia AI">Open Tool <svg><use href="#i-arrow"/></svg></a>
+          <a class="btn-open" href="#" aria-label="Open Raia AI">Open Tool <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
           <a class="btn-docs" href="#" aria-label="Raia AI docs">How to Use</a>
         </div>
       </li>
@@ -1193,13 +1217,13 @@ pre code {
       <li class="tool-card">
         <div class="meta">
           <span class="num">07</span>
-          <span class="cat"><svg><use href="#i-robot"/></svg>AI Chatbot</span>
+          <span class="cat"><svg aria-hidden="true"><use href="#i-robot"/></svg>AI Chatbot</span>
           <span class="status-badge" style="margin-left:auto">Stable</span>
         </div>
-        <h3><svg><use href="#i-robot"/></svg>Kirana</h3>
+        <h3><svg aria-hidden="true"><use href="#i-robot"/></svg>Kirana</h3>
         <p>Provider-based AI chatbot built for warm, thoughtful conversations and creative work.</p>
         <div class="actions">
-          <a class="btn-open" href="#" aria-label="Open Kirana">Open Tool <svg><use href="#i-arrow"/></svg></a>
+          <a class="btn-open" href="#" aria-label="Open Kirana">Open Tool <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
           <a class="btn-docs" href="#" aria-label="Kirana docs">How to Use</a>
         </div>
       </li>
@@ -1231,12 +1255,15 @@ pre code {
     <div class="glass-card">
       <ul class="rules">
         <li>Reveal on scroll uses a single shared <code>IntersectionObserver</code>, 32px rise, 0.9s, one-shot per element.</li>
-        <li>All motion collapses to <code>0.001ms</code> under <code>prefers-reduced-motion</code>.</li>
+        <li>All motion collapses to <code>0.001ms</code> under <code>prefers-reduced-motion</code>, and <code>scroll-behavior</code> reverts to <code>auto</code>.</li>
         <li>Touch targets are <code>44px</code> minimum — every button, link, and toggle.</li>
         <li>Focus rings: 3px accent outline with 3px offset; never removed, only restyled.</li>
-        <li>Drawer, docs modal, and cookie modal all trap focus and restore it on close.</li>
+        <li>Drawer, docs modal, and cookie modal all trap focus and restore it on close. Body scroll-lock is reference-counted so overlapping overlays don’t prematurely unlock.</li>
         <li>Aurora mesh, grain overlay, hairline grid, and cursor halo are decorative and <code>aria-hidden</code>.</li>
         <li>Body text ≥ 4.5:1; large text ≥ 3:1; UI borders ≥ 3:1 in both themes.</li>
+        <li>On-accent text flips to dark <code>#0A192F</code> in dark mode — accent colors are too bright for white text.</li>
+        <li>Menu button aria-label toggles between <em>Open menu</em> / <em>Close menu</em> with the drawer state.</li>
+        <li>Filter bars use <code>role="toolbar"</code> + <code>aria-pressed</code> — not <code>role="tab"</code> — since there is no tabpanel pairing.</li>
       </ul>
     </div>
   </div>
@@ -1269,7 +1296,7 @@ pre code {
       <div class="glass-card">
         <span class="card-eyebrow">Parity check</span>
         <h3>Both modes ship identical layout</h3>
-        <p>Only tokens change. No layout, spacing, or component structure differs between light and dark — the switch is pure color.</p>
+        <p>Only tokens change. No layout, spacing, or component structure differs between light and dark — the switch is pure color. The only exception is on-accent text color.</p>
       </div>
     </div>
   </div>
@@ -1305,7 +1332,11 @@ pre code {
 /* Motion */
 --ease:        cubic-bezier(0.25, 0.46, 0.45, 0.94);
 --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
---ease-out:    cubic-bezier(0.22, 1, 0.36, 1);</code></pre>
+--ease-out:    cubic-bezier(0.22, 1, 0.36, 1);
+
+/* On-accent text — flips per theme */
+.btn-primary { color: #fff; }
+.dark .btn-primary { color: #0A192F; }</code></pre>
   </div>
 </section>
 
@@ -1313,7 +1344,7 @@ pre code {
 
 <footer class="sg-footer">
   <div class="shell sg-footer-inner">
-    <p>© <span id="year">2026</span> Hajir Muhaajir · Style guide v20260927.1</p>
+    <p>© <span id="year">2026</span> Hajir Muhaajir · Style guide v20260927.2</p>
     <nav><a href="index.html">Back to hajir.is-a.dev</a></nav>
   </div>
 </footer>
