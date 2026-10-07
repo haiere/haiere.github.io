@@ -561,15 +561,6 @@ svg[data-icon] {
 }
 .dark #hero { background: var(--bg-page); }
 
-.grid-bg {
-  position: absolute; inset: 0;
-  background-image:
-    linear-gradient(rgba(59, 130, 246, 0.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(59, 130, 246, 0.05) 1px, transparent 1px);
-  background-size: 48px 48px;
-  mask-image: radial-gradient(ellipse 70% 70% at 50% 50%, #000 25%, transparent 100%);
-  -webkit-mask-image: radial-gradient(ellipse 70% 70% at 50% 50%, #000 25%, transparent 100%);
-}
 .hero-spotlight {
   position: absolute; inset: 0;
   background: radial-gradient(600px circle at var(--x, 50%) var(--y, 30%), rgba(59, 130, 246, 0.14), transparent 65%);
@@ -2107,4 +2098,270 @@ html:not(.dark) .docs-modal-heading svg { color: #B4788C; }
   clip: rect(0, 0, 0, 0);
   white-space: nowrap;
   border: 0;
+}
+
+#aurora-bg .stars,
+#aurora-bg .stars-back,
+#aurora-bg .stars-mid,
+#aurora-bg .stars-front {
+  background-image: none !important;
+  background-repeat: no-repeat !important;
+}
+
+/* Kalau grid-nya dari ::before/::after pada .aurora */
+#aurora-bg .aurora::before,
+#aurora-bg .aurora::after {
+  background-image: none !important;
+  display: none !important;
+}
+
+/* Kalau ada elemen .grid / .dot-grid di aurora.css */
+#aurora-bg [class*="grid"],
+#aurora-bg [class*="dot"] {
+  background-image: none !important;
+}
+
+/* Token warna (light) */
+:root {
+  --md-fg: #1f2328;
+  --md-fg-muted: #59636e;
+  --md-border: #d1d9e0;
+  --md-border-muted: #d1d9e0b3;
+  --md-canvas-subtle: #f6f8fa;
+  --md-neutral: rgba(31, 35, 40, 0.08);
+  --md-accent: #0969da;
+  --md-code-bg: #818b981f;
+}
+
+/* Token warna (dark) */
+.dark {
+  --md-fg: #e6edf3;
+  --md-fg-muted: #9198a1;
+  --md-border: #3d444d;
+  --md-border-muted: #3d444db3;
+  --md-canvas-subtle: #161b22;
+  --md-neutral: rgba(255, 255, 255, 0.1);
+  --md-accent: #4493f8;
+  --md-code-bg: #656c7633;
+}
+
+/* Root markdown */
+.docs-markdown {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans",
+    Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+  font-size: 14.5px;
+  line-height: 1.6;
+  color: var(--md-fg);
+  word-wrap: break-word;
+  overflow-wrap: anywhere;
+}
+
+/* Heading */
+.docs-markdown h1,
+.docs-markdown h2,
+.docs-markdown h3,
+.docs-markdown h4,
+.docs-markdown h5,
+.docs-markdown h6 {
+  margin-top: 1.5em;
+  margin-bottom: 0.75em;
+  font-weight: 600;
+  line-height: 1.25;
+  color: var(--md-fg);
+}
+.docs-markdown > *:first-child { margin-top: 0 !important; }
+
+.docs-markdown h1 {
+  font-size: 2em;
+  padding-bottom: 0.3em;
+  border-bottom: 1px solid var(--md-border-muted);
+}
+.docs-markdown h2 {
+  font-size: 1.5em;
+  padding-bottom: 0.3em;
+  border-bottom: 1px solid var(--md-border-muted);
+}
+.docs-markdown h3 { font-size: 1.25em; }
+.docs-markdown h4 { font-size: 1em; }
+.docs-markdown h5 { font-size: 0.875em; }
+.docs-markdown h6 { font-size: 0.85em; color: var(--md-fg-muted); }
+
+/* Paragraf */
+.docs-markdown p {
+  margin-top: 0;
+  margin-bottom: 1em;
+  text-align: left !important;
+  display: block !important;
+}
+
+/* Link */
+.docs-markdown a {
+  color: var(--md-accent);
+  text-decoration: none;
+}
+.docs-markdown a:hover { text-decoration: underline; }
+
+/* Strong / em */
+.docs-markdown strong { font-weight: 600; }
+.docs-markdown em { font-style: italic; }
+
+/* List */
+.docs-markdown ul,
+.docs-markdown ol {
+  margin-top: 0;
+  margin-bottom: 1em;
+  padding-left: 2em;
+}
+.docs-markdown ul ul,
+.docs-markdown ul ol,
+.docs-markdown ol ol,
+.docs-markdown ol ul {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+.docs-markdown li { margin-top: 0.25em; }
+.docs-markdown li + li { margin-top: 0.25em; }
+.docs-markdown li > p { margin-top: 1em; margin-bottom: 0; }
+
+/* Task list */
+.docs-markdown ul:has(input[type="checkbox"]) {
+  list-style: none;
+  padding-left: 1.25em;
+}
+.docs-markdown input[type="checkbox"] {
+  margin: 0 0.35em 0.2em -1.4em;
+  vertical-align: middle;
+  cursor: default;
+}
+
+/* Blockquote */
+.docs-markdown blockquote {
+  margin: 0 0 1em;
+  padding: 0 1em;
+  color: var(--md-fg-muted);
+  border-left: 0.25em solid var(--md-border);
+}
+
+/* Horizontal rule */
+.docs-markdown hr {
+  height: 0.25em;
+  padding: 0;
+  margin: 1.5em 0;
+  border: 0;
+  background: var(--md-border);
+}
+
+/* Inline code */
+.docs-markdown code {
+  padding: 0.2em 0.4em;
+  margin: 0;
+  font-size: 85%;
+  font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas,
+    "Liberation Mono", monospace;
+  background: var(--md-code-bg);
+  border-radius: 6px;
+  white-space: break-spaces;
+  overflow-wrap: anywhere;
+}
+
+/* Code block */
+.docs-markdown pre {
+  margin-top: 0;
+  margin-bottom: 1em;
+  padding: 16px;
+  overflow: auto;
+  font-size: 85%;
+  line-height: 1.45;
+  background: var(--md-canvas-subtle);
+  border-radius: 6px;
+  border: 1px solid var(--md-border-muted);
+}
+.docs-markdown pre code {
+  display: inline;
+  max-width: auto;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  line-height: inherit;
+  font-size: 100%;
+  white-space: pre;
+  overflow-wrap: normal;
+  word-break: normal;
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+}
+
+/* Table */
+.docs-markdown table {
+  display: block;
+  width: max-content;
+  max-width: 100%;
+  overflow: auto;
+  margin-top: 0;
+  margin-bottom: 1em;
+  border-spacing: 0;
+  border-collapse: collapse;
+  font-size: 0.9em;
+}
+.docs-markdown table th,
+.docs-markdown table td {
+  padding: 6px 13px;
+  border: 1px solid var(--md-border);
+}
+.docs-markdown table th {
+  font-weight: 600;
+  background: var(--md-canvas-subtle);
+}
+.docs-markdown table tr:nth-child(2n) {
+  background: var(--md-canvas-subtle);
+}
+
+/* Gambar & badge */
+.docs-markdown img {
+  max-width: 100%;
+  height: auto;
+  display: inline-block;
+  vertical-align: middle;
+  margin: 0.15rem 0;
+  background: transparent;
+}
+.docs-markdown p > img + img { margin-left: 0.25rem; }
+
+/* Keyboard */
+.docs-markdown kbd {
+  display: inline-block;
+  padding: 3px 5px;
+  font: 11px ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+  line-height: 10px;
+  color: var(--md-fg);
+  vertical-align: middle;
+  background: var(--md-canvas-subtle);
+  border: 1px solid var(--md-border);
+  border-radius: 6px;
+  box-shadow: inset 0 -1px 0 var(--md-border);
+}
+
+/* Detail/summary (kolaps) */
+.docs-markdown details {
+  margin-bottom: 1em;
+  padding: 0.5em 1em;
+  border: 1px solid var(--md-border);
+  border-radius: 6px;
+}
+.docs-markdown summary {
+  cursor: pointer;
+  font-weight: 600;
+  margin: -0.5em -1em;
+  padding: 0.5em 1em;
+}
+.docs-markdown details[open] summary { margin-bottom: 0.5em; }
+
+/* Fallback <pre> plain text */
+.docs-markdown-fallback {
+  white-space: pre-wrap;
+  word-break: break-word;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.82rem;
+  line-height: 1.55;
 }

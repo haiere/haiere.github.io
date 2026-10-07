@@ -645,79 +645,34 @@ function whenTailwindReady(cb) {
   setActiveFilter('all');
 
   /* ==========================================================
-     12. SANITIZE MARKDOWN
-     ========================================================== */
-  function sanitizeMarkdown(container) {
-    if (!container) return;
+   12. SANITIZE MARKDOWN — versi ringkas
+   ========================================================== */
+function sanitizeMarkdown(container) {
+  if (!container) return;
 
-    container.querySelectorAll('*').forEach((el) => {
-      el.style.maxWidth = '100%';
-      el.style.minWidth = '0';
-      el.style.boxSizing = 'border-box';
+  // Hapus atribut width/height yang bikin layout rusak
+  container.querySelectorAll('[width], [height]').forEach((el) => {
+    el.removeAttribute('width');
+    el.removeAttribute('height');
+  });
 
-      if (el.style && el.style.width && !el.style.width.endsWith('%')) {
-        el.style.width = 'auto';
-      }
-      if (el.getAttribute && el.getAttribute('width'))  el.removeAttribute('width');
-      if (el.getAttribute && el.getAttribute('height')) el.removeAttribute('height');
+  // Gambar: jangan overflow
+  container.querySelectorAll('img').forEach((img) => {
+    img.style.maxWidth = '100%';
+    img.style.height = 'auto';
+  });
 
-      const tag = el.tagName;
-      if (['P','LI','H1','H2','H3','H4','H5','H6','BLOCKQUOTE','TD','TH','SPAN','STRONG','EM','A','CODE'].includes(tag)) {
-        el.style.overflowWrap = 'anywhere';
-        el.style.wordBreak    = 'break-word';
-        el.style.whiteSpace   = 'normal';
-      }
-    });
+  // Link eksternal → tab baru
+  container.querySelectorAll('a[href^="http"]').forEach((a) => {
+    a.setAttribute('target', '_blank');
+    a.setAttribute('rel', 'noopener noreferrer');
+  });
 
-    container.querySelectorAll('img').forEach((img) => {
-      img.style.maxWidth = '100%';
-      img.style.height   = 'auto';
-      img.style.display  = 'inline-block';
-      img.style.verticalAlign = 'middle';
-    });
-
-    container.querySelectorAll('p').forEach((p) => {
-      const imgs = p.querySelectorAll('img');
-      if (imgs.length >= 2) {
-        p.style.display        = 'flex';
-        p.style.flexWrap       = 'wrap';
-        p.style.alignItems     = 'center';
-        p.style.justifyContent = 'center';
-        p.style.gap            = '0.4rem';
-        imgs.forEach((img) => {
-          img.style.maxWidth = '100%';
-          img.style.minWidth = '0';
-          img.style.flex     = '0 1 auto';
-        });
-      }
-    });
-
-    container.querySelectorAll('table').forEach((t) => {
-      t.style.display   = 'block';
-      t.style.maxWidth  = '100%';
-      t.style.overflowX = 'auto';
-      t.style.width     = '100%';
-    });
-
-    container.querySelectorAll('pre').forEach((pre) => {
-      pre.style.maxWidth   = '100%';
-      pre.style.overflowX  = 'auto';
-      pre.style.whiteSpace = 'pre';
-    });
-    container.querySelectorAll('pre code').forEach((code) => {
-      code.style.whiteSpace   = 'pre';
-      code.style.overflowWrap = 'normal';
-      code.style.wordBreak    = 'normal';
-    });
-
-    const wrapper = container.querySelector('.docs-markdown');
-    if (wrapper) {
-      wrapper.style.maxWidth     = '100%';
-      wrapper.style.minWidth     = '0';
-      wrapper.style.overflowWrap = 'anywhere';
-      wrapper.style.wordBreak    = 'break-word';
-    }
-  }
+  // Checkbox task list: bikin non-interaktif
+  container.querySelectorAll('input[type="checkbox"]').forEach((cb) => {
+    cb.disabled = true;
+  });
+}
 
   /* ==========================================================
      13. DOCS MODAL — README via GitHub raw
