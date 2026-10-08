@@ -1,7 +1,12 @@
 /* ============================================================
-   i18n.js — Haiere v20260927.2
+   i18n.js — Haiere v2026.10.08.4
    Complete bilingual string table. Every data-i18n* attribute in
    index.html resolves here. Keys are shared across id/en.
+
+   v2026.10.08.4 changes:
+   - Removed `tool_mydev_desc` (MyDev tool deleted).
+   - Added `nav_games`, `games_*`, `game_*` keys for the new
+     Games section (Chess + LoveYou).
    ============================================================ */
 window.i18n = {
   id: {
@@ -31,6 +36,7 @@ window.i18n = {
     nav_github: 'GitHub',
     nav_raia: 'RAIA',
     nav_kirana: 'Kirana',
+    nav_games: 'Game',
     nav_language: 'Bahasa',
     nav_tagline: 'Tools, AI, dan software untuk belajar dan bekerja lebih praktis',
     nav_privacy_policy: 'Kebijakan Privasi',
@@ -165,7 +171,6 @@ window.i18n = {
     tool8_desc: 'Pengalaman pencarian ramah privasi untuk web terbuka.',
     tool_calc_desc: 'Kalkulator sederhana dan cepat untuk perhitungan sehari-hari.',
     tool_chess_desc: 'Permainan catur klasik yang bisa dimainkan langsung di browser.',
-    tool_mydev_desc: 'Kumpulan utilitas developer ringkas untuk pekerjaan cepat sehari-hari.',
     tool_loveyou_desc: 'Halaman hadiah interaktif kecil — sudut hangat di web terbuka.',
 
     tool_open: 'Buka Tool',
@@ -175,6 +180,24 @@ window.i18n = {
     docs_error: 'Panduan untuk tool ini belum tersedia.',
     docs_view_repo: 'Lihat Repository',
     docs_modal_close: 'Tutup',
+
+    /* --- Games --- */
+    games_eyebrow: 'Game',
+    games_title: 'Mini Games',
+    games_subtitle: 'Game ringan yang bisa dimainkan langsung di browser — tanpa install, tanpa login.',
+    game_play: 'Mainkan',
+    game_chess_name: 'Catur',
+    game_chess_desc: 'Catur klasik yang bisa dimainkan langsung di browser dengan mouse atau sentuh.',
+    game_chess_tag: 'Papan Klasik',
+    game_loveyou_name: 'LoveYou',
+    game_loveyou_desc: 'Halaman hadiah interaktif kecil — sudut hangat di web terbuka.',
+    game_loveyou_tag: 'Interaktif',
+    game_orbit_name: 'Orbit Weaver',
+game_orbit_desc: 'Menembus jalur orbit — bimbing pesawatmu melewati bintang-bintang.',
+game_orbit_tag: 'Arcade',
+game_starfall_name: 'Starfall',
+game_starfall_desc: 'Tangkap bintang yang jatuh sebelum memudar — game refleks arcade singkat.',
+game_starfall_tag: 'Arcade',
 
     /* --- Contact --- */
     contact_eyebrow: 'Kontak',
@@ -287,6 +310,7 @@ window.i18n = {
     nav_github: 'GitHub',
     nav_raia: 'RAIA',
     nav_kirana: 'Kirana',
+    nav_games: 'Games',
     nav_language: 'Language',
     nav_tagline: 'Tools, AI, and software for learning and everyday work',
     nav_privacy_policy: 'Privacy Policy',
@@ -421,7 +445,6 @@ window.i18n = {
     tool8_desc: 'A privacy-friendly search experience for the open web.',
     tool_calc_desc: 'A simple and fast calculator for everyday calculations.',
     tool_chess_desc: 'A classic chess game you can play right in the browser.',
-    tool_mydev_desc: 'A compact developer utility bundle for quick daily tasks.',
     tool_loveyou_desc: 'A small interactive gift page — a heartfelt corner of the open web.',
 
     tool_open: 'Open Tool',
@@ -431,6 +454,24 @@ window.i18n = {
     docs_error: 'A guide is not available for this tool yet.',
     docs_view_repo: 'View Repository',
     docs_modal_close: 'Close',
+
+    /* --- Games --- */
+    games_eyebrow: 'Games',
+    games_title: 'Mini Games',
+    games_subtitle: 'Lightweight games you can play right in the browser — no install, no login.',
+    game_play: 'Play',
+    game_chess_name: 'Chess',
+    game_chess_desc: 'Classic chess — playable in your browser with mouse or touch.',
+    game_chess_tag: 'Classic Board',
+    game_loveyou_name: 'LoveYou',
+    game_loveyou_desc: 'A small interactive gift page — a heartfelt corner of the open web.',
+    game_loveyou_tag: 'Interactive',
+    game_orbit_name: 'Orbit Weaver',
+game_orbit_desc: 'Weave through orbital paths — guide your ship past the stars.',
+game_orbit_tag: 'Arcade',
+game_starfall_name: 'Starfall',
+game_starfall_desc: 'Catch falling stars before they fade — a quick arcade reflex game.',
+game_starfall_tag: 'Arcade',
 
     /* --- Contact --- */
     contact_eyebrow: 'Contact',

@@ -1,5 +1,5 @@
 /* ============================================================
-   script.js — Haiere v20260927.2
+   script.js — Haiere v2026.10.08.4
    Everything UI: theme, i18n, drawer, search, filters,
    docs modal (README via GitHub raw), contact form, cookies,
    scroll animations, counters, hero spotlight, tilt/magnetic.
@@ -7,11 +7,15 @@
    Default language: English (en).
    The browser locale only switches to Indonesian (id) if the
    user has explicitly chosen it, or their locale is Indonesian.
+
+   v2026.10.08.4 changes:
+   - Reads <html data-perf> ("eco" | "normal" | "premium").
+   - Hero spotlight & tilt/magnetic cards run on premium only.
+   - Added Games to section search index and .game-card indexing.
+   - MyDev removed.
    ============================================================ */
 
 function whenTailwindReady(cb) {
-  // Tailwind Play CDN mengekspos window.tailwind sebelum DOMContentLoaded.
-  // Tidak ada style[data-tailwind] yang diset oleh Play CDN.
   if (window.tailwind) return cb();
   requestAnimationFrame(() => requestAnimationFrame(cb));
 }
@@ -28,6 +32,7 @@ function whenTailwindReady(cb) {
   let searchIndex = [];
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const isCoarsePointer = window.matchMedia('(pointer: coarse)').matches;
+  const perfTier = document.documentElement.getAttribute('data-perf') || 'premium';
 
   function getFocusable(container) {
     if (!container) return [];
@@ -36,16 +41,10 @@ function whenTailwindReady(cb) {
     )).filter((el) => {
       if (el.hasAttribute('hidden')) return false;
       if (el.getAttribute('aria-hidden') === 'true') return false;
-      // offsetParent === null untuk display:none AND position:fixed.
-      // Kita cek juga apakah elemen visible via getClientRects.
       return el.offsetParent !== null || el.getClientRects().length > 0;
     });
   }
 
-  /**
-   * Returns 'id' only if the browser locale explicitly starts with "id".
-   * Everything else falls back to English.
-   */
   function detectLang() {
     try {
       return navigator.language.toLowerCase().startsWith('id') ? 'id' : DEFAULT_LANG;
@@ -60,11 +59,7 @@ function whenTailwindReady(cb) {
   }
   window.getI18nText = getI18nText;
 
-  /* ---------- Body scroll lock (reference-counted) ----------
-     Beberapa komponen (drawer, docs modal, cookie modal) bisa
-     meminta lock bersamaan. Kita track per-ID supaya lock tidak
-     dilepas prematur saat satu komponen ditutup sementara
-     komponen lain masih terbuka. */
+  /* ---------- Body scroll lock (reference-counted) ---------- */
   const bodyLocks = new Set();
   function setBodyScrollLock(locked, id) {
     id = id || 'global';
@@ -142,11 +137,9 @@ function whenTailwindReady(cb) {
 
     document.documentElement.lang = lang;
 
-    // Update <title> sesuai bahasa
     const tTitle = tr.page_title || fallback.page_title;
     if (tTitle) document.title = tTitle;
 
-    // Update menu-btn aria-label kalau drawer sedang tertutup
     if (menuBtn && !isDrawerOpen) {
       menuBtn.setAttribute('aria-label', getI18nText('open_menu', 'Open menu'));
     }
@@ -250,7 +243,6 @@ function whenTailwindReady(cb) {
     const last  = focusable[focusable.length - 1];
     const active = document.activeElement;
 
-    // Kalau fokus keluar dari drawer, tarik kembali ke elemen pertama
     if (!drawer.contains(active)) {
       e.preventDefault();
       (e.shiftKey ? last : first).focus();
@@ -292,8 +284,6 @@ function whenTailwindReady(cb) {
 
   if (menuBtn && drawer && drawerOverlay) {
     drawer.setAttribute('aria-hidden', 'true');
-    // Set inert supaya fokusable items di drawer tertutup tidak bisa di-tab.
-    // (Fallback: aria-hidden + pointer-events off.)
     if ('inert' in HTMLElement.prototype) drawer.setAttribute('inert', '');
     menuBtn.addEventListener('click', (e) => {
       e.stopPropagation();
@@ -415,6 +405,7 @@ function whenTailwindReady(cb) {
       music:   { labelKey: 'nav_music' },
       quotes:  { labelKey: 'nav_quotes' },
       tools:   { labelKey: 'nav_tools' },
+      games:   { labelKey: 'nav_games' },
       contact: { labelKey: 'nav_contact' },
       support: { labelKey: 'support_title' },
     };
@@ -443,6 +434,21 @@ function whenTailwindReady(cb) {
         title,
         meta: `${category} · ${repo}`,
         haystack: `${title} ${description} ${category} ${repo}`.toLowerCase(),
+      });
+    });
+
+    // Games — index khusus agar pencarian "chess" / "loveyou" muncul
+    document.querySelectorAll('.game-card').forEach((card) => {
+      const h3 = card.querySelector('.game-title');
+      const desc = card.querySelector('.game-desc');
+      if (!h3) return;
+      const title = (h3.textContent || '').trim();
+      const description = desc ? (desc.textContent || '').trim() : '';
+      items.push({
+        href: '#games',
+        title,
+        meta: 'Game',
+        haystack: `${title} ${description} game play`.toLowerCase(),
       });
     });
 
@@ -524,7 +530,6 @@ function whenTailwindReady(cb) {
       }
     });
 
-    // Escape dari dalam listbox → kembali ke input
     if (searchResults) {
       searchResults.addEventListener('keydown', (e) => {
         if (e.key === 'Escape') {
@@ -564,12 +569,12 @@ function whenTailwindReady(cb) {
   }
 
   /* ==========================================================
-     9. HERO SPOTLIGHT
+     9. HERO SPOTLIGHT — premium only (mousemove-heavy)
      ========================================================== */
   const heroSection = document.getElementById('hero');
   const heroSpotlight = document.getElementById('hero-spotlight');
 
-  if (heroSection && heroSpotlight && !prefersReducedMotion && !isCoarsePointer) {
+  if (heroSection && heroSpotlight && !prefersReducedMotion && !isCoarsePointer && perfTier === 'premium') {
     heroSection.addEventListener('mousemove', (e) => {
       const rect = heroSection.getBoundingClientRect();
       const x = ((e.clientX - rect.left) / rect.width) * 100;
@@ -619,7 +624,6 @@ function whenTailwindReady(cb) {
     filterButtons.forEach((btn) => {
       const on = btn.dataset.filter === active;
       btn.classList.toggle('active', on);
-      // Pakai aria-pressed (role toolbar) — bukan aria-selected (role tab).
       btn.setAttribute('aria-pressed', String(on));
       btn.tabIndex = 0;
     });
@@ -645,34 +649,30 @@ function whenTailwindReady(cb) {
   setActiveFilter('all');
 
   /* ==========================================================
-   12. SANITIZE MARKDOWN — versi ringkas
-   ========================================================== */
-function sanitizeMarkdown(container) {
-  if (!container) return;
+     12. SANITIZE MARKDOWN
+     ========================================================== */
+  function sanitizeMarkdown(container) {
+    if (!container) return;
 
-  // Hapus atribut width/height yang bikin layout rusak
-  container.querySelectorAll('[width], [height]').forEach((el) => {
-    el.removeAttribute('width');
-    el.removeAttribute('height');
-  });
+    container.querySelectorAll('[width], [height]').forEach((el) => {
+      el.removeAttribute('width');
+      el.removeAttribute('height');
+    });
 
-  // Gambar: jangan overflow
-  container.querySelectorAll('img').forEach((img) => {
-    img.style.maxWidth = '100%';
-    img.style.height = 'auto';
-  });
+    container.querySelectorAll('img').forEach((img) => {
+      img.style.maxWidth = '100%';
+      img.style.height = 'auto';
+    });
 
-  // Link eksternal → tab baru
-  container.querySelectorAll('a[href^="http"]').forEach((a) => {
-    a.setAttribute('target', '_blank');
-    a.setAttribute('rel', 'noopener noreferrer');
-  });
+    container.querySelectorAll('a[href^="http"]').forEach((a) => {
+      a.setAttribute('target', '_blank');
+      a.setAttribute('rel', 'noopener noreferrer');
+    });
 
-  // Checkbox task list: bikin non-interaktif
-  container.querySelectorAll('input[type="checkbox"]').forEach((cb) => {
-    cb.disabled = true;
-  });
-}
+    container.querySelectorAll('input[type="checkbox"]').forEach((cb) => {
+      cb.disabled = true;
+    });
+  }
 
   /* ==========================================================
      13. DOCS MODAL — README via GitHub raw
@@ -730,10 +730,6 @@ function sanitizeMarkdown(container) {
         if (rendered !== null && docsModalBody) {
           docsModalBody.innerHTML = `<div class="docs-markdown">${rendered}</div>`;
           sanitizeMarkdown(docsModalBody);
-          docsModalBody.querySelectorAll('a[href^="http"]').forEach((a) => {
-            a.setAttribute('target', '_blank');
-            a.setAttribute('rel', 'noopener noreferrer');
-          });
         } else if (docsModalBody) {
           docsModalBody.innerHTML = '';
           const pre = document.createElement('pre');
@@ -803,7 +799,6 @@ function sanitizeMarkdown(container) {
     errorEl.textContent = msg;
   }
 
-  /* ---------- Form status: color-coded + auto-clear ---------- */
   let formStatusTimer = 0;
   function setFormStatus(kind, msg) {
     if (!statusDiv) return;
@@ -1154,9 +1149,9 @@ function sanitizeMarkdown(container) {
   }
 
   /* ==========================================================
-     17. TILT & MAGNETIC (progressive enhancement)
+     17. TILT & MAGNETIC — premium only (mousemove-heavy)
      ========================================================== */
-  if (!prefersReducedMotion && !isCoarsePointer) {
+  if (!prefersReducedMotion && !isCoarsePointer && perfTier === 'premium') {
     const tiltTargets = document.querySelectorAll('.tool-card, .quote-card, .about-card');
     tiltTargets.forEach((card) => {
       card.classList.add('tilt-card');
@@ -1189,7 +1184,6 @@ function sanitizeMarkdown(container) {
   let savedLang = null;
   try { savedLang = localStorage.getItem('haiere-lang'); } catch (_) {}
 
-  // URL override: ?lang=id / ?lang=en
   let urlLang = null;
   try {
     const params = new URLSearchParams(window.location.search);
@@ -1209,5 +1203,5 @@ function sanitizeMarkdown(container) {
   whenTailwindReady(() => renderAllIcons());
   renderAllIcons();
 
-  console.log('Haiere v20260927.2 — ready (default lang: en)');
+  console.log('Haiere v2026.10.08.4 — ready (perf tier: ' + perfTier + ', default lang: en)');
 })();

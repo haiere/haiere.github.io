@@ -1,6 +1,6 @@
 {
   "$schema": "https://json.schemastore.org/web-manifest-combined.json",
-  "//": "Haiere — PWA manifest. v20260927.2. Spec: https://www.w3.org/TR/appmanifest/",
+  "//": "Haiere — PWA manifest. v2026.10.08.4. Spec: https://www.w3.org/TR/appmanifest/",
   "//id": "PWA identity — do NOT change once installed. Changing it resets the install for every user.",
   "id": "/",
 
@@ -8,7 +8,7 @@
   "name": "Haiere — Hajir Studio",
   "short_name": "Haiere",
 
-  "description": "Free, privacy-first web tools, provider-based AI chatbots (Raia AI & Kirana), open-source projects, and original music by Hajir Muhaajir.",
+  "description": "Free, privacy-first web tools, provider-based AI chatbots (Raia AI & Kirana), open-source projects, mini games, and original music by Hajir Muhaajir.",
 
   "start_url": "/?source=pwa",
   "scope": "/",
@@ -20,6 +20,9 @@
     "client_mode": ["navigate-existing", "auto"]
   },
 
+  "//handle_links": "Chromium-only, currently behind a flag. Declarative and safe — unsupported browsers ignore it. When supported, opening a hajir.is-a.dev link from outside the app routes into the installed PWA instead of a new browser tab. Scope is enforced by the browser, so out-of-scope URLs still open in the default browser.",
+  "handle_links": "preferred",
+
   "//orientation": "Not locked — the layout is fully responsive in portrait and landscape. Only lock when the design requires it.",
   "orientation": "any",
 
@@ -27,14 +30,15 @@
   "lang": "en",
   "dir": "ltr",
 
-  "//colors": "theme_color matches <meta name=\"theme-color\"> (dark) in index.html and --bg-page (night) in aurora.css. background_color is the splash-screen fill — same value for no flash on cold start.",
+  "//colors": "theme_color matches <meta name=\"theme-color\"> (dark) in index.html and --bg-night in aurora.css. background_color is the splash-screen fill — same value for no flash on cold start. Neither the manifest theme_color nor background_color can use a media query, so they pin the default (dark) theme; the runtime theme switch in the app itself is unaffected.",
   "theme_color": "#0A192F",
   "background_color": "#0A192F",
 
-  "//categories": "Chrome groups these in the install dialog. music & entertainment cover Signature Music; productivity/utilities/developer cover Beat Tools.",
+  "//categories": "Chrome groups these in the install dialog. music & entertainment cover Signature Music and the Mini Games section (Chess, LoveYou); productivity/utilities/developer cover Beat Tools. The spec has no dedicated 'games' category — 'entertainment' is the closest valid slot.",
   "categories": ["productivity", "utilities", "developer", "music", "entertainment"],
   "prefer_related_applications": false,
 
+  "//perf": "The app runs the same inline perf-tier detection as the website (see index.html <head>). On a low-end device the installed PWA boots into the eco tier — no aurora blur, no stars, no backdrop-filter, no canvas FX — from the very first paint, before any stylesheet applies. The manifest itself does not affect runtime performance; this note exists so a future editor does not 'optimise' the app by removing the data-perf attribute.",
   "//icons": "WebP renders on all current Chromium builds. The same file is declared at 192 and 512 — the browser scales it; this keeps the install prompt happy without shipping duplicate assets. Add PNG (192, 512, maskable-512) when Safari/Firefox icon support is prioritised.",
   "icons": [
     {
@@ -68,13 +72,26 @@
     }
   ],
 
-  "//shortcuts": "Manifest shortcuts surface on long-press of the installed app icon. URLs must be same-scope. All four entries point to sections of index.html — the app opens them in the same window thanks to launch_handler.",
+  "//shortcuts": "Manifest shortcuts surface on long-press of the installed app icon. URLs must be same-scope. All five entries point to sections of index.html — the app opens them in the same window thanks to launch_handler.",
   "shortcuts": [
     {
       "name": "Beat Tools",
       "short_name": "Tools",
       "description": "Browse every free privacy-first web tool",
       "url": "/?source=pwa#tools",
+      "icons": [
+        {
+          "src": "https://i.postimg.cc/8PJ0bhb1/H-haiere.webp",
+          "sizes": "96x96",
+          "type": "image/webp"
+        }
+      ]
+    },
+    {
+      "name": "Games",
+      "short_name": "Games",
+      "description": "Play Chess and LoveYou right in the browser",
+      "url": "/?source=pwa#games",
       "icons": [
         {
           "src": "https://i.postimg.cc/8PJ0bhb1/H-haiere.webp",

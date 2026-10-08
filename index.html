@@ -1,9 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" class="dark">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-
   <!-- ============ CHARSET & VIEWPORT (MUST BE FIRST) ============ -->
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
@@ -152,7 +149,8 @@
           { "@type": "ListItem", "position": 2, "name": "About", "item": "https://hajir.is-a.dev/#about" },
           { "@type": "ListItem", "position": 3, "name": "Music", "item": "https://hajir.is-a.dev/#music" },
           { "@type": "ListItem", "position": 4, "name": "Beat Tools", "item": "https://hajir.is-a.dev/#tools" },
-          { "@type": "ListItem", "position": 5, "name": "Contact", "item": "https://hajir.is-a.dev/#contact" }
+          { "@type": "ListItem", "position": 5, "name": "Games", "item": "https://hajir.is-a.dev/#games" },
+          { "@type": "ListItem", "position": 6, "name": "Contact", "item": "https://hajir.is-a.dev/#contact" }
         ]
       },
       {
@@ -168,12 +166,20 @@
           { "@type": "SoftwareApplication", "name": "Raia AI", "url": "https://raia-ai.netlify.app", "applicationCategory": "AIApplication", "operatingSystem": "Web", "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" } },
           { "@type": "SoftwareApplication", "name": "Kirana", "url": "https://hajir.is-a.dev/kirana", "applicationCategory": "AIApplication", "operatingSystem": "Web", "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" } },
           { "@type": "SoftwareApplication", "name": "RaiaSpace", "url": "https://hajir.is-a.dev/raiaspace", "applicationCategory": "SearchApplication", "operatingSystem": "Web", "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" } },
-          { "@type": "SoftwareApplication", "name": "Calc", "url": "https://hajir.is-a.dev/calc", "applicationCategory": "UtilitiesApplication", "operatingSystem": "Web", "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" } },
-          { "@type": "SoftwareApplication", "name": "Chess", "url": "https://hajir.is-a.dev/chess", "applicationCategory": "GameApplication", "operatingSystem": "Web", "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" } },
-          { "@type": "SoftwareApplication", "name": "MyDev", "url": "https://hajir.is-a.dev/mydev", "applicationCategory": "DeveloperApplication", "operatingSystem": "Web", "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" } },
-          { "@type": "SoftwareApplication", "name": "LoveYou", "url": "https://hajir.is-a.dev/loveyou", "applicationCategory": "EntertainmentApplication", "operatingSystem": "Web", "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" } }
+          { "@type": "SoftwareApplication", "name": "Calc", "url": "https://hajir.is-a.dev/calc", "applicationCategory": "UtilitiesApplication", "operatingSystem": "Web", "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" } }
         ]
       },
+      {
+  "@type": "ItemList",
+  "@id": "https://hajir.is-a.dev/#games",
+  "name": "Mini Games by Haiere",
+  "itemListElement": [
+    { "@type": "SoftwareApplication", "name": "Chess", "url": "https://hajir.is-a.dev/chess", "applicationCategory": "GameApplication", "operatingSystem": "Web", "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" } },
+    { "@type": "SoftwareApplication", "name": "LoveYou", "url": "https://hajir.is-a.dev/loveyou", "applicationCategory": "GameApplication", "operatingSystem": "Web", "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" } },
+    { "@type": "SoftwareApplication", "name": "Orbit Weaver", "url": "https://hajir.is-a.dev/game/orbit-weaver.html", "applicationCategory": "GameApplication", "operatingSystem": "Web", "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" } },
+    { "@type": "SoftwareApplication", "name": "Starfall", "url": "https://hajir.is-a.dev/game/starfall.html", "applicationCategory": "GameApplication", "operatingSystem": "Web", "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" } }
+  ]
+},
       {
         "@type": "FAQPage",
         "@id": "https://hajir.is-a.dev/#faq",
@@ -236,6 +242,8 @@
 <!-- ============ TAILWIND CONFIG ============ -->
 <script src="https://cdn.tailwindcss.com"></script>
 <script>
+  // Guard: `tailwind` baru tersedia setelah CDN di atas dieksekusi.
+  window.tailwind = window.tailwind || {};
   tailwind.config = {
     darkMode: 'class',
     theme: {
@@ -282,8 +290,24 @@
     var d = document.documentElement, saved = null;
     try { saved = localStorage.getItem('theme'); } catch (e) {}
     var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-    if (!saved && !prefersDark) d.classList.remove('dark'); // first visit: light OS -> day
+    if (!saved && !prefersDark) d.classList.remove('dark');
     d.setAttribute('data-theme', d.classList.contains('dark') ? 'night' : 'day');
+  })();
+</script>
+
+<!-- ============ AURORA v2026.10.08.4: perf tier ============ -->
+<script>
+  (function () {
+    var d = document.documentElement;
+    var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var coarse = window.matchMedia && window.matchMedia('(pointer: coarse)').matches;
+    var conn = navigator.connection || {};
+    var mem = navigator.deviceMemory || 0;
+    var cores = navigator.hardwareConcurrency || 0;
+    var tier = 'premium';
+    if (reduce || conn.saveData === true || (mem && mem <= 2) || (cores && cores <= 2)) tier = 'eco';
+    else if (coarse || (mem && mem <= 4) || (cores && cores <= 4)) tier = 'normal';
+    d.setAttribute('data-perf', tier);
   })();
 </script>
 
@@ -338,6 +362,10 @@ section > * { max-width: 72rem; margin-left: auto; margin-right: auto; }
 @media (min-width: 1024px) { #tools-container { grid-template-columns: repeat(3, 1fr); } }
 .tool-card { display: flex; flex-direction: column; padding: 1.25rem; border-radius: 2rem; }
 @media (min-width: 640px) { .tool-card { padding: 1.5rem; } }
+
+/* --- Games grid --- */
+.games-grid { display: grid; grid-template-columns: 1fr; gap: 1.25rem; }
+@media (min-width: 640px) { .games-grid { grid-template-columns: repeat(2, 1fr); gap: 1.5rem; } }
 
 /* --- Quotes grid --- */
 #quotes .grid { display: grid; grid-template-columns: 1fr; gap: 1.25rem; }
@@ -401,7 +429,7 @@ html { -webkit-text-size-adjust: 100%; }
      GLOBAL UI ELEMENTS
 ============================================================ -->
 
-<!-- ============ AURORA THEME LAYERS (behind content, never interactive) ============ -->
+<!-- ============ AURORA THEME LAYERS ============ -->
 <div id="aurora-bg" aria-hidden="true">
   <div class="aurora"></div>
   <div class="stars stars-back"></div>
@@ -450,6 +478,7 @@ html { -webkit-text-size-adjust: 100%; }
           data-i18n-alt="logo_alt"
           loading="eager"
           fetchpriority="high"
+          decoding="async"
           width="36"
           height="36"
         />
@@ -562,6 +591,7 @@ html { -webkit-text-size-adjust: 100%; }
             alt="Haiere logo"
             data-i18n-alt="logo_alt"
             loading="eager"
+            decoding="async"
             width="36"
             height="36"
           />
@@ -610,6 +640,10 @@ html { -webkit-text-size-adjust: 100%; }
       <a href="#tools" class="drawer-item nav-link" data-section="tools">
         <span class="drawer-icon"><svg class="h-4 w-4" data-icon="ic09" aria-hidden="true"></svg></span>
         <span data-i18n="nav_tools">Tools</span>
+      </a>
+      <a href="#games" class="drawer-item nav-link" data-section="games">
+        <span class="drawer-icon"><svg class="h-4 w-4" data-icon="ic20" aria-hidden="true"></svg></span>
+        <span data-i18n="nav_games">Games</span>
       </a>
       <a href="#contact" class="drawer-item nav-link" data-section="contact">
         <span class="drawer-icon"><svg class="h-4 w-4" data-icon="ic10" aria-hidden="true"></svg></span>
@@ -857,7 +891,7 @@ html { -webkit-text-size-adjust: 100%; }
     <div class="reveal stats-grid">
       <div class="stat-card glass-card">
         <div class="stat-icon"><svg class="h-5 w-5" data-icon="ic09" aria-hidden="true"></svg></div>
-        <div class="stat-number" data-count="12" data-suffix="+">0</div>
+        <div class="stat-number" data-count="11" data-suffix="+">0</div>
         <div class="stat-label" data-i18n="stat_tools_label">Tools Released</div>
       </div>
       <div class="stat-card glass-card">
@@ -1135,7 +1169,6 @@ html { -webkit-text-size-adjust: 100%; }
       </p>
     </header>
 
-    <!-- FIX: role toolbar (bukan tablist) + aria-pressed (bukan aria-selected) -->
     <div class="reveal filter-bar" role="toolbar" aria-label="Filter tools">
       <button class="filter-btn active" type="button" data-filter="all" aria-pressed="true">
         <svg class="h-3.5 w-3.5" data-icon="ic23" aria-hidden="true"></svg>
@@ -1408,88 +1441,159 @@ html { -webkit-text-size-adjust: 100%; }
         </div>
       </li>
 
-      <!-- 10. CHESS -->
-      <li class="tool-card reveal glass-card" data-category="web" data-repo="chess">
-        <div class="tool-meta">
-          <span class="tool-number">10</span>
-          <span class="tool-cat">
-            <svg class="h-2.5 w-2.5" data-icon="ic16" aria-hidden="true"></svg>
-            <span data-i18n="cat_chess">Chess App</span>
-          </span>
-          <span class="status-badge-stable" data-i18n="status_stable">Stable</span>
-        </div>
-        <h3 class="tool-title">
-          <svg class="h-4 w-4" data-icon="ic30" aria-hidden="true"></svg>
-          Chess
-        </h3>
-        <p class="tool-desc" data-i18n="tool_chess_desc">A classic chess game you can play right in the browser.</p>
-        <div class="tool-actions mt-auto">
-          <a href="https://hajir.is-a.dev/chess" class="tool-open-btn group/btn" target="_blank" rel="noopener noreferrer" aria-label="Open Chess in a new tab">
-            <span data-i18n="tool_open">Open Tool</span>
-            <svg class="h-3.5 w-3.5" data-icon="ic12" aria-hidden="true"></svg>
-          </a>
-          <button class="tool-docs-btn group/btn" type="button" data-repo="chess" data-tool-name="Chess" aria-label="View Chess documentation">
-            <span data-i18n="tool_docs">How to Use</span>
-            <svg class="h-3.5 w-3.5" data-icon="ic33" aria-hidden="true"></svg>
-          </button>
-        </div>
-      </li>
-
-      <!-- 11. MYDEV -->
-      <li class="tool-card reveal glass-card" data-category="developer" data-repo="mydev">
-        <div class="tool-meta">
-          <span class="tool-number">11</span>
-          <span class="tool-cat">
-            <svg class="h-2.5 w-2.5" data-icon="ic15" aria-hidden="true"></svg>
-            <span data-i18n="cat_dev_tool">Developer Utility</span>
-          </span>
-          <span class="status-badge-stable" data-i18n="status_stable">Stable</span>
-        </div>
-        <h3 class="tool-title">
-          <svg class="h-4 w-4" data-icon="ic15" aria-hidden="true"></svg>
-          MyDev
-        </h3>
-        <p class="tool-desc" data-i18n="tool_mydev_desc">A compact developer utility bundle for quick daily tasks.</p>
-        <div class="tool-actions mt-auto">
-          <a href="https://hajir.is-a.dev/mydev" class="tool-open-btn group/btn" target="_blank" rel="noopener noreferrer" aria-label="Open MyDev in a new tab">
-            <span data-i18n="tool_open">Open Tool</span>
-            <svg class="h-3.5 w-3.5" data-icon="ic12" aria-hidden="true"></svg>
-          </a>
-          <button class="tool-docs-btn group/btn" type="button" data-repo="mydev" data-tool-name="MyDev" aria-label="View MyDev documentation">
-            <span data-i18n="tool_docs">How to Use</span>
-            <svg class="h-3.5 w-3.5" data-icon="ic33" aria-hidden="true"></svg>
-          </button>
-        </div>
-      </li>
-
-      <!-- 12. LOVEYOU -->
-      <li class="tool-card reveal glass-card" data-category="web" data-repo="loveyou">
-        <div class="tool-meta">
-          <span class="tool-number">12</span>
-          <span class="tool-cat">
-            <svg class="h-2.5 w-2.5" data-icon="ic35" aria-hidden="true"></svg>
-            <span data-i18n="cat_creative">Creative</span>
-          </span>
-          <span class="status-badge-stable" data-i18n="status_stable">Stable</span>
-        </div>
-        <h3 class="tool-title">
-          <svg class="h-4 w-4" data-icon="ic35" aria-hidden="true"></svg>
-          LoveYou
-        </h3>
-        <p class="tool-desc" data-i18n="tool_loveyou_desc">A small interactive gift page — a heartfelt corner of the open web.</p>
-        <div class="tool-actions mt-auto">
-          <a href="https://hajir.is-a.dev/loveyou" class="tool-open-btn group/btn" target="_blank" rel="noopener noreferrer" aria-label="Open LoveYou in a new tab">
-            <span data-i18n="tool_open">Open Tool</span>
-            <svg class="h-3.5 w-3.5" data-icon="ic12" aria-hidden="true"></svg>
-          </a>
-          <button class="tool-docs-btn group/btn" type="button" data-repo="loveyou" data-tool-name="LoveYou" aria-label="View LoveYou documentation">
-            <span data-i18n="tool_docs">How to Use</span>
-            <svg class="h-3.5 w-3.5" data-icon="ic33" aria-hidden="true"></svg>
-          </button>
-        </div>
-      </li>
-
     </ol>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     GAMES
+============================================================ -->
+
+<section id="games" class="section section--gradient" aria-labelledby="games-title">
+  <div class="section-inner section-inner--mid">
+    <header class="section-header reveal">
+      <p class="eyebrow">
+        <span class="eyebrow-line" aria-hidden="true"></span>
+        <span data-i18n="games_eyebrow">Games</span>
+        <span class="eyebrow-line eyebrow-line--r" aria-hidden="true"></span>
+      </p>
+      <h2 id="games-title" class="section-title">
+        <svg class="section-title-icon" data-icon="ic20" aria-hidden="true"></svg>
+        <span data-i18n="games_title">Mini Games</span>
+      </h2>
+      <p class="section-subtitle" data-i18n="games_subtitle">
+        Lightweight games you can play right in the browser — no install, no login.
+      </p>
+    </header>
+
+    <div class="games-grid">
+
+      <!-- Chess (legacy URL) -->
+      <article class="reveal glass-card game-card">
+        <div class="game-thumb game-thumb--chess" aria-hidden="true">
+          <svg class="game-thumb-icon" data-icon="ic30" aria-hidden="true"></svg>
+        </div>
+        <div class="game-meta">
+          <span class="game-cat">
+            <svg class="h-2.5 w-2.5" data-icon="ic16" aria-hidden="true"></svg>
+            <span data-i18n="game_chess_tag">Classic Board</span>
+          </span>
+          <span class="status-badge-stable" data-i18n="status_stable">Stable</span>
+        </div>
+        <h3 class="game-title">
+          <svg class="h-4 w-4" data-icon="ic30" aria-hidden="true"></svg>
+          <span data-i18n="game_chess_name">Chess</span>
+        </h3>
+        <p class="game-desc" data-i18n="game_chess_desc">
+          Classic chess — playable in your browser with mouse or touch.
+        </p>
+        <div class="tool-actions mt-auto">
+          <a
+            href="https://hajir.is-a.dev/chess"
+            class="tool-open-btn group/btn"
+            aria-label="Play Chess"
+          >
+            <span data-i18n="game_play">Play</span>
+            <svg class="h-3.5 w-3.5" data-icon="ic20" aria-hidden="true"></svg>
+          </a>
+        </div>
+      </article>
+
+      <!-- LoveYou (legacy URL) -->
+      <article class="reveal glass-card game-card">
+        <div class="game-thumb game-thumb--loveyou" aria-hidden="true">
+          <svg class="game-thumb-icon" data-icon="ic35" aria-hidden="true"></svg>
+        </div>
+        <div class="game-meta">
+          <span class="game-cat">
+            <svg class="h-2.5 w-2.5" data-icon="ic41" aria-hidden="true"></svg>
+            <span data-i18n="game_loveyou_tag">Interactive</span>
+          </span>
+          <span class="status-badge-stable" data-i18n="status_stable">Stable</span>
+        </div>
+        <h3 class="game-title">
+          <svg class="h-4 w-4" data-icon="ic35" aria-hidden="true"></svg>
+          <span data-i18n="game_loveyou_name">LoveYou</span>
+        </h3>
+        <p class="game-desc" data-i18n="game_loveyou_desc">
+          A small interactive gift page — a heartfelt corner of the open web.
+        </p>
+        <div class="tool-actions mt-auto">
+          <a
+            href="https://hajir.is-a.dev/loveyou"
+            class="tool-open-btn group/btn"
+            aria-label="Play LoveYou"
+          >
+            <span data-i18n="game_play">Play</span>
+            <svg class="h-3.5 w-3.5" data-icon="ic20" aria-hidden="true"></svg>
+          </a>
+        </div>
+      </article>
+
+      <!-- Orbit Weaver (new format) -->
+      <article class="reveal glass-card game-card">
+        <div class="game-thumb game-thumb--orbit" aria-hidden="true">
+          <svg class="game-thumb-icon" data-icon="ic16" aria-hidden="true"></svg>
+        </div>
+        <div class="game-meta">
+          <span class="game-cat">
+            <svg class="h-2.5 w-2.5" data-icon="ic16" aria-hidden="true"></svg>
+            <span data-i18n="game_orbit_tag">Arcade</span>
+          </span>
+          <span class="status-badge-stable" data-i18n="status_stable">Stable</span>
+        </div>
+        <h3 class="game-title">
+          <svg class="h-4 w-4" data-icon="ic16" aria-hidden="true"></svg>
+          <span data-i18n="game_orbit_name">Orbit Weaver</span>
+        </h3>
+        <p class="game-desc" data-i18n="game_orbit_desc">
+          Weave through orbital paths — guide your ship past the stars.
+        </p>
+        <div class="tool-actions mt-auto">
+          <a
+            href="https://hajir.is-a.dev/game/orbit-weaver.html"
+            class="tool-open-btn group/btn"
+            aria-label="Play Orbit Weaver"
+          >
+            <span data-i18n="game_play">Play</span>
+            <svg class="h-3.5 w-3.5" data-icon="ic20" aria-hidden="true"></svg>
+          </a>
+        </div>
+      </article>
+
+      <!-- Starfall (new format) -->
+      <article class="reveal glass-card game-card">
+        <div class="game-thumb game-thumb--starfall" aria-hidden="true">
+          <svg class="game-thumb-icon" data-icon="ic41" aria-hidden="true"></svg>
+        </div>
+        <div class="game-meta">
+          <span class="game-cat">
+            <svg class="h-2.5 w-2.5" data-icon="ic41" aria-hidden="true"></svg>
+            <span data-i18n="game_starfall_tag">Arcade</span>
+          </span>
+          <span class="status-badge-stable" data-i18n="status_stable">Stable</span>
+        </div>
+        <h3 class="game-title">
+          <svg class="h-4 w-4" data-icon="ic41" aria-hidden="true"></svg>
+          <span data-i18n="game_starfall_name">Starfall</span>
+        </h3>
+        <p class="game-desc" data-i18n="game_starfall_desc">
+          Catch falling stars before they fade — a quick arcade reflex game.
+        </p>
+        <div class="tool-actions mt-auto">
+          <a
+            href="https://hajir.is-a.dev/game/starfall.html"
+            class="tool-open-btn group/btn"
+            aria-label="Play Starfall"
+          >
+            <span data-i18n="game_play">Play</span>
+            <svg class="h-3.5 w-3.5" data-icon="ic20" aria-hidden="true"></svg>
+          </a>
+        </div>
+      </article>
+
+    </div>
   </div>
 </section>
 
@@ -1685,6 +1789,7 @@ html { -webkit-text-size-adjust: 100%; }
           <li><a href="#music" class="footer-link" data-i18n="nav_music">Music</a></li>
           <li><a href="#quotes" class="footer-link" data-i18n="nav_quotes">Quotes</a></li>
           <li><a href="#tools" class="footer-link" data-i18n="nav_tools">Tools</a></li>
+          <li><a href="#games" class="footer-link" data-i18n="nav_games">Games</a></li>
           <li><a href="#contact" class="footer-link" data-i18n="nav_contact">Contact</a></li>
           <li>
             <a href="https://raia-footer.netlify.app/#privacy" class="footer-link" target="_blank" rel="noopener noreferrer">
@@ -1716,9 +1821,10 @@ html { -webkit-text-size-adjust: 100%; }
           <li><a href="https://hajir.is-a.dev/kirana" class="footer-link" target="_blank" rel="noopener noreferrer">Kirana <span aria-hidden="true">↗</span></a></li>
           <li><a href="https://hajir.is-a.dev/raiaspace" class="footer-link" target="_blank" rel="noopener noreferrer">RaiaSpace <span aria-hidden="true">↗</span></a></li>
           <li><a href="https://hajir.is-a.dev/calc" class="footer-link" target="_blank" rel="noopener noreferrer">Calc <span aria-hidden="true">↗</span></a></li>
-          <li><a href="https://hajir.is-a.dev/chess" class="footer-link" target="_blank" rel="noopener noreferrer">Chess <span aria-hidden="true">↗</span></a></li>
-          <li><a href="https://hajir.is-a.dev/mydev" class="footer-link" target="_blank" rel="noopener noreferrer">MyDev <span aria-hidden="true">↗</span></a></li>
-          <li><a href="https://hajir.is-a.dev/loveyou" class="footer-link" target="_blank" rel="noopener noreferrer">LoveYou <span aria-hidden="true">↗</span></a></li>
+          <li><a href="https://hajir.is-a.dev/chess" class="footer-link">Chess <span aria-hidden="true">↗</span></a></li>
+<li><a href="https://hajir.is-a.dev/loveyou" class="footer-link">LoveYou <span aria-hidden="true">↗</span></a></li>
+<li><a href="https://hajir.is-a.dev/game/orbit-weaver.html" class="footer-link">Orbit Weaver <span aria-hidden="true">↗</span></a></li>
+<li><a href="https://hajir.is-a.dev/game/starfall.html" class="footer-link">Starfall <span aria-hidden="true">↗</span></a></li>
         </ul>
       </nav>
 
@@ -1781,7 +1887,6 @@ html { -webkit-text-size-adjust: 100%; }
       <p class="footer-copy-text" data-i18n="footer_copy">
         © 2026 Haiere · Made with simplicity and care.
       </p>
-      <!-- FIX: tambahkan width & height → mencegah CLS -->
       <img
         class="written-by-human"
         src="https://i.postimg.cc/tTJz00v9/Developed-By-a-Human-Not-By-AI-Badge-black-2x.png"

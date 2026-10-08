@@ -1,5 +1,5 @@
 /* ============================================================
-   icons.js — Haiere v20260927.2
+   icons.js — Haiere v2026.10.08.4
    SVG-only Lucide-style icon registry.
    Sets width/height attributes as a failsafe so icons never
    render at their intrinsic 300×150 / container width when

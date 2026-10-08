@@ -1,9 +1,20 @@
 /* ============================================================
    aurora.css — "Aurora" space theme (additive layer)
-   Loads AFTER style.css. Every rule is scoped to html[data-theme]
-   so if the theme script fails, the site renders exactly as before.
-   data-theme is derived from the existing `.dark` class:
-   .dark -> "night", otherwise "day".
+   v2026.10.08.4 — Performance pass + star color fix
+
+   Tiers (set on <html data-perf>):
+     eco     : low-end / reduced-motion / save-data. No decoration.
+     normal  : aurora (static) + stars (twinkle) + rare meteors.
+     premium : full — aurora drift, meteors, spotlight, cursor FX.
+
+   Contract with aurora.js:
+     - JS sets --sa / --sb (box-shadow lists) on .stars-* elements.
+     - JS sets --dist / --dur on .meteor elements when spawning.
+     - JS drives .spotlight transform (translate3d).
+     - JS drives #fx canvas drawing (premium only).
+
+   Loads AFTER style.css. Scoped to html[data-theme] so a script
+   failure leaves the site exactly as it was.
    ============================================================ */
 
 /* ---------- Animatable theme colours (smooth day/night crossfade) ---------- */
@@ -142,6 +153,9 @@ html:not([data-theme]) #fx { display: none; }
   height: var(--star-size, 1px);
   border-radius: 50%;
   opacity: 0.9;
+  /* FIX (v2026.10.08.4): box-shadow tanpa color eksplisit memakai currentColor.
+     Tanpa baris ini, bintang mewarisi warna teks body — gelap di light mode. */
+  color: var(--star-color, #ffffff);
   will-change: opacity, transform;
 }
 .stars::before { box-shadow: var(--sa, none); animation: star-twinkle var(--tw-a, 4s) ease-in-out infinite, star-drift var(--dr, 80s) ease-in-out infinite alternate; }
@@ -233,5 +247,7 @@ html.aurora-lite .stars::after { will-change: auto; }
   .stars::before,
   .stars::after { animation: none; }
   .meteors { display: none; }
+  .spotlight { display: none; }
+  #fx { display: none; }
   html[data-theme] { transition: none; }
 }
