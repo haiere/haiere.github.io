@@ -1,18 +1,69 @@
 /* ============================================================
-   aurora.js — "Aurora" space theme behaviour (additive layer)
-   - Keeps html[data-theme] ("night" | "day") in sync with the
-     site's existing `.dark` class + #theme-toggle (no 2nd toggle).
-   - Stars (generated), meteors, cursor spotlight, click/tap FX.
-   - No dependencies. Does not touch script.js.
+   aurora.js — "Aurora" space theme behaviour
+   v2026.10.08.4 — Performance pass + tier gating
+
+   Tier contract (read from <html data-perf>, set inline in <head>):
+     eco     : bail out immediately. Adds .aurora-lite so aurora.css
+               can disable the CSS-only aurora-drift animation and
+               drop will-change hints.
+     normal  : stars (fewer) + rare meteors + click/tap explosion.
+               Spotlight stays off (mousemove-heavy).
+     premium : full effect set — stars, meteors, eased spotlight
+               follow, click/tap explosion.
+
+   Runtime media queries still apply on top of the tier:
+     - prefers-reduced-motion → static stars, meteors off, FX ripple
+       only (no particles), spotlight parked.
+     - (pointer: coarse) / ≤768px → 0.5× star intensity, spotlight
+       parked, smaller FX bursts.
+
+   v2026.10.08.4 changes (from v2026.10.08.3):
+   - data-perf is now the primary gate (was previously only low-end
+     detection, tier was effectively ignored).
+   - eco now adds .aurora-lite before bailing, so aurora.css can
+     freeze the drifting aurora gradient on low-end devices.
+   - Meteor cadence is tier-aware (rarer on normal).
+   - Spotlight stays premium-only (mousemove-heavy), but the FX
+     canvas runs on normal + premium so click/tap explosion is
+     available on mid-range devices.
+   - FX loop + spotlight RAF pause on document.hidden; returning to
+     the tab starts from a clean state.
+   - Only #aurora-bg is required for stars; .spotlight and #fx are
+     optional and gracefully degrade.
    ============================================================ */
 (function () {
   'use strict';
 
   var root = document.documentElement;
+
+  /* ---------- Tier gate (set inline in <head>) ---------- */
+  var tier = root.getAttribute('data-perf') || 'normal';
+
+  if (tier === 'eco') {
+    // Tell aurora.css to freeze the CSS-only aurora gradient + stars.
+    root.classList.add('aurora-lite');
+    root.setAttribute('data-aurora', 'off');
+    return;
+  }
+
+  var isPremium = (tier === 'premium');
+
   var bg = document.getElementById('aurora-bg');
+  if (!bg) return; // Nothing to decorate.
+
   var spot = document.querySelector('.spotlight');
   var canvas = document.getElementById('fx');
-  if (!bg || !spot || !canvas) return;
+
+  // Premium requires .spotlight to be present in the DOM. If it's
+  // missing, silently degrade to normal (FX canvas is optional).
+  if (isPremium && !spot) isPremium = false;
+  var isNormal = !isPremium;
+
+  // On normal, hide the spotlight (mousemove-heavy) but keep the FX
+  // canvas alive so the click/tap explosion still works.
+  if (isNormal && spot) {
+    spot.style.display = 'none';
+  }
 
   var TAU = Math.PI * 2;
 
@@ -25,7 +76,10 @@
     else if (mq.addListener) mq.addListener(fn);
   }
 
-  /* ---------- low-end detection ---------- */
+  /* ---------- low-end detection (secondary to tier) ---------- */
+  // The inline tier script already uses the same signals, so this is
+  // defensive: it applies the aurora-lite class in case the tier was
+  // set to normal/premium by another path (e.g. manual override).
   var conn = navigator.connection || {};
   var lowEnd =
     (navigator.hardwareConcurrency && navigator.hardwareConcurrency <= 2) ||
@@ -33,10 +87,12 @@
     conn.saveData === true;
   if (lowEnd) root.classList.add('aurora-lite');
 
-  /** 1 on desktop, lower on mobile / low-end. */
+  /** Combined intensity scaler: tier × pointer × hardware. */
   function intensity() {
-    var s = mqMobile.matches ? 0.5 : 1;
-    if (lowEnd) s *= 0.6;
+    var s = 1;
+    if (isNormal) s *= 0.55;              // fewer stars when normal
+    if (mqMobile.matches) s *= 0.5;       // fewer stars on small screens
+    if (lowEnd) s *= 0.6;                 // fewer stars on low-end
     return s;
   }
 
@@ -90,6 +146,9 @@
       var yMax = 100 + l[2] * 100 + 2; // extra rows so parallax never exposes an empty edge
       var a = [], b = [];
       for (var i = 0; i < n; i++) {
+        // Colour is resolved by the browser at paint time via the CSS
+        // custom property --star-color, which aurora.css @property's
+        // so theme swaps crossfade smoothly.
         var s = rnd(0, 100).toFixed(2) + 'vw ' + rnd(0, yMax).toFixed(2) + 'vh 0 0 var(--star-color)';
         (i % 2 ? a : b).push(s);
       }
@@ -153,22 +212,33 @@
   function scheduleMeteor(first) {
     clearTimeout(meteorTimer);
     if (mqReduce.matches) return;
-    var min = mqMobile.matches ? 10000 : 6000;
-    var max = mqMobile.matches ? 24000 : 15000;
+
+    // Tier-first, then pointer/hardware jitter.
+    var min, max;
+    if (isPremium) {
+      min = mqMobile.matches ? 10000 : 6000;
+      max = mqMobile.matches ? 24000 : 15000;
+    } else {
+      // normal tier — rarer, calmer
+      min = mqMobile.matches ? 18000 : 12000;
+      max = mqMobile.matches ? 40000 : 25000;
+    }
     if (lowEnd) { min *= 1.5; max *= 1.5; }
+
     var delay = first ? rnd(2500, 5000) : rnd(min, max);
     meteorTimer = setTimeout(function () { spawnMeteor(); scheduleMeteor(false); }, delay);
   }
 
   /* ============================================================
-     SPOTLIGHT  (desktop: eased cursor follow, mobile: fixed glow)
+     SPOTLIGHT  (premium only; eased cursor follow on fine pointer)
      ============================================================ */
   var sx = 0, sy = 0, tx = 0, ty = 0, spotRaf = 0;
 
   function placeSpot() {
+    if (!spot) return;
     spot.style.transform = 'translate3d(' + sx.toFixed(1) + 'px,' + sy.toFixed(1) + 'px,0)';
   }
-  function canTrack() { return !mqMobile.matches && !mqReduce.matches; }
+  function canTrack() { return isPremium && !mqMobile.matches && !mqReduce.matches; }
 
   function restSpot() {
     cancelAnimationFrame(spotRaf); spotRaf = 0;
@@ -182,7 +252,8 @@
     if (Math.abs(dx) < 0.5 && Math.abs(dy) < 0.5) {
       sx = tx; sy = ty; placeSpot(); spotRaf = 0; return;
     }
-    var stepX = Math.max(-36, Math.min(36, dx * 0.08)); // eased + speed-limited
+    // Eased + speed-limited so a big jump never teleports.
+    var stepX = Math.max(-36, Math.min(36, dx * 0.08));
     var stepY = Math.max(-36, Math.min(36, dy * 0.08));
     sx += stepX; sy += stepY;
     placeSpot();
@@ -196,23 +267,28 @@
   }, { passive: true });
 
   /* ============================================================
-     FX CANVAS  (ripple + particles + glow, pooled, capped)
+     FX CANVAS  (normal + premium; ripple + particles, pooled, capped)
      ============================================================ */
-  var ctx = canvas.getContext('2d');
+  var ctx = (canvas && canvas.getContext) ? canvas.getContext('2d') : null;
   var cw = 0, ch = 0;
 
   function sizeCanvas() {
+    if (!ctx) return;
     var dpr = Math.min(window.devicePixelRatio || 1, lowEnd ? 1.25 : 2);
     cw = window.innerWidth; ch = window.innerHeight;
     canvas.width = Math.round(cw * dpr);
     canvas.height = Math.round(ch * dpr);
-    if (ctx) ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
   }
 
   var MAX_P = 140, MAX_R = 4;
   var particles = [], ripples = [], i0;
-  for (i0 = 0; i0 < MAX_P; i0++) particles.push({ on: false, x: 0, y: 0, vx: 0, vy: 0, age: 0, life: 1, size: 2, c: 0 });
-  for (i0 = 0; i0 < MAX_R; i0++) ripples.push({ on: false, x: 0, y: 0, age: 0, dur: 800, maxR: 110, glow: true, born: 0 });
+  for (i0 = 0; i0 < MAX_P; i0++) {
+    particles.push({ on: false, x: 0, y: 0, vx: 0, vy: 0, age: 0, life: 1, size: 2, c: 0 });
+  }
+  for (i0 = 0; i0 < MAX_R; i0++) {
+    ripples.push({ on: false, x: 0, y: 0, age: 0, dur: 800, maxR: 110, glow: true, born: 0 });
+  }
 
   var fxRaf = 0, lastT = 0;
 
@@ -227,6 +303,7 @@
 
   function explode(x, y) {
     if (!ctx) return;
+
     var reduced = mqReduce.matches;
     var small = mqMobile.matches || lowEnd;
 
@@ -252,13 +329,19 @@
         p++;
       }
     }
+
     if (!fxRaf) { lastT = performance.now(); fxRaf = requestAnimationFrame(frame); }
   }
 
   function frame(now) {
-    var real = Math.min(0.5, (now - lastT) / 1000); // wall-clock, so durations hold on slow frames
-    var dt = Math.min(0.05, real);                  // physics step stays small
+    if (!ctx) { fxRaf = 0; return; }
+
+    // Wall-clock drives animation durations; physics step stays small
+    // so a slow frame never explodes the simulation.
+    var real = Math.min(0.5, (now - lastT) / 1000);
+    var dt = Math.min(0.05, real);
     lastT = now;
+
     ctx.clearRect(0, 0, cw, ch);
     var busy = false, i, t, e;
 
@@ -288,7 +371,7 @@
       ctx.beginPath(); ctx.arc(r.x, r.y, Math.max(0.1, r.maxR * e), 0, TAU); ctx.stroke();
     }
 
-    // particles
+    // particles — batch fillStyle by colour to cut state changes
     var lastC = -1;
     for (i = 0; i < MAX_P; i++) {
       var q = particles[i];
@@ -306,6 +389,7 @@
     }
 
     ctx.globalAlpha = 1;
+
     if (busy) {
       fxRaf = requestAnimationFrame(frame);
     } else {
@@ -317,7 +401,8 @@
   /* ---------- click / tap detection ---------- */
   var INTERACTIVE =
     'a[href],button,input,select,textarea,label,summary,iframe,video,audio,' +
-    '[role="button"],[role="link"],[role="tab"],[role="switch"],[role="option"],[role="combobox"],[role="dialog"],' +
+    '[role="button"],[role="link"],[role="tab"],[role="switch"],[role="option"],' +
+    '[role="combobox"],[role="dialog"],' +
     '[contenteditable=""],[contenteditable="true"],[tabindex]:not([tabindex="-1"]),' +
     '#nav,#nav-drawer,#drawer-overlay,.docs-modal,.docs-overlay,.cookie-banner';
 
@@ -336,13 +421,28 @@
     if (!down || e.pointerId !== down.id) return;
     var d = down; down = null;
     var dx = e.clientX - d.x, dy = e.clientY - d.y;
-    // a scroll/drag/long-press is not a tap
+    // A scroll / drag / long-press is not a tap.
     if (dx * dx + dy * dy > 100 || performance.now() - d.t > 600) return;
     if (!isBackground(e.target)) return;
     explode(e.clientX, e.clientY);
   }, { passive: true });
 
   document.addEventListener('pointercancel', function () { down = null; }, { passive: true });
+
+  /* ---------- visibility pause (FX + spotlight) ---------- */
+  document.addEventListener('visibilitychange', function () {
+    if (!document.hidden) return;
+
+    // FX: cancel RAF and drop in-flight state so returning to the
+    // tab never replays stale particles.
+    if (fxRaf) { cancelAnimationFrame(fxRaf); fxRaf = 0; }
+    for (var i = 0; i < MAX_P; i++) particles[i].on = false;
+    for (var j = 0; j < MAX_R; j++) ripples[j].on = false;
+    if (ctx && cw && ch) ctx.clearRect(0, 0, cw, ch);
+
+    // Spotlight: stop the eased follow; next pointermove restarts it.
+    if (spotRaf) { cancelAnimationFrame(spotRaf); spotRaf = 0; }
+  });
 
   /* ============================================================
      INIT + responsive hooks
@@ -364,8 +464,8 @@
     else scheduleMeteor(false);
   });
 
-  // FIX: saat reduce-motion di-toggle, batalkan meteor in-flight + timer,
-  // lalu restart jadwal saat dimatikan.
+  // When reduce-motion toggles: cancel in-flight meteors + timers and
+  // reset parallax; restart the schedule when it's turned back off.
   onChange(mqReduce, function () {
     restSpot();
     if (mqReduce.matches) {
@@ -381,4 +481,6 @@
   buildStars();
   restSpot();
   scheduleMeteor(true);
+
+  root.setAttribute('data-aurora', 'ready');
 })();
