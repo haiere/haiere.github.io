@@ -556,4 +556,4 @@ game_starfall_tag: 'Arcade',
     footer_newsletter_success: "Thanks! You're on the list.",
     footer_newsletter_error: 'Could not sign up, try again later.',
   },
-};
+}; 
