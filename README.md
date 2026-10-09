@@ -45,25 +45,49 @@ Free, privacy-first web tools · provider-based AI chatbots · original music ·
 
 ---
 
-## Table of Contents
+<div align="center">
+
+### Table of Contents
+
+<table>
+<tr>
+<td valign="top" width="33%">
+
+**Getting Started**
 
 - [Overview](#overview)
-- [Features](#features)
-  - [Beat Tools — 9 tools](#beat-tools)
-  - [Mini Games — 2 games](#mini-games)
-  - [Performance Tiers](#performance-tiers)
-  - [Highlights](#highlights)
 - [Requirements](#requirements)
 - [Quick Start](#quick-start)
 - [Usage](#usage)
 - [Configuration](#configuration)
+
+</td>
+<td valign="top" width="33%">
+
+**Features**
+
+- [Beat Tools](#beat-tools)
+- [Mini Games](#mini-games)
+- [Performance Tiers](#performance-tiers)
+- [Highlights](#highlights)
+
+</td>
+<td valign="top" width="33%">
+
+**Reference**
+
 - [Project Structure](#project-structure)
 - [Development](#development)
 - [Troubleshooting](#troubleshooting)
 - [Privacy & Security](#privacy--security)
 - [Non-Negotiable Rules](#non-negotiable-rules)
 - [License](#license)
-- [Author & Support](#author--support)
+
+</td>
+</tr>
+</table>
+
+</div>
 
 ---
 
@@ -75,13 +99,13 @@ Free, privacy-first web tools · provider-based AI chatbots · original music ·
 <tr>
 <td width="50%" valign="top">
 
-**What's inside**
+### What's inside
 
 - **Beat Tools** — filterable directory of 9 free tools
-- **Mini Games** — 2 browser games (Chess, LoveYou)
+- **Mini Games** — 4 browser games
 - **AI chatbots** — Raia AI & Kirana (provider-based)
-- **Aurora space theme** — day/night visual layer
-- **3-tier performance** — `eco` / `normal` / `premium`
+- **Aurora space theme** — day / night visual layer
+- **3-tier performance** — `eco` · `normal` · `premium`
 - **Bilingual UI** — Indonesian & English
 - **Global search** — `Ctrl / ⌘ + K`
 - **README-powered docs modals**
@@ -90,17 +114,17 @@ Free, privacy-first web tools · provider-based AI chatbots · original music ·
 </td>
 <td width="50%" valign="top">
 
-**What it doesn't have**
+### What it doesn't have
 
 - No custom backend
 - No tracking pixels
 - No build step
 - No npm dependencies
 - No framework lock-in
-- No emoji icons (SVG only)
+- No emoji icons — SVG only
 - No icon fonts
 
-*External services used:* Formspree · GitHub raw · Google Fonts · Tailwind CDN · Marked.js · Signature Music player.
+**External services used:** Formspree · GitHub raw · Google Fonts · Tailwind CDN · Marked.js · Signature Music player.
 
 </td>
 </tr>
@@ -129,15 +153,20 @@ Free, privacy-first web tools · provider-based AI chatbots · original music ·
 > [!NOTE]
 > **Raia AI** and **Kirana** are provider-based — you supply the model and API key. The UI never changes when you swap providers.
 
+---
+
 ### Mini Games
 
-Lightweight, playable directly in the browser — no install, no login.
+> Lightweight, playable directly in the browser — no install, no login.
 
-# Game URL Tag Status
-01 Chess /chess Classic Board https://img.shields.io/badge/-stable-10b981?style=flat-square
-02 LoveYou /loveyou Interactive https://img.shields.io/badge/-stable-10b981?style=flat-square
-03 Orbit Weaver /game/orbit-weaver.html Arcade https://img.shields.io/badge/-stable-10b981?style=flat-square
-04 Starfall /game/starfall.html Arcade https://img.shields.io/badge/-stable-10b981?style=flat-square
+| # | Game | URL | Tag | Status |
+|:-:|---|---|---|---|
+| `01` | **Chess** | [`/chess`](https://hajir.is-a.dev/chess) | Classic Board | ![Stable](https://img.shields.io/badge/-stable-10b981?style=flat-square) |
+| `02` | **LoveYou** | [`/loveyou`](https://hajir.is-a.dev/loveyou) | Interactive | ![Stable](https://img.shields.io/badge/-stable-10b981?style=flat-square) |
+| `03` | **Orbit Weaver** | [`/game/orbit-weaver.html`](https://hajir.is-a.dev/game/orbit-weaver.html) | Arcade | ![Stable](https://img.shields.io/badge/-stable-10b981?style=flat-square) |
+| `04` | **Starfall** | [`/game/starfall.html`](https://hajir.is-a.dev/game/starfall.html) | Arcade | ![Stable](https://img.shields.io/badge/-stable-10b981?style=flat-square) |
+
+---
 
 ### Performance Tiers
 
@@ -165,7 +194,7 @@ Lightweight, playable directly in the browser — no install, no login.
 </tbody>
 </table>
 
-**How the tier is decided** (runs inline in `<head>`, before CSS):
+**How the tier is decided** — runs inline in `<head>`, before CSS:
 
 ```js
 let tier = 'premium';
@@ -174,60 +203,86 @@ else if (coarsePointer || (mem && mem <= 4) || (cores && cores <= 4)) tier = 'no
 document.documentElement.setAttribute('data-perf', tier);
 ```
 
-| Signal | Triggers |
-|---|---|
-| `prefers-reduced-motion: reduce` | → `eco` |
-| `navigator.connection.saveData === true` | → `eco` |
-| `deviceMemory ≤ 2` GB or `hardwareConcurrency ≤ 2` | → `eco` |
-| Coarse pointer, `deviceMemory ≤ 4`, or `hardwareConcurrency ≤ 4` | → `normal` |
-| Otherwise | → `premium` |
+Signal Triggers
+prefers-reduced-motion: reduce → eco
+navigator.connection.saveData === true → eco
+deviceMemory ≤ 2 GB or hardwareConcurrency ≤ 2 → eco
+Coarse pointer, deviceMemory ≤ 4, or hardwareConcurrency ≤ 4 → normal
+Otherwise → premium
 
-> [!TIP]
-> **Debug the active tier at runtime**
-> ```js
-> window.__auroraTier                                    // "eco" | "normal" | "premium"
-> document.documentElement.getAttribute('data-perf')
-> ```
+[!TIP]
+Debug the active tier at runtime
 
-> [!WARNING]
-> **Star parallax was removed in v2026.10.08.3** — it was the single largest source of scroll jank (a scroll listener that rewrote `transform` on three layers every frame). Stars now sit still and only twinkle. Scroll position is read by exactly **one** rAF-throttled handler, and it only touches the top progress bar and the back-to-top button.
+```js
+window.__auroraTier                                    // "eco" | "normal" | "premium"
+document.documentElement.getAttribute('data-perf')
+```
 
-### Highlights
-
-- **Filter bar** uses `role="toolbar"` + `aria-pressed` (never `role="tab"`)
-- **Search** supports full keyboard navigation (`↑` `↓` `Esc` `Enter`)
-- **Aurora theme** is optional & non-blocking — if `aurora.js` fails, the site renders exactly as before
-- **Full i18n coverage** for every visible string
-- **SVG-only icons** — never emoji, never an icon font
-- **Critical CSS fallback** for first paint
-- **`prefers-reduced-motion`** support at every tier
-- **LocalStorage** for theme, language, and cookie preferences
-- **`contain: layout style`** on cards to prevent reflow leaks
-- **PWA-ready** — installable, manifest shortcuts, launch handler
-- **Zero runtime dependencies** — no bundler, no framework, no build step
+[!WARNING]
+Star parallax was removed in v2026.10.08.3 — it was the single largest source of scroll jank (a scroll listener that rewrote transform on three layers every frame). Stars now sit still and only twinkle. Scroll position is read by exactly one rAF-throttled handler, and it only touches the top progress bar and the back-to-top button.
 
 ---
 
-## Requirements
+Highlights
 
-- A modern browser with JavaScript enabled.
+<table>
+<tr>
+<td width="50%" valign="top">
 
-**External services** (all optional / replaceable):
+Engineering
 
-| Service | Used for |
-|---|---|
-| Google Fonts | Inter · JetBrains Mono · Sora |
-| Tailwind CDN | Utility classes (critical CSS fallback covers first paint) |
-| Marked.js | Rendering README docs in modals |
-| GitHub raw | Fetching tool documentation |
-| Formspree | Contact form submission |
-| Signature Music iframe | Embedded music player |
+· Zero runtime dependencies — no bundler, no framework, no build step
+· Critical CSS fallback for first paint
+· contain: layout style on cards to prevent reflow leaks
+· Premium-only interactions gated in script.js
+
+</td>
+<td width="50%" valign="top">
+
+Experience
+
+· Full i18n coverage for every visible string
+· SVG-only icons — never emoji, never an icon font
+· prefers-reduced-motion support at every tier
+· LocalStorage for theme, language, and cookie preferences
+· PWA-ready — installable, manifest shortcuts, launch handler
+
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top">
+
+Accessibility
+
+· Filter bar uses role="toolbar" + aria-pressed — never role="tab"
+· Search supports full keyboard navigation: ↑ ↓ Esc Enter
+· Aurora theme is optional and non-blocking — if aurora.js fails, the site renders exactly as before
+
+</td>
+</tr>
+</table>
 
 ---
 
-## Quick Start
+Requirements
 
-> No build step. No install. Just serve the folder.
+· A modern browser with JavaScript enabled.
+
+External services — all optional / replaceable:
+
+Service Used for
+Google Fonts Inter · JetBrains Mono · Sora
+Tailwind CDN Utility classes (critical CSS fallback covers first paint)
+Marked.js Rendering README docs in modals
+GitHub raw Fetching tool documentation
+Formspree Contact form submission
+Signature Music iframe Embedded music player
+
+---
+
+Quick Start
+
+No build step. No install. Just serve the folder.
 
 ```bash
 # Option A — Python (built in on most systems)
@@ -242,79 +297,83 @@ npx serve
 
 Open the printed local URL in your browser. That's it.
 
-**Deploy:** any static host works — GitHub Pages, Cloudflare Pages, Netlify, Vercel, or your own web server.
+Deploy: any static host works — GitHub Pages, Cloudflare Pages, Netlify, Vercel, or your own web server.
 
 ---
 
-## Usage
+Usage
 
 <table>
 <tr>
 <td width="50%" valign="top">
 
-### Header
+Header
 
-| Element | Action |
-|---|---|
-| Brand logo | Scroll to `#hero` |
-| Search field | Global search (`Ctrl / ⌘ + K`) |
-| RaiaSpace | Opens search tool |
-| Theme toggle | Switches day / night |
-| Hamburger | Opens side drawer |
+Element Action
+Brand logo Scroll to #hero
+Search field Global search (Ctrl / ⌘ + K)
+RaiaSpace Opens search tool
+Theme toggle Switches day / night
+Hamburger Opens side drawer
 
 </td>
 <td width="50%" valign="top">
 
-### Side Drawer
+Side Drawer
 
-About · Music · Quotes · Tools · **Games** · Contact · GitHub · RAIA · Kirana · Support · Language · Cookies · Privacy · Terms.
+About · Music · Quotes · Tools · Games · Contact · GitHub · RAIA · Kirana · Support · Language · Cookies · Privacy · Terms
 
 </td>
 </tr>
 </table>
 
-### Sections
+Sections
 
-| Section | Description |
-|---|---|
-| **Hero** | Intro, tagline, RaiaSpace badge, CTAs |
-| **About** | Bio, role tags, focus pills, stat counters |
-| **RWR** | Rotating card linking to LoveYou |
-| **Music** | Signature Music player + usage guide |
-| **Quotes** | Curated quotes with attribution |
-| **Beat Tools** | Filterable directory of 9 tools |
-| **Mini Games** | 2 games (Chess, LoveYou) |
-| **Contact** | Validated form + social links |
-| **Support** | Buy Me a Coffee & Sociabuzz |
-| **Footer** | Brand, sitemap, socials, legal |
+Section Description
+Hero Intro, tagline, RaiaSpace badge, CTAs
+About Bio, role tags, focus pills, stat counters
+RWR Rotating card linking to LoveYou
+Music Signature Music player + usage guide
+Quotes Curated quotes with attribution
+Beat Tools Filterable directory of 9 tools
+Mini Games 4 games — Chess, LoveYou, Orbit Weaver, Starfall
+Contact Validated form + social links
+Support Buy Me a Coffee & Sociabuzz
+Footer Brand, sitemap, socials, legal
 
 ---
 
-## Configuration
+Configuration
 
 <details>
 <summary><b>Language</b> — persisted under <code>localStorage['haiere-lang']</code></summary>
 
+<br />
+
 Resolution order:
 
-1. `?lang=id` or `?lang=en` in URL
-2. `localStorage['haiere-lang']`
-3. `navigator.language` starting with `id`
-4. **English** (default)
+1. ?lang=id or ?lang=en in URL
+2. localStorage['haiere-lang']
+3. navigator.language starting with id
+4. English (default)
 
 </details>
 
 <details>
 <summary><b>Theme</b> — persisted under <code>localStorage['theme']</code></summary>
 
-Values: `"dark"` or `"light"`.
+<br />
 
-The Aurora layer reads the same theme state via the `.dark` class and mirrors it to `<html data-theme="night|day">`.
+Values: "dark" or "light".
+
+The Aurora layer reads the same theme state via the .dark class and mirrors it to <html data-theme="night|day">.
 
 </details>
 
 <details>
 <summary><b>Performance tier</b> — not persisted, recomputed on every load</summary>
+
+<br />
 
 To force a tier for debugging:
 
@@ -323,23 +382,24 @@ document.documentElement.setAttribute('data-perf', 'eco');
 // or 'normal' / 'premium'
 ```
 
-Then refresh to see the change. `window.__auroraTier` reflects the active tier.
+Then refresh to see the change. window.__auroraTier reflects the active tier.
 
 </details>
 
 <details>
 <summary><b>Cookie preferences</b> — two storage keys</summary>
 
-| Key | Value |
-|---|---|
-| `localStorage['haiere-cookie']` | `"accepted"` \| `"declined"` \| `"customized"` |
-| `localStorage['haiere-cookie-prefs']` | JSON `{ analytics, marketing, preferences }` |
+<br />
+
+Key Value
+localStorage['haiere-cookie'] "accepted" \| "declined" \| "customized"
+localStorage['haiere-cookie-prefs'] JSON { analytics, marketing, preferences }
 
 </details>
 
 ---
 
-## Project Structure
+Project Structure
 
 ```text
 /
@@ -354,184 +414,194 @@ Then refresh to see the change. `window.__auroraTier` reflects the active tier.
 ├── manifest.webmanifest    # PWA metadata (icons, shortcuts, launch handler)
 ├── game/
 │   ├── chess.html          # Chess game
-│   └── loveyou.html        # LoveYou interactive page
+│   ├── loveyou.html        # LoveYou interactive page
+│   ├── orbit-weaver.html   # Orbit Weaver arcade game
+│   └── starfall.html       # Starfall arcade game
 └── README.md
 ```
 
-### Main Files
+Main Files
 
-| File | Purpose |
-|---|---|
-| **`index.html`** | Structure, SEO meta, JSON-LD schema, markup, two inline `<head>` scripts (theme + perf tier). |
-| **`styleguide.html`** | Living design-system reference: palette, type, spacing, icons, components, tiers. |
-| **`style.css`** | Tokens, layout, components, motion. Bottom block holds the `eco` / `normal` / `premium` rules. |
-| **`aurora.css`** | Aurora theme styles. Loads after `style.css`. Every rule scoped to `html[data-theme]`. |
-| **`script.js`** | All UI behaviour. Hero spotlight & tilt/magnetic gated to `perfTier === 'premium'`. |
-| **`i18n.js`** | Dictionary for both languages (id / en). |
-| **`icons.js`** | SVG icon registry. Renders `<svg data-icon="icXX">` inline. |
-| **`aurora.js`** | Aurora behaviour. Skips stars / meteors / spotlight / canvas on `eco`. |
-| **`manifest.webmanifest`** | PWA metadata: install prompts, 5 shortcuts, icons, launch handling. |
-
----
-
-## Development
-
-### Where to make a change
-
-| Change type | File |
-|---|---|
-| Structure, SEO, schema | `index.html` |
-| Visual tokens, layout | `style.css` |
-| Aurora theme styles | `aurora.css` |
-| Aurora behaviour, canvas FX | `aurora.js` |
-| Behaviour & interactions | `script.js` |
-| Visible text | `i18n.js` |
-| Icons | `icons.js` |
-| Design reference | `styleguide.html` |
-| PWA metadata | `manifest.webmanifest` |
-
-### Performance budget
-
-> [!IMPORTANT]
-> These are non-negotiable when adding features.
-
-- **No new scroll listeners.** Reuse the shared `requestAnimationFrame` throttle or hook into the existing one.
-- **No new `will-change` on long-lived elements.** Blur & `backdrop-filter` are the two most expensive paints — scale them with tier.
-- **Every decorative layer** must declare behaviour for all three tiers in `style.css` under `html[data-perf="…"]`.
-- **Cards use `contain: layout style`.** Keep it that way — it stops internal reflows from propagating.
-- **Premium-only interactions** (mouse tracking, magnetic buttons) must be gated in `script.js` by `perfTier === 'premium'`.
-
-### Optional optimizations
-
-- Replace the **Tailwind CDN** with a **prebuilt local stylesheet** for faster production loading. The critical CSS fallback in `index.html` is designed as a superset — but Tailwind utilities are still referenced in markup, so any replacement must keep them.
+File Purpose
+index.html Structure, SEO meta, JSON-LD schema, markup, two inline <head> scripts (theme + perf tier).
+styleguide.html Living design-system reference: palette, type, spacing, icons, components, tiers.
+style.css Tokens, layout, components, motion. Bottom block holds the eco / normal / premium rules.
+aurora.css Aurora theme styles. Loads after style.css. Every rule scoped to html[data-theme].
+script.js All UI behaviour. Hero spotlight & tilt / magnetic gated to perfTier === 'premium'.
+i18n.js Dictionary for both languages (id / en).
+icons.js SVG icon registry. Renders <svg data-icon="icXX"> inline.
+aurora.js Aurora behaviour. Skips stars / meteors / spotlight / canvas on eco.
+manifest.webmanifest PWA metadata: install prompts, 5 shortcuts, icons, launch handling.
 
 ---
 
-## Troubleshooting
+Development
+
+Where to make a change
+
+Change type File
+Structure, SEO, schema index.html
+Visual tokens, layout style.css
+Aurora theme styles aurora.css
+Aurora behaviour, canvas FX aurora.js
+Behaviour & interactions script.js
+Visible text i18n.js
+Icons icons.js
+Design reference styleguide.html
+PWA metadata manifest.webmanifest
+
+Performance budget
+
+[!IMPORTANT]
+These are non-negotiable when adding features.
+
+· No new scroll listeners. Reuse the shared requestAnimationFrame throttle or hook into the existing one.
+· No new will-change on long-lived elements. Blur & backdrop-filter are the two most expensive paints — scale them with tier.
+· Every decorative layer must declare behaviour for all three tiers in style.css under html[data-perf="…"].
+· Cards use contain: layout style. Keep it that way — it stops internal reflows from propagating.
+· Premium-only interactions (mouse tracking, magnetic buttons) must be gated in script.js by perfTier === 'premium'.
+
+Optional optimizations
+
+· Replace the Tailwind CDN with a prebuilt local stylesheet for faster production loading. The critical CSS fallback in index.html is designed as a superset — but Tailwind utilities are still referenced in markup, so any replacement must keep them.
+
+---
+
+Troubleshooting
 
 <details>
 <summary><b>Icons look broken on first load</b></summary>
 
-Tailwind utilities may not have loaded yet. The critical CSS fallback in `index.html` keeps layout stable, and `icons.js` writes `width="1em" height="1em"` as presentation attributes so an icon never explodes if a stylesheet is delayed.
+<br />
+
+Tailwind utilities may not have loaded yet. The critical CSS fallback in index.html keeps layout stable, and icons.js writes width="1em" height="1em" as presentation attributes so an icon never explodes if a stylesheet is delayed.
 
 </details>
 
 <details>
 <summary><b>Aurora theme does not appear</b></summary>
 
-1. Confirm both `aurora.css` and `aurora.js` are loaded.
-2. Confirm the required elements exist: `#aurora-bg`, `.spotlight`, `#fx`.
+<br />
+
+1. Confirm both aurora.css and aurora.js are loaded.
+2. Confirm the required elements exist: #aurora-bg, .spotlight, #fx.
 3. Check the tier:
    ```js
    document.documentElement.getAttribute('data-perf')
    ```
-   On `eco` the effect is **intentionally** disabled.
+   On eco the effect is intentionally disabled.
 
 </details>
 
 <details>
 <summary><b>Site feels slow on mobile</b></summary>
 
+<br />
+
 ```js
 window.__auroraTier                                    // "eco" | "normal" | "premium"
 document.documentElement.getAttribute('data-perf')
 ```
 
-If a low-end device is stuck on `premium`, verify the inline `<head>` script is present in `index.html`. Otherwise the device genuinely reports enough RAM/cores.
+If a low-end device is stuck on premium, verify the inline <head> script is present in index.html. Otherwise the device genuinely reports enough RAM / cores.
 
 </details>
 
 <details>
 <summary><b>Contact form does not submit</b></summary>
 
+<br />
+
 Verify Formspree endpoints:
 
-| Purpose | Endpoint |
-|---|---|
-| Primary | `https://formspree.io/f/mpqkqanp` |
-| Fallback | `https://formspree.io/f/xgvkobyl` |
+Purpose Endpoint
+Primary https://formspree.io/f/mpqkqanp
+Fallback https://formspree.io/f/xgvkobyl
 
-Also confirm JS is enabled and form fields have correct `name` attributes.
+Also confirm JS is enabled and form fields have correct name attributes.
 
 </details>
 
 <details>
 <summary><b>Theme or language does not persist</b></summary>
 
-Confirm `localStorage` is enabled and the browser isn't clearing site data.
+<br />
 
-| Preference | Key |
-|---|---|
-| Theme | `theme` |
-| Language | `haiere-lang` |
+Confirm localStorage is enabled and the browser isn't clearing site data.
+
+Preference Key
+Theme theme
+Language haiere-lang
 
 </details>
 
 <details>
 <summary><b>Search returns no results</b></summary>
 
-Try a broader query. If searching for tools/games, ensure the search index rebuilt after your last language change (it rebuilds on `applyLang`).
+<br />
+
+Try a broader query. If searching for tools / games, ensure the search index rebuilt after your last language change (it rebuilds on applyLang).
 
 </details>
 
 ---
 
-## Privacy & Security
+Privacy & Security
 
-> [!NOTE]
-> **Haiere does not use analytics scripts, tracking pixels, or its own backend database.**
+[!NOTE]
+Haiere does not use analytics scripts, tracking pixels, or its own backend database.
 
-- Preferences stay in `localStorage` only
-- Contact messages go through **Formspree**
-- Tool docs are fetched from **public GitHub repositories**
-- Music, fonts, and third-party embeds follow their own privacy policies
+· Preferences stay in localStorage only
+· Contact messages go through Formspree
+· Tool docs are fetched from public GitHub repositories
+· Music, fonts, and third-party embeds follow their own privacy policies
 
-> [!WARNING]
-> **LocalStorage is not an encrypted vault.** Do not store secrets there.
-
----
-
-## Non-Negotiable Rules
-
-1. **SVG icons only.** Never emoji, never an icon font.
-2. **Every visible string must go through i18n** (`data-i18n` / `data-i18n-label` / `data-i18n-placeholder` / `data-i18n-alt` / `data-i18n-title`).
-3. **No non-tool content inside `#tools`.**
-4. **Raia AI and Kirana stay provider-based.**
-5. **Respect `prefers-reduced-motion`** — and let it force the `eco` tier.
-6. **Aurora must remain optional.** If `aurora.js` fails, the site renders exactly as before.
-7. **Filter bars use `role="toolbar"` + `aria-pressed`**, never `role="tab"`.
-8. **On-accent text must flip correctly per theme** (`--on-accent` token).
-9. **Every decorative layer declares behaviour for all three performance tiers.**
-10. **No new scroll listeners** without a shared rAF throttle.
+[!WARNING]
+LocalStorage is not an encrypted vault. Do not store secrets there.
 
 ---
 
-## License
+Non-Negotiable Rules
 
-Website design, original content, branding, and original music are the property of **Haiere** unless otherwise stated.
+1. SVG icons only. Never emoji, never an icon font.
+2. Every visible string must go through i18n — data-i18n / data-i18n-label / data-i18n-placeholder / data-i18n-alt / data-i18n-title.
+3. No non-tool content inside #tools.
+4. Raia AI and Kirana stay provider-based.
+5. Respect prefers-reduced-motion — and let it force the eco tier.
+6. Aurora must remain optional. If aurora.js fails, the site renders exactly as before.
+7. Filter bars use role="toolbar" + aria-pressed, never role="tab".
+8. On-accent text must flip correctly per theme — --on-accent token.
+9. Every decorative layer declares behaviour for all three performance tiers.
+10. No new scroll listeners without a shared rAF throttle.
+
+---
+
+License
+
+Website design, original content, branding, and original music are the property of Haiere unless otherwise stated.
 
 Third-party libraries, fonts, services, and icons remain subject to their own licenses and terms.
 
 ---
 
-## Author & Support
-
 <div align="center">
 
-**Developed by Hajir Muhaajir**
+Author & Support
 
-[![Site](https://img.shields.io/badge/Website-hajir.is--a.dev-B4788C?style=flat-square&logo=cloudflare&logoColor=white)](https://hajir.is-a.dev)
-[![GitHub](https://img.shields.io/badge/GitHub-@haiere-181717?style=flat-square&logo=github)](https://github.com/haiere)
-[![X](https://img.shields.io/badge/X-@haierehere-000000?style=flat-square&logo=x)](https://x.com/haierehere)
-[![Instagram](https://img.shields.io/badge/Instagram-muhaajirere-E4405F?style=flat-square&logo=instagram&logoColor=white)](https://www.instagram.com/muhaajirere)
-[![YouTube](https://img.shields.io/badge/YouTube-@hajirstein-FF0000?style=flat-square&logo=youtube&logoColor=white)](https://www.youtube.com/@hajirstein)
+Developed by Hajir Muhaajir
+
+https://img.shields.io/badge/Website-hajir.is--a.dev-B4788C?style=flat-square&logo=cloudflare&logoColor=white
+https://img.shields.io/badge/GitHub-@haiere-181717?style=flat-square&logo=github
+https://img.shields.io/badge/X-@haierehere-000000?style=flat-square&logo=x
+https://img.shields.io/badge/Instagram-muhaajirere-E4405F?style=flat-square&logo=instagram&logoColor=white
+https://img.shields.io/badge/YouTube-@hajirstein-FF0000?style=flat-square&logo=youtube&logoColor=white
 
 <br />
 
-**Support this work**
+Support this work
 
-[![Buy Me a Coffee](https://img.shields.io/badge/Buy_Me_a_Coffee-FFDD00?style=for-the-badge&logo=buymeacoffee&logoColor=black)](https://buymeacoffee.com/hajirstudio)
-[![Sociabuzz](https://img.shields.io/badge/Sociabuzz-2563EB?style=for-the-badge)](https://sociabuzz.com/HajirStudio)
+https://img.shields.io/badge/Buy_Me_a_Coffee-FFDD00?style=for-the-badge&logo=buymeacoffee&logoColor=black
+https://img.shields.io/badge/Sociabuzz-2563EB?style=for-the-badge
 
 </div>
 
