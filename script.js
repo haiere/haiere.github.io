@@ -1,18 +1,21 @@
 /* ============================================================
-   script.js — Haiere v2026.10.08.4
+   script.js — Haiere v2026.10.08.6
    Everything UI: theme, i18n, drawer, search, filters,
    docs modal (README via GitHub raw), contact form, cookies,
    scroll animations, counters, hero spotlight, tilt/magnetic.
 
    Default language: English (en).
-   The browser locale only switches to Indonesian (id) if the
-   user has explicitly chosen it, or their locale is Indonesian.
 
-   v2026.10.08.4 changes:
-   - Reads <html data-perf> ("eco" | "normal" | "premium").
-   - Hero spotlight & tilt/magnetic cards run on premium only.
-   - Added Games to section search index and .game-card indexing.
-   - MyDev removed.
+   v2026.10.08.6 changes:
+   - Removed dynamic last-updated clock (no more new Date(),
+     no setInterval). Version + date now come from static
+     HTML markup (see #last-updated-date in footer).
+   - Search index now includes #ai-bots section (Raia, Kirana)
+     and no longer includes #rwr (section removed).
+   - Reveal observer uses `.is-visible` class (was `.visible`).
+   - Games index now also picks up `.ai-card` entries so
+     AI/Bot cards are searchable.
+   - Console log bumped to v2026.10.08.6.
    ============================================================ */
 
 function whenTailwindReady(cb) {
@@ -77,20 +80,6 @@ function whenTailwindReady(cb) {
   /* ==========================================================
      1. I18N
      ========================================================== */
-  function updateLastUpdated() {
-    const el = document.getElementById('last-updated-date');
-    if (!el) return;
-    const now = new Date();
-    const months = {
-      en: ['January','February','March','April','May','June','July','August','September','October','November','December'],
-      id: ['Januari','Februari','Maret','April','Mei','Juni','Juli','Agustus','September','Oktober','November','Desember'],
-    };
-    const list = months[currentLang] || months[DEFAULT_LANG];
-    const month = list[now.getMonth()] || list[0];
-    const day   = String(now.getDate()).padStart(2, '0');
-    el.textContent = `${day} ${month} ${now.getFullYear()}`;
-  }
-
   function refreshSearchPlaceholder() {
     const input = document.getElementById('header-search-input');
     if (!input) return;
@@ -146,7 +135,6 @@ function whenTailwindReady(cb) {
 
     try { localStorage.setItem('haiere-lang', lang); } catch (_) {}
 
-    updateLastUpdated();
     buildSearchIndex();
     refreshSearchPlaceholder();
   }
@@ -317,20 +305,21 @@ function whenTailwindReady(cb) {
   }
 
   /* ==========================================================
-     5. REVEAL ON SCROLL
+     5. REVEAL ON SCROLL — single IntersectionObserver, class = .is-visible
      ========================================================== */
   if ('IntersectionObserver' in window) {
     const revealObserver = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
+          entry.target.classList.add('is-visible');
           revealObserver.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.08 });
+    }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
     document.querySelectorAll('.reveal').forEach((el) => revealObserver.observe(el));
   } else {
-    document.querySelectorAll('.reveal').forEach((el) => el.classList.add('visible'));
+    // Fallback: no IO → show everything immediately.
+    document.querySelectorAll('.reveal').forEach((el) => el.classList.add('is-visible'));
   }
 
   /* ==========================================================
@@ -399,15 +388,15 @@ function whenTailwindReady(cb) {
   function buildSearchIndex() {
     const items = [];
     const sectionMap = {
-      hero:    { labelKey: 'nav_home' },
-      about:   { labelKey: 'nav_about' },
-      rwr:     { labelKey: 'RWR' },
-      music:   { labelKey: 'nav_music' },
-      quotes:  { labelKey: 'nav_quotes' },
-      tools:   { labelKey: 'nav_tools' },
-      games:   { labelKey: 'nav_games' },
-      contact: { labelKey: 'nav_contact' },
-      support: { labelKey: 'support_title' },
+      hero:     { labelKey: 'nav_home' },
+      about:    { labelKey: 'nav_about' },
+      tools:    { labelKey: 'nav_tools' },
+      'ai-bots':{ labelKey: 'nav_ai_bots' },
+      games:    { labelKey: 'nav_games' },
+      music:    { labelKey: 'nav_music' },
+      quotes:   { labelKey: 'nav_quotes' },
+      contact:  { labelKey: 'nav_contact' },
+      support:  { labelKey: 'support_title' },
     };
     const tr = i18n[currentLang] || i18n[DEFAULT_LANG] || {};
 
@@ -437,8 +426,23 @@ function whenTailwindReady(cb) {
       });
     });
 
-    // Games — index khusus agar pencarian "chess" / "loveyou" muncul
-    document.querySelectorAll('.game-card').forEach((card) => {
+    // AI & Bots cards (Raia / Kirana) → jump to #ai-bots
+    document.querySelectorAll('.ai-card').forEach((card) => {
+      const h3 = card.querySelector('.game-title');
+      const desc = card.querySelector('.game-desc');
+      if (!h3) return;
+      const title = (h3.textContent || '').trim();
+      const description = desc ? (desc.textContent || '').trim() : '';
+      items.push({
+        href: '#ai-bots',
+        title,
+        meta: 'AI/Bot',
+        haystack: `${title} ${description} ai bot chatbot`.toLowerCase(),
+      });
+    });
+
+    // Games cards
+    document.querySelectorAll('.game-card:not(.ai-card)').forEach((card) => {
       const h3 = card.querySelector('.game-title');
       const desc = card.querySelector('.game-desc');
       if (!h3) return;
@@ -1203,5 +1207,5 @@ function whenTailwindReady(cb) {
   whenTailwindReady(() => renderAllIcons());
   renderAllIcons();
 
-  console.log('Haiere v2026.10.08.4 — ready (perf tier: ' + perfTier + ', default lang: en)');
+  console.log('Haiere v2026.10.08.6 — ready (perf tier: ' + perfTier + ', default lang: en)');
 })();

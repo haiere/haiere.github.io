@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-<title>Style Guide — Haiere v2026.10.08.4</title>
-<meta name="description" content="The Haiere design system: tokens, typography, components, Beat Tools pattern, motion, and accessibility rules." />
+<title>Style Guide — Haiere v2026.10.08.6</title>
+<meta name="description" content="The Haiere design system: tokens, typography, components, card patterns (Tools · Bots · Games), motion, and accessibility rules." />
 <meta name="robots" content="noindex, nofollow" />
 <meta name="color-scheme" content="dark light" />
 <meta name="theme-color" content="#0A192F" media="(prefers-color-scheme: dark)" />
@@ -90,7 +90,6 @@
   --glass-blur:   20px;
   --border-soft:  rgba(180, 120, 140, .18);
   --border-strong:rgba(58, 36, 48, .16);
-  --grid-line:    rgba(58, 36, 48, .045);
   --code-bg:      rgba(58, 36, 48, .06);
   --header-bg:    rgba(251, 233, 239, .82);
   --on-accent:    #FFFFFF;
@@ -120,7 +119,6 @@
   --glass-shadow: 0 16px 45px rgba(0, 0, 0, .32);
   --border-soft:  rgba(148, 190, 184, .14);
   --border-strong:rgba(231, 238, 246, .14);
-  --grid-line:    rgba(127, 216, 203, .05);
   --code-bg:      rgba(231, 238, 246, .06);
   --header-bg:    rgba(10, 25, 47, .82);
   --on-accent:    #0A192F;
@@ -160,22 +158,6 @@ body {
   -webkit-font-smoothing: antialiased;
   -webkit-tap-highlight-color: transparent;
   transition: background-color .4s var(--ease), color .4s var(--ease);
-}
-
-/* Blueprint grid — top-of-page only, fades out */
-body::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  height: 110vh;
-  z-index: 0;
-  pointer-events: none;
-  background-image:
-    linear-gradient(to right, var(--grid-line) 1px, transparent 1px),
-    linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px);
-  background-size: 72px 72px;
-  -webkit-mask-image: linear-gradient(to bottom, #000 0%, transparent 82%);
-          mask-image: linear-gradient(to bottom, #000 0%, transparent 82%);
 }
 
 main, .topbar, .site-footer { position: relative; z-index: 1; }
@@ -419,7 +401,6 @@ input { font: inherit; }
 
 .masthead h1 {
   margin: 1.1rem 0 0;
-  /* min lowered so "Aurora Navy /" can never overflow a 320px screen */
   font-size: clamp(2rem, 8.5vw, 6rem);
   font-weight: 800;
   line-height: .94;
@@ -951,7 +932,7 @@ input { font: inherit; }
 }
 
 /* ============================================================
-   14 · BEAT TOOLS
+   14 · CARD PATTERNS
    ============================================================ */
 .filter-row {
   display: flex;
@@ -1077,6 +1058,43 @@ input { font: inherit; }
 .tool-card .btn-docs:hover { transform: translateY(-2px); }
 .tool-card .btn-open:hover { filter: brightness(1.06); }
 .tool-card .actions svg { width: 13px; height: 13px; flex: none; }
+
+/* Games variant — same skeleton, plus a 16:9 thumbnail slot on top */
+.game-card .thumb {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  margin-bottom: 1rem;
+  border-radius: 1.25rem;
+  border: 1px solid var(--border-soft);
+  background: linear-gradient(135deg, var(--accent-dim), rgba(148, 163, 184, .06));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent-ink);
+  overflow: hidden;
+}
+.game-card .thumb svg { width: clamp(2.5rem, 8vw, 3.5rem); height: clamp(2.5rem, 8vw, 3.5rem); }
+
+/* Subsection label inside a section */
+.subhead {
+  display: flex;
+  align-items: center;
+  gap: .6rem;
+  margin: 2rem 0 1rem;
+  font-family: var(--font-mono);
+  font-size: var(--fs-mini);
+  font-weight: 700;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--accent-ink);
+}
+.subhead::before {
+  content: '';
+  width: 1.5rem; height: 1px;
+  background: currentColor;
+  opacity: .55;
+}
+.subhead:first-of-type { margin-top: 0; }
 
 /* ============================================================
    15 · RULES LIST
@@ -1253,6 +1271,10 @@ pre .p { color: var(--accent-ink); }
       <rect x="4" y="10" width="16" height="10" rx="2"/>
       <path d="M12 14v6"/>
     </symbol>
+    <symbol id="i-raia" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+      <circle cx="12" cy="12" r="4"/>
+      <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/>
+    </symbol>
     <symbol id="i-tool" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
       <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
     </symbol>
@@ -1292,6 +1314,9 @@ pre .p { color: var(--accent-ink); }
     <symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
       <polyline points="20 6 9 17 4 12"/>
     </symbol>
+    <symbol id="i-game" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <polygon points="5 3 19 12 5 21 5 3"/>
+    </symbol>
   </defs>
 </svg>
 
@@ -1308,7 +1333,7 @@ pre .p { color: var(--accent-ink); }
       </svg>
       <span>
         <span class="brand-name">Haiere</span>
-        <small class="brand-sub">Style guide · v2026.10.08.4</small>
+        <small class="brand-sub">Style guide · v2026.10.08.6</small>
       </span>
     </a>
 
@@ -1332,7 +1357,7 @@ pre .p { color: var(--accent-ink); }
      ============================================================ -->
 <section class="masthead">
   <div class="shell">
-    <span class="eyebrow">Design system · v2026.10.08.4</span>
+    <span class="eyebrow">Design system · v2026.10.08.6</span>
 
     <h1>
       <span class="line">Aurora Navy <span class="slash">/</span></span>
@@ -1346,7 +1371,7 @@ pre .p { color: var(--accent-ink); }
     </p>
 
     <dl class="colophon">
-      <div><dt>Version</dt><dd>v2026.10.08.4</dd></div>
+      <div><dt>Version</dt><dd>v2026.10.08.6</dd></div>
       <div><dt>Modes</dt><dd>Dark · Light</dd></div>
       <div><dt>Families</dt><dd>Sora · Inter · JetBrains&nbsp;Mono</dd></div>
       <div><dt>Sources</dt><dd>style.css · icons.js</dd></div>
@@ -1358,7 +1383,7 @@ pre .p { color: var(--accent-ink); }
       <a href="#space"><span class="i-num">03</span><span class="i-title">Space &amp; radii</span><span class="i-sub">4-px scale</span></a>
       <a href="#icons"><span class="i-num">04</span><span class="i-title">Icons</span><span class="i-sub">SVG system</span></a>
       <a href="#components"><span class="i-num">05</span><span class="i-title">Components</span><span class="i-sub">Building blocks</span></a>
-      <a href="#tools"><span class="i-num">06</span><span class="i-title">Beat Tools</span><span class="i-sub">Card pattern</span></a>
+      <a href="#cards"><span class="i-num">06</span><span class="i-title">Card patterns</span><span class="i-sub">Tools · Bots · Games</span></a>
       <a href="#a11y"><span class="i-num">07</span><span class="i-title">Motion &amp; a11y</span><span class="i-sub">Rules of the road</span></a>
       <a href="#theming"><span class="i-num">08</span><span class="i-title">Theming</span><span class="i-sub">Parity model</span></a>
       <a href="#cheatsheet"><span class="i-num">09</span><span class="i-title">Cheat sheet</span><span class="i-sub">Copy-paste tokens</span></a>
@@ -1509,7 +1534,7 @@ pre .p { color: var(--accent-ink); }
         <div class="type-row">
           <span class="type-label"><b>--fs-hero</b><br>clamp(2.25rem, 7vw, 4.5rem)<br>Sora 800</span>
           <p class="specimen" style="font-family: var(--font-display); font-weight: 800; font-size: clamp(1.75rem, 6vw, 3.4rem); line-height: 1; letter-spacing: -.04em;">
-            Small tools, quietly useful.
+            Useful tools, thoughtful experiments.
           </p>
         </div>
 
@@ -1547,7 +1572,7 @@ pre .p { color: var(--accent-ink); }
         <div class="type-row">
           <span class="type-label"><b>--fs-micro</b><br>10.5px · 0.14em<br>Mono 500</span>
           <p class="specimen mono" style="font-weight: 500; letter-spacing: .14em; color: var(--text-faint);">
-            Last updated · 27 September 2026
+            Last update: 2026-10-08 · v2026.10.08.6
           </p>
         </div>
 
@@ -1619,12 +1644,14 @@ pre .p { color: var(--accent-ink); }
       <h2 class="sec-title">Icons</h2>
       <p class="sec-desc">
         SVG only — never an emoji, never an icon font. All UI glyphs come from
-        <code>icons.js</code> via <code>&lt;svg data-icon="icXX"&gt;</code>.
+        <code>icons.js</code> via <code>&lt;svg data-icon="icXX"&gt;</code>. The Raia logo is
+        exposed both as a registered icon and as a <code>&lt;symbol id="raia"&gt;</code> sprite.
       </p>
     </div>
 
     <div class="block-main">
       <div class="icon-grid">
+        <div class="icon-cell"><svg aria-hidden="true"><use href="#i-raia"/></svg><span>raia</span></div>
         <div class="icon-cell"><svg aria-hidden="true"><use href="#i-ai"/></svg><span>ic-ai</span></div>
         <div class="icon-cell"><svg aria-hidden="true"><use href="#i-tool"/></svg><span>ic-tool</span></div>
         <div class="icon-cell"><svg aria-hidden="true"><use href="#i-music"/></svg><span>ic-music</span></div>
@@ -1633,6 +1660,7 @@ pre .p { color: var(--accent-ink); }
         <div class="icon-cell"><svg aria-hidden="true"><use href="#i-code"/></svg><span>ic-code</span></div>
         <div class="icon-cell"><svg aria-hidden="true"><use href="#i-robot"/></svg><span>ic-robot</span></div>
         <div class="icon-cell"><svg aria-hidden="true"><use href="#i-spark"/></svg><span>ic-spark</span></div>
+        <div class="icon-cell"><svg aria-hidden="true"><use href="#i-game"/></svg><span>ic-game</span></div>
         <div class="icon-cell"><svg aria-hidden="true"><use href="#i-grid"/></svg><span>ic-grid</span></div>
         <div class="icon-cell"><svg aria-hidden="true"><use href="#i-arrow"/></svg><span>ic-arrow</span></div>
       </div>
@@ -1664,13 +1692,14 @@ pre .p { color: var(--accent-ink); }
         </figure>
 
         <figure class="specimen">
-          <figcaption>Brand marks <em>filled</em></figcaption>
+          <figcaption>Raia <em>symbol + icon</em></figcaption>
           <div class="specimen-body is-block">
             <p style="color: var(--text-soft); font-size: var(--fs-small); line-height: 1.7;">
-              Brand logos render with <code>fill: currentColor</code> and
-              <code>stroke: none</code>. Multi-segment marks that need an outline must declare
-              <code>fill="none" stroke="currentColor"</code> per path — see
-              <code>brand-soundcloud</code>.
+              <code>&lt;symbol id="raia"&gt;</code> lives in the shared SVG sprite at the top of
+              <code>index.html</code>. The same glyph is registered in <code>icons.js</code> under
+              the key <code>raia</code>, so both <code>&lt;use href="#raia"&gt;</code> and
+              <code>&lt;svg data-icon="raia"&gt;</code> resolve to identical output. There is
+              exactly one <code>id="raia"</code> in the document.
             </p>
           </div>
         </figure>
@@ -1726,7 +1755,7 @@ pre .p { color: var(--accent-ink); }
             <span class="pill"><i class="dot"></i>Stable</span>
             <span class="status">Stable</span>
             <span class="chip">JavaScript</span>
-            <span class="chip">Local-only</span>
+            <span class="chip">Open&nbsp;Web</span>
           </div>
         </figure>
 
@@ -1749,7 +1778,7 @@ pre .p { color: var(--accent-ink); }
               <div class="meter-track"><i style="width: 82%"></i></div>
             </div>
             <div class="meter">
-              <div class="meter-top"><span>Privacy</span><span>100</span></div>
+              <div class="meter-top"><span>Polish</span><span>100</span></div>
               <div class="meter-track"><i style="width: 100%"></i></div>
             </div>
           </div>
@@ -1787,27 +1816,30 @@ pre .p { color: var(--accent-ink); }
 </section>
 
 <!-- ============================================================
-     06 · BEAT TOOLS PATTERN
+     06 · CARD PATTERNS
      ============================================================ -->
-<section class="block" id="tools">
+<section class="block" id="cards">
   <div class="shell block-grid">
     <div class="block-aside">
       <span class="sec-num">06</span>
-      <h2 class="sec-title">Beat Tools</h2>
+      <h2 class="sec-title">Card patterns</h2>
       <p class="sec-desc">
-        Every tool uses the same skeleton: index + category + status, title with icon,
-        description, then Open Tool / How to Use.
+        One skeleton, three surfaces. Beat Tools, AI &amp; Bots, and Games all share the same
+        card: index + category + status, title with icon, description, then actions. Games
+        add a 16:9 thumbnail slot on top.
       </p>
     </div>
 
     <div class="block-main">
+
+      <h3 class="subhead">Beat Tools</h3>
 
       <div class="filter-row" role="toolbar" aria-label="Tool filter demo">
         <button class="filter-chip" type="button" aria-pressed="true">
           <svg aria-hidden="true"><use href="#i-grid"/></svg>All
         </button>
         <button class="filter-chip" type="button" aria-pressed="false">
-          <svg aria-hidden="true"><use href="#i-ai"/></svg>AI
+          <svg aria-hidden="true"><use href="#i-raia"/></svg>AI
         </button>
         <button class="filter-chip" type="button" aria-pressed="false">
           <svg aria-hidden="true"><use href="#i-music"/></svg>Music
@@ -1828,11 +1860,11 @@ pre .p { color: var(--accent-ink); }
         <li class="tool-card">
           <div class="meta">
             <span class="num">01</span>
-            <span class="cat"><svg aria-hidden="true"><use href="#i-music"/></svg>LRC Generator</span>
+            <span class="cat"><svg aria-hidden="true"><use href="#i-music"/></svg>LRC Maker</span>
             <span class="status">Stable</span>
           </div>
           <h3><svg aria-hidden="true"><use href="#i-music"/></svg>HajirSync</h3>
-          <p>Create synchronized LRC lyric files in a short amount of time.</p>
+          <p>Create and sync LRC lyric files quickly and easily.</p>
           <div class="actions">
             <a class="btn-open" href="#" aria-label="Open HajirSync">Open Tool <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
             <a class="btn-docs" href="#" aria-label="HajirSync documentation">How to Use</a>
@@ -1846,7 +1878,7 @@ pre .p { color: var(--accent-ink); }
             <span class="status">Stable</span>
           </div>
           <h3><svg aria-hidden="true"><use href="#i-lock"/></svg>Raia Vault</h3>
-          <p>Generate strong random passwords to help protect your accounts.</p>
+          <p>Generate strong passwords and manage secure password utilities.</p>
           <div class="actions">
             <a class="btn-open" href="#" aria-label="Open Raia Vault">Open Tool <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
             <a class="btn-docs" href="#" aria-label="Raia Vault documentation">How to Use</a>
@@ -1855,29 +1887,79 @@ pre .p { color: var(--accent-ink); }
 
         <li class="tool-card">
           <div class="meta">
-            <span class="num">06</span>
-            <span class="cat"><svg aria-hidden="true"><use href="#i-ai"/></svg>AI Chatbot</span>
+            <span class="num">05</span>
+            <span class="cat"><svg aria-hidden="true"><use href="#i-code"/></svg>Developer Tool</span>
             <span class="status">Stable</span>
           </div>
-          <h3><svg aria-hidden="true"><use href="#i-ai"/></svg>Raia AI</h3>
-          <p>Provider-based AI chatbot that adapts to your preferred model and workflow.</p>
+          <h3><svg aria-hidden="true"><use href="#i-code"/></svg>Raia Minify</h3>
+          <p>Minify and optimize code or text directly in the browser.</p>
           <div class="actions">
-            <a class="btn-open" href="#" aria-label="Open Raia AI">Open Tool <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
-            <a class="btn-docs" href="#" aria-label="Raia AI documentation">How to Use</a>
+            <a class="btn-open" href="#" aria-label="Open Raia Minify">Open Tool <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+            <a class="btn-docs" href="#" aria-label="Raia Minify documentation">How to Use</a>
+          </div>
+        </li>
+
+      </ol>
+
+      <h3 class="subhead">AI &amp; Bots</h3>
+
+      <ol class="tools-grid">
+
+        <li class="tool-card">
+          <div class="meta">
+            <span class="num">01</span>
+            <span class="cat"><svg aria-hidden="true"><use href="#i-raia"/></svg>AI/Bot</span>
+            <span class="status">Stable</span>
+          </div>
+          <h3><svg aria-hidden="true"><use href="#i-raia"/></svg>Raia</h3>
+          <p>An AI chatbot for conversations, ideas, and useful workflows.</p>
+          <div class="actions">
+            <a class="btn-open" href="https://raia.is-a.bot/" target="_blank" rel="noopener noreferrer" aria-label="Open Raia in a new tab">Open Tool <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
           </div>
         </li>
 
         <li class="tool-card">
           <div class="meta">
-            <span class="num">07</span>
-            <span class="cat"><svg aria-hidden="true"><use href="#i-robot"/></svg>AI Chatbot</span>
+            <span class="num">02</span>
+            <span class="cat"><svg aria-hidden="true"><use href="#i-robot"/></svg>AI/Bot</span>
             <span class="status">Stable</span>
           </div>
           <h3><svg aria-hidden="true"><use href="#i-robot"/></svg>Kirana</h3>
-          <p>Provider-based AI chatbot built for warm, thoughtful conversations and creative work.</p>
+          <p>A thoughtful AI companion for creative conversations and everyday ideas.</p>
           <div class="actions">
-            <a class="btn-open" href="#" aria-label="Open Kirana">Open Tool <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
-            <a class="btn-docs" href="#" aria-label="Kirana documentation">How to Use</a>
+            <a class="btn-open" href="https://hajir.is-a.dev/kirana" target="_blank" rel="noopener noreferrer" aria-label="Open Kirana in a new tab">Open Tool <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+          </div>
+        </li>
+
+      </ol>
+
+      <h3 class="subhead">Games</h3>
+
+      <ol class="tools-grid">
+
+        <li class="tool-card game-card">
+          <div class="thumb" aria-hidden="true"><svg><use href="#i-grid"/></svg></div>
+          <div class="meta">
+            <span class="cat"><svg aria-hidden="true"><use href="#i-globe"/></svg>Classic Board</span>
+            <span class="status">Stable</span>
+          </div>
+          <h3><svg aria-hidden="true"><use href="#i-grid"/></svg>Chess</h3>
+          <p>Play classic chess directly in the browser.</p>
+          <div class="actions">
+            <a class="btn-open" href="#" aria-label="Play Chess">Play <svg aria-hidden="true"><use href="#i-game"/></svg></a>
+          </div>
+        </li>
+
+        <li class="tool-card game-card">
+          <div class="thumb" aria-hidden="true"><svg><use href="#i-spark"/></svg></div>
+          <div class="meta">
+            <span class="cat"><svg aria-hidden="true"><use href="#i-spark"/></svg>Arcade</span>
+            <span class="status">Stable</span>
+          </div>
+          <h3><svg aria-hidden="true"><use href="#i-spark"/></svg>Starfall</h3>
+          <p>Catch falling stars in this quick browser arcade game.</p>
+          <div class="actions">
+            <a class="btn-open" href="#" aria-label="Play Starfall">Play <svg aria-hidden="true"><use href="#i-game"/></svg></a>
           </div>
         </li>
 
@@ -1886,9 +1968,10 @@ pre .p { color: var(--accent-ink); }
       <div class="note mt-md">
         <p>
           <b>Chatbot rule.</b>
-          <em>Raia AI</em> and <em>Kirana</em> are both provider-based chatbots — the front end
-          talks to a provider abstraction, so swapping the underlying model never changes the UI.
-          The category label is always <code>AI Chatbot</code>, never “Platform” or “Tool”.
+          Raia and Kirana both sit under <em>AI &amp; Bots</em>, category label
+          <code>AI/Bot</code>. They are the only two items in that section, in that order. The
+          legacy keys <code>cat_ai_chatbot</code> and <code>cat_ai_tool</code> remain in the
+          i18n table for compatibility but are no longer referenced by the page.
         </p>
       </div>
 
@@ -1919,12 +2002,15 @@ pre .p { color: var(--accent-ink); }
 
     <div class="block-main">
       <ul class="rules">
-        <li><strong>Reveal on scroll</strong> uses a single shared <code>IntersectionObserver</code> — 32px rise, 0.9s, one-shot per element, then it unobserves.</li>
-        <li><strong>Reduced motion.</strong> All transitions collapse to <code>0.001ms</code> under <code>prefers-reduced-motion</code>, and <code>scroll-behavior</code> reverts to <code>auto</code>.</li>
+        <li><strong>Reveal on scroll</strong> uses a single shared <code>IntersectionObserver</code> — 24px rise on <code>cubic-bezier(.22, 1, .36, 1)</code>, one-shot per element, then it unobserves. Target class is <code>.is-visible</code>; the base state is <code>.reveal</code>.</li>
+        <li><strong>will-change is released.</strong> <code>.reveal</code> opts into <code>will-change: opacity, transform</code>; <code>.is-visible</code> hands it back with <code>will-change: auto</code>, so the compositor memory is not held forever.</li>
+        <li><strong>No layout-shifting animation.</strong> Only <code>transform</code> and <code>opacity</code> animate. Width, height, top, left, and margin are never transitioned.</li>
+        <li><strong>Reduced motion.</strong> All transitions collapse to <code>0.001ms</code> under <code>prefers-reduced-motion</code>, and <code>scroll-behavior</code> reverts to <code>auto</code>. Hero spotlight, aurora drift, mesh blobs, and ticker all freeze.</li>
+        <li><strong>Perf tiers.</strong> <code>&lt;html data-perf&gt;</code> gates decoration. <code>eco</code> disables aurora, mesh, and backdrop-filter. <code>normal</code> keeps static aurora plus twinkling stars, no mousemove-heavy effects. <code>premium</code> enables drift, spotlight, and tilt/magnetic.</li>
         <li><strong>Touch targets</strong> are 44px minimum — every button, link, switch, and chip.</li>
         <li><strong>Focus rings</strong> are a 3px accent outline with a 3px offset. Never removed, only restyled — and always <code>:focus-visible</code>, never bare <code>:focus</code>.</li>
         <li><strong>Overlays</strong> (drawer, docs modal, cookie modal) trap focus, restore it on close, and reference-count the body scroll lock so stacked overlays don’t unlock early.</li>
-        <li><strong>Decorative layers</strong> — aurora mesh, grain, hairline grid, cursor halo — are <code>aria-hidden</code> and pointer-transparent.</li>
+        <li><strong>Decorative layers</strong> — aurora mesh, grain, cursor halo — are <code>aria-hidden</code> and pointer-transparent.</li>
         <li><strong>Contrast floors.</strong> Body text ≥ 4.5:1 · large text ≥ 3:1 · UI borders and focus indicators ≥ 3:1, in both themes.</li>
         <li><strong>On-accent text flips.</strong> Dark mode uses <code>#0A192F</code> on cyan because the accent is far too bright for white — light mode deepens the fill instead.</li>
         <li><strong>Menu button label</strong> toggles between <em>Open menu</em> and <em>Close menu</em> in step with the drawer’s <code>aria-expanded</code>.</li>
@@ -1981,12 +2067,13 @@ pre .p { color: var(--accent-ink); }
         </figure>
 
         <figure class="specimen">
-          <figcaption>Override <em>data-theme</em></figcaption>
+          <figcaption>Static version <em>no live clock</em></figcaption>
           <div class="specimen-body is-block">
             <p style="color: var(--text-soft); font-size: var(--fs-small); line-height: 1.7;">
-              Any subtree can pin a theme by wrapping it in <code>.dark</code> or
-              <code>.light</code> — useful for previewing both palettes side by side without
-              touching the global state.
+              The footer version (<code>v2026.10.08.6</code>) and last-update date
+              (<code>2026-10-08</code>) are <strong>hardcoded</strong>. No <code>new Date()</code>,
+              no <code>setInterval</code>, no live clock. The values change only when the site is
+              actually deployed with a new version.
             </p>
           </div>
         </figure>
@@ -2044,7 +2131,12 @@ pre .p { color: var(--accent-ink); }
 <span class="c">/* ── Motion ─────────────────────────────────────────── */</span>
 <span class="p">--ease</span>:        cubic-bezier(.25, .46, .45, .94);
 <span class="p">--ease-spring</span>: cubic-bezier(.34, 1.56, .64, 1);
-<span class="p">--ease-out</span>:    cubic-bezier(.22, 1, .36, 1);</code></pre>
+<span class="p">--ease-out</span>:    cubic-bezier(.22, 1, .36, 1);
+
+<span class="c">/* ── Versioning ─────────────────────────────────────── */</span>
+<span class="c">/* Static, never derived at runtime.                    */</span>
+version:     <span class="p">v2026.10.08.6</span>;
+lastUpdate:  <span class="p">2026-10-08</span>;</code></pre>
     </div>
   </div>
 </section>
@@ -2053,7 +2145,7 @@ pre .p { color: var(--accent-ink); }
 
 <footer class="site-footer">
   <div class="shell footer-inner">
-    <p>© <span id="year">2026</span> Hajir Muhaajir · Style guide v2026.10.08.4</p>
+    <p>© <span id="year">2026</span> Hajir Muhaajir · Style guide v2026.10.08.6</p>
     <nav><a href="index.html">Back to hajir.is-a.dev</a></nav>
   </div>
 </footer>
@@ -2100,6 +2192,8 @@ pre .p { color: var(--accent-ink); }
     });
   }
 
+  /* Year is the only runtime-derived value on this page, and it is
+     documentation furniture — not the site's last-update stamp. */
   document.getElementById('year').textContent = new Date().getFullYear();
 })();
 </script>

@@ -1,6 +1,6 @@
 {
   "$schema": "https://json.schemastore.org/web-manifest-combined.json",
-  "//": "Haiere — PWA manifest. v2026.10.08.4. Spec: https://www.w3.org/TR/appmanifest/",
+  "//": "Haiere — PWA manifest. v2026.10.08.6. Spec: https://www.w3.org/TR/appmanifest/",
   "//id": "PWA identity — do NOT change once installed. Changing it resets the install for every user.",
   "id": "/",
 
@@ -8,7 +8,8 @@
   "name": "Haiere — Hajir Studio",
   "short_name": "Haiere",
 
-  "description": "Free, privacy-first web tools, provider-based AI chatbots (Raia AI & Kirana), open-source projects, mini games, and original music by Hajir Muhaajir.",
+  "//description": "Neutral, no privacy claims. Matches footer_brand_line in i18n.js ('Useful tools, thoughtful experiments.') and the site's current positioning: tools, bots, games, music.",
+  "description": "Free web tools, AI chatbots (Raia & Kirana), open-source projects, mini games, and original music by Hajir Muhaajir.",
 
   "start_url": "/?source=pwa",
   "scope": "/",
@@ -34,7 +35,7 @@
   "theme_color": "#0A192F",
   "background_color": "#0A192F",
 
-  "//categories": "Chrome groups these in the install dialog. music & entertainment cover Signature Music and the Mini Games section (Chess, LoveYou); productivity/utilities/developer cover Beat Tools. The spec has no dedicated 'games' category — 'entertainment' is the closest valid slot.",
+  "//categories": "Chrome groups these in the install dialog. music & entertainment cover Signature Music and the Mini Games section (Chess, Loveyou, Orbit Weaver, Starfall); productivity/utilities/developer cover Beat Tools and the AI & Bots section. The spec has no dedicated 'games' category — 'entertainment' is the closest valid slot.",
   "categories": ["productivity", "utilities", "developer", "music", "entertainment"],
   "prefer_related_applications": false,
 
@@ -72,13 +73,26 @@
     }
   ],
 
-  "//shortcuts": "Manifest shortcuts surface on long-press of the installed app icon. URLs must be same-scope. All five entries point to sections of index.html — the app opens them in the same window thanks to launch_handler.",
+  "//shortcuts": "Manifest shortcuts surface on long-press of the installed app icon. URLs must be same-scope. Entries follow the v2026.10.08.6 section order: Tools → AI & Bots → Games → Music → About → Contact. All open in the same window thanks to launch_handler.",
   "shortcuts": [
     {
       "name": "Beat Tools",
       "short_name": "Tools",
-      "description": "Browse every free privacy-first web tool",
+      "description": "Browse every free web tool",
       "url": "/?source=pwa#tools",
+      "icons": [
+        {
+          "src": "https://i.postimg.cc/8PJ0bhb1/H-haiere.webp",
+          "sizes": "96x96",
+          "type": "image/webp"
+        }
+      ]
+    },
+    {
+      "name": "AI & Bots",
+      "short_name": "Bots",
+      "description": "Chat with Raia and Kirana",
+      "url": "/?source=pwa#ai-bots",
       "icons": [
         {
           "src": "https://i.postimg.cc/8PJ0bhb1/H-haiere.webp",
@@ -90,7 +104,7 @@
     {
       "name": "Games",
       "short_name": "Games",
-      "description": "Play Chess and LoveYou right in the browser",
+      "description": "Play Chess, Loveyou, and more in the browser",
       "url": "/?source=pwa#games",
       "icons": [
         {

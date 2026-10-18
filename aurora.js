@@ -1,6 +1,6 @@
 /* ============================================================
    aurora.js — "Aurora" space theme behaviour
-   v2026.10.08.4 — Performance pass + tier gating
+   v2026.10.08.6 — version bump only
 
    Tier contract (read from <html data-perf>, set inline in <head>):
      eco     : bail out immediately. Adds .aurora-lite so aurora.css
@@ -16,21 +16,7 @@
        only (no particles), spotlight parked.
      - (pointer: coarse) / ≤768px → 0.5× star intensity, spotlight
        parked, smaller FX bursts.
-
-   v2026.10.08.4 changes (from v2026.10.08.3):
-   - data-perf is now the primary gate (was previously only low-end
-     detection, tier was effectively ignored).
-   - eco now adds .aurora-lite before bailing, so aurora.css can
-     freeze the drifting aurora gradient on low-end devices.
-   - Meteor cadence is tier-aware (rarer on normal).
-   - Spotlight stays premium-only (mousemove-heavy), but the FX
-     canvas runs on normal + premium so click/tap explosion is
-     available on mid-range devices.
-   - FX loop + spotlight RAF pause on document.hidden; returning to
-     the tab starts from a clean state.
-   - Only #aurora-bg is required for stars; .spotlight and #fx are
-     optional and gracefully degrade.
-   ============================================================ */
+   ============================================================ */ 
 (function () {
   'use strict';
 
