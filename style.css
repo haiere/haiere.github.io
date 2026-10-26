@@ -1532,6 +1532,10 @@ svg[data-icon] {
 .social-btn--reddit:hover     { background: #FF4500; }
 .social-btn--discord:hover    { background: #5865F2; }
 .social-btn--telegram:hover   { background: #229ED9; }
+.social-btn--lastfm:hover {
+  color: #d51007;
+  border-color: #d51007;
+}
 
 /* Deskripsi Connect: tanpa max-width di bawah 1024px */
 .footer-connect-desc {
