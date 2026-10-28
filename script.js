@@ -1,10 +1,21 @@
 /* ============================================================
-   script.js — Haiere v2026.10.08.6
+   script.js — Haiere v2026.10.08.7
    Everything UI: theme, i18n, drawer, search, filters,
    docs modal (README via GitHub raw), contact form, cookies,
    scroll animations, counters, hero spotlight, tilt/magnetic.
 
    Default language: English (en).
+
+   v2026.10.08.7 changes (perf pass):
+   - Section 3 (scroll): docHeight now cached, recalculated only
+     on load/resize/ResizeObserver. Nav 'scrolled' class and
+     back-to-top writes are gated so they fire only when the
+     boolean state actually changes — no per-frame style writes.
+   - Section 5b (new): IntersectionObserver pauses continuous
+     animations in #hero and #about when their section is out of
+     view (mesh blobs, ticker, badge ping, orbit rings/nodes).
+     `.anim-paused` toggles animation-play-state via CSS.
+   - Console log bumped to v2026.10.08.7.
 
    v2026.10.08.6 changes:
    - Removed dynamic last-updated clock (no more new Date(),
@@ -15,7 +26,6 @@
    - Reveal observer uses `.is-visible` class (was `.visible`).
    - Games index now also picks up `.ai-card` entries so
      AI/Bot cards are searchable.
-   - Console log bumped to v2026.10.08.6.
    ============================================================ */
 
 function whenTailwindReady(cb) {
@@ -182,31 +192,59 @@ function whenTailwindReady(cb) {
 
   /* ==========================================================
      3. SCROLL PROGRESS + NAV SCROLL STATE + BACK TO TOP
+     v2026.10.08.7 — performance:
+     - Cache docHeight (recalc only on load/resize/ResizeObserver)
+       so we don't read layout every frame.
+     - Gate nav 'scrolled' class & back-to-top style writes so
+       they only fire when the boolean state actually changes.
+       Writing .pointerEvents triggers style recalc (not compositor),
+       so batching avoids ~60 recalcs/sec on low-end devices.
      ========================================================== */
   const scrollProgress = document.getElementById('scroll-progress');
   const header = document.getElementById('nav');
   const backTop = document.getElementById('back-top');
   let ticking = false;
+  let cachedDocHeight = 0;
+  let headerScrolled = null;
+  let backTopVisible = null;
+
+  function recalcDocHeight() {
+    cachedDocHeight = document.documentElement.scrollHeight - window.innerHeight;
+  }
 
   function onScroll() {
     if (ticking) return;
     ticking = true;
     requestAnimationFrame(() => {
       const scrollTop = window.scrollY || document.documentElement.scrollTop;
-      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-      const ratio = docHeight > 0 ? Math.min(scrollTop / docHeight, 1) : 0;
+      const ratio = cachedDocHeight > 0 ? Math.min(scrollTop / cachedDocHeight, 1) : 0;
 
       if (scrollProgress) scrollProgress.style.transform = `scaleX(${ratio})`;
-      if (header) header.classList.toggle('scrolled', scrollTop > 20);
+
+      const scrolled = scrollTop > 20;
+      if (header && scrolled !== headerScrolled) {
+        headerScrolled = scrolled;
+        header.classList.toggle('scrolled', scrolled);
+      }
 
       if (backTop) {
         const shouldShow = scrollTop > 400;
-        backTop.style.opacity = shouldShow ? '1' : '0';
-        backTop.style.pointerEvents = shouldShow ? 'auto' : 'none';
-        backTop.setAttribute('aria-hidden', shouldShow ? 'false' : 'true');
+        if (shouldShow !== backTopVisible) {
+          backTopVisible = shouldShow;
+          backTop.style.opacity = shouldShow ? '1' : '0';
+          backTop.style.pointerEvents = shouldShow ? 'auto' : 'none';
+          backTop.setAttribute('aria-hidden', shouldShow ? 'false' : 'true');
+        }
       }
       ticking = false;
     });
+  }
+
+  recalcDocHeight();
+  window.addEventListener('load', recalcDocHeight, { passive: true });
+  window.addEventListener('resize', recalcDocHeight, { passive: true });
+  if ('ResizeObserver' in window) {
+    new ResizeObserver(recalcDocHeight).observe(document.body);
   }
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
@@ -323,6 +361,28 @@ function whenTailwindReady(cb) {
   }
 
   /* ==========================================================
+     5b. PAUSE CONTINUOUS ANIMATIONS WHEN SECTION IS OFF-SCREEN
+     v2026.10.08.7 — Hero mesh-blobs, ticker, badge-ping, and
+     About orbit rings/nodes run forever otherwise. Pausing them
+     when their parent section leaves the viewport (with 100px
+     margin) removes constant compositor work while the user
+     scrolls elsewhere — a big win on low-end devices where the
+     main thread competes with the compositor.
+     ========================================================== */
+  if ('IntersectionObserver' in window && !prefersReducedMotion) {
+    const animObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        entry.target.classList.toggle('anim-paused', !entry.isIntersecting);
+      });
+    }, { rootMargin: '100px' });
+
+    ['#hero', '#about'].forEach((sel) => {
+      const el = document.querySelector(sel);
+      if (el) animObserver.observe(el);
+    });
+  }
+
+  /* ==========================================================
      6. SECTION HIGHLIGHTING
      ========================================================== */
   const sections = document.querySelectorAll('section[id]');
@@ -426,7 +486,6 @@ function whenTailwindReady(cb) {
       });
     });
 
-    // AI & Bots cards (Raia / Kirana) → jump to #ai-bots
     document.querySelectorAll('.ai-card').forEach((card) => {
       const h3 = card.querySelector('.game-title');
       const desc = card.querySelector('.game-desc');
@@ -441,7 +500,6 @@ function whenTailwindReady(cb) {
       });
     });
 
-    // Games cards
     document.querySelectorAll('.game-card:not(.ai-card)').forEach((card) => {
       const h3 = card.querySelector('.game-title');
       const desc = card.querySelector('.game-desc');
@@ -1207,5 +1265,5 @@ function whenTailwindReady(cb) {
   whenTailwindReady(() => renderAllIcons());
   renderAllIcons();
 
-  console.log('Haiere v2026.10.08.6 — ready (perf tier: ' + perfTier + ', default lang: en)');
+  console.log('Haiere v2026.10.08.7 — ready (perf tier: ' + perfTier + ', default lang: en)');
 })();
