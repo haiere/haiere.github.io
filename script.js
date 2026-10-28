@@ -1,31 +1,8 @@
 /* ============================================================
-   script.js — Haiere v2026.10.08.7
+   script.js — Haiere v2026.10.08.10
    Everything UI: theme, i18n, drawer, search, filters,
    docs modal (README via GitHub raw), contact form, cookies,
    scroll animations, counters, hero spotlight, tilt/magnetic.
-
-   Default language: English (en).
-
-   v2026.10.08.7 changes (perf pass):
-   - Section 3 (scroll): docHeight now cached, recalculated only
-     on load/resize/ResizeObserver. Nav 'scrolled' class and
-     back-to-top writes are gated so they fire only when the
-     boolean state actually changes — no per-frame style writes.
-   - Section 5b (new): IntersectionObserver pauses continuous
-     animations in #hero and #about when their section is out of
-     view (mesh blobs, ticker, badge ping, orbit rings/nodes).
-     `.anim-paused` toggles animation-play-state via CSS.
-   - Console log bumped to v2026.10.08.7.
-
-   v2026.10.08.6 changes:
-   - Removed dynamic last-updated clock (no more new Date(),
-     no setInterval). Version + date now come from static
-     HTML markup (see #last-updated-date in footer).
-   - Search index now includes #ai-bots section (Raia, Kirana)
-     and no longer includes #rwr (section removed).
-   - Reveal observer uses `.is-visible` class (was `.visible`).
-   - Games index now also picks up `.ai-card` entries so
-     AI/Bot cards are searchable.
    ============================================================ */
 
 function whenTailwindReady(cb) {
@@ -192,13 +169,6 @@ function whenTailwindReady(cb) {
 
   /* ==========================================================
      3. SCROLL PROGRESS + NAV SCROLL STATE + BACK TO TOP
-     v2026.10.08.7 — performance:
-     - Cache docHeight (recalc only on load/resize/ResizeObserver)
-       so we don't read layout every frame.
-     - Gate nav 'scrolled' class & back-to-top style writes so
-       they only fire when the boolean state actually changes.
-       Writing .pointerEvents triggers style recalc (not compositor),
-       so batching avoids ~60 recalcs/sec on low-end devices.
      ========================================================== */
   const scrollProgress = document.getElementById('scroll-progress');
   const header = document.getElementById('nav');
@@ -343,32 +313,26 @@ function whenTailwindReady(cb) {
   }
 
   /* ==========================================================
-     5. REVEAL ON SCROLL — single IntersectionObserver, class = .is-visible
+     5. REVEAL ON SCROLL — one-time reveal, class = .is-visible
      ========================================================== */
   if ('IntersectionObserver' in window) {
-    const revealObserver = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('is-visible');
-          revealObserver.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+    const revealObserver = new IntersectionObserver((entries, observer) => {
+      for (const entry of entries) {
+        if (!entry.isIntersecting) continue;
+        entry.target.classList.add('is-visible');
+        observer.unobserve(entry.target);
+      }
+    }, {
+      root: null,
+      rootMargin: '0px 0px 180px 0px',
+      threshold: 0.01,
+    });
     document.querySelectorAll('.reveal').forEach((el) => revealObserver.observe(el));
   } else {
     // Fallback: no IO → show everything immediately.
     document.querySelectorAll('.reveal').forEach((el) => el.classList.add('is-visible'));
   }
-
-  /* ==========================================================
-     5b. PAUSE CONTINUOUS ANIMATIONS WHEN SECTION IS OFF-SCREEN
-     v2026.10.08.7 — Hero mesh-blobs, ticker, badge-ping, and
-     About orbit rings/nodes run forever otherwise. Pausing them
-     when their parent section leaves the viewport (with 100px
-     margin) removes constant compositor work while the user
-     scrolls elsewhere — a big win on low-end devices where the
-     main thread competes with the compositor.
-     ========================================================== */
+  
   if ('IntersectionObserver' in window && !prefersReducedMotion) {
     const animObserver = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
@@ -1264,6 +1228,8 @@ function whenTailwindReady(cb) {
 
   whenTailwindReady(() => renderAllIcons());
   renderAllIcons();
+  
+  window.__haiereReady = true;
 
-  console.log('Haiere v2026.10.08.7 — ready (perf tier: ' + perfTier + ', default lang: en)');
+  console.log('Haiere v2026.10.08.10 — ready (perf tier: ' + perfTier + ', default lang: en)');
 })();

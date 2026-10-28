@@ -5,6 +5,19 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 
+<!-- ============ JS CLASS (early, prevents FOUC & safe fallback) ============ -->
+<script>
+  (function () {
+    var html = document.documentElement;
+    html.classList.add('js');
+    // Safety net: if script.js fails or takes >2s to load,
+    // remove the .js class so .reveal elements fall back to visible.
+    setTimeout(function () {
+      if (!window.__haiereReady) html.classList.remove('js');
+    }, 2000);
+  })();
+</script>
+
   <!-- ============ PRIMARY SEO ============ -->
   <title>Hajir Muhaajir — Web Maker, AI Builder &amp; Free Tools | Haiere</title>
   <meta name="description" content="Hajir Muhaajir (Haiere) builds free web tools, open source projects, Raia AI &amp; Kirana chatbots, and Signature Music. Explore his work." />

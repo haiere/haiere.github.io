@@ -1,38 +1,7 @@
 /* ============================================================
-   style.css — Haiere v2026.10.08.7
+   style.css — Haiere v2026.10.08.10
    Modern, minimal, branded. English-first, dark-first with full
    light parity.
-
-   v2026.10.08.7 changes (perf pass):
-   - .reveal: dropped will-change (was applied to 30+ elements
-     permanently → layer explosion + GPU memory bloat).
-     .reveal.is-visible no longer sets will-change: auto either.
-   - .glass-card / .glass-pill / .glass-nav: dropped
-     backdrop-filter. Cards already have semi-opaque backgrounds
-     (0.58–0.62 alpha), so the visual delta is minimal while
-     scroll-time compositing cost drops sharply. #nav keeps its
-     own blur (see #nav rule) — .glass-nav was a shared base.
-   - .quote-rule--grow: switched from `width` transition to
-     `transform: scaleX` (compositor-only, no layout recalc).
-     Slight visual change: author no longer shifts right on
-     hover — the rule appears in place. This is intentional;
-     removing the width animation eliminates a layout tick.
-   - contain-intrinsic-size: 1px 800px → auto 800px. `auto`
-     remembers the real height after first render, eliminating
-     potential layout shift.
-   - Added .anim-paused rules (toggled by JS IntersectionObserver
-     in #hero/#about) to pause continuous animations when their
-     section is off-screen.
-   - Added html[data-perf="normal"] blur reduction for #nav and
-     search field (mid-range devices get 8px instead of 20px).
-
-   v2026.10.08.6 changes:
-   - `.reveal.visible` → `.reveal.is-visible`.
-   - Added `.ai-bots-grid` and `.game-thumb--raia/--kirana`.
-   - Removed all `.rwr-*` rules (section retired).
-   - `.footer-secure` no longer references "PRIVACY"; uses "OPEN WEB".
-   - Added `.footer-rwr` + `.footer-version` styling.
-   - Anti-flicker: reveal uses transform+opacity only.
    ============================================================ */
 
 /* ---------- ROOT TOKENS ---------- */
@@ -737,19 +706,15 @@ svg[data-icon] {
   transition: box-shadow 0.4s ease;
 }
 
-/* Neutralize every state that could shift the glyph.
-   :hover on desktop, :active on touch, :focus via keyboard. */
 .orbit-center:hover,
 .orbit-center:active,
 .orbit-center:focus,
 .orbit-center:focus-visible,
 .orbit-center:focus-within {
-  transform: translate(-50%, -50%);   /* same as base — no scale */
+  transform: translate(-50%, -50%);
   box-shadow: 0 8px 30px -12px rgba(0, 0, 0, 0.25);
 }
 
-/* The <img> inside is also inert, so long-press / drag
-   can't lift or preview the logo on mobile. */
 .orbit-center img,
 .orbit-center .logo-img {
   pointer-events: none;
@@ -759,7 +724,6 @@ svg[data-icon] {
   -webkit-touch-callout: none;
 }
 .orbit-center:hover {
-  /* hanya glow yang berubah, posisi & ukuran tetap */
   box-shadow: 0 14px 40px -14px var(--accent-glow);
 }
 
@@ -977,8 +941,7 @@ svg[data-icon] {
 /* v2026.10.08.7 — was `transition: width`, now compositor-only
    `transform: scaleX`. Layout size stays fixed; no reflow on
    hover. Author position is stable — the rule appears "in place"
-   instead of pushing the author right. Small intentional visual
-   change, strictly a perf win. */
+   instead of pushing the author right. */
 .quote-rule--grow {
   width: 1.5rem;
   transform: scaleX(0);
@@ -2083,30 +2046,38 @@ html:not(.dark) .docs-modal-heading svg { color: #B4788C; }
 .dark .grain-overlay { opacity: 0.05; }
 
 /* ---------- REVEAL ---------- */
-/* v2026.10.08.7 — removed will-change from .reveal AND .is-visible.
-   With 30+ reveal elements on the page, permanent will-change
-   caused layer explosion + GPU memory bloat on low-end devices.
-   Modern browsers automatically promote layers while a transform
-   transition runs, then demote when it settles — no hint needed.
-   Also removed will-change: auto from .is-visible for the same
-   reason: it forced the browser to keep the layer alive until GC. */
+/* v2026.10.08.10 — safe reveal pattern:
+   - Default state is VISIBLE. Without JS, nothing is hidden.
+   - Only hide when `html.js` is present AND the element has not
+     been marked visible yet.
+   - `is-visible` is added exactly once and NEVER removed, so
+     fast-scrolling can't re-hide a section.
+   - Transition is short (360ms) so it completes before the
+     element leaves the viewport during fast scroll. */
 .reveal {
-  opacity: 0;
-  transform: translateY(24px);
-  transition:
-    opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
-    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
-}
-.reveal.is-visible {
   opacity: 1;
-  transform: translateY(0);
+  transform: none;
 }
 
-/* Fallback: if JS fails to boot, everything stays visible. */
-.no-js .reveal,
+html.js .reveal:not(.is-visible) {
+  opacity: 0;
+  transform: translateY(16px);
+}
+
+html.js .reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+  transition:
+    opacity 360ms cubic-bezier(0.22, 1, 0.36, 1),
+    transform 360ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Belt-and-suspenders: if `.js` never lands on <html> (JS disabled,
+   CSP block, or the 2s timeout fired), everything stays visible. */
 html:not(.js) .reveal {
   opacity: 1 !important;
   transform: none !important;
+  transition: none !important;
 }
 
 /* ---------- SKIP LINK ---------- */
@@ -2358,7 +2329,13 @@ html:not(.js) .reveal {
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
 
-  .reveal { opacity: 1 !important; transform: none !important; transition: none !important; will-change: auto !important; }
+  .reveal,
+  html.js .reveal:not(.is-visible),
+  html.js .reveal.is-visible {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
   .ticker-track, .animate-fade-up { animation: none !important; }
   .orbit-group.outer, .orbit-group.middle, .orbit-group.inner,
   .orbit .node, .mesh-blob, .hero-badge-ping { animation: none !important; }
@@ -2630,20 +2607,6 @@ html:not(.js) .reveal {
   contain: layout style;
 }
 
-/* v2026.10.08.7 — contain-intrinsic-size: auto 800px.
-   `auto` remembers the actual height after first render,
-   preventing a potential layout shift when the real height
-   differs from 800px. */
-#support,
-.footer-signature {
-  content-visibility: auto;
-  contain-intrinsic-size: auto 800px;
-}
-
-/* ============================================================
-   v2026.10.08.7 — Pause continuous animations when section
-   off-screen (toggled by IntersectionObserver in script.js §5b).
-   ============================================================ */
 .anim-paused .mesh-blob,
 .anim-paused .hero-badge-ping,
 .anim-paused .ticker-track,
@@ -2690,11 +2653,6 @@ html[data-perf="normal"] .mesh-field { opacity: 0.55; filter: blur(42px); }
 html[data-perf="normal"] .grain-overlay { opacity: 0.025; }
 html[data-perf="normal"] .contact-blob,
 html[data-perf="normal"] .footer-blob { filter: blur(60px); opacity: 0.7; }
-
-/* v2026.10.08.7 — Normal tier blur reduction.
-   Mid-range devices (4-core / 4GB / coarse pointer) get 8px
-   blur on nav & search instead of 20px. Visually close,
-   compositor cost roughly halved. */
 html[data-perf="normal"] #nav,
 html[data-perf="normal"] #nav.scrolled {
   backdrop-filter: blur(8px) saturate(1.2) !important;
