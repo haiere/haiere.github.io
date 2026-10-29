@@ -1,22 +1,7 @@
 /* ============================================================
    aurora.js — "Aurora" space theme behaviour
-   v2026.10.08.6 — version bump only
-
-   Tier contract (read from <html data-perf>, set inline in <head>):
-     eco     : bail out immediately. Adds .aurora-lite so aurora.css
-               can disable the CSS-only aurora-drift animation and
-               drop will-change hints.
-     normal  : stars (fewer) + rare meteors + click/tap explosion.
-               Spotlight stays off (mousemove-heavy).
-     premium : full effect set — stars, meteors, eased spotlight
-               follow, click/tap explosion.
-
-   Runtime media queries still apply on top of the tier:
-     - prefers-reduced-motion → static stars, meteors off, FX ripple
-       only (no particles), spotlight parked.
-     - (pointer: coarse) / ≤768px → 0.5× star intensity, spotlight
-       parked, smaller FX bursts.
-   ============================================================ */ 
+   v2026.10.08.7 — perf pass
+   ============================================================ */
 (function () {
   'use strict';
 
@@ -63,9 +48,6 @@
   }
 
   /* ---------- low-end detection (secondary to tier) ---------- */
-  // The inline tier script already uses the same signals, so this is
-  // defensive: it applies the aurora-lite class in case the tier was
-  // set to normal/premium by another path (e.g. manual override).
   var conn = navigator.connection || {};
   var lowEnd =
     (navigator.hardwareConcurrency && navigator.hardwareConcurrency <= 2) ||
@@ -76,9 +58,9 @@
   /** Combined intensity scaler: tier × pointer × hardware. */
   function intensity() {
     var s = 1;
-    if (isNormal) s *= 0.55;              // fewer stars when normal
-    if (mqMobile.matches) s *= 0.5;       // fewer stars on small screens
-    if (lowEnd) s *= 0.6;                 // fewer stars on low-end
+    if (isNormal) s *= 0.55;
+    if (mqMobile.matches) s *= 0.5;
+    if (lowEnd) s *= 0.6;
     return s;
   }
 
@@ -101,12 +83,29 @@
     fx2 = parseRgb(cs.getPropertyValue('--fx-rgb-2'), fx2);
   }
 
+  var lastTheme = null;
   function syncTheme() {
     var t = root.classList.contains('dark') ? 'night' : 'day';
     if (root.getAttribute('data-theme') !== t) root.setAttribute('data-theme', t);
-    readFxColors();
+    // Only read computed styles when the theme actually flipped.
+    if (t !== lastTheme) {
+      lastTheme = t;
+      readFxColors();
+    }
   }
-  new MutationObserver(syncTheme).observe(root, { attributes: true, attributeFilter: ['class'] });
+
+  // Only react to the `dark` class toggling. Other class mutations
+  // on <html> (js, aurora-lite, modal-open etc.) are ignored so we
+  // don't burn getComputedStyle calls on unrelated changes.
+  var wasDark = root.classList.contains('dark');
+  new MutationObserver(function () {
+    var isDark = root.classList.contains('dark');
+    if (isDark !== wasDark) {
+      wasDark = isDark;
+      syncTheme();
+    }
+  }).observe(root, { attributes: true, attributeFilter: ['class'] });
+
   syncTheme();
 
   /* ============================================================
@@ -142,26 +141,61 @@
       el.style.setProperty('--sb', b.join(','));
       starEls.push({ el: el, f: l[2] });
     });
-    applyParallax();
   }
 
+  /* ---------- parallax (cached scrollMax, write-gated) ---------- */
+  var cachedScrollMax = 1;
+  var lastP = -1;
   var parQueued = false;
+
+  function recalcScrollMax() {
+    cachedScrollMax = Math.max(1, root.scrollHeight - window.innerHeight);
+  }
+
+  function parallaxEnabled() {
+    // Parallax is a nice-to-have; on mobile / coarse pointer /
+    // low-end the effect is imperceptible but the writes still
+    // cost paint cycles. Skip them.
+    if (mqReduce.matches) return false;
+    if (mqMobile.matches) return false;
+    if (lowEnd) return false;
+    if (document.hidden) return false;
+    return starEls.length > 0;
+  }
+
   function applyParallax() {
     parQueued = false;
-    if (mqReduce.matches) return;
-    var max = Math.max(1, root.scrollHeight - window.innerHeight);
+    if (!parallaxEnabled()) return;
+
     var y = window.pageYOffset || root.scrollTop || 0;
-    var p = Math.min(1, Math.max(0, y / max));
+    var p = Math.min(1, Math.max(0, y / cachedScrollMax));
+
+    // Skip sub-pixel jitter writes. On a 2000px scroll surface,
+    // 0.0005 ≈ 1px — below visible threshold.
+    if (Math.abs(p - lastP) < 0.0005) return;
+    lastP = p;
+
+    var dyBase = window.innerHeight;
     for (var i = 0; i < starEls.length; i++) {
       starEls[i].el.style.transform =
-        'translate3d(0,' + (-p * starEls[i].f * window.innerHeight).toFixed(1) + 'px,0)';
+        'translate3d(0,' + (-p * starEls[i].f * dyBase).toFixed(1) + 'px,0)';
     }
   }
-  window.addEventListener('scroll', function () {
+
+  function queueParallax() {
     if (parQueued) return;
     parQueued = true;
     requestAnimationFrame(applyParallax);
-  }, { passive: true });
+  }
+
+  function resetParallax() {
+    lastP = -1;
+    for (var i = 0; i < starEls.length; i++) {
+      starEls[i].el.style.transform = '';
+    }
+  }
+
+  window.addEventListener('scroll', queueParallax, { passive: true });
 
   /* ============================================================
      METEORS  (CSS keyframes, JS only spawns/removes)
@@ -169,6 +203,7 @@
   var meteorsEl = bg.querySelector('.meteors');
   var MAX_METEORS = 2;
   var meteorTimer = 0;
+  var meteorPaused = false;
 
   function killAllMeteors() {
     if (meteorsEl) {
@@ -176,6 +211,7 @@
       for (var i = 0; i < live.length; i++) live[i].remove();
     }
     clearTimeout(meteorTimer);
+    meteorTimer = 0;
   }
 
   function spawnMeteor() {
@@ -195,24 +231,32 @@
     meteorsEl.appendChild(m);
   }
 
-  function scheduleMeteor(first) {
-    clearTimeout(meteorTimer);
-    if (mqReduce.matches) return;
-
-    // Tier-first, then pointer/hardware jitter.
+  function meteorDelay() {
     var min, max;
     if (isPremium) {
       min = mqMobile.matches ? 10000 : 6000;
       max = mqMobile.matches ? 24000 : 15000;
     } else {
-      // normal tier — rarer, calmer
       min = mqMobile.matches ? 18000 : 12000;
       max = mqMobile.matches ? 40000 : 25000;
     }
     if (lowEnd) { min *= 1.5; max *= 1.5; }
+    return rnd(min, max);
+  }
 
-    var delay = first ? rnd(2500, 5000) : rnd(min, max);
-    meteorTimer = setTimeout(function () { spawnMeteor(); scheduleMeteor(false); }, delay);
+  function scheduleMeteor(first) {
+    clearTimeout(meteorTimer);
+    meteorTimer = 0;
+    // Don't schedule while hidden — no point waking CPU for
+    // something nobody can see.
+    if (mqReduce.matches || meteorPaused || document.hidden) return;
+
+    var delay = first ? rnd(2500, 5000) : meteorDelay();
+    meteorTimer = setTimeout(function () {
+      meteorTimer = 0;
+      spawnMeteor();
+      scheduleMeteor(false);
+    }, delay);
   }
 
   /* ============================================================
@@ -227,7 +271,7 @@
   function canTrack() { return isPremium && !mqMobile.matches && !mqReduce.matches; }
 
   function restSpot() {
-    cancelAnimationFrame(spotRaf); spotRaf = 0;
+    if (spotRaf) { cancelAnimationFrame(spotRaf); spotRaf = 0; }
     tx = sx = window.innerWidth * 0.5;
     ty = sy = window.innerHeight * (mqMobile.matches ? 0.28 : 0.34);
     placeSpot();
@@ -415,19 +459,35 @@
 
   document.addEventListener('pointercancel', function () { down = null; }, { passive: true });
 
-  /* ---------- visibility pause (FX + spotlight) ---------- */
+  /* ---------- visibility pause (FX + spotlight + meteors + parallax) ---------- */
   document.addEventListener('visibilitychange', function () {
-    if (!document.hidden) return;
+    if (document.hidden) {
+      // FX: cancel RAF and drop in-flight state so returning to the
+      // tab never replays stale particles.
+      if (fxRaf) { cancelAnimationFrame(fxRaf); fxRaf = 0; }
+      for (var i = 0; i < MAX_P; i++) particles[i].on = false;
+      for (var j = 0; j < MAX_R; j++) ripples[j].on = false;
+      if (ctx && cw && ch) ctx.clearRect(0, 0, cw, ch);
 
-    // FX: cancel RAF and drop in-flight state so returning to the
-    // tab never replays stale particles.
-    if (fxRaf) { cancelAnimationFrame(fxRaf); fxRaf = 0; }
-    for (var i = 0; i < MAX_P; i++) particles[i].on = false;
-    for (var j = 0; j < MAX_R; j++) ripples[j].on = false;
-    if (ctx && cw && ch) ctx.clearRect(0, 0, cw, ch);
+      // Spotlight: stop the eased follow; next pointermove restarts it.
+      if (spotRaf) { cancelAnimationFrame(spotRaf); spotRaf = 0; }
 
-    // Spotlight: stop the eased follow; next pointermove restarts it.
-    if (spotRaf) { cancelAnimationFrame(spotRaf); spotRaf = 0; }
+      // Meteors: pause the timer chain (no CPU wake-ups while hidden).
+      meteorPaused = true;
+      clearTimeout(meteorTimer);
+      meteorTimer = 0;
+
+      // Parallax: clear stale offsets so returning to the tab
+      // doesn't briefly paint the old scroll position.
+      resetParallax();
+    } else {
+      // Recalculate the scroll surface in case the layout changed
+      // while we were hidden (images loaded, content inserted, etc).
+      recalcScrollMax();
+      meteorPaused = false;
+      scheduleMeteor(false);
+      queueParallax();
+    }
   });
 
   /* ============================================================
@@ -437,35 +497,53 @@
   window.addEventListener('resize', function () {
     clearTimeout(resizeTimer);
     resizeTimer = setTimeout(function () {
+      recalcScrollMax();
       sizeCanvas();
       if (!canTrack()) restSpot();
-      applyParallax();
+      resetParallax();
+      queueParallax();
     }, 200);
   }, { passive: true });
 
-  onChange(mqMobile, function () {
-    buildStars();
-    restSpot();
-    if (mqReduce.matches) killAllMeteors();
-    else scheduleMeteor(false);
-  });
+  // Coalesce viewport / preference changes through one rAF so
+  // back-to-back events don't trigger two synchronous rebuilds.
+  var changeRaf = 0;
+  function onChangeCoalesced() {
+    if (changeRaf) return;
+    changeRaf = requestAnimationFrame(function () {
+      changeRaf = 0;
+      buildStars();
+      recalcScrollMax();
+      resetParallax();
+      queueParallax();
+      restSpot();
+      if (mqReduce.matches) killAllMeteors();
+      else scheduleMeteor(false);
+    });
+  }
 
-  // When reduce-motion toggles: cancel in-flight meteors + timers and
-  // reset parallax; restart the schedule when it's turned back off.
+  onChange(mqMobile, onChangeCoalesced);
+
+  // When reduce-motion toggles: cancel in-flight meteors + timers
+  // and reset parallax; restart the schedule when it's turned back
+  // off.
   onChange(mqReduce, function () {
-    restSpot();
     if (mqReduce.matches) {
-      starEls.forEach(function (s) { s.el.style.transform = ''; });
+      resetParallax();
       killAllMeteors();
+      restSpot();
     } else {
-      applyParallax();
+      queueParallax();
       scheduleMeteor(false);
     }
   });
 
+  /* ---------- boot ---------- */
+  recalcScrollMax();
   sizeCanvas();
   buildStars();
   restSpot();
+  queueParallax();
   scheduleMeteor(true);
 
   root.setAttribute('data-aurora', 'ready');

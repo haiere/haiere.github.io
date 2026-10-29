@@ -10,8 +10,6 @@
   (function () {
     var html = document.documentElement;
     html.classList.add('js');
-    // Safety net: if script.js fails or takes >2s to load,
-    // remove the .js class so .reveal elements fall back to visible.
     setTimeout(function () {
       if (!window.__haiereReady) html.classList.remove('js');
     }, 2000);

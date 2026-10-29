@@ -1,7 +1,21 @@
 /* ============================================================
-   style.css — Haiere v2026.10.08.10
+   style.css — Haiere v2026.10.08.11
    Modern, minimal, branded. English-first, dark-first with full
    light parity.
+
+   v2026.10.08.11 changes (adaptive reveal):
+   - Reveal animation is now DESKTOP/TABLET ONLY (≥768px).
+     Mobile (<768px) shows every section immediately with no
+     opacity transition. Root cause of "section terpotong /
+     hilang" on fast scroll in low-end mobile — a half-painted
+     fade can never happen if there is no fade.
+   - Base `.reveal` is always opacity: 1, transform: none.
+     Only `html.js` on ≥768px (and not prefers-reduced-motion)
+     hides elements that haven't received `.is-visible` yet.
+   - Transition shortened: 280ms desktop, 200ms tablet.
+   - translate3d(0, 14px, 0) instead of translateY(24px) —
+     smaller motion, completes faster.
+   - `is-visible` is never removed; sections stay visible.
    ============================================================ */
 
 /* ---------- ROOT TOKENS ---------- */
@@ -119,12 +133,8 @@ svg[data-icon] {
 
 /* ---------- GLASS ---------- */
 /* v2026.10.08.7 — backdrop-filter REMOVED from card/pill/nav.
-   Rationale: applying backdrop-filter to every card turns each
-   into its own compositing surface. During scroll, the browser
-   must re-sample the backdrop for each card every frame — the
-   single biggest cause of scroll jank on this site.
-   The base backgrounds are already semi-opaque (0.58–0.62 alpha),
-   so removing the blur is nearly imperceptible.
+   Base backgrounds are already semi-opaque; visual delta is
+   minimal while scroll-time compositing cost drops sharply.
    #nav keeps its own blur via its dedicated `#nav` rule below. */
 .glass-card, .glass-pill, .glass-nav {
   transition: background 0.5s ease, border-color 0.5s ease, box-shadow 0.5s ease, transform 0.5s var(--ease-spring);
@@ -697,12 +707,10 @@ svg[data-icon] {
 }
 
 .orbit-center {
-  /* Kill every interaction affordance on the logo itself */
   pointer-events: none;
   user-select: none;
   -webkit-user-select: none;
   -webkit-tap-highlight-color: transparent;
-  /* No transform transition — nothing to animate away from */
   transition: box-shadow 0.4s ease;
 }
 
@@ -939,9 +947,7 @@ svg[data-icon] {
 .quote-rule { display: inline-block; width: 1.5rem; height: 2px; border-radius: 2px; background: var(--accent); }
 
 /* v2026.10.08.7 — was `transition: width`, now compositor-only
-   `transform: scaleX`. Layout size stays fixed; no reflow on
-   hover. Author position is stable — the rule appears "in place"
-   instead of pushing the author right. */
+   `transform: scaleX`. Layout size stays fixed; no reflow on hover. */
 .quote-rule--grow {
   width: 1.5rem;
   transform: scaleX(0);
@@ -1208,16 +1214,12 @@ svg[data-icon] {
   text-underline-offset: 0.2em;
   overflow-wrap: anywhere;
 }
-
-.contact-email:hover {
-  text-decoration-thickness: 2px;
-}
-
+.contact-email:hover { text-decoration-thickness: 2px; }
 .contact-email:focus-visible {
   outline: 2px solid currentColor;
   outline-offset: 4px;
   border-radius: 2px;
-} 
+}
 
 /* ---------- SUPPORT ---------- */
 .support-eyebrow {
@@ -1229,7 +1231,6 @@ svg[data-icon] {
   color: var(--text-soft);
   margin-bottom: 0.75rem;
 }
-
 .support-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 13rem));
@@ -1239,7 +1240,6 @@ svg[data-icon] {
   max-width: 28rem;
   margin-inline: auto;
 }
-
 .support-cta {
   display: inline-flex;
   align-items: center;
@@ -1256,14 +1256,10 @@ svg[data-icon] {
   text-overflow: ellipsis;
   transition: transform 0.25s var(--ease-spring), box-shadow 0.25s ease;
 }
-
 .support-cta svg {
-  width: 1.05rem;
-  height: 1.05rem;
-  flex-shrink: 0;
-  display: block;
+  width: 1.05rem; height: 1.05rem;
+  flex-shrink: 0; display: block;
 }
-
 .support-cta--coffee {
   background: linear-gradient(90deg, #fcd34d, #facc15);
   color: #0f172a;
@@ -1276,11 +1272,9 @@ svg[data-icon] {
   border: 1px solid rgba(37, 99, 235, 0.4);
   box-shadow: 0 8px 24px rgba(37, 99, 235, 0.22);
 }
-
 .support-cta:hover { transform: translateY(-2px); }
 .support-cta--coffee:hover { box-shadow: 0 12px 28px rgba(250, 204, 21, 0.32); }
 .support-cta--buzz:hover   { background: #1d4ed8; box-shadow: 0 12px 28px rgba(37, 99, 235, 0.32); }
-
 .support-note {
   margin-top: 0.75rem;
   text-align: center;
@@ -1288,19 +1282,9 @@ svg[data-icon] {
   line-height: 1.6;
   color: var(--text-soft);
 }
-
 @media (max-width: 480px) {
-  .support-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    max-width: 100%;
-    gap: 0.5rem;
-  }
-  .support-cta {
-    padding: 0.6rem 0.6rem;
-    font-size: 0.78rem;
-    gap: 0.35rem;
-    border-radius: 0.7rem;
-  }
+  .support-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); max-width: 100%; gap: 0.5rem; }
+  .support-cta { padding: 0.6rem 0.6rem; font-size: 0.78rem; gap: 0.35rem; border-radius: 0.7rem; }
   .support-cta svg { width: 0.95rem; height: 0.95rem; }
 }
 
@@ -1341,28 +1325,12 @@ svg[data-icon] {
   text-align: left;
 }
 @media (max-width: 720px) {
-  .footer-brand {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 1.25rem;
-    margin-bottom: 1.75rem;
-    padding-bottom: 1.5rem;
-  }
+  .footer-brand { flex-direction: column; align-items: flex-start; gap: 1.25rem; margin-bottom: 1.75rem; padding-bottom: 1.5rem; }
 }
-
-.footer-brand-main {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  min-width: 0;
-}
-
+.footer-brand-main { display: flex; align-items: center; gap: 1rem; min-width: 0; }
 .footer-logo {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 3.25rem;
-  height: 3.25rem;
+  display: flex; align-items: center; justify-content: center;
+  width: 3.25rem; height: 3.25rem;
   flex-shrink: 0;
   border-radius: 1rem;
   border: 1px solid var(--glass-border);
@@ -1372,7 +1340,6 @@ svg[data-icon] {
   transition: transform 0.3s var(--ease-spring);
 }
 .footer-logo:hover { transform: translateY(-3px) scale(1.04); }
-
 .footer-brand-title {
   margin: 0;
   font-family: var(--font-display);
@@ -1390,7 +1357,6 @@ svg[data-icon] {
   line-height: 1.55;
   color: var(--text-soft);
 }
-
 .footer-badge {
   display: inline-flex;
   flex-shrink: 0;
@@ -1407,9 +1373,7 @@ svg[data-icon] {
   text-transform: uppercase;
   white-space: nowrap;
 }
-@media (max-width: 720px) {
-  .footer-badge { display: none; }
-}
+@media (max-width: 720px) { .footer-badge { display: none; } }
 
 .footer-grid {
   display: grid;
@@ -1421,32 +1385,16 @@ svg[data-icon] {
   border-bottom: 1px solid var(--glass-border);
 }
 @media (max-width: 900px) {
-  .footer-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 2rem;
-  }
+  .footer-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 2rem; }
 }
 @media (max-width: 560px) {
-  .footer-grid {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
-    margin-bottom: 1.5rem;
-    padding-bottom: 1.5rem;
-  }
+  .footer-grid { grid-template-columns: 1fr; gap: 1.5rem; margin-bottom: 1.5rem; padding-bottom: 1.5rem; }
 }
-
-.footer-col {
-  min-width: 0;
-}
-
+.footer-col { min-width: 0; }
 .footer-col--wide { grid-column: auto; }
-
 @media (max-width: 1024px) {
-  .footer-grid > .footer-col--wide {
-    grid-column: 1 / -1;
-  }
+  .footer-grid > .footer-col--wide { grid-column: 1 / -1; }
 }
-
 .footer-col-title {
   display: flex;
   align-items: center;
@@ -1460,15 +1408,13 @@ svg[data-icon] {
   color: var(--text-main);
 }
 .footer-col-dot {
-  width: 0.375rem;
-  height: 0.375rem;
+  width: 0.375rem; height: 0.375rem;
   border-radius: 50%;
   background: #3b82f6;
   flex-shrink: 0;
 }
 .footer-col-dot--cyan   { background: #22d3ee; }
 .footer-col-dot--violet { background: #a78bfa; }
-
 .footer-col ul {
   list-style: none;
   padding: 0;
@@ -1477,7 +1423,6 @@ svg[data-icon] {
   flex-direction: column;
   gap: 0.55rem;
 }
-
 .footer-link {
   display: inline-flex;
   align-items: center;
@@ -1488,7 +1433,6 @@ svg[data-icon] {
   transition: color 0.2s ease, transform 0.2s ease;
 }
 .footer-link:hover { color: var(--accent); transform: translateX(4px); }
-
 .footer-connect-desc {
   margin: 0 0 1rem;
   max-width: 22rem;
@@ -1531,23 +1475,11 @@ svg[data-icon] {
   border-color: #d51007;
 }
 
-.footer-connect-desc {
-  max-width: none;
-}
+.footer-connect-desc { max-width: none; }
 @media (min-width: 1024px) {
   .footer-connect-desc { max-width: 22rem; }
 }
-
-.footer-social {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-}
-
-.footer-grid > * {
-  min-width: 0;
-  max-width: 100%;
-}
+.footer-grid > * { min-width: 0; max-width: 100%; }
 
 .footer-info {
   display: grid;
@@ -1560,10 +1492,7 @@ svg[data-icon] {
   border-radius: 0;
 }
 @media (max-width: 560px) {
-  .footer-info {
-    margin-bottom: 1.5rem;
-    gap: 0.4rem;
-  }
+  .footer-info { margin-bottom: 1.5rem; gap: 0.4rem; }
 }
 .footer-about {
   margin: 0;
@@ -1579,7 +1508,6 @@ svg[data-icon] {
   color: var(--text-soft);
   opacity: 0.7;
 }
-
 .footer-rwr {
   margin: 0 0 2.25rem;
   padding: 1rem 0.5rem;
@@ -1594,14 +1522,8 @@ svg[data-icon] {
   border-bottom: 1px solid var(--glass-border);
 }
 @media (max-width: 560px) {
-  .footer-rwr {
-    margin-bottom: 1.5rem;
-    padding: 0.75rem 0.5rem;
-    font-size: 0.62rem;
-    letter-spacing: 0.14em;
-  }
+  .footer-rwr { margin-bottom: 1.5rem; padding: 0.75rem 0.5rem; font-size: 0.62rem; letter-spacing: 0.14em; }
 }
-
 .footer-bottom {
   display: flex;
   flex-direction: row;
@@ -1614,20 +1536,14 @@ svg[data-icon] {
   border: 0;
 }
 @media (max-width: 720px) {
-  .footer-bottom {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0.75rem;
-  }
+  .footer-bottom { flex-direction: column; align-items: flex-start; gap: 0.75rem; }
 }
-
 .footer-bottom-left {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   gap: 0.5rem;
 }
-
 .footer-secure {
   display: inline-flex;
   align-items: center;
@@ -1644,7 +1560,6 @@ svg[data-icon] {
   white-space: nowrap;
 }
 .footer-secure svg { width: 12px; height: 12px; flex-shrink: 0; }
-
 .footer-updated {
   display: inline-flex;
   align-items: center;
@@ -1657,7 +1572,6 @@ svg[data-icon] {
   white-space: nowrap;
 }
 .footer-updated svg { width: 12px; height: 12px; color: var(--accent); flex-shrink: 0; }
-
 .footer-version {
   font-family: var(--font-mono);
   font-size: 0.72rem;
@@ -1666,7 +1580,6 @@ svg[data-icon] {
   letter-spacing: 0.05em;
 }
 .footer-version-sep { opacity: 0.4; margin: 0 0.1rem; }
-
 .footer-copy {
   display: flex;
   flex-direction: column;
@@ -1680,13 +1593,8 @@ svg[data-icon] {
   max-width: 40rem;
 }
 @media (max-width: 560px) {
-  .footer-copy {
-    margin-top: 1.25rem;
-    padding-top: 1.25rem;
-    gap: 0.9rem;
-  }
+  .footer-copy { margin-top: 1.25rem; padding-top: 1.25rem; gap: 0.9rem; }
 }
-
 .footer-copy-text {
   margin: 0;
   font-size: 0.75rem;
@@ -1695,7 +1603,6 @@ svg[data-icon] {
   opacity: 0.85;
   text-wrap: balance;
 }
-
 .written-by-human {
   display: block;
   max-width: 130px;
@@ -1704,10 +1611,7 @@ svg[data-icon] {
   transition: opacity 0.3s ease;
 }
 .written-by-human:hover { opacity: 0.9; }
-
-@media (max-width: 480px) {
-  .written-by-human { max-width: 115px; }
-}
+@media (max-width: 480px) { .written-by-human { max-width: 115px; } }
 
 /* ---------- DOCS / COOKIE MODALS ---------- */
 .docs-overlay {
@@ -1729,39 +1633,31 @@ svg[data-icon] {
   left: 50% !important;
   transform: translate(-50%, -50%) !important;
   z-index: 9999 !important;
-
   width: min(640px, calc(100% - 2rem)) !important;
   max-width: calc(100% - 2rem) !important;
   max-height: min(80vh, 720px) !important;
-
   flex-direction: column;
   overflow: hidden;
   border-radius: 1.5rem;
-
   background: #0B1E33 !important;
   border: 1px solid rgba(148, 190, 184, 0.14);
   box-shadow: 0 24px 80px rgba(0, 0, 0, 0.7);
-
   color: #E7EEF6;
-
   display: none;
   opacity: 0;
   visibility: hidden;
 }
-
 .docs-modal.active {
   display: flex !important;
   opacity: 1 !important;
   visibility: visible !important;
 }
-
 html:not(.dark) .docs-modal {
   background: #FFFFFF !important;
   color: #3A2430;
   border-color: rgba(180, 120, 140, 0.18);
   box-shadow: 0 24px 80px rgba(120, 60, 90, 0.2);
 }
-
 .docs-modal-header {
   display: flex;
   align-items: center;
@@ -1799,11 +1695,7 @@ html:not(.dark) .docs-modal-heading svg { color: #B4788C; }
   opacity: 0.7;
   transition: background 0.2s ease, opacity 0.2s ease;
 }
-.docs-modal-close:hover {
-  background: rgba(148, 163, 184, 0.14);
-  opacity: 1;
-}
-
+.docs-modal-close:hover { background: rgba(148, 163, 184, 0.14); opacity: 1; }
 .docs-modal-body {
   padding: 1.25rem;
   overflow-y: auto;
@@ -1826,7 +1718,6 @@ html:not(.dark) .docs-modal-heading svg { color: #B4788C; }
   font-size: 0.8rem;
   opacity: 0.75;
 }
-
 .docs-modal-footer {
   display: flex;
   justify-content: flex-end;
@@ -1836,7 +1727,6 @@ html:not(.dark) .docs-modal-heading svg { color: #B4788C; }
   border-top: 1px solid rgba(148, 190, 184, 0.14);
   flex-shrink: 0;
 }
-
 @media (max-width: 640px) {
   .docs-modal {
     width: calc(100% - 1.5rem) !important;
@@ -2046,34 +1936,77 @@ html:not(.dark) .docs-modal-heading svg { color: #B4788C; }
 .dark .grain-overlay { opacity: 0.05; }
 
 /* ---------- REVEAL ---------- */
-/* v2026.10.08.10 — safe reveal pattern:
-   - Default state is VISIBLE. Without JS, nothing is hidden.
-   - Only hide when `html.js` is present AND the element has not
-     been marked visible yet.
-   - `is-visible` is added exactly once and NEVER removed, so
-     fast-scrolling can't re-hide a section.
-   - Transition is short (360ms) so it completes before the
-     element leaves the viewport during fast scroll. */
+/* v2026.10.08.11 — Adaptive animation (Option 3):
+   - Base: visible, no transform, no transition. This is the
+     state without JS, on mobile, and as a universal fallback.
+   - Desktop / tablet (≥768px) + html.js: one-time reveal via
+     IntersectionObserver. Elements start at opacity 0,
+     translate3d(0, 14px, 0); once is-visible is added, they
+     fade in and NEVER hide again.
+   - Mobile (<768px): reveal animation DISABLED entirely.
+     Everything is visible from the first frame. This is the
+     root fix for "section terpotong / hilang saat scroll
+     cepat" — mobile never sees opacity: 0 sections, so a
+     half-painted transition can never be caught mid-scroll.
+   - prefers-reduced-motion: override everything to visible.
+   - html:not(.js): belt-and-suspenders fallback.
+   Layout (height, width, margin, padding, position) is NEVER
+   touched — only opacity and transform (compositor-only). */
+
 .reveal {
   opacity: 1;
   transform: none;
 }
 
-html.js .reveal:not(.is-visible) {
-  opacity: 0;
-  transform: translateY(16px);
+/* Desktop & tablet — one-time reveal */
+@media (min-width: 768px) {
+  html.js .reveal:not(.is-visible) {
+    opacity: 0;
+    transform: translate3d(0, 14px, 0);
+  }
+  html.js .reveal.is-visible {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+    transition:
+      opacity 280ms cubic-bezier(0.22, 1, 0.36, 1),
+      transform 280ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
 }
 
-html.js .reveal.is-visible {
-  opacity: 1;
-  transform: translateY(0);
-  transition:
-    opacity 360ms cubic-bezier(0.22, 1, 0.36, 1),
-    transform 360ms cubic-bezier(0.22, 1, 0.36, 1);
+/* Tablet — shorter transition */
+@media (min-width: 768px) and (max-width: 1023px) {
+  html.js .reveal.is-visible {
+    transition:
+      opacity 200ms ease,
+      transform 200ms ease;
+  }
 }
 
-/* Belt-and-suspenders: if `.js` never lands on <html> (JS disabled,
-   CSP block, or the 2s timeout fired), everything stays visible. */
+/* Mobile — reveal disabled entirely */
+@media (max-width: 767px) {
+  .reveal,
+  .reveal:not(.is-visible),
+  .reveal.is-visible,
+  html.js .reveal:not(.is-visible),
+  html.js .reveal.is-visible {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+/* Reduced motion — always visible, no transition */
+@media (prefers-reduced-motion: reduce) {
+  .reveal,
+  html.js .reveal:not(.is-visible),
+  html.js .reveal.is-visible {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}
+
+/* No-JS fallback — everything visible */
 html:not(.js) .reveal {
   opacity: 1 !important;
   transform: none !important;
@@ -2111,7 +2044,6 @@ html:not(.js) .reveal {
   overscroll-behavior: contain;
 }
 #nav-drawer.open { transform: translateX(0); }
-
 #nav-drawer:not(.open) { pointer-events: none; visibility: hidden; }
 #nav-drawer.open { visibility: visible; }
 
@@ -2607,6 +2539,17 @@ html:not(.js) .reveal {
   contain: layout style;
 }
 
+/* v2026.10.08.10 — `content-visibility: auto` REMOVED from
+   #support and .footer-signature. Chromium skip-paints these
+   sections off-screen; on fast scroll they paint from scratch
+   when they enter the viewport (visible delay / flash of blank
+   then content). Paint savings were marginal; removing it
+   eliminates the visible bug. */
+
+/* ============================================================
+   v2026.10.08.7 — Pause continuous animations when section
+   off-screen (toggled by IntersectionObserver in script.js §5b).
+   ============================================================ */
 .anim-paused .mesh-blob,
 .anim-paused .hero-badge-ping,
 .anim-paused .ticker-track,
@@ -2648,11 +2591,12 @@ html[data-perf="eco"] #raia-button .tooltip {
   -webkit-backdrop-filter: none !important;
 }
 
-/* Normal: mesh & grain tetap ada tapi diringankan. */
 html[data-perf="normal"] .mesh-field { opacity: 0.55; filter: blur(42px); }
 html[data-perf="normal"] .grain-overlay { opacity: 0.025; }
 html[data-perf="normal"] .contact-blob,
 html[data-perf="normal"] .footer-blob { filter: blur(60px); opacity: 0.7; }
+
+/* Normal tier — blur reduction on nav & search */
 html[data-perf="normal"] #nav,
 html[data-perf="normal"] #nav.scrolled {
   backdrop-filter: blur(8px) saturate(1.2) !important;
@@ -2679,7 +2623,6 @@ html[data-perf="normal"] .game-card { will-change: auto; }
   gap: 0.6rem !important;
   margin-bottom: 3rem;
 }
-
 .section-header > .eyebrow {
   display: inline-flex !important;
   align-items: center;
@@ -2688,7 +2631,6 @@ html[data-perf="normal"] .game-card { will-change: auto; }
   flex: 0 0 auto;
   margin: 0 !important;
 }
-
 .section-header > .section-title {
   display: inline-flex !important;
   align-items: center !important;
@@ -2698,7 +2640,6 @@ html[data-perf="normal"] .game-card { will-change: auto; }
   line-height: 1 !important;
   column-gap: 0.55em;
 }
-
 .section-header > .section-subtitle,
 .section-header > .section-note {
   margin-top: 0.25rem !important;
