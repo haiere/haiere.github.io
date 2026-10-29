@@ -1,21 +1,29 @@
 /* ============================================================
-   style.css — Haiere v2026.10.08.11
+   style.css — Haiere v2026.10.08.12
    Modern, minimal, branded. English-first, dark-first with full
    light parity.
 
-   v2026.10.08.11 changes (adaptive reveal):
-   - Reveal animation is now DESKTOP/TABLET ONLY (≥768px).
-     Mobile (<768px) shows every section immediately with no
-     opacity transition. Root cause of "section terpotong /
-     hilang" on fast scroll in low-end mobile — a half-painted
-     fade can never happen if there is no fade.
-   - Base `.reveal` is always opacity: 1, transform: none.
-     Only `html.js` on ≥768px (and not prefers-reduced-motion)
-     hides elements that haven't received `.is-visible` yet.
-   - Transition shortened: 280ms desktop, 200ms tablet.
-   - translate3d(0, 14px, 0) instead of translateY(24px) —
-     smaller motion, completes faster.
-   - `is-visible` is never removed; sections stay visible.
+   v2026.10.08.12 changes (perf pass — blur/compositing cost):
+   - Nav backdrop-filter reduced to 14px on premium; removed
+     entirely on mobile / coarse pointer / normal / eco tiers.
+     Fixed header repaints every scroll frame; blur there was
+     the single biggest frame-drop source on iOS Safari.
+   - .grain-overlay: mix-blend-mode neutralized in normal tier;
+     hidden entirely on mobile / coarse pointer.
+   - .contact-blob / .footer-blob: blur reduced + hidden on
+     mobile. Decorative-only; content independent.
+   - .hero-ticker: backdrop-filter removed in normal / eco /
+     mobile (compensated via higher bg opacity).
+   - #back-top: backdrop-filter removed (solid-color button,
+     blur added nothing visually).
+   - .orbit .node: drop-shadow reduced in normal tier, off in
+     eco tier (SVG rotates → constant repaint).
+   - .anim-paused .mesh-blob: reset will-change so GPU layer
+     is freed while off-screen.
+   - .mesh-field: blur softened further (28px normal, 24px
+     mobile).
+   - .header-search-field / .header-search-results: no blur
+     on coarse pointer.
    ============================================================ */
 
 /* ---------- ROOT TOKENS ---------- */
@@ -158,14 +166,14 @@ svg[data-icon] {
 
 /* ---------- NAV ---------- */
 #nav {
-  background: rgba(255, 250, 252, 0.72);
-  backdrop-filter: blur(20px) saturate(1.5);
-  -webkit-backdrop-filter: blur(20px) saturate(1.5);
+  background: rgba(255, 250, 252, 0.88);
+  backdrop-filter: blur(14px) saturate(1.3);
+  -webkit-backdrop-filter: blur(14px) saturate(1.3);
   border-bottom: 1px solid rgba(148, 163, 184, 0.1);
   transition: background 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
 }
 .dark #nav {
-  background: rgba(10, 25, 47, 0.72);
+  background: rgba(10, 25, 47, 0.88);
   border-bottom-color: rgba(255, 255, 255, 0.06);
 }
 #nav.scrolled {
@@ -175,6 +183,20 @@ svg[data-icon] {
 .dark #nav.scrolled {
   background: rgba(10, 25, 47, 0.9);
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.35);
+}
+
+/* Mobile / touch: no blur, near-opaque. Fixed header repaints
+   every scroll frame — blur there is the single biggest
+   frame-drop source on iOS Safari and low-end Android. */
+@media (max-width: 767px), (pointer: coarse) {
+  #nav,
+  #nav.scrolled {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    background: rgba(255, 250, 252, 0.97) !important;
+  }
+  .dark #nav,
+  .dark #nav.scrolled { background: rgba(10, 25, 47, 0.97) !important; }
 }
 
 .brand-logo-wrap {
@@ -352,6 +374,19 @@ svg[data-icon] {
 .header-search-result-title { font-size: 0.85rem; font-weight: 600; }
 .header-search-result-meta  { font-size: 0.72rem; color: var(--text-soft); }
 .header-search-empty { padding: 0.75rem; font-size: 0.8rem; color: var(--text-soft); text-align: center; }
+
+/* Coarse pointer: no blur on search field/results. The
+   results dropdown only opens on interaction, but if the
+   user types while page scrolls on a hybrid device, keeping
+   blur off avoids a mid-scroll repaint cascade. */
+@media (pointer: coarse) {
+  .header-search-field,
+  .header-search-results {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    background: var(--bg-page-2);
+  }
+}
 
 /* ---------- SCROLL PROGRESS ---------- */
 #scroll-progress {
@@ -1936,23 +1971,11 @@ html:not(.dark) .docs-modal-heading svg { color: #B4788C; }
 .dark .grain-overlay { opacity: 0.05; }
 
 /* ---------- REVEAL ---------- */
-/* v2026.10.08.11 — Adaptive animation (Option 3):
-   - Base: visible, no transform, no transition. This is the
-     state without JS, on mobile, and as a universal fallback.
-   - Desktop / tablet (≥768px) + html.js: one-time reveal via
-     IntersectionObserver. Elements start at opacity 0,
-     translate3d(0, 14px, 0); once is-visible is added, they
-     fade in and NEVER hide again.
-   - Mobile (<768px): reveal animation DISABLED entirely.
-     Everything is visible from the first frame. This is the
-     root fix for "section terpotong / hilang saat scroll
-     cepat" — mobile never sees opacity: 0 sections, so a
-     half-painted transition can never be caught mid-scroll.
-   - prefers-reduced-motion: override everything to visible.
-   - html:not(.js): belt-and-suspenders fallback.
-   Layout (height, width, margin, padding, position) is NEVER
-   touched — only opacity and transform (compositor-only). */
-
+/* v2026.10.08.11 — Adaptive animation.
+   Base: visible, no transform, no transition (fallback for
+   no-JS, mobile, prefers-reduced-motion).
+   Desktop/tablet + html.js: one-time reveal via
+   IntersectionObserver. is-visible never removed. */
 .reveal {
   opacity: 1;
   transform: none;
@@ -2221,7 +2244,8 @@ html:not(.js) .reveal {
   background: var(--accent);
   color: #fff;
   box-shadow: 0 8px 32px rgba(59, 130, 246, 0.25);
-  backdrop-filter: blur(12px);
+  /* backdrop-filter: blur(12px) — REMOVED. Solid-color button,
+     blur added nothing visually but repainted every scroll. */
   cursor: pointer;
   transition: transform 0.4s var(--ease-spring), background 0.3s ease, box-shadow 0.3s ease;
 }
@@ -2539,13 +2563,6 @@ html:not(.js) .reveal {
   contain: layout style;
 }
 
-/* v2026.10.08.10 — `content-visibility: auto` REMOVED from
-   #support and .footer-signature. Chromium skip-paints these
-   sections off-screen; on fast scroll they paint from scratch
-   when they enter the viewport (visible delay / flash of blank
-   then content). Paint savings were marginal; removing it
-   eliminates the visible bug. */
-
 /* ============================================================
    v2026.10.08.7 — Pause continuous animations when section
    off-screen (toggled by IntersectionObserver in script.js §5b).
@@ -2556,6 +2573,11 @@ html:not(.js) .reveal {
 .anim-paused .orbit-group,
 .anim-paused .orbit .node {
   animation-play-state: paused !important;
+}
+.anim-paused .mesh-blob {
+  /* Free GPU layer while off-screen — animation-play-state
+     alone doesn't release the promoted layer. */
+  will-change: auto;
 }
 
 /* ============================================================
@@ -2591,27 +2613,90 @@ html[data-perf="eco"] #raia-button .tooltip {
   -webkit-backdrop-filter: none !important;
 }
 
-html[data-perf="normal"] .mesh-field { opacity: 0.55; filter: blur(42px); }
-html[data-perf="normal"] .grain-overlay { opacity: 0.025; }
+/* ============================================================
+   Normal tier — soften heavy decoration without removing it.
+   ============================================================ */
+html[data-perf="normal"] .mesh-field { opacity: 0.5; filter: blur(28px); }
+html[data-perf="normal"] .grain-overlay {
+  opacity: 0.025;
+  /* mix-blend-mode: overlay on a fixed full-viewport layer
+     forces the compositor to re-blend against scrolling
+     content every frame. Neutralize it — grain is still
+     subtle at 2.5% opacity. */
+  mix-blend-mode: normal;
+}
 html[data-perf="normal"] .contact-blob,
-html[data-perf="normal"] .footer-blob { filter: blur(60px); opacity: 0.7; }
+html[data-perf="normal"] .footer-blob { filter: blur(40px); opacity: 0.55; }
 
-/* Normal tier — blur reduction on nav & search */
+/* Normal tier — no nav blur. Base bg opacity already high. */
 html[data-perf="normal"] #nav,
 html[data-perf="normal"] #nav.scrolled {
-  backdrop-filter: blur(8px) saturate(1.2) !important;
-  -webkit-backdrop-filter: blur(8px) saturate(1.2) !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  background: rgba(255, 250, 252, 0.94) !important;
 }
+html[data-perf="normal"].dark #nav,
+html[data-perf="normal"].dark #nav.scrolled {
+  background: rgba(10, 25, 47, 0.94) !important;
+}
+
 html[data-perf="normal"] .header-search-field,
 html[data-perf="normal"] .header-search-results {
   backdrop-filter: blur(8px) saturate(1.2) !important;
   -webkit-backdrop-filter: blur(8px) saturate(1.2) !important;
 }
 
+/* Normal tier — hero ticker: no blur, higher bg opacity. */
+html[data-perf="normal"] .hero-ticker {
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  background: rgba(255, 255, 255, 0.85);
+}
+html[data-perf="normal"].dark .hero-ticker { background: rgba(10, 25, 47, 0.85); }
+
+/* Eco tier — hero ticker: no blur, higher bg opacity. */
+html[data-perf="eco"] .hero-ticker {
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  background: rgba(255, 255, 255, 0.85);
+}
+html[data-perf="eco"].dark .hero-ticker { background: rgba(10, 25, 47, 0.85); }
+
+/* Normal tier — orbit node: reduced drop-shadow.
+   SVG rotates continuously → drop-shadow repaints every frame. */
+html[data-perf="normal"] .orbit .node { filter: drop-shadow(0 0 4px currentColor); }
+/* Eco tier — no filter at all (animations already off). */
+html[data-perf="eco"] .orbit .node { filter: none !important; }
+
 html[data-perf="eco"] .tool-card,
 html[data-perf="normal"] .tool-card,
 html[data-perf="eco"] .game-card,
 html[data-perf="normal"] .game-card { will-change: auto; }
+
+/* ============================================================
+   Mobile / coarse pointer overrides — lighten decoration for
+   scroll smoothness on phones & tablets.
+   ============================================================ */
+@media (max-width: 767px), (pointer: coarse) {
+  /* Grain overlay: 2.5% opacity is invisible on phone screens;
+     mix-blend-mode still pays full cost every frame. Hide it. */
+  .grain-overlay { display: none !important; }
+
+  /* Contact/footer blobs: decorative only. Hide them. */
+  .contact-blob,
+  .footer-blob { display: none !important; }
+
+  /* Mesh field: soften further on small viewports. */
+  .mesh-field { opacity: 0.35; filter: blur(24px); }
+
+  /* Hero ticker: no blur, higher bg opacity compensation. */
+  .hero-ticker {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    background: rgba(255, 255, 255, 0.9);
+  }
+  .dark .hero-ticker { background: rgba(10, 25, 47, 0.9); }
+}
 
 /*fix section*/
 .section-header {

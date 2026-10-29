@@ -1,21 +1,17 @@
 /* ============================================================
-   script.js — Haiere v2026.10.08.11
+   script.js — Haiere v2026.10.08.12
    Everything UI: theme, i18n, drawer, search, filters,
    docs modal (README via GitHub raw), contact form, cookies,
    scroll animations, counters, hero spotlight, tilt/magnetic.
 
    Default language: English (en).
 
-   v2026.10.08.11 changes (adaptive reveal):
-   - Reveal is now desktop/tablet-only, one-time, driven by
-     matchMedia. On mobile (<768px) or prefers-reduced-motion,
-     the observer is not created at all — every .reveal is
-     marked is-visible synchronously at boot. This eliminates
-     the "section terpotong / hilang" flash on fast scroll in
-     low-end mobile.
-   - Strategy reapplied on viewport / preference changes via
-     matchMedia change listeners.
-   - is-visible is never removed once added.
+   v2026.10.08.12 changes:
+   - Removed the duplicate renderAllIcons() call at boot.
+     whenTailwindReady() already runs its callback synchronously
+     when window.tailwind exists (which it does — CDN script
+     executes synchronously in <head> before this file). The
+     second call only doubled DOM traversal.
    ============================================================ */
 
 function whenTailwindReady(cb) {
@@ -182,11 +178,6 @@ function whenTailwindReady(cb) {
 
   /* ==========================================================
      3. SCROLL PROGRESS + NAV SCROLL STATE + BACK TO TOP
-     v2026.10.08.7:
-     - Cache docHeight (recalc only on load/resize/ResizeObserver)
-       so we don't read layout every frame.
-     - Gate nav 'scrolled' class & back-to-top style writes so
-       they only fire when the boolean state actually changes.
      ========================================================== */
   const scrollProgress = document.getElementById('scroll-progress');
   const header = document.getElementById('nav');
@@ -332,15 +323,6 @@ function whenTailwindReady(cb) {
 
   /* ==========================================================
      5. REVEAL ON SCROLL — adaptive strategy (v2026.10.08.11)
-     Desktop/tablet (≥768px) with no reduced-motion preference:
-       one-time reveal via IntersectionObserver. Unobserve after
-       is-visible is added; never re-hide.
-     Mobile (<768px) or reduced-motion:
-       skip the observer entirely and mark everything visible
-       synchronously at boot. Saves CPU and eliminates any
-       mid-transition "half-painted" section during fast scroll.
-     Strategy is re-applied on viewport change or reduced-motion
-     change. Elements once marked is-visible stay visible.
      ========================================================== */
   (function setupReveal() {
     const reveals = document.querySelectorAll('.reveal');
@@ -385,7 +367,6 @@ function whenTailwindReady(cb) {
           if (!el.classList.contains('is-visible')) obs.observe(el);
         });
       } else {
-        // No animation: force everything visible immediately.
         teardownObserver();
         reveals.forEach((el) => el.classList.add('is-visible'));
       }
@@ -393,7 +374,6 @@ function whenTailwindReady(cb) {
 
     applyStrategy();
 
-    // React to viewport / preference changes at runtime.
     if (desktopMQ.addEventListener) {
       desktopMQ.addEventListener('change', applyStrategy);
       reducedMQ.addEventListener('change', applyStrategy);
@@ -404,12 +384,7 @@ function whenTailwindReady(cb) {
   })();
 
   /* ==========================================================
-     5b. PAUSE CONTINUOUS ANIMATIONS WHEN SECTION IS OFF-SCREEN
-     v2026.10.08.7 — Hero mesh-blobs, ticker, badge-ping, and
-     About orbit rings/nodes run forever otherwise. Pausing them
-     when their parent section leaves the viewport (with 100px
-     margin) removes constant compositor work while the user
-     scrolls elsewhere.
+     5b. PAUSE CONTINUOUS ANIMATIONS WHEN SECTION OFF-SCREEN
      ========================================================== */
   if ('IntersectionObserver' in window && !prefersReducedMotion) {
     const animObserver = new IntersectionObserver((entries) => {
@@ -673,7 +648,7 @@ function whenTailwindReady(cb) {
   }
 
   /* ==========================================================
-     9. HERO SPOTLIGHT — premium only (mousemove-heavy)
+     9. HERO SPOTLIGHT — premium only
      ========================================================== */
   const heroSection = document.getElementById('hero');
   const heroSpotlight = document.getElementById('hero-spotlight');
@@ -1253,7 +1228,7 @@ function whenTailwindReady(cb) {
   }
 
   /* ==========================================================
-     17. TILT & MAGNETIC — premium only (mousemove-heavy)
+     17. TILT & MAGNETIC — premium only
      ========================================================== */
   if (!prefersReducedMotion && !isCoarsePointer && perfTier === 'premium') {
     const tiltTargets = document.querySelectorAll('.tool-card, .quote-card, .about-card');
@@ -1304,13 +1279,16 @@ function whenTailwindReady(cb) {
     });
   });
 
+  // v2026.10.08.12 — single call. whenTailwindReady() runs sync
+  // when window.tailwind exists (which it does — CDN script is
+  // in <head> before this file). Previous version called
+  // renderAllIcons() twice back-to-back, doubling DOM traversal.
   whenTailwindReady(() => renderAllIcons());
-  renderAllIcons();
 
   // Signal to the inline <head> script that script.js has booted.
   // If it never fires, the timeout in <head> removes the `.js` class
   // and all .reveal sections fall back to visible.
   window.__haiereReady = true;
 
-  console.log('Haiere v2026.10.08.11 — ready (perf tier: ' + perfTier + ', default lang: en)');
+  console.log('Haiere v2026.10.08.12 — ready (perf tier: ' + perfTier + ', default lang: en)');
 })();
