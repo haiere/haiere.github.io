@@ -1,66 +1,76 @@
 /* ============================================================
-   aurora.css — "Milky Way" night sky theme (additive layer)
-   v2026.10.08.9 — Milky Way redesign
+   aurora.css — "Aurora" space theme (additive layer)
+   
+   Nova — Milky Way night sky:
+   - Night theme: sky gradient (#020617 → #050816 → #0b1026) on
+     #aurora-bg + 2 Milky Way bands via #aurora-bg::before/::after
+     (pure CSS gradients, transform/opacity animation only).
+   - Starfield: 3 depth layers (box-shadow, per-dot size/blur/alpha)
+     + .stars-live (JS-built DOM stars, individual twinkle timing)
+     incl. a few bright focal stars.
+   - Meteor rules untouched; only .meteors z-index raised so meteors
+     always sit above Milky Way + stars. Reduced motion shows one
+     static streak (.meteors::after) instead of hiding meteors.
+   - Tunables (all in :root): --mw-glow, --mw-drift-dur,
+     --mw-breathe-dur, --tw-d1..d4, --star-density, sky colours.
 
-   Layer stack (bottom → top, all inside fixed #aurora-bg):
-     #aurora-bg background        deep vertical night gradient
-     #aurora-bg::before           Milky Way base band (radial gradients)
-     .aurora                      Milky Way core highlight (narrow band)
-     #aurora-bg::after            Milky Way wispy accent (linear cross)
-     .stars-back  (z-index 1)     dim static background specks
-     .stars-mid   (z-index 1)     medium animated twinkle stars
-     .stars-front (z-index 1)     bright focal stars with halo
-     .meteors     (z-index 2)     shooting stars — PRESERVED 1:1
-
-   Note: `.aurora::before` / `.aurora::after` are dead because
-   style.css force-disables them (`display: none !important`).
-   Milky Way uses `#aurora-bg::before/after` instead — not
-   touched by any style.css rule.
-
-   Meteor contract with aurora.js is unchanged:
-     - JS sets --dist / --dur on each spawned .meteor
-     - JS appends .meteor to .meteors
-     - JS listens to animationend to remove the element
+   Loads AFTER style.css. Scoped to html[data-theme] so a script
+   failure leaves the site exactly as it was.
    ============================================================ */
 
-/* ---------- Animatable theme colours ---------- */
+/* ---------- Animatable theme colours (smooth day/night crossfade) ---------- */
 @property --aurora-color-1 { syntax: '<color>'; inherits: true; initial-value: transparent; }
 @property --aurora-color-2 { syntax: '<color>'; inherits: true; initial-value: transparent; }
 @property --aurora-color-3 { syntax: '<color>'; inherits: true; initial-value: transparent; }
-@property --aurora-core    { syntax: '<color>'; inherits: true; initial-value: transparent; }
+@property --grid-color { syntax: '<color>'; inherits: true; initial-value: transparent; }
 @property --spotlight-color-start { syntax: '<color>'; inherits: true; initial-value: transparent; }
-@property --spotlight-color-mid   { syntax: '<color>'; inherits: true; initial-value: transparent; }
-@property --star-color   { syntax: '<color>'; inherits: true; initial-value: transparent; }
+@property --spotlight-color-mid { syntax: '<color>'; inherits: true; initial-value: transparent; }
+@property --star-color { syntax: '<color>'; inherits: true; initial-value: transparent; }
 @property --meteor-color { syntax: '<color>'; inherits: true; initial-value: transparent; }
 
 /* ---------- Palette ---------- */
 :root {
-  /* Night — deep navy with blue/purple/cyan accents */
-  --bg-night:   #020617;
-  --bg-night-2: #050816;
-  --bg-night-3: #0b1026;
+  /* ---- Tunables: night sky / Milky Way / starfield ---- */
+  --sky-top: #020617;
+  --sky-mid: #050816;
+  --sky-low: #0b1026;
+  --mw-glow: 1;                    /* overall Milky Way intensity (0 – 1.5) */
+  --mw-core: 196 210 255;          /* blue-white core (space-separated rgb) */
+  --mw-violet: 139 108 246;
+  --mw-blue: 59 100 220;
+  --mw-cyan: 34 211 238;
+  --mw-drift-dur: 140s;            /* band drift — very slow */
+  --mw-breathe-dur: 56s;           /* soft nebula wash fade */
+  --star-density: 1;               /* multiplies star counts in aurora.js */
+  --tw-d1: 4s;                     /* twinkle duration groups */
+  --tw-d2: 7s;
+  --tw-d3: 11s;
+  --tw-d4: 15s;
+  --aurora-night-opacity: 0.7;     /* keep old aurora subtle over the Milky Way */
 
-  --aurora-color-1-night: rgba(100, 120, 220, 0.16);
-  --aurora-color-2-night: rgba( 80, 100, 200, 0.12);
-  --aurora-color-3-night: rgba(140, 100, 220, 0.10);
-  --aurora-core-night:    rgba(190, 205, 255, 0.10);
-
-  --spotlight-color-start-night: rgba(120, 160, 255, 0.12);
-  --spotlight-color-mid-night:   rgba(100, 140, 220, 0.05);
-  --star-color-night:   rgba(220, 230, 255, 0.95);
+  /* Night */
+  --bg-night: #050816;
+  --aurora-color-1-night: rgba(77, 155, 255, 0.22);
+  --aurora-color-2-night: rgba(139, 92, 246, 0.15);
+  --aurora-color-3-night: rgba(44, 123, 229, 0.16);
+  --grid-color-night: rgba(124, 184, 255, 0.05);
+  --spotlight-color-start-night: rgba(77, 155, 255, 0.13);
+  --spotlight-color-mid-night: rgba(77, 155, 255, 0.05);
+  --star-color-night: rgba(255, 255, 255, 0.9);
   --meteor-color-night: rgba(200, 225, 255, 0.95);
   --fx-rgb-1-night: 120, 180, 255;
   --fx-rgb-2-night: 167, 139, 250;
 
-  /* Day — soft rose (Milky Way becomes pale pink haze) */
+  /* Day */
   --bg-day: #fff0f5;
-  --aurora-color-1-day: rgba(255, 140, 190, 0.14);
-  --aurora-color-2-day: rgba(255, 180, 210, 0.10);
-  --aurora-color-3-day: rgba(220, 180, 255, 0.10);
-  --aurora-core-day:    rgba(255, 220, 235, 0.14);
-  --spotlight-color-start-day: rgba(255, 130, 180, 0.10);
-  --spotlight-color-mid-day:   rgba(255, 180, 200, 0.04);
-  --star-color-day:   rgba(232, 121, 160, 0.75);
+  --aurora-color-1-day: rgba(255, 105, 180, 0.18);
+  --aurora-color-2-day: rgba(255, 182, 193, 0.14);
+  --aurora-color-3-day: rgba(255, 192, 203, 0.12);
+  --grid-color-day: rgba(255, 105, 180, 0.04);
+  --spotlight-color-start-day: rgba(255, 105, 180, 0.10);
+  --spotlight-color-mid-day: rgba(255, 182, 193, 0.04);
+  /* slightly deeper than lightpink so stars stay visible on #fff0f5 */
+  --star-color-day: rgba(232, 121, 160, 0.85);
   --meteor-color-day: rgba(226, 92, 145, 0.9);
   --fx-rgb-1-day: 255, 105, 180;
   --fx-rgb-2-day: 236, 130, 190;
@@ -71,13 +81,18 @@ html[data-theme="night"] {
   --aurora-color-1: var(--aurora-color-1-night);
   --aurora-color-2: var(--aurora-color-2-night);
   --aurora-color-3: var(--aurora-color-3-night);
-  --aurora-core:    var(--aurora-core-night);
+  --grid-color: var(--grid-color-night);
   --spotlight-color-start: var(--spotlight-color-start-night);
-  --spotlight-color-mid:   var(--spotlight-color-mid-night);
-  --star-color:   var(--star-color-night);
+  --spotlight-color-mid: var(--spotlight-color-mid-night);
+  --star-color: var(--star-color-night);
   --meteor-color: var(--meteor-color-night);
   --fx-rgb-1: var(--fx-rgb-1-night);
   --fx-rgb-2: var(--fx-rgb-2-night);
+  /* Star tints: cool blue-white, lavender, faint warm */
+  --star-tint-1: rgb(190, 215, 255);
+  --star-tint-2: rgb(215, 205, 255);
+  --star-tint-3: rgb(255, 236, 214);
+  --star-glow: rgb(170 195 255 / 0.5);
 }
 
 html[data-theme="day"] {
@@ -85,36 +100,47 @@ html[data-theme="day"] {
   --aurora-color-1: var(--aurora-color-1-day);
   --aurora-color-2: var(--aurora-color-2-day);
   --aurora-color-3: var(--aurora-color-3-day);
-  --aurora-core:    var(--aurora-core-day);
+  --grid-color: var(--grid-color-day);
   --spotlight-color-start: var(--spotlight-color-start-day);
-  --spotlight-color-mid:   var(--spotlight-color-mid-day);
-  --star-color:   var(--star-color-day);
+  --spotlight-color-mid: var(--spotlight-color-mid-day);
+  --star-color: var(--star-color-day);
   --meteor-color: var(--meteor-color-day);
   --fx-rgb-1: var(--fx-rgb-1-day);
   --fx-rgb-2: var(--fx-rgb-2-day);
+  /* Day keeps the pink look: tints collapse to the single star colour */
+  --star-tint-1: var(--star-color);
+  --star-tint-2: var(--star-color);
+  --star-tint-3: var(--star-color);
+  --star-glow: rgb(232 121 160 / 0.4);
 }
 
 html[data-theme] {
   transition:
-    --aurora-color-1 0.6s ease, --aurora-color-2 0.6s ease,
-    --aurora-color-3 0.6s ease, --aurora-core 0.6s ease,
-    --spotlight-color-start 0.6s ease, --spotlight-color-mid 0.6s ease,
+    --aurora-color-1 0.6s ease, --aurora-color-2 0.6s ease, --aurora-color-3 0.6s ease,
+    --grid-color 0.6s ease, --spotlight-color-start 0.6s ease, --spotlight-color-mid 0.6s ease,
     --star-color 0.6s ease, --meteor-color 0.6s ease;
 }
 
 /* ---------- Page-level background only ---------- */
 html[data-theme] body { background: var(--bg-current); }
 
+/* The existing sections paint their own opaque page-coloured gradients,
+   which would hide every fixed layer behind them. Make just those
+   page-level fills transparent; cards, glass, borders stay untouched. */
 html[data-theme] #hero,
 html[data-theme] .section--soft,
 html[data-theme] .section--gradient,
 html[data-theme] .section--narrow { background: transparent; }
 
+/* Hero's bottom fade blended into the old opaque section colour; not needed now. */
 html[data-theme] .hero-fade { display: none; }
 
+/* Content sits above the space layers (z-index 0). z-index creates the
+   stacking context that keeps all in-flow content over the fixed layers. */
 html[data-theme] body > section,
 html[data-theme] body > footer { position: relative; z-index: 1; }
 
+/* Keep the existing grain overlay above content, as before. */
 html[data-theme] .grain-overlay { z-index: 2; }
 
 /* ---------- Space layers ---------- */
@@ -123,177 +149,174 @@ html:not([data-theme]) #aurora-bg,
 html:not([data-theme]) .spotlight,
 html:not([data-theme]) #fx { display: none; }
 
-#aurora-bg {
-  position: fixed;
-  inset: 0;
-  z-index: 0;
-  overflow: hidden;
-  background: var(--bg-current);
-  /* Deep vertical gradient across the viewport (night only). */
-  background-image: linear-gradient(
-    180deg,
-    #020617 0%,
-    #050816 55%,
-    #0b1026 100%
-  );
-}
-html[data-theme="day"] #aurora-bg {
-  background: var(--bg-day);
-  background-image: none;
-}
+#aurora-bg { position: fixed; inset: 0; z-index: 0; }
 
-/* ============================================================
-   MILKY WAY — three soft gradient layers
-   Layer 1: #aurora-bg::before  — main diagonal band
-   Layer 2: .aurora             — narrow bright core
-   Layer 3: #aurora-bg::after   — wispy cross accent
-
-   All three are rotated ~-20deg, oversized (inset: -25% -10%)
-   so the band crosses the viewport cleanly. Only the main
-   layer animates (140s, transform) — the other two are static
-   gradients. No filter: blur — the gradients themselves are
-   soft and cheap.
-   ============================================================ */
-
-/* Milky Way — base band (deepest) */
-#aurora-bg::before {
-  content: '';
-  position: absolute;
-  inset: -25% -10%;
-  z-index: 0;
-  pointer-events: none;
+/* ---------- Night sky + Milky Way (night theme only) ----------
+   Layer order inside #aurora-bg (its own stacking context):
+     sky gradient (background) < ::before band (-1) < ::after wash (-1)
+     < .aurora (0) < .stars / .stars-live (1) < .meteors (2)
+   --mw-angle is set by aurora.js so the band and the stars that
+   cluster along it always share the same diagonal. */
+html[data-theme="night"] #aurora-bg {
+  overflow: hidden;   /* big rotated bands never cause horizontal overflow */
   background:
-    radial-gradient(ellipse 55% 22% at 30% 45%, var(--aurora-color-1), transparent 65%),
-    radial-gradient(ellipse 45% 18% at 70% 55%, var(--aurora-color-2), transparent 65%),
-    radial-gradient(ellipse 35% 14% at 50% 50%, var(--aurora-color-3), transparent 70%);
-  transform: rotate(-20deg) scale(1.15);
-  transform-origin: center;
+    radial-gradient(70% 55% at 86% 10%, rgb(88 60 180 / 0.13), transparent 70%),   /* violet accent */
+    radial-gradient(60% 50% at 8% 92%, rgb(14 70 140 / 0.17), transparent 70%),    /* deep-blue accent */
+    linear-gradient(180deg, var(--sky-top) 0%, var(--sky-mid) 52%, var(--sky-low) 100%);
 }
 
-/* Milky Way — narrow bright core (main animated element) */
-.aurora {
+/* Milky Way band: thin diagonal ribbon — dust lane, nucleus, core,
+   halo and a faint cyan tint. Gradients only, no filter/blur. */
+html[data-theme="night"] #aurora-bg::before {
+  content: "";
   position: absolute;
-  inset: -25% -10%;
-  z-index: 0;
+  z-index: -1;
   pointer-events: none;
+  left: 50%; top: 48%;
+  width: 170vmax; height: 60vmax;
+  margin: -30vmax 0 0 -85vmax;
   background:
-    radial-gradient(ellipse 30% 8% at 45% 50%, var(--aurora-core), transparent 70%),
-    linear-gradient(102deg, transparent 35%, var(--aurora-core) 50%, transparent 65%);
-  transform: rotate(-20deg) scale(1.15);
-  transform-origin: center;
-  animation: milky-drift 140s ease-in-out infinite alternate;
+    radial-gradient(48% 2.6% at 46% 52%, rgb(2 6 23 / calc(0.5 * var(--mw-glow))), transparent 100%),                       /* dust lane */
+    radial-gradient(30% 2% at 70% 47%, rgb(2 6 23 / calc(0.35 * var(--mw-glow))), transparent 100%),                        /* dust lane 2 */
+    radial-gradient(20% 6.5% at 60% 50%, rgb(235 240 255 / calc(0.26 * var(--mw-glow))), rgb(var(--mw-violet) / calc(0.1 * var(--mw-glow))) 55%, transparent 100%), /* nucleus */
+    radial-gradient(52% 6% at 50% 50%, rgb(var(--mw-core) / calc(0.17 * var(--mw-glow))), rgb(var(--mw-violet) / calc(0.08 * var(--mw-glow))) 55%, transparent 100%), /* core ribbon */
+    radial-gradient(64% 15% at 48% 50%, rgb(var(--mw-blue) / calc(0.15 * var(--mw-glow))), transparent 100%),               /* halo */
+    radial-gradient(26% 10% at 28% 52%, rgb(var(--mw-cyan) / calc(0.06 * var(--mw-glow))), transparent 100%),               /* cyan tint */
+    linear-gradient(to bottom, transparent 28%, rgb(var(--mw-blue) / calc(0.04 * var(--mw-glow))) 50%, transparent 72%);    /* soft edges */
+  transform: rotate(var(--mw-angle, -28deg)) translate3d(0, 0, 0);
+  animation: mw-drift var(--mw-drift-dur) ease-in-out infinite alternate;
   will-change: transform;
 }
 
-/* Milky Way — wispy cross accent */
-#aurora-bg::after {
-  content: '';
+/* Milky Way wash: wide diffuse nebula glow at a slightly different
+   angle; only its opacity breathes (very slowly). */
+html[data-theme="night"] #aurora-bg::after {
+  content: "";
   position: absolute;
-  inset: -25% -10%;
-  z-index: 0;
+  z-index: -1;
   pointer-events: none;
+  left: 50%; top: 48%;
+  width: 190vmax; height: 80vmax;
+  margin: -40vmax 0 0 -95vmax;
   background:
-    linear-gradient(78deg, transparent 40%, var(--aurora-color-3) 55%, transparent 70%),
-    radial-gradient(ellipse 22% 6% at 55% 45%, var(--aurora-color-2), transparent 70%);
-  transform: rotate(-20deg) scale(1.15);
-  transform-origin: center;
-  opacity: 0.85;
-}
-
-/* Very slow drift of the core band — barely perceptible,
-   but gives the sky a sense of breath. */
-@keyframes milky-drift {
-  0%   { transform: rotate(-20deg) scale(1.15) translate3d(0, 0, 0); }
-  100% { transform: rotate(-18deg) scale(1.20) translate3d(-2%, 1.5%, 0); }
-}
-
-/* ============================================================
-   STARFIELD — three depth layers
-   Each star is a <span class="star"> placed by aurora.js with
-   inline CSS custom properties:
-     --s      size in px
-     --o      max opacity
-     --d      twinkle duration
-     --delay  negative animation-delay (random phase)
-     --c      colour (defaults to --star-color)
-
-   Layer behaviour:
-     .stars-back  — STATIC, dim background specks (no animation)
-     .stars-mid   — animated, medium twinkle
-     .stars-front — animated, bright focal stars with halo
-
-   Only ~52 animated stars on desktop (~20 on mobile after the
-   intensity multiplier), so opacity compositing stays cheap.
-   ============================================================ */
-.stars {
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  pointer-events: none;
-  /* No will-change on the container. Parallax uses translate3d()
-     which promotes the layer only while it is actually moving. */
-}
-.stars-back, .stars-mid, .stars-front {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-}
-
-.star {
-  position: absolute;
-  width: var(--s, 1.5px);
-  height: var(--s, 1.5px);
-  border-radius: 50%;
-  background: var(--c, var(--star-color, #ffffff));
-  opacity: var(--o, 0.7);
-  /* Default: no animation. Layers below opt in. */
-  animation: none;
-}
-
-/* Background layer — static dim specks */
-.stars-back .star {
-  box-shadow: 0 0 2px var(--c, var(--star-color, #ffffff));
-}
-
-/* Middle layer — gentle twinkle, per-star duration + delay */
-.stars-mid .star {
-  box-shadow: 0 0 3px var(--c, var(--star-color, #ffffff));
-  animation: twinkle-soft var(--d, 9s) ease-in-out var(--delay, 0s) infinite;
-}
-
-/* Front layer — brighter, faster twinkle, soft halo */
-.stars-front .star {
-  box-shadow:
-    0 0 5px var(--c, var(--star-color, #ffffff)),
-    0 0 12px rgba(170, 200, 255, 0.35);
-  animation: twinkle-bright var(--d, 5s) ease-in-out var(--delay, 0s) infinite;
+    radial-gradient(70% 22% at 40% 50%, rgb(var(--mw-violet) / calc(0.08 * var(--mw-glow))), transparent 100%),
+    radial-gradient(55% 18% at 66% 50%, rgb(var(--mw-blue) / calc(0.07 * var(--mw-glow))), transparent 100%),
+    radial-gradient(32% 10% at 22% 50%, rgb(var(--mw-cyan) / calc(0.04 * var(--mw-glow))), transparent 100%);
+  transform: rotate(calc(var(--mw-angle, -28deg) + 4deg));
+  animation: mw-breathe var(--mw-breathe-dur) ease-in-out infinite alternate;
   will-change: opacity;
 }
 
-/* Twinkle keyframes — two curves, per-star timing ensures no
-   two stars flash together. Negative delays randomize phase. */
-@keyframes twinkle-soft {
-  0%, 100% { opacity: var(--o, 0.7); }
-  45%      { opacity: 0.12; }
+@keyframes mw-drift {
+  from { transform: rotate(calc(var(--mw-angle, -28deg) - 1deg)) translate3d(-1.5%, -1%, 0); }
+  to   { transform: rotate(calc(var(--mw-angle, -28deg) + 1deg)) translate3d(1.5%, 1%, 0); }
 }
-@keyframes twinkle-bright {
-  0%, 100% { opacity: var(--o, 1); }
-  30%      { opacity: 0.18; }
-  65%      { opacity: 0.85; }
+@keyframes mw-breathe {
+  from { opacity: 0.55; }
+  to   { opacity: 1; }
 }
 
-/* ============================================================
-   METEORS — PRESERVED 1:1 FROM v2026.10.08.6
-   Do not modify without re-validating aurora.js spawnMeteor().
-   z-index: 2 keeps meteors above stars and Milky Way.
-   ============================================================ */
-.meteors {
-  position: absolute;
-  inset: 0;
-  z-index: 2;
+/* Aurora */
+.aurora {
+  position: fixed;
+  inset: -22%;
+  z-index: 0;
   pointer-events: none;
-  overflow: hidden;
+  background:
+    radial-gradient(38% 32% at 22% 26%, var(--aurora-color-1), transparent 66%),
+    radial-gradient(34% 30% at 80% 20%, var(--aurora-color-2), transparent 66%),
+    radial-gradient(44% 38% at 62% 84%, var(--aurora-color-3), transparent 68%);
+  filter: blur(34px);
+  animation: aurora-drift 28s ease-in-out infinite alternate;
+  will-change: transform;
 }
+@keyframes aurora-drift {
+  0%   { transform: translate3d(-2%, -1.5%, 0) scale(1.02); }
+  100% { transform: translate3d(2.5%, 2%, 0) scale(1.09); }
+}
+/* Night: soften the old aurora so it only adds blue/violet depth */
+html[data-theme="night"] .aurora { opacity: var(--aurora-night-opacity); }
+
+/* Stars — dots are box-shadows generated by aurora.js (--sa / --sb).
+   Each dot has its own size / blur / alpha / tint, so the field never
+   looks like a tiled pattern. Layers sit above Milky Way (z 1). */
+.stars { position: fixed; inset: 0; z-index: 1; pointer-events: none; will-change: transform; }
+.stars::before,
+.stars::after {
+  content: "";
+  position: absolute;
+  top: 0; left: 0;
+  width: var(--star-size, 1px);
+  height: var(--star-size, 1px);
+  border-radius: 50%;
+  opacity: 0.9;
+  /* FIX (v2026.10.08.4): box-shadow tanpa color eksplisit memakai currentColor.
+     Tanpa baris ini, bintang mewarisi warna teks body — gelap di light mode. */
+  color: var(--star-color, #ffffff);
+  will-change: opacity, transform;
+}
+/* Twinkle (layer groups): each layer's two halves use different
+   duration groups (4s / 7s / 11s / 15s) and negative delays so the
+   groups never pulse together. Amplitude is gentle on purpose. */
+.stars::before { box-shadow: var(--sa, none); animation: star-twinkle var(--tw-a, 7s) ease-in-out var(--dl-a, 0s) infinite, star-drift var(--dr, 80s) ease-in-out infinite alternate; }
+.stars::after  { box-shadow: var(--sb, none); animation: star-twinkle var(--tw-b, 11s) ease-in-out var(--dl-b, -2.2s) infinite, star-drift var(--dr, 80s) ease-in-out infinite alternate; }
+.stars-back  { --star-size: 1px;   --tw-a: var(--tw-d4); --tw-b: var(--tw-d3); --dl-a: -4s;   --dl-b: -9s;   --dr: 120s; --drift: 10px; }
+.stars-mid   { --star-size: 1.5px; --tw-a: var(--tw-d2); --tw-b: var(--tw-d3); --dl-a: -2.5s; --dl-b: -7s;   --dr: 80s;  --drift: 22px; }
+.stars-front { --star-size: 2px;   --tw-a: var(--tw-d1); --tw-b: var(--tw-d2); --dl-a: -1.3s; --dl-b: -5.1s; --dr: 50s;  --drift: 38px; }
+
+@keyframes star-twinkle {
+  0%, 100% { opacity: 0.62; }
+  50%      { opacity: 1; }
+}
+
+/* Live stars — small DOM elements built by aurora.js. Every star gets
+   its own duration group (--fd), negative delay (--fdl), size (--fs),
+   and opacity range (--lo / --hi), so they fade at different times.
+   Focal stars are brighter, glow, and some get a faint cross flare. */
+.stars-live { position: fixed; inset: 0; z-index: 1; pointer-events: none; }
+.star {
+  position: absolute;
+  width: var(--fs, 2px);
+  height: var(--fs, 2px);
+  margin: calc(var(--fs, 2px) / -2) 0 0 calc(var(--fs, 2px) / -2);
+  border-radius: 50%;
+  background: var(--st, var(--star-color));
+  opacity: var(--hi, 0.6);
+  animation: star-fade var(--fd, 7s) ease-in-out var(--fdl, 0s) infinite;
+  will-change: opacity;
+}
+.star--focal { box-shadow: 0 0 calc(var(--fs, 3px) * 3) calc(var(--fs, 3px) * 0.4) var(--star-glow, rgb(170 195 255 / 0.5)); }
+.star--cross::before,
+.star--cross::after {
+  content: "";
+  position: absolute;
+  left: 50%; top: 50%;
+  opacity: 0.6;
+  pointer-events: none;
+}
+.star--cross::before {
+  width: calc(var(--fs, 3px) * 9); height: 1px;
+  transform: translate(-50%, -50%);
+  background: linear-gradient(90deg, transparent, var(--star-glow, #fff), transparent);
+}
+.star--cross::after {
+  width: 1px; height: calc(var(--fs, 3px) * 9);
+  transform: translate(-50%, -50%);
+  background: linear-gradient(180deg, transparent, var(--star-glow, #fff), transparent);
+}
+@keyframes star-fade {
+  0%, 100% { opacity: var(--lo, 0.15); }
+  50%      { opacity: var(--hi, 0.6); }
+}
+@keyframes star-drift {
+  from { transform: translate3d(0, 0, 0); }
+  to   { transform: translate3d(calc(var(--drift, 10px) * -0.6), var(--drift, 10px), 0); }
+}
+
+/* Meteors — rules below are unchanged from the original; only the
+   container z-index was raised (0 → 2) so meteors always render above
+   the Milky Way and every star layer. */
+.meteors { position: fixed; inset: 0; z-index: 2; pointer-events: none; overflow: hidden; }
 .meteor {
   position: absolute;
   width: 140px;
@@ -323,11 +346,13 @@ html[data-theme="day"] #aurora-bg {
   100% { opacity: 0; transform: translate3d(calc(var(--dist, 600px) * -1), var(--dist, 600px), 0) rotate(-45deg); }
 }
 
-/* ---------- Spotlight ---------- */
+/* Spotlight */
 .spotlight {
   position: fixed;
-  top: 0; left: 0;
-  width: 900px; height: 900px;
+  top: 0;
+  left: 0;
+  width: 900px;
+  height: 900px;
   margin: -450px 0 0 -450px;
   border-radius: 50%;
   z-index: 0;
@@ -342,7 +367,7 @@ html[data-theme="day"] #aurora-bg {
   .spotlight { width: 560px; height: 560px; margin: -280px 0 0 -280px; }
 }
 
-/* ---------- FX canvas ---------- */
+/* FX canvas */
 #fx {
   position: fixed;
   inset: 0;
@@ -354,59 +379,114 @@ html[data-theme="day"] #aurora-bg {
 }
 
 /* ============================================================
-   MOBILE / COARSE POINTER
-   Milky Way: static (drift off). Stars: static. Meteors keep
-   working — aurora.js already throttles them for normal tier.
+   Mobile / coarse pointer — the aurora layer stack is the
+   biggest GPU cost on phones. Collapse from ~6 promoted
+   compositor layers (3 star layers × 2 pseudo-elems + aurora)
+   down to 1 static aurora layer. Static starfield remains.
+   Result: zero per-frame compositor work while scrolling.
+   Desktop (fine pointer + no forced normal/eco tier) unchanged.
    ============================================================ */
 @media (max-width: 767px), (pointer: coarse) {
+  /* Aurora: smaller raster area, softer blur, no drift
+     animation, no permanent layer promotion. Static blurred
+     aurora remains visible — theme identity preserved. */
   .aurora {
+    inset: -8%;
+    filter: blur(18px);
     animation: none;
     will-change: auto;
   }
-  .stars-mid .star,
-  .stars-front .star {
+
+  /* Parent .stars never gets transformed on mobile (parallax
+     is disabled by aurora.js). Drop will-change to free VRAM
+     for 3 fullscreen layers. */
+  .stars { will-change: auto; }
+
+  /* Stars: no animation → no auto-promotion → no per-frame
+     compositor work. The stars remain visible at their base
+     opacity (0.9); they just stop twinkling and drifting. */
+  .stars::before,
+  .stars::after {
     animation: none;
     will-change: auto;
-    opacity: var(--o, 0.7);
   }
-  /* Softer halo on mobile — less compositing work per star. */
-  .stars-front .star {
-    box-shadow: 0 0 4px var(--c, var(--star-color, #ffffff));
+
+  /* Milky Way: keep the main band (static), drop the second wash
+     layer and all motion. Same specificity as the night rules. */
+  html[data-theme="night"] #aurora-bg::before {
+    animation: none;
+    will-change: auto;
+    transform: rotate(var(--mw-angle, -28deg));
+  }
+  html[data-theme="night"] #aurora-bg::after { display: none; }
+
+  /* Live stars: only the few focal stars keep fading (tiny layers);
+     the small dots stay still at their base opacity. */
+  .star:not(.star--focal) {
+    animation: none;
+    will-change: auto;
   }
 }
 
 /* ============================================================
-   ECO tier (html.aurora-lite) — no decoration at all.
-   aurora.js returns early in eco, so .stars and .meteors stay
-   empty; we hide them so they do not hold promoted layers.
+   Eco tier (html.aurora-lite, set by aurora.js when device is
+   low-end or user prefers reduced motion / save-data).
+   aurora.js returns early before building stars / meteors /
+   spotlight / FX canvas — so these elements stay empty. Hide
+   them entirely so they don't hold promoted compositor layers.
    ============================================================ */
 html.aurora-lite .aurora {
   animation: none;
-  will-change: auto;
+  filter: blur(18px);
+  inset: -8%;
+  will-change: auto;   /* was missing — layer stayed promoted */
 }
+
 html.aurora-lite .stars,
+html.aurora-lite .stars-live,
 html.aurora-lite .meteors,
 html.aurora-lite .spotlight,
 html.aurora-lite #fx {
   display: none;
 }
 
-/* ============================================================
-   REDUCED MOTION
-   Stars and Milky Way stop. Meteors keep their single CSS
-   keyframe (aurora.js already stops scheduling them when
-   reduce-motion is on) — any in-flight one finishes and is
-   removed by animationend.
-   ============================================================ */
+/* Eco keeps the sky + ONE static Milky Way band (pure CSS, no
+   animation, no promoted layer). The second wash is dropped. */
+html.aurora-lite[data-theme="night"] #aurora-bg::before {
+  animation: none;
+  will-change: auto;
+  transform: rotate(var(--mw-angle, -28deg));
+}
+html.aurora-lite[data-theme="night"] #aurora-bg::after { display: none; }
+
+/* ---------- Reduced motion ---------- */
 @media (prefers-reduced-motion: reduce) {
-  .aurora { animation: none; }
-  .stars-mid .star,
-  .stars-front .star {
-    animation: none;
-    opacity: var(--o, 0.7);
-  }
-  .meteors { display: none; }
+  .aurora,
+  .stars::before,
+  .stars::after,
+  .star { animation: none; }
+  html[data-theme="night"] #aurora-bg::before,
+  html[data-theme="night"] #aurora-bg::after { animation: none; will-change: auto; }
+  html[data-theme="night"] #aurora-bg::before { transform: rotate(var(--mw-angle, -28deg)); }
   .spotlight { display: none; }
   #fx { display: none; }
   html[data-theme] { transition: none; }
-                                }
+
+  /* Meteors: no falling animation. Instead the container stays visible
+     and shows one faint static streak (.meteors::after), so the sky
+     still reads as "meteor-themed" without any motion. */
+  .meteors .meteor { display: none; }
+  html .meteors,
+  html.aurora-lite .meteors { display: block; }   /* beats the lite hide rule (same specificity, later) */
+  .meteors::after {
+    content: "";
+    position: absolute;
+    top: 14%; left: 74%;
+    width: 120px; height: 2px;
+    border-radius: 2px;
+    opacity: 0.55;
+    background: linear-gradient(90deg, var(--meteor-color), transparent);
+    transform: rotate(-45deg);
+    transform-origin: left center;
+  }
+}

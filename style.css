@@ -1,9 +1,9 @@
 /* ============================================================
-   style.css — Haiere v2026.10.08.12
+   style.css — Haiere Nova
    Modern, minimal, branded. English-first, dark-first with full
    light parity.
 
-   v2026.10.08.12 changes (perf pass — blur/compositing cost):
+   Nova changes (perf pass — blur/compositing cost):
    - Nav backdrop-filter reduced to 14px on premium; removed
      entirely on mobile / coarse pointer / normal / eco tiers.
      Fixed header repaints every scroll frame; blur there was

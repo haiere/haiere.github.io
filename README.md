@@ -34,7 +34,7 @@
 
 <p>
   <a href="https://github.com/haiere/haiere.github.io/releases">
-    <img src="https://img.shields.io/badge/version-v2026.10.08.12-B4788C?style=flat-square" alt="Version" />
+    <img src="https://img.shields.io/badge/version-.12-B4788C?style=flat-square" alt="Version" />
   </a>
   <a href="https://github.com/haiere/haiere.github.io/commits">
     <img src="https://img.shields.io/github/last-commit/haiere/haiere.github.io?style=flat-square&color=7FD8CB" alt="Last Commit" />
@@ -180,7 +180,7 @@ The project currently uses the following optional services:
 
 ## Recent Performance Pass
 
-**v2026.10.08.12** focused entirely on scroll smoothness on mobile, low-end devices, and iOS Safari, without touching layout, content, or business logic.
+**Nova** focused entirely on scroll smoothness on mobile, low-end devices, and iOS Safari, without touching layout, content, or business logic.
 
 Key changes:
 
@@ -305,7 +305,7 @@ Runtime Debugging
 The active tier is printed to the browser console when script.js finishes booting:
 
 ```text
-Haiere v2026.10.08.12 — ready (perf tier: <eco|normal|premium>, default lang: en)
+Haiere Nova — ready (perf tier: <eco|normal|premium>, default lang: en)
 ```
 
 You can also read it directly from the DOM:
@@ -635,7 +635,7 @@ The Site Feels Slow on Mobile
 Check the active tier — it is printed to the browser console on every load:
 
 ```text
-Haiere v2026.10.08.12 — ready (perf tier: normal, default lang: en)
+Haiere Nova — ready (perf tier: normal, default lang: en)
 ```
 
 Or read the DOM directly:
@@ -646,7 +646,7 @@ document.documentElement.getAttribute('data-perf');
 
 If a low-end device is incorrectly using premium, verify that the inline performance script in index.html is present and runs before the stylesheets.
 
-If scroll is still not smooth after v2026.10.08.12:
+If scroll is still not smooth after Nova:
 
 · Open DevTools and confirm the active tier is not premium.
 · In Rendering, enable Paint flashing — the fixed nav and hero ticker should no longer flash on scroll.
@@ -692,7 +692,7 @@ These values are static — they are hardcoded in index.html:
 
 ```html
 <span id="last-updated-date">2026-10-08</span>
-<span class="footer-version">v2026.10.08.12</span>
+<span class="footer-version">Nova</span>
 ```
 
 They only change when the file is edited and deployed. There is no live clock, no new Date(), and no setInterval. See Versioning and Last Update for the update checklist.
@@ -702,7 +702,7 @@ Versioning and Last Update
 Both values are hardcoded in index.html and are only changed when the site is actually deployed with a new version.
 
 Field Value
-Version v2026.10.08.12
+Version Nova
 Last update 2026-10-08
 
 Why Static
@@ -813,7 +813,7 @@ Support This Work
 <div align="center">
 
 <sub>
-Copyright 2026 <b>Haiere</b> &nbsp;|&nbsp; <b>v2026.10.08.12</b><br />
+Copyright 2026 <b>Haiere</b> &nbsp;|&nbsp; <b>Nova</b><br />
 Useful tools, thoughtful experiments.
 </sub>
 

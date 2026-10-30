@@ -1,9 +1,9 @@
 /* ============================================================
-   i18n.js — Haiere v2026.10.08.6
+   i18n.js — Haiere Nova
    Complete bilingual string table. Every data-i18n* attribute in
    index.html resolves here. Keys are shared across id/en.
 
-   v2026.10.08.6 changes:
+   Nova changes:
    - Removed all "Privacy First" phrasing and replaced with
      neutral "Useful tools, thoughtful experiments." identity.
    - Added AI & Bots section keys (ai_eyebrow, ai_title, ai_subtitle,
@@ -242,7 +242,7 @@ window.i18n = {
     footer_disclaimer: 'Catatan: pakai alat ini dengan bijak. Haiere tidak bertanggung jawab atas kehilangan data.',
     footer_about: 'Pembuat web dan musisi. Semua alat dibuat di web terbuka — ringan, fokus, dan mudah dipakai.',
     footer_last_updated: 'Terakhir diperbarui:',
-    footer_version: 'v2026.10.08.6',
+    footer_version: 'Nova',
     footer_secure: 'HTTPS AMAN · WEB TERBUKA',
     footer_brand_line: 'Alat berguna, eksperimen penuh pemikiran.',
     footer_badge: 'Pembuat web independen',
@@ -520,7 +520,7 @@ window.i18n = {
     footer_disclaimer: 'Note: use these tools wisely. Haiere is not responsible for lost data.',
     footer_about: 'Web maker and musician. All tools are built on the open web — light, focused, and easy to use.',
     footer_last_updated: 'Last update:',
-    footer_version: 'v2026.10.08.6',
+    footer_version: 'Nova',
     footer_secure: 'HTTPS SECURE · OPEN WEB',
     footer_brand_line: 'Useful tools, thoughtful experiments.',
     footer_badge: 'Independent web creator',

@@ -1,12 +1,12 @@
 /* ============================================================
-   script.js — Haiere v2026.10.08.12
+   script.js — Haiere Nova
    Everything UI: theme, i18n, drawer, search, filters,
    docs modal (README via GitHub raw), contact form, cookies,
    scroll animations, counters, hero spotlight, tilt/magnetic.
 
    Default language: English (en).
 
-   v2026.10.08.12 changes:
+   Nova changes:
    - Removed the duplicate renderAllIcons() call at boot.
      whenTailwindReady() already runs its callback synchronously
      when window.tailwind exists (which it does — CDN script
@@ -1279,7 +1279,7 @@ function whenTailwindReady(cb) {
     });
   });
 
-  // v2026.10.08.12 — single call. whenTailwindReady() runs sync
+  // Nova — single call. whenTailwindReady() runs sync
   // when window.tailwind exists (which it does — CDN script is
   // in <head> before this file). Previous version called
   // renderAllIcons() twice back-to-back, doubling DOM traversal.
@@ -1290,5 +1290,5 @@ function whenTailwindReady(cb) {
   // and all .reveal sections fall back to visible.
   window.__haiereReady = true;
 
-  console.log('Haiere v2026.10.08.12 — ready (perf tier: ' + perfTier + ', default lang: en)');
+  console.log('Haiere Nova — ready (perf tier: ' + perfTier + ', default lang: en)');
 })();

@@ -1,6 +1,6 @@
 /* ============================================================
    aurora.js — "Aurora" space theme behaviour
-   v2026.10.08.7 — perf pass
+   Nova — Milky Way sky (stars rebuilt, meteors untouched)
    ============================================================ */
 (function () {
   'use strict';
@@ -109,38 +109,146 @@
   syncTheme();
 
   /* ============================================================
-     STARS  (box-shadow dots, 3 depth layers, scroll parallax)
+     STARS  (3 static depth layers + DOM twinkle stars)
+     - Layers (.stars-*): box-shadow dots; every dot gets its own
+       blur / spread (size) / alpha / tint -> no rigid repeating grid.
+     - Live stars (.stars-live): small DOM nodes, each with its own
+       twinkle duration group + negative delay (CSS does the animating).
+     - ~45% of stars cluster along the Milky Way band, whose angle is
+       shared with CSS through --mw-angle.
      ============================================================ */
-  // [selector, base count, parallax fraction of viewport height]
+  // sel, base count, parallax fraction of viewport height,
+  // spread px [min,max], blur px [min,max], alpha % [min,max], band share
   var STAR_LAYERS = [
-    ['.stars-back', 90, 0.04],
-    ['.stars-mid', 50, 0.09],
-    ['.stars-front', 22, 0.16]
+    { sel: '.stars-back',  n: 110, f: 0.04, spread: [0, 0.35],   blur: [0, 0.8],   alpha: [28, 62], band: 0.5 },
+    { sel: '.stars-mid',   n: 52,  f: 0.09, spread: [0.1, 0.55], blur: [0, 1.2],   alpha: [48, 82], band: 0.4 },
+    { sel: '.stars-front', n: 20,  f: 0.16, spread: [0.3, 0.8],  blur: [0.6, 1.8], alpha: [72, 100], band: 0.25 }
   ];
+  var LIVE_DOTS = 26;   // dim twinkling stars (base count, before scaling)
+  var LIVE_FOCAL = 9;   // bright focal stars (base count, before scaling)
   var starEls = [];
+  var liveEl = null;
 
   function rnd(min, max) { return min + Math.random() * (max - min); }
+  function gauss() { return (Math.random() + Math.random() + Math.random() - 1.5) / 1.5; } // ~[-1,1], bell-shaped
+
+  // color-mix() lets each dot have its own alpha while still following the
+  // theme colour. Without support, size / blur variation still applies.
+  var canMix = !!(window.CSS && CSS.supports &&
+    CSS.supports('color', 'color-mix(in srgb, red 50%, transparent)'));
+  var TINTS = ['var(--star-color)', 'var(--star-tint-1)', 'var(--star-tint-2)', 'var(--star-tint-3)'];
+
+  function pickTint() {
+    var r = Math.random();
+    return r < 0.6 ? TINTS[0] : r < 0.78 ? TINTS[1] : r < 0.9 ? TINTS[2] : TINTS[3];
+  }
+  function withAlpha(c, pct) {
+    return (canMix && pct < 100) ? 'color-mix(in srgb,' + c + ' ' + pct + '%,transparent)' : c;
+  }
+  function density() {
+    var v = parseFloat(getComputedStyle(root).getPropertyValue('--star-density'));
+    return (isFinite(v) && v > 0) ? v : 1;
+  }
+
+  /* ---------- Milky Way band geometry (shared with CSS) ---------- */
+  var band = { deg: -24, theta: -24 * Math.PI / 180 };
+  var builtDeg = band.deg;
+
+  function updateBand() {
+    var w = window.innerWidth, h = window.innerHeight;
+    // Wide screens -> gentle diagonal, tall phones -> steeper (clamped).
+    var deg = -Math.min(52, Math.max(22, Math.atan2(h * 0.64, w) * 180 / Math.PI));
+    band.deg = deg;
+    band.theta = deg * Math.PI / 180;
+    bg.style.setProperty('--mw-angle', deg.toFixed(2) + 'deg');
+  }
+
+  // Random point near the band centre line (viewport %), or null if off-screen.
+  function bandPoint() {
+    var w = window.innerWidth, h = window.innerHeight, m = Math.max(w, h);
+    var t = rnd(-0.5, 0.5) * Math.hypot(w, h);
+    var off = gauss() * m * 0.16;
+    var c = Math.cos(band.theta), s = Math.sin(band.theta);
+    var x = (w * 0.5 + c * t - s * off) / w * 100;
+    var y = (h * 0.48 + s * t + c * off) / h * 100;   // 0.48 matches CSS top: 48%
+    return (x >= 0 && x <= 100 && y >= 0 && y <= 100) ? { x: x, y: y } : null;
+  }
+
+  function starPos(bandShare, yMax) {
+    if (Math.random() < bandShare) {
+      var p = bandPoint();
+      if (p) return p;
+    }
+    return { x: rnd(0, 100), y: rnd(0, yMax) };
+  }
+
+  /* ---------- live (DOM) stars ---------- */
+  function makeStar(focal) {
+    var p = starPos(focal ? 0.3 : 0.5, 100);
+    var d = document.createElement('div');
+    d.className = 'star' + (focal ? ' star--focal' + (Math.random() < 0.4 ? ' star--cross' : '') : '');
+    var st = d.style;
+    st.left = p.x.toFixed(2) + '%';
+    st.top = p.y.toFixed(2) + '%';
+    st.setProperty('--fs', (focal ? rnd(2.4, 3.6) : rnd(1.3, 2.2)).toFixed(2) + 'px');
+    st.setProperty('--hi', (focal ? rnd(0.85, 1) : rnd(0.45, 0.8)).toFixed(2));
+    st.setProperty('--lo', (focal ? rnd(0.45, 0.65) : rnd(0.08, 0.22)).toFixed(2));
+    // Duration groups come from CSS (--tw-d1..d4 = 4s / 7s / 11s / 15s).
+    // Focal stars use the slower groups so they fade gracefully.
+    var g = focal ? 2 + Math.floor(Math.random() * 3) : 1 + Math.floor(Math.random() * 4);
+    st.setProperty('--fd', 'var(--tw-d' + g + ')');
+    st.setProperty('--fdl', (-rnd(0, 15)).toFixed(2) + 's');
+    st.setProperty('--st', pickTint());
+    return d;
+  }
+
+  function buildLiveStars(k) {
+    if (!liveEl) {
+      liveEl = bg.querySelector('.stars-live');
+      if (!liveEl) {
+        liveEl = document.createElement('div');
+        liveEl.className = 'stars-live';
+        liveEl.setAttribute('aria-hidden', 'true');
+        bg.appendChild(liveEl);
+      }
+    }
+    liveEl.textContent = '';
+    var frag = document.createDocumentFragment();
+    var nDots = Math.max(6, Math.round(LIVE_DOTS * k));
+    var nFocal = Math.max(3, Math.round(LIVE_FOCAL * k));
+    var i;
+    for (i = 0; i < nDots; i++) frag.appendChild(makeStar(false));
+    for (i = 0; i < nFocal; i++) frag.appendChild(makeStar(true));
+    liveEl.appendChild(frag);
+  }
 
   function buildStars() {
-    var k = intensity();
+    updateBand();
+    builtDeg = band.deg;
+    var k = intensity() * density();
     starEls = [];
     STAR_LAYERS.forEach(function (l) {
-      var el = bg.querySelector(l[0]);
+      var el = bg.querySelector(l.sel);
       if (!el) return;
-      var n = Math.max(8, Math.round(l[1] * k));
-      var yMax = 100 + l[2] * 100 + 2; // extra rows so parallax never exposes an empty edge
+      var n = Math.max(8, Math.round(l.n * k));
+      var yMax = 100 + l.f * 100 + 2; // extra rows so parallax never exposes an empty edge
       var a = [], b = [];
       for (var i = 0; i < n; i++) {
-        // Colour is resolved by the browser at paint time via the CSS
-        // custom property --star-color, which aurora.css @property's
-        // so theme swaps crossfade smoothly.
-        var s = rnd(0, 100).toFixed(2) + 'vw ' + rnd(0, yMax).toFixed(2) + 'vh 0 0 var(--star-color)';
+        var p = starPos(l.band, yMax);
+        // x y blur spread colour — colour is resolved by the browser at
+        // paint time via the CSS custom properties, so theme swaps
+        // crossfade smoothly.
+        var s = p.x.toFixed(2) + 'vw ' + p.y.toFixed(2) + 'vh ' +
+          rnd(l.blur[0], l.blur[1]).toFixed(2) + 'px ' +
+          rnd(l.spread[0], l.spread[1]).toFixed(2) + 'px ' +
+          withAlpha(pickTint(), Math.round(rnd(l.alpha[0], l.alpha[1])));
         (i % 2 ? a : b).push(s);
       }
       el.style.setProperty('--sa', a.join(','));
       el.style.setProperty('--sb', b.join(','));
-      starEls.push({ el: el, f: l[2] });
+      starEls.push({ el: el, f: l.f });
     });
+    buildLiveStars(k);
   }
 
   /* ---------- parallax (cached scrollMax, write-gated) ---------- */
@@ -499,6 +607,8 @@
     resizeTimer = setTimeout(function () {
       recalcScrollMax();
       sizeCanvas();
+      updateBand();
+      if (Math.abs(band.deg - builtDeg) >= 4) buildStars(); // aspect ratio changed a lot (e.g. rotate phone)
       if (!canTrack()) restSpot();
       resetParallax();
       queueParallax();

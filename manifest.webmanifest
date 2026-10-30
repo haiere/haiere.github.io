@@ -1,6 +1,6 @@
 {
   "$schema": "https://json.schemastore.org/web-manifest-combined.json",
-  "//": "Haiere — PWA manifest. v2026.10.08.6. Spec: https://www.w3.org/TR/appmanifest/",
+  "//": "Haiere — PWA manifest. Nova. Spec: https://www.w3.org/TR/appmanifest/",
   "//id": "PWA identity — do NOT change once installed. Changing it resets the install for every user.",
   "id": "/",
 
@@ -73,7 +73,7 @@
     }
   ],
 
-  "//shortcuts": "Manifest shortcuts surface on long-press of the installed app icon. URLs must be same-scope. Entries follow the v2026.10.08.6 section order: Tools → AI & Bots → Games → Music → About → Contact. All open in the same window thanks to launch_handler.",
+  "//shortcuts": "Manifest shortcuts surface on long-press of the installed app icon. URLs must be same-scope. Entries follow the Nova section order: Tools → AI & Bots → Games → Music → About → Contact. All open in the same window thanks to launch_handler.",
   "shortcuts": [
     {
       "name": "Beat Tools",
