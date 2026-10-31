@@ -1,6 +1,7 @@
 /* ============================================================
-   aurora.js — "Milky Way" cinematic space theme behaviour
-   Nova — starfield overhaul with varied twinkle
+   aurora.js — "Milky Way" cinematic deep-space theme behaviour
+   Nova v2: milky way band, nebula, galaxy, layered stars, cosmic dust.
+   Meteor + click-explosion logic is kept byte-for-byte from v1.
    ============================================================ */
 (function () {
   'use strict';
@@ -94,19 +95,31 @@
   syncTheme();
 
   /* ============================================================
-     STARS — 3 depth layers with varied size, opacity, twinkle
+     STARS — 3 depth layers (box-shadow dots) + clustered along the
+     Milky Way band. Selector / var names (--sa --sb --delay-a --delay-b)
+     are unchanged so existing markup keeps working.
+     [selector, count, parallax factor, glow blur px, max spread px, cluster on band]
      ============================================================ */
   var STAR_LAYERS = [
-    ['.stars-back', 120, 0.03],   // More stars, smaller, dimmer
-    ['.stars-mid', 70, 0.07],     // Medium density
-    ['.stars-front', 30, 0.14]    // Fewer but brighter focal points
+    ['.stars-back', 150, 0.03, 0, 0.45, true],   // tiny, dense, dim
+    ['.stars-mid', 40, 0.07, 3, 0.5, true],      // medium, soft glow
+    ['.stars-front', 14, 0.14, 7, 0.8, false]    // few bright focal stars
   ];
+  var STAR_TINTS = [
+    'var(--star-color, #e8eeff)',  // default (theme-controlled)
+    'rgba(160,200,255,.95)',       // blue-white
+    'rgba(200,170,255,.9)',        // violet
+    'rgba(255,226,200,.9)'         // warm
+  ];
+  var BAND_TAN = Math.tan(28 * Math.PI / 180);  // must match .aur-milkyway rotate(-28deg)
   var starEls = [];
 
   function rnd(min, max) { return min + Math.random() * (max - min); }
+  function gauss() { return (Math.random() + Math.random() + Math.random() - 1.5) * 2; }
 
   function buildStars() {
     var k = intensity();
+    var W = window.innerWidth, H = window.innerHeight;
     starEls = [];
     STAR_LAYERS.forEach(function (l) {
       var el = bg.querySelector(l[0]);
@@ -114,27 +127,126 @@
       var n = Math.max(10, Math.round(l[1] * k));
       var yMax = 100 + l[2] * 100 + 2;
       var a = [], b = [];
-      
+
       for (var i = 0; i < n; i++) {
-        // Varied opacity for natural look
-        var opacity = rnd(0.4, 1).toFixed(2);
-        var s = rnd(0, 100).toFixed(2) + 'vw ' + 
-                rnd(0, yMax).toFixed(2) + 'vh 0 ' + 
-                rnd(0, 0.5).toFixed(1) + 'px var(--star-color)';
-        
-        // Split between two pseudo-elements for staggered twinkle
+        var x = rnd(0, 100), y;
+        // ~half of the stars gather around the diagonal Milky Way band
+        if (l[5] && Math.random() < 0.5) {
+          y = 50 - ((x - 50) * W / 100 * BAND_TAN) / (H / 100) + gauss() * 13;
+          if (y < 0 || y > yMax) y = rnd(0, yMax);
+        } else {
+          y = rnd(0, yMax);
+        }
+        var color = (l[3] > 0 && Math.random() < 0.45)
+          ? STAR_TINTS[1 + Math.floor(rnd(0, 3))]
+          : STAR_TINTS[0];
+        var s = x.toFixed(2) + 'vw ' + y.toFixed(2) + 'vh ' +
+                (l[3] ? (l[3] * rnd(0.6, 1.2)).toFixed(1) : '0') + 'px ' +
+                rnd(0, l[4]).toFixed(2) + 'px ' + color;
+
+        // Split between two pseudo-elements (slow "breathing" groups)
         (i % 2 ? a : b).push(s);
       }
-      
+
       el.style.setProperty('--sa', a.join(','));
       el.style.setProperty('--sb', b.join(','));
-      
-      // Random negative delays so stars don't twinkle in sync
+
+      // Random negative delays + durations so groups never pulse in sync
       el.style.setProperty('--delay-a', '-' + rnd(0, 15).toFixed(1) + 's');
       el.style.setProperty('--delay-b', '-' + rnd(0, 15).toFixed(1) + 's');
-      
+      el.style.setProperty('--dur-a', rnd(8, 14).toFixed(1) + 's');
+      el.style.setProperty('--dur-b', rnd(10, 18).toFixed(1) + 's');
+
       starEls.push({ el: el, f: l[2] });
     });
+  }
+
+  /* ============================================================
+     DEEP SPACE LAYERS (NEW) — nebula, milky way, galaxy, mist,
+     cosmic dust and individually twinkling far stars.
+     Built once into #aurora-bg; ~40 light DOM nodes, CSS-animated.
+     Three wrappers get the (subtle) scroll parallax.
+     ============================================================ */
+  var spaceEl = null;
+  var TW_COLORS = ['#ffffff', '#cfe0ff', '#a8c8ff', '#d9c4ff', '#ffe4cc', '#9fe9ff'];
+  var DUST_COLORS = [
+    'rgba(120,180,255,.9)', 'rgba(90,220,255,.85)',
+    'rgba(167,139,250,.9)', 'rgba(255,140,200,.7)'
+  ];
+
+  function mk(cls, parent) {
+    var d = document.createElement('div');
+    d.className = cls;
+    if (parent) parent.appendChild(d);
+    return d;
+  }
+
+  function pick(arr) { return arr[Math.floor(Math.random() * arr.length)]; }
+
+  // Relocate a dust mote while it is invisible (called on each iteration)
+  function placeDust(d) {
+    d.style.left = rnd(2, 98).toFixed(1) + '%';
+    d.style.top = rnd(2, 98).toFixed(1) + '%';
+    d.style.setProperty('--dx', rnd(-40, 40).toFixed(0) + 'px');
+    d.style.setProperty('--dy', rnd(-34, 12).toFixed(0) + 'px');
+  }
+
+  function buildSpace() {
+    var k = intensity(), i, d;
+    if (spaceEl && spaceEl.parentNode) spaceEl.parentNode.removeChild(spaceEl);
+
+    spaceEl = mk('aur-space');
+    spaceEl.setAttribute('aria-hidden', 'true');
+
+    // far layer: milky way band + galaxy (slowest parallax)
+    var far = mk('aur-par aur-par-far', spaceEl);
+    mk('aur-milkyway', far);
+    mk('aur-milkydust', far);
+    mk('aur-galaxy', far);
+
+    // near layer: nebula clouds, mist, dust
+    var near = mk('aur-par aur-par-near', spaceEl);
+    mk('aur-neb aur-neb-1', near);
+    mk('aur-neb aur-neb-2', near);
+    mk('aur-neb aur-neb-3', near);
+    mk('aur-mist aur-mist-1', near);
+    mk('aur-mist aur-mist-2', near);
+
+    var nDust = Math.max(5, Math.round(16 * k));
+    for (i = 0; i < nDust; i++) {
+      d = mk('aur-dust', near);
+      placeDust(d);
+      d.style.setProperty('--s', rnd(2, 5).toFixed(1) + 'px');
+      d.style.setProperty('--c', pick(DUST_COLORS));
+      d.style.setProperty('--peak', rnd(0.3, 0.75).toFixed(2));
+      d.style.setProperty('--dur', rnd(16, 34).toFixed(1) + 's');
+      d.style.setProperty('--delay', '-' + rnd(0, 30).toFixed(1) + 's');
+      d.addEventListener('animationiteration', (function (el) {
+        return function () { placeDust(el); };
+      })(d));
+    }
+
+    // glow layer: far stars that twinkle / fade at their own pace
+    var glow = mk('aur-par aur-par-stars', spaceEl);
+    var nTw = Math.max(6, Math.round(18 * k));
+    for (i = 0; i < nTw; i++) {
+      d = mk('aur-tw' + (i < 3 && k >= 0.7 ? ' big' : ''), glow);
+      d.style.left = rnd(1, 99).toFixed(1) + '%';
+      d.style.top = rnd(1, 99).toFixed(1) + '%';
+      d.style.setProperty('--s', (i < 3 ? rnd(2.6, 3.4) : rnd(1.4, 2.6)).toFixed(1) + 'px');
+      d.style.setProperty('--c', pick(TW_COLORS));
+      // mix of quick twinkles (4–9s) and slow fades (14–26s)
+      d.style.setProperty('--dur', (Math.random() < 0.65 ? rnd(4, 9) : rnd(14, 26)).toFixed(1) + 's');
+      d.style.setProperty('--delay', '-' + rnd(0, 26).toFixed(1) + 's');
+    }
+
+    mk('aur-grain', spaceEl);
+    mk('aur-vignette', spaceEl);
+
+    bg.insertBefore(spaceEl, bg.firstChild);
+
+    // parallax factors: farther = slower (consumed by applyParallax below)
+    starEls.push({ el: far, f: 0.02 }, { el: near, f: 0.05 }, { el: glow, f: 0.09 });
   }
 
   /* ---------- parallax ---------- */
@@ -484,6 +596,7 @@
     changeRaf = requestAnimationFrame(function () {
       changeRaf = 0;
       buildStars();
+      buildSpace();
       recalcScrollMax();
       resetParallax();
       queueParallax();
@@ -510,6 +623,7 @@
   recalcScrollMax();
   sizeCanvas();
   buildStars();
+  buildSpace();
   restSpot();
   queueParallax();
   scheduleMeteor(true);
