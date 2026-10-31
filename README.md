@@ -34,7 +34,7 @@
 
 <p>
   <a href="https://github.com/haiere/haiere.github.io/releases">
-    <img src="https://img.shields.io/badge/version-.12-B4788C?style=flat-square" alt="Version" />
+    <img src="https://img.shields.io/badge/version-.Nova-B4788C?style=flat-square" alt="Version" />
   </a>
   <a href="https://github.com/haiere/haiere.github.io/commits">
     <img src="https://img.shields.io/github/last-commit/haiere/haiere.github.io?style=flat-square&color=7FD8CB" alt="Last Commit" />
