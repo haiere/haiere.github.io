@@ -1333,7 +1333,7 @@ pre .p { color: var(--accent-ink); }
       </svg>
       <span>
         <span class="brand-name">Haiere</span>
-        <small class="brand-sub">Style guide · Nova version</small>
+        <small class="brand-sub">Style guide · Nova v1.0.1 version</small>
       </span>
     </a>
 
@@ -1357,7 +1357,7 @@ pre .p { color: var(--accent-ink); }
      ============================================================ -->
 <section class="masthead">
   <div class="shell">
-    <span class="eyebrow">Design system · Nova version</span>
+    <span class="eyebrow">Design system · Nova v1.0.1 version</span>
 
     <h1>
       <span class="line">Aurora Navy <span class="slash">/</span></span>
@@ -1371,7 +1371,7 @@ pre .p { color: var(--accent-ink); }
     </p>
 
     <dl class="colophon">
-      <div><dt>Version</dt><dd>Nova version</dd></div>
+      <div><dt>Version</dt><dd>Nova v1.0.1 version</dd></div>
       <div><dt>Modes</dt><dd>Dark · Light</dd></div>
       <div><dt>Families</dt><dd>Sora · Inter · JetBrains&nbsp;Mono</dd></div>
       <div><dt>Sources</dt><dd>style.css · icons.js</dd></div>
@@ -1572,7 +1572,7 @@ pre .p { color: var(--accent-ink); }
         <div class="type-row">
           <span class="type-label"><b>--fs-micro</b><br>10.5px · 0.14em<br>Mono 500</span>
           <p class="specimen mono" style="font-weight: 500; letter-spacing: .14em; color: var(--text-faint);">
-            Last update: 2026-10-08 · Nova version
+            Last update: 2026-10-31 · Nova v1.0.1 version
           </p>
         </div>
 
@@ -1803,7 +1803,7 @@ pre .p { color: var(--accent-ink); }
           <div class="specimen-body is-block">
             <div style="padding: 1.1rem 1.2rem; border-radius: var(--radius-card); border: 1px solid var(--glass-border); background: var(--glass-bg); backdrop-filter: blur(var(--glass-blur)) saturate(1.4); -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(1.4); box-shadow: var(--glass-shadow);">
               <p style="font-size: var(--fs-small); color: var(--text-soft); line-height: 1.6;">
-                Reserved for surfaces that sit over imagery or the aurora mesh. Flat panels use
+                Reserved for surfaces that sit over imagery or the Milky Way sky. Flat panels use
                 <code>--surface-solid</code> and a hairline instead.
               </p>
             </div>
@@ -2005,12 +2005,12 @@ pre .p { color: var(--accent-ink); }
         <li><strong>Reveal on scroll</strong> uses a single shared <code>IntersectionObserver</code> — 24px rise on <code>cubic-bezier(.22, 1, .36, 1)</code>, one-shot per element, then it unobserves. Target class is <code>.is-visible</code>; the base state is <code>.reveal</code>.</li>
         <li><strong>will-change is released.</strong> <code>.reveal</code> opts into <code>will-change: opacity, transform</code>; <code>.is-visible</code> hands it back with <code>will-change: auto</code>, so the compositor memory is not held forever.</li>
         <li><strong>No layout-shifting animation.</strong> Only <code>transform</code> and <code>opacity</code> animate. Width, height, top, left, and margin are never transitioned.</li>
-        <li><strong>Reduced motion.</strong> All transitions collapse to <code>0.001ms</code> under <code>prefers-reduced-motion</code>, and <code>scroll-behavior</code> reverts to <code>auto</code>. Hero spotlight, aurora drift, mesh blobs, and ticker all freeze.</li>
-        <li><strong>Perf tiers.</strong> <code>&lt;html data-perf&gt;</code> gates decoration. <code>eco</code> disables aurora, mesh, and backdrop-filter. <code>normal</code> keeps static aurora plus twinkling stars, no mousemove-heavy effects. <code>premium</code> enables drift, spotlight, and tilt/magnetic.</li>
+        <li><strong>Reduced motion.</strong> All transitions collapse to <code>0.001ms</code> under <code>prefers-reduced-motion</code>, and <code>scroll-behavior</code> reverts to <code>auto</code>. Hero spotlight, nebula drift, star twinkle, cosmic dust, galaxy spin, and ticker all freeze, and meteors stop spawning. The click explosion shrinks to a single ring.</li>
+        <li><strong>Perf tiers.</strong> <code>&lt;html data-perf&gt;</code> gates decoration. <code>eco</code> disables the sky entirely and keeps only the static base gradient. <code>normal</code> runs the Milky Way, nebula, and star layers with slow drift and twinkle, plus occasional meteors, with no mousemove-heavy effects. <code>premium</code> enables drift, spotlight, and tilt/magnetic.</li>
         <li><strong>Touch targets</strong> are 44px minimum — every button, link, switch, and chip.</li>
         <li><strong>Focus rings</strong> are a 3px accent outline with a 3px offset. Never removed, only restyled — and always <code>:focus-visible</code>, never bare <code>:focus</code>.</li>
         <li><strong>Overlays</strong> (drawer, docs modal, cookie modal) trap focus, restore it on close, and reference-count the body scroll lock so stacked overlays don’t unlock early.</li>
-        <li><strong>Decorative layers</strong> — aurora mesh, grain, cursor halo — are <code>aria-hidden</code> and pointer-transparent.</li>
+        <li><strong>Decorative layers</strong> — Milky Way, nebula, stars, grain, meteors, cursor halo — are <code>aria-hidden</code> and pointer-transparent. Sections and the hero have transparent backgrounds so the sky shows through; cards and other surfaces keep their own fill.</li>
         <li><strong>Contrast floors.</strong> Body text ≥ 4.5:1 · large text ≥ 3:1 · UI borders and focus indicators ≥ 3:1, in both themes.</li>
         <li><strong>On-accent text flips.</strong> Dark mode uses <code>#0A192F</code> on cyan because the accent is far too bright for white — light mode deepens the fill instead.</li>
         <li><strong>Menu button label</strong> toggles between <em>Open menu</em> and <em>Close menu</em> in step with the drawer’s <code>aria-expanded</code>.</li>
@@ -2070,8 +2070,8 @@ pre .p { color: var(--accent-ink); }
           <figcaption>Static version <em>no live clock</em></figcaption>
           <div class="specimen-body is-block">
             <p style="color: var(--text-soft); font-size: var(--fs-small); line-height: 1.7;">
-              The footer version (<code>Nova version</code>) and last-update date
-              (<code>2026-10-08</code>) are <strong>hardcoded</strong>. No <code>new Date()</code>,
+              The footer version (<code>Nova v1.0.1 version</code>) and last-update date
+              (<code>2026-10-31</code>) are <strong>hardcoded</strong>. No <code>new Date()</code>,
               no <code>setInterval</code>, no live clock. The values change only when the site is
               actually deployed with a new version.
             </p>
@@ -2135,8 +2135,8 @@ pre .p { color: var(--accent-ink); }
 
 <span class="c">/* ── Versioning ─────────────────────────────────────── */</span>
 <span class="c">/* Static, never derived at runtime.                    */</span>
-version:     <span class="p">Nova version</span>;
-lastUpdate:  <span class="p">2026-10-08</span>;</code></pre>
+version:     <span class="p">Nova v1.0.1 version</span>;
+lastUpdate:  <span class="p">2026-10-31</span>;</code></pre>
     </div>
   </div>
 </section>
@@ -2145,7 +2145,7 @@ lastUpdate:  <span class="p">2026-10-08</span>;</code></pre>
 
 <footer class="site-footer">
   <div class="shell footer-inner">
-    <p>© <span id="year">2026</span> Hajir Muhaajir · Style guide Nova version</p>
+    <p>© <span id="year">2026</span> Hajir Muhaajir · Style guide Nova v1.0.1 version</p>
     <nav><a href="index.html">Back to hajir.is-a.dev</a></nav>
   </div>
 </footer>

@@ -1,9 +1,9 @@
 /* ============================================================
-   style.css — Haiere Nova
+   style.css Nova v1.0.1 — Haiere
    Modern, minimal, branded. English-first, dark-first with full
    light parity.
 
-   Nova changes (perf pass — blur/compositing cost):
+   Nova v1.0.1 changes (perf pass — blur/compositing cost):
    - Nav backdrop-filter reduced to 14px on premium; removed
      entirely on mobile / coarse pointer / normal / eco tiers.
      Fixed header repaints every scroll frame; blur there was
@@ -140,10 +140,6 @@ svg[data-icon] {
 }
 
 /* ---------- GLASS ---------- */
-/* v2026.10.08.7 — backdrop-filter REMOVED from card/pill/nav.
-   Base backgrounds are already semi-opaque; visual delta is
-   minimal while scroll-time compositing cost drops sharply.
-   #nav keeps its own blur via its dedicated `#nav` rule below. */
 .glass-card, .glass-pill, .glass-nav {
   transition: background 0.5s ease, border-color 0.5s ease, box-shadow 0.5s ease, transform 0.5s var(--ease-spring);
 }
@@ -527,12 +523,12 @@ svg[data-icon] {
 
 /* ---------- SECTIONS ---------- */
 .section { position: relative; padding: 4.5rem 1.25rem; }
-.section--soft   { background: linear-gradient(180deg, var(--bg-page) 0%, var(--bg-page-2) 100%); }
-.section--gradient { background: linear-gradient(180deg, var(--bg-page-2) 0%, var(--bg-page) 100%); }
-.section--narrow { padding: 3rem 1.25rem; background: var(--bg-page); }
-.dark .section--soft   { background: linear-gradient(180deg, #0A192F 0%, #0B1E33 100%); }
-.dark .section--gradient { background: linear-gradient(180deg, #0B1E33 0%, #0A192F 100%); }
-.dark .section--narrow { background: #0A192F; }
+.section--soft   { background: transparent; }
+.section--gradient { background: transparent; }
+.section--narrow { padding: 3rem 1.25rem; background: transparent; }
+.dark .section--soft   { background: transparent; }
+.dark .section--gradient { background: transparent; }
+.dark .section--narrow { background: transparent; }
 
 .section-inner { max-width: 72rem; margin: 0 auto; }
 .section-inner--mid { max-width: 56rem; }
@@ -585,9 +581,9 @@ svg[data-icon] {
   text-align: center;
   position: relative;
   overflow: hidden;
-  background: var(--bg-page);
+  background: transparent;
 }
-.dark #hero { background: var(--bg-page); }
+.dark #hero { background: transparent; }
 
 .hero-spotlight {
   position: absolute; inset: 0;
@@ -598,7 +594,7 @@ svg[data-icon] {
 .hero-spotlight.active { opacity: 1; }
 .hero-fade {
   position: absolute; inset-inline: 0; bottom: 0; height: 10rem;
-  background: linear-gradient(to top, var(--bg-page) 0%, transparent 100%);
+  background: transparent;
   pointer-events: none;
 }
 
@@ -2564,7 +2560,7 @@ html:not(.js) .reveal {
 }
 
 /* ============================================================
-   v2026.10.08.7 — Pause continuous animations when section
+   Pause continuous animations when section
    off-screen (toggled by IntersectionObserver in script.js §5b).
    ============================================================ */
 .anim-paused .mesh-blob,
