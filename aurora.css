@@ -1,377 +1,403 @@
 /* ============================================================
-   aurora.css — "Milky Way" cinematic space theme
-   Nova — Milky Way + starfield overhaul
-
-   Tiers (set on <html data-perf>):
-     eco     : low-end / reduced-motion / save-data. No decoration.
-     normal  : milky-way (static on mobile) + stars (twinkle) + rare meteors.
-     premium : full — milky-way drift, meteors, spotlight, cursor FX.
-
-   Contract with aurora.js:
-     - JS sets --sa / --sb (box-shadow lists) on .stars-* elements.
-     - JS sets --dist / --dur on .meteor elements when spawning.
-     - JS drives .spotlight transform (translate3d).
-     - JS drives #fx canvas drawing (premium only).
-
-   Loads AFTER style.css. Scoped to html[data-theme].
+   aurora.css Nova v2— "Milky Way" cinematic deep-space background
+   Layer order (back → front), all decorative, pointer-events: none
+     #aurora-bg  z0   base gradient (also the static fallback for eco tier)
+       .aur-space z0  milky way, galaxy, nebula, mist, dust, glow stars, grain
+       .stars-*   z1  box-shadow star layers (JS fills --sa / --sb)
+       .meteors   z3  shooting stars  (logic untouched in aurora.js)
+     #fx        z4  click / tap explosion canvas
+     page content z2+ (see "content stacking" below)
    ============================================================ */
 
-/* ---------- Animatable theme colours (smooth day/night crossfade) ---------- */
-@property --milky-core { syntax: '<color>'; inherits: true; initial-value: transparent; }
-@property --milky-glow-1 { syntax: '<color>'; inherits: true; initial-value: transparent; }
-@property --milky-glow-2 { syntax: '<color>'; inherits: true; initial-value: transparent; }
-@property --milky-glow-3 { syntax: '<color>'; inherits: true; initial-value: transparent; }
-@property --grid-color { syntax: '<color>'; inherits: true; initial-value: transparent; }
-@property --spotlight-color-start { syntax: '<color>'; inherits: true; initial-value: transparent; }
-@property --spotlight-color-mid { syntax: '<color>'; inherits: true; initial-value: transparent; }
-@property --star-color { syntax: '<color>'; inherits: true; initial-value: transparent; }
-@property --meteor-color { syntax: '<color>'; inherits: true; initial-value: transparent; }
-
-/* ---------- Palette ---------- */
-:root {
-  /* Night — deep cinematic sky */
-  --bg-night: #020617;
-  --milky-core-night: rgba(180, 200, 255, 0.08);
-  --milky-glow-1-night: rgba(100, 140, 220, 0.12);
-  --milky-glow-2-night: rgba(140, 100, 200, 0.09);
-  --milky-glow-3-night: rgba(60, 120, 180, 0.07);
-  --grid-color-night: rgba(100, 160, 255, 0.04);
-  --spotlight-color-start-night: rgba(100, 160, 255, 0.10);
-  --spotlight-color-mid-night: rgba(100, 160, 255, 0.04);
-  --star-color-night: rgba(220, 230, 255, 0.92);
-  --meteor-color-night: rgba(200, 225, 255, 0.95);
-  --fx-rgb-1-night: 120, 180, 255;
-  --fx-rgb-2-night: 167, 139, 250;
-
-  /* Day — soft dawn sky */
-  --bg-day: #fff0f5;
-  --milky-core-day: rgba(255, 200, 220, 0.06);
-  --milky-glow-1-day: rgba(255, 150, 180, 0.10);
-  --milky-glow-2-day: rgba(220, 160, 200, 0.08);
-  --milky-glow-3-day: rgba(200, 180, 220, 0.06);
-  --grid-color-day: rgba(255, 105, 180, 0.04);
-  --spotlight-color-start-day: rgba(255, 105, 180, 0.10);
-  --spotlight-color-mid-day: rgba(255, 182, 193, 0.04);
-  --star-color-day: rgba(232, 121, 160, 0.85);
-  --meteor-color-day: rgba(226, 92, 145, 0.9);
-  --fx-rgb-1-day: 255, 105, 180;
-  --fx-rgb-2-day: 236, 130, 190;
+/* ---------- palette / tokens ---------- */
+#aurora-bg {
+  --aur-void:   #020617;               /* deep midnight navy */
+  --aur-violet: 120, 70, 220;
+  --aur-blue:   60, 110, 255;
+  --aur-cyan:   40, 200, 255;
+  --aur-pink:   255, 100, 180;
 }
 
-html[data-theme="night"] {
-  --bg-current: var(--bg-night);
-  --milky-core: var(--milky-core-night);
-  --milky-glow-1: var(--milky-glow-1-night);
-  --milky-glow-2: var(--milky-glow-2-night);
-  --milky-glow-3: var(--milky-glow-3-night);
-  --grid-color: var(--grid-color-night);
-  --spotlight-color-start: var(--spotlight-color-start-night);
-  --spotlight-color-mid: var(--spotlight-color-mid-night);
-  --star-color: var(--star-color-night);
-  --meteor-color: var(--meteor-color-night);
-  --fx-rgb-1: var(--fx-rgb-1-night);
-  --fx-rgb-2: var(--fx-rgb-2-night);
+/* Explosion colours read by aurora.js (site themes may override these) */
+:where(html) {
+  --fx-rgb-1: 120, 180, 255;
+  --fx-rgb-2: 167, 139, 250;
 }
 
-html[data-theme="day"] {
-  --bg-current: var(--bg-day);
-  --milky-core: var(--milky-core-day);
-  --milky-glow-1: var(--milky-glow-1-day);
-  --milky-glow-2: var(--milky-glow-2-day);
-  --milky-glow-3: var(--milky-glow-3-day);
-  --grid-color: var(--grid-color-day);
-  --spotlight-color-start: var(--spotlight-color-start-day);
-  --spotlight-color-mid: var(--spotlight-color-mid-day);
-  --star-color: var(--star-color-day);
-  --meteor-color: var(--meteor-color-day);
-  --fx-rgb-1: var(--fx-rgb-1-day);
-  --fx-rgb-2: var(--fx-rgb-2-day);
-}
-
-html[data-theme] {
-  transition:
-    --milky-core 0.6s ease, --milky-glow-1 0.6s ease, --milky-glow-2 0.6s ease, --milky-glow-3 0.6s ease,
-    --grid-color 0.6s ease, --spotlight-color-start 0.6s ease, --spotlight-color-mid 0.6s ease,
-    --star-color 0.6s ease, --meteor-color 0.6s ease;
-}
-
-/* ---------- Page-level background only ---------- */
-html[data-theme] body { background: var(--bg-current); }
-
-html[data-theme] #hero,
-html[data-theme] .section--soft,
-html[data-theme] .section--gradient,
-html[data-theme] .section--narrow { background: transparent; }
-
-html[data-theme] .hero-fade { display: none; }
-
-html[data-theme] body > section,
-html[data-theme] body > footer { position: relative; z-index: 1; }
-
-html[data-theme] .grain-overlay { z-index: 2; }
-
-/* ---------- Space layers ---------- */
-#aurora-bg, .spotlight, #fx { pointer-events: none; }
-html:not([data-theme]) #aurora-bg,
-html:not([data-theme]) .spotlight,
-html:not([data-theme]) #fx { display: none; }
-
-#aurora-bg { position: fixed; inset: 0; z-index: 0; }
-
-/* ============================================================
-   MILKY WAY — diagonal band with core glow
-   Layer 1: Main diagonal band (linear-gradient)
-   Layer 2-4: Radial glows for depth and color variation
-   ============================================================ */
-.aurora {
-  position: fixed;
-  inset: -20%;
-  z-index: 0;
-  pointer-events: none;
-  background:
-    /* Core bright center — blue-white */
-    radial-gradient(ellipse 60% 25% at 50% 50%, var(--milky-core) 0%, transparent 70%),
-    /* Upper glow — purple tint */
-    radial-gradient(ellipse 80% 35% at 35% 40%, var(--milky-glow-2) 0%, transparent 65%),
-    /* Lower glow — cyan-blue tint */
-    radial-gradient(ellipse 75% 30% at 65% 60%, var(--milky-glow-3) 0%, transparent 68%),
-    /* Main diagonal band — stretches across viewport */
-    linear-gradient(
-      135deg,
-      transparent 0%,
-      var(--milky-glow-1) 25%,
-      var(--milky-core) 50%,
-      var(--milky-glow-1) 75%,
-      transparent 100%
-    );
-  filter: blur(60px);
-  opacity: 0.85;
-  transform: rotate(-8deg) scale(1.15);
-  animation: milky-drift 120s ease-in-out infinite alternate;
-  will-change: transform, opacity;
-}
-
-/* Very slow, subtle movement — opacity pulse + tiny transform shift */
-@keyframes milky-drift {
-  0% {
-    opacity: 0.75;
-    transform: rotate(-8deg) scale(1.15) translate3d(-1%, -0.5%, 0);
-  }
-  50% {
-    opacity: 0.9;
-  }
-  100% {
-    opacity: 0.8;
-    transform: rotate(-8deg) scale(1.18) translate3d(1%, 0.5%, 0);
-  }
-}
-
-/* ============================================================
-   STARFIELD — 3 depth layers with box-shadow
-   Stars are generated by aurora.js via --sa / --sb custom props.
-   Each layer has different size, opacity, and twinkle speed.
-   ============================================================ */
-.stars { position: fixed; inset: 0; z-index: 0; pointer-events: none; }
-
-.stars::before,
-.stars::after {
-  content: "";
-  position: absolute;
-  top: 0; left: 0;
-  width: var(--star-size, 1px);
-  height: var(--star-size, 1px);
-  border-radius: 50%;
-  color: var(--star-color, #ffffff);
-  will-change: opacity;
-}
-
-/* Twinkle animations with varied durations */
-.stars::before {
-  box-shadow: var(--sa, none);
-  animation:
-    star-twinkle-1 var(--tw-a, 7s) ease-in-out infinite,
-    star-drift var(--dr, 180s) ease-in-out infinite alternate;
-  animation-delay: var(--delay-a, 0s);
-}
-
-.stars::after {
-  box-shadow: var(--sb, none);
-  animation:
-    star-twinkle-2 var(--tw-b, 11s) ease-in-out infinite,
-    star-drift var(--dr, 180s) ease-in-out infinite alternate;
-  animation-delay: var(--delay-b, -3s);
-}
-
-/* Back layer — small, dim, slow twinkle */
-.stars-back {
-  --star-size: 0.8px;
-  --tw-a: 15s;
-  --tw-b: 18s;
-  --dr: 240s;
-  --drift: 8px;
-  --delay-a: -2s;
-  --delay-b: -7s;
-}
-
-/* Mid layer — medium size, moderate opacity */
-.stars-mid {
-  --star-size: 1.4px;
-  --tw-a: 7s;
-  --tw-b: 11s;
-  --dr: 160s;
-  --drift: 18px;
-  --delay-a: -4s;
-  --delay-b: -9s;
-}
-
-/* Front layer — larger, brighter, faster twinkle */
-.stars-front {
-  --star-size: 2.2px;
-  --tw-a: 4s;
-  --tw-b: 5.5s;
-  --dr: 100s;
-  --drift: 32px;
-  --delay-a: -1s;
-  --delay-b: -6s;
-}
-
-/* Twinkle keyframes — subtle opacity oscillation */
-@keyframes star-twinkle-1 {
-  0%, 100% { opacity: 0.3; }
-  50% { opacity: 0.95; }
-}
-
-@keyframes star-twinkle-2 {
-  0%, 100% { opacity: 0.4; }
-  30% { opacity: 0.85; }
-  70% { opacity: 1; }
-}
-
-@keyframes star-drift {
-  from { transform: translate3d(0, 0, 0); }
-  to { transform: translate3d(calc(var(--drift, 10px) * -0.5), var(--drift, 10px), 0); }
-}
-
-/* ============================================================
-   METEORS — preserved exactly as original
-   Shooting stars with CSS keyframes, JS spawns/removes them.
-   ============================================================ */
-.meteors { position: fixed; inset: 0; z-index: 1; pointer-events: none; overflow: hidden; }
-
-.meteor {
-  position: absolute;
-  width: 140px;
-  height: 2px;
-  border-radius: 2px;
-  opacity: 0;
-  background: linear-gradient(90deg, var(--meteor-color), transparent);
-  transform: translate3d(0, 0, 0) rotate(-45deg);
-  transform-origin: left center;
-  animation: meteor-fall var(--dur, 1.4s) cubic-bezier(0.3, 0.1, 0.6, 1) forwards;
-  will-change: transform, opacity;
-}
-
-.meteor::before {
-  content: "";
-  position: absolute;
-  left: -1px; top: 50%;
-  width: 4px; height: 4px;
-  margin-top: -2px;
-  border-radius: 50%;
-  background: var(--meteor-color);
-  box-shadow: 0 0 8px 2px var(--meteor-color);
-}
-
-@keyframes meteor-fall {
-  0% { opacity: 0; transform: translate3d(0, 0, 0) rotate(-45deg); }
-  12% { opacity: 1; }
-  70% { opacity: 1; }
-  100% { opacity: 0; transform: translate3d(calc(var(--dist, 600px) * -1), var(--dist, 600px), 0) rotate(-45deg); }
-}
-
-/* Spotlight */
-.spotlight {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 900px;
-  height: 900px;
-  margin: -450px 0 0 -450px;
-  border-radius: 50%;
-  z-index: 0;
-  pointer-events: none;
-  background: radial-gradient(circle,
-    var(--spotlight-color-start) 0%,
-    var(--spotlight-color-mid) 38%,
-    transparent 68%);
-  will-change: transform;
-}
-
-@media (max-width: 768px) {
-  .spotlight { width: 560px; height: 560px; margin: -280px 0 0 -280px; }
-}
-
-/* FX canvas */
-#fx {
+/* ---------- base canvas of the sky ---------- */
+#aurora-bg {
   position: fixed;
   inset: 0;
   z-index: 0;
-  display: block;
-  width: 100%;
-  height: 100%;
+  overflow: hidden;
+  pointer-events: none;
+  background:
+    radial-gradient(120% 80% at 16% 6%,  rgba(var(--aur-violet), .30), transparent 60%),
+    radial-gradient(90% 70%  at 88% 94%, rgba(0, 110, 170, .20),       transparent 62%),
+    radial-gradient(70% 55%  at 72% 22%, rgba(var(--aur-pink), .07),   transparent 65%),
+    linear-gradient(180deg, #03051a 0%, var(--aur-void) 48%, #080618 100%);
+}
+
+/* Dark-first: night is the designed look. Day gets a soft, pale variant. */
+html[data-theme="day"] #aurora-bg {
+  background:
+    radial-gradient(120% 80% at 16% 6%,  rgba(150, 130, 255, .22), transparent 60%),
+    radial-gradient(90% 70%  at 88% 94%, rgba(90, 190, 255, .18),  transparent 62%),
+    linear-gradient(180deg, #f3f5ff 0%, #eaeefc 100%);
+}
+
+/* ---------- generated space container (built by aurora.js) ---------- */
+#aurora-bg .aur-space {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 2.2s ease;            /* gentle fade-in on load */
+}
+html[data-aurora="ready"] #aurora-bg .aur-space { opacity: 1; }
+html[data-aurora="ready"][data-theme="day"] #aurora-bg .aur-space { opacity: .4; }
+
+#aurora-bg .aur-space * { pointer-events: none; }
+
+/* parallax wrappers (JS sets inline translate on scroll) — taller than the
+   viewport so scrolling never reveals an empty bottom edge */
+#aurora-bg .aur-par {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 116vh;
+  will-change: transform;
+}
+
+/* ---------- MILKY WAY band ---------- */
+#aurora-bg .aur-milkyway,
+#aurora-bg .aur-milkydust {
+  position: absolute;
+  left: 50%; top: 50%;
+  width: 140vmax; height: 40vmax;
+  margin: -20vmax 0 0 -70vmax;
+  transform: rotate(-28deg);               /* keep in sync with BAND_TAN in JS */
+  -webkit-mask-image: radial-gradient(closest-side, #000 25%, transparent 100%);
+          mask-image: radial-gradient(closest-side, #000 25%, transparent 100%);
+}
+
+#aurora-bg .aur-milkyway {
+  background:
+    radial-gradient(closest-side, rgba(196, 210, 255, .20), rgba(120, 100, 230, .13) 38%, rgba(40, 60, 160, .06) 66%, transparent 100%),
+    conic-gradient(from 90deg at 50% 50%,
+      rgba(var(--aur-blue), .10), rgba(var(--aur-violet), .13),
+      rgba(var(--aur-cyan), .08), rgba(var(--aur-pink), .06),
+      rgba(var(--aur-blue), .10));
+  animation: aur-band-breathe 70s ease-in-out infinite alternate;
+}
+
+/* dark dust lane through the middle of the band (the "rift") */
+#aurora-bg .aur-milkyway::after {
+  content: "";
+  position: absolute;
+  left: 6%; right: 6%; top: 40%; bottom: 38%;
+  background: radial-gradient(closest-side, rgba(2, 4, 16, .55), transparent 100%);
+}
+
+/* fine star-dust texture along the band: 4 tiles with coprime sizes so the
+   pattern never visibly repeats */
+#aurora-bg .aur-milkydust {
+  opacity: .6;
+  background-image:
+    radial-gradient(1px   1px   at 12px 18px,  rgba(255, 255, 255, .55), transparent 100%),
+    radial-gradient(1px   1px   at 63px 71px,  rgba(190, 210, 255, .50), transparent 100%),
+    radial-gradient(1.2px 1.2px at 118px 40px, rgba(255, 255, 255, .40), transparent 100%),
+    radial-gradient(1px   1px   at 41px 103px, rgba(220, 200, 255, .45), transparent 100%);
+  background-size: 137px 113px, 89px 127px, 173px 149px, 211px 97px;
+}
+
+/* ---------- GALAXY (tilted spiral disc, very slow spin) ---------- */
+#aurora-bg .aur-galaxy {
+  position: absolute;
+  right: -6vmax; top: 6vh;
+  width: 40vmax; height: 40vmax;
+  border-radius: 50%;
+  opacity: .55;
+  background:
+    conic-gradient(from 0deg,
+      transparent 0 8%, rgba(120, 150, 255, .22) 17%, transparent 30%,
+      transparent 50%,  rgba(190, 110, 255, .18) 62%, transparent 75%, transparent 100%),
+    radial-gradient(circle, rgba(255, 236, 214, .30) 0, rgba(170, 150, 255, .12) 14%, transparent 46%);
+  -webkit-mask-image: radial-gradient(circle, #000 0, #000 30%, transparent 68%);
+          mask-image: radial-gradient(circle, #000 0, #000 30%, transparent 68%);
+  transform: rotate(-24deg) scaleY(.5) rotate(0deg);
+  animation: aur-galaxy-spin 640s linear infinite;
+}
+
+/* ---------- NEBULA clouds ---------- */
+#aurora-bg .aur-neb {
+  position: absolute;
+  border-radius: 50%;
+  will-change: transform, opacity;
+}
+#aurora-bg .aur-neb-1 {                       /* violet, top-left */
+  width: 90vmax; height: 66vmax;
+  left: -34vmax; top: -26vmax;
+  background: radial-gradient(closest-side, rgba(var(--aur-violet), .34), rgba(70, 50, 170, .15) 55%, transparent 100%);
+  animation: aur-neb-drift 130s ease-in-out infinite alternate, aur-breathe 56s ease-in-out infinite alternate;
+}
+#aurora-bg .aur-neb-2 {                       /* blue / cyan, bottom-right */
+  width: 84vmax; height: 60vmax;
+  right: -30vmax; bottom: -14vmax;
+  background: radial-gradient(closest-side, rgba(var(--aur-cyan), .20), rgba(var(--aur-blue), .15) 50%, transparent 100%);
+  animation: aur-neb-drift 160s ease-in-out -40s infinite alternate-reverse, aur-breathe 64s ease-in-out -20s infinite alternate;
+}
+#aurora-bg .aur-neb-3 {                       /* faint pink accent, mid-right */
+  width: 46vmax; height: 34vmax;
+  right: 6vmax; top: 24vh;
+  background: radial-gradient(closest-side, rgba(var(--aur-pink), .15), rgba(var(--aur-violet), .08) 60%, transparent 100%);
+  animation: aur-neb-drift 110s ease-in-out -60s infinite alternate, aur-breathe 48s ease-in-out -10s infinite alternate;
+}
+
+/* thin light mist that fades in and out */
+#aurora-bg .aur-mist {
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0;
+  will-change: opacity;
+}
+#aurora-bg .aur-mist-1 {
+  width: 70vmax; height: 20vmax;
+  left: -8vmax; top: 42vh;
+  background: radial-gradient(closest-side, rgba(150, 190, 255, .14), transparent 100%);
+  transform: rotate(-18deg);
+  animation: aur-fade 42s ease-in-out infinite;
+}
+#aurora-bg .aur-mist-2 {
+  width: 60vmax; height: 18vmax;
+  right: -10vmax; top: 8vh;
+  background: radial-gradient(closest-side, rgba(180, 150, 255, .12), transparent 100%);
+  transform: rotate(14deg);
+  animation: aur-fade 58s ease-in-out -24s infinite;
+}
+
+/* ---------- COSMIC DUST (drift + fade in/out, relocated by JS) ---------- */
+#aurora-bg .aur-dust {
+  position: absolute;
+  width: var(--s, 3px); height: var(--s, 3px);
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--c, rgba(170, 200, 255, .9)), transparent 70%);
+  opacity: 0;
+  will-change: transform, opacity;
+  animation: aur-dust var(--dur, 22s) ease-in-out var(--delay, 0s) infinite;
+}
+
+/* ---------- FAR STARS (individual twinkle / fade, own timing each) ---------- */
+#aurora-bg .aur-tw {
+  position: absolute;
+  width: var(--s, 2px); height: var(--s, 2px);
+  border-radius: 50%;
+  background: var(--c, #fff);
+  box-shadow: 0 0 calc(var(--s, 2px) * 3) calc(var(--s, 2px) * .5) var(--c, #fff);
+  opacity: .15;
+  will-change: opacity, transform;
+  animation: aur-twinkle var(--dur, 6s) ease-in-out var(--delay, 0s) infinite;
+}
+/* the few brightest ones get a faint diffraction cross */
+#aurora-bg .aur-tw.big::before,
+#aurora-bg .aur-tw.big::after {
+  content: "";
+  position: absolute;
+  left: 50%; top: 50%;
+  width: calc(var(--s, 2px) * 9); height: 1px;
+  background: linear-gradient(90deg, transparent, var(--c, #fff), transparent);
+  opacity: .5;
+  transform: translate(-50%, -50%);
+}
+#aurora-bg .aur-tw.big::after { transform: translate(-50%, -50%) rotate(90deg); }
+
+/* ---------- GRAIN + VIGNETTE ---------- */
+#aurora-bg .aur-grain {
+  position: absolute;
+  inset: 0;
+  opacity: .07;
+  background-size: 180px 180px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 .6 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+#aurora-bg .aur-vignette {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 50% 45%, transparent 55%, rgba(2, 3, 12, .55) 100%);
+}
+html[data-theme="day"] #aurora-bg .aur-vignette,
+html[data-theme="day"] #aurora-bg .aur-grain { display: none; }
+
+/* ---------- STAR LAYERS (box-shadow dots filled by JS) ---------- */
+#aurora-bg .stars-back,
+#aurora-bg .stars-mid,
+#aurora-bg .stars-front {
+  position: absolute;
+  top: 0; left: 0;
+  width: 1px; height: 1px;
+  z-index: 1;
+  pointer-events: none;
+  will-change: transform;                  /* JS applies scroll parallax here */
+}
+#aurora-bg .stars-back::before,
+#aurora-bg .stars-back::after,
+#aurora-bg .stars-mid::before,
+#aurora-bg .stars-mid::after,
+#aurora-bg .stars-front::before,
+#aurora-bg .stars-front::after {
+  content: "";
+  position: absolute;
+  top: 0; left: 0;
+  width: 1px; height: 1px;
+  background: transparent;
+  will-change: opacity, transform;
+}
+/* two groups per layer: slow "breathing" at different pace + slow drift */
+#aurora-bg .stars-back::before,
+#aurora-bg .stars-mid::before,
+#aurora-bg .stars-front::before {
+  box-shadow: var(--sa, none);
+  animation: aur-star-breathe var(--dur-a, 11s) ease-in-out var(--delay-a, 0s) infinite alternate,
+             aur-star-drift 300s linear infinite alternate;
+}
+#aurora-bg .stars-back::after,
+#aurora-bg .stars-mid::after,
+#aurora-bg .stars-front::after {
+  box-shadow: var(--sb, none);
+  animation: aur-star-breathe var(--dur-b, 14s) ease-in-out var(--delay-b, 0s) infinite alternate,
+             aur-star-drift 380s linear infinite alternate-reverse;
+}
+#aurora-bg .stars-back  { opacity: .85; }
+#aurora-bg .stars-mid   { opacity: .95; }
+
+/* ---------- METEORS (JS adds .meteor; sets left/top/--dist/--dur) ----------
+   NOTE: one animation only — aurora.js removes the node on `animationend`. */
+#aurora-bg .meteors {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  overflow: hidden;
   pointer-events: none;
 }
-
-/* ============================================================
-   Mobile / coarse pointer — collapse layers for performance
-   ============================================================ */
-@media (max-width: 767px), (pointer: coarse) {
-  .aurora {
-    inset: -10%;
-    filter: blur(40px);
-    animation: none;
-    will-change: auto;
-    opacity: 0.7;
-  }
-
-  .stars { will-change: auto; }
-
-  .stars::before,
-  .stars::after {
-    animation: none;
-    will-change: auto;
-  }
+.meteor {
+  position: absolute;
+  width: clamp(90px, 14vw, 170px);
+  height: 1.5px;
+  margin-top: -1px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, transparent, rgba(150, 200, 255, .55) 70%, #fff);
+  transform-origin: 100% 50%;               /* head = right end = pivot */
+  transform: rotate(145deg);                /* travels down-left */
+  opacity: 0;
+  pointer-events: none;
+  will-change: transform, opacity;
+  animation: meteor-fly var(--dur, 1.5s) cubic-bezier(.25, .1, .4, 1) forwards;
+}
+.meteor::after {                            /* glowing head */
+  content: "";
+  position: absolute;
+  right: -2px; top: 50%;
+  width: 4px; height: 4px;
+  margin-top: -2px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 0 8px 2px rgba(150, 200, 255, .8);
 }
 
-/* ============================================================
-   Eco tier — minimal decoration
-   ============================================================ */
-html.aurora-lite .aurora {
-  animation: none;
-  filter: blur(40px);
-  inset: -10%;
-  will-change: auto;
-  opacity: 0.6;
+/* ---------- SPOTLIGHT (premium tier; JS moves it via transform) ---------- */
+.spotlight {
+  position: fixed;
+  top: 0; left: 0;
+  width: 520px; height: 520px;
+  margin: -260px 0 0 -260px;                /* centre on the pointer */
+  border-radius: 50%;
+  z-index: 1;
+  pointer-events: none;
+  background: radial-gradient(circle, rgba(120, 170, 255, .10), transparent 65%);
+  will-change: transform;
 }
 
-html.aurora-lite .stars,
-html.aurora-lite .meteors,
-html.aurora-lite .spotlight,
-html.aurora-lite #fx {
-  display: none;
+/* ---------- EXPLOSION CANVAS ---------- */
+#fx {
+  position: fixed;
+  inset: 0;
+  width: 100%; height: 100%;
+  z-index: 1;
+  pointer-events: none;
+}
+#aurora-bg #fx { z-index: 4; }              /* if the canvas lives inside the bg */
+
+/* ---------- content stacking ----------
+   Everything that is a direct child of <body> and not part of the effects
+   sits above the background. :where() = zero specificity, so any position /
+   z-index the site already sets on its own classes still wins. */
+:where(body > *:not(#aurora-bg):not(#fx):not(.spotlight):not(script):not(style):not(link):not(template)) {
+  position: relative;
+  z-index: 2;
 }
 
-/* ---------- Reduced motion ---------- */
-@media (prefers-reduced-motion: reduce) {
-  .aurora {
-    animation: none;
-  }
-  .stars::before,
-  .stars::after {
-    animation: none;
-  }
-  .meteors { display: none; }
+/* ---------- keyframes (transform / opacity only = compositor friendly) ---------- */
+@keyframes aur-star-breathe { from { opacity: .55; } to { opacity: 1; } }
+@keyframes aur-star-drift   { from { transform: translate3d(0, 0, 0); } to { transform: translate3d(-14px, -8px, 0); } }
+@keyframes aur-twinkle {
+  0%, 100% { opacity: .12; transform: scale(.8); }
+  50%      { opacity: 1;   transform: scale(1.15); }
+}
+@keyframes aur-dust {
+  0%   { opacity: 0; transform: translate3d(0, 0, 0); }
+  50%  { opacity: var(--peak, .6); }
+  100% { opacity: 0; transform: translate3d(var(--dx, 20px), var(--dy, -14px), 0); }
+}
+@keyframes aur-fade { 0%, 100% { opacity: 0; } 50% { opacity: 1; } }
+@keyframes aur-breathe { from { opacity: .65; } to { opacity: 1; } }
+@keyframes aur-band-breathe { from { opacity: .75; } to { opacity: 1; } }
+@keyframes aur-neb-drift {
+  from { transform: translate3d(-2vmax, 1vmax, 0) scale(1); }
+  to   { transform: translate3d(3vmax, -2vmax, 0) scale(1.08); }
+}
+@keyframes aur-galaxy-spin {
+  from { transform: rotate(-24deg) scaleY(.5) rotate(0deg); }
+  to   { transform: rotate(-24deg) scaleY(.5) rotate(360deg); }
+}
+@keyframes meteor-fly {
+  0%   { opacity: 0; transform: rotate(145deg) translateX(0); }
+  12%  { opacity: 1; }
+  70%  { opacity: 1; }
+  100% { opacity: 0; transform: rotate(145deg) translateX(var(--dist, 600px)); }
+}
+
+/* ---------- responsive ---------- */
+@media (max-width: 1024px) {                /* tablet */
+  #aurora-bg .aur-milkyway,
+  #aurora-bg .aur-milkydust { width: 150vmax; height: 44vmax; margin: -22vmax 0 0 -75vmax; }
+  #aurora-bg .aur-galaxy { width: 34vmax; height: 34vmax; right: -8vmax; }
+  #aurora-bg .aur-neb-1 { width: 100vmax; height: 74vmax; }
+}
+@media (max-width: 640px) {                 /* mobile: fewer / lighter layers */
+  #aurora-bg .aur-milkydust,
+  #aurora-bg .aur-mist-2,
+  #aurora-bg .aur-neb-3 { display: none; }
+  #aurora-bg .aur-milkyway { width: 170vmax; height: 52vmax; margin: -26vmax 0 0 -85vmax; }
+  #aurora-bg .aur-galaxy { width: 52vmax; height: 52vmax; right: -16vmax; top: 4vh; opacity: .45; }
+  #aurora-bg .aur-grain { opacity: .05; }
+  #aurora-bg .aur-tw.big::before,
+  #aurora-bg .aur-tw.big::after { display: none; }
   .spotlight { display: none; }
-  #fx { display: none; }
-  html[data-theme] { transition: none; }
 }
+
+/* ---------- reduced motion: static sky, nothing moves ---------- */
+@media (prefers-reduced-motion: reduce) {
+  #aurora-bg .aur-space,
+  #aurora-bg .aur-space *,
+  #aurora-bg .stars-back::before,  #aurora-bg .stars-back::after,
+  #aurora-bg .stars-mid::before,   #aurora-bg .stars-mid::after,
+  #aurora-bg .stars-front::before, #aurora-bg .stars-front::after {
+    animation: none !important;
+    transition: none !important;
+  }
+  #aurora-bg .aur-tw   { opacity: .6; }
+  #aurora-bg .aur-dust { opacity: .25; }
+  #aurora-bg .aur-mist { opacity: .5; }
+}
+
+/* ---------- eco tier: JS stops early, only the static gradient stays ---------- */
+html.aurora-lite #aurora-bg .aur-space { display: none; }
