@@ -401,3 +401,14 @@ html[data-theme="day"] #aurora-bg .aur-grain { display: none; }
 
 /* ---------- eco tier: JS stops early, only the static gradient stays ---------- */
 html.aurora-lite #aurora-bg .aur-space { display: none; }
+
+/* Section dengan background solid menutupi langit.
+   Dibuat semi-transparan agar langit tetap terlihat, kontras teks tetap terjaga. */
+html[data-aurora="ready"] #hero,
+html[data-aurora="ready"] .section--narrow {
+  background: rgba(10, 25, 47, 0.35);
+}
+html[data-aurora="ready"][data-theme="day"] #hero,
+html[data-aurora="ready"][data-theme="day"] .section--narrow {
+  background: rgba(251, 233, 239, 0.4);
+}
