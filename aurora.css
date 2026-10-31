@@ -1,5 +1,5 @@
 /* ============================================================
-   aurora.css Nova V2.1 update minor — "Milky Way" cinematic deep-space background
+   aurora.css Nova v2.2 — "Milky Way" cinematic deep-space background
    Layer order (back → front), all decorative, pointer-events: none
      #aurora-bg  z0   base gradient (also the static fallback for eco tier)
        .aur-space z0  milky way, galaxy, nebula, mist, dust, glow stars, grain
@@ -402,35 +402,19 @@ html[data-theme="day"] #aurora-bg .aur-grain { display: none; }
 /* ---------- eco tier: JS stops early, only the static gradient stays ---------- */
 html.aurora-lite #aurora-bg .aur-space { display: none; }
 
-/* ---------- sections: let the sky show through ----------
-   style.css gives these sections a solid background (--bg-page / #0A192F),
-   which hides the sky. Override them to translucent. Each selector is more
-   specific than the original rule, so no !important is needed. */
+/* ---------- sections: transparent background only ----------
+   Only the section wrapper is made transparent so the Milky Way shows through.
+   Cards, buttons and other content keep their own styling. The .section class
+   is used only on <section> elements in index.html (checked), so cards are not
+   affected. */
 html[data-aurora="ready"] section[id],
 html[data-aurora="ready"] .section,
-html[data-aurora="ready"] #hero {
-  background: rgba(10, 25, 47, 0.30);
-}
 html[data-aurora="ready"] .section--soft,
-html[data-aurora="ready"] .section--gradient {
-  background: linear-gradient(180deg, rgba(10, 25, 47, .30) 0%, rgba(11, 30, 51, .40) 100%);
-}
-html[data-aurora="ready"] .section--gradient {
-  background: linear-gradient(180deg, rgba(11, 30, 51, .40) 0%, rgba(10, 25, 47, .30) 100%);
-}
-/* exclude the mobile drawer's support block, which sits over a solid panel */
-html[data-aurora="ready"] .drawer-support {
-  background: transparent;
-}
-/* day mode: pale translucent wash instead of the solid pink */
+html[data-aurora="ready"] .section--gradient,
+html[data-aurora="ready"] .section--narrow,
+html[data-aurora="ready"] #hero,
 html[data-aurora="ready"][data-theme="day"] section[id],
 html[data-aurora="ready"][data-theme="day"] .section,
 html[data-aurora="ready"][data-theme="day"] #hero {
-  background: rgba(251, 233, 239, 0.40);
-}
-html[data-aurora="ready"][data-theme="day"] .section--soft {
-  background: linear-gradient(180deg, rgba(251, 233, 239, .40) 0%, rgba(240, 240, 255, .40) 100%);
-}
-html[data-aurora="ready"][data-theme="day"] .section--gradient {
-  background: linear-gradient(180deg, rgba(240, 240, 255, .40) 0%, rgba(251, 233, 239, .40) 100%);
+  background: transparent;
 }
