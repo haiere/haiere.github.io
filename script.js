@@ -1,5 +1,5 @@
 /* ============================================================
-   script.js Nova v1.0.1 — Haiere
+   script.js Nova v1.0.2 — Haiere
    Everything UI: theme, i18n, drawer, search, filters,
    docs modal (README via GitHub raw), contact form, cookies,
    scroll animations, counters, hero spotlight, tilt/magnetic.

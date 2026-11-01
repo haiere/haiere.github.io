@@ -1,7 +1,7 @@
 /* ============================================================
-   icon.js Nova v1.0.1 — Haiere 
+   icon.js Nova v1.0.2 — Haiere 
    ...
-   Nova v1.0.1 changes:
+   changes:
    - brand-soundcloud: replaced with official glyph (bars + cloud).
      Source viewBox 0 0 24 24 (GrSoundcloud).
    - brand-lastfm: replaced with official "as" wordmark path.

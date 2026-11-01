@@ -1,6 +1,6 @@
 {
   "$schema": "https://json.schemastore.org/web-manifest-combined.json",
-  "//": "Haiere — PWA manifest. Nova v1.0.1. Spec: https://www.w3.org/TR/appmanifest/",
+  "//": "Haiere — PWA manifest. Nova v1.0.2. Spec: https://www.w3.org/TR/appmanifest/",
   "//id": "PWA identity — do NOT change once installed. Changing it resets the install for every user.",
   "id": "/",
 
@@ -65,15 +65,15 @@
   "//screenshots": "sizes must use a lowercase 'x' (not ×). type must be 'image/jpeg' (not 'image/jpg'). Only a 'wide' screenshot is shipped today — adding at least one 'narrow' screenshot (recommended 1080x1920 or 720x1280) will unlock the richer mobile install prompt on Android.",
   "screenshots": [
     {
-      "src": "https://i.postimg.cc/tRD8WgM3/Screenshot-20260929-143201.jpg",
-      "sizes": "1080x660",
-      "type": "image/jpeg",
+      "src": "https://i.postimg.cc/pL6Gc9p7/IMG-20261101-100625.jpg",
+      "sizes": "any",
+      "type": "image/jpg",
       "form_factor": "wide",
       "label": "Hero, Beat Tools grid, and Signature Music player"
     }
   ],
 
-  "//shortcuts": "Manifest shortcuts surface on long-press of the installed app icon. URLs must be same-scope. Entries follow the Nova v1.0.1 section order: Tools → AI & Bots → Games → Music → About → Contact. All open in the same window thanks to launch_handler.",
+  "//shortcuts": "Manifest shortcuts surface on long-press of the installed app icon. URLs must be same-scope. Entries follow the Nova v1.0.2 section order: Tools → AI & Bots → Games → Music → About → Contact. All open in the same window thanks to launch_handler.",
   "shortcuts": [
     {
       "name": "Beat Tools",

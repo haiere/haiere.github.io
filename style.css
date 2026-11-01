@@ -1,9 +1,9 @@
 /* ============================================================
-   style.css Nova v1.0.1 — Haiere
+   style.css v1.0.2— Haiere 
    Modern, minimal, branded. English-first, dark-first with full
    light parity.
 
-   Nova v1.0.1 changes (perf pass — blur/compositing cost):
+   Nova v1.0.2 changes (perf pass — blur/compositing cost):
    - Nav backdrop-filter reduced to 14px on premium; removed
      entirely on mobile / coarse pointer / normal / eco tiers.
      Fixed header repaints every scroll frame; blur there was
@@ -140,6 +140,10 @@ svg[data-icon] {
 }
 
 /* ---------- GLASS ---------- */
+/* v2026.10.08.7 — backdrop-filter REMOVED from card/pill/nav.
+   Base backgrounds are already semi-opaque; visual delta is
+   minimal while scroll-time compositing cost drops sharply.
+   #nav keeps its own blur via its dedicated `#nav` rule below. */
 .glass-card, .glass-pill, .glass-nav {
   transition: background 0.5s ease, border-color 0.5s ease, box-shadow 0.5s ease, transform 0.5s var(--ease-spring);
 }
@@ -1087,6 +1091,23 @@ svg[data-icon] {
   font-weight: 600;
   letter-spacing: 0.06em;
   text-transform: uppercase;
+}
+/* Demo badge: used for RaiaSpace and demo games */
+.status-badge-demo {
+  padding: 0.125rem 0.625rem;
+  border: 1px solid rgba(245, 158, 11, 0.25);
+  border-radius: var(--radius-pill);
+  background: rgba(245, 158, 11, 0.1);
+  color: #b45309;
+  font-family: var(--font-mono);
+  font-size: var(--fs-micro);
+  letter-spacing: .06em;
+  text-transform: uppercase;
+}
+.dark .status-badge-demo {
+  background: rgba(245, 158, 11, 0.1);
+  border-color: rgba(251, 191, 36, 0.22);
+  color: #fbbf24;
 }
 .dark .status-badge-stable {
   background: rgba(16, 185, 129, 0.08);

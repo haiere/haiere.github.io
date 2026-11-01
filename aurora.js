@@ -1,5 +1,5 @@
 /* ============================================================
-   aurora.js Nova v1.0.1 — "Milky Way" cinematic deep-space theme behaviour
+   aurora.js Nova v1.0.2 — "Milky Way" cinematic deep-space theme behaviour
    v1.0 : milky way band, nebula, galaxy, layered stars, cosmic dust.
    Meteor + click-explosion logic is kept byte-for-byte from v1.
    ============================================================ */
