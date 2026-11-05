@@ -2,6 +2,7 @@
    icon.js Nova v1.0.2 — Haiere 
    ...
    changes:
+   - qre-logo: added QRe logo (64x64 source, scaled into the 24 viewBox).
    - brand-soundcloud: replaced with official glyph (bars + cloud).
      Source viewBox 0 0 24 24 (GrSoundcloud).
    - brand-lastfm: replaced with official "as" wordmark path.
@@ -57,6 +58,9 @@
     ic41: `<path d="m12 3-1.9 5.8a2 2 0 0 1-1.3 1.3L3 12l5.8 1.9a2 2 0 0 1 1.3 1.3L12 21l1.9-5.8a2 2 0 0 1 1.3-1.3L21 12l-5.8-1.9a2 2 0 0 1-1.3-1.3z"/>`,
     ic42: `<circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/>`,
     ic43: `<path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>`,
+    /* --- QRe logo (source viewBox 0 0 64 64, scaled to 24 for renderIcons) --- */
+    'qre-logo': `<g transform="scale(0.375)"><rect width="64" height="64" rx="15" fill="#0A192F" stroke="none"/><rect x="11" y="11" width="15" height="15" rx="3" fill="none" stroke="#7FD8CB" stroke-width="5"/><rect x="38" y="11" width="15" height="15" rx="3" fill="none" stroke="#7FD8CB" stroke-width="5"/><rect x="11" y="38" width="15" height="15" rx="3" fill="none" stroke="#7FD8CB" stroke-width="5"/><rect x="40" y="40" width="8" height="8" rx="2" fill="#D4B27A" stroke="none"/><rect x="29" y="29" width="6" height="6" rx="1.5" fill="#E7EEF6" stroke="none"/></g>`,
+
   };
 
   const BRAND_ICONS = {
