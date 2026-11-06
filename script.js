@@ -73,7 +73,7 @@ function whenTailwindReady(cb) {
     { name: 'Raia Scrub', url: 'https://raia-scrub.haiere.workers.dev/', repo: 'raia-scrub', category: 'security', status: 'stable', catKey: 'cat_metadata', descKey: 'tool3_desc', catIcon: 'ic25', titleIcon: 'ic25' },
     { name: 'Raia Delta', url: 'https://raia-delta.haiere.workers.dev/', repo: 'raia-delta', category: 'developer', status: 'stable', catKey: 'cat_text', descKey: 'tool4_desc', catIcon: 'ic15', titleIcon: 'ic15' },
     { name: 'Raia Minify', url: 'https://raiaminify.haiere.workers.dev/', repo: 'raiaminify', category: 'developer', status: 'stable', catKey: 'cat_dev_tool', descKey: 'tool5_desc', catIcon: 'ic15', titleIcon: 'ic41' },
-    { name: 'RaiaSpace', url: 'https://raiaspace.haiere.workers.dev/', repo: 'raiaspace', category: 'web', status: 'demo', catKey: 'cat_search', descKey: 'tool6_desc', catIcon: 'ic14', titleIcon: 'ic14' },
+    { name: 'RaiaSpace', url: 'https://raiaspace.haiere.workers.dev/', repo: 'raiaspace', category: 'web', status: 'demo', catKey: 'cat_search', descKey: 'tool6_desc', catIcon: 'ic14', titleIcon: 'ic14', guideUrl: 'https://github.com/haiere/raiaspace' },
     { name: 'Calc', url: 'https://hajir.is-a.dev/calc', repo: 'calc', category: 'web', status: 'stable', catKey: 'cat_calc', descKey: 'tool7_desc', catIcon: 'ic27', titleIcon: 'ic28' },
     { name: 'QRe', url: 'https://hajir.is-a.dev/qre/', repo: 'qre', category: 'web', status: 'stable', catKey: 'cat_qr', descKey: 'tool8_desc', catIcon: 'qre-logo', titleIcon: 'qre-logo' },
   ];
@@ -99,6 +99,15 @@ function whenTailwindReady(cb) {
     `<a href="${game.url}" class="tool-open-btn group/btn" aria-label="Play ${game.name}">` +
     `<span data-i18n="game_play"></span>${svgIcon('ic20', 'h-3.5 w-3.5')}</a>`;
 
+  function docsControl(tool) {
+    if (tool.guideUrl) {
+      return `<a href="${tool.guideUrl}" class="tool-docs-btn group/btn" target="_blank" rel="noopener noreferrer" aria-label="View ${tool.name} full guide on GitHub, opens in a new tab">` +
+             `<span data-i18n="tool_docs"></span>${svgIcon('ic33', 'h-3.5 w-3.5')}</a>`;
+    }
+    return `<button class="tool-docs-btn group/btn" type="button" data-repo="${tool.repo}" data-tool-name="${tool.name}" aria-label="View ${tool.name} documentation">` +
+           `<span data-i18n="tool_docs"></span>${svgIcon('ic33', 'h-3.5 w-3.5')}</button>`;
+  }
+
   function toolCard(tool, index) {
     return `
       <li class="tool-card reveal glass-card" data-category="${tool.category}" data-repo="${tool.repo}">
@@ -111,9 +120,7 @@ function whenTailwindReady(cb) {
         <p class="tool-desc" data-i18n="${tool.descKey}"></p>
         <div class="tool-actions mt-auto">
           ${openLink(tool)}
-          <button class="tool-docs-btn group/btn" type="button" data-repo="${tool.repo}" data-tool-name="${tool.name}" aria-label="View ${tool.name} documentation">
-            <span data-i18n="tool_docs"></span>${svgIcon('ic33', 'h-3.5 w-3.5')}
-          </button>
+          ${docsControl(tool)}
         </div>
       </li>`;
   }
@@ -911,7 +918,7 @@ function whenTailwindReady(cb) {
     if (docsLastFocused && typeof docsLastFocused.focus === 'function') docsLastFocused.focus();
   }
 
-  document.querySelectorAll('.tool-docs-btn').forEach((btn) => {
+  document.querySelectorAll('button.tool-docs-btn').forEach((btn) => {
     btn.addEventListener('click', () => {
       const repo = btn.dataset.repo;
       const name = btn.dataset.toolName || '';
