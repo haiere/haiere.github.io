@@ -1,46 +1,37 @@
 {
   "$schema": "https://json.schemastore.org/web-manifest-combined.json",
-  "//": "Haiere — PWA manifest. Nova v1.0.2. Spec: https://www.w3.org/TR/appmanifest/",
-  "//id": "PWA identity — do NOT change once installed. Changing it resets the install for every user.",
   "id": "/",
-
-  "//name": "Install prompt & OS app-switcher label.",
   "name": "Haiere — Hajir Studio",
   "short_name": "Haiere",
-
-  "//description": "Neutral, no privacy claims. Matches footer_brand_line in i18n.js ('Useful tools, thoughtful experiments.') and the site's current positioning: tools, bots, games, music.",
   "description": "Free web tools, AI chatbots (Raia & Kirana), open-source projects, mini games, and original music by Hajir Muhaajir.",
-
   "start_url": "/?source=pwa",
   "scope": "/",
-
-  "//display": "display_override tries richest first, then standalone, then browser. launch_handler keeps the installed app in the same window when a shortcut or a link is opened.",
   "display": "standalone",
-  "display_override": ["window-controls-overlay", "standalone", "browser"],
+  "display_override": [
+    "window-controls-overlay",
+    "standalone",
+    "browser"
+  ],
   "launch_handler": {
-    "client_mode": ["navigate-existing", "auto"]
+    "client_mode": [
+      "navigate-existing",
+      "auto"
+    ]
   },
-
-  "//handle_links": "Chromium-only, currently behind a flag. Declarative and safe — unsupported browsers ignore it. When supported, opening a hajir.is-a.dev link from outside the app routes into the installed PWA instead of a new browser tab. Scope is enforced by the browser, so out-of-scope URLs still open in the default browser.",
   "handle_links": "preferred",
-
-  "//orientation": "Not locked — the layout is fully responsive in portrait and landscape. Only lock when the design requires it.",
   "orientation": "any",
-
-  "//lang": "Primary language of the manifest strings themselves (name, description, shortcuts). Matches site default (English). Runtime locale switching is handled by i18n.js, not the manifest.",
   "lang": "en",
   "dir": "ltr",
-
-  "//colors": "theme_color matches <meta name=\"theme-color\"> (dark) in index.html and --bg-night in aurora.css. background_color is the splash-screen fill — same value for no flash on cold start. Neither the manifest theme_color nor background_color can use a media query, so they pin the default (dark) theme; the runtime theme switch in the app itself is unaffected.",
   "theme_color": "#0A192F",
   "background_color": "#0A192F",
-
-  "//categories": "Chrome groups these in the install dialog. music & entertainment cover Signature Music and the Mini Games section (Chess, Loveyou, Orbit Weaver, Starfall); productivity/utilities/developer cover Beat Tools and the AI & Bots section. The spec has no dedicated 'games' category — 'entertainment' is the closest valid slot.",
-  "categories": ["productivity", "utilities", "developer", "music", "entertainment"],
+  "categories": [
+    "productivity",
+    "utilities",
+    "developer",
+    "music",
+    "entertainment"
+  ],
   "prefer_related_applications": false,
-
-  "//perf": "The app runs the same inline perf-tier detection as the website (see index.html <head>). On a low-end device the installed PWA boots into the eco tier — no aurora blur, no stars, no backdrop-filter, no canvas FX — from the very first paint, before any stylesheet applies. The manifest itself does not affect runtime performance; this note exists so a future editor does not 'optimise' the app by removing the data-perf attribute.",
-  "//icons": "WebP renders on all current Chromium builds. The same file is declared at 192 and 512 — the browser scales it; this keeps the install prompt happy without shipping duplicate assets. Add PNG (192, 512, maskable-512) when Safari/Firefox icon support is prioritised.",
   "icons": [
     {
       "src": "https://i.postimg.cc/8PJ0bhb1/H-haiere.webp",
@@ -61,19 +52,15 @@
       "purpose": "maskable"
     }
   ],
-
-  "//screenshots": "sizes must use a lowercase 'x' (not ×). type must be 'image/jpeg' (not 'image/jpg'). Only a 'wide' screenshot is shipped today — adding at least one 'narrow' screenshot (recommended 1080x1920 or 720x1280) will unlock the richer mobile install prompt on Android.",
   "screenshots": [
     {
       "src": "https://i.postimg.cc/pL6Gc9p7/IMG-20261101-100625.jpg",
       "sizes": "any",
-      "type": "image/jpg",
+      "type": "image/jpeg",
       "form_factor": "wide",
       "label": "Hero, Beat Tools grid, and Signature Music player"
     }
   ],
-
-  "//shortcuts": "Manifest shortcuts surface on long-press of the installed app icon. URLs must be same-scope. Entries follow the Nova v1.0.2 section order: Tools → AI & Bots → Games → Music → About → Contact. All open in the same window thanks to launch_handler.",
   "shortcuts": [
     {
       "name": "Beat Tools",

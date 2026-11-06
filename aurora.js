@@ -1,8 +1,5 @@
-/* ============================================================
-   aurora.js Nova v1.0.2 — "Milky Way" cinematic deep-space theme behaviour
-   v1.0 : milky way band, nebula, galaxy, layered stars, cosmic dust.
-   Meteor + click-explosion logic is kept byte-for-byte from v1.
-   ============================================================ */
+/* aurora.js: Milky Way background behaviour (parallax, stars, meteors,
+   spotlight, click ripples). Disabled on the eco tier. */
 (function () {
   'use strict';
 
@@ -162,7 +159,7 @@
   }
 
   /* ============================================================
-     DEEP SPACE LAYERS (NEW) — nebula, milky way, galaxy, mist,
+     DEEP SPACE LAYERS: nebula, milky way, galaxy, mist,
      cosmic dust and individually twinkling far stars.
      Built once into #aurora-bg; ~40 light DOM nodes, CSS-animated.
      Three wrappers get the (subtle) scroll parallax.
@@ -299,7 +296,7 @@
   window.addEventListener('scroll', queueParallax, { passive: true });
 
   /* ============================================================
-     METEORS — preserved exactly (spawn/remove logic unchanged)
+     METEORS
      ============================================================ */
   var meteorsEl = bg.querySelector('.meteors');
   var MAX_METEORS = 2;
@@ -359,7 +356,7 @@
   }
 
   /* ============================================================
-     SPOTLIGHT — preserved (premium only)
+     SPOTLIGHT (premium only)
      ============================================================ */
   var sx = 0, sy = 0, tx = 0, ty = 0, spotRaf = 0;
 
@@ -395,7 +392,7 @@
   }, { passive: true });
 
   /* ============================================================
-     FX CANVAS — preserved (click/tap explosion)
+     FX CANVAS (click/tap explosion; none under reduced motion)
      ============================================================ */
   var ctx = (canvas && canvas.getContext) ? canvas.getContext('2d') : null;
   var cw = 0, ch = 0;
@@ -430,32 +427,29 @@
   }
 
   function explode(x, y) {
-    if (!ctx) return;
+    if (!ctx || mqReduce.matches) return;
 
-    var reduced = mqReduce.matches;
     var small = mqMobile.matches || lowEnd;
 
     var r = takeRipple();
     r.on = true; r.x = x; r.y = y; r.age = 0;
-    r.dur = reduced ? 500 : 800;
-    r.maxR = reduced ? 48 : (small ? 88 : 120);
-    r.glow = !reduced;
+    r.dur = 800;
+    r.maxR = small ? 88 : 120;
+    r.glow = true;
 
-    if (!reduced) {
-      var n = small ? Math.round(rnd(8, 12)) : Math.round(rnd(12, 20));
-      var base = Math.random() * TAU;
-      for (var i = 0, p = 0; i < MAX_P && p < n; i++) {
-        var q = particles[i];
-        if (q.on) continue;
-        var a = base + (p / n) * TAU + rnd(-0.25, 0.25);
-        var sp = small ? rnd(70, 190) : rnd(90, 250);
-        q.on = true; q.x = x; q.y = y;
-        q.vx = Math.cos(a) * sp; q.vy = Math.sin(a) * sp;
-        q.age = 0; q.life = rnd(600, 900);
-        q.size = rnd(1.6, 3.4);
-        q.c = Math.random() < 0.65 ? 0 : 1;
-        p++;
-      }
+    var n = small ? Math.round(rnd(8, 12)) : Math.round(rnd(12, 20));
+    var base = Math.random() * TAU;
+    for (var i = 0, p = 0; i < MAX_P && p < n; i++) {
+      var q = particles[i];
+      if (q.on) continue;
+      var a = base + (p / n) * TAU + rnd(-0.25, 0.25);
+      var sp = small ? rnd(70, 190) : rnd(90, 250);
+      q.on = true; q.x = x; q.y = y;
+      q.vx = Math.cos(a) * sp; q.vy = Math.sin(a) * sp;
+      q.age = 0; q.life = rnd(600, 900);
+      q.size = rnd(1.6, 3.4);
+      q.c = Math.random() < 0.65 ? 0 : 1;
+      p++;
     }
 
     if (!fxRaf) { lastT = performance.now(); fxRaf = requestAnimationFrame(frame); }

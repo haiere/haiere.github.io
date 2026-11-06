@@ -1,18 +1,5 @@
-/* ============================================================
-   script.js Nova v1.0.2 — Haiere
-   Everything UI: theme, i18n, drawer, search, filters,
-   docs modal (README via GitHub raw), contact form, cookies,
-   scroll animations, counters, hero spotlight, tilt/magnetic.
-
-   Default language: English (en).
-
-   Nova v1.0.1 changes:
-   - Removed the duplicate renderAllIcons() call at boot.
-     whenTailwindReady() already runs its callback synchronously
-     when window.tailwind exists (which it does — CDN script
-     executes synchronously in <head> before this file). The
-     second call only doubled DOM traversal.
-   ============================================================ */
+/* script.js: UI behaviour (i18n, theme, drawer, search, filters, docs modal,
+   contact form, cookies, scroll effects). Default language: English (en). */
 
 function whenTailwindReady(cb) {
   if (window.tailwind) return cb();
@@ -52,9 +39,11 @@ function whenTailwindReady(cb) {
     }
   }
 
-  function getI18nText(key, fallback) {
-    const dict = i18n[currentLang] || i18n[DEFAULT_LANG] || {};
-    return dict[key] !== undefined ? dict[key] : (fallback || '');
+  function getI18nText(key) {
+    const dict = i18n[currentLang] || {};
+    const base = i18n[DEFAULT_LANG] || {};
+    if (dict[key] !== undefined) return dict[key];
+    return base[key] !== undefined ? base[key] : '';
   }
   window.getI18nText = getI18nText;
 
@@ -74,44 +63,129 @@ function whenTailwindReady(cb) {
   }
 
   /* ==========================================================
+     0b. SITE DATA + CARD RENDERING
+     Single source for tools, AI bots, and games. Edit names,
+     URLs, categories, and icons here only.
+     ========================================================== */
+  const SITE_TOOLS = [
+    { name: 'HajirSync', url: 'https://hajirsync.haiere.workers.dev/', repo: 'hajirsync', category: 'music', status: 'stable', catKey: 'cat_lrc', descKey: 'tool1_desc', catIcon: 'ic24', titleIcon: 'ic07' },
+    { name: 'Raia Vault', url: 'https://raia-vault.haiere.workers.dev/', repo: 'raia-vault', category: 'security', status: 'stable', catKey: 'cat_password', descKey: 'tool2_desc', catIcon: 'ic13', titleIcon: 'ic13' },
+    { name: 'Raia Scrub', url: 'https://raia-scrub.haiere.workers.dev/', repo: 'raia-scrub', category: 'security', status: 'stable', catKey: 'cat_metadata', descKey: 'tool3_desc', catIcon: 'ic25', titleIcon: 'ic25' },
+    { name: 'Raia Delta', url: 'https://raia-delta.haiere.workers.dev/', repo: 'raia-delta', category: 'developer', status: 'stable', catKey: 'cat_text', descKey: 'tool4_desc', catIcon: 'ic15', titleIcon: 'ic15' },
+    { name: 'Raia Minify', url: 'https://raiaminify.haiere.workers.dev/', repo: 'raiaminify', category: 'developer', status: 'stable', catKey: 'cat_dev_tool', descKey: 'tool5_desc', catIcon: 'ic15', titleIcon: 'ic41' },
+    { name: 'RaiaSpace', url: 'https://raiaspace.haiere.workers.dev/', repo: 'raiaspace', category: 'web', status: 'demo', catKey: 'cat_search', descKey: 'tool6_desc', catIcon: 'ic14', titleIcon: 'ic14' },
+    { name: 'Calc', url: 'https://hajir.is-a.dev/calc', repo: 'calc', category: 'web', status: 'stable', catKey: 'cat_calc', descKey: 'tool7_desc', catIcon: 'ic27', titleIcon: 'ic28' },
+    { name: 'QRe', url: 'https://hajir.is-a.dev/qre/', repo: 'qre', category: 'web', status: 'stable', catKey: 'cat_qr', descKey: 'tool8_desc', catIcon: 'qre-logo', titleIcon: 'qre-logo' },
+  ];
+
+  const SITE_BOTS = [
+    { name: 'Raia', url: 'https://hajir.is-a.dev/raia-ai/', status: 'stable', catKey: 'cat_ai_bot', descKey: 'ai_raia_desc', thumbClass: 'raia', icon: 'raia' },
+    { name: 'Kirana', url: 'https://hajir.is-a.dev/kirana', status: 'stable', catKey: 'cat_ai_bot', descKey: 'ai_kirana_desc', thumbClass: 'kirana', icon: 'ic37' },
+  ];
+
+  const SITE_GAMES = [
+    { name: 'Chess', nameKey: 'game_chess_name', url: 'https://hajir.is-a.dev/chess', status: 'demo', tagKey: 'game_chess_tag', descKey: 'game_chess_desc', thumbClass: 'chess', icon: 'ic30', catIcon: 'ic16', external: false },
+    { name: 'Loveyou', nameKey: 'game_loveyou_name', url: 'https://hajir.is-a.dev/loveyou', status: 'stable', tagKey: 'game_loveyou_tag', descKey: 'game_loveyou_desc', thumbClass: 'loveyou', icon: 'ic35', catIcon: 'ic41', external: false },
+    { name: 'Orbit Weaver', nameKey: 'game_orbit_name', url: 'https://hajir.is-a.dev/game/orbit-weaver.html', status: 'demo', tagKey: 'game_orbit_tag', descKey: 'game_orbit_desc', thumbClass: 'orbit', icon: 'ic16', external: false },
+    { name: 'Starfall', nameKey: 'game_starfall_name', url: 'https://hajir.is-a.dev/game/starfall.html', status: 'demo', tagKey: 'game_starfall_tag', descKey: 'game_starfall_desc', thumbClass: 'starfall', icon: 'ic41', external: false },
+  ];
+
+  const svgIcon = (name, cls) => `<svg class="${cls}" data-icon="${name}" aria-hidden="true"></svg>`;
+  const statusBadge = (status) => `<span class="status-badge-${status}" data-i18n="status_${status}"></span>`;
+  const openLink = (item) =>
+    `<a href="${item.url}" class="tool-open-btn group/btn" target="_blank" rel="noopener noreferrer" aria-label="Open ${item.name} in a new tab">` +
+    `<span data-i18n="tool_open"></span>${svgIcon('ic12', 'h-3.5 w-3.5')}</a>`;
+  const playLink = (game) =>
+    `<a href="${game.url}" class="tool-open-btn group/btn" aria-label="Play ${game.name}">` +
+    `<span data-i18n="game_play"></span>${svgIcon('ic20', 'h-3.5 w-3.5')}</a>`;
+
+  function toolCard(tool, index) {
+    return `
+      <li class="tool-card reveal glass-card" data-category="${tool.category}" data-repo="${tool.repo}">
+        <div class="tool-meta">
+          <span class="tool-number">${String(index + 1).padStart(2, '0')}</span>
+          <span class="tool-cat">${svgIcon(tool.catIcon, 'h-2.5 w-2.5')}<span data-i18n="${tool.catKey}"></span></span>
+          ${statusBadge(tool.status)}
+        </div>
+        <h3 class="tool-title">${svgIcon(tool.titleIcon, 'h-4 w-4')}${tool.name}</h3>
+        <p class="tool-desc" data-i18n="${tool.descKey}"></p>
+        <div class="tool-actions mt-auto">
+          ${openLink(tool)}
+          <button class="tool-docs-btn group/btn" type="button" data-repo="${tool.repo}" data-tool-name="${tool.name}" aria-label="View ${tool.name} documentation">
+            <span data-i18n="tool_docs"></span>${svgIcon('ic33', 'h-3.5 w-3.5')}
+          </button>
+        </div>
+      </li>`;
+  }
+
+  function botCard(bot) {
+    return `
+      <article class="reveal glass-card game-card ai-card">
+        <div class="game-thumb game-thumb--${bot.thumbClass}" aria-hidden="true">${svgIcon(bot.icon, 'game-thumb-icon')}</div>
+        <div class="game-meta">
+          <span class="game-cat">${svgIcon(bot.icon, 'h-2.5 w-2.5')}<span data-i18n="${bot.catKey}"></span></span>
+          ${statusBadge(bot.status)}
+        </div>
+        <h3 class="game-title">${svgIcon(bot.icon, 'h-4 w-4')}<span>${bot.name}</span></h3>
+        <p class="game-desc" data-i18n="${bot.descKey}"></p>
+        <div class="tool-actions mt-auto">${openLink(bot)}</div>
+      </article>`;
+  }
+
+  function gameCard(game) {
+    return `
+      <article class="reveal glass-card game-card">
+        <div class="game-thumb game-thumb--${game.thumbClass}" aria-hidden="true">${svgIcon(game.icon, 'game-thumb-icon')}</div>
+        <div class="game-meta">
+          <span class="game-cat">${svgIcon(game.catIcon || game.icon, 'h-2.5 w-2.5')}<span data-i18n="${game.tagKey}"></span></span>
+          ${statusBadge(game.status)}
+        </div>
+        <h3 class="game-title">${svgIcon(game.icon, 'h-4 w-4')}<span data-i18n="${game.nameKey}">${game.name}</span></h3>
+        <p class="game-desc" data-i18n="${game.descKey}"></p>
+        <div class="tool-actions mt-auto">${playLink(game)}</div>
+      </article>`;
+  }
+
+  function footerLink(item) {
+    const external = item.external !== false;
+    const attrs = external ? ' target="_blank" rel="noopener noreferrer"' : '';
+    return `<li><a href="${item.url}" class="footer-link"${attrs}>${item.name} <span aria-hidden="true">↗</span></a></li>`;
+  }
+
+  function renderSiteCards() {
+    const fill = (id, html) => {
+      const el = document.getElementById(id);
+      if (el) el.innerHTML = html;
+    };
+    fill('tools-container', SITE_TOOLS.map(toolCard).join(''));
+    fill('ai-bots-container', SITE_BOTS.map(botCard).join(''));
+    fill('games-container', SITE_GAMES.map(gameCard).join(''));
+    fill('footer-tools', [...SITE_TOOLS, ...SITE_BOTS, ...SITE_GAMES].map(footerLink).join(''));
+  }
+  renderSiteCards();
+
+  /* ==========================================================
      1. I18N
      ========================================================== */
-  function refreshSearchPlaceholder() {
-    const input = document.getElementById('header-search-input');
-    if (!input) return;
-    const label = getI18nText('search_placeholder', 'Search…');
-    input.setAttribute('placeholder', label);
-  }
+  const I18N_BINDINGS = [
+    ['data-i18n', 'i18n', (el, v) => { el.textContent = v; }],
+    ['data-i18n-placeholder', 'i18nPlaceholder', (el, v) => { el.placeholder = v; }],
+    ['data-i18n-label', 'i18nLabel', (el, v) => el.setAttribute('aria-label', v)],
+    ['data-i18n-alt', 'i18nAlt', (el, v) => el.setAttribute('alt', v)],
+    ['data-i18n-title', 'i18nTitle', (el, v) => el.setAttribute('title', v)],
+  ];
 
   function applyLang(lang) {
     currentLang = lang;
     const fallback = i18n[DEFAULT_LANG] || {};
     const tr = i18n[lang] || fallback;
 
-    document.querySelectorAll('[data-i18n]').forEach((el) => {
-      const key = el.dataset.i18n;
-      if (tr[key] !== undefined) el.textContent = tr[key];
-      else if (fallback[key] !== undefined) el.textContent = fallback[key];
-    });
-    document.querySelectorAll('[data-i18n-placeholder]').forEach((el) => {
-      const key = el.dataset.i18nPlaceholder;
-      if (tr[key] !== undefined) el.placeholder = tr[key];
-      else if (fallback[key] !== undefined) el.placeholder = fallback[key];
-    });
-    document.querySelectorAll('[data-i18n-label]').forEach((el) => {
-      const key = el.dataset.i18nLabel;
-      if (tr[key] !== undefined) el.setAttribute('aria-label', tr[key]);
-      else if (fallback[key] !== undefined) el.setAttribute('aria-label', fallback[key]);
-    });
-    document.querySelectorAll('[data-i18n-alt]').forEach((el) => {
-      const key = el.dataset.i18nAlt;
-      if (tr[key] !== undefined) el.setAttribute('alt', tr[key]);
-      else if (fallback[key] !== undefined) el.setAttribute('alt', fallback[key]);
-    });
-    document.querySelectorAll('[data-i18n-title]').forEach((el) => {
-      const key = el.dataset.i18nTitle;
-      if (tr[key] !== undefined) el.setAttribute('title', tr[key]);
-      else if (fallback[key] !== undefined) el.setAttribute('title', fallback[key]);
+    I18N_BINDINGS.forEach(([attr, dataKey, apply]) => {
+      document.querySelectorAll(`[${attr}]`).forEach((el) => {
+        const key = el.dataset[dataKey];
+        if (tr[key] !== undefined) apply(el, tr[key]);
+        else if (fallback[key] !== undefined) apply(el, fallback[key]);
+      });
     });
 
     document.querySelectorAll('.lang-btn').forEach((btn) => {
@@ -126,13 +200,12 @@ function whenTailwindReady(cb) {
     if (tTitle) document.title = tTitle;
 
     if (menuBtn && !isDrawerOpen) {
-      menuBtn.setAttribute('aria-label', getI18nText('open_menu', 'Open menu'));
+      menuBtn.setAttribute('aria-label', getI18nText('open_menu'));
     }
 
     try { localStorage.setItem('haiere-lang', lang); } catch (_) {}
 
     buildSearchIndex();
-    refreshSearchPlaceholder();
   }
   window.applyLang = applyLang;
 
@@ -264,7 +337,7 @@ function whenTailwindReady(cb) {
     drawer.setAttribute('aria-hidden', 'false');
     drawer.removeAttribute('inert');
     menuBtn.setAttribute('aria-expanded', 'true');
-    menuBtn.setAttribute('aria-label', getI18nText('close_menu', 'Close menu'));
+    menuBtn.setAttribute('aria-label', getI18nText('close_menu'));
     drawerOverlay.classList.add('active');
     isDrawerOpen = true;
     setBodyScrollLock(true, 'drawer');
@@ -278,7 +351,7 @@ function whenTailwindReady(cb) {
     drawer.setAttribute('aria-hidden', 'true');
     drawer.setAttribute('inert', '');
     menuBtn.setAttribute('aria-expanded', 'false');
-    menuBtn.setAttribute('aria-label', getI18nText('open_menu', 'Open menu'));
+    menuBtn.setAttribute('aria-label', getI18nText('open_menu'));
     drawerOverlay.classList.remove('active');
     isDrawerOpen = false;
     setBodyScrollLock(false, 'drawer');
@@ -482,7 +555,7 @@ function whenTailwindReady(cb) {
       items.push({
         href: '#' + id,
         title: tr[meta.labelKey] || meta.labelKey,
-        meta: 'Section',
+        meta: getI18nText('search_meta_section'),
         haystack: ((tr[meta.labelKey] || '') + ' ' + id).toLowerCase(),
       });
     });
@@ -512,7 +585,7 @@ function whenTailwindReady(cb) {
       items.push({
         href: '#ai-bots',
         title,
-        meta: 'AI/Bot',
+        meta: getI18nText('cat_ai_bot'),
         haystack: `${title} ${description} ai bot chatbot`.toLowerCase(),
       });
     });
@@ -526,7 +599,7 @@ function whenTailwindReady(cb) {
       items.push({
         href: '#games',
         title,
-        meta: 'Game',
+        meta: getI18nText('search_meta_game'),
         haystack: `${title} ${description} game play`.toLowerCase(),
       });
     });
@@ -540,7 +613,7 @@ function whenTailwindReady(cb) {
     if (!q) { searchResults.innerHTML = ''; return; }
     const matches = searchIndex.filter((item) => item.haystack.includes(q)).slice(0, 8);
     if (!matches.length) {
-      searchResults.innerHTML = `<div class="header-search-empty">${getI18nText('search_no_results', 'No results.')}</div>`;
+      searchResults.innerHTML = `<div class="header-search-empty">${getI18nText('search_no_results')}</div>`;
       return;
     }
     searchResults.innerHTML = '';
@@ -549,7 +622,6 @@ function whenTailwindReady(cb) {
       a.className = 'header-search-result';
       a.href = m.href;
       a.setAttribute('role', 'option');
-      a.tabIndex = 0;
       const titleEl = document.createElement('span');
       titleEl.className = 'header-search-result-title';
       titleEl.textContent = m.title;
@@ -677,6 +749,11 @@ function whenTailwindReady(cb) {
         const target = parseInt(el.dataset.count, 10) || 0;
         const suffix = el.dataset.suffix || '';
         const duration = 1200;
+        if (prefersReducedMotion) {
+          el.textContent = target + suffix;
+          statObs.unobserve(el);
+          return;
+        }
         let startTime = null;
         function step(timestamp) {
           if (!startTime) startTime = timestamp;
@@ -704,7 +781,6 @@ function whenTailwindReady(cb) {
       const on = btn.dataset.filter === active;
       btn.classList.toggle('active', on);
       btn.setAttribute('aria-pressed', String(on));
-      btn.tabIndex = 0;
     });
     toolCards.forEach((card) => {
       const show = active === 'all' || card.dataset.category === active;
@@ -791,9 +867,9 @@ function whenTailwindReady(cb) {
     if (!docsModal || !docsOverlay) return;
     docsLastFocused = document.activeElement;
 
-    const baseTitle = getI18nText('tool_docs', 'How to Use');
+    const baseTitle = getI18nText('tool_docs');
     if (docsModalTitle) docsModalTitle.textContent = `${baseTitle} — ${toolName}`;
-    if (docsModalBody)  docsModalBody.innerHTML = `<div class="docs-modal-loading">${getI18nText('docs_loading', 'Loading…')}</div>`;
+    if (docsModalBody)  docsModalBody.innerHTML = `<div class="docs-modal-loading">${getI18nText('docs_loading')}</div>`;
     if (docsModalRepoLink) docsModalRepoLink.href = `https://github.com/haiere/${repo}`;
 
     docsOverlay.classList.add('active');
@@ -820,7 +896,7 @@ function whenTailwindReady(cb) {
       })
       .catch(() => {
         if (docsModalBody) {
-          docsModalBody.innerHTML = `<div class="docs-modal-error">${getI18nText('docs_error', 'Documentation is not available yet for this tool.')}</div>`;
+          docsModalBody.innerHTML = `<div class="docs-modal-error">${getI18nText('docs_error')}</div>`;
         }
       });
   }
@@ -842,6 +918,18 @@ function whenTailwindReady(cb) {
       if (!repo) return;
       openDocsModal(repo, name);
     });
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key !== 'Tab' || !docsModal || !docsModal.classList.contains('active')) return;
+    const f = getFocusable(docsModal);
+    if (!f.length) { e.preventDefault(); docsModal.focus(); return; }
+    const first = f[0];
+    const last = f[f.length - 1];
+    const active = document.activeElement;
+    if (!docsModal.contains(active)) { e.preventDefault(); (e.shiftKey ? last : first).focus(); return; }
+    if (e.shiftKey && active === first) { e.preventDefault(); last.focus(); }
+    else if (!e.shiftKey && active === last) { e.preventDefault(); first.focus(); }
   });
 
   if (docsModalClose) docsModalClose.addEventListener('click', closeDocsModal);
@@ -884,8 +972,8 @@ function whenTailwindReady(cb) {
     statusDiv.textContent = msg;
     statusDiv.dataset.state = kind || '';
     statusDiv.style.color =
-      kind === 'success' ? '#10b981' :
-      kind === 'error'   ? '#ef4444' :
+      kind === 'success' ? 'var(--ok)' :
+      kind === 'error'   ? 'var(--err)' :
       kind === 'pending' ? 'var(--text-soft)' : '';
   }
   function flashFormStatus(kind, msg, ms) {
@@ -906,9 +994,7 @@ function whenTailwindReady(cb) {
   });
 
   function validateForm() {
-    const tr = i18n[currentLang] || {};
-    const fb = i18n[DEFAULT_LANG] || {};
-    const msg = (k) => tr[k] || fb[k] || '';
+    const msg = getI18nText;
     let valid = true;
     clearFieldError(nameInp, nameErr);
     clearFieldError(emailInp, emailErr);
@@ -930,7 +1016,7 @@ function whenTailwindReady(cb) {
       valid = false;
     }
     if (text.length < 20) {
-      setFieldError(msgInp, msgErr, msgErr && msg('err_message_short'));
+      setFieldError(msgInp, msgErr, msg('err_message_short'));
       valid = false;
     }
     return valid;
@@ -950,9 +1036,7 @@ function whenTailwindReady(cb) {
   if (form) {
     form.addEventListener('submit', (e) => {
       e.preventDefault();
-      const tr = i18n[currentLang] || {};
-      const fb = i18n[DEFAULT_LANG] || {};
-      const t  = (k) => tr[k] || fb[k] || '';
+      const t = getI18nText;
       if (!validateForm()) {
         flashFormStatus('error', t('form_error'), 6000);
         return;
@@ -1150,14 +1234,14 @@ function whenTailwindReady(cb) {
       acceptBtn.addEventListener('click', () => {
         savePrefs({ analytics: true, marketing: true, preferences: true }, 'accepted');
         hideBanner();
-        showToast(getI18nText('toast_cookie_accepted', 'Cookies accepted'), 'success');
+        showToast(getI18nText('toast_cookie_accepted'), 'success');
       });
     }
     if (declineBtn) {
       declineBtn.addEventListener('click', () => {
         savePrefs({ analytics: false, marketing: false, preferences: false }, 'declined');
         hideBanner();
-        showToast(getI18nText('toast_cookie_declined', 'Cookies declined'), 'success');
+        showToast(getI18nText('toast_cookie_declined'), 'success');
       });
     }
     if (customizeBtn) {
@@ -1183,7 +1267,7 @@ function whenTailwindReady(cb) {
         savePrefs(readTogglesToPrefs(), 'customized');
         closeSettings(true);
         hideBanner();
-        showToast(getI18nText('toast_cookie_saved', 'Cookie settings saved'), 'success');
+        showToast(getI18nText('toast_cookie_saved'), 'success');
       });
     }
 
@@ -1195,40 +1279,7 @@ function whenTailwindReady(cb) {
   })();
 
   /* ==========================================================
-     16. NEWSLETTER (graceful no-op if not present)
-     ========================================================== */
-  const newsletterForm = document.getElementById('newsletter-form');
-  const newsletterStatus = document.getElementById('newsletter-status');
-  if (newsletterForm) {
-    newsletterForm.addEventListener('submit', (e) => {
-      e.preventDefault();
-      const tr = i18n[currentLang] || {};
-      const fb = i18n[DEFAULT_LANG] || {};
-      const t  = (k) => tr[k] || fb[k] || '';
-      const emailField = document.getElementById('newsletter-email');
-      const email = emailField ? emailField.value.trim() : '';
-      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-        if (newsletterStatus) newsletterStatus.textContent = t('err_email_invalid');
-        return;
-      }
-      if (newsletterStatus) newsletterStatus.textContent = t('footer_newsletter_sending');
-      const fd = new FormData();
-      fd.append('email', email);
-      fd.append('form_type', 'newsletter');
-      submitTo(primaryEndpoint, fd)
-        .catch(() => submitTo(fallbackEndpoint, fd))
-        .then(() => {
-          if (newsletterStatus) newsletterStatus.textContent = t('footer_newsletter_success');
-          newsletterForm.reset();
-        })
-        .catch(() => {
-          if (newsletterStatus) newsletterStatus.textContent = t('footer_newsletter_error');
-        });
-    });
-  }
-
-  /* ==========================================================
-     17. TILT & MAGNETIC — premium only
+     16. TILT & MAGNETIC — premium only
      ========================================================== */
   if (!prefersReducedMotion && !isCoarsePointer && perfTier === 'premium') {
     const tiltTargets = document.querySelectorAll('.tool-card, .quote-card, .about-card');
@@ -1258,7 +1309,7 @@ function whenTailwindReady(cb) {
   }
 
   /* ==========================================================
-     18. INIT
+     17. INIT
      ========================================================== */
   let savedLang = null;
   try { savedLang = localStorage.getItem('haiere-lang'); } catch (_) {}
@@ -1279,10 +1330,6 @@ function whenTailwindReady(cb) {
     });
   });
 
-  // Nova v1.0.1 — single call. whenTailwindReady() runs sync
-  // when window.tailwind exists (which it does — CDN script is
-  // in <head> before this file). Previous version called
-  // renderAllIcons() twice back-to-back, doubling DOM traversal.
   whenTailwindReady(() => renderAllIcons());
 
   // Signal to the inline <head> script that script.js has booted.
@@ -1290,5 +1337,4 @@ function whenTailwindReady(cb) {
   // and all .reveal sections fall back to visible.
   window.__haiereReady = true;
 
-  console.log('Haiere Nova v1.0.1 — ready (perf tier: ' + perfTier + ', default lang: en)');
 })();

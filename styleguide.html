@@ -37,7 +37,7 @@
    ============================================================ */
 :root {
   /* --- Accent family -------------------------------------- */
-  --accent:        #B4788C;               /* decorative: borders, ticks, glows */
+  --accent:        #945268;               /* light: text, fills, ticks (AA) */
   --accent-ink:    #9A5670;               /* accent AS TEXT on page bg — 4.6:1 */
   --accent-solid:  #9A5670;               /* accent AS FILL behind white text — 5.3:1 */
   --accent-2:      #C79A6B;
@@ -1099,6 +1099,16 @@ input { font: inherit; }
 /* ============================================================
    15 · RULES LIST
    ============================================================ */
+.rule-group + .rule-group { margin-top: 2.75rem; }
+.rule-group-title {
+  margin: 0 0 .25rem;
+  font-family: var(--font-mono);
+  font-size: var(--fs-mini);
+  font-weight: 700;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--accent-ink);
+}
 .rules {
   counter-reset: rule;
   list-style: none;
@@ -1107,27 +1117,27 @@ input { font: inherit; }
 }
 .rules li {
   counter-increment: rule;
-  display: grid;
-  grid-template-columns: 2.4rem minmax(0, 1fr);
-  gap: .5rem;
-  padding: .95rem 0;
+  position: relative;
+  padding: .95rem 0 .95rem 3rem;
   border-top: 1px solid var(--border-soft);
   font-size: var(--fs-body-sm);
   line-height: 1.7;
   color: var(--text-soft);
-  min-width: 0;
   overflow-wrap: break-word;
 }
-.rules li:first-child { border-top: 0; padding-top: 0; }
+.rules li:first-child { border-top: 0; padding-top: .75rem; }
 .rules li::before {
   content: counter(rule, decimal-leading-zero);
+  position: absolute;
+  left: 0;
+  top: .95rem;
   font-family: var(--font-mono);
   font-size: var(--fs-micro);
   font-weight: 700;
   letter-spacing: .1em;
   color: var(--accent-ink);
-  padding-top: .25rem;
 }
+.rules li:first-child::before { top: .75rem; }
 .rules strong { color: var(--text-main); font-weight: 600; }
 
 /* ============================================================
@@ -1333,7 +1343,7 @@ pre .p { color: var(--accent-ink); }
       </svg>
       <span>
         <span class="brand-name">Haiere</span>
-        <small class="brand-sub">Style guide · Nova v1.0.2 version</small>
+        <small class="brand-sub">Style guide · Nova version</small>
       </span>
     </a>
 
@@ -1357,7 +1367,7 @@ pre .p { color: var(--accent-ink); }
      ============================================================ -->
 <section class="masthead">
   <div class="shell">
-    <span class="eyebrow">Design system · Nova v1.0.2 version</span>
+    <span class="eyebrow">Design system · Nova version</span>
 
     <h1>
       <span class="line">Aurora Navy <span class="slash">/</span></span>
@@ -1371,7 +1381,7 @@ pre .p { color: var(--accent-ink); }
     </p>
 
     <dl class="colophon">
-      <div><dt>Version</dt><dd>Nova v1.0.2 version</dd></div>
+      <div><dt>Version</dt><dd>Nova  version</dd></div>
       <div><dt>Modes</dt><dd>Dark · Light</dd></div>
       <div><dt>Families</dt><dd>Sora · Inter · JetBrains&nbsp;Mono</dd></div>
       <div><dt>Sources</dt><dd>style.css · icons.js</dd></div>
@@ -1459,8 +1469,8 @@ pre .p { color: var(--accent-ink); }
           <span class="chip" style="background: var(--accent)"></span>
           <div class="info">
             <b class="tok">--accent</b>
-            <span class="hex" data-hex-light="#B4788C" data-hex-dark="#7FD8CB">#7FD8CB</span>
-            <span class="use">Decorative: borders, ticks</span>
+            <span class="hex" data-hex-light="#945268" data-hex-dark="#7FD8CB">#7FD8CB</span>
+            <span class="use">Text, buttons, ticks (AA on light)</span>
           </div>
         </div>
         <div class="swatch">
@@ -1491,13 +1501,10 @@ pre .p { color: var(--accent-ink); }
 
       <div class="note">
         <p>
-          <b>The accent is split in three.</b>
-          <code>--accent</code> is decorative (borders, ticks, glows).
-          <code>--accent-ink</code> is the same hue darkened enough to pass 4.5:1 as text on the
-          page background. <code>--accent-solid</code> is the fill used behind
-          <code>--on-accent</code>. On light, white on rose is only 3.5:1 — so the button fill
-          deepens to <code>#9A5670</code> (5.3:1). On dark, cyan is far too bright for white, so
-          on-accent text flips to <code>#0A192F</code> (10.5:1).
+          <b>One accent per theme.</b>
+          Light uses <code>#945268</code> for text, buttons, and ticks: 4.9:1 on the page and 5.7:1
+          under white button text. Dark uses <code>#7FD8CB</code> with navy <code>#0A192F</code>
+          text on top (10.5:1). Glows and hairline borders keep the original rose at low alpha.
         </p>
       </div>
 
@@ -1572,7 +1579,7 @@ pre .p { color: var(--accent-ink); }
         <div class="type-row">
           <span class="type-label"><b>--fs-micro</b><br>10.5px · 0.14em<br>Mono 500</span>
           <p class="specimen mono" style="font-weight: 500; letter-spacing: .14em; color: var(--text-faint);">
-            Last update: 2026-10-31 · Nova v1.0.2 version
+            Last update: 2026-10-31 · Nova  version
           </p>
         </div>
 
@@ -1997,25 +2004,64 @@ pre .p { color: var(--accent-ink); }
       <h2 class="sec-title">Motion &amp; a11y</h2>
       <p class="sec-desc">
         Motion is decorative. Access, contrast, and keyboard behaviour are not negotiable.
+        Every value on this page was measured against the shipped CSS, JavaScript, and a headless browser.
       </p>
     </div>
 
     <div class="block-main">
-      <ul class="rules">
-        <li><strong>Reveal on scroll</strong> uses a single shared <code>IntersectionObserver</code> — 24px rise on <code>cubic-bezier(.22, 1, .36, 1)</code>, one-shot per element, then it unobserves. Target class is <code>.is-visible</code>; the base state is <code>.reveal</code>.</li>
-        <li><strong>will-change is released.</strong> <code>.reveal</code> opts into <code>will-change: opacity, transform</code>; <code>.is-visible</code> hands it back with <code>will-change: auto</code>, so the compositor memory is not held forever.</li>
-        <li><strong>No layout-shifting animation.</strong> Only <code>transform</code> and <code>opacity</code> animate. Width, height, top, left, and margin are never transitioned.</li>
-        <li><strong>Reduced motion.</strong> All transitions collapse to <code>0.001ms</code> under <code>prefers-reduced-motion</code>, and <code>scroll-behavior</code> reverts to <code>auto</code>. Hero spotlight, nebula drift, star twinkle, cosmic dust, galaxy spin, and ticker all freeze, and meteors stop spawning. The click explosion shrinks to a single ring.</li>
-        <li><strong>Perf tiers.</strong> <code>&lt;html data-perf&gt;</code> gates decoration. <code>eco</code> disables the sky entirely and keeps only the static base gradient. <code>normal</code> runs the Milky Way, nebula, and star layers with slow drift and twinkle, plus occasional meteors, with no mousemove-heavy effects. <code>premium</code> enables drift, spotlight, and tilt/magnetic.</li>
-        <li><strong>Touch targets</strong> are 44px minimum — every button, link, switch, and chip.</li>
-        <li><strong>Focus rings</strong> are a 3px accent outline with a 3px offset. Never removed, only restyled — and always <code>:focus-visible</code>, never bare <code>:focus</code>.</li>
-        <li><strong>Overlays</strong> (drawer, docs modal, cookie modal) trap focus, restore it on close, and reference-count the body scroll lock so stacked overlays don’t unlock early.</li>
-        <li><strong>Decorative layers</strong> — Milky Way, nebula, stars, grain, meteors, cursor halo — are <code>aria-hidden</code> and pointer-transparent. Sections and the hero have transparent backgrounds so the sky shows through; cards and other surfaces keep their own fill.</li>
-        <li><strong>Contrast floors.</strong> Body text ≥ 4.5:1 · large text ≥ 3:1 · UI borders and focus indicators ≥ 3:1, in both themes.</li>
-        <li><strong>On-accent text flips.</strong> Dark mode uses <code>#0A192F</code> on cyan because the accent is far too bright for white — light mode deepens the fill instead.</li>
-        <li><strong>Menu button label</strong> toggles between <em>Open menu</em> and <em>Close menu</em> in step with the drawer’s <code>aria-expanded</code>.</li>
-        <li><strong>Icons are never the label.</strong> An icon-only control carries its own <code>aria-label</code>; the glyph is always <code>aria-hidden</code>.</li>
-      </ul>
+
+      <div class="rule-group">
+        <h3 class="rule-group-title">Motion</h3>
+        <ol class="rules">
+          <li><strong>Reveal on scroll.</strong> One shared IntersectionObserver. Elements start 14px low and transparent, then rise over 280&nbsp;ms on <code>cubic-bezier(.22, 1, .36, 1)</code>. It runs only at 768px and wider; smaller screens show content at once. Target class is <code>.is-visible</code>.</li>
+          <li><strong>Transform and opacity only.</strong> Reveal, card, and button transitions animate transform, opacity, colour, and shadow. Width, height, top, left, and margin are never animated. The skip link is the sole exception, and it only appears on keyboard focus.</li>
+          <li><strong>Off-screen pausing.</strong> Hero and About animations (mesh, orbit, ticker) pause while their section is out of view. The aurora sky is fixed behind the page and is not paused.</li>
+        </ol>
+      </div>
+
+      <div class="rule-group">
+        <h3 class="rule-group-title">Reduced motion</h3>
+        <ol class="rules">
+          <li><strong>Forces the eco tier.</strong> The inline head script sets <code>data-perf="eco"</code> before first paint when <code>prefers-reduced-motion</code> is on.</li>
+          <li><strong>Everything decorative stops.</strong> Reveal content shows immediately. Ticker, orbit, mesh, and aurora animations are set to <code>animation: none</code>, and the sky stays static. Meteors do not spawn. The cursor spotlight, hero spotlight, tilt, and magnetic buttons are off. Click ripples are off.</li>
+          <li><strong>Scrolling and counters.</strong> Smooth scrolling is disabled (<code>scroll-behavior: auto</code>). Stat counters show their final number at once.</li>
+        </ol>
+      </div>
+
+      <div class="rule-group">
+        <h3 class="rule-group-title">Performance tiers</h3>
+        <ol class="rules">
+          <li><strong>Set before styles load.</strong> An inline script in <code>&lt;head&gt;</code> writes <code>data-perf</code> on <code>&lt;html&gt;</code>. Low memory, few cores, Save-Data, or reduced motion selects eco. Coarse pointers select normal. Everything else is premium.</li>
+          <li><strong>eco.</strong> Static base gradient only. The aurora script returns early, so no stars, meteors, cursor spotlight, or canvas ripples are created.</li>
+          <li><strong>normal.</strong> A lighter sky. Meteors arrive 12–25&nbsp;s apart. No cursor spotlight, no tilt or magnetic effects.</li>
+          <li><strong>premium.</strong> Full sky. Meteors arrive 6–15&nbsp;s apart. Cursor spotlight, hero spotlight, and tilt or magnetic buttons apply to mouse users.</li>
+          <li><strong>Scroll work is throttled.</strong> Scroll handlers run through <code>requestAnimationFrame</code>. Aurora parallax is limited to desktop devices that are not low-end, and it pauses while the tab is hidden.</li>
+        </ol>
+      </div>
+
+      <div class="rule-group">
+        <h3 class="rule-group-title">Keyboard and screen readers</h3>
+        <ol class="rules">
+          <li><strong>Focus is always visible.</strong> <code>:focus-visible</code> draws a 3px accent outline with a 3px offset. It is restyled, never removed. Bare <code>:focus</code> has no styling.</li>
+          <li><strong>Touch targets are at least 44px tall.</strong> Buttons, toggles, filters, and drawer items were measured at 390px wide.</li>
+          <li><strong>Overlays manage focus.</strong> The drawer, documentation modal, and cookie settings move focus inside, keep Tab within the dialog, close on Escape, and return focus to the trigger. Body scroll is locked by reference count, so stacked overlays do not unlock early.</li>
+          <li><strong>Filters are a toolbar.</strong> The tool filters use <code>role="toolbar"</code> with <code>aria-pressed</code>. Arrow keys move between them.</li>
+          <li><strong>Search.</strong> Ctrl or Cmd + K focuses it. Arrow keys move through results. Escape clears the field and closes the list.</li>
+          <li><strong>Messages are announced.</strong> Field errors use <code>role="status"</code> with <code>aria-live="polite"</code>, and invalid fields get <code>aria-invalid="true"</code>. Toasts sit in a polite live region.</li>
+          <li><strong>Menu button label.</strong> Switches between <em>Open menu</em> and <em>Close menu</em>, in step with <code>aria-expanded</code>.</li>
+          <li><strong>Decorative layers are hidden from assistive tech.</strong> Sky, stars, grain, and canvas are <code>aria-hidden</code> and do not receive pointer events. Icons are <code>aria-hidden</code>, and icon-only controls carry their own <code>aria-label</code>.</li>
+        </ol>
+      </div>
+
+      <div class="rule-group">
+        <h3 class="rule-group-title">Contrast (measured, WCAG 2.x)</h3>
+        <ol class="rules">
+          <li><strong>Light.</strong> Body text 12.2:1. Muted text 7.1:1. Accent text 4.9:1. White on accent button 5.7:1. Success 4.7:1. Error 5.6:1.</li>
+          <li><strong>Dark.</strong> Body text 15.1:1. Muted text 6.5:1. Accent text 10.5:1. Navy on cyan button 10.5:1. Success 6.5:1. Error 6.0:1.</li>
+          <li><strong>Floor.</strong> Body and small text must reach 4.5:1. Large text and UI borders must reach 3:1. Both themes are checked in Chromium on the live components.</li>
+        </ol>
+      </div>
+
     </div>
   </div>
 </section>
@@ -2070,7 +2116,7 @@ pre .p { color: var(--accent-ink); }
           <figcaption>Static version <em>no live clock</em></figcaption>
           <div class="specimen-body is-block">
             <p style="color: var(--text-soft); font-size: var(--fs-small); line-height: 1.7;">
-              The footer version (<code>Nova v1.0.2 version</code>) and last-update date
+              The footer version (<code>Nova  version</code>) and last-update date
               (<code>2026-10-31</code>) are <strong>hardcoded</strong>. No <code>new Date()</code>,
               no <code>setInterval</code>, no live clock. The values change only when the site is
               actually deployed with a new version.
@@ -2107,7 +2153,7 @@ pre .p { color: var(--accent-ink); }
 <span class="p">--fs-status</span>:     10px;                         <span class="c">/* status badges    */</span>
 
 <span class="c">/* ── Accent split ───────────────────────────────────── */</span>
-<span class="p">--accent</span>:        #B4788C;  <span class="c">/* light: decorative   */</span>
+<span class="p">--accent</span>:        #945268;  <span class="c">/* light: text, fills */</span>
 <span class="p">--accent-ink</span>:    #9A5670;  <span class="c">/* light: text ≥ 4.5:1 */</span>
 <span class="p">--accent-solid</span>:  #9A5670;  <span class="c">/* light: fill          */</span>
 <span class="p">--on-accent</span>:     #FFFFFF;  <span class="c">/* light                */</span>
@@ -2135,7 +2181,7 @@ pre .p { color: var(--accent-ink); }
 
 <span class="c">/* ── Versioning ─────────────────────────────────────── */</span>
 <span class="c">/* Static, never derived at runtime.                    */</span>
-version:     <span class="p">Nova v1.0.2 version</span>;
+version:     <span class="p">Nova  version</span>;
 lastUpdate:  <span class="p">2026-10-31</span>;</code></pre>
     </div>
   </div>
@@ -2145,7 +2191,7 @@ lastUpdate:  <span class="p">2026-10-31</span>;</code></pre>
 
 <footer class="site-footer">
   <div class="shell footer-inner">
-    <p>© <span id="year">2026</span> Hajir Muhaajir · Style guide Nova v1.0.2 version</p>
+    <p>© <span id="year">2026</span> Hajir Muhaajir · Style guide Nova version</p>
     <nav><a href="index.html">Back to hajir.is-a.dev</a></nav>
   </div>
 </footer>

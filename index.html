@@ -78,7 +78,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="preconnect" href="https://i.postimg.cc" crossorigin />
   <link rel="dns-prefetch" href="https://signature-music.vercel.app" />
-  <link rel="dns-prefetch" href="https://hajir.is-a.dev/raia-ai" />
+  <link rel="dns-prefetch" href="https://hajir.is-a.dev" />
 
   <!-- ============ FONTS ============ -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&family=JetBrains+Mono:wght@400;500;600;700&family=Sora:wght@400;500;600;700;800&display=swap" />
@@ -175,8 +175,9 @@
           { "@type": "SoftwareApplication", "name": "Raia Scrub", "url": "https://raia-scrub.haiere.workers.dev/", "applicationCategory": "SecurityApplication", "operatingSystem": "Web", "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" } },
           { "@type": "SoftwareApplication", "name": "Raia Delta", "url": "https://raia-delta.haiere.workers.dev/", "applicationCategory": "UtilitiesApplication", "operatingSystem": "Web", "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" } },
           { "@type": "SoftwareApplication", "name": "Raia Minify", "url": "https://raiaminify.haiere.workers.dev/", "applicationCategory": "DeveloperApplication", "operatingSystem": "Web", "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" } },
-          { "@type": "SoftwareApplication", "name": "RaiaSpace", "url": "https://raiaspace.haiere.workers.dev", "applicationCategory": "SearchApplication", "operatingSystem": "Web", "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" } },
-          { "@type": "SoftwareApplication", "name": "Calc", "url": "https://hajir.is-a.dev/calc", "applicationCategory": "UtilitiesApplication", "operatingSystem": "Web", "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" } }
+          { "@type": "SoftwareApplication", "name": "RaiaSpace", "url": "https://raiaspace.haiere.workers.dev/", "applicationCategory": "SearchApplication", "operatingSystem": "Web", "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" } },
+          { "@type": "SoftwareApplication", "name": "Calc", "url": "https://hajir.is-a.dev/calc", "applicationCategory": "UtilitiesApplication", "operatingSystem": "Web", "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" } },
+          { "@type": "SoftwareApplication", "name": "QRe", "url": "https://hajir.is-a.dev/qre/", "applicationCategory": "UtilitiesApplication", "operatingSystem": "Web", "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" } }
         ]
       },
       {
@@ -256,7 +257,7 @@
     ]
   }
   </script>
-</head>
+
 
 <!-- ============ SVG SPRITE (Raia + shared symbols) ============ -->
 <svg width="0" height="0" style="position:absolute;overflow:hidden" aria-hidden="true" focusable="false">
@@ -282,13 +283,13 @@
           display: ['Sora', 'Inter', 'system-ui', 'sans-serif'],
         },
         colors: {
-          accent: '#B4788C',
+          accent: '#945268',
           'accent-dim': 'rgba(180,120,140,0.16)',
           'accent-border': 'rgba(180,120,140,0.22)',
           dark: { bg: '#0A192F', surface: '#0B1E33', surface2: '#0d2338' },
           blue: {
             50:'#FCF1F5',100:'#FBE4EE',200:'#F6CFE0',300:'#EDB0CB',
-            400:'#7FD8CB',500:'#C79A6B',600:'#B4788C',700:'#96566C',
+            400:'#7FD8CB',500:'#C79A6B',600:'#945268',700:'#96566C',
             800:'#7A4257',900:'#5C3142',950:'#3A2430',
           },
           slate: { 50:'#FBF0F5',100:'#F6E2EC',900:'#0B1E33',950:'#0A192F' },
@@ -370,14 +371,14 @@ svg[data-icon] { width: 1em; height: 1em; flex-shrink: 0; display: inline-block;
 /* --- Hero --- */
 #hero { min-height: 100svh; display: flex; align-items: center; justify-content: center; padding: 5rem 1.25rem 4rem; text-align: center; position: relative; overflow: hidden; }
 #hero h1 { font-family: 'Sora', 'Inter', system-ui, sans-serif; font-weight: 800; font-size: clamp(2.25rem, 7vw, 4.5rem); line-height: 0.95; letter-spacing: -0.02em; margin: 0; }
-#hero p[data-i18n="hero_desc"] { margin: 1.25rem auto 2.25rem; max-width: 36rem; font-size: 1rem; line-height: 1.65; color: #94A3B8; }
+#hero p[data-i18n="hero_desc"] { margin: 1.25rem auto 2.25rem; max-width: 36rem; font-size: 1rem; line-height: 1.65; color: var(--text-muted); }
 
 /* --- Hero action buttons --- */
 #hero .hero-cta { display: flex; flex-direction: column; gap: 0.75rem; align-items: center; }
 @media (min-width: 640px) { #hero .hero-cta { flex-direction: row; } }
 .btn-primary, .btn-secondary { display: inline-flex; align-items: center; justify-content: center; gap: 0.6rem; min-height: 52px; padding: 14px 32px; border-radius: 14px; font-weight: 700; font-size: 0.95rem; text-decoration: none; cursor: pointer; width: 100%; }
 .btn-primary { background: var(--accent); color: #fff; border: none; }
-.btn-secondary { background: transparent; border: 1.5px solid rgba(148, 163, 184, 0.25); color: #94A3B8; }
+.btn-secondary { background: transparent; border: 1.5px solid rgba(148, 163, 184, 0.25); color: var(--text-muted); }
 @media (min-width: 640px) { .btn-primary, .btn-secondary { width: auto; min-width: 150px; } }
 
 /* --- Section rhythm --- */
@@ -459,7 +460,6 @@ html { -webkit-text-size-adjust: 100%; }
 
 <!-- ============ AURORA THEME LAYERS ============ -->
 <div id="aurora-bg" aria-hidden="true">
-  <div class="aurora"></div>
   <div class="stars stars-back"></div>
   <div class="stars stars-mid"></div>
   <div class="stars stars-front"></div>
@@ -468,7 +468,7 @@ html { -webkit-text-size-adjust: 100%; }
 <div class="spotlight" aria-hidden="true"></div>
 <canvas id="fx" aria-hidden="true"></canvas>
 
-<a href="#hero" class="skip-link" data-i18n="skip_to_main">Skip to main content</a>
+<a href="#main" class="skip-link" data-i18n="skip_to_main">Skip to main content</a>
 
 <div class="grain-overlay" aria-hidden="true"></div>
 <div id="scroll-progress" aria-hidden="true"></div>
@@ -550,7 +550,7 @@ html { -webkit-text-size-adjust: 100%; }
       <a
         id="raiaspace-nav-btn"
         class="group/raiaspace"
-        href="https://raiaspace.haiere.workers.dev"
+        href="https://raiaspace.haiere.workers.dev/"
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Search on RaiaSpace"
@@ -747,6 +747,7 @@ html { -webkit-text-size-adjust: 100%; }
      1. HERO
 ============================================================ -->
 
+<main id="main">
 <section id="hero">
   <div class="mesh-field" aria-hidden="true">
     <span class="mesh-blob m1"></span>
@@ -758,7 +759,7 @@ html { -webkit-text-size-adjust: 100%; }
 
   <div class="hero-content">
     <a
-      href="https://raiaspace.haiere.workers.dev"
+      href="https://raiaspace.haiere.workers.dev/"
       class="hero-badge group/badge"
       target="_blank"
       rel="noopener noreferrer"
@@ -994,226 +995,19 @@ html { -webkit-text-size-adjust: 100%; }
       </button>
     </div>
 
-    <ol id="tools-container">
-
-      <!-- 01. HAJIRSYNC -->
-      <li class="tool-card reveal glass-card" data-category="music" data-repo="hajirsync">
-        <div class="tool-meta">
-          <span class="tool-number">01</span>
-          <span class="tool-cat">
-            <svg class="h-2.5 w-2.5" data-icon="ic24" aria-hidden="true"></svg>
-            <span data-i18n="cat_lrc">LRC Maker</span>
-          </span>
-          <span class="status-badge-stable" data-i18n="status_stable">Stable</span>
-        </div>
-        <h3 class="tool-title">
-          <svg class="h-4 w-4" data-icon="ic07" aria-hidden="true"></svg>
-          HajirSync
-        </h3>
-        <p class="tool-desc" data-i18n="tool1_desc">Create and sync LRC lyric files quickly and easily.</p>
-        <div class="tool-actions mt-auto">
-          <a href="https://hajirsync.haiere.workers.dev/" class="tool-open-btn group/btn" target="_blank" rel="noopener noreferrer" aria-label="Open HajirSync in a new tab">
-            <span data-i18n="tool_open">Open Tool</span>
-            <svg class="h-3.5 w-3.5" data-icon="ic12" aria-hidden="true"></svg>
-          </a>
-          <button class="tool-docs-btn group/btn" type="button" data-repo="hajirsync" data-tool-name="HajirSync" aria-label="View HajirSync documentation">
-            <span data-i18n="tool_docs">How to Use</span>
-            <svg class="h-3.5 w-3.5" data-icon="ic33" aria-hidden="true"></svg>
-          </button>
-        </div>
-      </li>
-
-      <!-- 02. RAIA VAULT -->
-      <li class="tool-card reveal glass-card" data-category="security" data-repo="raia-vault">
-        <div class="tool-meta">
-          <span class="tool-number">02</span>
-          <span class="tool-cat">
-            <svg class="h-2.5 w-2.5" data-icon="ic13" aria-hidden="true"></svg>
-            <span data-i18n="cat_password">Password Manager</span>
-          </span>
-          <span class="status-badge-stable" data-i18n="status_stable">Stable</span>
-        </div>
-        <h3 class="tool-title">
-          <svg class="h-4 w-4" data-icon="ic13" aria-hidden="true"></svg>
-          Raia Vault
-        </h3>
-        <p class="tool-desc" data-i18n="tool2_desc">Generate strong passwords and manage secure password utilities.</p>
-        <div class="tool-actions mt-auto">
-          <a href="https://raia-vault.haiere.workers.dev/" class="tool-open-btn group/btn" target="_blank" rel="noopener noreferrer" aria-label="Open Raia Vault in a new tab">
-            <span data-i18n="tool_open">Open Tool</span>
-            <svg class="h-3.5 w-3.5" data-icon="ic12" aria-hidden="true"></svg>
-          </a>
-          <button class="tool-docs-btn group/btn" type="button" data-repo="raia-vault" data-tool-name="Raia Vault" aria-label="View Raia Vault documentation">
-            <span data-i18n="tool_docs">How to Use</span>
-            <svg class="h-3.5 w-3.5" data-icon="ic33" aria-hidden="true"></svg>
-          </button>
-        </div>
-      </li>
-
-      <!-- 03. RAIA SCRUB -->
-      <li class="tool-card reveal glass-card" data-category="security" data-repo="raia-scrub">
-        <div class="tool-meta">
-          <span class="tool-number">03</span>
-          <span class="tool-cat">
-            <svg class="h-2.5 w-2.5" data-icon="ic25" aria-hidden="true"></svg>
-            <span data-i18n="cat_metadata">Metadata Remover</span>
-          </span>
-          <span class="status-badge-stable" data-i18n="status_stable">Stable</span>
-        </div>
-        <h3 class="tool-title">
-          <svg class="h-4 w-4" data-icon="ic25" aria-hidden="true"></svg>
-          Raia Scrub
-        </h3>
-        <p class="tool-desc" data-i18n="tool3_desc">Remove sensitive metadata before sharing files or photos.</p>
-        <div class="tool-actions mt-auto">
-          <a href="https://raia-scrub.haiere.workers.dev/" class="tool-open-btn group/btn" target="_blank" rel="noopener noreferrer" aria-label="Open Raia Scrub in a new tab">
-            <span data-i18n="tool_open">Open Tool</span>
-            <svg class="h-3.5 w-3.5" data-icon="ic12" aria-hidden="true"></svg>
-          </a>
-          <button class="tool-docs-btn group/btn" type="button" data-repo="raia-scrub" data-tool-name="Raia Scrub" aria-label="View Raia Scrub documentation">
-            <span data-i18n="tool_docs">How to Use</span>
-            <svg class="h-3.5 w-3.5" data-icon="ic33" aria-hidden="true"></svg>
-          </button>
-        </div>
-      </li>
-
-      <!-- 04. RAIA DELTA -->
-      <li class="tool-card reveal glass-card" data-category="developer" data-repo="raia-delta">
-        <div class="tool-meta">
-          <span class="tool-number">04</span>
-          <span class="tool-cat">
-            <svg class="h-2.5 w-2.5" data-icon="ic15" aria-hidden="true"></svg>
-            <span data-i18n="cat_text">Text Comparison</span>
-          </span>
-          <span class="status-badge-stable" data-i18n="status_stable">Stable</span>
-        </div>
-        <h3 class="tool-title">
-          <svg class="h-4 w-4" data-icon="ic15" aria-hidden="true"></svg>
-          Raia Delta
-        </h3>
-        <p class="tool-desc" data-i18n="tool4_desc">Compare two texts and inspect their differences clearly.</p>
-        <div class="tool-actions mt-auto">
-          <a href="https://raia-delta.haiere.workers.dev/" class="tool-open-btn group/btn" target="_blank" rel="noopener noreferrer" aria-label="Open Raia Delta in a new tab">
-            <span data-i18n="tool_open">Open Tool</span>
-            <svg class="h-3.5 w-3.5" data-icon="ic12" aria-hidden="true"></svg>
-          </a>
-          <button class="tool-docs-btn group/btn" type="button" data-repo="raia-delta" data-tool-name="Raia Delta" aria-label="View Raia Delta documentation">
-            <span data-i18n="tool_docs">How to Use</span>
-            <svg class="h-3.5 w-3.5" data-icon="ic33" aria-hidden="true"></svg>
-          </button>
-        </div>
-      </li>
-
-      <!-- 05. RAIA MINIFY -->
-      <li class="tool-card reveal glass-card" data-category="developer" data-repo="raiaminify">
-        <div class="tool-meta">
-          <span class="tool-number">05</span>
-          <span class="tool-cat">
-            <svg class="h-2.5 w-2.5" data-icon="ic15" aria-hidden="true"></svg>
-            <span data-i18n="cat_dev_tool">Developer Tool</span>
-          </span>
-          <span class="status-badge-stable" data-i18n="status_stable">Stable</span>
-        </div>
-        <h3 class="tool-title">
-          <svg class="h-4 w-4" data-icon="ic41" aria-hidden="true"></svg>
-          Raia Minify
-        </h3>
-        <p class="tool-desc" data-i18n="tool5_desc">Minify and optimize code or text directly in the browser.</p>
-        <div class="tool-actions mt-auto">
-          <a href="https://raiaminify.haiere.workers.dev/" class="tool-open-btn group/btn" target="_blank" rel="noopener noreferrer" aria-label="Open Raia Minify in a new tab">
-            <span data-i18n="tool_open">Open Tool</span>
-            <svg class="h-3.5 w-3.5" data-icon="ic12" aria-hidden="true"></svg>
-          </a>
-          <button class="tool-docs-btn group/btn" type="button" data-repo="raiaminify" data-tool-name="Raia Minify" aria-label="View Raia Minify documentation">
-            <span data-i18n="tool_docs">How to Use</span>
-            <svg class="h-3.5 w-3.5" data-icon="ic33" aria-hidden="true"></svg>
-          </button>
-        </div>
-      </li>
-
-      <!-- 06. RAIASPACE -->
-      <li class="tool-card reveal glass-card" data-category="web" data-repo="raiaspace">
-        <div class="tool-meta">
-          <span class="tool-number">06</span>
-          <span class="tool-cat">
-            <svg class="h-2.5 w-2.5" data-icon="ic14" aria-hidden="true"></svg>
-            <span data-i18n="cat_search">Search Engine</span>
-          </span>
-          <span class="status-badge-demo" data-i18n="status_demo">Demo</span>
-        </div>
-        <h3 class="tool-title">
-          <svg class="h-4 w-4" data-icon="ic14" aria-hidden="true"></svg>
-          RaiaSpace
-        </h3>
-        <p class="tool-desc" data-i18n="tool6_desc">A lightweight search and discovery space for the open web.</p>
-        <div class="tool-actions mt-auto">
-          <a href="https://raiaspace.haiere.workers.dev" class="tool-open-btn group/btn" target="_blank" rel="noopener noreferrer" aria-label="Open RaiaSpace in a new tab">
-            <span data-i18n="tool_open">Open Tool</span>
-            <svg class="h-3.5 w-3.5" data-icon="ic12" aria-hidden="true"></svg>
-          </a>
-          <button class="tool-docs-btn group/btn" type="button" data-repo="raiaspace" data-tool-name="RaiaSpace" aria-label="View RaiaSpace documentation">
-            <span data-i18n="tool_docs">How to Use</span>
-            <svg class="h-3.5 w-3.5" data-icon="ic33" aria-hidden="true"></svg>
-          </button>
-        </div>
-      </li>
-
-      <!-- 07. CALC -->
-      <li class="tool-card reveal glass-card" data-category="web" data-repo="calc">
-        <div class="tool-meta">
-          <span class="tool-number">07</span>
-          <span class="tool-cat">
-            <svg class="h-2.5 w-2.5" data-icon="ic27" aria-hidden="true"></svg>
-            <span data-i18n="cat_calc">Calculator</span>
-          </span>
-          <span class="status-badge-stable" data-i18n="status_stable">Stable</span>
-        </div>
-        <h3 class="tool-title">
-          <svg class="h-4 w-4" data-icon="ic28" aria-hidden="true"></svg>
-          Calc
-        </h3>
-        <p class="tool-desc" data-i18n="tool7_desc">A simple and fast calculator for everyday calculations.</p>
-        <div class="tool-actions mt-auto">
-          <a href="https://hajir.is-a.dev/calc" class="tool-open-btn group/btn" target="_blank" rel="noopener noreferrer" aria-label="Open Calc in a new tab">
-            <span data-i18n="tool_open">Open Tool</span>
-            <svg class="h-3.5 w-3.5" data-icon="ic12" aria-hidden="true"></svg>
-          </a>
-          <button class="tool-docs-btn group/btn" type="button" data-repo="calc" data-tool-name="Calc" aria-label="View Calc documentation">
-            <span data-i18n="tool_docs">How to Use</span>
-            <svg class="h-3.5 w-3.5" data-icon="ic33" aria-hidden="true"></svg>
-          </button>
-        </div>
-      </li>
-
-      <!-- 08. QRE -->
-      <li class="tool-card reveal glass-card" data-category="web" data-repo="qre">
-        <div class="tool-meta">
-          <span class="tool-number">08</span>
-          <span class="tool-cat">
-            <svg class="h-2.5 w-2.5 rounded-[2px]" data-icon="qre-logo" aria-hidden="true"></svg>
-            <span data-i18n="cat_qr">QR Code Generator</span>
-          </span>
-          <span class="status-badge-stable" data-i18n="status_stable">Stable</span>
-        </div>
-        <h3 class="tool-title">
-          <svg class="h-4 w-4 rounded-[4px]" data-icon="qre-logo" aria-hidden="true"></svg>
-          QRe
-        </h3>
-        <p class="tool-desc" data-i18n="tool8_desc">A free QR code generator that runs entirely in your browser.</p>
-        <div class="tool-actions mt-auto">
-          <a href="https://hajir.is-a.dev/qre/" class="tool-open-btn group/btn" target="_blank" rel="noopener noreferrer" aria-label="Open QRe in a new tab">
-            <span data-i18n="tool_open">Open Tool</span>
-            <svg class="h-3.5 w-3.5" data-icon="ic12" aria-hidden="true"></svg>
-          </a>
-          <button class="tool-docs-btn group/btn" type="button" data-repo="qre" data-tool-name="QRe" aria-label="View QRe documentation">
-            <span data-i18n="tool_docs">How to Use</span>
-            <svg class="h-3.5 w-3.5" data-icon="ic33" aria-hidden="true"></svg>
-          </button>
-        </div>
-      </li>
-
-
-    </ol>
+    <ol id="tools-container"></ol>
+      <noscript>
+        <ul>
+          <li><a href="https://hajirsync.haiere.workers.dev/" target="_blank" rel="noopener noreferrer">HajirSync</a></li>
+          <li><a href="https://raia-vault.haiere.workers.dev/" target="_blank" rel="noopener noreferrer">Raia Vault</a></li>
+          <li><a href="https://raia-scrub.haiere.workers.dev/" target="_blank" rel="noopener noreferrer">Raia Scrub</a></li>
+          <li><a href="https://raia-delta.haiere.workers.dev/" target="_blank" rel="noopener noreferrer">Raia Delta</a></li>
+          <li><a href="https://raiaminify.haiere.workers.dev/" target="_blank" rel="noopener noreferrer">Raia Minify</a></li>
+          <li><a href="https://raiaspace.haiere.workers.dev/" target="_blank" rel="noopener noreferrer">RaiaSpace</a></li>
+          <li><a href="https://hajir.is-a.dev/calc" target="_blank" rel="noopener noreferrer">Calc</a></li>
+          <li><a href="https://hajir.is-a.dev/qre/" target="_blank" rel="noopener noreferrer">QRe</a></li>
+        </ul>
+      </noscript>
   </div>
 </section>
 
@@ -1239,59 +1033,13 @@ html { -webkit-text-size-adjust: 100%; }
       </p>
     </header>
 
-    <div class="ai-bots-grid">
-
-      <!-- 01. RAIA -->
-      <article class="reveal glass-card game-card ai-card">
-        <div class="game-thumb game-thumb--raia" aria-hidden="true">
-          <svg class="game-thumb-icon" data-icon="raia" aria-hidden="true"></svg>
-        </div>
-        <div class="game-meta">
-          <span class="game-cat">
-            <svg class="h-2.5 w-2.5" data-icon="raia" aria-hidden="true"></svg>
-            <span data-i18n="cat_ai_bot">AI/Bot</span>
-          </span>
-          <span class="status-badge-stable" data-i18n="status_stable">Stable</span>
-        </div>
-        <h3 class="game-title">
-          <svg class="h-4 w-4" data-icon="raia" aria-hidden="true"></svg>
-          <span>Raia</span>
-        </h3>
-        <p class="game-desc" data-i18n="ai_raia_desc">An AI chatbot for conversations, ideas, and useful workflows.</p>
-        <div class="tool-actions mt-auto">
-          <a href="https://hajir.is-a.dev/raia-ai/" class="tool-open-btn group/btn" target="_blank" rel="noopener noreferrer" aria-label="Open Raia in a new tab">
-            <span data-i18n="tool_open">Open Tool</span>
-            <svg class="h-3.5 w-3.5" data-icon="ic12" aria-hidden="true"></svg>
-          </a>
-        </div>
-      </article>
-
-      <!-- 02. KIRANA -->
-      <article class="reveal glass-card game-card ai-card">
-        <div class="game-thumb game-thumb--kirana" aria-hidden="true">
-          <svg class="game-thumb-icon" data-icon="ic37" aria-hidden="true"></svg>
-        </div>
-        <div class="game-meta">
-          <span class="game-cat">
-            <svg class="h-2.5 w-2.5" data-icon="ic37" aria-hidden="true"></svg>
-            <span data-i18n="cat_ai_bot">AI/Bot</span>
-          </span>
-          <span class="status-badge-stable" data-i18n="status_stable">Stable</span>
-        </div>
-        <h3 class="game-title">
-          <svg class="h-4 w-4" data-icon="ic37" aria-hidden="true"></svg>
-          <span>Kirana</span>
-        </h3>
-        <p class="game-desc" data-i18n="ai_kirana_desc">A thoughtful AI companion for creative conversations and everyday ideas.</p>
-        <div class="tool-actions mt-auto">
-          <a href="https://hajir.is-a.dev/kirana" class="tool-open-btn group/btn" target="_blank" rel="noopener noreferrer" aria-label="Open Kirana in a new tab">
-            <span data-i18n="tool_open">Open Tool</span>
-            <svg class="h-3.5 w-3.5" data-icon="ic12" aria-hidden="true"></svg>
-          </a>
-        </div>
-      </article>
-
-    </div>
+    <div class="ai-bots-grid" id="ai-bots-container"></div>
+      <noscript>
+        <ul>
+          <li><a href="https://hajir.is-a.dev/raia-ai/" target="_blank" rel="noopener noreferrer">Raia</a></li>
+          <li><a href="https://hajir.is-a.dev/kirana" target="_blank" rel="noopener noreferrer">Kirana</a></li>
+        </ul>
+      </noscript>
   </div>
 </section>
 
@@ -1317,109 +1065,15 @@ html { -webkit-text-size-adjust: 100%; }
       </p>
     </header>
 
-    <div class="games-grid">
-
-      <!-- 01. Chess -->
-      <article class="reveal glass-card game-card">
-        <div class="game-thumb game-thumb--chess" aria-hidden="true">
-          <svg class="game-thumb-icon" data-icon="ic30" aria-hidden="true"></svg>
-        </div>
-        <div class="game-meta">
-          <span class="game-cat">
-            <svg class="h-2.5 w-2.5" data-icon="ic16" aria-hidden="true"></svg>
-            <span data-i18n="game_chess_tag">Classic Board</span>
-          </span>
-          <span class="status-badge-demo" data-i18n="status_demo">Demo</span>
-        </div>
-        <h3 class="game-title">
-          <svg class="h-4 w-4" data-icon="ic30" aria-hidden="true"></svg>
-          <span data-i18n="game_chess_name">Chess</span>
-        </h3>
-        <p class="game-desc" data-i18n="game_chess_desc">Play classic chess directly in the browser.</p>
-        <div class="tool-actions mt-auto">
-          <a href="https://hajir.is-a.dev/chess" class="tool-open-btn group/btn" aria-label="Play Chess">
-            <span data-i18n="game_play">Play</span>
-            <svg class="h-3.5 w-3.5" data-icon="ic20" aria-hidden="true"></svg>
-          </a>
-        </div>
-      </article>
-
-      <!-- 02. Loveyou -->
-      <article class="reveal glass-card game-card">
-        <div class="game-thumb game-thumb--loveyou" aria-hidden="true">
-          <svg class="game-thumb-icon" data-icon="ic35" aria-hidden="true"></svg>
-        </div>
-        <div class="game-meta">
-          <span class="game-cat">
-            <svg class="h-2.5 w-2.5" data-icon="ic41" aria-hidden="true"></svg>
-            <span data-i18n="game_loveyou_tag">Interactive</span>
-          </span>
-          <span class="status-badge-stable" data-i18n="status_stable">Stable</span>
-        </div>
-        <h3 class="game-title">
-          <svg class="h-4 w-4" data-icon="ic35" aria-hidden="true"></svg>
-          <span data-i18n="game_loveyou_name">Loveyou</span>
-        </h3>
-        <p class="game-desc" data-i18n="game_loveyou_desc">A small interactive page made as a warm digital gift.</p>
-        <div class="tool-actions mt-auto">
-          <a href="https://hajir.is-a.dev/loveyou" class="tool-open-btn group/btn" aria-label="Open Loveyou">
-            <span data-i18n="game_play">Play</span>
-            <svg class="h-3.5 w-3.5" data-icon="ic20" aria-hidden="true"></svg>
-          </a>
-        </div>
-      </article>
-
-      <!-- 03. Orbit Weaver -->
-      <article class="reveal glass-card game-card">
-        <div class="game-thumb game-thumb--orbit" aria-hidden="true">
-          <svg class="game-thumb-icon" data-icon="ic16" aria-hidden="true"></svg>
-        </div>
-        <div class="game-meta">
-          <span class="game-cat">
-            <svg class="h-2.5 w-2.5" data-icon="ic16" aria-hidden="true"></svg>
-            <span data-i18n="game_orbit_tag">Arcade</span>
-          </span>
-          <span class="status-badge-demo" data-i18n="status_demo">Demo</span>
-        </div>
-        <h3 class="game-title">
-          <svg class="h-4 w-4" data-icon="ic16" aria-hidden="true"></svg>
-          <span data-i18n="game_orbit_name">Orbit Weaver</span>
-        </h3>
-        <p class="game-desc" data-i18n="game_orbit_desc">Guide your ship through orbital paths and passing stars.</p>
-        <div class="tool-actions mt-auto">
-          <a href="https://hajir.is-a.dev/game/orbit-weaver.html" class="tool-open-btn group/btn" aria-label="Play Orbit Weaver">
-            <span data-i18n="game_play">Play</span>
-            <svg class="h-3.5 w-3.5" data-icon="ic20" aria-hidden="true"></svg>
-          </a>
-        </div>
-      </article>
-
-      <!-- 04. Starfall -->
-      <article class="reveal glass-card game-card">
-        <div class="game-thumb game-thumb--starfall" aria-hidden="true">
-          <svg class="game-thumb-icon" data-icon="ic41" aria-hidden="true"></svg>
-        </div>
-        <div class="game-meta">
-          <span class="game-cat">
-            <svg class="h-2.5 w-2.5" data-icon="ic41" aria-hidden="true"></svg>
-            <span data-i18n="game_starfall_tag">Arcade</span>
-          </span>
-          <span class="status-badge-demo" data-i18n="status_demo">Demo</span>
-        </div>
-        <h3 class="game-title">
-          <svg class="h-4 w-4" data-icon="ic41" aria-hidden="true"></svg>
-          <span data-i18n="game_starfall_name">Starfall</span>
-        </h3>
-        <p class="game-desc" data-i18n="game_starfall_desc">Catch falling stars in this quick browser arcade game.</p>
-        <div class="tool-actions mt-auto">
-          <a href="https://hajir.is-a.dev/game/starfall.html" class="tool-open-btn group/btn" aria-label="Play Starfall">
-            <span data-i18n="game_play">Play</span>
-            <svg class="h-3.5 w-3.5" data-icon="ic20" aria-hidden="true"></svg>
-          </a>
-        </div>
-      </article>
-
-    </div>
+    <div class="games-grid" id="games-container"></div>
+      <noscript>
+        <ul>
+          <li><a href="https://hajir.is-a.dev/chess">Chess</a></li>
+          <li><a href="https://hajir.is-a.dev/loveyou">Loveyou</a></li>
+          <li><a href="https://hajir.is-a.dev/game/orbit-weaver.html">Orbit Weaver</a></li>
+          <li><a href="https://hajir.is-a.dev/game/starfall.html">Starfall</a></li>
+        </ul>
+      </noscript>
   </div>
 </section>
 
@@ -1776,7 +1430,8 @@ html { -webkit-text-size-adjust: 100%; }
      9. FOOTER
 ============================================================ -->
 
-<footer class="footer-signature" role="contentinfo" aria-labelledby="footer-title">
+</main>
+<footer class="footer-signature" aria-labelledby="footer-title">
   <div class="footer-bg" aria-hidden="true">
     <div class="footer-blob footer-blob--a"></div>
     <div class="footer-blob footer-blob--b"></div>
@@ -1845,21 +1500,7 @@ html { -webkit-text-size-adjust: 100%; }
           <span class="footer-col-dot footer-col-dot--cyan" aria-hidden="true"></span>
           <span data-i18n="footer_beat_tools">Beat Tools</span>
         </h3>
-        <ul>
-          <li><a href="https://hajirsync.haiere.workers.dev/" class="footer-link" target="_blank" rel="noopener noreferrer">HajirSync <span aria-hidden="true">↗</span></a></li>
-          <li><a href="https://raia-vault.haiere.workers.dev/" class="footer-link" target="_blank" rel="noopener noreferrer">Raia Vault <span aria-hidden="true">↗</span></a></li>
-          <li><a href="https://raia-scrub.haiere.workers.dev/" class="footer-link" target="_blank" rel="noopener noreferrer">Raia Scrub <span aria-hidden="true">↗</span></a></li>
-          <li><a href="https://raia-delta.haiere.workers.dev/" class="footer-link" target="_blank" rel="noopener noreferrer">Raia Delta <span aria-hidden="true">↗</span></a></li>
-          <li><a href="https://raiaminify.haiere.workers.dev/" class="footer-link" target="_blank" rel="noopener noreferrer">Raia Minify <span aria-hidden="true">↗</span></a></li>
-          <li><a href="https://raiaspace.haiere.workers.dev" class="footer-link" target="_blank" rel="noopener noreferrer">RaiaSpace <span aria-hidden="true">↗</span></a></li>
-          <li><a href="https://hajir.is-a.dev/calc" class="footer-link" target="_blank" rel="noopener noreferrer">Calc <span aria-hidden="true">↗</span></a></li>
-          <li><a href="https://hajir.is-a.dev/raia-ai/" class="footer-link" target="_blank" rel="noopener noreferrer">Raia <span aria-hidden="true">↗</span></a></li>
-          <li><a href="https://hajir.is-a.dev/kirana" class="footer-link" target="_blank" rel="noopener noreferrer">Kirana <span aria-hidden="true">↗</span></a></li>
-          <li><a href="https://hajir.is-a.dev/chess" class="footer-link">Chess <span aria-hidden="true">↗</span></a></li>
-          <li><a href="https://hajir.is-a.dev/loveyou" class="footer-link">Loveyou <span aria-hidden="true">↗</span></a></li>
-          <li><a href="https://hajir.is-a.dev/game/orbit-weaver.html" class="footer-link">Orbit Weaver <span aria-hidden="true">↗</span></a></li>
-          <li><a href="https://hajir.is-a.dev/game/starfall.html" class="footer-link">Starfall <span aria-hidden="true">↗</span></a></li>
-        </ul>
+        <ul id="footer-tools"></ul>
       </nav>
 
 <section class="footer-col footer-col--wide" aria-labelledby="footer-connect-title">
@@ -1928,14 +1569,6 @@ html { -webkit-text-size-adjust: 100%; }
           <span data-i18n="cookie_customize">Customize</span>
         </button>
       </div>
-
-      <p class="footer-updated">
-        <svg class="h-3 w-3" data-icon="ic19" aria-hidden="true"></svg>
-        <span data-i18n="footer_last_updated">Last update:</span>
-        <span id="last-updated-date">2026-11-05</span>
-        <span class="footer-version-sep" aria-hidden="true">·</span>
-        <span class="footer-version" data-i18n="footer_version">Nova v1.0.2</span>
-      </p>
     </div>
 
     <p class="footer-rwr" data-i18n="RWR_closing">

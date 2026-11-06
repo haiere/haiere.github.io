@@ -1,15 +1,4 @@
-/* ============================================================
-   i18n.js Nova v1.0.2, Haiere
-   Bilingual string table, pruned to the keys used in index.html.
-   Every data-i18n* attribute in index.html resolves here.
-   Keys are shared across id/en.
-
-   Changes:
-   - Added QRe card keys: cat_qr, tool8_desc.
-   - Added status_demo (RaiaSpace and the Chess, Orbit Weaver and
-     Starfall cards are marked Demo; Loveyou is not).
-   - Removed every key that index.html does not reference.
-   ============================================================ */
+/* i18n.js: bilingual string table (id, en). Keys are shared by both languages. */
 window.i18n = {id: {
     skip_to_main: 'Lewati ke konten utama',
     raia_open: 'Buka RAIA AI',
@@ -85,13 +74,13 @@ window.i18n = {id: {
     quotes_eyebrow: 'Kutipan',
     quotes_title: 'Kutipan Pilihan',
     quotes_subtitle: 'Beberapa kutipan yang menginspirasi saya saat belajar dan berkarya.',
-    q1_text: '“Satu-satunya cara untuk melakukan pekerjaan hebat adalah dengan mencintai apa yang kamu kerjakan.”',
+    q1_text: '“Satu-satunya cara untuk menghasilkan karya hebat adalah mencintai apa yang kamu lakukan.”',
     q1_author: 'Steve Jobs',
     q2_text: '“Saya tidak gagal. Saya hanya menemukan 10.000 cara yang tidak berhasil.”',
     q2_author: 'Thomas Edison',
-    q3_text: '“Jika kamu tidak bisa membuatnya bagus, setidaknya buat agar terlihat bagus.”',
-    q3_author: 'Bill Gates',
-    q4_text: '“Saya sudah gagal berulang kali dalam hidup. Itulah alasan saya bisa berhasil.”',
+    q3_text: '“Aku memulainya dari orang yang ada di cermin.”',
+    q3_author: 'Michael Jackson',
+    q4_text: '“Saya sudah gagal berulang kali dalam hidup. Itulah sebabnya saya bisa berhasil.”',
     q4_author: 'Michael Jordan',
     tools_eyebrow: 'Alat Bantu',
     tools_title: 'Beat Tools',
@@ -162,8 +151,6 @@ window.i18n = {id: {
     footer_copy: '© 2026 Haiere · Dibuat dengan sederhana dan penuh perhatian.',
     footer_disclaimer: 'Catatan: gunakan alat ini dengan bijak. Haiere tidak bertanggung jawab atas kehilangan data.',
     footer_about: 'Pembuat web dan musisi. Semua alat dibuat untuk web terbuka: ringan, fokus, dan mudah dipakai.',
-    footer_last_updated: 'Terakhir diperbarui:',
-    footer_version: 'Nova v1.0.2',
     footer_secure: 'HTTPS AMAN · WEB TERBUKA',
     footer_brand_line: 'Alat yang berguna, eksperimen yang penuh pemikiran.',
     footer_badge: 'Pembuat web independen',
@@ -194,6 +181,20 @@ window.i18n = {id: {
     cookie_settings_reopen_label: 'Buka pengaturan cookie',
     cat_qr: 'Pembuat QR',
     tool8_desc: 'Pembuat kode QR berbasis web, diproses lokal di browser.',
+    search_no_results: 'Tidak ada hasil.',
+    search_meta_section: 'Bagian',
+    search_meta_game: 'Game',
+    docs_error: 'Dokumentasi belum tersedia untuk alat ini.',
+    err_name_short: 'Nama minimal 4 karakter.',
+    err_name_pattern: 'Nama hanya boleh berisi huruf, spasi, apostrof, atau tanda hubung.',
+    err_email_invalid: 'Masukkan alamat email yang valid.',
+    err_message_short: 'Pesan minimal 20 karakter.',
+    form_sending: 'Mengirim…',
+    form_success: 'Pesan terkirim. Terima kasih!',
+    form_error: 'Pesan gagal dikirim. Coba lagi nanti.',
+    toast_cookie_accepted: 'Cookie diterima',
+    toast_cookie_declined: 'Cookie ditolak',
+    toast_cookie_saved: 'Pengaturan cookie disimpan',
   },
   en: {
     skip_to_main: 'Skip to main content',
@@ -274,8 +275,8 @@ window.i18n = {id: {
     q1_author: 'Steve Jobs',
     q2_text: '“I have not failed. I’ve just found 10,000 ways that won’t work.”',
     q2_author: 'Thomas Edison',
-    q3_text: '“If you can’t make it good, at least make it look good.”',
-    q3_author: 'Bill Gates',
+    q3_text: '“I’m starting with the man in the mirror.”',
+    q3_author: 'Michael Jackson',
     q4_text: '“I’ve failed over and over and over again in my life. And that is why I succeed.”',
     q4_author: 'Michael Jordan',
     tools_eyebrow: 'Beat Tools',
@@ -347,8 +348,6 @@ window.i18n = {id: {
     footer_copy: '© 2026 Haiere · Made simply, with care.',
     footer_disclaimer: 'Note: Please use these tools wisely. Haiere is not responsible for lost data.',
     footer_about: 'Web maker and musician. Every tool is built for the open web: light, focused, and easy to use.',
-    footer_last_updated: 'Last updated:',
-    footer_version: 'Nova v1.0.2',
     footer_secure: 'HTTPS SECURE · OPEN WEB',
     footer_brand_line: 'Useful tools, thoughtful experiments.',
     footer_badge: 'Independent web creator',
@@ -379,5 +378,19 @@ window.i18n = {id: {
     cookie_settings_reopen_label: 'Open cookie settings',
     cat_qr: 'QR Generator',
     tool8_desc: 'Browser-based QR code generator with local-only processing.',
+    search_no_results: 'No results.',
+    search_meta_section: 'Section',
+    search_meta_game: 'Game',
+    docs_error: 'Documentation is not available yet for this tool.',
+    err_name_short: 'Name must be at least 4 characters.',
+    err_name_pattern: 'Name may only contain letters, spaces, apostrophes, or hyphens.',
+    err_email_invalid: 'Please enter a valid email address.',
+    err_message_short: 'Message must be at least 20 characters.',
+    form_sending: 'Sending…',
+    form_success: 'Message sent. Thank you!',
+    form_error: 'Message could not be sent. Please try again later.',
+    toast_cookie_accepted: 'Cookies accepted',
+    toast_cookie_declined: 'Cookies declined',
+    toast_cookie_saved: 'Cookie settings saved',
   },
 };

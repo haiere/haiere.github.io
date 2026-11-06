@@ -1,5 +1,5 @@
 /* ============================================================
-   icon.js Nova v1.0.2 — Haiere 
+   icon.js Nova — Haiere 
    ...
    changes:
    - qre-logo: added QRe logo (64x64 source, scaled into the 24 viewBox).

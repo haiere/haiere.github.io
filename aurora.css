@@ -1,10 +1,10 @@
 /* ============================================================
-   aurora.css Nova v1.0.2 — "Milky Way" cinematic deep-space background
+   aurora.css: "Milky Way" deep-space background
    Layer order (back → front), all decorative, pointer-events: none
      #aurora-bg  z0   base gradient (also the static fallback for eco tier)
        .aur-space z0  milky way, galaxy, nebula, mist, dust, glow stars, grain
        .stars-*   z1  box-shadow star layers (JS fills --sa / --sb)
-       .meteors   z3  shooting stars  (logic untouched in aurora.js)
+       .meteors   z3  shooting stars
      #fx        z4  click / tap explosion canvas
      page content z2+ (see "content stacking" below)
    ============================================================ */
@@ -418,3 +418,9 @@ html[data-aurora="ready"][data-theme="day"] .section,
 html[data-aurora="ready"][data-theme="day"] #hero {
   background: transparent;
 }
+
+/* eco: aurora.js returns early, so hide every decorative layer it would have driven */
+html[data-perf="eco"] .spotlight,
+html[data-perf="eco"] #fx,
+html[data-perf="eco"] .meteors,
+html[data-perf="eco"] .stars { display: none !important; }
