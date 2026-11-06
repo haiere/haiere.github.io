@@ -76,11 +76,14 @@ Things this project deliberately does not use: a custom backend, analytics or tr
 | `03` | **Raia Scrub** | Security | Remove sensitive data such as location from photos before sharing. |
 | `04` | **Raia Delta** | Developer | Compare two texts and see the differences. |
 | `05` | **Raia Minify** | Developer | Minify and optimise code or text in the browser. |
-| `06` | **RaiaSpace** | Web | A lightweight search portal for the open web. *(Demo)* |
+| `06` | **RaiaSpace** | Web | A lightweight search portal for the open web. *(Demo, see the note below)* |
 | `07` | **Calc** | Web | A simple, fast calculator. |
 | `08` | **QRe** | Web | Generate QR codes. Processing stays local in your browser. |
 
-Each card opens the tool in a new tab and has a **How to Use** button. That button loads the tool's `README.md` from its public GitHub repository and shows it in a modal.
+Each card opens the tool in a new tab and has a **How to Use** button. For most tools, that button loads the tool's `README.md` from its public GitHub repository and shows it in a modal.
+
+> [!NOTE]
+> **RaiaSpace** is a demo. Its full guide lives on GitHub, so its **How to Use** button links straight to [github.com/haiere/raiaspace](https://github.com/haiere/raiaspace) instead of opening the modal.
 
 ### AI & Bots
 
