@@ -1,5 +1,6 @@
 /* ============================================================
-   style.css — Haiere 
+   style.css — Haiere
+   Licensed under the MIT License. See LICENSE.
    Modern, minimal, branded. English-first, dark-first with full
    light parity.
 
@@ -2707,3 +2708,86 @@ html[data-perf="normal"] .game-card { will-change: auto; }
 }
 /* Touch target floor: these two sat at 38–41px on mobile */
 .cookie-btn, .lang-btn { min-height: 44px; }
+
+/* ============================================================
+   UI STATES & TOUCH TARGETS
+   Added in the UI pass. Uses existing tokens only, so light and
+   dark themes keep their current palette.
+
+   States covered: default, hover, focus-visible, active,
+   disabled, loading, empty, error, success.
+   ============================================================ */
+
+/* Disabled: shared for any control that supports it */
+button:disabled,
+input:disabled,
+textarea:disabled,
+select:disabled,
+[aria-disabled="true"] {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+  box-shadow: none;
+  transform: none !important;
+}
+
+/* Loading: a busy region keeps its layout and stops input */
+[aria-busy="true"],
+.is-loading {
+  cursor: progress;
+  pointer-events: none;
+}
+.is-loading .btn-primary,
+.is-loading .btn-secondary,
+.is-loading .tool-open-btn,
+.is-loading .tool-docs-btn {
+  opacity: 0.75;
+}
+
+/* Status messages: empty, error, success, loading */
+.state-message {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+  font-size: var(--fs-small);
+  line-height: 1.5;
+  color: var(--text-soft);
+}
+.state-message--error   { color: var(--err); }
+.state-message--success { color: var(--ok); }
+.state-message--empty   { justify-content: center; text-align: center; }
+.state-message svg { flex-shrink: 0; margin-top: 0.15em; }
+
+/* Form status line, used alongside the existing #form-status */
+#form-status[data-state="error"]   { color: var(--err); }
+#form-status[data-state="success"] { color: var(--ok); }
+
+/* Error text next to a field. Colour is not the only cue: the
+   message itself is text, so it stays readable without colour. */
+.field-error {
+  display: block;
+  margin-top: 0.35rem;
+  font-size: var(--fs-micro);
+  color: var(--err);
+}
+
+/* Touch target floor for small icon buttons (WCAG 2.5.5 / 44px) */
+.header-search-clear {
+  min-width: 44px;
+  min-height: 44px;
+  right: 0.1rem;
+}
+.header-search-hint { min-height: 24px; }
+
+/* Keyboard focus stays visible on every interactive element */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible,
+summary:focus-visible,
+[tabindex]:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 3px;
+}

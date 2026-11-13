@@ -1,14 +1,30 @@
-/* i18n.js: bilingual string table (id, en). Keys are shared by both languages. */
-window.i18n = {id: {
+/* ============================================================
+   i18n.js — Haiere
+   Bilingual string table (id, en). Both languages share the same keys.
+
+   Rules:
+   - Keys are the public contract. Do not rename or remove a key
+     without updating index.html and script.js.
+   - Keep placeholders, HTML, Markdown, and line breaks exactly as
+     they are. Product, project, and brand names stay untranslated.
+   - No em dash in copy.
+
+   Licensed under the MIT License. See LICENSE.
+   Internal build label: Nova v2026.11.13 (code only, never shown on the site).
+   ============================================================ */
+window.i18n = {
+  id: {
+    /* --- Global / accessibility --- */
     skip_to_main: 'Lewati ke konten utama',
-    raia_open: 'Buka RAIA AI',
-    raia_try: 'Coba RAIA AI',
     home_label: 'Beranda Haiere',
     logo_alt: 'Logo Haiere',
     toggle_theme: 'Ganti tema',
     open_menu: 'Buka menu',
     close_menu: 'Tutup menu',
     back_to_top: 'Kembali ke atas',
+    written_by_human_alt: 'Dibuat oleh manusia, bukan AI',
+
+    /* --- Navigation --- */
     nav_home: 'Beranda',
     nav_about: 'Tentang',
     nav_tools: 'Alat',
@@ -25,11 +41,17 @@ window.i18n = {id: {
     nav_tagline: 'Alat, AI, dan aplikasi untuk belajar dan kerja harian',
     nav_privacy_policy: 'Kebijakan Privasi',
     nav_terms: 'Syarat & Ketentuan',
+
+    /* --- Hero --- */
+    raia_open: 'Buka RAIA AI',
+    raia_try: 'Coba RAIA AI',
     hero_title_1: 'Hajir',
     hero_title_2: 'Muhaajir',
-    hero_desc: 'Halo! Saya Hajir. Saya membuat alat, aplikasi web, dan AI untuk membantu kamu belajar, ngoding, dan menyelesaikan pekerjaan harian.',
+    hero_desc: 'Halo, saya Hajir. Saya membuat alat, aplikasi web, dan AI untuk membantu kamu belajar, ngoding, dan menyelesaikan pekerjaan harian.',
     hero_cta1: 'Lihat Proyek',
     hero_cta2: 'Coba RAIA AI',
+
+    /* --- Ticker --- */
     ticker_musician: 'Musisi',
     ticker_developer: 'Developer',
     ticker_useful: 'Alat Berguna',
@@ -37,6 +59,8 @@ window.i18n = {id: {
     ticker_openweb: 'Web Terbuka',
     ticker_github: 'GitHub Pages',
     ticker_creative: 'Teknologi Seru',
+
+    /* --- About --- */
     about_eyebrow: 'Tentang',
     about_title: 'Membuat software yang sederhana dan berguna',
     about_role_musician: 'Musisi',
@@ -53,6 +77,8 @@ window.i18n = {id: {
     stat_songs_label: 'Lagu Buatan Sendiri',
     stat_openweb_label: 'Web Terbuka',
     RWR_closing: 'RWR adalah bagian dari hidup saya, suatu hari nanti RWR',
+
+    /* --- Music --- */
     music_eyebrow: 'Musik',
     music_title: 'Signature Music',
     music_subtitle: 'Beberapa lagu buatan saya. Cocok untuk belajar, ngoding, atau bersantai.',
@@ -71,6 +97,8 @@ window.i18n = {id: {
     music_usage_desc: 'Pilih lagu dari daftar, atur volume, lalu putar. Semuanya berjalan di browser tanpa perlu login.',
     music_setup_title: 'Cara Memasang di Komputer',
     music_setup_desc: 'Unduh repositori, jalankan server sederhana, lalu buka di browser.',
+
+    /* --- Quotes --- */
     quotes_eyebrow: 'Kutipan',
     quotes_title: 'Kutipan Pilihan',
     quotes_subtitle: 'Beberapa kutipan yang menginspirasi saya saat belajar dan berkarya.',
@@ -82,6 +110,8 @@ window.i18n = {id: {
     q3_author: 'Michael Jackson',
     q4_text: '“Saya sudah gagal berulang kali dalam hidup. Itulah sebabnya saya bisa berhasil.”',
     q4_author: 'Michael Jordan',
+
+    /* --- Tools --- */
     tools_eyebrow: 'Alat Bantu',
     tools_title: 'Beat Tools',
     tools_subtitle: 'Alat gratis untuk ngoding, mengolah data, mencoba AI, dan pekerjaan harian.',
@@ -101,6 +131,7 @@ window.i18n = {id: {
     cat_search: 'Mesin Pencari',
     cat_calc: 'Kalkulator',
     cat_dev_tool: 'Alat Developer',
+    cat_qr: 'Pembuat QR',
     tool1_desc: 'Buat file lirik LRC yang tersinkron dengan audiomu, dengan cepat dan mudah.',
     tool2_desc: 'Buat kata sandi acak yang kuat agar akunmu tetap aman.',
     tool3_desc: 'Hapus data sensitif, seperti lokasi, dari foto sebelum dibagikan.',
@@ -108,15 +139,21 @@ window.i18n = {id: {
     tool5_desc: 'Perkecil dan optimalkan kode atau teks langsung di browser.',
     tool6_desc: 'Mesin pencari ringan untuk menemukan hal baru di web terbuka.',
     tool7_desc: 'Kalkulator sederhana dan cepat untuk hitungan sehari-hari.',
+    tool8_desc: 'Pembuat kode QR berbasis web, diproses lokal di browser.',
     tool_open: 'Buka Alat',
     tool_docs: 'Cara Pakai',
     docs_loading: 'Memuat panduan…',
     docs_view_repo: 'Lihat Repositori',
+    docs_error: 'Dokumentasi belum tersedia untuk alat ini.',
+
+    /* --- AI & Bots --- */
     ai_eyebrow: 'AI & Bot',
     ai_title: 'AI & Bot',
     ai_subtitle: 'Chatbot dan asisten untuk ngobrol, mencari ide, dan membantu pekerjaan harian.',
     ai_raia_desc: 'Chatbot AI untuk ngobrol, mencari ide, dan alur kerja yang berguna.',
     ai_kirana_desc: 'Teman ngobrol AI yang hangat untuk obrolan kreatif dan ide harian.',
+
+    /* --- Games --- */
     games_eyebrow: 'Game',
     games_title: 'Permainan Mini',
     games_subtitle: 'Game ringan yang bisa langsung dimainkan di browser. Tanpa instal, tanpa login.',
@@ -133,6 +170,9 @@ window.i18n = {id: {
     game_starfall_name: 'Starfall',
     game_starfall_desc: 'Tangkap bintang yang jatuh di game arcade singkat ini.',
     game_starfall_tag: 'Arcade',
+    search_meta_game: 'Game',
+
+    /* --- Contact & form --- */
     contact_eyebrow: 'Kontak',
     contact_title: 'Yuk, Ngobrol!',
     contact_subtitle: 'Punya pertanyaan, ide, atau proyek yang ingin dibahas? Hubungi saya lewat formulir ini atau kirim email langsung ke',
@@ -144,10 +184,22 @@ window.i18n = {id: {
     form_email_placeholder: 'emailkamu@contoh.com',
     form_message_placeholder: 'Tulis pesan atau pertanyaanmu di sini…',
     form_fallback: 'Atau sapa saya lewat media sosial:',
+    form_sending: 'Mengirim…',
+    form_success: 'Pesan terkirim. Terima kasih!',
+    form_error: 'Pesan gagal dikirim. Coba lagi nanti.',
+    form_required_error: 'Form belum lengkap. Periksa kembali kolom yang ditandai.',
+    err_name_short: 'Nama minimal 4 karakter.',
+    err_name_pattern: 'Nama hanya boleh berisi huruf, spasi, apostrof, atau tanda hubung.',
+    err_email_invalid: 'Masukkan alamat email yang valid.',
+    err_message_short: 'Pesan minimal 20 karakter.',
+
+    /* --- Support --- */
     support_title: 'Dukung Karya Saya',
     support_note: 'Donasi kamu membantu saya terus membuat alat gratis dan eksperimen untuk web terbuka.',
     donate_coffee: 'Coffee',
     donate_buzz: 'Buzz',
+
+    /* --- Footer --- */
     footer_copy: '© 2026 Haiere · Dibuat dengan sederhana dan penuh perhatian.',
     footer_disclaimer: 'Catatan: gunakan alat ini dengan bijak. Haiere tidak bertanggung jawab atas kehilangan data.',
     footer_about: 'Pembuat web dan musisi. Semua alat dibuat untuk web terbuka: ringan, fokus, dan mudah dipakai.',
@@ -158,9 +210,14 @@ window.i18n = {id: {
     footer_beat_tools: 'Beat Tools',
     footer_sitemap_title: 'Jelajahi',
     footer_connect_title: 'Terhubung',
-    written_by_human_alt: 'Dibuat oleh manusia, bukan AI',
+
+    /* --- Search --- */
     search_placeholder: 'Cari bagian atau alat…',
     search_clear: 'Hapus pencarian',
+    search_no_results: 'Tidak ada hasil.',
+    search_meta_section: 'Bagian',
+
+    /* --- Cookies --- */
     cookie_text: 'Situs ini memakai cookie agar pengalamanmu lebih baik. Dengan menggunakan Haiere, kamu menyetujui',
     cookie_policy: 'Kebijakan Cookie',
     cookie_reject: 'Tolak',
@@ -179,33 +236,29 @@ window.i18n = {id: {
     cookie_always_on: 'Selalu aktif',
     cookie_save: 'Simpan Pengaturan',
     cookie_settings_reopen_label: 'Buka pengaturan cookie',
-    cat_qr: 'Pembuat QR',
-    tool8_desc: 'Pembuat kode QR berbasis web, diproses lokal di browser.',
-    search_no_results: 'Tidak ada hasil.',
-    search_meta_section: 'Bagian',
-    search_meta_game: 'Game',
-    docs_error: 'Dokumentasi belum tersedia untuk alat ini.',
-    err_name_short: 'Nama minimal 4 karakter.',
-    err_name_pattern: 'Nama hanya boleh berisi huruf, spasi, apostrof, atau tanda hubung.',
-    err_email_invalid: 'Masukkan alamat email yang valid.',
-    err_message_short: 'Pesan minimal 20 karakter.',
-    form_sending: 'Mengirim…',
-    form_success: 'Pesan terkirim. Terima kasih!',
-    form_error: 'Pesan gagal dikirim. Coba lagi nanti.',
     toast_cookie_accepted: 'Cookie diterima',
     toast_cookie_declined: 'Cookie ditolak',
     toast_cookie_saved: 'Pengaturan cookie disimpan',
+
+    /* --- UI states (loading, empty, error, success) --- */
+    state_loading: 'Memuat…',
+    state_empty: 'Belum ada konten di sini.',
+    state_error: 'Sepertinya ada masalah saat memuat data. Coba muat ulang halaman.',
+    state_success: 'Berhasil disimpan.',
   },
+
   en: {
+    /* --- Global / accessibility --- */
     skip_to_main: 'Skip to main content',
-    raia_open: 'Open RAIA AI',
-    raia_try: 'Try RAIA AI',
     home_label: 'Haiere home',
     logo_alt: 'Haiere logo',
     toggle_theme: 'Switch theme',
     open_menu: 'Open menu',
     close_menu: 'Close menu',
     back_to_top: 'Back to top',
+    written_by_human_alt: 'Developed by a human, not by AI',
+
+    /* --- Navigation --- */
     nav_home: 'Home',
     nav_about: 'About',
     nav_tools: 'Tools',
@@ -222,11 +275,17 @@ window.i18n = {id: {
     nav_tagline: 'Tools, AI, and apps for learning and everyday work',
     nav_privacy_policy: 'Privacy Policy',
     nav_terms: 'Terms & Conditions',
+
+    /* --- Hero --- */
+    raia_open: 'Open RAIA AI',
+    raia_try: 'Try RAIA AI',
     hero_title_1: 'Hajir',
     hero_title_2: 'Muhaajir',
     hero_desc: 'Hi, I’m Hajir. I build tools, web apps, and AI to help you learn, code, and get things done.',
     hero_cta1: 'View Projects',
     hero_cta2: 'Try RAIA AI',
+
+    /* --- Ticker --- */
     ticker_musician: 'Musician',
     ticker_developer: 'Developer',
     ticker_useful: 'Useful Tools',
@@ -234,6 +293,8 @@ window.i18n = {id: {
     ticker_openweb: 'Open Web',
     ticker_github: 'GitHub Pages',
     ticker_creative: 'Fun Tech',
+
+    /* --- About --- */
     about_eyebrow: 'About',
     about_title: 'Building simple, useful software',
     about_role_musician: 'Musician',
@@ -250,6 +311,8 @@ window.i18n = {id: {
     stat_songs_label: 'Songs I Wrote',
     stat_openweb_label: 'Open Web',
     RWR_closing: 'RWR is part of my life, and someday RWR',
+
+    /* --- Music --- */
     music_eyebrow: 'Music',
     music_title: 'Signature Music',
     music_subtitle: 'A few songs I made. Great for studying, coding, or relaxing.',
@@ -268,6 +331,8 @@ window.i18n = {id: {
     music_usage_desc: 'Pick a song, set the volume, and press play. Everything runs in your browser. No login needed.',
     music_setup_title: 'Run It on Your Computer',
     music_setup_desc: 'Download the repo, start a simple server, and open it in your browser.',
+
+    /* --- Quotes --- */
     quotes_eyebrow: 'Quotes',
     quotes_title: 'Favorite Quotes',
     quotes_subtitle: 'A few quotes that keep me inspired while I learn and build.',
@@ -279,6 +344,8 @@ window.i18n = {id: {
     q3_author: 'Michael Jackson',
     q4_text: '“I’ve failed over and over and over again in my life. And that is why I succeed.”',
     q4_author: 'Michael Jordan',
+
+    /* --- Tools --- */
     tools_eyebrow: 'Beat Tools',
     tools_title: 'Beat Tools',
     tools_subtitle: 'Free tools for coding, working with data, trying AI, and everyday tasks.',
@@ -298,6 +365,7 @@ window.i18n = {id: {
     cat_search: 'Search Engine',
     cat_calc: 'Calculator',
     cat_dev_tool: 'Developer Tool',
+    cat_qr: 'QR Generator',
     tool1_desc: 'Create LRC lyric files that sync with your audio, quickly and easily.',
     tool2_desc: 'Generate strong random passwords to keep your accounts safe.',
     tool3_desc: 'Remove sensitive data, like location, from photos before you share them.',
@@ -305,15 +373,21 @@ window.i18n = {id: {
     tool5_desc: 'Minify and optimize code or text right in your browser.',
     tool6_desc: 'A lightweight search engine for discovering new things on the open web.',
     tool7_desc: 'A simple, fast calculator for everyday math.',
+    tool8_desc: 'Browser-based QR code generator with local-only processing.',
     tool_open: 'Open Tool',
     tool_docs: 'How to Use',
     docs_loading: 'Loading guide…',
     docs_view_repo: 'View Repository',
+    docs_error: 'Documentation is not available yet for this tool.',
+
+    /* --- AI & Bots --- */
     ai_eyebrow: 'AI & Bots',
     ai_title: 'AI & Bots',
     ai_subtitle: 'Chatbots and assistants for conversations, brainstorming, and everyday work.',
     ai_raia_desc: 'An AI chatbot for conversations, ideas, and useful workflows.',
     ai_kirana_desc: 'A warm AI companion for creative chats and everyday ideas.',
+
+    /* --- Games --- */
     games_eyebrow: 'Games',
     games_title: 'Mini Games',
     games_subtitle: 'Light games you can play right in your browser. No install, no login.',
@@ -330,6 +404,9 @@ window.i18n = {id: {
     game_starfall_name: 'Starfall',
     game_starfall_desc: 'Catch falling stars in this quick arcade game.',
     game_starfall_tag: 'Arcade',
+    search_meta_game: 'Game',
+
+    /* --- Contact & form --- */
     contact_eyebrow: 'Contact',
     contact_title: 'Let’s Talk!',
     contact_subtitle: 'Have a question, an idea, or a project to discuss? Reach out with this form or email me directly at',
@@ -341,10 +418,22 @@ window.i18n = {id: {
     form_email_placeholder: 'you@example.com',
     form_message_placeholder: 'Write your message or question here…',
     form_fallback: 'Or reach me on social media:',
+    form_sending: 'Sending…',
+    form_success: 'Message sent. Thank you!',
+    form_error: 'Message could not be sent. Please try again later.',
+    form_required_error: 'The form is incomplete. Please check the highlighted fields.',
+    err_name_short: 'Name must be at least 4 characters.',
+    err_name_pattern: 'Name may only contain letters, spaces, apostrophes, or hyphens.',
+    err_email_invalid: 'Please enter a valid email address.',
+    err_message_short: 'Message must be at least 20 characters.',
+
+    /* --- Support --- */
     support_title: 'Support My Work',
     support_note: 'Your donation helps me keep making free tools and experiments for the open web.',
     donate_coffee: 'Coffee',
     donate_buzz: 'Buzz',
+
+    /* --- Footer --- */
     footer_copy: '© 2026 Haiere · Made simply, with care.',
     footer_disclaimer: 'Note: Please use these tools wisely. Haiere is not responsible for lost data.',
     footer_about: 'Web maker and musician. Every tool is built for the open web: light, focused, and easy to use.',
@@ -355,9 +444,14 @@ window.i18n = {id: {
     footer_beat_tools: 'Beat Tools',
     footer_sitemap_title: 'Explore',
     footer_connect_title: 'Connect',
-    written_by_human_alt: 'Developed by a human, not by AI',
+
+    /* --- Search --- */
     search_placeholder: 'Search sections or tools…',
     search_clear: 'Clear search',
+    search_no_results: 'No results.',
+    search_meta_section: 'Section',
+
+    /* --- Cookies --- */
     cookie_text: 'This site uses cookies to give you a better experience. By using Haiere, you agree to our',
     cookie_policy: 'Cookie Policy',
     cookie_reject: 'Reject',
@@ -376,21 +470,14 @@ window.i18n = {id: {
     cookie_always_on: 'Always on',
     cookie_save: 'Save Settings',
     cookie_settings_reopen_label: 'Open cookie settings',
-    cat_qr: 'QR Generator',
-    tool8_desc: 'Browser-based QR code generator with local-only processing.',
-    search_no_results: 'No results.',
-    search_meta_section: 'Section',
-    search_meta_game: 'Game',
-    docs_error: 'Documentation is not available yet for this tool.',
-    err_name_short: 'Name must be at least 4 characters.',
-    err_name_pattern: 'Name may only contain letters, spaces, apostrophes, or hyphens.',
-    err_email_invalid: 'Please enter a valid email address.',
-    err_message_short: 'Message must be at least 20 characters.',
-    form_sending: 'Sending…',
-    form_success: 'Message sent. Thank you!',
-    form_error: 'Message could not be sent. Please try again later.',
     toast_cookie_accepted: 'Cookies accepted',
     toast_cookie_declined: 'Cookies declined',
     toast_cookie_saved: 'Cookie settings saved',
+
+    /* --- UI states (loading, empty, error, success) --- */
+    state_loading: 'Loading…',
+    state_empty: 'Nothing here yet.',
+    state_error: 'Something went wrong while loading the data. Try reloading the page.',
+    state_success: 'Saved successfully.',
   },
 };

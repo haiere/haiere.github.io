@@ -1,5 +1,7 @@
 /* script.js: UI behaviour (i18n, theme, drawer, search, filters, docs modal,
-   contact form, cookies, scroll effects). Default language: English (en). */
+   contact form, cookies, scroll effects). Default language: English (en).
+   Licensed under the MIT License. See LICENSE.
+   Internal build label: Nova v2026.11.13 (code only). */
 
 function whenTailwindReady(cb) {
   if (window.tailwind) return cb();
@@ -402,19 +404,27 @@ function whenTailwindReady(cb) {
   }
 
   /* ==========================================================
-     5. REVEAL ON SCROLL — adaptive strategy (v2026.10.08.11)
+     5. REVEAL ON SCROLL: GSAP ScrollTrigger, IntersectionObserver fallback
+     Reveals run once. Items that share a parent stagger together.
+     Only transform and opacity are animated. Mobile, reduced motion,
+     and non-desktop screens show content at once.
      ========================================================== */
   (function setupReveal() {
-    const reveals = document.querySelectorAll('.reveal');
+    const reveals    = Array.from(document.querySelectorAll('.reveal'));
     if (!reveals.length) return;
 
-    const desktopMQ     = window.matchMedia('(min-width: 768px)');
-    const reducedMQ     = window.matchMedia('(prefers-reduced-motion: reduce)');
-    const supportsIO    = 'IntersectionObserver' in window;
-    let observer        = null;
+    const desktopMQ  = window.matchMedia('(min-width: 768px)');
+    const reducedMQ  = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const supportsIO = 'IntersectionObserver' in window;
+    const hasGsap    = typeof window.gsap !== 'undefined' && typeof window.ScrollTrigger !== 'undefined';
+    let observer     = null;
+    let triggers     = [];
+    let registered   = new WeakSet();
+
+    if (hasGsap) window.gsap.registerPlugin(window.ScrollTrigger);
 
     function shouldAnimate() {
-      return supportsIO && desktopMQ.matches && !reducedMQ.matches;
+      return desktopMQ.matches && !reducedMQ.matches && (hasGsap || supportsIO);
     }
 
     function getObserver() {
@@ -440,17 +450,82 @@ function whenTailwindReady(cb) {
       observer = null;
     }
 
+    function killGsapReveals() {
+      triggers.forEach((st) => st.kill());
+      triggers = [];
+      registered = new WeakSet();
+    }
+
+    // Group by parent so cards in one grid stagger as a set.
+    function groupByParent(items) {
+      const groups = new Map();
+      items.forEach((el) => {
+        const key = el.parentElement || el;
+        if (!groups.has(key)) groups.set(key, []);
+        groups.get(key).push(el);
+      });
+      return Array.from(groups.values());
+    }
+
+    function revealWithGsap(items) {
+      const pending = items.filter((el) => !el.classList.contains('is-visible') && !registered.has(el));
+      if (!pending.length) return;
+      pending.forEach((el) => registered.add(el));
+
+      groupByParent(pending).forEach((group) => {
+        window.gsap.set(group, { opacity: 0, y: 14 });
+        const st = window.ScrollTrigger.create({
+          trigger: group[0],
+          start: 'top 92%',
+          once: true,
+          onEnter: () => {
+            window.gsap.to(group, {
+              opacity: 1,
+              y: 0,
+              duration: 0.45,
+              ease: 'power2.out',
+              stagger: 0.07,
+              onComplete: () => {
+                // Add the class first, then clear inline styles, so the
+                // element never flashes back to the CSS hidden state.
+                group.forEach((el) => el.classList.add('is-visible'));
+                window.gsap.set(group, { clearProps: 'opacity,transform' });
+              },
+            });
+          },
+        });
+        triggers.push(st);
+      });
+      window.ScrollTrigger.refresh();
+    }
+
     function applyStrategy() {
-      if (shouldAnimate()) {
+      if (!shouldAnimate()) {
+        killGsapReveals();
+        teardownObserver();
+        reveals.forEach((el) => el.classList.add('is-visible'));
+        return;
+      }
+      if (hasGsap) {
+        revealWithGsap(reveals);
+      } else {
         const obs = getObserver();
         reveals.forEach((el) => {
           if (!el.classList.contains('is-visible')) obs.observe(el);
         });
-      } else {
-        teardownObserver();
-        reveals.forEach((el) => el.classList.add('is-visible'));
       }
     }
+
+    // Call after dynamic content renders (for example, after a language switch).
+    window.haiereRefreshReveals = function () {
+      const all = Array.from(document.querySelectorAll('.reveal'));
+      if (!shouldAnimate()) {
+        all.forEach((el) => el.classList.add('is-visible'));
+        return;
+      }
+      if (hasGsap) revealWithGsap(all);
+      else applyStrategy();
+    };
 
     applyStrategy();
 
@@ -462,6 +537,17 @@ function whenTailwindReady(cb) {
       reducedMQ.addListener(applyStrategy);
     }
   })();
+
+  /* Fail-safe: if reveal never ran (for example, a script error earlier on
+     the page), show anything already in view after 2.5 s so content never
+     stays hidden. Items below the fold keep their normal reveal. */
+  setTimeout(function () {
+    var vh = window.innerHeight || document.documentElement.clientHeight;
+    document.querySelectorAll('.reveal:not(.is-visible)').forEach(function (el) {
+      var r = el.getBoundingClientRect();
+      if (r.top < vh && r.bottom > 0) el.classList.add('is-visible');
+    });
+  }, 2500);
 
   /* ==========================================================
      5b. PAUSE CONTINUOUS ANIMATIONS WHEN SECTION OFF-SCREEN
@@ -727,7 +813,7 @@ function whenTailwindReady(cb) {
   }
 
   /* ==========================================================
-     9. HERO SPOTLIGHT — premium only
+     9. HERO SPOTLIGHT: premium only
      ========================================================== */
   const heroSection = document.getElementById('hero');
   const heroSpotlight = document.getElementById('hero-spotlight');
@@ -837,7 +923,7 @@ function whenTailwindReady(cb) {
   }
 
   /* ==========================================================
-     13. DOCS MODAL — README via GitHub raw
+     13. DOCS MODAL: README via GitHub raw
      ========================================================== */
   const docsOverlay      = document.getElementById('docsOverlay');
   const docsModal        = document.getElementById('docsModal');
@@ -875,7 +961,7 @@ function whenTailwindReady(cb) {
     docsLastFocused = document.activeElement;
 
     const baseTitle = getI18nText('tool_docs');
-    if (docsModalTitle) docsModalTitle.textContent = `${baseTitle} — ${toolName}`;
+    if (docsModalTitle) docsModalTitle.textContent = `${baseTitle}: ${toolName}`;
     if (docsModalBody)  docsModalBody.innerHTML = `<div class="docs-modal-loading">${getI18nText('docs_loading')}</div>`;
     if (docsModalRepoLink) docsModalRepoLink.href = `https://github.com/haiere/${repo}`;
 
@@ -1045,7 +1131,7 @@ function whenTailwindReady(cb) {
       e.preventDefault();
       const t = getI18nText;
       if (!validateForm()) {
-        flashFormStatus('error', t('form_error'), 6000);
+        flashFormStatus('error', t('form_required_error'), 6000);
         return;
       }
       setFormStatus('pending', t('form_sending'));
@@ -1286,7 +1372,7 @@ function whenTailwindReady(cb) {
   })();
 
   /* ==========================================================
-     16. TILT & MAGNETIC — premium only
+     16. TILT & MAGNETIC: premium only
      ========================================================== */
   if (!prefersReducedMotion && !isCoarsePointer && perfTier === 'premium') {
     const tiltTargets = document.querySelectorAll('.tool-card, .quote-card, .about-card');
@@ -1329,6 +1415,7 @@ function whenTailwindReady(cb) {
   } catch (_) {}
 
   applyLang(urlLang || savedLang || detectLang());
+  if (typeof window.haiereRefreshReveals === 'function') window.haiereRefreshReveals();
 
   document.querySelectorAll('.lang-btn').forEach((btn) => {
     btn.addEventListener('click', () => {

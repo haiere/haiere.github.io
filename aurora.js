@@ -293,6 +293,13 @@
     }
   }
 
+  /* Apply the parallax offset in the same frame as the reset. Scheduling it
+     with rAF instead leaves a paint with zero offset, which shows as a flicker. */
+  function resetParallaxNow() {
+    lastP = -1;
+    applyParallax();
+  }
+
   window.addEventListener('scroll', queueParallax, { passive: true });
 
   /* ============================================================
@@ -579,8 +586,7 @@
       recalcScrollMax();
       sizeCanvas();
       if (!canTrack()) restSpot();
-      resetParallax();
-      queueParallax();
+      resetParallaxNow();
     }, 200);
   }, { passive: true });
 
@@ -592,8 +598,7 @@
       buildStars();
       buildSpace();
       recalcScrollMax();
-      resetParallax();
-      queueParallax();
+      resetParallaxNow();
       restSpot();
       if (mqReduce.matches) killAllMeteors();
       else scheduleMeteor(false);
@@ -614,13 +619,18 @@
   });
 
   /* ---------- boot ---------- */
-  recalcScrollMax();
-  sizeCanvas();
-  buildStars();
-  buildSpace();
-  restSpot();
-  queueParallax();
-  scheduleMeteor(true);
+  /* Each boot step is isolated. One failing step must not hide the
+     sky, meteors, or ripples that work, and data-aurora must still be set. */
+  function safe(name, fn) {
+    try { fn(); } catch (e) { if (window.console) console.warn('[aurora] ' + name + ' failed:', e); }
+  }
+  safe('recalcScrollMax', function () { recalcScrollMax(); });
+  safe('sizeCanvas', function () { sizeCanvas(); });
+  safe('buildStars', function () { buildStars(); });
+  safe('buildSpace', function () { buildSpace(); });
+  safe('restSpot', function () { restSpot(); });
+  safe('queueParallax', function () { queueParallax(); });
+  safe('scheduleMeteor', function () { scheduleMeteor(true); });
 
   root.setAttribute('data-aurora', 'ready');
 })();

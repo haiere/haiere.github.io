@@ -24,10 +24,12 @@
   <img src="https://img.shields.io/badge/HTML5-E34F26?style=flat-square&logo=html5&logoColor=white" alt="HTML5" />
   <img src="https://img.shields.io/badge/CSS3-1572B6?style=flat-square&logo=css3&logoColor=white" alt="CSS3" />
   <img src="https://img.shields.io/badge/JavaScript-ES2020-F7DF1E?style=flat-square&logo=javascript&logoColor=black" alt="JavaScript" />
+  <img src="https://img.shields.io/badge/GSAP-3.12.5-88CE02?style=flat-square&logoColor=white" alt="GSAP 3.12.5" />
   <img src="https://img.shields.io/badge/No_build_step-4B0082?style=flat-square" alt="No build step" />
   <img src="https://img.shields.io/badge/PWA-installable-5A0FC8?style=flat-square" alt="PWA" />
   <img src="https://img.shields.io/badge/a11y-WCAG_2.x-4B0082?style=flat-square" alt="Accessibility" />
   <img src="https://img.shields.io/badge/Performance_tiers-eco_·_normal_·_premium-7FD8CB?style=flat-square" alt="Performance tiers" />
+  <img src="https://img.shields.io/badge/license-MIT-blue?style=flat-square" alt="License: MIT" />
 </p>
 
 <img width="100%" src="https://capsule-render.vercel.app/api?type=rect&color=gradient&customColorList=0:B4788C,50:7FD8CB,100:B4788C&height=3" alt="" />
@@ -40,6 +42,7 @@
 - [Features](#features)
 - [Motion and performance](#motion-and-performance)
 - [Accessibility](#accessibility)
+- [Tech stack](#tech-stack)
 - [Getting started](#getting-started)
 - [Configuration](#configuration)
 - [Project structure](#project-structure)
@@ -75,7 +78,7 @@ Things this project deliberately does not use: a custom backend, analytics or tr
 | `02` | **Raia Vault** | Security | Generate strong random passwords. |
 | `03` | **Raia Scrub** | Security | Remove sensitive data such as location from photos before sharing. |
 | `04` | **Raia Delta** | Developer | Compare two texts and see the differences. |
-| `05` | **Raia Minify** | Developer | Minify and optimise code or text in the browser. |
+| `05` | **Raia Minify** | Developer | Minify and optimize code or text in the browser. |
 | `06` | **RaiaSpace** | Web | A lightweight search portal for the open web. *(Demo, see the note below)* |
 | `07` | **Calc** | Web | A simple, fast calculator. |
 | `08` | **QRe** | Web | Generate QR codes. Processing stays local in your browser. |
@@ -117,7 +120,8 @@ The site adjusts its effects to the device. The tier is decided by an inline scr
 
 **Motion rules in the shipped code:**
 
-- Reveal animations run only at 768px and wider. Each element rises 14 px over 280 ms and animates only `transform` and `opacity`.
+- Reveal animations run only at 768px and wider, and only when reduced motion is not requested. Items rise 14 px over 0.45 s with a 0.07 s stagger between siblings in the same group. They use GSAP ScrollTrigger and animate only `transform` and `opacity`. Each item reveals once.
+- If GSAP does not load, reveals fall back to an `IntersectionObserver` and a 280 ms CSS transition.
 - Hero and About animations pause while their section is off-screen.
 - With `prefers-reduced-motion`, the sky and ticker freeze, meteors stop, click ripples stop, smooth scrolling is turned off, and stat counters show their final value at once.
 - Scroll work goes through `requestAnimationFrame`.
@@ -137,16 +141,39 @@ To test a tier, change the attribute and reload. The attribute is recalculated o
 
 - **Focus is always visible.** `:focus-visible` draws a 3 px accent outline with a 3 px offset. Bare `:focus` has no styling.
 - **Touch targets are at least 44 px tall** on mobile for buttons, toggles, filters, and drawer items.
-- **Overlays manage focus.** The side drawer, documentation modal, and cookie settings move focus inside, keep Tab within the dialog, close on Escape, and return focus to the trigger. Body scroll is locked by reference count.
+- **Overlays manage focus.** The side drawer, documentation modal, and cookie settings move focus inside, keep Tab within the dialog, close on Escape, and return focus to the trigger. Body scroll is locked with a `modal-open` class on `<body>`.
 - **Filters are a toolbar** (`role="toolbar"`) with `aria-pressed` states and arrow-key navigation.
 - **Search** supports arrow keys, Enter, and Escape.
-- **Messages are announced.** Form errors use `role="status"` with `aria-live="polite"`, and invalid fields get `aria-invalid="true"`.
+- **Messages are announced.** Toasts and form status use `role="status"` (errors use `role="alert"` for toasts). Invalid form fields get `aria-invalid="true"`.
 - **Decorative layers are hidden** from assistive technology and do not take pointer input.
 - **Contrast, measured in Chromium:** body text is 12.2:1 in light mode and 15.1:1 in dark mode. Accent text is 4.9:1 in light and 10.5:1 in dark. White on the light accent button is 5.7:1.
 
+## Tech stack
+
+- HTML5, CSS3, and vanilla JavaScript (ES2020)
+- [GSAP 3.12.5](https://gsap.com) with the ScrollTrigger plugin, loaded from cdnjs, for scroll reveals
+- [marked](https://marked.js.org), loaded from jsDelivr, to render tool documentation in the modal
+- [Tailwind CSS](https://tailwindcss.com) play script, loaded from its CDN, for utility classes used in the markup
+- Google Fonts: Sora, Inter, and JetBrains Mono
+
 ## Getting started
 
+### Prerequisites
+
+- A modern browser (current Chrome, Edge, Firefox, or Safari).
+- Any static file server. Python, Node.js, or PHP is enough. Node.js is optional.
+
+### Installation
+
+Download the project files, or clone your copy of the repository, then open a terminal in the project folder.
+
 There is no build step and no package to install. Any static file server will do.
+
+### Environment Variables
+
+None. The site has no backend and reads no environment variables. The Formspree endpoints are set in `script.js`. Do not put API keys or tokens in the front-end code or in `localStorage`.
+
+### Running Locally
 
 ```bash
 # Python
@@ -159,9 +186,19 @@ npx serve
 php -S localhost:8000
 ```
 
-Then open the address shown in your terminal.
+Then open `http://localhost:8000` in your browser.
 
-**Deploy anywhere static:** GitHub Pages, Cloudflare Pages, Netlify, Vercel, or any ordinary web server.
+### Build
+
+No build is required. Deploy the files as they are.
+
+## Usage
+
+- Use the filters in **Beat Tools** to find a tool by category, or open **How to Use** on a card for its guide.
+- Press `Ctrl + K` or `Cmd + K` to search sections and tools.
+- Switch the language with the language control, or add `?lang=id` or `?lang=en` to the URL.
+- Choose a theme from the header. Dark is the default.
+- Chat with Raia or Kirana after you set up the provider you want to use.
 
 <details>
 <summary><b>Page sections in order</b></summary>
@@ -197,6 +234,8 @@ The DOM order matches the visual order, the keyboard order, and the accessibilit
 
 **Contact form.** Submits to Formspree. The primary endpoint is `https://formspree.io/f/mpqkqanp`, and the fallback is `https://formspree.io/xgvkobyl`.
 
+**Tool, bot, and game data.** Defined in `SITE_TOOLS`, `SITE_BOTS`, and `SITE_GAMES` in `script.js`.
+
 ## Project structure
 
 ```text
@@ -207,10 +246,11 @@ The DOM order matches the visual order, the keyboard order, and the accessibilit
 ├── aurora.css            Milky Way background styles
 ├── aurora.js             Background behaviour: stars, meteors, parallax, spotlight, ripples
 ├── script.js             Tool data, card rendering, theme, i18n, drawer, search, filters,
-│                         documentation modal, contact form, cookies
+│                         documentation modal, contact form, cookies, reveal animations
 ├── i18n.js               English and Indonesian strings
 ├── icons.js              SVG icon registry
 ├── manifest.webmanifest  PWA metadata, icons, screenshots, shortcuts
+├── LICENSE               MIT License
 └── README.md             This file
 ```
 
@@ -223,7 +263,7 @@ The DOM order matches the visual order, the keyboard order, and the accessibilit
 | Colours, spacing, typography, components | Tokens in `:root` and `.dark` in `style.css` |
 | Aurora look | `aurora.css` |
 | Aurora behaviour | `aurora.js` |
-| Interactions | `script.js` |
+| Interactions and reveal animations | `script.js` |
 | Any visible text | `i18n.js`, in both `id` and `en` |
 | Icons | `icons.js` |
 | Install prompt and shortcuts | `manifest.webmanifest` |
@@ -247,6 +287,8 @@ The DOM order matches the visual order, the keyboard order, and the accessibilit
 
 **The aurora does not show.** Check that `aurora.css` and `aurora.js` load and that `#aurora-bg`, `.spotlight`, and `#fx` exist. The aurora is turned off on the `eco` tier. Run `document.documentElement.getAttribute('data-perf')` to check.
 
+**Sections appear without animation.** This is expected on screens narrower than 768px, with reduced motion turned on, or when GSAP does not load. In the last case, the fallback observer still reveals sections.
+
 **The site is slow on mobile.** Check the active tier. If a low-end device is on `premium`, make sure the inline script in `<head>` runs before the stylesheets.
 
 **Contact form does not send.** Check that JavaScript is enabled, the fields have `name` attributes, and both Formspree endpoints are reachable.
@@ -261,6 +303,7 @@ The DOM order matches the visual order, the keyboard order, and the accessibilit
 - Preferences are stored only in `localStorage`.
 - Contact messages are sent through Formspree.
 - Tool documentation is fetched from public GitHub repositories.
+- Libraries are loaded from public CDNs (cdnjs, jsDelivr, and the Tailwind CDN), and fonts from Google Fonts. Those providers may log standard request data such as IP address.
 - Music, fonts, and embeds follow their own privacy policies.
 - AI bots send requests only to the provider you configure.
 
@@ -279,7 +322,11 @@ The DOM order matches the visual order, the keyboard order, and the accessibilit
 
 ## License
 
-The website design, original content, branding, and original music belong to Haiere unless stated otherwise. Third-party libraries, fonts, services, and icons remain under their own licences.
+This project is licensed under the MIT License. See [LICENSE](./LICENSE) for the full text.
+
+Copyright (c) 2026 Hajir Muhaajir.
+
+Third-party libraries, fonts, services, and icons remain under their own licenses. GSAP is not covered by this license. Check GreenSock's license terms before reusing it.
 
 ## Author
 
